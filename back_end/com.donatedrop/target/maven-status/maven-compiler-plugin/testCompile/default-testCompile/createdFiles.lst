@@ -1,0 +1,6 @@
+org\gobeshona\entity\Actor.class
+org\gobeshona\entity\Movie.class
+org\gobeshona\article_test\Test_ArticleDao.class
+org\gobeshona\article_test\EmployeeRestControllerIntegrationTest.class
+org\gobeshona\entity\Developer.class
+org\gobeshona\entity\Technology.class
