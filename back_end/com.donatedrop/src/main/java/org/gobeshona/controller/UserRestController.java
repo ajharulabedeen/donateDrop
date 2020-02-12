@@ -3,7 +3,9 @@ package org.gobeshona.controller;
 import org.gobeshona.repo.UserRepository;
 import org.gobeshona.security.JwtTokenUtil;
 import org.gobeshona.security.JwtUser;
+
 import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 //import org.zerhusen.security.JwtUser;
 
 
-
 import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,8 +27,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 @RestController
-public class UserRestController
-    {
+public class UserRestController {
 
     @Value("${jwt.header}")
     private String tokenHeader;
@@ -44,17 +45,15 @@ public class UserRestController
     private UserDetailsService userDetailsService;
 
     @RequestMapping(value = "user", method = RequestMethod.GET)
-    public JwtUser getAuthenticatedUser(HttpServletRequest request)
-        {
+    public JwtUser getAuthenticatedUser(HttpServletRequest request) {
         String token = request.getHeader(tokenHeader);
         String username = jwtTokenUtil.getUsernameFromToken(token);
         JwtUser user = (JwtUser) userDetailsService.loadUserByUsername(username);
         return user;
-        }
+    }
 
     @RequestMapping(value = "userName", method = RequestMethod.GET)
-    public String getAuthenticatedUserName(HttpServletRequest request, Principal principal)
-        {
+    public String getAuthenticatedUserName(HttpServletRequest request, Principal principal) {
         String token = request.getHeader(tokenHeader);
         String username = jwtTokenUtil.getUsernameFromToken(token);
         JwtUser user = (JwtUser) userDetailsService.loadUserByUsername(username);
@@ -65,21 +64,19 @@ public class UserRestController
         System.out.println("\nGetNameAuth:: \n" + auth.getName());
         System.out.println("\nGetName:: \n" + principal.getName());
         return username;
-        }
+    }
 
     @PostMapping(value = "userRegistration")
-    public String getAuthenticatedUserRegistration(HttpServletRequest request)
-        {
+    public String getAuthenticatedUserRegistration(HttpServletRequest request) {
         String token = request.getHeader(tokenHeader);
         String username = jwtTokenUtil.getUsernameFromToken(token);
         JwtUser user = (JwtUser) userDetailsService.loadUserByUsername(username);
 //        Bcrypt 
         return passwordEncoder.encode(user.getUsername().toString());
-        }
+    }
 
     @GetMapping(value = "test")
-    public String test()
-        {
+    public String test() {
         return "@GetMapping(value = \"test\")";
-        }
     }
+}
