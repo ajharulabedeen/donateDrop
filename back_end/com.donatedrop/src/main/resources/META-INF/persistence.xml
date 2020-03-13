@@ -5,11 +5,11 @@
     <class>org.gobeshona.articles.models.ArticlesComments</class>
     <class>org.gobeshona.articles.models.ArticlesVotes</class>
     <class>org.gobeshona.articles.models.ArticlesCommentsVotes</class>
-    <class>org.gobeshona.articles.ArticlesComments</class>
-    <class>org.gobeshona.articles.Articles</class>
-    <class>org.gobeshona.entity.Developer</class>
-    <class>org.gobeshona.entity.Technology</class>
-    <class>org.gobeshona.articles.NewEntity</class>
+    <class>com.donatedrop.articles.ArticlesComments</class>
+    <class>com.donatedrop.articles.Articles</class>
+    <class>Developer</class>
+    <class>Technology</class>
+    <class>com.donatedrop.articles.NewEntity</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/gobeshonabd?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
