@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/org.gobeshona.iml" filepath="$PROJECT_DIR$/org.gobeshona.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.donatedrop.iml" filepath="$PROJECT_DIR$/com.donatedrop.iml" />
     </modules>
   </component>
 </project>
