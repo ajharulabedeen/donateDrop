@@ -40,7 +40,7 @@ public class User {
     private String password;
 
     @Column(name = "FIRSTNAME", length = 50)
-    @NotNull
+//    @NotNull
     @Size(min = 4, max = 50)
     private String firstname;
 
