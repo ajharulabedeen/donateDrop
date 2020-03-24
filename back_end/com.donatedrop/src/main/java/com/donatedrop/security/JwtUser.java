@@ -15,7 +15,7 @@ public class JwtUser implements UserDetails {
 
     private final Long id;
     private final String username;
-    private final String firstname;
+//    private final String firstname;
 //    private final String lastname;
     private final String password;
     private final String email;
@@ -36,7 +36,7 @@ public class JwtUser implements UserDetails {
     ) {
         this.id             = id;
         this.username       = username;
-        this.firstname      = firstname;
+//        this.firstname      = firstname;
 //        this.lastname       = lastname;
         this.email          = email;
         this.password       = password;
@@ -73,9 +73,9 @@ public class JwtUser implements UserDetails {
         return true;
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
+//    public String getFirstname() {
+//        return firstname;
+//    }
 
 //    public String getLastname() {
 //        return lastname;

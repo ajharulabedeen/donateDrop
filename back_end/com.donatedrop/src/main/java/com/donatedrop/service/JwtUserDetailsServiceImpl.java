@@ -30,7 +30,7 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService
             System.out.println("\n Not null :\n");
             System.out.println("Name : " + user.getUsername());
             System.out.println("Pass : " + user.getPassword());
-            System.out.println("FName : " + user.getFirstname());
+//            System.out.println("FName : " + user.getFirstname());
 //            System.out.println("LName : " + user.getLastname());
             System.out.println("AName : " + user.getAuthorities().toString());
           }
