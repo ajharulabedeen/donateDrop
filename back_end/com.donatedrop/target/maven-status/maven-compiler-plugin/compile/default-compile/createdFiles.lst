@@ -16,6 +16,7 @@ com\donatedrop\mail\MailController.class
 com\donatedrop\controller\UserManage.class
 com\donatedrop\articles\old\IArticleDAO.class
 com\donatedrop\repo\UserRepository.class
+com\donatedrop\profile\ProfileJobs.class
 com\donatedrop\security\JwtUserFactory.class
 com\donatedrop\model\AuthorityName.class
 com\donatedrop\articles\Articles.class
@@ -24,6 +25,7 @@ com\donatedrop\security\JwtAuthenticationTokenFilter.class
 com\donatedrop\articles\old\ArticleDAO.class
 com\donatedrop\configs\MapSingleton.class
 com\donatedrop\model\User.class
+com\donatedrop\profile\ProfileEducation.class
 com\donatedrop\mail\MailObject.class
 com\donatedrop\security\JwtAuthenticationEntryPoint.class
 com\donatedrop\service\JwtUserDetailsServiceImpl.class
@@ -40,6 +42,7 @@ com\donatedrop\articles\ArticlesComments.class
 com\donatedrop\controller\MethodProtectedRestController.class
 com\donatedrop\articles\old\ArticleService.class
 com\donatedrop\configs\DateUtil.class
+com\donatedrop\profile\ProfileAbouts.class
 com\donatedrop\security\newcontroller\UserRegistration.class
 com\donatedrop\controller\AuthenticationRestController.class
 com\donatedrop\configs\GetDate.class

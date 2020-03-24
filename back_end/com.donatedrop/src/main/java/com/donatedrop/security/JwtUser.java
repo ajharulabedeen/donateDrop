@@ -26,7 +26,7 @@ public class JwtUser implements UserDetails {
     public JwtUser(
           Long id,
           String username,
-          String firstname,
+//          String firstname,
 //          String lastname,
           String email,
           String password, 
