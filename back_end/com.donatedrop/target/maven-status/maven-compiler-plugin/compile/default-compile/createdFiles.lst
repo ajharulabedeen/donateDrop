@@ -38,6 +38,7 @@ com\donatedrop\articles\NewEntity.class
 com\donatedrop\util\TimeProvider.class
 com\donatedrop\mail\EmailService.class
 com\donatedrop\articles\old\DummyArticleService.class
+com\donatedrop\conf\MyCorsFilter.class
 com\donatedrop\articles\ArticlesComments.class
 com\donatedrop\controller\MethodProtectedRestController.class
 com\donatedrop\articles\old\ArticleService.class

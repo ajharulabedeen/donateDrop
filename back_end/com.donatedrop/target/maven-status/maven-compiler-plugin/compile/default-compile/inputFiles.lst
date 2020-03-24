@@ -14,6 +14,7 @@ E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\
 E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\src\main\java\com\donatedrop\profile\ProfileEducation.java
 E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\src\main\java\com\donatedrop\repo\UserRepository.java
 E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\src\main\java\com\donatedrop\model\User.java
+E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\src\main\java\com\donatedrop\conf\MyConfiguration.java
 E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\src\main\java\com\donatedrop\configs\DateUtil.java
 E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\src\main\java\com\donatedrop\mail\GMail.java
 E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\src\main\java\com\donatedrop\articles\old\IArticleDAO.java
@@ -22,6 +23,7 @@ E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\
 E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\src\main\java\com\donatedrop\configs\MapSingleton.java
 E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\src\main\java\com\donatedrop\util\DatabaseConfig.java
 E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\src\main\java\com\donatedrop\service\JwtAuthenticationResponse.java
+E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\src\main\java\com\donatedrop\conf\MyCorsFilter.java
 E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\src\main\java\com\donatedrop\security\JwtUser.java
 E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\src\main\java\com\donatedrop\articles\old\ArticleController.java
 E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\src\main\java\com\donatedrop\configs\StatusRequestSingleton.java

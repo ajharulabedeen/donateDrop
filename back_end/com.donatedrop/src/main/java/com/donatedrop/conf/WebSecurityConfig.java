@@ -15,18 +15,19 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.bind.annotation.CrossOrigin;
 //import org.zerhusen.security.JwtAuthenticationEntryPoint;
 //import org.zerhusen.security.JwtAuthenticationTokenFilter;
 
 
-
 @SuppressWarnings("SpringJavaAutowiringInspection")
+//@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter
-    {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired//user
     private JwtAuthenticationEntryPoint unauthorizedHandler;
@@ -35,28 +36,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     private UserDetailsService userDetailsService;
 
     @Autowired
-    public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception
-        {
+    public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder
                 .userDetailsService(this.userDetailsService)
                 .passwordEncoder(passwordEncoder());
-        }
+    }
 
     @Bean
-    public PasswordEncoder passwordEncoder()
-        {
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-        }
+    }
 
     @Bean
-    public JwtAuthenticationTokenFilter authenticationTokenFilterBean() throws Exception
-        {
+    public JwtAuthenticationTokenFilter authenticationTokenFilterBean() throws Exception {
         return new JwtAuthenticationTokenFilter();
-        }
+    }
 
     @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception
-        {
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 // we don't need CSRF because our token is invulnerable
                 .csrf().disable()
@@ -78,7 +75,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
                         "/test/**"
 //                        "/test/mail/**"
                 ).permitAll()
-                .antMatchers("/auth/**","/test/**","/register").permitAll()
+                .antMatchers("/auth/**", "/test/**", "/register").permitAll()
                 .anyRequest().authenticated();
 
         // Custom JWT based security filter
@@ -86,5 +83,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 
         // disable page caching
         httpSecurity.headers().cacheControl();
-        }
     }
+}

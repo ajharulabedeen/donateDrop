@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.donatedrop.article_test.EmployeeRestControllerIntegrationTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 2.444 sec <<< FAILURE! - in com.donatedrop.article_test.EmployeeRestControllerIntegrationTest
-givenEmployees_whenGetEmployees_thenReturnJsonArray(com.donatedrop.article_test.EmployeeRestControllerIntegrationTest)  Time elapsed: 0.04 sec  <<< FAILURE!
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 2.229 sec <<< FAILURE! - in com.donatedrop.article_test.EmployeeRestControllerIntegrationTest
+givenEmployees_whenGetEmployees_thenReturnJsonArray(com.donatedrop.article_test.EmployeeRestControllerIntegrationTest)  Time elapsed: 0.044 sec  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<401>
 	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:54)
 	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:81)
