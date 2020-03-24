@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="com.concretepage_org.gobeshona_jar_0.0.1-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
-    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>org.gobeshona.articles.models.ArticlesComments</class>
-    <class>org.gobeshona.articles.models.ArticlesVotes</class>
-    <class>org.gobeshona.articles.models.ArticlesCommentsVotes</class>
+    <!--<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>-->
+    <!--<class>org.gobeshona.articles.models.ArticlesComments</class>-->
+    <!--<class>org.gobeshona.articles.models.ArticlesVotes</class>-->
+    <!--<class>org.gobeshona.articles.models.ArticlesCommentsVotes</class>-->
     <class>com.donatedrop.articles.ArticlesComments</class>
     <class>com.donatedrop.articles.Articles</class>
-    <class>Developer</class>
-    <class>Technology</class>
+    <!--<class>Developer</class>-->
+    <!--<class>Technology</class>-->
     <class>com.donatedrop.articles.NewEntity</class>
+    <class>com.donatedrop.profile.ProfileJobs</class>
+    <class>com.donatedrop.profile.ProfileEducation</class>
+    <class>com.donatedrop.profile.ProfileAbouts</class>
+    <class>com.donatedrop.profile.ProfileBasics</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/gobeshonabd?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

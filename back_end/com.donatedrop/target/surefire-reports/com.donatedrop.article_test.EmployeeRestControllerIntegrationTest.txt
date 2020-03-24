@@ -1,12 +1,12 @@
 -------------------------------------------------------------------------------
-Test set: org.gobeshona.article_test.EmployeeRestControllerIntegrationTest
+Test set: com.donatedrop.article_test.EmployeeRestControllerIntegrationTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.814 sec <<< FAILURE! - in org.gobeshona.article_test.EmployeeRestControllerIntegrationTest
-givenEmployees_whenGetEmployees_thenReturnJsonArray(org.gobeshona.article_test.EmployeeRestControllerIntegrationTest)  Time elapsed: 0.044 sec  <<< FAILURE!
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 2.012 sec <<< FAILURE! - in com.donatedrop.article_test.EmployeeRestControllerIntegrationTest
+givenEmployees_whenGetEmployees_thenReturnJsonArray(com.donatedrop.article_test.EmployeeRestControllerIntegrationTest)  Time elapsed: 0.048 sec  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<401>
 	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:54)
 	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:81)
 	at org.springframework.test.web.servlet.result.StatusResultMatchers$10.match(StatusResultMatchers.java:664)
 	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:171)
-	at org.gobeshona.article_test.EmployeeRestControllerIntegrationTest.givenEmployees_whenGetEmployees_thenReturnJsonArray(EmployeeRestControllerIntegrationTest.java:72)
+	at com.donatedrop.article_test.EmployeeRestControllerIntegrationTest.givenEmployees_whenGetEmployees_thenReturnJsonArray(EmployeeRestControllerIntegrationTest.java:59)
 
