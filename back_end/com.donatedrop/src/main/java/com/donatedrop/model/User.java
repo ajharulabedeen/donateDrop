@@ -39,10 +39,10 @@ public class User {
     @Size(min = 4, max = 100)
     private String password;
 
-    @Column(name = "FIRSTNAME", length = 50)
-//    @NotNull
-    @Size(min = 4, max = 50)
-    private String firstname;
+//    @Column(name = "FIRSTNAME", length = 50)
+////    @NotNull
+//    @Size(min = 4, max = 50)
+//    private String firstname;
 
 //    @Column(name = "LASTNAME", length = 50)
 //    @NotNull
@@ -94,13 +94,13 @@ public class User {
         this.password = password;
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
+//    public String getFirstname() {
+//        return firstname;
+//    }
+//
+//    public void setFirstname(String firstname) {
+//        this.firstname = firstname;
+//    }
 
 //    public String getLastname() {
 //        return lastname;
