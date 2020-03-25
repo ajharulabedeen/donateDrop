@@ -1,9 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 4.98 sec <<< FAILURE! - in com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl
-hello(com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl)  Time elapsed: 0.019 sec  <<< ERROR!
-java.lang.UnsupportedOperationException: Not supported yet.
-	at com.donatedrop.profile.Dao_Profile_Basic_Impl.save(Dao_Profile_Basic_Impl.java:10)
-	at com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl.hello(Test_Dao_Profile_Basic_Impl.java:58)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.988 sec - in com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl

@@ -29,30 +29,30 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "profile_basics")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ProfileBasics.findAll", query = "SELECT p FROM ProfileBasics p")
-    , @NamedQuery(name = "ProfileBasics.findById", query = "SELECT p FROM ProfileBasics p WHERE p.id = :id")
-    , @NamedQuery(name = "ProfileBasics.findByUserId", query = "SELECT p FROM ProfileBasics p WHERE p.userId = :userId")
-    , @NamedQuery(name = "ProfileBasics.findByDept", query = "SELECT p FROM ProfileBasics p WHERE p.dept = :dept")
-    , @NamedQuery(name = "ProfileBasics.findByBatch", query = "SELECT p FROM ProfileBasics p WHERE p.batch = :batch")
-    , @NamedQuery(name = "ProfileBasics.findByStudentId", query = "SELECT p FROM ProfileBasics p WHERE p.studentId = :studentId")
-    , @NamedQuery(name = "ProfileBasics.findByPassingYear", query = "SELECT p FROM ProfileBasics p WHERE p.passingYear = :passingYear")
-    , @NamedQuery(name = "ProfileBasics.findByFirstName", query = "SELECT p FROM ProfileBasics p WHERE p.firstName = :firstName")
-    , @NamedQuery(name = "ProfileBasics.findByLastName", query = "SELECT p FROM ProfileBasics p WHERE p.lastName = :lastName")
-    , @NamedQuery(name = "ProfileBasics.findByBirthDate", query = "SELECT p FROM ProfileBasics p WHERE p.birthDate = :birthDate")
-    , @NamedQuery(name = "ProfileBasics.findByGender", query = "SELECT p FROM ProfileBasics p WHERE p.gender = :gender")
-    , @NamedQuery(name = "ProfileBasics.findByBloodGroup", query = "SELECT p FROM ProfileBasics p WHERE p.bloodGroup = :bloodGroup")
-    , @NamedQuery(name = "ProfileBasics.findByEmail", query = "SELECT p FROM ProfileBasics p WHERE p.email = :email")
-    , @NamedQuery(name = "ProfileBasics.findByPhone", query = "SELECT p FROM ProfileBasics p WHERE p.phone = :phone")
-    , @NamedQuery(name = "ProfileBasics.findByAddressPresent", query = "SELECT p FROM ProfileBasics p WHERE p.addressPresent = :addressPresent")
-    , @NamedQuery(name = "ProfileBasics.findByAddressPermanent", query = "SELECT p FROM ProfileBasics p WHERE p.addressPermanent = :addressPermanent")
-    , @NamedQuery(name = "ProfileBasics.findBySocialMediaLink", query = "SELECT p FROM ProfileBasics p WHERE p.socialMediaLink = :socialMediaLink")
-    , @NamedQuery(name = "ProfileBasics.findByResearchInterest", query = "SELECT p FROM ProfileBasics p WHERE p.researchInterest = :researchInterest")
-    , @NamedQuery(name = "ProfileBasics.findBySkills", query = "SELECT p FROM ProfileBasics p WHERE p.skills = :skills")
-    , @NamedQuery(name = "ProfileBasics.findByImageAddress", query = "SELECT p FROM ProfileBasics p WHERE p.imageAddress = :imageAddress")
-    , @NamedQuery(name = "ProfileBasics.findByCreatedAt", query = "SELECT p FROM ProfileBasics p WHERE p.createdAt = :createdAt")
-    , @NamedQuery(name = "ProfileBasics.findByUpdatedAt", query = "SELECT p FROM ProfileBasics p WHERE p.updatedAt = :updatedAt")
-    , @NamedQuery(name = "ProfileBasics.findByReligion", query = "SELECT p FROM ProfileBasics p WHERE p.religion = :religion")})
-public class ProfileBasics implements Serializable {
+    @NamedQuery(name = "ProfileBasic.findAll", query = "SELECT p FROM ProfileBasic p")
+    , @NamedQuery(name = "ProfileBasic.findById", query = "SELECT p FROM ProfileBasic p WHERE p.id = :id")
+    , @NamedQuery(name = "ProfileBasic.findByUserId", query = "SELECT p FROM ProfileBasic p WHERE p.userId = :userId")
+    , @NamedQuery(name = "ProfileBasic.findByDept", query = "SELECT p FROM ProfileBasic p WHERE p.dept = :dept")
+    , @NamedQuery(name = "ProfileBasic.findByBatch", query = "SELECT p FROM ProfileBasic p WHERE p.batch = :batch")
+    , @NamedQuery(name = "ProfileBasic.findByStudentId", query = "SELECT p FROM ProfileBasic p WHERE p.studentId = :studentId")
+    , @NamedQuery(name = "ProfileBasic.findByPassingYear", query = "SELECT p FROM ProfileBasic p WHERE p.passingYear = :passingYear")
+    , @NamedQuery(name = "ProfileBasic.findByFirstName", query = "SELECT p FROM ProfileBasic p WHERE p.firstName = :firstName")
+    , @NamedQuery(name = "ProfileBasic.findByLastName", query = "SELECT p FROM ProfileBasic p WHERE p.lastName = :lastName")
+    , @NamedQuery(name = "ProfileBasic.findByBirthDate", query = "SELECT p FROM ProfileBasic p WHERE p.birthDate = :birthDate")
+    , @NamedQuery(name = "ProfileBasic.findByGender", query = "SELECT p FROM ProfileBasic p WHERE p.gender = :gender")
+    , @NamedQuery(name = "ProfileBasic.findByBloodGroup", query = "SELECT p FROM ProfileBasic p WHERE p.bloodGroup = :bloodGroup")
+    , @NamedQuery(name = "ProfileBasic.findByEmail", query = "SELECT p FROM ProfileBasic p WHERE p.email = :email")
+    , @NamedQuery(name = "ProfileBasic.findByPhone", query = "SELECT p FROM ProfileBasic p WHERE p.phone = :phone")
+    , @NamedQuery(name = "ProfileBasic.findByAddressPresent", query = "SELECT p FROM ProfileBasic p WHERE p.addressPresent = :addressPresent")
+    , @NamedQuery(name = "ProfileBasic.findByAddressPermanent", query = "SELECT p FROM ProfileBasic p WHERE p.addressPermanent = :addressPermanent")
+    , @NamedQuery(name = "ProfileBasic.findBySocialMediaLink", query = "SELECT p FROM ProfileBasic p WHERE p.socialMediaLink = :socialMediaLink")
+    , @NamedQuery(name = "ProfileBasic.findByResearchInterest", query = "SELECT p FROM ProfileBasic p WHERE p.researchInterest = :researchInterest")
+    , @NamedQuery(name = "ProfileBasic.findBySkills", query = "SELECT p FROM ProfileBasic p WHERE p.skills = :skills")
+    , @NamedQuery(name = "ProfileBasic.findByImageAddress", query = "SELECT p FROM ProfileBasic p WHERE p.imageAddress = :imageAddress")
+    , @NamedQuery(name = "ProfileBasic.findByCreatedAt", query = "SELECT p FROM ProfileBasic p WHERE p.createdAt = :createdAt")
+    , @NamedQuery(name = "ProfileBasic.findByUpdatedAt", query = "SELECT p FROM ProfileBasic p WHERE p.updatedAt = :updatedAt")
+    , @NamedQuery(name = "ProfileBasic.findByReligion", query = "SELECT p FROM ProfileBasic p WHERE p.religion = :religion")})
+public class ProfileBasic implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -126,10 +126,10 @@ public class ProfileBasics implements Serializable {
     @Column(name = "religion")
     private String religion;
 
-    public ProfileBasics() {
+    public ProfileBasic() {
     }
 
-    public ProfileBasics(Long id) {
+    public ProfileBasic(Long id) {
         this.id = id;
     }
 
@@ -319,10 +319,10 @@ public class ProfileBasics implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ProfileBasics)) {
+        if (!(object instanceof ProfileBasic)) {
             return false;
         }
-        ProfileBasics other = (ProfileBasics) object;
+        ProfileBasic other = (ProfileBasic) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -331,7 +331,7 @@ public class ProfileBasics implements Serializable {
 
     @Override
     public String toString() {
-        return "com.donatedrop.profile.ProfileBasics[ id=" + id + " ]";
+        return "com.donatedrop.profile.ProfileBasic[ id=" + id + " ]";
     }
     
 }

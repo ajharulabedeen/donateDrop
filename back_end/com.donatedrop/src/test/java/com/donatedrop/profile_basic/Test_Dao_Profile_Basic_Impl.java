@@ -6,7 +6,7 @@
 package com.donatedrop.profile_basic;
 
 import com.donatedrop.profile.Dao_Profile_Basic_I;
-import com.donatedrop.profile.ProfileBasics;
+import com.donatedrop.profile.ProfileBasic;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -54,7 +54,7 @@ public class Test_Dao_Profile_Basic_Impl {
      @Test
      public void hello() {
          System.out.println("\nProfile Basic Dao Test!\n");
-         ProfileBasics profileBasics = new ProfileBasics();
+         ProfileBasic profileBasics = new ProfileBasic();
          dao_Profile_Basic_I.save(profileBasics);
      }
 }
