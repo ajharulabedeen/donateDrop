@@ -3,19 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.donatedrop.entity;
+package com.donatedrop.old_entity;
 
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+/**
+ *
+ * @author G7
+ */
 @Entity
-@Table(name = "movie")
-public class Movie {
+@Table(name = "developer")
+public class Developer {
 
     @Id
     @GeneratedValue
@@ -23,9 +28,8 @@ public class Movie {
     private long id;
     @Column(name = "name")
     private String name;
-//    @OneToMany(mappedBy = "movie")
-    @OneToMany
-    private Set<Actor> actors;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Technology> technology;
 
     public long getId() {
         return id;
@@ -43,17 +47,17 @@ public class Movie {
         this.name = name;
     }
 
-    public Set<Actor> getActors() {
-        return actors;
+    public Set<Technology> getTechnology() {
+        return technology;
     }
 
-    public void setActors(Set<Actor> actors) {
-        this.actors = actors;
+    public void setTechnology(Set<Technology> technology) {
+        this.technology = technology;
     }
 
     @Override
     public String toString() {
-        return "Movie" + "\n Id: " + this.id
-                + "\n Name: " + this.name;
+        return "Developer" + "\n Id: " + this.id + "\n Name: "
+                + this.name;
     }
 }

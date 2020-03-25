@@ -5,12 +5,17 @@
  */
 package com.donatedrop.profile;
 
+import com.donatedrop.articles.PhoneNumber;
 import java.io.Serializable;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
 
 /**
@@ -52,6 +57,24 @@ public class ProfileBasic implements Serializable {
     @Size(max = 256)
     @Column(name = "profession")
     private String profession;
+    
+    @Column(name = "blood_Group")
+    private String blood_Group;
+    
+    @Column(name = "available")
+    private String available;
+    
+    @OneToOne
+    @JoinColumn(name = "address_permanent")
+    private Address address_permanent;
+    
+    @OneToOne
+    @JoinColumn(name = "address_current")
+    private Address address_current;
+    
+    @OneToMany
+    @JoinColumn(name = "phone_number") 
+    private Set<PhoneNumber> phone_number;
     
         
     

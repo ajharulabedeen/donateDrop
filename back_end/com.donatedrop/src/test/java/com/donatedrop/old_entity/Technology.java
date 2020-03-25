@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.donatedrop.entity;
+package com.donatedrop.old_entity;
 
 import java.util.Set;
 import javax.persistence.Column;

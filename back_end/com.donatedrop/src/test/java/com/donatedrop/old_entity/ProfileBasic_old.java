@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.donatedrop.entity;
+package com.donatedrop.old_entity;
 
+import com.donatedrop.articles.PhoneNumber;
 import com.donatedrop.profile.Address;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +19,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -55,7 +58,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "ProfileBasic.findByCreatedAt", query = "SELECT p FROM ProfileBasic p WHERE p.createdAt = :createdAt")
     , @NamedQuery(name = "ProfileBasic.findByUpdatedAt", query = "SELECT p FROM ProfileBasic p WHERE p.updatedAt = :updatedAt")
     , @NamedQuery(name = "ProfileBasic.findByReligion", query = "SELECT p FROM ProfileBasic p WHERE p.religion = :religion")})
-public class ProfileBasic implements Serializable {
+public class ProfileBasic_old implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -116,6 +119,14 @@ public class ProfileBasic implements Serializable {
     @Column(name = "religion")
     private String religion;
     
+    @Size(max = 512)
+    @Column(name = "blood_Group")
+    private String blood_Group;
+    
+    @Size(max = 512)
+    @Column(name = "available")
+    private String available;
+    
     @OneToOne
     @JoinColumn(name = "address_permanent")
     private Address address_permanent;
@@ -124,13 +135,15 @@ public class ProfileBasic implements Serializable {
     @JoinColumn(name = "address_current")
     private Address address_current;
     
+    @OneToMany
+    @JoinColumn(name = "phone_number") 
+    private Set<PhoneNumber> phone_number;
     
-    public ProfileBasic() {
-    }
-
-    public ProfileBasic(Long id) {
-        this.id = id;
-    }
+    
+    
+    
+    
+   
 
     public Long getId() {
         return id;
@@ -268,19 +281,7 @@ public class ProfileBasic implements Serializable {
         return hash;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ProfileBasic)) {
-            return false;
-        }
-        ProfileBasic other = (ProfileBasic) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
+    
     @Override
     public String toString() {
         return "com.donatedrop.profile.ProfileBasic[ id=" + id + " ]";
