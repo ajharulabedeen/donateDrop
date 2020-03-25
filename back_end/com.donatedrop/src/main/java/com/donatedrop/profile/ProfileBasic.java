@@ -118,5 +118,109 @@ public class ProfileBasic implements Serializable {
     public String toString() {
         return "com.donatedrop.profile.Profile_Basic[ id=" + id + " ]";
     }
+
+    public Address getAddress_current() {
+        return address_current;
+    }
+
+    public void setAddress_current(Address address_current) {
+        this.address_current = address_current;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getCare_of() {
+        return care_of;
+    }
+
+    public void setCare_of(String care_of) {
+        this.care_of = care_of;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getMaritalStatus() {
+        return maritalStatus;
+    }
+
+    public void setMaritalStatus(String maritalStatus) {
+        this.maritalStatus = maritalStatus;
+    }
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
+
+    public String getBlood_Group() {
+        return blood_Group;
+    }
+
+    public void setBlood_Group(String blood_Group) {
+        this.blood_Group = blood_Group;
+    }
+
+    public String getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(String available) {
+        this.available = available;
+    }
+
+    public Address getAddress_permanent() {
+        return address_permanent;
+    }
+
+    public void setAddress_permanent(Address address_permanent) {
+        this.address_permanent = address_permanent;
+    }
+
+    public List<PhoneNumber> getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(List<PhoneNumber> phone_number) {
+        this.phone_number = phone_number;
+    }
+
+    public List<EmergencyContact> getEmergency_contact() {
+        return emergency_contact;
+    }
+
+    public void setEmergency_contact(List<EmergencyContact> emergency_contact) {
+        this.emergency_contact = emergency_contact;
+    }
     
 }

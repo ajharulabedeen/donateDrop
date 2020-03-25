@@ -40,7 +40,7 @@ public class Address implements Serializable {
      * Union also can be added.
      */
     @Column
-    private String union;
+    private String union_ward;
     
     @Column
     private String street_address;
@@ -104,13 +104,7 @@ public class Address implements Serializable {
         this.upzilla = upzilla;
     }
 
-    public String getUnion() {
-        return union;
-    }
 
-    public void setUnion(String union) {
-        this.union = union;
-    }
 
     public String getStreet_address() {
         return street_address;
@@ -118,6 +112,14 @@ public class Address implements Serializable {
 
     public void setStreet_address(String street_address) {
         this.street_address = street_address;
+    }
+
+    public String getUnion_ward() {
+        return union_ward;
+    }
+
+    public void setUnion_ward(String union_ward) {
+        this.union_ward = union_ward;
     }
     
 }
