@@ -40,69 +40,70 @@
           </button>
         </li> -->
 
+
         <!-- User Account: style can be found in dropdown.less -->
         <!-- <li *ngIf="!loginSuccess" class="dropdown user user-menu"> -->
-        <li class="dropdown user user-menu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img *ngIf="!loginSuccess" src="assets/dist/img/images.png" class="user-image" alt="User Image">
-            <img *ngIf="loginSuccess" src={{imageUrl}} class="user-image" alt="User Image">
+        <!--<li class="dropdown user user-menu">-->
+          <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">-->
+            <!--<img *ngIf="!loginSuccess" src="assets/dist/img/images.png" class="user-image" alt="User Image">-->
+            <!--<img *ngIf="loginSuccess" src={{imageUrl}} class="user-image" alt="User Image">-->
 
-            <span *ngIf="!loginSuccess" class="hidden-xs">Loggin</span>
-            <span *ngIf="loginSuccess" class="hidden-xs">Name of The User</span>
-          </a>
+            <!--<span *ngIf="!loginSuccess" class="hidden-xs">Loggin</span>-->
+            <!--<span *ngIf="loginSuccess" class="hidden-xs">Name of The User</span>-->
+          <!--</a>-->
 
-          <ul class="dropdown-menu">
-            <!-- User image -->
-            <li *ngIf="!loginSuccess" class="user-header ">
-              <img src="assets/dist/img/images.png" class="img-circle" alt="User Image">
-            </li>
-            <li *ngIf="loginSuccess" class="user-header ">
-              <img src={{imageUrl}} class="user-image" alt="User Image">
-            </li>
-
-
-            <!-- start : Menu Body -->
-            <li *ngIf="!loginSuccess" class="user-body">
-              <form>
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                  <input id="email" type="text" class="form-control" name="email" placeholder="Email">
-                </div>
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                  <input id="password" type="password" class="form-control" name="password" placeholder="Password">
-                </div>
-              </form>
-            </li>
-            <!-- ---------------- -->
-            <li *ngIf="loginSuccess" class="user-body">
-              <h4>User Data Successfully Logged In.</h4>
-            </li>
+          <!--<ul class="dropdown-menu">-->
+            <!--&lt;!&ndash; User image &ndash;&gt;-->
+            <!--<li *ngIf="!loginSuccess" class="user-header ">-->
+              <!--<img src="assets/dist/img/images.png" class="img-circle" alt="User Image">-->
+            <!--</li>-->
+            <!--<li *ngIf="loginSuccess" class="user-header ">-->
+              <!--<img src={{imageUrl}} class="user-image" alt="User Image">-->
+            <!--</li>-->
 
 
-            <!-- end : Menu Body -->
-            <!-- Menu Footer-->
-            <li *ngIf="!loginSuccess" class="user-footer">
-              <div class="col-xs-4 text-center">
-                <button class="btn btn-info" (click)="submit()">Submit</button>
-              </div>
-              <div class="col-xs-4 text-center">
-                <button class="btn btn-primary">Register</button>
-              </div>
-              <div class="col-xs-4 text-center">
-                <button class="btn btn-danger">Forgot</button>
-              </div>
-            </li>
-            <!-- log out--------------- -->
-            <li *ngIf="loginSuccess" class="user-footer">
-              <div class="col-xs-4 text-center">
-                <button class="btn btn-info" (click)="logOut()">Log Out</button>
-              </div>
-            </li>
-          </ul>
-        </li>
+            <!--&lt;!&ndash; start : Menu Body &ndash;&gt;-->
+            <!--<li *ngIf="!loginSuccess" class="user-body">-->
+              <!--<form>-->
+                <!--<div class="input-group">-->
+                  <!--<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>-->
+                  <!--<input id="email" type="text" class="form-control" name="email" placeholder="Email">-->
+                <!--</div>-->
+                <!--<div class="input-group">-->
+                  <!--<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>-->
+                  <!--<input id="password" type="password" class="form-control" name="password" placeholder="Password">-->
+                <!--</div>-->
+              <!--</form>-->
+            <!--</li>-->
+            <!--&lt;!&ndash; &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; &ndash;&gt;-->
+            <!--<li *ngIf="loginSuccess" class="user-body">-->
+              <!--<h4>User Data Successfully Logged In.</h4>-->
+            <!--</li>-->
+
+
+            <!--&lt;!&ndash; end : Menu Body &ndash;&gt;-->
+            <!--&lt;!&ndash; Menu Footer&ndash;&gt;-->
+            <!--<li *ngIf="!loginSuccess" class="user-footer">-->
+              <!--<div class="col-xs-4 text-center">-->
+                <!--<button class="btn btn-info" (click)="submit()">Submit</button>-->
+              <!--</div>-->
+              <!--<div class="col-xs-4 text-center">-->
+                <!--<button class="btn btn-primary">Register</button>-->
+              <!--</div>-->
+              <!--<div class="col-xs-4 text-center">-->
+                <!--<button class="btn btn-danger">Forgot</button>-->
+              <!--</div>-->
+            <!--</li>-->
+            <!--&lt;!&ndash; log out-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; &ndash;&gt;-->
+            <!--<li *ngIf="loginSuccess" class="user-footer">-->
+              <!--<div class="col-xs-4 text-center">-->
+                <!--<button class="btn btn-info" (click)="logOut()">Log Out</button>-->
+              <!--</div>-->
+            <!--</li>-->
+          <!--</ul>-->
+        <!--</li>-->
         <!-- </div> -->
-        <!-- stat : profile bar;for this section user must to need to logged in. -->
+        <!-- end: profile bar;for this section user must to need to logged in. -->
       </ul>
     </div>
   </nav>
