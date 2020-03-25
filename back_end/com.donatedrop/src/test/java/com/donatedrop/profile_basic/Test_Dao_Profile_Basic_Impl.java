@@ -57,4 +57,8 @@ public class Test_Dao_Profile_Basic_Impl {
          ProfileBasic profileBasics = new ProfileBasic();
          dao_Profile_Basic_I.save(profileBasics);
      }
-}
+
+
+
+
+}//class

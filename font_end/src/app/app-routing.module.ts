@@ -29,12 +29,12 @@ const routes: Routes = [
   { path: 'admin', component: AuthComponent },
   // { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'user/profile', component: ProfileComponent },
   { path: 'timeline', component: TimelineComponent },
   { path: 'file', component: FileUploaderTestComponent },
   { path: 'event', component: EventManageComponent },
   { path: 'record', component: RecordRtcComponent },
   { path: 'rec', component: RecordClearComponent },
+  { path: 'user/profile', component: ProfileComponent },
   { path: 'user/donation_history', component: DonationHistoryComponent},
   { path: 'user/personal_info', component: PersonalInfoComponent},
 ];
