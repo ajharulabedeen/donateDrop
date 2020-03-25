@@ -24,6 +24,7 @@ import { EventModule } from './event/event.module';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { RecordRtcComponent } from './record-rtc/record-rtc.component';
 import { RecordClearComponent } from './record-clear/record-clear.component';
+import { DonationHistoryComponent } from './donation-history/donation-history.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { RecordClearComponent } from './record-clear/record-clear.component';
     DataTableComponent,
     FileUploaderTestComponent,
     RecordRtcComponent,
-    RecordClearComponent
+    RecordClearComponent,
+    DonationHistoryComponent
     // AuthService
   ],
   imports: [

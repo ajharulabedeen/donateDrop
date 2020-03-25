@@ -13,6 +13,7 @@ import { FileUploaderTestComponent } from './file-uploader-test/file-uploader-te
 import { EventManageComponent } from './event/event-manage/event-manage.component';
 import { RecordRtcComponent } from './record-rtc/record-rtc.component';
 import { RecordClearComponent } from './record-clear/record-clear.component';
+import {DonationHistoryComponent} from './donation-history/donation-history.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'event', component: EventManageComponent },
   { path: 'record', component: RecordRtcComponent },
   { path: 'rec', component: RecordClearComponent },
+  { path: 'user/donation_history', component: DonationHistoryComponent},
 ];
 
 @NgModule({

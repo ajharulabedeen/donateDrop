@@ -25,8 +25,8 @@ export class AsidenavbarComponent implements OnInit, OnDestroy {
     this.isAuthenticated = false;
     this.userSub.unsubscribe();
     this.authService.removeToken();
-    console.log("Log Out : isAuthenticated " + this.isAuthenticated);
-    this.router.navigate(['/admin']);
+    console.log(" Log Out : isAuthenticated " + this.isAuthenticated);
+    this.router.navigate(['/home']);
   }
 
   ngOnInit() {
