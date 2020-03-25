@@ -1,10 +1,14 @@
 package com.donatedrop.profile;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
 
     @Override
     public String save(ProfileBasics profileBasic) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("\nProfile Basic Save! Yet to implement!\n");
+        return "";
     }
 
     @Override
