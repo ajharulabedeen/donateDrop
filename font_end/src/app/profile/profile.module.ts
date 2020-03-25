@@ -12,10 +12,11 @@ import { EducationComponent } from './education/education.component';
 import { NgModel, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { PersonalInfoComponent } from './personal-info/personal-info.component';
 
 
 @NgModule({
-  declarations: [ProfileComponent, TimelineComponent, BasicComponent, AboutComponent, JobsComponent, EducationComponent],
+  declarations: [ProfileComponent, TimelineComponent, BasicComponent, AboutComponent, JobsComponent, EducationComponent, PersonalInfoComponent],
   imports: [
     CommonModule,
     ProfileRoutingModule,
