@@ -54,8 +54,8 @@ public class Test_Dao_Profile_Basic_Impl {
      @Test
      public void hello() {
          System.out.println("\nProfile Basic Dao Test!\n");
-         ProfileBasic profileBasics = new ProfileBasic();
-         dao_Profile_Basic_I.save(profileBasics);
+         ProfileBasic profileBasic = new ProfileBasic();
+         dao_Profile_Basic_I.save(profileBasic);
      }
 
 

@@ -5,6 +5,8 @@
  */
 package com.donatedrop.profile;
 
+import com.donatedrop.profile.ProfileBasic;
+
 /**
  *
  * @author G7
