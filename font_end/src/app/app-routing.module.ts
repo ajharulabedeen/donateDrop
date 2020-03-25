@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'admin', component: AuthComponent },
   // { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'user/profile', component: ProfileComponent },
   { path: 'timeline', component: TimelineComponent },
   { path: 'file', component: FileUploaderTestComponent },
   { path: 'event', component: EventManageComponent },
