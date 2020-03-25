@@ -7,6 +7,7 @@ package com.donatedrop.profile;
 
 import com.donatedrop.articles.PhoneNumber;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -74,8 +75,11 @@ public class ProfileBasic implements Serializable {
     
     @OneToMany
     @JoinColumn(name = "phone_number") 
-    private Set<PhoneNumber> phone_number;
+    private List<PhoneNumber> phone_number;
     
+    @OneToMany
+    @JoinColumn(name = "emergency_contact") 
+    private List<EmergencyContact> emergency_contact;
         
     
     
