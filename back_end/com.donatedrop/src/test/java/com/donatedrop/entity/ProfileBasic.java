@@ -5,6 +5,7 @@
  */
 package com.donatedrop.entity;
 
+import com.donatedrop.profile.Address;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -13,8 +14,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -112,7 +115,16 @@ public class ProfileBasic implements Serializable {
     @Size(max = 512)
     @Column(name = "religion")
     private String religion;
-
+    
+    @OneToOne
+    @JoinColumn(name = "address_permanent")
+    private Address address_permanent;
+    
+    @OneToOne
+    @JoinColumn(name = "address_current")
+    private Address address_current;
+    
+    
     public ProfileBasic() {
     }
 
