@@ -3,7 +3,8 @@
   <section class="sidebar" style="height: auto;">
 
     <!-- Sidebar user panel -->
-    <div *ngIf="loggedIn" class="user-panel">
+    <!--<div *ngIf="loggedIn" class="user-panel">-->
+    <div class="user-panel">
       <div class="pull-left image">
         <img src="assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
       </div>
@@ -18,43 +19,48 @@
       <!-- <li class="header">MAIN NAVIGATION</li> -->
 
 
+      <!--<li routerLinkActive="active">-->
+      <!--<a routerLink="/about">-->
+      <!--<i class="fa fa-info-circle" aria-hidden="true"></i>-->
+      <!--<span>About</span>-->
+      <!--</a>-->
+      <!--</li>-->
 
-      <li routerLinkActive="active">
-        <a routerLink="/about">
-          <i class="fa fa-info-circle" aria-hidden="true"></i>
-          <span>About</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="/news">
-          <i class="fa fa-newspaper-o" aria-hidden="true"></i>
-          <span>News</span>
-        </a>
-      </li>
+      <!--<li>-->
+      <!--<a routerLink="/news">-->
+      <!--<i class="fa fa-newspaper-o" aria-hidden="true"></i>-->
+      <!--<span>News</span>-->
+      <!--</a>-->
+      <!--</li>-->
 
-      <li>
-        <a routerLink="/events">
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-          <span>Events</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="/register">
-          <i class="fa fa-user-plus" aria-hidden="true"></i>
-          <span>Register</span>
-        </a>
-      </li>
-      <li *ngIf="!isAuthenticated">
-        <a routerLink="/admin">
-          <!-- <i class="fa fa-user-plus" aria-hidden="true"></i> -->
-          <i class="fa fa-sign-in" aria-hidden="true"></i>
-          <!-- <span>Admin</span> -->
-          <span>Singin</span>
-        </a>
-      </li>
+      <!--<li>-->
+      <!--<a routerLink="/events">-->
+      <!--<i class="fa fa-calendar" aria-hidden="true"></i>-->
+      <!--<span>Events</span>-->
+      <!--</a>-->
+      <!--</li>-->
+      <!---->
+
+      <!--<li>-->
+      <!--<a routerLink="/register">-->
+      <!--<i class="fa fa-user-plus" aria-hidden="true"></i>-->
+      <!--<span>Register</span>-->
+      <!--</a>-->
+      <!--</li>-->
+
+
+      <!--<li *ngIf="!isAuthenticated">-->
+      <!--<a routerLink="/admin">-->
+      <!--&lt;!&ndash; <i class="fa fa-user-plus" aria-hidden="true"></i> &ndash;&gt;-->
+      <!--<i class="fa fa-sign-in" aria-hidden="true"></i>-->
+      <!--&lt;!&ndash; <span>Admin</span> &ndash;&gt;-->
+      <!--<span>Singin</span>-->
+      <!--</a>-->
+      <!--</li>-->
 
       <!-- start : private sections -->
-      <li *ngIf="isAuthenticated">
+      <!--<li *ngIf="isAuthenticated">-->
+      <li>
         <a>
           <i class="fa fa-search" aria-hidden="true"></i>
           <span>Search</span>
@@ -62,24 +68,27 @@
       </li>
 
 
-      <li class="treeview" *ngIf="isAuthenticated">
-        <!-- <li class="treeview"> -->
-        <a routerLink="/timeline">
-          <i class="fa fa-road" aria-hidden="true"></i>
-          <span>Time</span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a></li>
-          <li><button> <i class="fa fa-pencil" aria-hidden="true"></i>Edit</button></li>
+      <!--<li class="treeview" *ngIf="isAuthenticated">-->
+      <!--<li class="treeview">-->
+        <!--&lt;!&ndash; <li class="treeview"> &ndash;&gt;-->
+        <!--<a routerLink="/timeline">-->
+          <!--<i class="fa fa-road" aria-hidden="true"></i>-->
+          <!--<span>Time</span>-->
+        <!--</a>-->
+        <!--<ul class="treeview-menu">-->
+          <!--<li><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a></li>-->
+          <!--<li>-->
+            <!--<button><i class="fa fa-pencil" aria-hidden="true"></i>Edit</button>-->
+          <!--</li>-->
 
-          <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>Payments</a></li>
-          <li><a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i> Saved</a></li>
-        </ul>
-      </li>
+          <!--<li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>Payments</a></li>-->
+          <!--<li><a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i> Saved</a></li>-->
+        <!--</ul>-->
+      <!--</li>-->
 
 
-
-      <li class="treeview" *ngIf="isAuthenticated">
+      <!--<li class="treeview" *ngIf="isAuthenticated">-->
+      <li class="treeview">
         <!-- <li class="treeview"> -->
         <a routerLink="/profile">
           <i class="fa fa-user" aria-hidden="true"></i>
@@ -88,11 +97,8 @@
       </li>
 
 
-
-
-
-
-      <li *ngIf="isAuthenticated">
+      <!--<li *ngIf="isAuthenticated">-->
+      <li>
         <!-- <a routerLink="/admin" (click)="logOut()"> -->
         <a (click)="logOut()">
           <i class="fa fa-sign-out" aria-hidden="true"></i>
