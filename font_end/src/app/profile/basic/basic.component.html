@@ -1,4 +1,3 @@
-
 <!-- profile Basic Info -->
 <div class="panel-group">
   <div class="panel panel-default">
@@ -25,7 +24,7 @@
               <div class="form-group">
                 <label>Name</label>
                 <input [(ngModel)]="first_name" [disabled]='!profileEdit' type="text" class="form-control"
-                  placeholder="Enter Ur First Name">
+                       placeholder="Enter Ur First Name">
               </div>
             </div>
           </div>
@@ -33,34 +32,40 @@
 
           <!-- Start : Gender, Date of Birth, Blood Group -->
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
               <!-- Date -->
               <div class="form-group">
-                <label>Date:</label>
+                <label>Birth Date:</label>
                 <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <!-- <input [(ngModel)]="birth_date" [disabled]='!profileEdit' type="date" class="form-control pull-right"
-                    id="datepicker"> -->
                   <input [(ngModel)]="birth_date" [disabled]='!profileEdit' type="text" class="form-control pull-right">
                 </div>
               </div>
             </div>
+            <div class="col-md-2">
+              <!-- Date -->
+              <div class="form-group">
+                <label>Select Date:</label>
+                <div class="input-group date">
+                  <input [(ngModel)]="birth_date" [disabled]='!profileEdit' type="date" class="form-control pull-right">
+                </div>
+              </div>
+            </div>
+
+
             <div class="col-md-3 offset-md-3">
               <label>Gender</label>
               <input [(ngModel)]="gender" [disabled]='!profileEdit' type="text" class="form-control pull-right">
               <!-- not now due to complexity to set data after read. -->
-              <!-- <div class="form-group">
+              <div class="form-group">
                 <div class="form-group" data-select2-id="27">
                   <select [disabled]='!profileEdit' class="form-control select2 select2-hidden-accessible"
-                    style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                          style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                     <option selected="selected" data-select2-id="3">Other</option>
                     <option data-select2-id="28">Male</option>
                     <option data-select2-id="29">Female</option>
                   </select>
                 </div>
-              </div> -->
+              </div>
             </div>
             <div class="col-md-3 offset-md-3">
               <label>Blood Group</label>
@@ -88,7 +93,6 @@
                 </div> -->
             </div>
           </div>
-
           <!-- end : Gender, Date of Birth, Blood Group -->
 
           <div class="row">
@@ -96,14 +100,14 @@
               <div class="form-group">
                 <label>Email</label>
                 <input [(ngModel)]="email" [disabled]='!profileEdit' type="email" class="form-control"
-                  placeholder="Enter Email Address...">
+                       placeholder="Enter Email Address...">
               </div>
             </div>
             <div class="col-md-6 offset-md-6">
               <div class="form-group">
                 <label>Phone</label>
                 <input [(ngModel)]="phone" [disabled]='!profileEdit' type="text" class="form-control"
-                  placeholder="Enter Phone Number...">
+                       placeholder="Enter Phone Number...">
               </div>
             </div>
           </div>
@@ -111,7 +115,7 @@
           <div class="form-group">
             <label>Address (Present)</label>
             <textarea [(ngModel)]="address_present" [disabled]='!profileEdit' class="form-control" rows="3"
-              placeholder=" (max: 512 ) Present Adress">
+                      placeholder=" (max: 512 ) Present Adress">
 
             </textarea>
           </div>
@@ -119,28 +123,28 @@
           <div class="form-group">
             <label>Address (Permanent)</label>
             <textarea [(ngModel)]="address_permanent" [disabled]='!profileEdit' class="form-control" rows="3"
-              placeholder=" (max: 512 ) Permanenr Adress">
+                      placeholder=" (max: 512 ) Permanenr Adress">
 
             </textarea>
           </div>
           <div class="form-group">
             <label>Research Interest</label>
             <textarea [(ngModel)]="research_interest" [disabled]='!profileEdit' class="form-control" rows="3"
-              placeholder="(max: 512 )Research Interest ...">
+                      placeholder="(max: 512 )Research Interest ...">
 
             </textarea>
           </div>
           <div class="form-group">
             <label>Skills</label>
             <textarea [(ngModel)]="skills" [disabled]='!profileEdit' class="form-control" rows="3"
-              placeholder="(max: 512 ) Skills ...">
+                      placeholder="(max: 512 ) Skills ...">
 
             </textarea>
           </div>
           <div class="form-group">
             <label>Social Media Links (FaceBook, LinkedIn)</label>
             <textarea [(ngModel)]="social_media_link" [disabled]='!profileEdit' class="form-control" rows="3"
-              placeholder="(max: 512 )Social Media Links (FaceBook, LinkedIn)">
+                      placeholder="(max: 512 )Social Media Links (FaceBook, LinkedIn)">
 
               </textarea>
           </div>

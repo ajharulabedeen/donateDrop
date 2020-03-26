@@ -14,7 +14,7 @@ export class BasicComponent implements OnInit {
 
   // dept: string[];
   blood: string[];
-  profileEdit = false;
+  profileEdit = true;
 
   id: string;
   user_id: string;
