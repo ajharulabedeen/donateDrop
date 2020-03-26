@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { BasicService } from './basic.service';
-import { Basic } from './basic.model';
-import { Observable } from 'rxjs';
-import { subscribeOn } from 'rxjs/operators';
-import { ThrowStmt } from '@angular/compiler';
+import {Component, OnInit} from '@angular/core';
+import {BasicService} from './basic.service';
+import {Basic} from './basic.model';
+import {Observable} from 'rxjs';
+import {subscribeOn} from 'rxjs/operators';
+import {ThrowStmt, verifyHostBindings} from '@angular/compiler';
 
 @Component({
   selector: 'app-basic',
@@ -14,6 +14,7 @@ export class BasicComponent implements OnInit {
 
   // dept: string[];
   blood: string[];
+  division: string[];
   profileEdit = true;
 
   id: string;
@@ -39,98 +40,107 @@ export class BasicComponent implements OnInit {
 
   basicExist: boolean;
 
-  constructor(private basicService: BasicService) { }
+  constructor(private basicService: BasicService) {
+  }
 
 
   loadedPosts: Basic[] = [];
   isFetching = false;
   error = null;
+  p_division: string;
 
   ngOnInit() {
+
+    // this.division.push('Dhaka');
+    // this.division.push('Khulna');
+    // this.division.push('Commila');
+    this.p_division = 'Dhaka';
+    console.log('--->>>-----' + this.division);
+    this.division = ['Dhaka', 'Khulna', 'Barisal'];
+
     this.blood = this.basicService.getBloodGroup();
     this.basicExist = false;
-    console.log("this.basicExist  : " + this.basicExist);
+    console.log('this.basicExist  : ' + this.basicExist);
     this.basicService.getCurrentUserBasic();
     this.basicService.basic.subscribe(b => {
       for (const key in b) {
         // console.log(key);
-
         switch (key) {
-          case "user_id": {
+          case 'user_id': {
             this.user_id = b[key];
             break;
           }
-          case "dept": {
+          case 'dept': {
             this.dept = b[key];
             break;
           }
-          case "batch": {
+          case 'batch': {
             this.batch = b[key];
             break;
           }
-          case "student_id": {
+          case 'student_id': {
             this.student_id = b[key];
             break;
           }
-          case "passing_year": {
+          case 'passing_year': {
             this.passing_year = b[key];
             break;
           }
-          case "first_name": {
+          case 'first_name': {
             this.first_name = b[key];
             break;
           }
-          case "last_name": {
+          case 'last_name': {
             this.last_name = b[key];
             break;
           }
-          case "birth_date": {
+          case 'birth_date': {
             this.birth_date = b[key];
             // console.log("this.birth_date  : " + this.birth_date);
             break;
           }
-          case "gender": {
+          case 'gender': {
             this.gender = b[key];
             break;
           }
-          case "blood_group": {
+          case 'blood_group': {
             this.blood_group = b[key];
             break;
           }
-          case "email": {
+          case 'email': {
             this.email = b[key];
             break;
           }
-          case "phone": {
+          case 'phone': {
             this.phone = b[key];
-            console.log("Phone : " + this.phone);
+            console.log('Phone : ' + this.phone);
             break;
           }
-          case "address_present": {
+          case 'address_present': {
             this.address_present = b[key];
             break;
           }
-          case "address_permanent": {
+          case 'address_permanent': {
             this.address_permanent = b[key];
             break;
           }
-          case "research_interest": {
+          case 'research_interest': {
             this.research_interest = b[key];
             break;
           }
-          case "skills": {
+          case 'skills': {
             this.skills = b[key];
             break;
           }
-          case "image_address": {
+          case 'image_address': {
             this.image_address = b[key];
             break;
           }
-          case "religion": {
+          case 'religion': {
             this.religion = b[key];
             break;
           }
-          case "social_media_link": {
+          case 'social_media_link': {
             this.social_media_link = b[key];
             break;
           }
@@ -140,11 +150,10 @@ export class BasicComponent implements OnInit {
           }
         }
       }//for
-
     });
-    console.log("this.basicExist  : " + this.basicExist);
-  }//ngOnInint.
+    console.log('this.basicExist  : ' + this.basicExist);
 
+  }//ngOnInint.
 
 
   public editProfile() {
@@ -185,5 +194,9 @@ export class BasicComponent implements OnInit {
 
     console.log(basic);//remove
     return basic;
+  }
+
+  divisionPrint() {
+    console.log('p_division : ' + this.p_division);
   }
 }//class
