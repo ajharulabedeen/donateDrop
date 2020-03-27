@@ -92,6 +92,10 @@ export class BasicService {
     // return divisions;
     return ['Dhaka', 'Khulna', 'Barishal'];
   }
+
+  public getdistricts() {
+    return ['Dhaka', 'Gazipur', 'Kalna'];
+  }
 }//class
 //working
 // {

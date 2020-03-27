@@ -144,12 +144,12 @@
               <label>District</label>
               <div class="form-group">
                 <div class="form-group">
-                  <select [disabled]='!profileEdit' [(ngModel)]="p_division"
+                  <select [disabled]='!profileEdit' [(ngModel)]="p_district"
                           (click)="divisionPrint()"
                           class="form-control select2 select2-hidden-accessible"
                           style="width: 100%;" tabindex="-1" aria-hidden="true"
                   >
-                    <option *ngFor="let d of divisions">
+                    <option *ngFor="let d of districts">
                       {{d}}
                     </option>
                     <!--<option value="d">{{d}}</option>-->

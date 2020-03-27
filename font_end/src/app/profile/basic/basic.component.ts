@@ -15,6 +15,7 @@ export class BasicComponent implements OnInit {
   // dept: string[];
   bloods = new Array();
   divisions = new Array();
+  districts = new Array();
   profileEdit = true;
 
   id: string;
@@ -48,6 +49,7 @@ export class BasicComponent implements OnInit {
   isFetching = false;
   error = null;
   p_division: string;
+  p_district: string;
   street_address: string;
 
   ngOnInit() {
@@ -56,9 +58,11 @@ export class BasicComponent implements OnInit {
     this.blood_group = 'A+';
     this.gender = 'other';
     this.p_division = 'Dhaka';
+    this.p_district = 'Dhaka';
     // end : init
     this.bloods = this.basicService.getBloodGroup();
     this.divisions = this.basicService.getDivisions();
+    this.districts = this.basicService.getdistricts();
 
     this.basicExist = false;
     console.log('this.basicExist  : ' + this.basicExist);
