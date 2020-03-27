@@ -51,6 +51,8 @@ export class BasicComponent implements OnInit {
 
   ngOnInit() {
 
+    this.blood_group = "A+";
+
     // this.division.push('Dhaka');
     // this.division.push('Khulna');
     // this.division.push('Commila');
