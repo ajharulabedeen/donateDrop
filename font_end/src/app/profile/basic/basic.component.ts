@@ -62,7 +62,6 @@ export class BasicComponent implements OnInit {
     // end : init
     this.bloods = this.basicService.getBloodGroup();
     this.divisions = this.basicService.getDivisions();
-    this.districts = this.basicService.getdistricts();
 
     this.basicExist = false;
     console.log('this.basicExist  : ' + this.basicExist);
@@ -201,6 +200,10 @@ export class BasicComponent implements OnInit {
     return basic;
   }
 
+  public getdistricts(divisionSelected: string) {
+    console.log('selected Division  : ' + this.p_division);
+    this.districts = this.basicService.getdistricts(divisionSelected);
+  }
 
   divisionPrint() {
     console.log('p_division : ' + this.p_division);

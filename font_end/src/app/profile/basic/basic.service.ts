@@ -93,8 +93,14 @@ export class BasicService {
     return ['Dhaka', 'Khulna', 'Barishal'];
   }
 
-  public getdistricts() {
-    return ['Dhaka', 'Gazipur', 'Kalna'];
+  public getdistricts(division: string) {
+    if (division == 'Dhaka') {
+      return ['Dhaka', 'Gazipur', 'Kalna'];
+    } else if (division == 'Khulna') {
+      return ['Jessore', 'Bagerhat', 'Satkhira'];
+    }else if (division == 'Barishal') {
+      return ['Vola', 'Pirojpur'];
+    }
   }
 }//class
 //working
