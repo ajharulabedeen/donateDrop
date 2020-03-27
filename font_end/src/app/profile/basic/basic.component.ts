@@ -14,7 +14,7 @@ export class BasicComponent implements OnInit {
 
   // dept: string[];
   blood: string[];
-  division: string[];
+  division = new Array();
   profileEdit = true;
 
   id: string;
@@ -54,14 +54,9 @@ export class BasicComponent implements OnInit {
     // start : init
     this.blood_group = 'A+';
     this.gender = 'other';
-    // end : init
-
-    // this.division.push('Dhaka');
-    // this.division.push('Khulna');
-    // this.division.push('Commila');
     this.p_division = 'Dhaka';
-    console.log('--->>>-----' + this.division);
-    this.division = ['Dhaka', 'Khulna', 'Barisal'];
+    this.getDivisions();
+    // end : init
 
     this.blood = this.basicService.getBloodGroup();
     this.basicExist = false;
@@ -199,6 +194,10 @@ export class BasicComponent implements OnInit {
 
     console.log(basic);//remove
     return basic;
+  }
+
+  public getDivisions() {
+    this.division = ['Dhaka', 'Khulna', 'Barisal'];
   }
 
   divisionPrint() {
