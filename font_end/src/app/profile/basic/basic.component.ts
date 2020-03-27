@@ -48,6 +48,7 @@ export class BasicComponent implements OnInit {
   isFetching = false;
   error = null;
   p_division: string;
+  street_address: string;
 
   ngOnInit() {
 
