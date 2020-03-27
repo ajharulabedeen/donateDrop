@@ -13,8 +13,8 @@ import {ThrowStmt, verifyHostBindings} from '@angular/compiler';
 export class BasicComponent implements OnInit {
 
   // dept: string[];
-  blood: string[];
-  division = new Array();
+  bloods = new Array();
+  divisions = new Array();
   profileEdit = true;
 
   id: string;
@@ -55,10 +55,10 @@ export class BasicComponent implements OnInit {
     this.blood_group = 'A+';
     this.gender = 'other';
     this.p_division = 'Dhaka';
-    this.getDivisions();
     // end : init
+    this.bloods = this.basicService.getBloodGroup();
+    this.divisions = this.basicService.getDivisions();
 
-    this.blood = this.basicService.getBloodGroup();
     this.basicExist = false;
     console.log('this.basicExist  : ' + this.basicExist);
     this.basicService.getCurrentUserBasic();
@@ -196,9 +196,6 @@ export class BasicComponent implements OnInit {
     return basic;
   }
 
-  public getDivisions() {
-    this.division = ['Dhaka', 'Khulna', 'Barisal'];
-  }
 
   divisionPrint() {
     console.log('p_division : ' + this.p_division);
