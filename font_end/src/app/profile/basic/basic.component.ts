@@ -14,10 +14,7 @@ export class BasicComponent implements OnInit {
 
   // dept: string[];
   bloods = new Array();
-  divisions = new Array();
-  districts = new Array();
-  upzillas = new Array();
-  unions = new Array();
+
   profileEdit = true;
 
   id: string;
@@ -50,22 +47,33 @@ export class BasicComponent implements OnInit {
   loadedPosts: Basic[] = [];
   isFetching = false;
   error = null;
-  p_division: string;
-  p_district: string;
-  p_upzilla: string;
-  p_uinon: string;
-  street_address: string;
+  present_divisions = new Array();
+  present_districts = new Array();
+  present_upzillas = new Array();
+  present_unions = new Array();
+  present_division: string;
+  present_district: string;
+  present_upzilla: string;
+  present_union: string;
+  present_street_address: string;
+
+  permanent_division: string;
+  permanent_district: string;
+  permanent_upzilla: string;
+  permanent_uinon: string;
+  permanent_street_address: string;
+
 
   ngOnInit() {
 
     // start : init
     this.blood_group = 'A+';
     this.gender = 'other';
-    // this.p_division = 'Dhaka';
-    // this.p_district = 'Dhaka';
+    // this.present_division = 'Dhaka';
+    // this.present_district = 'Dhaka';
     // end : init
     this.bloods = this.basicService.getBloodGroup();
-    this.divisions = this.basicService.getDivisions();
+    this.present_divisions = this.basicService.getPresentDivisions();
 
     this.basicExist = false;
     console.log('this.basicExist  : ' + this.basicExist);
@@ -204,23 +212,23 @@ export class BasicComponent implements OnInit {
     return basic;
   }
 
-  public getdistricts(divisionSelected: string) {
-    this.upzillas = new Array();
-    console.log('selected Division  : ' + this.p_division);
-    this.districts = this.basicService.getdistricts(divisionSelected);
+  public getpresent_districts(present_divisionselected: string) {
+    this.present_upzillas = new Array();
+    console.log('selected Division  : ' + this.present_division);
+    this.present_districts = this.basicService.getpresent_districts(present_divisionselected);
   }
 
-  public getUpzillas(districtSelected: string) {
-    console.log('selected District  : ' + this.p_district);
-    this.upzillas = this.basicService.getUpzillas(districtSelected);
+  public getpresent_upzillas(present_districtselected: string) {
+    console.log('selected District  : ' + this.present_district);
+    this.present_upzillas = this.basicService.getpresent_upzillas(present_districtselected);
   }
 
-  public getUnions(upzilaSelected: string) {
-    console.log('selected Upzilla  : ' + this.p_upzilla);
-    this.unions = this.basicService.getUnions(upzilaSelected);
+  public getpresent_unions(upzilaSelected: string) {
+    console.log('selected Upzilla  : ' + this.present_upzilla);
+    this.present_unions = this.basicService.getpresent_unions(upzilaSelected);
   }
 
   divisionPrint() {
-    console.log('p_division : ' + this.p_division);
+    console.log('present_division : ' + this.present_division);
   }
 }//class

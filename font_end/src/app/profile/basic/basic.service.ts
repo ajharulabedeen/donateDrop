@@ -83,7 +83,7 @@ export class BasicService {
     return blood;
   }
 
-  public getDivisions() {
+  public getPresentDivisions() {
     // working
     // var divisions = new Array();
     // divisions.push('Dhaka');

@@ -127,9 +127,9 @@
                   <select [disabled]='!profileEdit' [(ngModel)]="p_division"
                           class="form-control select2 select2-hidden-accessible"
                           style="width: 100%;" tabindex="-1" aria-hidden="true"
-                          (click)="getdistricts(p_division)"
+                          (click)="getdistricts(present_division)"
                   >
-                    <option *ngFor="let d of divisions">
+                    <option *ngFor="let d of present_divisions">
                       {{d}}
                     </option>
                     <!--<option value="d">{{d}}</option>-->
