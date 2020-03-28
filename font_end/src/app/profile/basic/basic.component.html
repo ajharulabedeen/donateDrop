@@ -124,10 +124,10 @@
               <label>Division</label>
               <div class="form-group">
                 <div class="form-group">
-                  <select [disabled]='!profileEdit' [(ngModel)]="p_division"
+                  <select [disabled]='!profileEdit' [(ngModel)]="present_division"
                           class="form-control select2 select2-hidden-accessible"
                           style="width: 100%;" tabindex="-1" aria-hidden="true"
-                          (click)="getdistricts(present_division)"
+                          (click)="getPresent_districts(present_division)"
                   >
                     <option *ngFor="let d of present_divisions">
                       {{d}}
@@ -142,12 +142,12 @@
               <label>District</label>
               <div class="form-group">
                 <div class="form-group">
-                  <select [disabled]='!profileEdit' [(ngModel)]="p_district"
+                  <select [disabled]='!profileEdit' [(ngModel)]="present_district"
                           class="form-control select2 select2-hidden-accessible"
                           style="width: 100%;" tabindex="-1" aria-hidden="true"
-                          (click)="getUpzillas(p_district)"
+                          (click)="getUpzillas(present_district)"
                   >
-                    <option *ngFor="let d of districts">
+                    <option *ngFor="let d of present_districts">
                       {{d}}
                     </option>
                     <!--<option value="d">{{d}}</option>-->

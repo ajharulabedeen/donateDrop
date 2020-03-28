@@ -212,10 +212,10 @@ export class BasicComponent implements OnInit {
     return basic;
   }
 
-  public getpresent_districts(present_divisionselected: string) {
+  public getPresent_districts(present_divisionselected: string) {
     this.present_upzillas = new Array();
     console.log('selected Division  : ' + this.present_division);
-    this.present_districts = this.basicService.getpresent_districts(present_divisionselected);
+    this.present_districts = this.basicService.getPresent_districts(present_divisionselected);
   }
 
   public getpresent_upzillas(present_districtselected: string) {
