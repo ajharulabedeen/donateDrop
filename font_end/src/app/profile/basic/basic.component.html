@@ -119,7 +119,6 @@
           <!--start : present address-->
           <div class="row">
             <h4>Present Address</h4>
-
             <!--division-->
             <div class="col-md-2">
               <label>Division</label>
@@ -138,7 +137,6 @@
                 </div>
               </div>
             </div>
-
             <!--district-->
             <div class="col-md-2">
               <label>District</label>
@@ -157,7 +155,6 @@
                 </div>
               </div>
             </div>
-
             <!--upzilla-->
             <div class="col-md-2">
               <label>Upzilla</label>
@@ -175,7 +172,6 @@
                 </div>
               </div>
             </div>
-
             <!--unions-->
             <div class="col-md-2">
               <label>Unions</label>
@@ -192,7 +188,6 @@
                 </div>
               </div>
             </div>
-
             <div class="col-md-12">
               <div class="form-group">
                 <label>Street Address</label>
@@ -203,27 +198,88 @@
           </div>
           <!--end : present address-->
 
-          <div class="form-group">
-            <label>Address (Permanent)</label>
-            <textarea [(ngModel)]="address_permanent" [disabled]='!profileEdit' class="form-control" rows="3"
-                      placeholder=" (max: 512 ) Permanenr Adress">
-
-            </textarea>
+          <!--start : permanent address-->
+          <div class="row">
+            <h4>Permanent Address</h4>
+            <!--division-->
+            <div class="col-md-2">
+              <label>Division</label>
+              <div class="form-group">
+                <div class="form-group">
+                  <select [disabled]='!profileEdit' [(ngModel)]="p_division"
+                          class="form-control select2 select2-hidden-accessible"
+                          style="width: 100%;" tabindex="-1" aria-hidden="true"
+                          (click)="getdistricts(p_division)"
+                  >
+                    <option *ngFor="let d of divisions">
+                      {{d}}
+                    </option>
+                    <!--<option value="d">{{d}}</option>-->
+                  </select>
+                </div>
+              </div>
+            </div>
+            <!--district-->
+            <div class="col-md-2">
+              <label>District</label>
+              <div class="form-group">
+                <div class="form-group">
+                  <select [disabled]='!profileEdit' [(ngModel)]="p_district"
+                          class="form-control select2 select2-hidden-accessible"
+                          style="width: 100%;" tabindex="-1" aria-hidden="true"
+                          (click)="getUpzillas(p_district)"
+                  >
+                    <option *ngFor="let d of districts">
+                      {{d}}
+                    </option>
+                    <!--<option value="d">{{d}}</option>-->
+                  </select>
+                </div>
+              </div>
+            </div>
+            <!--upzilla-->
+            <div class="col-md-2">
+              <label>Upzilla</label>
+              <div class="form-group">
+                <div class="form-group">
+                  <select [disabled]='!profileEdit' [(ngModel)]="p_upzilla"
+                          class="form-control select2 select2-hidden-accessible"
+                          style="width: 100%;" tabindex="-1" aria-hidden="true"
+                          (click)="getUnions(p_upzilla)"
+                  >
+                    <option *ngFor="let up of upzillas">
+                      {{up}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <!--unions-->
+            <div class="col-md-2">
+              <label>Unions</label>
+              <div class="form-group">
+                <div class="form-group">
+                  <select [disabled]='!profileEdit' [(ngModel)]="p_uinon"
+                          class="form-control select2 select2-hidden-accessible"
+                          style="width: 100%;" tabindex="-1" aria-hidden="true"
+                  >
+                    <option *ngFor="let un of unions">
+                      {{un}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Street Address</label>
+                <input [(ngModel)]="street_address" [disabled]='!profileEdit' type="text" class="form-control"
+                       placeholder="Street Address!">
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Research Interest</label>
-            <textarea [(ngModel)]="research_interest" [disabled]='!profileEdit' class="form-control" rows="3"
-                      placeholder="(max: 512 )Research Interest ...">
+          <!--end : permanent  address-->
 
-            </textarea>
-          </div>
-          <div class="form-group">
-            <label>Skills</label>
-            <textarea [(ngModel)]="skills" [disabled]='!profileEdit' class="form-control" rows="3"
-                      placeholder="(max: 512 ) Skills ...">
-
-            </textarea>
-          </div>
           <div class="form-group">
             <label>Social Media Links (FaceBook, LinkedIn)</label>
             <textarea [(ngModel)]="social_media_link" [disabled]='!profileEdit' class="form-control" rows="3"
