@@ -147,6 +147,7 @@
                   <select [disabled]='!profileEdit' [(ngModel)]="p_district"
                           class="form-control select2 select2-hidden-accessible"
                           style="width: 100%;" tabindex="-1" aria-hidden="true"
+                          (click)="getUpzillas(p_district)"
                   >
                     <option *ngFor="let d of districts">
                       {{d}}

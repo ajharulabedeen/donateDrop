@@ -97,8 +97,18 @@ export class BasicService {
     if (division == 'Dhaka') {
       return ['Dhaka', 'Gazipur', 'Kalna'];
     } else if (division == 'Khulna') {
-      return ['Jessore', 'Bagerhat', 'Satkhira'];
-    }else if (division == 'Barishal') {
+      return ['Jessore', 'Bagerhat', 'Satkhira', 'Khulna'];
+    } else if (division == 'Barishal') {
+      return ['Barishal', 'Vola', 'Pirojpur'];
+    }
+  }
+
+  public getUpzillas(district: string) {
+    if (district == 'Dhaka') {
+      return ['Dhaka', 'DOhar', 'Nawab Ganj'];
+    } else if (district == 'Khulna') {
+      return ['Dumuria', 'Botighata', 'Fultola'];
+    } else if (district == 'Barishal') {
       return ['Vola', 'Pirojpur'];
     }
   }

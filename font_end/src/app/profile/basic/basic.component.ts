@@ -208,8 +208,8 @@ export class BasicComponent implements OnInit {
   }
 
   public getUpzillas(districtSelected: string) {
-    console.log('selected Division  : ' + this.p_division);
-    this.districts = this.basicService.getdistricts(divisionSelected);
+    console.log('selected District  : ' + this.p_district);
+    this.upzillas = this.basicService.getUpzillas(districtSelected);
   }
 
   divisionPrint() {
