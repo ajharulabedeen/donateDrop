@@ -157,6 +157,23 @@
               </div>
             </div>
 
+            <!--upzilla-->
+            <div class="col-md-2">
+              <label>Upzilla</label>
+              <div class="form-group">
+                <div class="form-group">
+                  <select [disabled]='!profileEdit' [(ngModel)]="p_upzilla"
+                          class="form-control select2 select2-hidden-accessible"
+                          style="width: 100%;" tabindex="-1" aria-hidden="true"
+                  >
+                    <option *ngFor="let u of upzillas">
+                      {{u}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
             <div class="col-md-12">
               <div class="form-group">
                 <label>Street Address</label>

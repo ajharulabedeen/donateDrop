@@ -16,6 +16,7 @@ export class BasicComponent implements OnInit {
   bloods = new Array();
   divisions = new Array();
   districts = new Array();
+  upzillas = new Array();
   profileEdit = true;
 
   id: string;
@@ -50,6 +51,7 @@ export class BasicComponent implements OnInit {
   error = null;
   p_division: string;
   p_district: string;
+  p_upzilla: string;
   street_address: string;
 
   ngOnInit() {
@@ -57,8 +59,8 @@ export class BasicComponent implements OnInit {
     // start : init
     this.blood_group = 'A+';
     this.gender = 'other';
-    this.p_division = 'Dhaka';
-    this.p_district = 'Dhaka';
+    // this.p_division = 'Dhaka';
+    // this.p_district = 'Dhaka';
     // end : init
     this.bloods = this.basicService.getBloodGroup();
     this.divisions = this.basicService.getDivisions();
@@ -201,6 +203,11 @@ export class BasicComponent implements OnInit {
   }
 
   public getdistricts(divisionSelected: string) {
+    console.log('selected Division  : ' + this.p_division);
+    this.districts = this.basicService.getdistricts(divisionSelected);
+  }
+
+  public getUpzillas(districtSelected: string) {
     console.log('selected Division  : ' + this.p_division);
     this.districts = this.basicService.getdistricts(divisionSelected);
   }
