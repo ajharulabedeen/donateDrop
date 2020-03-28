@@ -223,9 +223,9 @@ export class BasicComponent implements OnInit {
     this.present_upzillas = this.basicService.getPresent_upzillas(present_districtselected);
   }
 
-  public getpresent_unions(upzilaSelected: string) {
+  public getPresent_unions(upzilaSelected: string) {
     console.log('selected Upzilla  : ' + this.present_upzilla);
-    this.present_unions = this.basicService.getpresent_unions(upzilaSelected);
+    this.present_unions = this.basicService.getPresent_unions(upzilaSelected);
   }
 
   divisionPrint() {

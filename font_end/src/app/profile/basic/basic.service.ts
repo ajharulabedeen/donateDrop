@@ -113,7 +113,7 @@ export class BasicService {
     }
   }
 
-  public getUnions(upzilaSelected: string) {
+  public getPresent_unions(upzilaSelected: string) {
     return ['Rudghora', 'Dumuria'];
   }
 }//class
