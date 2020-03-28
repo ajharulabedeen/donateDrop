@@ -218,9 +218,9 @@ export class BasicComponent implements OnInit {
     this.present_districts = this.basicService.getPresent_districts(present_divisionselected);
   }
 
-  public getpresent_upzillas(present_districtselected: string) {
+  public getPresent_upzillas(present_districtselected: string) {
     console.log('selected District  : ' + this.present_district);
-    this.present_upzillas = this.basicService.getpresent_upzillas(present_districtselected);
+    this.present_upzillas = this.basicService.getPresent_upzillas(present_districtselected);
   }
 
   public getpresent_unions(upzilaSelected: string) {

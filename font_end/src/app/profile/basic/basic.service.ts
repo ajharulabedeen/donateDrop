@@ -103,7 +103,7 @@ export class BasicService {
     }
   }
 
-  public getUpzillas(district: string) {
+  public getPresent_upzillas(district: string) {
     if (district == 'Dhaka') {
       return ['Dhaka', 'DOhar', 'Nawab Ganj'];
     } else if (district == 'Khulna') {

@@ -145,7 +145,7 @@
                   <select [disabled]='!profileEdit' [(ngModel)]="present_district"
                           class="form-control select2 select2-hidden-accessible"
                           style="width: 100%;" tabindex="-1" aria-hidden="true"
-                          (click)="getUpzillas(present_district)"
+                          (click)="getPresent_upzillas(present_district)"
                   >
                     <option *ngFor="let d of present_districts">
                       {{d}}
@@ -160,12 +160,12 @@
               <label>Upzilla</label>
               <div class="form-group">
                 <div class="form-group">
-                  <select [disabled]='!profileEdit' [(ngModel)]="p_upzilla"
+                  <select [disabled]='!profileEdit' [(ngModel)]="present_upzilla"
                           class="form-control select2 select2-hidden-accessible"
                           style="width: 100%;" tabindex="-1" aria-hidden="true"
-                          (click)="getUnions(p_upzilla)"
+                          (click)="getUnions(present_upzilla)"
                   >
-                    <option *ngFor="let up of upzillas">
+                    <option *ngFor="let up of present_upzillas">
                       {{up}}
                     </option>
                   </select>
