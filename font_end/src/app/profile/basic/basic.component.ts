@@ -17,6 +17,7 @@ export class BasicComponent implements OnInit {
   divisions = new Array();
   districts = new Array();
   upzillas = new Array();
+  unions = new Array();
   profileEdit = true;
 
   id: string;
@@ -52,6 +53,7 @@ export class BasicComponent implements OnInit {
   p_division: string;
   p_district: string;
   p_upzilla: string;
+  p_uinon: string;
   street_address: string;
 
   ngOnInit() {
@@ -203,6 +205,7 @@ export class BasicComponent implements OnInit {
   }
 
   public getdistricts(divisionSelected: string) {
+    this.upzillas = new Array();
     console.log('selected Division  : ' + this.p_division);
     this.districts = this.basicService.getdistricts(divisionSelected);
   }
@@ -210,6 +213,11 @@ export class BasicComponent implements OnInit {
   public getUpzillas(districtSelected: string) {
     console.log('selected District  : ' + this.p_district);
     this.upzillas = this.basicService.getUpzillas(districtSelected);
+  }
+
+  public getUnions(upzilaSelected: string) {
+    console.log('selected Upzilla  : ' + this.p_upzilla);
+    this.unions = this.basicService.getUnions(upzilaSelected);
   }
 
   divisionPrint() {

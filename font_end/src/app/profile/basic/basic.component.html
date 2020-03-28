@@ -166,9 +166,27 @@
                   <select [disabled]='!profileEdit' [(ngModel)]="p_upzilla"
                           class="form-control select2 select2-hidden-accessible"
                           style="width: 100%;" tabindex="-1" aria-hidden="true"
+                          (click)="getUnions(p_upzilla)"
                   >
-                    <option *ngFor="let u of upzillas">
-                      {{u}}
+                    <option *ngFor="let up of upzillas">
+                      {{up}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!--unions-->
+            <div class="col-md-2">
+              <label>Unions</label>
+              <div class="form-group">
+                <div class="form-group">
+                  <select [disabled]='!profileEdit' [(ngModel)]="p_uinon"
+                          class="form-control select2 select2-hidden-accessible"
+                          style="width: 100%;" tabindex="-1" aria-hidden="true"
+                  >
+                    <option *ngFor="let un of unions">
+                      {{un}}
                     </option>
                   </select>
                 </div>

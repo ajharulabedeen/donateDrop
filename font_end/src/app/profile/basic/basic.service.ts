@@ -112,6 +112,10 @@ export class BasicService {
       return ['Vola', 'Pirojpur'];
     }
   }
+
+  public getUnions(upzilaSelected: string) {
+    return ['Rudghora', 'Dumuria'];
+  }
 }//class
 //working
 // {
