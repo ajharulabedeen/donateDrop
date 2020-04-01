@@ -9,6 +9,7 @@ import com.donatedrop.geocode.Dao_GeoCode_I;
 import com.donatedrop.geocode.DistrictsEngName;
 import com.donatedrop.geocode.Divisions;
 import com.donatedrop.geocode.DivisionsEngName;
+import com.donatedrop.geocode.UpzillaEngName;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -71,13 +72,27 @@ public class Test_Dao_GEO_Code {
     public void test_getDistricts() {
         //khulna, id=3 has 10 districts
         String divID = "3";
-        int divisions = dao_GeoCode_I.getDistricts(divID).size();
+        int districts = dao_GeoCode_I.getDistricts(divID).size();
 //working
 //        List<DistrictsEngName> distEng = dao_GeoCode_I.getDistricts(divID);
 //        for (Iterator<DistrictsEngName> iterator = distEng.iterator(); iterator.hasNext();) {
 //            DistrictsEngName dist = iterator.next();
 //            System.out.println(dist.toString());
 //        }
-        assertEquals(divisions, 10);
+        assertEquals(districts, 10);
+    }
+    
+    @Test
+    public void test_getUpzillas() {
+        //khulna, id=27 has 9 districts
+        String distID = "27";
+        int upzillas = dao_GeoCode_I.getUpzillas(distID).size();
+//working
+//        List<UpzillaEngName> upzEng = dao_GeoCode_I.getUpzillas(distID);
+//        for (Iterator<UpzillaEngName> iterator = upzEng.iterator(); iterator.hasNext();) {
+//            UpzillaEngName dist = iterator.next();
+//            System.out.println(dist.toString());
+//        }
+        assertEquals(upzillas, 9);
     }
 }

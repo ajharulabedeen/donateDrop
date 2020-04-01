@@ -35,9 +35,8 @@ public class Dao_GeoCode_Impl implements Dao_GeoCode_I {
 
     @Override
     public List<UpzillaEngName> getUpzillas(String distID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT upazilas.id, upazilas.name FROM upazilas WHERE upazilas.district_id=" + distID;
+        return entityManager.createNativeQuery(sql, UpzillaEngName.class).getResultList();
     }
 
-    
-    
 }
