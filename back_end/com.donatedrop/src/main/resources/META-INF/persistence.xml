@@ -18,10 +18,10 @@
     <class>com.donatedrop.profile.Address</class>
     <class>com.donatedrop.articles.PhoneNumber</class>
     <class>com.donatedrop.profile.EmergencyContact</class>
-    <class>com.donatedrop.model.Districts</class>
-    <class>com.donatedrop.model.Divisions</class>
-    <class>com.donatedrop.model.Upazilas</class>
-    <class>com.donatedrop.model.Unions</class>
+    <class>com.donatedrop.geocode.Districts</class>
+    <class>com.donatedrop.geocode.Divisions</class>
+    <class>com.donatedrop.geocode.Upazilas</class>
+    <class>com.donatedrop.geocode.Unions</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/donate_drop?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.donatedrop.model;
+package com.donatedrop.geocode;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,25 +18,27 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author G7
  */
 @Entity
-@Table(name = "unions")
+@Table(name = "upazilas")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Unions.findAll", query = "SELECT u FROM Unions u")
-    , @NamedQuery(name = "Unions.findById", query = "SELECT u FROM Unions u WHERE u.id = :id")
-    , @NamedQuery(name = "Unions.findByName", query = "SELECT u FROM Unions u WHERE u.name = :name")
-    , @NamedQuery(name = "Unions.findByBnName", query = "SELECT u FROM Unions u WHERE u.bnName = :bnName")
-    , @NamedQuery(name = "Unions.findByUrl", query = "SELECT u FROM Unions u WHERE u.url = :url")})
-public class Unions implements Serializable {
+    @NamedQuery(name = "Upazilas.findAll", query = "SELECT u FROM Upazilas u")
+    , @NamedQuery(name = "Upazilas.findById", query = "SELECT u FROM Upazilas u WHERE u.id = :id")
+    , @NamedQuery(name = "Upazilas.findByName", query = "SELECT u FROM Upazilas u WHERE u.name = :name")
+    , @NamedQuery(name = "Upazilas.findByBnName", query = "SELECT u FROM Upazilas u WHERE u.bnName = :bnName")
+    , @NamedQuery(name = "Upazilas.findByUrl", query = "SELECT u FROM Upazilas u WHERE u.url = :url")})
+public class Upazilas implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -57,18 +61,20 @@ public class Unions implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "url")
     private String url;
-    @JoinColumn(name = "upazilla_id", referencedColumnName = "id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "upazillaId")
+    private Collection<Unions> unionsCollection;
+    @JoinColumn(name = "district_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Upazilas upazillaId;
+    private Districts districtId;
 
-    public Unions() {
+    public Upazilas() {
     }
 
-    public Unions(Integer id) {
+    public Upazilas(Integer id) {
         this.id = id;
     }
 
-    public Unions(Integer id, String name, String bnName, String url) {
+    public Upazilas(Integer id, String name, String bnName, String url) {
         this.id = id;
         this.name = name;
         this.bnName = bnName;
@@ -107,12 +113,21 @@ public class Unions implements Serializable {
         this.url = url;
     }
 
-    public Upazilas getUpazillaId() {
-        return upazillaId;
+    @XmlTransient
+    public Collection<Unions> getUnionsCollection() {
+        return unionsCollection;
     }
 
-    public void setUpazillaId(Upazilas upazillaId) {
-        this.upazillaId = upazillaId;
+    public void setUnionsCollection(Collection<Unions> unionsCollection) {
+        this.unionsCollection = unionsCollection;
+    }
+
+    public Districts getDistrictId() {
+        return districtId;
+    }
+
+    public void setDistrictId(Districts districtId) {
+        this.districtId = districtId;
     }
 
     @Override
@@ -125,10 +140,10 @@ public class Unions implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Unions)) {
+        if (!(object instanceof Upazilas)) {
             return false;
         }
-        Unions other = (Unions) object;
+        Upazilas other = (Upazilas) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -137,7 +152,7 @@ public class Unions implements Serializable {
 
     @Override
     public String toString() {
-        return "com.donatedrop.model.Unions[ id=" + id + " ]";
+        return "com.donatedrop.model.Upazilas[ id=" + id + " ]";
     }
     
 }

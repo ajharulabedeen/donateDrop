@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.donatedrop.model;
+package com.donatedrop.geocode;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -139,7 +139,11 @@ public class Divisions implements Serializable {
 
     @Override
     public String toString() {
-        return "com.donatedrop.model.Divisions[ id=" + id + " ]";
+        return "id=" + id + ", name=" + name + ", bnName=" + bnName + ", url=" + url;
     }
     
+//    @Override
+//    public String toString() {
+//        return "Divisions{" + "id=" + id + ", name=" + name + ", bnName=" + bnName + ", url=" + url + ", districtsCollection=" + districtsCollection + '}';
+//    }
 }

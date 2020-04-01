@@ -3,12 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.donatedrop.model;
+package com.donatedrop.geocode;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,29 +16,25 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author G7
  */
 @Entity
-@Table(name = "districts")
+@Table(name = "unions")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Districts.findAll", query = "SELECT d FROM Districts d")
-    , @NamedQuery(name = "Districts.findById", query = "SELECT d FROM Districts d WHERE d.id = :id")
-    , @NamedQuery(name = "Districts.findByName", query = "SELECT d FROM Districts d WHERE d.name = :name")
-    , @NamedQuery(name = "Districts.findByBnName", query = "SELECT d FROM Districts d WHERE d.bnName = :bnName")
-    , @NamedQuery(name = "Districts.findByLat", query = "SELECT d FROM Districts d WHERE d.lat = :lat")
-    , @NamedQuery(name = "Districts.findByLon", query = "SELECT d FROM Districts d WHERE d.lon = :lon")
-    , @NamedQuery(name = "Districts.findByUrl", query = "SELECT d FROM Districts d WHERE d.url = :url")})
-public class Districts implements Serializable {
+    @NamedQuery(name = "Unions.findAll", query = "SELECT u FROM Unions u")
+    , @NamedQuery(name = "Unions.findById", query = "SELECT u FROM Unions u WHERE u.id = :id")
+    , @NamedQuery(name = "Unions.findByName", query = "SELECT u FROM Unions u WHERE u.name = :name")
+    , @NamedQuery(name = "Unions.findByBnName", query = "SELECT u FROM Unions u WHERE u.bnName = :bnName")
+    , @NamedQuery(name = "Unions.findByUrl", query = "SELECT u FROM Unions u WHERE u.url = :url")})
+public class Unions implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -58,31 +52,23 @@ public class Districts implements Serializable {
     @Size(min = 1, max = 25)
     @Column(name = "bn_name")
     private String bnName;
-    @Size(max = 15)
-    @Column(name = "lat")
-    private String lat;
-    @Size(max = 15)
-    @Column(name = "lon")
-    private String lon;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "url")
     private String url;
-    @JoinColumn(name = "division_id", referencedColumnName = "id")
+    @JoinColumn(name = "upazilla_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Divisions divisionId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "districtId")
-    private Collection<Upazilas> upazilasCollection;
+    private Upazilas upazillaId;
 
-    public Districts() {
+    public Unions() {
     }
 
-    public Districts(Integer id) {
+    public Unions(Integer id) {
         this.id = id;
     }
 
-    public Districts(Integer id, String name, String bnName, String url) {
+    public Unions(Integer id, String name, String bnName, String url) {
         this.id = id;
         this.name = name;
         this.bnName = bnName;
@@ -113,22 +99,6 @@ public class Districts implements Serializable {
         this.bnName = bnName;
     }
 
-    public String getLat() {
-        return lat;
-    }
-
-    public void setLat(String lat) {
-        this.lat = lat;
-    }
-
-    public String getLon() {
-        return lon;
-    }
-
-    public void setLon(String lon) {
-        this.lon = lon;
-    }
-
     public String getUrl() {
         return url;
     }
@@ -137,21 +107,12 @@ public class Districts implements Serializable {
         this.url = url;
     }
 
-    public Divisions getDivisionId() {
-        return divisionId;
+    public Upazilas getUpazillaId() {
+        return upazillaId;
     }
 
-    public void setDivisionId(Divisions divisionId) {
-        this.divisionId = divisionId;
-    }
-
-    @XmlTransient
-    public Collection<Upazilas> getUpazilasCollection() {
-        return upazilasCollection;
-    }
-
-    public void setUpazilasCollection(Collection<Upazilas> upazilasCollection) {
-        this.upazilasCollection = upazilasCollection;
+    public void setUpazillaId(Upazilas upazillaId) {
+        this.upazillaId = upazillaId;
     }
 
     @Override
@@ -164,10 +125,10 @@ public class Districts implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Districts)) {
+        if (!(object instanceof Unions)) {
             return false;
         }
-        Districts other = (Districts) object;
+        Unions other = (Unions) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -176,7 +137,7 @@ public class Districts implements Serializable {
 
     @Override
     public String toString() {
-        return "com.donatedrop.model.Districts[ id=" + id + " ]";
+        return "com.donatedrop.model.Unions[ id=" + id + " ]";
     }
     
 }
