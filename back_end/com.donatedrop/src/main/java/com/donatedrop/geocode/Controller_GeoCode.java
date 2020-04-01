@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -25,9 +26,24 @@ public class Controller_GeoCode {
     @Autowired
     private Service_GeoCode_I service_GeoCode_I;
 
-    @GetMapping(value = "divisions", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DivisionsEngName> getDivisions(Model model) {
-        model.addAttribute("employees", service_GeoCode_I.getDivisions());
+    @GetMapping(value = "divisions")
+    public List<DivisionsEngName> getDivisions() {
         return service_GeoCode_I.getDivisions();
     }
+
+    @PostMapping(value = "districts")
+    public List<DistrictsEngName> getDistricts(@RequestParam String divID) {
+        return service_GeoCode_I.getDistricts(divID);
+    }
+
+    @PostMapping(value = "upzillas")
+    public List<UpzillaEngName> getDivisions(@RequestParam String distID) {
+        return service_GeoCode_I.getUpzillas(distID);
+    }
+
+    @PostMapping(value = "unions")
+    public List<UnionsEngName> getUnions(@RequestParam String upzID) {
+        return service_GeoCode_I.getUnions(upzID);
+    }
+
 }
