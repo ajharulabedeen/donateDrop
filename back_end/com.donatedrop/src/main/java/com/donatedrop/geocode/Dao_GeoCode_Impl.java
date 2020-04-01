@@ -39,4 +39,10 @@ public class Dao_GeoCode_Impl implements Dao_GeoCode_I {
         return entityManager.createNativeQuery(sql, UpzillaEngName.class).getResultList();
     }
 
+    @Override
+    public List<UnionsEngName> getUnions(String upzID) {
+        String sql = "SELECT unions.id, unions.name FROM unions WHERE unions.upazilla_id=" + upzID;
+        return entityManager.createNativeQuery(sql, UnionsEngName.class).getResultList();
+    }
+
 }

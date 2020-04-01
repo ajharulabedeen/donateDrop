@@ -9,6 +9,7 @@ import com.donatedrop.geocode.Dao_GeoCode_I;
 import com.donatedrop.geocode.DistrictsEngName;
 import com.donatedrop.geocode.Divisions;
 import com.donatedrop.geocode.DivisionsEngName;
+import com.donatedrop.geocode.UnionsEngName;
 import com.donatedrop.geocode.UpzillaEngName;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -81,7 +82,7 @@ public class Test_Dao_GEO_Code {
 //        }
         assertEquals(districts, 10);
     }
-    
+
     @Test
     public void test_getUpzillas() {
         //khulna, id=27 has 9 districts
@@ -94,5 +95,19 @@ public class Test_Dao_GEO_Code {
 //            System.out.println(dist.toString());
 //        }
         assertEquals(upzillas, 9);
+    }
+
+    @Test
+    public void test_getUnions() {
+        //Dumuria, id=211 has 14 unions
+        String upzID = "211";
+        int upzillas = dao_GeoCode_I.getUnions(upzID).size();
+//working
+//        List<UnionsEngName> upzEng = dao_GeoCode_I.getUnions(upzID);
+//        for (Iterator<UnionsEngName> iterator = upzEng.iterator(); iterator.hasNext();) {
+//            UnionsEngName dist = iterator.next();
+//            System.out.println(dist.toString());
+//        }
+        assertEquals(upzillas, 14);
     }
 }
