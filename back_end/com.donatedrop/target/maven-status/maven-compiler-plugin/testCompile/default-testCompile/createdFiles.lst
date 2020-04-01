@@ -1,6 +1,1 @@
-com\donatedrop\entity\Actor.class
-com\donatedrop\entity\Movie.class
-com\donatedrop\entity\Developer.class
 com\donatedrop\article_test\Test_ArticleDao.class
-com\donatedrop\entity\Technology.class
-com\donatedrop\article_test\EmployeeRestControllerIntegrationTest.class

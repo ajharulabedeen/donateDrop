@@ -34,7 +34,6 @@ com\donatedrop\controller\UserRestController.class
 com\donatedrop\conf\ApplicationConfiguration.class
 com\donatedrop\articles\Controller_Article.class
 com\donatedrop\security\JwtUser.class
-com\donatedrop\articles\NewEntity.class
 com\donatedrop\util\TimeProvider.class
 com\donatedrop\mail\EmailService.class
 com\donatedrop\articles\old\DummyArticleService.class
@@ -48,7 +47,6 @@ com\donatedrop\security\newcontroller\UserRegistration.class
 com\donatedrop\controller\AuthenticationRestController.class
 com\donatedrop\configs\GetDate.class
 com\donatedrop\configs\SpringApplicationContextInterface.class
-com\donatedrop\profile\ProfileBasics.class
 com\donatedrop\util\DatabaseConfig.class
 com\donatedrop\model\Authority.class
 com\donatedrop\articles\old\ArticleController.class
