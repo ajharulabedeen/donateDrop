@@ -13,7 +13,7 @@ import java.util.Properties;
 
 @Configuration
 //@EnableWebMvc
-@ComponentScan(basePackages = {"org.gobeshona.*",})
+@ComponentScan(basePackages = {"com.donatedrop.*"})
 
 public class ApplicationConfiguration {
     @Bean
