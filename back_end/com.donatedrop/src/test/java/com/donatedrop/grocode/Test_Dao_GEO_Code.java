@@ -6,6 +6,7 @@
 package com.donatedrop.grocode;
 
 import com.donatedrop.geocode.Dao_GeoCode_I;
+import com.donatedrop.geocode.DistrictsEngName;
 import com.donatedrop.geocode.Divisions;
 import com.donatedrop.geocode.DivisionsEngName;
 import java.util.ArrayList;
@@ -66,4 +67,17 @@ public class Test_Dao_GEO_Code {
         assertEquals(divisions, 8);
     }
 
+    @Test
+    public void test_getDistricts() {
+        //khulna, id=3 has 10 districts
+        String divID = "3";
+        int divisions = dao_GeoCode_I.getDistricts(divID).size();
+//working
+//        List<DistrictsEngName> distEng = dao_GeoCode_I.getDistricts(divID);
+//        for (Iterator<DistrictsEngName> iterator = distEng.iterator(); iterator.hasNext();) {
+//            DistrictsEngName dist = iterator.next();
+//            System.out.println(dist.toString());
+//        }
+        assertEquals(divisions, 10);
+    }
 }

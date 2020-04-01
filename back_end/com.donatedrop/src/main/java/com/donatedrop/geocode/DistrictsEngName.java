@@ -18,8 +18,8 @@ import lombok.ToString;
  */
 @Entity
 @ToString
-@Table(name = "zzna_divisions_engname")
-public class DivisionsEngName {
+@Table(name = "zzna_districts_engname")
+public class DistrictsEngName {
     @Getter
     @Setter
     @Id

@@ -21,10 +21,16 @@ public class Dao_GeoCode_Impl implements Dao_GeoCode_I {
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Override
     public List<DivisionsEngName> getDivisions() {
         String sql = "SELECT divisions.id, divisions.name FROM divisions";
-        List<DivisionsEngName> divEngName = new ArrayList<>();
-        divEngName = entityManager.createNativeQuery(sql, DivisionsEngName.class).getResultList();
-        return divEngName;
+        return entityManager.createNativeQuery(sql, DivisionsEngName.class).getResultList();
     }
+
+    @Override
+    public List<DistrictsEngName> getDistricts(String divID) {
+        String sql = "SELECT districts.id, districts.name FROM districts WHERE districts.division_id=" + divID;
+        return entityManager.createNativeQuery(sql, DistrictsEngName.class).getResultList();
+    }
+
 }
