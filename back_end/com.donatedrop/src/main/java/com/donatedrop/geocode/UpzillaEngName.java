@@ -19,7 +19,7 @@ import lombok.ToString;
 @Entity
 @ToString
 @Table(name = "zzna_divisions_engname")
-public class DistrictsEngName {
+public class UpzillaEngName {
     @Getter
     @Setter
     @Id

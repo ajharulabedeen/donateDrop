@@ -15,6 +15,7 @@ public interface Dao_GeoCode_I {
 
     public List<DivisionsEngName> getDivisions();
     public List<DistrictsEngName> getDistricts(String divID);
+    public List<UpzillaEngName> getUpzillas(String distID);
     
 
 }
