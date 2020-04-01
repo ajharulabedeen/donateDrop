@@ -7,6 +7,8 @@ package com.donatedrop.geocode;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,8 +25,9 @@ public class Controller_GeoCode {
     @Autowired
     private Service_GeoCode_I service_GeoCode_I;
 
-    @GetMapping(value = "division")
-    public List<DivisionsEngName> getDivisions() {
+    @GetMapping(value = "divisions", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DivisionsEngName> getDivisions(Model model) {
+        model.addAttribute("employees", service_GeoCode_I.getDivisions());
         return service_GeoCode_I.getDivisions();
     }
 }

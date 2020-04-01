@@ -1,1 +1,9 @@
 com\donatedrop\article_test\Test_ArticleDao.class
+com\donatedrop\article_test\EmployeeRestControllerIntegrationTest.class
+com\donatedrop\profile_basic\Test_Dao_Profile_Basic_Impl.class
+com\donatedrop\old_entity\Developer.class
+com\donatedrop\old_entity\Movie.class
+com\donatedrop\old_entity\Technology.class
+com\donatedrop\grocode\Test_Controller_GeoCode.class
+com\donatedrop\old_entity\Actor.class
+com\donatedrop\grocode\Test_Dao_GEO_Code.class
