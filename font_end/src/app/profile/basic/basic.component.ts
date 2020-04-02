@@ -4,6 +4,7 @@ import {Basic} from './basic.model';
 import {Observable} from 'rxjs';
 import {subscribeOn} from 'rxjs/operators';
 import {ThrowStmt, verifyHostBindings} from '@angular/compiler';
+import {Divisions} from './divisions.model';
 
 @Component({
   selector: 'app-basic',
@@ -73,7 +74,8 @@ export class BasicComponent implements OnInit {
     // this.present_district = 'Dhaka';
     // end : init
     this.bloods = this.basicService.getBloodGroup();
-    this.present_divisions = this.basicService.getPresentDivisions();
+    this.getDivisions();
+
 
     this.basicExist = false;
     console.log('this.basicExist  : ' + this.basicExist);
@@ -226,6 +228,21 @@ export class BasicComponent implements OnInit {
   public getPresent_unions(upzilaSelected: string) {
     console.log('selected Upzilla  : ' + this.present_upzilla);
     this.present_unions = this.basicService.getPresent_unions(upzilaSelected);
+  }
+
+  public getDivisions() {
+    this.present_divisions = new Array();
+    this.basicService.getPresentDivisions()
+      .subscribe((res: Response) => {
+        for (const index in res) {
+          var div = new Divisions();
+          div.id = res[index]['id'];
+          div.name = res[index]['name'];
+          // this.present_divisions.push(res[index]['name']);
+          this.present_divisions.push(div);
+        }
+      });
+    console.log(this.present_divisions);
   }
 
   divisionPrint() {

@@ -130,7 +130,7 @@
                           (click)="getPresent_districts(present_division)"
                   >
                     <option *ngFor="let d of present_divisions">
-                      {{d}}
+                      {{d._name}}
                     </option>
                     <!--<option value="d">{{d}}</option>-->
                   </select>
@@ -211,8 +211,9 @@
                           style="width: 100%;" tabindex="-1" aria-hidden="true"
                           (click)="getdistricts(p_division)"
                   >
-                    <option *ngFor="let d of divisions">
-                      {{d}}
+                    <option *ngFor="let div of present_divisions; let i=index">
+                      <!--{{d[i]["name"]}}-->
+                      {{div._id}}
                     </option>
                     <!--<option value="d">{{d}}</option>-->
                   </select>
