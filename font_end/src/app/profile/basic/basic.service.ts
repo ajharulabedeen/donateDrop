@@ -84,11 +84,22 @@ export class BasicService {
   }
 
   public getPresentDivisions() {
-    console.log(" Divisions : ");
+    console.log(' Divisions : ');
+    var div = new Array();
     this.http.get(
       'http://127.0.0.1:8080/public/geocode/divisions', this.authService.getHeader()
     ).subscribe((res: Response) => {
-      console.log(res[0]);
+      console.log(res[0]['name']);
+      div.push(res[0]['name']);
+      div.push(res[1]['name']);
+      div.push(res[2]['name']);
+      div.push(res[3]['name']);
+      div.push(res[4]['name']);
+      div.push(res[5]['name']);
+      div.push(res[6]['name']);
+      div.push(res[7]['name']);
+      div.push(res[8]['name']);
+      // res[0][''];
     });
     // working
     // var divisions = new Array();
@@ -96,7 +107,8 @@ export class BasicService {
     // divisions.push('Khulna');
     // divisions.push('Barishal');
     // return divisions;
-    return ['Dhaka', 'Khulna', 'Barishal'];
+    // return ['Dhaka', 'Khulna', 'Barishal'];
+    return div;
   }
 
   public getPresent_districts(division: string) {
