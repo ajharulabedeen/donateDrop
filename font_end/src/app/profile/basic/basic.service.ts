@@ -32,7 +32,7 @@ export class BasicService {
   }//create
 
 
-  update(basic: Basic) {
+  public update(basic: Basic) {
     this.http.post(
       'http://127.0.0.1:8000/api/basic/update', basic, this.authService.getHeader()
     ).subscribe((res: Response) => {
@@ -71,7 +71,7 @@ export class BasicService {
       console.log('bas : ' + bas.$dept);
       this.basic.next(bas);
     });
-  }//get current user basic.
+  }// get current user basic.
 
   public getDept() {
     var dept: string[] = ['CSE', 'EEE', 'TEX', 'FTDM', 'BBS', 'BBA', 'LAW'];
@@ -84,6 +84,12 @@ export class BasicService {
   }
 
   public getPresentDivisions() {
+    console.log(" Divisions : ");
+    this.http.get(
+      'http://127.0.0.1:8080/public/geocode/divisions', this.authService.getHeader()
+    ).subscribe((res: Response) => {
+      console.log(res[0]);
+    });
     // working
     // var divisions = new Array();
     // divisions.push('Dhaka');
@@ -116,8 +122,8 @@ export class BasicService {
   public getPresent_unions(upzilaSelected: string) {
     return ['Rudghora', 'Dumuria'];
   }
-}//class
-//working
+}// class
+// working
 // {
 //   user_id: '1',
 //   first_name: '1',
