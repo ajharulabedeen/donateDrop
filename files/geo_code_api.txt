@@ -1,0 +1,146 @@
+Khulna DIV :
+http://127.0.0.1:8080/public/geocode/districts?divID=3
+[
+    {
+        "id": 20,
+        "name": "Jashore"
+    },
+    {
+        "id": 21,
+        "name": "Satkhira"
+    },
+    {
+        "id": 22,
+        "name": "Meherpur"
+    },
+    {
+        "id": 23,
+        "name": "Narail"
+    },
+    {
+        "id": 24,
+        "name": "Chuadanga"
+    },
+    {
+        "id": 25,
+        "name": "Kushtia"
+    },
+    {
+        "id": 26,
+        "name": "Magura"
+    },
+    {
+        "id": 27,
+        "name": "Khulna"
+    },
+    {
+        "id": 28,
+        "name": "Bagerhat"
+    },
+    {
+        "id": 29,
+        "name": "Jhenaidah"
+    }
+]
+
+Khulna Dist : 
+http://127.0.0.1:8080/public/geocode/upzillas?distID=27
+[
+    {
+        "id": 206,
+        "name": "Paikgasa"
+    },
+    {
+        "id": 207,
+        "name": "Fultola"
+    },
+    {
+        "id": 208,
+        "name": "Digholia"
+    },
+    {
+        "id": 209,
+        "name": "Rupsha"
+    },
+    {
+        "id": 210,
+        "name": "Terokhada"
+    },
+    {
+        "id": 211,
+        "name": "Dumuria"
+    },
+    {
+        "id": 212,
+        "name": "Botiaghata"
+    },
+    {
+        "id": 213,
+        "name": "Dakop"
+    },
+    {
+        "id": 214,
+        "name": "Koyra"
+    }
+]
+
+Dumuria Upzilla:
+http://127.0.0.1:8080/public/geocode/unions?upzID=211
+[
+    {
+        "id": 1908,
+        "name": "Dumuria"
+    },
+    {
+        "id": 1909,
+        "name": "Magurghona"
+    },
+    {
+        "id": 1910,
+        "name": "Vandarpara"
+    },
+    {
+        "id": 1911,
+        "name": "Sahos"
+    },
+    {
+        "id": 1912,
+        "name": "Rudaghora"
+    },
+    {
+        "id": 1913,
+        "name": "Ghutudia"
+    },
+    {
+        "id": 1914,
+        "name": "Shovna"
+    },
+    {
+        "id": 1915,
+        "name": "Khornia"
+    },
+    {
+        "id": 1916,
+        "name": "Atlia"
+    },
+    {
+        "id": 1917,
+        "name": "Dhamalia"
+    },
+    {
+        "id": 1918,
+        "name": "Raghunathpur"
+    },
+    {
+        "id": 1919,
+        "name": "Rongpur"
+    },
+    {
+        "id": 1920,
+        "name": "Shorafpur"
+    },
+    {
+        "id": 1921,
+        "name": "Magurkhali"
+    }
+]
