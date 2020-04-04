@@ -91,8 +91,8 @@ export class BasicService {
   }
 
   public getPresent_districts(divID: string) {
-    return this.http.get(
-      'http://127.0.0.1:8080/public/geocode/districts?divID='+divID, this.authService.getHeader()
+    return this.http.post(
+      'http://127.0.0.1:8080/public/geocode/districts?divID='+ divID, this.authService.getHeader()
     );
     // if (division == 'Dhaka') {
     //   return ['Dhaka', 'Gazipur', 'Kalna'];

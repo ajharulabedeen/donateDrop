@@ -214,10 +214,14 @@ export class BasicComponent implements OnInit {
     return basic;
   }
 
-  public getPresent_districts(present_divisionselected: string) {
+  public getPresent_districts(divID: string) {
     this.present_upzillas = new Array();
+    divID = '3';
     console.log('selected Division  : ' + this.present_division);
-    this.present_districts = this.basicService.getPresent_districts(present_divisionselected);
+    this.basicService.getPresent_districts(divID)
+      .subscribe((res: Response) => {
+        console.log(res);
+      });
   }
 
   public getPresent_upzillas(present_districtselected: string) {
@@ -247,5 +251,9 @@ export class BasicComponent implements OnInit {
 
   divisionPrint() {
     console.log('present_division : ' + this.present_division);
+  }
+
+  divIDPrint(id: string) {
+    console.log("divID : " + id);
   }
 }//class

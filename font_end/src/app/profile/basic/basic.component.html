@@ -130,7 +130,7 @@
                           (click)="getPresent_districts(present_division)"
                   >
                     <option *ngFor="let d of present_divisions">
-                      {{d._name}}
+                      <span (click)="divIDPrint(d.id)" >{{d._name}}</span>
                     </option>
                     <!--<option value="d">{{d}}</option>-->
                   </select>
@@ -148,7 +148,7 @@
                           (click)="getPresent_upzillas(present_district)"
                   >
                     <option *ngFor="let d of present_districts">
-                      {{d}}
+                      <span>{{d}}</span>
                     </option>
                     <!--<option value="d">{{d}}</option>-->
                   </select>
