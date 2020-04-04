@@ -188,6 +188,7 @@
                 </div>
               </div>
             </div>
+            <!-- present street address -->
             <div class="col-md-12">
               <div class="form-group">
                 <label>Street Address</label>
@@ -201,18 +202,17 @@
           <!--start : permanent address-->
           <div class="row">
             <h4>Permanent Address</h4>
-            <!--division-->
+            <!-- permanent division-->
             <div class="col-md-2">
               <label>Division</label>
               <div class="form-group">
                 <div class="form-group">
-                  <select [disabled]='!profileEdit' [(ngModel)]="p_division"
+                  <select [disabled]='!profileEdit' [(ngModel)]="permanent_division"
                           class="form-control select2 select2-hidden-accessible"
                           style="width: 100%;" tabindex="-1" aria-hidden="true"
-                          (click)="getdistricts(p_division)"
+                          (click)="getPermanent_districts(permanent_division)"
                   >
                     <option *ngFor="let div of present_divisions; let i=index">
-                      <!--{{d[i]["name"]}}-->
                       {{div._name}}
                     </option>
                     <!--<option value="d">{{d}}</option>-->
@@ -220,7 +220,7 @@
                 </div>
               </div>
             </div>
-            <!--district-->
+            <!-- permanent district-->
             <div class="col-md-2">
               <label>District</label>
               <div class="form-group">
@@ -230,15 +230,15 @@
                           style="width: 100%;" tabindex="-1" aria-hidden="true"
                           (click)="getUpzillas(p_district)"
                   >
-                    <option *ngFor="let d of districts">
-                      {{d}}
+                    <option *ngFor="let d of permanent_districts">
+                      {{d.name}}
                     </option>
                     <!--<option value="d">{{d}}</option>-->
                   </select>
                 </div>
               </div>
             </div>
-            <!--upzilla-->
+            <!-- permanent upzilla-->
             <div class="col-md-2">
               <label>Upzilla</label>
               <div class="form-group">
@@ -255,7 +255,7 @@
                 </div>
               </div>
             </div>
-            <!--unions-->
+            <!-- permanent unions-->
             <div class="col-md-2">
               <label>Unions</label>
               <div class="form-group">
@@ -271,6 +271,7 @@
                 </div>
               </div>
             </div>
+            <!-- present street address -->
             <div class="col-md-12">
               <div class="form-group">
                 <label>Street Address</label>
