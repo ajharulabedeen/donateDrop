@@ -225,10 +225,10 @@
               <label>District</label>
               <div class="form-group">
                 <div class="form-group">
-                  <select [disabled]='!profileEdit' [(ngModel)]="p_district"
+                  <select [disabled]='!profileEdit' [(ngModel)]="permanent_district"
                           class="form-control select2 select2-hidden-accessible"
                           style="width: 100%;" tabindex="-1" aria-hidden="true"
-                          (click)="getUpzillas(p_district)"
+                          (click)="getPermanent_upzillas(permanent_district)"
                   >
                     <option *ngFor="let d of permanent_districts">
                       {{d.name}}
@@ -243,13 +243,13 @@
               <label>Upzilla</label>
               <div class="form-group">
                 <div class="form-group">
-                  <select [disabled]='!profileEdit' [(ngModel)]="p_upzilla"
+                  <select [disabled]='!profileEdit' [(ngModel)]="permanent_upzilla"
                           class="form-control select2 select2-hidden-accessible"
                           style="width: 100%;" tabindex="-1" aria-hidden="true"
-                          (click)="getUnions(p_upzilla)"
+                          (click)="getPermanent_unions(permanent_upzilla)"
                   >
-                    <option *ngFor="let up of upzillas">
-                      {{up}}
+                    <option *ngFor="let up of permanent_upzillas">
+                      {{up.name}}
                     </option>
                   </select>
                 </div>

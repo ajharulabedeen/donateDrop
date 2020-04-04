@@ -62,6 +62,8 @@ export class BasicComponent implements OnInit {
   present_street_address: string;
 
   permanent_districts = new Array();
+  permanent_upzillas = new Array();
+  permanent_unions = new Array();
   permanent_division: string;
   permanent_district: string;
   permanent_upzilla: string;
@@ -176,7 +178,6 @@ export class BasicComponent implements OnInit {
     console.log('this.basicExist  : ' + this.basicExist);
 
   }// ngOnInint.
-
 
   public editProfile() {
     this.profileEdit = !this.profileEdit;
@@ -310,18 +311,22 @@ export class BasicComponent implements OnInit {
             // this.present_divisions.push(res[index]['name']);
             this.permanent_districts.push(dist);
           }
+          // refactor : clicking in drop down making other empty, after selection list will empty.
+          this.permanent_upzillas = new Array();
+          this.permanent_unions = new Array();
         });
     }
   }
 
   // after districts selection
   public getPermanent_upzillas(present_districtselected: string) {
-    console.log('selected District  : ' + this.present_district);
-    var distID = this.present_districts.find(({name}) => name === this.present_district);
+    console.log('selected District  : ' + this.permanent_district);
+    var distID = this.permanent_districts.find(({name}) => name === this.permanent_district);
     console.log('distID : ' + distID);
     distID = distID['id'];
     console.log('distID : ' + distID);
-    this.present_upzillas = new Array();
+    this.permanent_upzillas = new Array();
+    // refactor :
     this.basicService.getPresent_upzillas(distID)
       .subscribe((res: Response) => {
         for (const index in res) {
@@ -329,7 +334,7 @@ export class BasicComponent implements OnInit {
           upz.id = res[index]['id'];
           upz.name = res[index]['name'];
           // this.present_divisions.push(res[index]['name']);
-          this.present_upzillas.push(upz);
+          this.permanent_upzillas.push(upz);
         }
       });
   }
