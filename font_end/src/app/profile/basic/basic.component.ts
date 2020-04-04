@@ -336,18 +336,20 @@ export class BasicComponent implements OnInit {
           // this.present_divisions.push(res[index]['name']);
           this.permanent_upzillas.push(upz);
         }
+        this.permanent_unions = new Array();
       });
   }
 
   // after upzillas selection
   public getPermanent_unions(upzilaSelected: string) {
-    console.log('selected Upzillas: ' + this.present_upzilla);
-    var upzID = this.present_upzillas.find(({name}) => name === this.present_upzilla);
+    console.log('selected Unions : ' + this.permanent_upzilla);
+    var upzID = this.permanent_upzillas.find(({name}) => name === this.permanent_upzilla);
     // console.log(this.present_upzillas);
     console.log('upzID : ' + upzID);
     upzID = upzID['id'];
     console.log('upzID : ' + upzID);
-    this.present_unions = new Array();
+    this.permanent_unions = new Array();
+    // refactor :
     this.basicService.getPresent_unions(upzID)
       .subscribe((res: Response) => {
         for (const index in res) {
@@ -355,7 +357,7 @@ export class BasicComponent implements OnInit {
           union.id = res[index]['id'];
           union.name = res[index]['name'];
           // this.present_divisions.push(res[index]['name']);
-          this.present_unions.push(union);
+          this.permanent_unions.push(union);
         }
       });
     console.log('selected Upzilla  : ' + this.present_upzilla);
