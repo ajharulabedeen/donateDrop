@@ -215,6 +215,7 @@ export class BasicComponent implements OnInit {
     return basic;
   }
 
+  // after division selection
   public getPresent_districts(present_division: string) {
     if (this.present_division != null) {
       var divID = '3';
@@ -238,9 +239,24 @@ export class BasicComponent implements OnInit {
     }
   }
 
+  // after districts selection
   public getPresent_upzillas(present_districtselected: string) {
     console.log('selected District  : ' + this.present_district);
-    this.present_upzillas = this.basicService.getPresent_upzillas(present_districtselected);
+    var distID = this.present_districts.find(({name}) => name === this.present_district);
+    console.log('distID : ' + distID);
+    distID = distID['id'];
+    console.log('distID : ' + distID);
+    this.present_upzillas = new Array();
+    this.basicService.getPresent_upzillas(distID)
+      .subscribe((res: Response) => {
+        for (const index in res) {
+          var div = new Divisions();
+          div.id = res[index]['id'];
+          div.name = res[index]['name'];
+          // this.present_divisions.push(res[index]['name']);
+          this.present_upzillas.push(div);
+        }
+      });
   }
 
   public getPresent_unions(upzilaSelected: string) {

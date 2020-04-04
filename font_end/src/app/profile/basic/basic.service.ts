@@ -92,7 +92,7 @@ export class BasicService {
 
   public getPresent_districts(divID: string) {
     return this.http.post(
-      'http://127.0.0.1:8080/public/geocode/districts?divID='+ divID, this.authService.getHeader()
+      'http://127.0.0.1:8080/public/geocode/districts?divID=' + divID, this.authService.getHeader()
     );
     // if (division == 'Dhaka') {
     //   return ['Dhaka', 'Gazipur', 'Kalna'];
@@ -103,14 +103,17 @@ export class BasicService {
     // }
   }
 
-  public getPresent_upzillas(district: string) {
-    if (district == 'Dhaka') {
-      return ['Dhaka', 'DOhar', 'Nawab Ganj'];
-    } else if (district == 'Khulna') {
-      return ['Dumuria', 'Botighata', 'Fultola'];
-    } else if (district == 'Barishal') {
-      return ['Vola', 'Pirojpur'];
-    }
+  public getPresent_upzillas(distID: string) {
+    return this.http.post(
+      'http://127.0.0.1:8080/public/geocode/upzillas?distID=' + distID, this.authService.getHeader()
+    );
+    // if (district == 'Dhaka') {
+    //   return ['Dhaka', 'DOhar', 'Nawab Ganj'];
+    // } else if (district == 'Khulna') {
+    //   return ['Dumuria', 'Botighata', 'Fultola'];
+    // } else if (district == 'Barishal') {
+    //   return ['Vola', 'Pirojpur'];
+    // }
   }
 
   public getPresent_unions(upzilaSelected: string) {
