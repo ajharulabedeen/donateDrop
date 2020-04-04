@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {subscribeOn} from 'rxjs/operators';
 import {ThrowStmt, verifyHostBindings} from '@angular/compiler';
 import {Divisions} from './divisions.model';
+import {Districts} from './districts.model';
 
 @Component({
   selector: 'app-basic',
@@ -217,6 +218,7 @@ export class BasicComponent implements OnInit {
   public getPresent_districts(present_division: string) {
     if (this.present_division != null) {
       var divID = '3';
+      this.present_districts = new Array();
       divID = this.present_divisions.find(({name}) => name === this.present_division);
       console.log(divID);
       divID = divID['id'];
@@ -225,6 +227,13 @@ export class BasicComponent implements OnInit {
       this.basicService.getPresent_districts(divID)
         .subscribe((res: Response) => {
           console.log(res);
+          for (const index in res) {
+            var dist = new Districts();
+            dist.id = res[index]['id'];
+            dist.name = res[index]['name'];
+            // this.present_divisions.push(res[index]['name']);
+            this.present_districts.push(dist);
+          }
         });
     }
   }
@@ -255,7 +264,7 @@ export class BasicComponent implements OnInit {
   }
 
   divisionPrint() {
-    div = this.present_divisions.find(({name}) => name === this.present_division);
+    var div = this.present_divisions.find(({name}) => name === this.present_division);
     console.log(div);
     console.log('present_division : ' + this.present_division);
   }
