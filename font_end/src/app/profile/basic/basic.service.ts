@@ -116,8 +116,11 @@ export class BasicService {
     // }
   }
 
-  public getPresent_unions(upzilaSelected: string) {
-    return ['Rudghora', 'Dumuria'];
+  public getPresent_unions(upzID: string) {
+    return this.http.post(
+      'http://127.0.0.1:8080/public/geocode/unions?upzID=' + upzID, this.authService.getHeader()
+    );
+    // return ['Rudghora', 'Dumuria'];
   }
 }// class
 // working

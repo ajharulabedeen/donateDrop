@@ -6,6 +6,8 @@ import {subscribeOn} from 'rxjs/operators';
 import {ThrowStmt, verifyHostBindings} from '@angular/compiler';
 import {Divisions} from './divisions.model';
 import {Districts} from './districts.model';
+import {Unions} from './unions.model';
+import {Upzillas} from './upzillas.model';
 
 @Component({
   selector: 'app-basic',
@@ -250,18 +252,35 @@ export class BasicComponent implements OnInit {
     this.basicService.getPresent_upzillas(distID)
       .subscribe((res: Response) => {
         for (const index in res) {
-          var div = new Divisions();
-          div.id = res[index]['id'];
-          div.name = res[index]['name'];
+          var upz = new Upzillas();
+          upz.id = res[index]['id'];
+          upz.name = res[index]['name'];
           // this.present_divisions.push(res[index]['name']);
-          this.present_upzillas.push(div);
+          this.present_upzillas.push(upz);
         }
       });
   }
 
   public getPresent_unions(upzilaSelected: string) {
+    console.log('selected Upzillas: ' + this.present_upzilla);
+    var upzID = this.present_upzillas.find(({name}) => name === this.present_upzilla);
+    // console.log(this.present_upzillas);
+    console.log('upzID : ' + upzID);
+    upzID = upzID['id'];
+    console.log('upzID : ' + upzID);
+    this.present_unions = new Array();
+    this.basicService.getPresent_unions(upzID)
+      .subscribe((res: Response) => {
+        for (const index in res) {
+          var union = new Unions();
+          union.id = res[index]['id'];
+          union.name = res[index]['name'];
+          // this.present_divisions.push(res[index]['name']);
+          this.present_unions.push(union);
+        }
+      });
     console.log('selected Upzilla  : ' + this.present_upzilla);
-    this.present_unions = this.basicService.getPresent_unions(upzilaSelected);
+    // this.present_unions = this.basicService.getPresent_unions(upzilaSelected);
   }
 
   public getDivisions() {
