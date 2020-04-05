@@ -65,6 +65,7 @@ com\donatedrop\profile\ProfileBasic.class
 com\donatedrop\configs\GetDate.class
 com\donatedrop\configs\SpringApplicationContextInterface.class
 com\donatedrop\geocode\Service_GeoCode_I.class
+com\donatedrop\util\Utils.class
 com\donatedrop\util\DatabaseConfig.class
 com\donatedrop\profile\EmergencyContact.class
 com\donatedrop\geocode\Service_GeoCode_Impl.class

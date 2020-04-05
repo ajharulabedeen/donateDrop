@@ -37,6 +37,7 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         } else {
             stat.put("id", null);
         }
+        System.out.println(stat.toString());
         return stat;
     }
 
@@ -57,7 +58,7 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
             profileBasic = entityManager.find(ProfileBasic.class, Long.parseLong(id));
         } catch (Exception e) {
             System.out.println("Not Found!");
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         return profileBasic;
     }

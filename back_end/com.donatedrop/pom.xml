@@ -44,8 +44,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mobile</artifactId>
         </dependency>
-
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -55,7 +53,6 @@
             <artifactId>jjwt</artifactId>
             <version>${jjwt.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -73,24 +70,33 @@
                 <scope>runtime</scope>
             </dependency>-->
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
             <version>2.0.1.RELEASE</version>
         </dependency>
         <dependency>
-		<groupId>org.projectlombok</groupId>
-		<artifactId>lombok</artifactId>
-		<version>1.18.12</version>
-		<scope>provided</scope>
-	</dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.5.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.4.2</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>

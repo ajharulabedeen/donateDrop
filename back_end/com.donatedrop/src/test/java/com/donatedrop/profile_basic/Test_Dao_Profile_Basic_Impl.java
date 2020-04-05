@@ -11,33 +11,40 @@ import com.donatedrop.profile.Dao_Profile_Basic_I;
 import com.donatedrop.profile.EmergencyContact;
 import com.donatedrop.profile.ProfileBasic;
 import com.donatedrop.util.Utils;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.File;  // Import the File class
+import java.io.FileNotFoundException;  // Import this class to handle errors
+import java.util.Scanner; // Import the Scanner class to read text files
+
+import org.junit.*;
 
 import static org.junit.Assert.*;
 
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.annotation.Order;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author G7
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Test_Dao_Profile_Basic_Impl {
 
     @Autowired
     Dao_Profile_Basic_I dao_Profile_Basic_I;
+
+    public String id = "";
+    int count = 0;
 
     public Test_Dao_Profile_Basic_Impl() {
     }
@@ -61,57 +68,110 @@ public class Test_Dao_Profile_Basic_Impl {
     /**
      * April 5, 2020
      */
-
     @Test
-    public void test_save() {
-        System.out.println("\nProfile Basic Dao Test!\n");
+    @org.junit.jupiter.api.Order(1)
+    public void test1_save() {
+        Map<String, String> status = null;
+
         // Arrange
-        ProfileBasic profileBasic = new ProfileBasic();
-        profileBasic.setName("Khan Ajharul Abedeen");
+        try {
+            System.out.println("\nProfile Basic Dao Test!\n");
+            ProfileBasic profileBasic = new ProfileBasic();
+            profileBasic.setName("Khan Ajharul Abedeen");
 
-        Address address_present = new Address("Khulna", "Khulna", "Dumuria", "Rudghora", "Mikshimil East");
-        profileBasic.setAddress_current(address_present);
-        Address address_permanet = new Address("Khulna", "Khulna", "Dumuria", "Rudghora", "Mikshimil East");
-        profileBasic.setAddress_permanent(address_permanet);
+            Address address_present = new Address("Khulna", "Khulna", "Dumuria", "Rudghora", "Mikshimil East");
+            profileBasic.setAddress_current(address_present);
+            Address address_permanet = new Address("Khulna", "Khulna", "Dumuria", "Rudghora", "Mikshimil East");
+            profileBasic.setAddress_permanent(address_permanet);
 
-        List<EmergencyContact> emergencyContacts = new ArrayList<>();
-        EmergencyContact emergencyContact1 = new EmergencyContact("Mahbub", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle");
-        EmergencyContact emergencyContact2 = new EmergencyContact("Prof. Altaf", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle");
-        emergencyContacts.add(emergencyContact1);
-        emergencyContacts.add(emergencyContact2);
-        profileBasic.setEmergency_contact(emergencyContacts);
+            List<EmergencyContact> emergencyContacts = new ArrayList<>();
+            EmergencyContact emergencyContact1 = new EmergencyContact("Mahbub", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle");
+            EmergencyContact emergencyContact2 = new EmergencyContact("Prof. Altaf", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle");
+            emergencyContacts.add(emergencyContact1);
+            emergencyContacts.add(emergencyContact2);
+            profileBasic.setEmergency_contact(emergencyContacts);
 
-        List<PhoneNumber> phoneNumbers = Arrays.asList(
-                new PhoneNumber("01717034420"),
-                new PhoneNumber("01717034420"),
-                new PhoneNumber("01712034420")
-        );
-        profileBasic.setPhone_number(phoneNumbers);
-        profileBasic.setGender("Male");
-        profileBasic.setBlood_Group("A+");
-        profileBasic.setAvailable("0");
-        profileBasic.setMaritalStatus("NO");
-        profileBasic.setProfession("Freelance");
-        profileBasic.setCare_of("Khan Atiar Rahman.");
-        profileBasic.setUserId(Utils.getLoggedUserID());
+            List<PhoneNumber> phoneNumbers = Arrays.asList(
+                    new PhoneNumber("01717034420"),
+                    new PhoneNumber("01717034420"),
+                    new PhoneNumber("01712034420")
+            );
+            profileBasic.setPhone_number(phoneNumbers);
+            profileBasic.setGender("Male");
+            profileBasic.setBlood_Group("A+");
+            profileBasic.setAvailable("0");
+            profileBasic.setMaritalStatus("NO");
+            profileBasic.setProfession("Freelance");
+            profileBasic.setCare_of("Khan Atiar Rahman.");
+            profileBasic.setUserId(Utils.getLoggedUserID());
 
 //        ACT
-        Map<String,String> status = dao_Profile_Basic_I.save(profileBasic);
-        System.out.println(status.get("id"));
+            status = dao_Profile_Basic_I.save(profileBasic);
+            System.out.println(status);
+            id = status.get("id");
+            System.out.println("\nID : " + id);
+            storeID(id);
+            System.out.println("Count : " + count++);
+        } catch (Exception e) {
+            storeID(id);
+        }
+//        Assert
+        assertEquals("OK", status.get("status"));
+    }
 
-        //Assert
-//        assertEquals("OK", status);
+    @Test
+    public void test2_findOne() {
+        id = getID();
+        ProfileBasic profileBasic = dao_Profile_Basic_I.findOne(id);
+//        System.out.println("\n\n---\n" + profileBasic.toString() + "\n---\n\n");
+        assertEquals(id, profileBasic.getId().toString());
+//        try {
+//            ProfileBasic profileBasic = dao_Profile_Basic_I.findOne(id);
+//            System.out.println("\n\n---\n" + profileBasic.toString() + "\n---\n\n");
+//            assertEquals(id, profileBasic.getId().toString());
+//        } catch (Exception e) {
+//            System.out.println("FIND ONE FAILED!");
+//        }
     }
 
     //    @Test
-    public void test_findOne() {
-        ProfileBasic profileBasic = dao_Profile_Basic_I.findOne("28");
-//        System.out.println("\n\n---\n" + profileBasic.toString() + "\n---\n\n");
-        assertEquals("28", profileBasic.getId().toString());
+    public void test3_delete() {
+        id = getID();
+        String s2 = getID();
+        System.out.println("S2");
+        System.out.println("-s2" + s2 + "-");
+        System.out.println(">" + id + "<");
+        System.out.println(id);
     }
 
-    @Test
-    public void delete() {
-
+    public void storeID(String id) {
+        try {
+            FileWriter myWriter = new FileWriter("filename.txt");
+            myWriter.write(id);
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
     }
+
+    public String getID() {
+        String id = "";
+        try {
+            File myObj = new File("filename.txt");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                id = data;
+                System.out.println(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        return id;
+    }
+
 }//class
