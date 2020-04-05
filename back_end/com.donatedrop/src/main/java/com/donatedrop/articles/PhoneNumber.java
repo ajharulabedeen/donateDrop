@@ -5,6 +5,8 @@
  */
 package com.donatedrop.articles;
 
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +19,7 @@ import javax.persistence.Id;
  * @author G7
  */
 @Entity
+@NoArgsConstructor
 public class PhoneNumber implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -26,8 +29,11 @@ public class PhoneNumber implements Serializable {
 
     @Column
     private String number;
-    
-    
+
+    public PhoneNumber(String number) {
+        this.number = number;
+    }
+
     public Long getId() {
         return id;
     }

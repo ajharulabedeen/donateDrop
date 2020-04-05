@@ -5,60 +5,97 @@
  */
 package com.donatedrop.profile_basic;
 
+import com.donatedrop.articles.PhoneNumber;
+import com.donatedrop.profile.Address;
 import com.donatedrop.profile.Dao_Profile_Basic_I;
+import com.donatedrop.profile.EmergencyContact;
 import com.donatedrop.profile.ProfileBasic;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
+
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
- *
  * @author G7
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class Test_Dao_Profile_Basic_Impl {
-    
+
     @Autowired
     Dao_Profile_Basic_I dao_Profile_Basic_I;
-    
+
     public Test_Dao_Profile_Basic_Impl() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-     @Test
-     public void hello() {
-         System.out.println("\nProfile Basic Dao Test!\n");
-         ProfileBasic profileBasic = new ProfileBasic();
-         dao_Profile_Basic_I.save(profileBasic);
-     }
+    @Test
+    public void test_save() {
+        System.out.println("\nProfile Basic Dao Test!\n");
+        // Arrange
+        ProfileBasic profileBasic = new ProfileBasic();
+        profileBasic.setName("Khan Ajharul Abedeen");
 
+        Address address_present = new Address("Khulna", "Khulna", "Dumuria", "Rudghora", "Mikshimil East");
+        profileBasic.setAddress_current(address_present);
+        Address address_permanet = new Address("Khulna", "Khulna", "Dumuria", "Rudghora", "Mikshimil East");
+        profileBasic.setAddress_permanent(address_permanet);
 
+        List<EmergencyContact> emergencyContacts = new ArrayList<>();
+        EmergencyContact emergencyContact1 = new EmergencyContact("Mahbub", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle");
+        EmergencyContact emergencyContact2 = new EmergencyContact("Prof. Altaf", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle");
+        emergencyContacts.add(emergencyContact1);
+        emergencyContacts.add(emergencyContact2);
+        profileBasic.setEmergency_contact(emergencyContacts);
+
+        List<PhoneNumber> phoneNumbers = Arrays.asList(
+                new PhoneNumber("01717034420"),
+                new PhoneNumber("01717034420"),
+                new PhoneNumber("01712034420")
+        );
+        profileBasic.setPhone_number(phoneNumbers);
+        profileBasic.setGender("Male");
+        profileBasic.setBlood_Group("A+");
+        profileBasic.setAvailable("0");
+        profileBasic.setMaritalStatus("NO");
+        profileBasic.setProfession("Freelance");
+        profileBasic.setCare_of("Khan Atiar Rahman.");
+
+//        ACT
+        String status = dao_Profile_Basic_I.save(profileBasic);
+        System.out.println(status);
+
+        //Assert
+        assertEquals("OK", status);
+        assertEquals("OK", "OK");
+    }
 
 
 }//class

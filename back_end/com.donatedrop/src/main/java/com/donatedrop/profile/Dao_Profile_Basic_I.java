@@ -13,7 +13,7 @@ import com.donatedrop.profile.ProfileBasic;
  */
 public interface Dao_Profile_Basic_I {
     /**
-     * @return  id  after save the id will be returened.
+     * @return  id  after save the id will be returned.
      */
     public String save(ProfileBasic profileBasic);
     /**
@@ -24,7 +24,7 @@ public interface Dao_Profile_Basic_I {
     /**
      *  @param  id here id is the primary key of the BasicRepo, it is not the userID.
      *  @return ProfileBasic    here one profile basic will be returned.
-     *  @uses   currently not any use.
+     *  @implNote  Not in user now.ff
      */
     public ProfileBasic findOne( String id);
     /**

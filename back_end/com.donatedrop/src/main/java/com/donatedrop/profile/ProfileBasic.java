@@ -9,14 +9,7 @@ import com.donatedrop.articles.PhoneNumber;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 /**
@@ -65,19 +58,19 @@ public class ProfileBasic implements Serializable {
     @Column(name = "available")
     private String available;
     
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "address_permanent")
     private Address address_permanent;
     
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_current")
     private Address address_current;
     
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "phone_number") 
     private List<PhoneNumber> phone_number;
     
-    @OneToMany
+    @OneToMany (cascade = CascadeType.ALL)
     @JoinColumn(name = "emergency_contact") 
     private List<EmergencyContact> emergency_contact;
         

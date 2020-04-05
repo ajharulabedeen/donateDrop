@@ -5,6 +5,9 @@
  */
 package com.donatedrop.profile;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +20,8 @@ import javax.persistence.Id;
  * @author G7
  */
 @Entity
+//@AllArgsConstructor
+@NoArgsConstructor
 public class Address implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,9 +49,16 @@ public class Address implements Serializable {
     
     @Column
     private String street_address;
-    
-    
-    
+
+    //lombok dont show param hints in intelJ
+    public Address(String division, String district, String upzilla, String union_ward, String street_address) {
+        this.division = division;
+        this.district = district;
+        this.upzilla = upzilla;
+        this.union_ward = union_ward;
+        this.street_address = street_address;
+    }
+
     public Long getId() {
         return id;
     }

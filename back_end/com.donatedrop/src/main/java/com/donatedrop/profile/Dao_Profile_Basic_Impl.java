@@ -5,9 +5,10 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 @Component
-@org.springframework.transaction.annotation.Transactional
+@Transactional
 public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
 
     @PersistenceContext
@@ -15,10 +16,17 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
 
     @Override
     public String save(ProfileBasic profileBasic) {
-        System.out.println("EntityManager : " + entityManager.toString());
-        System.out.println("\nProfile Basic Save! Yet to implement!\n");
-        entityManager.persist(profileBasic);
-        return profileBasic.getId().toString();
+        String status = "";
+        try {
+            entityManager.persist(profileBasic);
+            status="OK";
+        } catch (Exception e) {
+            status="FAIL";
+            System.out.println("Profile Save Fail!");
+            //refactor : separate log file.
+            e.printStackTrace();
+        }
+        return status;
     }
 
     @Override

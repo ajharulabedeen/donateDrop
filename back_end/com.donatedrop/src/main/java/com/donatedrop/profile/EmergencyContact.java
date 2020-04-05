@@ -5,6 +5,8 @@
  */
 package com.donatedrop.profile;
 
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,10 +16,12 @@ import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
 /**
+ * The type Emergency contact.
  *
  * @author G7
  */
 @Entity
+@NoArgsConstructor
 public class EmergencyContact implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -36,10 +40,17 @@ public class EmergencyContact implements Serializable {
     private String address;
     @Column
     private String relation;
-    
-    
-    
-    
+
+
+
+    public EmergencyContact(String name, String phone, String mail, String address, String relation) {
+        this.name = name;
+        this.phone = phone;
+        this.mail = mail;
+        this.address = address;
+        this.relation = relation;
+    }
+
     public Long getId() {
         return id;
     }
