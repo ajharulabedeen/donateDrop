@@ -10,6 +10,7 @@ import com.donatedrop.profile.Address;
 import com.donatedrop.profile.Dao_Profile_Basic_I;
 import com.donatedrop.profile.EmergencyContact;
 import com.donatedrop.profile.ProfileBasic;
+import com.donatedrop.util.Utils;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -87,6 +88,7 @@ public class Test_Dao_Profile_Basic_Impl {
         profileBasic.setMaritalStatus("NO");
         profileBasic.setProfession("Freelance");
         profileBasic.setCare_of("Khan Atiar Rahman.");
+        profileBasic.setUserId(Utils.getLoggedUserID());
 
 //        ACT
         String status = dao_Profile_Basic_I.save(profileBasic);
