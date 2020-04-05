@@ -7,6 +7,8 @@ package com.donatedrop.profile;
 
 import com.donatedrop.profile.ProfileBasic;
 
+import java.util.Map;
+
 /**
  *
  * @author G7
@@ -15,7 +17,7 @@ public interface Dao_Profile_Basic_I {
     /**
      * @return  id  after save the id will be returned.
      */
-    public String save(ProfileBasic profileBasic);
+    public Map<String,String> save(ProfileBasic profileBasic);
     /**
      * @return  boolean status will be returned as "0" or "1".
      */

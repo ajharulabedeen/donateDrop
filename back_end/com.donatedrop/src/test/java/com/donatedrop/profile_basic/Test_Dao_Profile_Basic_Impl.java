@@ -27,6 +27,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author G7
@@ -61,7 +62,7 @@ public class Test_Dao_Profile_Basic_Impl {
      * April 5, 2020
      */
 
-//    @Test
+    @Test
     public void test_save() {
         System.out.println("\nProfile Basic Dao Test!\n");
         // Arrange
@@ -95,18 +96,22 @@ public class Test_Dao_Profile_Basic_Impl {
         profileBasic.setUserId(Utils.getLoggedUserID());
 
 //        ACT
-        String status = dao_Profile_Basic_I.save(profileBasic);
-        System.out.println(status);
+        Map<String,String> status = dao_Profile_Basic_I.save(profileBasic);
+        System.out.println(status.get("id"));
 
         //Assert
-        assertEquals("OK", status);
+//        assertEquals("OK", status);
     }
 
-    @Test
+    //    @Test
     public void test_findOne() {
         ProfileBasic profileBasic = dao_Profile_Basic_I.findOne("28");
 //        System.out.println("\n\n---\n" + profileBasic.toString() + "\n---\n\n");
         assertEquals("28", profileBasic.getId().toString());
     }
 
+    @Test
+    public void delete() {
+
+    }
 }//class

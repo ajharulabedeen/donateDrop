@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 @Transactional
@@ -15,18 +17,27 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
     private EntityManager entityManager;
 
     @Override
-    public String save(ProfileBasic profileBasic) {
+    public Map<String, String> save(ProfileBasic profileBasic) {
         String status = "";
+        String id = "";
         try {
             entityManager.persist(profileBasic);
             status = "OK";
+            id = profileBasic.getId().toString();
         } catch (Exception e) {
             status = "FAIL";
             System.out.println("Profile Save Fail!");
             //refactor : separate log file.
             e.printStackTrace();
         }
-        return status;
+        Map<String, String> stat = new HashMap<>();
+        stat.put("status", status);
+        if (status.equals("OK")) {
+            stat.put("id", id);
+        } else {
+            stat.put("id", null);
+        }
+        return stat;
     }
 
     @Override
