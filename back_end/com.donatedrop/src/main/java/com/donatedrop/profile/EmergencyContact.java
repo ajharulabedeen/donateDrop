@@ -81,7 +81,13 @@ public class EmergencyContact implements Serializable {
 
     @Override
     public String toString() {
-        return "com.donatedrop.articles.EmergencyContact[ id=" + id + " ]";
+        return "EmergencyContact{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", mail='" + mail + '\'' +
+                ", address='" + address + '\'' +
+                ", relation='" + relation + '\'' +
+                '}';
     }
-    
 }

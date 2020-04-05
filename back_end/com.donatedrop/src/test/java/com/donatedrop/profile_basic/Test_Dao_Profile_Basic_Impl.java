@@ -57,7 +57,11 @@ public class Test_Dao_Profile_Basic_Impl {
     public void tearDown() {
     }
 
-    @Test
+    /**
+     * April 5, 2020
+     */
+
+//    @Test
     public void test_save() {
         System.out.println("\nProfile Basic Dao Test!\n");
         // Arrange
@@ -96,8 +100,13 @@ public class Test_Dao_Profile_Basic_Impl {
 
         //Assert
         assertEquals("OK", status);
-        assertEquals("OK", "OK");
     }
 
+    @Test
+    public void test_findOne() {
+        ProfileBasic profileBasic = dao_Profile_Basic_I.findOne("28");
+//        System.out.println("\n\n---\n" + profileBasic.toString() + "\n---\n\n");
+        assertEquals("28", profileBasic.getId().toString());
+    }
 
 }//class

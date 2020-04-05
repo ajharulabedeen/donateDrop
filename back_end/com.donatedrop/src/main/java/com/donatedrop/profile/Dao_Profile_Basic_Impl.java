@@ -19,9 +19,9 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         String status = "";
         try {
             entityManager.persist(profileBasic);
-            status="OK";
+            status = "OK";
         } catch (Exception e) {
-            status="FAIL";
+            status = "FAIL";
             System.out.println("Profile Save Fail!");
             //refactor : separate log file.
             e.printStackTrace();
@@ -41,7 +41,14 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
 
     @Override
     public ProfileBasic findOne(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ProfileBasic profileBasic = null;
+        try {
+            profileBasic = entityManager.find(ProfileBasic.class, Long.parseLong(id));
+        } catch (Exception e) {
+            System.out.println("Not Found!");
+            e.printStackTrace();
+        }
+        return profileBasic;
     }
 
     @Override

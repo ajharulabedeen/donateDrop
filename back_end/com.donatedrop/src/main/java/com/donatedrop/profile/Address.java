@@ -75,6 +75,18 @@ public class Address implements Serializable {
     }
 
     @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", division='" + division + '\'' +
+                ", district='" + district + '\'' +
+                ", upzilla='" + upzilla + '\'' +
+                ", union_ward='" + union_ward + '\'' +
+                ", street_address='" + street_address + '\'' +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Address)) {
@@ -85,11 +97,6 @@ public class Address implements Serializable {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.donatedrop.profile.Address[ id=" + id + " ]";
     }
 
     public String getDivision() {

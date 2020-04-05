@@ -109,7 +109,22 @@ public class ProfileBasic implements Serializable {
 
     @Override
     public String toString() {
-        return "com.donatedrop.profile.Profile_Basic[ id=" + id + " ]";
+        return "ProfileBasic{" +
+                "id=" + id +
+                ", userId='" + userId + '\'' +
+                ", name='" + name + '\'' +
+                ", birthDate='" + birthDate + '\'' +
+                ", care_of='" + care_of + '\'' +
+                ", gender='" + gender + '\'' +
+                ", maritalStatus='" + maritalStatus + '\'' +
+                ", profession='" + profession + '\'' +
+                ", blood_Group='" + blood_Group + '\'' +
+                ", available='" + available + '\'' +
+                ", address_permanent=" + address_permanent +
+                ", address_current=" + address_current +
+//                ", phone_number=" + phone_number +
+//                ", emergency_contact=" + emergency_contact +
+                '}';
     }
 
     public Address getAddress_current() {
@@ -215,5 +230,6 @@ public class ProfileBasic implements Serializable {
     public void setEmergency_contact(List<EmergencyContact> emergency_contact) {
         this.emergency_contact = emergency_contact;
     }
-    
+
+
 }
