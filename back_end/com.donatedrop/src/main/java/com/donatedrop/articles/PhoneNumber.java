@@ -64,7 +64,7 @@ public class PhoneNumber implements Serializable {
 
     @Override
     public String toString() {
-        return "com.donatedrop.articles.PhoneNumber[ id=" + id + " ]";
+        return "PhoneNumber{" + "id=" + id + ", number=" + number + '}';
     }
 
     public String getNumber() {

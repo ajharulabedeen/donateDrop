@@ -79,7 +79,15 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
 
     @Override
     public ProfileBasic findOneByUser(String userId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT *FROM profilebasic WHERE user_id =" + userId;
+        ProfileBasic profileBasic = (ProfileBasic) entityManager
+                .createNativeQuery(sql, ProfileBasic.class)
+                .getResultList()
+                .get(0);
+        //to avoid lazy init error.
+        profileBasic.getEmergency_contact().forEach(c -> {});
+        profileBasic.getPhone_number().forEach(p -> {});
+        return profileBasic;
     }
 
     @Override
@@ -88,20 +96,11 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
     }
 
     @Override
-    public void deleteAddress(String id) {
-//        ProfileBasic profileBasic = entityManager.find(ProfileBasic.class, new Long("28"));
-//        profileBasic.setName("DDD");
-
-//        Address address = profileBasic.getAddress_current();
+    public Map<String, String> deleteAddress(String id) {
         Address address = entityManager.find(Address.class, new Long("37"));
         address.setDivision("KDK)");
-        System.out.println("\n\n" + address.toString() + "\n\n");
-//        entityManager.remove(address);
         entityManager.merge(address);
-
-        //        profileBasic.setAddress_current(address);
-//        System.out.println("\n\n" + profileBasic.toString() + "\n\n");
-//        entityManager.merge(profileBasic);
-
+        return null;
     }
+
 }

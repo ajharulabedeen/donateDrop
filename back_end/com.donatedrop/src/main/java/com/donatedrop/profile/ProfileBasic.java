@@ -74,7 +74,6 @@ public class ProfileBasic implements Serializable {
     @JoinColumn(name = "emergency_contact")
     private List<EmergencyContact> emergency_contact;
 
-
     public Long getId() {
         return id;
     }
@@ -82,7 +81,6 @@ public class ProfileBasic implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
 
     @Override
     public int hashCode() {
@@ -106,22 +104,22 @@ public class ProfileBasic implements Serializable {
 
     @Override
     public String toString() {
-        return "ProfileBasic{" +
-                "id=" + id +
-                ", userId='" + userId + '\'' +
-                ", name='" + name + '\'' +
-                ", birthDate='" + birthDate + '\'' +
-                ", care_of='" + care_of + '\'' +
-                ", gender='" + gender + '\'' +
-                ", maritalStatus='" + maritalStatus + '\'' +
-                ", profession='" + profession + '\'' +
-                ", blood_Group='" + blood_Group + '\'' +
-                ", available='" + available + '\'' +
-                ", address_permanent=" + address_permanent +
-                ", address_current=" + address_current +
-//                ", phone_number=" + phone_number +
-//                ", emergency_contact=" + emergency_contact +
-                '}';
+        return "ProfileBasic{"
+                + "id=" + id
+                + ", userId='" + userId + '\''
+                + ", name='" + name + '\''
+                + ", birthDate='" + birthDate + '\''
+                + ", care_of='" + care_of + '\''
+                + ", gender='" + gender + '\''
+                + ", maritalStatus='" + maritalStatus + '\''
+                + ", profession='" + profession + '\''
+                + ", blood_Group='" + blood_Group + '\''
+                + ", available='" + available + '\''
+                + ", \nAddress_permanent=\n" + address_permanent
+                + ", \nAddress_current=\n" + address_current
+                + ", \nPhone_number=\n" + phone_number
+                + ", \nEmergency_contact=\n" + emergency_contact
+                + '}';
     }
 
     public Address getAddress_current() {
@@ -227,6 +225,5 @@ public class ProfileBasic implements Serializable {
     public void setEmergency_contact(List<EmergencyContact> emergency_contact) {
         this.emergency_contact = emergency_contact;
     }
-
 
 }

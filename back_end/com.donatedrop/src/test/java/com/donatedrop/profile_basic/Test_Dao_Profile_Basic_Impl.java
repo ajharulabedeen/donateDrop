@@ -127,7 +127,7 @@ public class Test_Dao_Profile_Basic_Impl {
         assertEquals(id, profileBasic.getId().toString());
     }
 
-    @Test
+    //    @Test
     public void test3_delete() {
         id = getID();
         Map<String, String> response = new HashMap<>();
@@ -137,7 +137,16 @@ public class Test_Dao_Profile_Basic_Impl {
             System.out.println("Test Delete Fail!");
         }
         System.out.println("response (test) : " + response.toString());
-        assertEquals("OK",response.get("status"));
+        assertEquals("OK", response.get("status"));
+    }
+
+    @Test
+    public void test4_findOne() {
+        String userID = "13";
+        ProfileBasic profileBasic = dao_Profile_Basic_I.findOneByUser("13");
+//        System.out.println("\nTest : \n" + profileBasic.toString() + "\n\n");
+//        System.out.println("\nTest : \n" + profileBasic.getPhone_number().toString() + "\n\n");
+        assertEquals(userID, profileBasic.getUserId());
     }
 
 //    Helpers : 
