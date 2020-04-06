@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import javax.xml.transform.sax.SAXSource;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,13 +55,13 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         try {
             ProfileBasic profileBasic = entityManager.find(ProfileBasic.class, new Long(id));
             entityManager.remove(profileBasic);
-            response.put("status","OK");
+            response.put("status", "OK");
         } catch (Exception e) {
             System.out.println("Profile Basic Delete Fail!");
-            response.put("status","FAIL");
+            response.put("status", "FAIL");
 //            e.printStackTrace();
         }
-        System.out.println("response (dao) : "+ response.toString());
+        System.out.println("response (dao) : " + response.toString());
         return response;
     }
 
@@ -86,4 +87,21 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public void deleteAddress(String id) {
+//        ProfileBasic profileBasic = entityManager.find(ProfileBasic.class, new Long("28"));
+//        profileBasic.setName("DDD");
+
+//        Address address = profileBasic.getAddress_current();
+        Address address = entityManager.find(Address.class, new Long("37"));
+        address.setDivision("KDK)");
+        System.out.println("\n\n" + address.toString() + "\n\n");
+//        entityManager.remove(address);
+        entityManager.merge(address);
+
+        //        profileBasic.setAddress_current(address);
+//        System.out.println("\n\n" + profileBasic.toString() + "\n\n");
+//        entityManager.merge(profileBasic);
+
+    }
 }

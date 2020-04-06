@@ -39,4 +39,6 @@ public interface Dao_Profile_Basic_I {
      */
     public ProfileBasic findOneByUser( String userId);
     public String basicExist( String userId );
+
+    public void deleteAddress(String id);
 }
