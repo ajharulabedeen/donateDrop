@@ -54,14 +54,18 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         Map<String, String> response = new HashMap<>();
         try {
             ProfileBasic profileBasic = entityManager.find(ProfileBasic.class, new Long(id));
-            entityManager.remove(profileBasic);
-            response.put("status", "OK");
+            if (profileBasic == null) {
+                System.out.println("No entity found!");
+                response.put("status", "FAIL");
+            } else {
+                entityManager.remove(profileBasic);
+                response.put("status", "OK");
+            }
         } catch (Exception e) {
             System.out.println("Profile Basic Delete Fail!");
-            response.put("status", "FAIL");
 //            e.printStackTrace();
         }
-        System.out.println("response (dao) : " + response.toString());
+//        System.out.println("response (dao) : " + response.toString());
         return response;
     }
 
@@ -85,8 +89,10 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
                 .getResultList()
                 .get(0);
         //to avoid lazy init error.
-        profileBasic.getEmergency_contact().forEach(c -> {});
-        profileBasic.getPhone_number().forEach(p -> {});
+        profileBasic.getEmergency_contact().forEach(c -> {
+        });
+        profileBasic.getPhone_number().forEach(p -> {
+        });
         return profileBasic;
     }
 

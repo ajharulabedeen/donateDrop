@@ -68,7 +68,7 @@ public class Test_Dao_Profile_Basic_Impl {
     /**
      * April 5, 2020
      */
-//    @Test
+    @Test
     @org.junit.jupiter.api.Order(1)
     public void test1_save() {
         Map<String, String> status = null;
@@ -119,7 +119,7 @@ public class Test_Dao_Profile_Basic_Impl {
         assertEquals("OK", status.get("status"));
     }
 
-    //    @Test
+    @Test
     public void test2_findOne() {
         id = getID();
         ProfileBasic profileBasic = dao_Profile_Basic_I.findOne(id);
@@ -127,7 +127,7 @@ public class Test_Dao_Profile_Basic_Impl {
         assertEquals(id, profileBasic.getId().toString());
     }
 
-    //    @Test
+    @Test
     public void test3_delete() {
         id = getID();
         Map<String, String> response = new HashMap<>();
