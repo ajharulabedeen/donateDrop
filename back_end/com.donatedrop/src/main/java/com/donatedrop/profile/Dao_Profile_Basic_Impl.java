@@ -48,13 +48,19 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
     }
 
     @Override
-    public Map<String,String> delete(String id) {
+    public Map<String, String> delete(String id) {
+        System.out.println("DAO Delete: ");
         Map<String, String> response = new HashMap<>();
         try {
-            entityManager.remove(id);
+            ProfileBasic profileBasic = entityManager.find(ProfileBasic.class, new Long(id));
+            entityManager.remove(profileBasic);
+            response.put("status","OK");
         } catch (Exception e) {
-        
+            System.out.println("Profile Basic Delete Fail!");
+            response.put("status","FAIL");
+//            e.printStackTrace();
         }
+        System.out.println("response (dao) : "+ response.toString());
         return response;
     }
 

@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.01 sec <<< FAILURE! - in com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl
-test1_save(com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl)  Time elapsed: 0.009 sec  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 36.741 sec <<< FAILURE! - in com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl
+test3_delete(com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl)  Time elapsed: 0.095 sec  <<< ERROR!
 java.lang.NullPointerException: null
-	at com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl.test1_save(Test_Dao_Profile_Basic_Impl.java:119)
+	at com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl.test3_delete(Test_Dao_Profile_Basic_Impl.java:140)
 

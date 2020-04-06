@@ -119,7 +119,7 @@ public class Test_Dao_Profile_Basic_Impl {
         assertEquals("OK", status.get("status"));
     }
 
-//    @Test
+    //    @Test
     public void test2_findOne() {
         id = getID();
         ProfileBasic profileBasic = dao_Profile_Basic_I.findOne(id);
@@ -130,14 +130,25 @@ public class Test_Dao_Profile_Basic_Impl {
     @Test
     public void test3_delete() {
         id = getID();
-        
+        Map<String, String> response = new HashMap<>();
+        try {
+            response = dao_Profile_Basic_I.delete(id);
+        } catch (Exception e) {
+            System.out.println("Test Delete Fail!");
+        }
+        System.out.println("response (test) : " + response.toString());
+        assertEquals("OK",response.get("status"));
     }
 
 //    Helpers : 
+
     /**
      * will store the last save id, that can be used for later for other method.
-     * Though there is question does it, right to a result from unit test, as main goal of the unit test is to keep the test as much as possible independent.
-     * @param id 
+     * Though there is question does it, right to a result from unit test, as
+     * main goal of the unit test is to keep the test as much as possible
+     * independent.
+     *
+     * @param id
      */
     public void storeID(String id) {
         try {
@@ -159,7 +170,7 @@ public class Test_Dao_Profile_Basic_Impl {
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
                 id = data;
-                System.out.println(data);
+//                System.out.println(data);
             }
             myReader.close();
         } catch (FileNotFoundException e) {
