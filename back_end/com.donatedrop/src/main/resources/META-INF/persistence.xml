@@ -22,6 +22,9 @@
     <class>com.donatedrop.geocode.Divisions</class>
     <class>com.donatedrop.geocode.Upazilas</class>
     <class>com.donatedrop.geocode.Unions</class>
+    <class>com.donatedrop.model.Emergencycontact</class>
+    <class>com.donatedrop.model.Profilebasic</class>
+    <class>com.donatedrop.model.Address</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/donate_drop?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

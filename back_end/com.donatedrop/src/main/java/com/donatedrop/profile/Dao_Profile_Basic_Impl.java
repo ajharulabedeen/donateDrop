@@ -30,15 +30,16 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
             //refactor : separate log file.
             e.printStackTrace();
         }
-        Map<String, String> stat = new HashMap<>();
-        stat.put("status", status);
+        Map<String, String> response = new HashMap<>();
+        response.put("status", status);
         if (status.equals("OK")) {
-            stat.put("id", id);
+            response.put("id", id);
         } else {
-            stat.put("id", null);
+            response.put("id", null);
         }
-        System.out.println(stat.toString());
-        return stat;
+        //refactor
+        System.out.println(response.toString());
+        return response;
     }
 
     @Override
@@ -47,8 +48,14 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
     }
 
     @Override
-    public String delete(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Map<String,String> delete(String id) {
+        Map<String, String> response = new HashMap<>();
+        try {
+            entityManager.remove(id);
+        } catch (Exception e) {
+        
+        }
+        return response;
     }
 
     @Override
@@ -58,7 +65,7 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
             profileBasic = entityManager.find(ProfileBasic.class, Long.parseLong(id));
         } catch (Exception e) {
             System.out.println("Not Found!");
-//            e.printStackTrace();
+            e.printStackTrace();
         }
         return profileBasic;
     }

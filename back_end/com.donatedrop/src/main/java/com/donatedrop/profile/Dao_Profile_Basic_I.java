@@ -22,7 +22,11 @@ public interface Dao_Profile_Basic_I {
      * @return  boolean status will be returned as "0" or "1".
      */
     public boolean update(ProfileBasic profileBasicUpdate);
-    public String delete(String id);
+    /**
+     * @param id PK of Profile basic.
+     * @return response will be back as HasMap.
+     */
+    public Map<String,String> delete(String id);
     /**
      *  @param  id here id is the primary key of the BasicRepo, it is not the userID.
      *  @return ProfileBasic    here one profile basic will be returned.

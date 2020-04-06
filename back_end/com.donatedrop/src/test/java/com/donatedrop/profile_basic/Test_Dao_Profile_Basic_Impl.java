@@ -33,7 +33,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.*;
 
 /**
- * @author G7
+ * @author ajharulabedeen@gmail.com
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -68,7 +68,7 @@ public class Test_Dao_Profile_Basic_Impl {
     /**
      * April 5, 2020
      */
-    @Test
+//    @Test
     @org.junit.jupiter.api.Order(1)
     public void test1_save() {
         Map<String, String> status = null;
@@ -119,31 +119,26 @@ public class Test_Dao_Profile_Basic_Impl {
         assertEquals("OK", status.get("status"));
     }
 
-    @Test
+//    @Test
     public void test2_findOne() {
         id = getID();
         ProfileBasic profileBasic = dao_Profile_Basic_I.findOne(id);
 //        System.out.println("\n\n---\n" + profileBasic.toString() + "\n---\n\n");
         assertEquals(id, profileBasic.getId().toString());
-//        try {
-//            ProfileBasic profileBasic = dao_Profile_Basic_I.findOne(id);
-//            System.out.println("\n\n---\n" + profileBasic.toString() + "\n---\n\n");
-//            assertEquals(id, profileBasic.getId().toString());
-//        } catch (Exception e) {
-//            System.out.println("FIND ONE FAILED!");
-//        }
     }
 
-    //    @Test
+    @Test
     public void test3_delete() {
         id = getID();
-        String s2 = getID();
-        System.out.println("S2");
-        System.out.println("-s2" + s2 + "-");
-        System.out.println(">" + id + "<");
-        System.out.println(id);
+        
     }
 
+//    Helpers : 
+    /**
+     * will store the last save id, that can be used for later for other method.
+     * Though there is question does it, right to a result from unit test, as main goal of the unit test is to keep the test as much as possible independent.
+     * @param id 
+     */
     public void storeID(String id) {
         try {
             FileWriter myWriter = new FileWriter("filename.txt");
