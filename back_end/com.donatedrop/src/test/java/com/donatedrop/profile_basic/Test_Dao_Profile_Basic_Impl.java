@@ -142,7 +142,7 @@ public class Test_Dao_Profile_Basic_Impl {
 
     @Test
     public void test4_findOneByUser() {
-        String userID = "12";
+        String userID = "13";
         ProfileBasic profileBasic = dao_Profile_Basic_I.findOneByUser(userID);
 //        System.out.println("\nTest : \n" + profileBasic+ "\n\n");
 //        System.out.println("\nTest : \n" + profileBasic.getPhone_number().toString() + "\n\n");
@@ -153,7 +153,22 @@ public class Test_Dao_Profile_Basic_Impl {
         }
     }
 
-//    Helpers : 
+    @Test
+    public void test5_basicExist() {
+        //test for ProfileBasic found
+        String userID_NotExist = "12";
+        Map<String, Boolean> resultNotExist = dao_Profile_Basic_I.basicExist(userID_NotExist);
+        System.out.println("\nNot Exist : " + resultNotExist + "\n");
+        assertEquals(resultNotExist.get("status"), false);
+        //test for ProfileBasic Not found
+        String userID_Exist = "13";
+        Map<String, Boolean> resultExist = dao_Profile_Basic_I.basicExist(userID_Exist);
+        System.out.println("\nExist : " + resultExist + "\n");
+        assertEquals(resultExist.get("status"), true);
+    }
+
+
+//    Helpers :
 
     /**
      * will store the last save id, that can be used for later for other method.

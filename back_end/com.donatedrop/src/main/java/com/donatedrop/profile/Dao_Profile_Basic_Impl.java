@@ -102,6 +102,13 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         return profileBasic;
     }
 
+    /**
+     * better to keep, basicExist and findOneByUser, separate.
+     * caue findOneByUser has child init, can be problem, if mulitple times called.
+     * @param userId
+     * @return
+     */
+
     @Override
     public Map<String, Boolean> basicExist(String userId) {
         Map<String, Boolean> result = new HashMap<>();
