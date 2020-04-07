@@ -126,10 +126,10 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
     }
 
     @Override
-    public Map<String, String> updatePresentAddress(Address addressUpdate, String userID) {
+    public Map<String, String> updatePresentAddress(Address addressPresentNew, String userID) {
         String sql = "SELECT *FROM profilebasic WHERE user_id =" + userID;
         Map<String, String> result = new HashMap<>();
-        // dont use find by one userID, it will init all childres.
+        // dont use find by one userID, it will init all children.
         List<ProfileBasic> list = entityManager
                 .createNativeQuery(sql, ProfileBasic.class)
                 .getResultList();
@@ -137,11 +137,11 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         Address addressOld = null;
         if (list.size() >= 1) {
             addressOld = list.get(0).getAddress_present();
-            addressOld.setDivision(addressUpdate.getDivision());
-            addressOld.setDistrict(addressUpdate.getDistrict());
-            addressOld.setUpzilla(addressUpdate.getUpzilla());
-            addressOld.setUnion_ward(addressUpdate.getUnion_ward());
-            addressOld.setStreet_address(addressUpdate.getStreet_address());
+            addressOld.setDivision(addressPresentNew.getDivision());
+            addressOld.setDistrict(addressPresentNew.getDistrict());
+            addressOld.setUpzilla(addressPresentNew.getUpzilla());
+            addressOld.setUnion_ward(addressPresentNew.getUnion_ward());
+            addressOld.setStreet_address(addressPresentNew.getStreet_address());
             try {
                 entityManager.merge(addressOld);
                 result.put(Utils.key(), Utils.ok());
@@ -153,4 +153,35 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         }
         return result;
     }
-}
+
+    @Override
+    public Map<String, String> updatePermanentAddress(Address addressPermanentNew, String userID) {
+        String sql = "SELECT *FROM profilebasic WHERE user_id =" + userID;
+        Map<String, String> result = new HashMap<>();
+        // dont use find by one userID, it will init all children.
+        List<ProfileBasic> list = entityManager
+                .createNativeQuery(sql, ProfileBasic.class)
+                .getResultList();
+        ProfileBasic profileBasic = null;
+        Address addressPermanentOld = null;
+        if (list.size() >= 1) {
+            addressPermanentOld = list.get(0).getAddress_permanent();
+            addressPermanentOld.setDivision(addressPermanentNew.getDivision());
+            addressPermanentOld.setDistrict(addressPermanentNew.getDistrict());
+            addressPermanentOld.setUpzilla(addressPermanentNew.getUpzilla());
+            addressPermanentOld.setUnion_ward(addressPermanentNew.getUnion_ward());
+            addressPermanentOld.setStreet_address(addressPermanentNew.getStreet_address());
+            try {
+                entityManager.merge(addressPermanentOld);
+                result.put(Utils.key(), Utils.ok());
+            } catch (Exception e) {
+                result.put(Utils.key(), Utils.fail());
+            }
+        } else {
+            result.put(Utils.key(), Utils.fail());
+        }
+        return result;
+    }
+    
+    
+}// class 

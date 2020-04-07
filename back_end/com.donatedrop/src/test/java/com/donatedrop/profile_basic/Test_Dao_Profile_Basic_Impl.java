@@ -173,22 +173,41 @@ public class Test_Dao_Profile_Basic_Impl {
         String userID = "13";
         String distNew = "Khulna";
         String divNew = "Khulna";
-        Address address = new Address();
-        address.setDivision(divNew);
-        address.setDistrict(distNew);
-        Map<String, String> result = dao_Profile_Basic_I.updatePresentAddress(address, userID);
+        Address addressPresentNew = new Address();
+        addressPresentNew.setDivision(divNew);
+        addressPresentNew.setDistrict(distNew);
+        Map<String, String> result = dao_Profile_Basic_I.updatePresentAddress(addressPresentNew, userID);
         System.out.println(result);
         assertEquals(result.get(Utils.key()), Utils.ok());
 
-        Address address1Saved = dao_Profile_Basic_I.findOneByUser(userID).getAddress_present();
-        String divSaved = address1Saved.getDistrict();
-        String distSaved = address1Saved.getDivision();
+        Address addressPresentSaved = dao_Profile_Basic_I.findOneByUser(userID).getAddress_present();
+        String divSaved = addressPresentSaved.getDistrict();
+        String distSaved = addressPresentSaved.getDivision();
+        assertEquals(divSaved, divNew);
+        assertEquals(distSaved, distNew);
+    }
+
+    //depedency : findOne By userID.
+    @Test
+    public void test7_permanentAddressUpdate() {
+        String userID = "13";
+        String distNew = "Khulna";
+        String divNew = "Khulna";
+        Address addressPermanentNew = new Address();
+        addressPermanentNew.setDivision(divNew);
+        addressPermanentNew.setDistrict(distNew);
+        Map<String, String> result = dao_Profile_Basic_I.updatePermanentAddress(addressPermanentNew, userID);
+        System.out.println(result);
+        assertEquals(result.get(Utils.key()), Utils.ok());
+
+        Address addressPermanentSaved = dao_Profile_Basic_I.findOneByUser(userID).getAddress_permanent();
+        String divSaved = addressPermanentSaved.getDistrict();
+        String distSaved = addressPermanentSaved.getDivision();
         assertEquals(divSaved, divNew);
         assertEquals(distSaved, distNew);
     }
 
 //    Helpers :
-
     /**
      * will store the last save id, that can be used for later for other method.
      * Though there is question does it, right to a result from unit test, as
