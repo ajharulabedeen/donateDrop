@@ -1,6 +1,7 @@
 package com.donatedrop.profile;
 
 import com.donatedrop.profile.ProfileBasic;
+import com.donatedrop.util.Utils;
 import com.sun.scenario.effect.impl.prism.PrFilterContext;
 import org.springframework.stereotype.Component;
 
@@ -103,12 +104,12 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
     }
 
     /**
-     * better to keep, basicExist and findOneByUser, separate.
-     * caue findOneByUser has child init, can be problem, if mulitple times called.
+     * better to keep, basicExist and findOneByUser, separate. caue
+     * findOneByUser has child init, can be problem, if mulitple times called.
+     *
      * @param userId
      * @return
      */
-
     @Override
     public Map<String, Boolean> basicExist(String userId) {
         Map<String, Boolean> result = new HashMap<>();
@@ -118,7 +119,7 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
                 .getResultList();
         if (list.size() >= 1) {
             result.put("status", true);
-        }else {
+        } else {
             result.put("status", false);
         }
         return result;
@@ -127,18 +128,29 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
     @Override
     public Map<String, String> updatePresentAddress(Address addressUpdate, String userID) {
         String sql = "SELECT *FROM profilebasic WHERE user_id =" + userID;
+        Map<String, String> result = new HashMap<>();
+        // dont use find by one userID, it will init all childres.
         List<ProfileBasic> list = entityManager
                 .createNativeQuery(sql, ProfileBasic.class)
                 .getResultList();
         ProfileBasic profileBasic = null;
         Address addressOld = null;
-        if(list.size() >= 1){
-            profileBasic = list.get(0);
-            addressOld = profileBasic.getAddress_present();
+        if (list.size() >= 1) {
+            addressOld = list.get(0).getAddress_present();
+            addressOld.setDivision(addressUpdate.getDivision());
+            addressOld.setDistrict(addressUpdate.getDistrict());
+            addressOld.setUpzilla(addressUpdate.getUpzilla());
+            addressOld.setUnion_ward(addressUpdate.getUnion_ward());
+            addressOld.setStreet_address(addressUpdate.getStreet_address());
+            try {
+                entityManager.merge(addressOld);
+                result.put(Utils.key(), Utils.ok());
+            } catch (Exception e) {
+                result.put(Utils.key(), Utils.fail());
+            }
+        } else {
+            result.put(Utils.key(), Utils.fail());
         }
-//        Address address = entityManager.find(Address.class, new Long("37"));
-        addressOld.setDivision("KDK)");
-        entityManager.merge(addressOld);
-        return null;
+        return result;
     }
 }

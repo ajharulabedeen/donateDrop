@@ -144,7 +144,7 @@ public class Test_Dao_Profile_Basic_Impl {
     public void test4_findOneByUser() {
         String userID = "13";
         ProfileBasic profileBasic = dao_Profile_Basic_I.findOneByUser(userID);
-//        System.out.println("\nTest : \n" + profileBasic+ "\n\n");
+        System.out.println("\nTest : \n" + profileBasic + "\n\n");
 //        System.out.println("\nTest : \n" + profileBasic.getPhone_number().toString() + "\n\n");
         if (profileBasic != null) {
             assertEquals(userID, profileBasic.getUserId());
@@ -167,6 +167,25 @@ public class Test_Dao_Profile_Basic_Impl {
         assertEquals(resultExist.get("status"), true);
     }
 
+    //depedency : findOne By userID.
+    @Test
+    public void test6_presentAddressUpdate() {
+        String userID = "13";
+        String distNew = "Khulna";
+        String divNew = "Khulna";
+        Address address = new Address();
+        address.setDivision(divNew);
+        address.setDistrict(distNew);
+        Map<String, String> result = dao_Profile_Basic_I.updatePresentAddress(address, userID);
+        System.out.println(result);
+        assertEquals(result.get(Utils.key()), Utils.ok());
+
+        Address address1Saved = dao_Profile_Basic_I.findOneByUser(userID).getAddress_present();
+        String divSaved = address1Saved.getDistrict();
+        String distSaved = address1Saved.getDivision();
+        assertEquals(divSaved, divNew);
+        assertEquals(distSaved, distNew);
+    }
 
 //    Helpers :
 
