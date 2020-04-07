@@ -69,7 +69,6 @@ public class Test_Dao_Profile_Basic_Impl {
      * April 5, 2020
      */
     @Test
-    @org.junit.jupiter.api.Order(1)
     public void test1_save() {
         Map<String, String> status = null;
 
@@ -205,6 +204,25 @@ public class Test_Dao_Profile_Basic_Impl {
         String distSaved = addressPermanentSaved.getDivision();
         assertEquals(divSaved, divNew);
         assertEquals(distSaved, distNew);
+    }
+
+    @Test
+    public void test8_addPhoneNumber() {
+        String userID = "13";
+        PhoneNumber phoneNumberNew = new PhoneNumber("01919-364020");
+        Map<String, String> result = dao_Profile_Basic_I.addPhoneNumber(phoneNumberNew, userID);
+        System.out.println(result);
+        assertEquals(result.get(Utils.key()), Utils.ok());
+        PhoneNumber phoneNumberSaved
+                = dao_Profile_Basic_I.findOneByUser(userID)
+                        .getPhone_number()
+                        .stream()
+                        .filter(p -> phoneNumberNew.getNumber().equals(p.getNumber()))
+                        .findAny()
+                        .orElse(null);
+        System.out.println(phoneNumberSaved.toString());
+        assertEquals(phoneNumberSaved.getNumber(), phoneNumberNew.getNumber());
+//        assertEquals(phoneNumberSaved.getNumber(), "01919");
     }
 
 //    Helpers :

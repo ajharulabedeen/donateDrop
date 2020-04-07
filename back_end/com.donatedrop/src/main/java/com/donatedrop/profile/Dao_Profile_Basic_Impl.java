@@ -1,5 +1,6 @@
 package com.donatedrop.profile;
 
+import com.donatedrop.articles.PhoneNumber;
 import com.donatedrop.profile.ProfileBasic;
 import com.donatedrop.util.Utils;
 import com.sun.scenario.effect.impl.prism.PrFilterContext;
@@ -182,6 +183,31 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         }
         return result;
     }
-    
-    
+
+    @Override
+    public Map<String, String> addPhoneNumber(PhoneNumber phoneNumber, String userID) {
+        String sql = "SELECT *FROM profilebasic WHERE user_id =" + userID;
+        Map<String, String> result = new HashMap<>();
+        // dont use find by one userID, it will init all children.
+        List<ProfileBasic> list = entityManager
+                .createNativeQuery(sql, ProfileBasic.class)
+                .getResultList();
+        ProfileBasic profileBasic = null;
+        List<PhoneNumber> phoneNumbers = null;
+        if (list.size() >= 1) {
+            profileBasic = list.get(0);
+            phoneNumbers = profileBasic.getPhone_number();
+            phoneNumbers.add(phoneNumber);
+            try {
+                entityManager.merge(profileBasic);
+                result.put(Utils.key(), Utils.ok());
+            } catch (Exception e) {
+                result.put(Utils.key(), Utils.fail());
+            }
+        } else {
+            result.put(Utils.key(), Utils.fail());
+        }
+        return result;
+    }
+
 }// class 
