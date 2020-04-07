@@ -125,10 +125,20 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
     }
 
     @Override
-    public Map<String, String> deleteAddress(String id) {
-        Address address = entityManager.find(Address.class, new Long("37"));
-        address.setDivision("KDK)");
-        entityManager.merge(address);
+    public Map<String, String> updatePresentAddress(Address addressUpdate, String userID) {
+        String sql = "SELECT *FROM profilebasic WHERE user_id =" + userID;
+        List<ProfileBasic> list = entityManager
+                .createNativeQuery(sql, ProfileBasic.class)
+                .getResultList();
+        ProfileBasic profileBasic = null;
+        Address addressOld = null;
+        if(list.size() >= 1){
+            profileBasic = list.get(0);
+            addressOld = profileBasic.getAddress_present();
+        }
+//        Address address = entityManager.find(Address.class, new Long("37"));
+        addressOld.setDivision("KDK)");
+        entityManager.merge(addressOld);
         return null;
     }
 }

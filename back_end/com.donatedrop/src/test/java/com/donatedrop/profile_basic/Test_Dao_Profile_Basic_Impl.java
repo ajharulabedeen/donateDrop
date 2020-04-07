@@ -80,7 +80,7 @@ public class Test_Dao_Profile_Basic_Impl {
             profileBasic.setName("Khan Ajharul Abedeen");
 
             Address address_present = new Address("Khulna", "Khulna", "Dumuria", "Rudghora", "Mikshimil East");
-            profileBasic.setAddress_current(address_present);
+            profileBasic.setAddress_present(address_present);
             Address address_permanet = new Address("Khulna", "Khulna", "Dumuria", "Rudghora", "Mikshimil East");
             profileBasic.setAddress_permanent(address_permanet);
 

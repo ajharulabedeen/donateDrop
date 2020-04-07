@@ -71,7 +71,7 @@ public class Temp_Test {
 //        System.out.println("entityManager : " + entityManager.toString());
 //        Address address = entityManager.find(Address.class, new Long(29));
 //        entityManager.remove(address);
-        dao_Profile_Basic_I.deleteAddress("29");
+//        dao_Profile_Basic_I.updateAddress("29");
 
 //        System.out.println("\n\n" + address.toString() + "\n\n");
 

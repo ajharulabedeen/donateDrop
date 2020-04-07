@@ -49,8 +49,11 @@ public interface Dao_Profile_Basic_I {
     public Map<String, Boolean> basicExist(String userId);
 
     /**
-     * @param id PK of the Address.
-     * @return Map<String,String> = {"status","OK"}/{"status","FAIL"}
+     * @param address PK of the Address.
+     * @return Map<String,String> = {"status","OK"} -/- {"status","FAIL"}
      */
-    public Map<String, String> deleteAddress(String id);
+    public Map<String, String> updatePresentAddress(Address address, String userID);
+
+
+
 }

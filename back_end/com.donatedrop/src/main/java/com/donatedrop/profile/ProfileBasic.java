@@ -63,8 +63,8 @@ public class ProfileBasic implements Serializable {
     private Address address_permanent;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "address_current")
-    private Address address_current;
+    @JoinColumn(name = "address_present")
+    private Address address_present;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "phone_number")
@@ -116,19 +116,13 @@ public class ProfileBasic implements Serializable {
                 + ", blood_Group='" + blood_Group + '\''
                 + ", available='" + available + '\''
                 + ", \nAddress_permanent=\n" + address_permanent
-                + ", \nAddress_current=\n" + address_current
+                + ", \nAddress_current=\n" + address_present
                 + ", \nPhone_number=\n" + phone_number
                 + ", \nEmergency_contact=\n" + emergency_contact
                 + '}';
     }
 
-    public Address getAddress_current() {
-        return address_current;
-    }
-
-    public void setAddress_current(Address address_current) {
-        this.address_current = address_current;
-    }
+    
 
     public String getUserId() {
         return userId;
@@ -224,6 +218,14 @@ public class ProfileBasic implements Serializable {
 
     public void setEmergency_contact(List<EmergencyContact> emergency_contact) {
         this.emergency_contact = emergency_contact;
+    }
+
+    public Address getAddress_present() {
+        return address_present;
+    }
+
+    public void setAddress_present(Address address_present) {
+        this.address_present = address_present;
     }
 
 }
