@@ -1,6 +1,7 @@
 package com.donatedrop.profile;
 
 import com.donatedrop.profile.ProfileBasic;
+import com.sun.scenario.effect.impl.prism.PrFilterContext;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
@@ -8,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import javax.xml.transform.sax.SAXSource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -84,21 +86,35 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
     @Override
     public ProfileBasic findOneByUser(String userId) {
         String sql = "SELECT *FROM profilebasic WHERE user_id =" + userId;
-        ProfileBasic profileBasic = (ProfileBasic) entityManager
+        ProfileBasic profileBasic = null;
+        List<ProfileBasic> list = entityManager
                 .createNativeQuery(sql, ProfileBasic.class)
-                .getResultList()
-                .get(0);
-        //to avoid lazy init error.
-        profileBasic.getEmergency_contact().forEach(c -> {
-        });
-        profileBasic.getPhone_number().forEach(p -> {
-        });
+                .getResultList();
+        if (list.size() >= 1) {
+            profileBasic = list.get(0);
+            //to avoid lazay init error.
+            profileBasic.getEmergency_contact().forEach(c -> {
+            });
+            profileBasic.getPhone_number().forEach(p -> {
+            });
+            System.out.println(profileBasic);
+        }
         return profileBasic;
     }
 
     @Override
-    public String basicExist(String userId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Map<String, Boolean> basicExist(String userId) {
+        Map<String, Boolean> result = new HashMap<>();
+        String sql = "SELECT *FROM profilebasic WHERE user_id =" + userId;
+        List<ProfileBasic> list = entityManager
+                .createNativeQuery(sql, ProfileBasic.class)
+                .getResultList();
+        if (list.size() >= 1) {
+            result.put("status", true);
+        }else {
+            result.put("status", false);
+        }
+        return result;
     }
 
     @Override
@@ -108,5 +124,4 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         entityManager.merge(address);
         return null;
     }
-
 }

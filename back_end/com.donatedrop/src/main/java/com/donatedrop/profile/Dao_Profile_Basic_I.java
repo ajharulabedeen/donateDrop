@@ -42,7 +42,7 @@ public interface Dao_Profile_Basic_I {
      */
     public ProfileBasic findOneByUser(String userId);
 
-    public String basicExist(String userId);
+    public Map<String, Boolean> basicExist(String userId);
 
     /**
      * @param id PK of the Address.

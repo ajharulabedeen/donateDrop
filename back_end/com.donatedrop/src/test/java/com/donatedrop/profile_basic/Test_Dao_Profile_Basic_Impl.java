@@ -141,12 +141,16 @@ public class Test_Dao_Profile_Basic_Impl {
     }
 
     @Test
-    public void test4_findOne() {
-        String userID = "13";
-        ProfileBasic profileBasic = dao_Profile_Basic_I.findOneByUser("13");
-//        System.out.println("\nTest : \n" + profileBasic.toString() + "\n\n");
+    public void test4_findOneByUser() {
+        String userID = "12";
+        ProfileBasic profileBasic = dao_Profile_Basic_I.findOneByUser(userID);
+//        System.out.println("\nTest : \n" + profileBasic+ "\n\n");
 //        System.out.println("\nTest : \n" + profileBasic.getPhone_number().toString() + "\n\n");
-        assertEquals(userID, profileBasic.getUserId());
+        if (profileBasic != null) {
+            assertEquals(userID, profileBasic.getUserId());
+        } else {
+            assertEquals("NOT_NULL", "NULL");
+        }
     }
 
 //    Helpers : 
