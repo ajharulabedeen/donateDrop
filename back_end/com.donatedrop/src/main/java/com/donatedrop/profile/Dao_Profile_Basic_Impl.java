@@ -186,17 +186,10 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
 
     @Override
     public Map<String, String> addPhoneNumber(PhoneNumber phoneNumber, String userID) {
-        String sql = "SELECT *FROM profilebasic WHERE user_id =" + userID;
         Map<String, String> result = new HashMap<>();
-        // dont use find by one userID, it will init all children.
-        List<ProfileBasic> list = entityManager
-                .createNativeQuery(sql, ProfileBasic.class)
-                .getResultList();
-        ProfileBasic profileBasic = null;
-        List<PhoneNumber> phoneNumbers = null;
-        if (list.size() >= 1) {
-            profileBasic = list.get(0);
-            phoneNumbers = profileBasic.getPhone_number();
+        ProfileBasic profileBasic = getProfileBasicByUserID(userID);
+        if (profileBasic != null) {
+            List<PhoneNumber> phoneNumbers = profileBasic.getPhone_number();
             phoneNumbers.add(phoneNumber);
             try {
                 entityManager.merge(profileBasic);
@@ -208,6 +201,32 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
             result.put(Utils.key(), Utils.fail());
         }
         return result;
+    }
+
+    //refacror : remove find one by userID boiler palte code.
+    @Override
+    public Map<String, String> deletePhoneNumber(String phoneNumberID, String userID) {
+        String sql = "SELECT *FROM profilebasic WHERE user_id =" + userID;
+        Map<String, String> result = new HashMap<>();
+        // dont use find by one userID, it will init all children.
+        List<ProfileBasic> list = entityManager
+                .createNativeQuery(sql, ProfileBasic.class)
+                .getResultList();
+        ProfileBasic profileBasic = null;
+
+        return result;
+    }
+
+    public ProfileBasic getProfileBasicByUserID(String userID) {
+        String sql = "SELECT *FROM profilebasic WHERE user_id =" + userID;
+        List<ProfileBasic> list = entityManager
+                .createNativeQuery(sql, ProfileBasic.class)
+                .getResultList();
+        ProfileBasic profileBasic = null;
+        if (list.size() >= 1) {
+            profileBasic = list.get(0);
+        }
+        return profileBasic;
     }
 
 }// class 

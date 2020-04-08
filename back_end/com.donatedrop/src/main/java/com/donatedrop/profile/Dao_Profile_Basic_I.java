@@ -71,4 +71,6 @@ public interface Dao_Profile_Basic_I {
      */
     public Map<String, String> addPhoneNumber(PhoneNumber phoneNumber, String userID);
 
+    public Map<String, String> deletePhoneNumber(String phoneNumberID, String userID);
+
 }
