@@ -10,10 +10,14 @@ package com.donatedrop.util;
  * @author abedeen
  */
 public class StringUtil {
+
     public static final String STATUS = "STATUS";
     public static final String FAIL = "FAIL";
     public static final String OK = "OK";
     public static final String NULL = "NULL";
+    public static final String NOT_NULL = "NOT_NULL";
     public static final String ID = "ID";
+    public static final String TRUE = "TRUE";
+    public static final String FALSE = "FALSE";
 
 }

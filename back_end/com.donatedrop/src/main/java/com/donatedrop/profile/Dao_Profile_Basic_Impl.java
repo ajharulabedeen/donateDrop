@@ -59,12 +59,12 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         Map<String, String> response = new HashMap<>();
         try {
             ProfileBasic profileBasic = entityManager.find(ProfileBasic.class, new Long(id));
-            if (profileBasic == null) {
-                System.out.println("No entity found!");
-                response.put("status", "FAIL");
-            } else {
+            if (profileBasic != null) {
                 entityManager.remove(profileBasic);
-                response.put("status", "OK");
+                response.put(StringUtil.STATUS, StringUtil.OK);
+            } else {
+                System.out.println("No entity found!");
+                response.put(StringUtil.STATUS, StringUtil.FAIL);
             }
         } catch (Exception e) {
             System.out.println("Profile Basic Delete Fail!");
@@ -115,59 +115,44 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
     @Override
     public Map<String, String> basicExist(String userId) {
         Map<String, String> result = new HashMap<>();
-        String sql = "SELECT *FROM profilebasic WHERE user_id =" + userId;
-        List<ProfileBasic> list = entityManager
-                .createNativeQuery(sql, ProfileBasic.class)
-                .getResultList();
-        if (list.size() >= 1) {
-            result.put(Utils.key(), Utils.ok());
+        ProfileBasic profileBasic = getProfileBasicByUserID(userId);
+        if (profileBasic != null) {
+            result.put(StringUtil.STATUS, StringUtil.TRUE);
         } else {
-            result.put(Utils.key(), Utils.fail());
+            result.put(StringUtil.STATUS, StringUtil.FALSE);
         }
         return result;
     }
 
     @Override
     public Map<String, String> updatePresentAddress(Address addressPresentNew, String userID) {
-        String sql = "SELECT *FROM profilebasic WHERE user_id =" + userID;
         Map<String, String> result = new HashMap<>();
-        // dont use find by one userID, it will init all children.
-        List<ProfileBasic> list = entityManager
-                .createNativeQuery(sql, ProfileBasic.class)
-                .getResultList();
-        ProfileBasic profileBasic = null;
-        Address addressOld = null;
-        if (list.size() >= 1) {
-            addressOld = list.get(0).getAddress_present();
-            addressOld.setDivision(addressPresentNew.getDivision());
-            addressOld.setDistrict(addressPresentNew.getDistrict());
-            addressOld.setUpzilla(addressPresentNew.getUpzilla());
-            addressOld.setUnion_ward(addressPresentNew.getUnion_ward());
-            addressOld.setStreet_address(addressPresentNew.getStreet_address());
+        ProfileBasic profileBasic = getProfileBasicByUserID(userID);
+        if (profileBasic != null) {
+            Address addressPresentOld = profileBasic.getAddress_present();
+            addressPresentOld.setDivision(addressPresentNew.getDivision());
+            addressPresentOld.setDistrict(addressPresentNew.getDistrict());
+            addressPresentOld.setUpzilla(addressPresentNew.getUpzilla());
+            addressPresentOld.setUnion_ward(addressPresentNew.getUnion_ward());
+            addressPresentOld.setStreet_address(addressPresentNew.getStreet_address());
             try {
-                entityManager.merge(addressOld);
-                result.put(Utils.key(), Utils.ok());
+                entityManager.merge(addressPresentOld);
+                result.put(StringUtil.STATUS, StringUtil.OK);
             } catch (Exception e) {
-                result.put(Utils.key(), Utils.fail());
+                result.put(StringUtil.STATUS, StringUtil.FAIL);
             }
         } else {
-            result.put(Utils.key(), Utils.fail());
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
         }
         return result;
     }
 
     @Override
     public Map<String, String> updatePermanentAddress(Address addressPermanentNew, String userID) {
-        String sql = "SELECT *FROM profilebasic WHERE user_id =" + userID;
         Map<String, String> result = new HashMap<>();
-        // dont use find by one userID, it will init all children.
-        List<ProfileBasic> list = entityManager
-                .createNativeQuery(sql, ProfileBasic.class)
-                .getResultList();
-        ProfileBasic profileBasic = null;
-        Address addressPermanentOld = null;
-        if (list.size() >= 1) {
-            addressPermanentOld = list.get(0).getAddress_permanent();
+        ProfileBasic profileBasic = getProfileBasicByUserID(userID);
+        if (profileBasic != null) {
+            Address addressPermanentOld = profileBasic.getAddress_permanent();
             addressPermanentOld.setDivision(addressPermanentNew.getDivision());
             addressPermanentOld.setDistrict(addressPermanentNew.getDistrict());
             addressPermanentOld.setUpzilla(addressPermanentNew.getUpzilla());
@@ -175,12 +160,12 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
             addressPermanentOld.setStreet_address(addressPermanentNew.getStreet_address());
             try {
                 entityManager.merge(addressPermanentOld);
-                result.put(Utils.key(), Utils.ok());
+                result.put(StringUtil.STATUS, StringUtil.OK);
             } catch (Exception e) {
-                result.put(Utils.key(), Utils.fail());
+                result.put(StringUtil.STATUS, StringUtil.FAIL);
             }
         } else {
-            result.put(Utils.key(), Utils.fail());
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
         }
         return result;
     }
@@ -194,12 +179,12 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
             phoneNumbers.add(phoneNumber);
             try {
                 entityManager.merge(profileBasic);
-                result.put(Utils.key(), Utils.ok());
+                result.put(StringUtil.STATUS, StringUtil.OK);
             } catch (Exception e) {
-                result.put(Utils.key(), Utils.fail());
+                result.put(StringUtil.STATUS, StringUtil.FAIL);
             }
         } else {
-            result.put(Utils.key(), Utils.fail());
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
         }
         return result;
     }

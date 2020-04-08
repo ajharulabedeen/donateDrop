@@ -120,7 +120,6 @@ public class Test_Dao_Profile_Basic_Impl {
     }
 
 
-
     @Test
     public void test2_findOne() {
         id = getID();
@@ -138,10 +137,11 @@ public class Test_Dao_Profile_Basic_Impl {
         } catch (Exception e) {
             System.out.println("Test Delete Fail!");
         }
-        System.out.println("response (test) : " + response.toString());
-        assertEquals("OK", response.get("status"));
+        System.out.println("\n\n" + "response (test) : " + response.toString() + "\n\n");
+        assertEquals(StringUtil.OK, response.get(StringUtil.STATUS));
     }
 
+    //done
     @Test
     public void test4_findOneByUser() {
         String userID = "13";
@@ -151,10 +151,11 @@ public class Test_Dao_Profile_Basic_Impl {
         if (profileBasic != null) {
             assertEquals(userID, profileBasic.getUserId());
         } else {
-            assertEquals("NOT_NULL", "NULL");
+            assertEquals(StringUtil.NOT_NULL, StringUtil.NULL);
         }
     }
 
+    //done
     @Test
     public void test5_basicExist() {
         //test for ProfileBasic not found
@@ -162,13 +163,13 @@ public class Test_Dao_Profile_Basic_Impl {
         Map<String, String> resultNotExist = dao_Profile_Basic_I.basicExist(userID_NotExist);
         System.out.println("\nNot Exist : " + resultNotExist + "\n");
 //        assertEquals(resultNotExist.get("status"), false);
-        assertEquals(Utils.fail(), resultNotExist.get(Utils.key()));
+        assertEquals(StringUtil.FALSE, resultNotExist.get(StringUtil.STATUS));
         //test for ProfileBasic found
         String userID_Exist = "13";
         Map<String, String> resultExist = dao_Profile_Basic_I.basicExist(userID_Exist);
         System.out.println("\nExist : " + resultExist + "\n");
 //        assertEquals(resultExist.get("status"), true);
-        assertEquals(Utils.ok(), resultExist.get(Utils.key()));
+        assertEquals(StringUtil.FALSE, resultNotExist.get(StringUtil.STATUS));
     }
 
     //depedency : findOne By userID.
@@ -177,12 +178,14 @@ public class Test_Dao_Profile_Basic_Impl {
         String userID = "13";
         String distNew = "Dhaka";
         String divNew = "Dhaka";
+        String streetAddressNew = "Road No 10";
         Address addressPresentNew = new Address();
         addressPresentNew.setDivision(divNew);
         addressPresentNew.setDistrict(distNew);
+        addressPresentNew.setStreet_address(streetAddressNew);
         Map<String, String> result = dao_Profile_Basic_I.updatePresentAddress(addressPresentNew, userID);
-        System.out.println(result);
-        assertEquals(Utils.ok(), result.get(Utils.key()));
+        System.out.println("\n\n" + result + "\n\n");
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
 
         Address addressPresentSaved = dao_Profile_Basic_I.findOneByUser(userID).getAddress_present();
         String divSaved = addressPresentSaved.getDistrict();
@@ -201,8 +204,8 @@ public class Test_Dao_Profile_Basic_Impl {
         addressPermanentNew.setDivision(divNew);
         addressPermanentNew.setDistrict(distNew);
         Map<String, String> result = dao_Profile_Basic_I.updatePermanentAddress(addressPermanentNew, userID);
-        System.out.println(result);
-        assertEquals(Utils.ok(), result.get(Utils.key()));
+        System.out.println("\n\n" + result + "\n\n");
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
 
         Address addressPermanentSaved = dao_Profile_Basic_I.findOneByUser(userID).getAddress_permanent();
         String divSaved = addressPermanentSaved.getDistrict();
@@ -213,11 +216,11 @@ public class Test_Dao_Profile_Basic_Impl {
 
     @Test
     public void test8_addPhoneNumber() {
-        String userID = "12";
-        PhoneNumber phoneNumberNew = new PhoneNumber("01919-364020");
+        String userID = "13";
+        PhoneNumber phoneNumberNew = new PhoneNumber("01910-364020");
         Map<String, String> result = dao_Profile_Basic_I.addPhoneNumber(phoneNumberNew, userID);
         System.out.println("\n\n" + result + "\n\n");
-        assertEquals(Utils.ok(), result.get(Utils.key()));
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
         PhoneNumber phoneNumberSaved
                 = dao_Profile_Basic_I.findOneByUser(userID)
                 .getPhone_number()
