@@ -18,6 +18,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
+import java.sql.SQLOutput;
 import java.util.Scanner; // Import the Scanner class to read text files
 
 import org.junit.*;
@@ -233,23 +234,42 @@ public class Test_Dao_Profile_Basic_Impl {
 //        assertEquals(phoneNumberSaved.getNumber(), "01919");
     }
 
+    //dependency : depend on save profile basic, cause without save it will not found any phone number to delete.
     @Test
     public void test9_deletePhoneNumber() {
-        String userID = "13";
-        Map<String, String> result = dao_Profile_Basic_I.deletePhoneNumber("277", userID);
-        System.out.println("\n\n" + result + "\n\n");
-//        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
-//        PhoneNumber phoneNumberNew = new PhoneNumber("01910-364020");
-//        PhoneNumber phoneNumberSaved
-//                = dao_Profile_Basic_I.findOneByUser(userID)
-//                .getPhone_number()
-//                .stream()
-//                .filter(p -> phoneNumberNew.getNumber().equals(p.getNumber()))
-//                .findAny()
-//                .orElse(null);
-//        System.out.println("\n" + phoneNumberSaved.toString() + "\n");
-//        assertEquals(phoneNumberSaved.getNumber(), phoneNumberNew.getNumber());
-//        assertEquals(phoneNumberSaved.getNumber(), "01919");
+        // Arrange
+        String userID = "12";
+        try {
+            String phoneNumberID = dao_Profile_Basic_I
+                    .findOneByUser(userID)
+                    .getPhone_number()
+                    .get(0)
+                    .getId()
+                    .toString();
+            // Act
+            Map<String, String> result = dao_Profile_Basic_I.deletePhoneNumber(phoneNumberID, userID);
+
+            // Assert
+            System.out.println("\n\n" + result + "\n\n");
+            assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+            PhoneNumber phoneNumberSaved
+                    = dao_Profile_Basic_I.findOneByUser(userID)
+                    .getPhone_number()
+                    .stream()
+                    .filter(p -> phoneNumberID.equals(p.getId().toString()))
+                    .findAny()
+                    .orElse(null);
+            if (phoneNumberSaved == null) {
+                assertEquals(null, phoneNumberSaved);
+            } else {
+                assertEquals(StringUtil.OK, StringUtil.FAIL);
+            }
+        } catch (Exception e) {
+            System.out.println("\n\nTest : Error in Getting Phone Number ID!\n\n");
+            assertEquals(StringUtil.OK, StringUtil.FAIL);
+        }
+
+
     }
 
 //    Helpers :
