@@ -23,7 +23,7 @@ public interface Dao_Profile_Basic_I {
     /**
      * @return boolean status will be returned as "0" or "1".
      */
-    public boolean update(ProfileBasic profileBasicUpdate);
+    public Map<String, String> update(ProfileBasic profileBasicUpdate);
 
     /**
      * @param id PK of Profile basic.

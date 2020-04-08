@@ -49,8 +49,30 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
     }
 
     @Override
-    public boolean update(ProfileBasic profileBasicUpdate) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Map<String, String> update(ProfileBasic profileBasicNew) {
+        Map<String, String> result = new HashMap<>();
+        ProfileBasic profileBasicOld = getProfileBasicByUserID(profileBasicNew.getUserId());
+        if (profileBasicOld != null) {
+            profileBasicOld.setName(profileBasicNew.getName());
+            profileBasicOld.setBirthDate(profileBasicNew.getBirthDate());
+            profileBasicOld.setCare_of(profileBasicNew.getCare_of());
+            profileBasicOld.setGender(profileBasicNew.getGender());
+            profileBasicOld.setMaritalStatus(profileBasicNew.getMaritalStatus());
+            profileBasicOld.setProfession(profileBasicNew.getProfession());
+            profileBasicOld.setBlood_Group(profileBasicNew.getBlood_Group());
+            profileBasicOld.setAvailable(profileBasicNew.getAvailable());
+            try {
+                entityManager.merge(profileBasicOld);
+                result.put(StringUtil.STATUS, StringUtil.OK);
+            } catch (Exception e) {
+                System.out.println("Basic Profile Update Failed!");
+                result.put(StringUtil.STATUS, StringUtil.FAIL);
+            }
+        } else {
+            System.out.println("Basic Profile Entity Not Found!");
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+        }
+        return result;
     }
 
     @Override
@@ -100,7 +122,7 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
             });
             profileBasic.getPhone_number().forEach(p -> {
             });
-            System.out.println(profileBasic);
+//            System.out.println(profileBasic);
         }
         return profileBasic;
     }
@@ -189,7 +211,6 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         return result;
     }
 
-    
     @Override
     public Map<String, String> deletePhoneNumber(String phoneNumberID, String userID) {
         Map<String, String> result = new HashMap<>();

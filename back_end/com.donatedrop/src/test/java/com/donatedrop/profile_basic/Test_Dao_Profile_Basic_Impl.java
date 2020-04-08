@@ -10,6 +10,7 @@ import com.donatedrop.profile.Address;
 import com.donatedrop.profile.Dao_Profile_Basic_I;
 import com.donatedrop.profile.EmergencyContact;
 import com.donatedrop.profile.ProfileBasic;
+import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
 import com.donatedrop.util.Utils;
 
@@ -120,7 +121,6 @@ public class Test_Dao_Profile_Basic_Impl {
         assertEquals(StringUtil.OK, status.get(StringUtil.STATUS));
     }
 
-
     @Test
     public void test2_findOne() {
         id = getID();
@@ -224,11 +224,11 @@ public class Test_Dao_Profile_Basic_Impl {
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
         PhoneNumber phoneNumberSaved
                 = dao_Profile_Basic_I.findOneByUser(userID)
-                .getPhone_number()
-                .stream()
-                .filter(p -> phoneNumberNew.getNumber().equals(p.getNumber()))
-                .findAny()
-                .orElse(null);
+                        .getPhone_number()
+                        .stream()
+                        .filter(p -> phoneNumberNew.getNumber().equals(p.getNumber()))
+                        .findAny()
+                        .orElse(null);
         System.out.println("\n" + phoneNumberSaved.toString() + "\n");
         assertEquals(phoneNumberSaved.getNumber(), phoneNumberNew.getNumber());
 //        assertEquals(phoneNumberSaved.getNumber(), "01919");
@@ -254,11 +254,11 @@ public class Test_Dao_Profile_Basic_Impl {
             assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
             PhoneNumber phoneNumberSaved
                     = dao_Profile_Basic_I.findOneByUser(userID)
-                    .getPhone_number()
-                    .stream()
-                    .filter(p -> phoneNumberID.equals(p.getId().toString()))
-                    .findAny()
-                    .orElse(null);
+                            .getPhone_number()
+                            .stream()
+                            .filter(p -> phoneNumberID.equals(p.getId().toString()))
+                            .findAny()
+                            .orElse(null);
             if (phoneNumberSaved == null) {
                 assertEquals(null, phoneNumberSaved);
             } else {
@@ -268,12 +268,47 @@ public class Test_Dao_Profile_Basic_Impl {
             System.out.println("\n\nTest : Error in Getting Phone Number ID!\n\n");
             assertEquals(StringUtil.OK, StringUtil.FAIL);
         }
+    }
 
+    @Test
+    public void test10_updateBasic() {
+
+        // Arrange
+        Map<String, String> result = new HashMap<>();
+//        String userID = "13";
+        String userID = Utils.getLoggedUserID();
+        ProfileBasic profileBasicNew = new ProfileBasic();
+        profileBasicNew.setUserId(userID);
+
+        profileBasicNew.setName("Khan Ajharul Abedeen");
+        profileBasicNew.setBirthDate(DateUtil.getDate().toString());
+        profileBasicNew.setGender("Male");
+        profileBasicNew.setBlood_Group("A+");
+        profileBasicNew.setAvailable("0");
+        profileBasicNew.setMaritalStatus("NO");
+        profileBasicNew.setProfession("Freelance/Remote");
+        profileBasicNew.setCare_of("Khan Atiar Rahman and Dr Mahbub, Dumuria Khulna.");
+        // Act
+        result = dao_Profile_Basic_I.update(profileBasicNew);
+        // Assertion
+        System.out.println("\n\n" + result + "\n\n");
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        //have to do more verification. by calling the full app.
+        //refactor : stop child loading, need to create new method to get only basics.
+        ProfileBasic profileBasicSaved = dao_Profile_Basic_I.findOneByUser(userID);
+        assertEquals(profileBasicNew.getName(), profileBasicSaved.getName());
+        assertEquals(profileBasicNew.getBirthDate(), profileBasicSaved.getBirthDate());
+        assertEquals(profileBasicNew.getCare_of(), profileBasicSaved.getCare_of());
+//        assertEquals("DimDim", profileBasicSaved.getCare_of());//for test the test, :P
+        assertEquals(profileBasicNew.getGender(), profileBasicSaved.getGender());
+        assertEquals(profileBasicNew.getMaritalStatus(), profileBasicSaved.getMaritalStatus());
+        assertEquals(profileBasicNew.getProfession(), profileBasicSaved.getProfession());
+        assertEquals(profileBasicNew.getBlood_Group(), profileBasicSaved.getBlood_Group());
+        assertEquals(profileBasicNew.getAvailable(), profileBasicSaved.getAvailable());
 
     }
 
 //    Helpers :
-
     /**
      * will store the last save id, that can be used for later for other method.
      * Though there is question does it, right to a result from unit test, as
