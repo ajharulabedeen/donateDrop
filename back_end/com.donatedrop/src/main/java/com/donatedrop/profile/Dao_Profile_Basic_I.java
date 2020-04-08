@@ -49,7 +49,7 @@ public interface Dao_Profile_Basic_I {
      * @param userId
      * @return Map Not Exist : {status=false}; Exist : {status=true}
      */
-    public Map<String, Boolean> basicExist(String userId);
+    public Map<String, String> basicExist(String userId);
 
     /**
      * @param address PK of the Address.

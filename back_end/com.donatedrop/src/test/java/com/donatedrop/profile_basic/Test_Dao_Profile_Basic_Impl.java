@@ -154,16 +154,18 @@ public class Test_Dao_Profile_Basic_Impl {
 
     @Test
     public void test5_basicExist() {
-        //test for ProfileBasic found
+        //test for ProfileBasic not found
         String userID_NotExist = "12";
-        Map<String, Boolean> resultNotExist = dao_Profile_Basic_I.basicExist(userID_NotExist);
+        Map<String, String> resultNotExist = dao_Profile_Basic_I.basicExist(userID_NotExist);
         System.out.println("\nNot Exist : " + resultNotExist + "\n");
-        assertEquals(resultNotExist.get("status"), false);
-        //test for ProfileBasic Not found
+//        assertEquals(resultNotExist.get("status"), false);
+        assertEquals(Utils.fail(), resultNotExist.get(Utils.key()));
+        //test for ProfileBasic found
         String userID_Exist = "13";
-        Map<String, Boolean> resultExist = dao_Profile_Basic_I.basicExist(userID_Exist);
+        Map<String, String> resultExist = dao_Profile_Basic_I.basicExist(userID_Exist);
         System.out.println("\nExist : " + resultExist + "\n");
-        assertEquals(resultExist.get("status"), true);
+//        assertEquals(resultExist.get("status"), true);
+        assertEquals(Utils.ok(), resultExist.get(Utils.key()));
     }
 
     //depedency : findOne By userID.
@@ -177,7 +179,7 @@ public class Test_Dao_Profile_Basic_Impl {
         addressPresentNew.setDistrict(distNew);
         Map<String, String> result = dao_Profile_Basic_I.updatePresentAddress(addressPresentNew, userID);
         System.out.println(result);
-        assertEquals(result.get(Utils.key()), Utils.ok());
+        assertEquals(Utils.ok(), result.get(Utils.key()));
 
         Address addressPresentSaved = dao_Profile_Basic_I.findOneByUser(userID).getAddress_present();
         String divSaved = addressPresentSaved.getDistrict();
@@ -197,7 +199,7 @@ public class Test_Dao_Profile_Basic_Impl {
         addressPermanentNew.setDistrict(distNew);
         Map<String, String> result = dao_Profile_Basic_I.updatePermanentAddress(addressPermanentNew, userID);
         System.out.println(result);
-        assertEquals(result.get(Utils.key()), Utils.ok());
+        assertEquals(Utils.ok(), result.get(Utils.key()));
 
         Address addressPermanentSaved = dao_Profile_Basic_I.findOneByUser(userID).getAddress_permanent();
         String divSaved = addressPermanentSaved.getDistrict();
@@ -208,11 +210,11 @@ public class Test_Dao_Profile_Basic_Impl {
 
     @Test
     public void test8_addPhoneNumber() {
-        String userID = "13";
+        String userID = "12";
         PhoneNumber phoneNumberNew = new PhoneNumber("01919-364020");
         Map<String, String> result = dao_Profile_Basic_I.addPhoneNumber(phoneNumberNew, userID);
         System.out.println("\n\n" + result + "\n\n");
-        assertEquals(result.get(Utils.key()), Utils.ok());
+        assertEquals(Utils.ok(), result.get(Utils.key()));
         PhoneNumber phoneNumberSaved
                 = dao_Profile_Basic_I.findOneByUser(userID)
                 .getPhone_number()

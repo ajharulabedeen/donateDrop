@@ -112,16 +112,16 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
      * @return
      */
     @Override
-    public Map<String, Boolean> basicExist(String userId) {
-        Map<String, Boolean> result = new HashMap<>();
+    public Map<String, String> basicExist(String userId) {
+        Map<String, String> result = new HashMap<>();
         String sql = "SELECT *FROM profilebasic WHERE user_id =" + userId;
         List<ProfileBasic> list = entityManager
                 .createNativeQuery(sql, ProfileBasic.class)
                 .getResultList();
         if (list.size() >= 1) {
-            result.put("status", true);
+            result.put(Utils.key(), Utils.ok());
         } else {
-            result.put("status", false);
+            result.put(Utils.key(), Utils.fail());
         }
         return result;
     }
