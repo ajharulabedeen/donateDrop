@@ -192,14 +192,27 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
     //refacror : remove find one by userID boiler palte code.
     @Override
     public Map<String, String> deletePhoneNumber(String phoneNumberID, String userID) {
-        String sql = "SELECT *FROM profilebasic WHERE user_id =" + userID;
         Map<String, String> result = new HashMap<>();
-        // dont use find by one userID, it will init all children.
-        List<ProfileBasic> list = entityManager
-                .createNativeQuery(sql, ProfileBasic.class)
-                .getResultList();
-        ProfileBasic profileBasic = null;
-
+        ProfileBasic profileBasic = getProfileBasicByUserID(userID);
+        if (profileBasic != null) {
+            List<PhoneNumber> phoneNumbers = profileBasic.getPhone_number();
+            if (phoneNumbers.size() >= 1) {
+                phoneNumbers.remove(phoneNumbers
+                        .stream()
+                        .filter(p -> phoneNumberID.equals(p.getId().toString()))
+                        .findAny()
+                        .orElse(null));
+                try {
+                    entityManager.merge(profileBasic);
+                    result.put(StringUtil.STATUS, StringUtil.OK);
+                } catch (Exception e) {
+                    System.out.println("Phone Number Deletion Failed!");
+                    result.put(StringUtil.STATUS, StringUtil.FAIL);
+                }
+            }
+        } else {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+        }
         return result;
     }
 

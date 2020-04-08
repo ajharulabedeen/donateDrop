@@ -233,6 +233,25 @@ public class Test_Dao_Profile_Basic_Impl {
 //        assertEquals(phoneNumberSaved.getNumber(), "01919");
     }
 
+    @Test
+    public void test9_deletePhoneNumber() {
+        String userID = "13";
+        Map<String, String> result = dao_Profile_Basic_I.deletePhoneNumber("277", userID);
+        System.out.println("\n\n" + result + "\n\n");
+//        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+//        PhoneNumber phoneNumberNew = new PhoneNumber("01910-364020");
+//        PhoneNumber phoneNumberSaved
+//                = dao_Profile_Basic_I.findOneByUser(userID)
+//                .getPhone_number()
+//                .stream()
+//                .filter(p -> phoneNumberNew.getNumber().equals(p.getNumber()))
+//                .findAny()
+//                .orElse(null);
+//        System.out.println("\n" + phoneNumberSaved.toString() + "\n");
+//        assertEquals(phoneNumberSaved.getNumber(), phoneNumberNew.getNumber());
+//        assertEquals(phoneNumberSaved.getNumber(), "01919");
+    }
+
 //    Helpers :
 
     /**
