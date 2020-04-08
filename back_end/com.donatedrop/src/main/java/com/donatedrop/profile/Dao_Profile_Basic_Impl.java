@@ -2,6 +2,7 @@ package com.donatedrop.profile;
 
 import com.donatedrop.articles.PhoneNumber;
 import com.donatedrop.profile.ProfileBasic;
+import com.donatedrop.util.StringUtil;
 import com.donatedrop.util.Utils;
 import com.sun.scenario.effect.impl.prism.PrFilterContext;
 import org.springframework.stereotype.Component;
@@ -27,20 +28,20 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         String id = "";
         try {
             entityManager.persist(profileBasic);
-            status = "OK";
+            status = StringUtil.OK;
             id = profileBasic.getId().toString();
         } catch (Exception e) {
-            status = "FAIL";
+            status = StringUtil.FAIL;
             System.out.println("Profile Save Fail!");
             //refactor : separate log file.
             e.printStackTrace();
         }
         Map<String, String> response = new HashMap<>();
-        response.put("status", status);
-        if (status.equals("OK")) {
-            response.put("id", id);
+        response.put(StringUtil.STATUS, status);
+        if (status.equals(StringUtil.OK)) {
+            response.put(StringUtil.ID, id);
         } else {
-            response.put("id", null);
+            response.put(StringUtil.ID, StringUtil.NULL);
         }
         //refactor
         System.out.println(response.toString());

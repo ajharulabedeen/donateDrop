@@ -10,6 +10,7 @@ import com.donatedrop.profile.Address;
 import com.donatedrop.profile.Dao_Profile_Basic_I;
 import com.donatedrop.profile.EmergencyContact;
 import com.donatedrop.profile.ProfileBasic;
+import com.donatedrop.util.StringUtil;
 import com.donatedrop.util.Utils;
 
 import java.io.File;
@@ -107,7 +108,7 @@ public class Test_Dao_Profile_Basic_Impl {
 //        ACT
             status = dao_Profile_Basic_I.save(profileBasic);
             System.out.println(status);
-            id = status.get("id");
+            id = status.get(StringUtil.ID);
             System.out.println("\nID : " + id);
             storeID(id);
             System.out.println("Count : " + count++);
@@ -115,8 +116,10 @@ public class Test_Dao_Profile_Basic_Impl {
             storeID(id);
         }
 //        Assert
-        assertEquals("OK", status.get("status"));
+        assertEquals(StringUtil.OK, status.get(StringUtil.STATUS));
     }
+
+
 
     @Test
     public void test2_findOne() {
@@ -172,8 +175,8 @@ public class Test_Dao_Profile_Basic_Impl {
     @Test
     public void test6_presentAddressUpdate() {
         String userID = "13";
-        String distNew = "Khulna";
-        String divNew = "Khulna";
+        String distNew = "Dhaka";
+        String divNew = "Dhaka";
         Address addressPresentNew = new Address();
         addressPresentNew.setDivision(divNew);
         addressPresentNew.setDistrict(distNew);
