@@ -56,7 +56,6 @@ public interface Dao_Profile_Basic_I {
      * @return Map<String,String> = {"status","OK"} -/- {"status","FAIL"}
      */
     public Map<String, String> updatePresentAddress(Address address, String userID);
-
     /**
      * @param address PK of the Address.
      * @return Map<String,String> = {"status","OK"} -/- {"status","FAIL"}
@@ -70,7 +69,11 @@ public interface Dao_Profile_Basic_I {
      * @return success status.
      */
     public Map<String, String> addPhoneNumber(PhoneNumber phoneNumber, String userID);
-
     public Map<String, String> deletePhoneNumber(String phoneNumberID, String userID);
 
+    
+    public Map<String, String> addEmergencyContact(EmergencyContact emergencyContact, String userID);
+//    public Map<String, String> deletePhoneNumber(String phoneNumberID, String userID);
+    
+    
 }

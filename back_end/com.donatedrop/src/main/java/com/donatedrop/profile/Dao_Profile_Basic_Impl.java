@@ -237,6 +237,26 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         return result;
     }
 
+    @Override
+    public Map<String, String> addEmergencyContact(EmergencyContact emergencyContact, String userID) {
+        Map<String, String> result = new HashMap<>();
+        ProfileBasic profileBasic = getProfileBasicByUserID(userID);
+        profileBasic.getEmergency_contact().add(emergencyContact);
+        if (profileBasic != null) {
+            try {
+                entityManager.merge(profileBasic);
+                result.put(StringUtil.STATUS, StringUtil.OK);
+                result.put(StringUtil.ID, emergencyContact.getId().toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+                result.put(StringUtil.STATUS, StringUtil.FAIL);
+            }
+        } else {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+        }
+        return result;
+    }
+
     public ProfileBasic getProfileBasicByUserID(String userID) {
         String sql = "SELECT *FROM profilebasic WHERE user_id =" + userID;
         List<ProfileBasic> list = entityManager

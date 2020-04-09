@@ -270,9 +270,9 @@ public class Test_Dao_Profile_Basic_Impl {
         }
     }
 
+//    dependency : save profile basic.
     @Test
     public void test10_updateBasic() {
-
         // Arrange
         Map<String, String> result = new HashMap<>();
 //        String userID = "13";
@@ -305,7 +305,23 @@ public class Test_Dao_Profile_Basic_Impl {
         assertEquals(profileBasicNew.getProfession(), profileBasicSaved.getProfession());
         assertEquals(profileBasicNew.getBlood_Group(), profileBasicSaved.getBlood_Group());
         assertEquals(profileBasicNew.getAvailable(), profileBasicSaved.getAvailable());
+    }
 
+    //dependency : Basic Profile Save.
+    @Test
+    public void test11_addEmergencyContact() {
+        String userID = "13";
+//String name, String phone, String mail, String address, String relation
+        EmergencyContact emergencyContact1 = new EmergencyContact(
+                "Dr Mahbub Gazi.",
+                "01612-174128",
+                "mahbub@mail.com",
+                "Khulna, Bangladsh",
+                "Uncle"
+        );
+        Map<String, String> result = dao_Profile_Basic_I.addEmergencyContact(emergencyContact1, userID);
+        System.out.println("\n\n>>" + result + "\n\n");
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
 
 //    Helpers :
