@@ -111,9 +111,9 @@
             </div>
           </div>
 
-          <div class="row">
+          <div class="row box box-info">
             <div class="col-md-6 offset-md-6">
-              <h3 class="h3">Phone Numbers</h3>
+              <h4 class="h4">Phone Numbers</h4>
               <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal_phoneNumber">Add New
               </button>
               <table class="table table-hover">
@@ -173,7 +173,7 @@
           </div>
 
           <!--start : present address-->
-          <div class="row">
+          <div class="row box box-info">
             <h4>Present Address</h4>
             <!-- present division-->
             <div class="col-md-2">
@@ -256,7 +256,7 @@
           <!--end : present address-->
 
           <!--start : permanent address-->
-          <div class="row">
+          <div class="row box box-info">
             <h4>Permanent Address</h4>
             <!-- permanent division-->
             <div class="col-md-2">
@@ -338,14 +338,52 @@
           </div>
           <!--end : permanent  address-->
 
-
-          <div class="form-group">
-            <label>Social Media Links (FaceBook, LinkedIn)</label>
-            <textarea [(ngModel)]="social_media_link" [disabled]='!profileEdit' class="form-control" rows="3"
-                      placeholder="(max: 512 )Social Media Links (FaceBook, LinkedIn)">
-
-              </textarea>
+          <!-- Start : Emergency Contact-->
+          <div class="box box-info">
+            <h4>Emergency Contact</h4>
+            <div class="box-body box-primary">
+              <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#modal_education">
+                Add New
+              </button>
+              <div class="col-xs-12">
+                <div class="box">
+                  <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                      <tbody>
+                      <tr>
+                        <th>Index</th>
+                        <th>Degree Name</th>
+                        <th>Institut Name</th>
+                        <th>Passing Year</th>
+                        <th>Result</th>
+                        <th>Operation</th>
+                      </tr>
+                      <tr *ngFor="let e of educations; let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{e.degree_name}}</td>
+                        <td>{{e.institue_name}}</td>
+                        <td>{{e.passing_year}}</td>
+                        <td><span class="label label-success">{{e.result}}</span></td>
+                        <td>
+                          <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modal_education"
+                                  (click)="update(e)">Edit
+                          </button>
+                          <button class="btn btn-xs btn-warning" (click)="delete(e.id)">Delete</button>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+              </div>
+            </div>
           </div>
+
+
+          <!-- End : Emergency Contact-->
+
 
         </div>
       </div>
@@ -379,6 +417,52 @@
       </div>
     </div>
   </div>
+</div>
+
+
+<!-- modal new emegency contact-->
+<div class="modal fade" id="modal_emegency_contact" tabindex="-1" role="dialog" aria-labelledby="modal_educationLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal_educationLabe">New Emergency Contact</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Degree Name</label>
+          <input [(ngModel)]="degree_name" [disabled]='!edit' type="text" class="form-control"
+                 placeholder="Enter Degree Name... (Max : 512 Character)">
+        </div>
+        <div class="form-group">
+          <label>Institute Name</label>
+          <input [(ngModel)]="institue_name" [disabled]='!edit' type="text" class="form-control"
+                 placeholder="Enter Institute Name...... (Max : 512 Character)">
+        </div>
+        <div class="form-group">
+          <label>Passing Year</label>
+          <input [(ngModel)]="passing_year" [disabled]='!edit' type="text" class="form-control"
+                 placeholder="Enter Passing Year ...... (Max : 512 Character)">
+        </div>
+        <div class="form-group">
+          <label>Result</label>
+          <input [(ngModel)]="result" [disabled]='!edit' type="text" class="form-control"
+                 placeholder="Enter Result...... (Max : 512 Character)">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="save()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- <app-footernavbar></app-footernavbar> -->
+  <!-- <app-settingsnavbar></app-settingsnavbar> -->
 </div>
 
 
