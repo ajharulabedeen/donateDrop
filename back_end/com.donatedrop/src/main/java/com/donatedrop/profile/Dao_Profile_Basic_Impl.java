@@ -280,6 +280,27 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
 //        return result;
     }
 
+    @Override
+    public Map<String, String> deleteEmergencyContact(String emergencyContactID, String userID) {
+        Map<String, String> result = new HashMap<>();
+        try {
+            EmergencyContact emergencyContact = entityManager.find(EmergencyContact.class,
+                    Long.parseLong(emergencyContactID));
+            //to protect one user deleting, another users information.
+            if (emergencyContact.getProfileBasic().getUserId().toString().equals(userID)) {
+                entityManager.remove(emergencyContact);
+                result.put(StringUtil.STATUS, StringUtil.OK);
+            } else {
+                result.put(StringUtil.STATUS, StringUtil.FAIL);
+                result.put(StringUtil.ERROR, StringUtil.UNAUTHERIZED);
+            }
+        } catch (Exception e) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+            result.put(StringUtil.ERROR, StringUtil.NULL);
+        }
+        return result;
+    }
+
     public ProfileBasic getProfileBasicByUserID(String userID) {
         String sql = "SELECT *FROM profilebasic WHERE user_id =" + userID;
         List<ProfileBasic> list = entityManager

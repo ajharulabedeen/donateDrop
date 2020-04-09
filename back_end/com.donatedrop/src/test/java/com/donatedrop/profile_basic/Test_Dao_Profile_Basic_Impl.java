@@ -224,11 +224,11 @@ public class Test_Dao_Profile_Basic_Impl {
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
         PhoneNumber phoneNumberSaved
                 = dao_Profile_Basic_I.findOneByUser(userID)
-                        .getPhone_number()
-                        .stream()
-                        .filter(p -> phoneNumberNew.getNumber().equals(p.getNumber()))
-                        .findAny()
-                        .orElse(null);
+                .getPhone_number()
+                .stream()
+                .filter(p -> phoneNumberNew.getNumber().equals(p.getNumber()))
+                .findAny()
+                .orElse(null);
         System.out.println("\n" + phoneNumberSaved.toString() + "\n");
         assertEquals(phoneNumberSaved.getNumber(), phoneNumberNew.getNumber());
 //        assertEquals(phoneNumberSaved.getNumber(), "01919");
@@ -254,11 +254,11 @@ public class Test_Dao_Profile_Basic_Impl {
             assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
             PhoneNumber phoneNumberSaved
                     = dao_Profile_Basic_I.findOneByUser(userID)
-                            .getPhone_number()
-                            .stream()
-                            .filter(p -> phoneNumberID.equals(p.getId().toString()))
-                            .findAny()
-                            .orElse(null);
+                    .getPhone_number()
+                    .stream()
+                    .filter(p -> phoneNumberID.equals(p.getId().toString()))
+                    .findAny()
+                    .orElse(null);
             if (phoneNumberSaved == null) {
                 assertEquals(null, phoneNumberSaved);
             } else {
@@ -270,7 +270,7 @@ public class Test_Dao_Profile_Basic_Impl {
         }
     }
 
-//    dependency : save profile basic.
+    //    dependency : save profile basic.
     @Test
     public void test10_updateBasic() {
         // Arrange
@@ -324,7 +324,31 @@ public class Test_Dao_Profile_Basic_Impl {
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
 
+    //dependency : Basic Profile Save.
+    @Test
+    public void test12_deleteEmergencyContact() {
+
+        //        unatherised deletion
+        String userID = "1";
+        String emergencyContactID = "313";
+        Map<String, String> result = dao_Profile_Basic_I.deleteEmergencyContact(emergencyContactID, userID);
+        System.out.println("\n\n>>" + result + "\n\n");
+        assertEquals(StringUtil.FAIL, result.get(StringUtil.STATUS));
+        assertEquals(StringUtil.UNAUTHERIZED, result.get(StringUtil.ERROR));
+
+
+        //        atherised deletion
+        userID = "13";
+        emergencyContactID = "313";
+        result = dao_Profile_Basic_I.deleteEmergencyContact(emergencyContactID, userID);
+        System.out.println("\n\n>>" + result + "\n\n");
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+
+
+    }
+
 //    Helpers :
+
     /**
      * will store the last save id, that can be used for later for other method.
      * Though there is question does it, right to a result from unit test, as

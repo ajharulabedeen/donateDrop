@@ -19,5 +19,7 @@ public class StringUtil {
     public static final String ID = "ID";
     public static final String TRUE = "TRUE";
     public static final String FALSE = "FALSE";
-
+    public static final String MESSAGE = "MESSAGE";
+    public static final String UNAUTHERIZED = "UNAUTHERIZED";
+    public static final String ERROR = "ERROR";
 }
