@@ -242,11 +242,20 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         Map<String, String> result = new HashMap<>();
         ProfileBasic profileBasic = getProfileBasicByUserID(userID);
         profileBasic.getEmergency_contact().add(emergencyContact);
+
         if (profileBasic != null) {
             try {
                 entityManager.merge(profileBasic);
                 result.put(StringUtil.STATUS, StringUtil.OK);
-                result.put(StringUtil.ID, emergencyContact.getId().toString());
+                String id = profileBasic
+                        .getEmergency_contact()
+                        .get(profileBasic
+                                .getEmergency_contact()
+                                .size() - 1)
+                        .getId()
+                        .toString();
+//                result.put(StringUtil.ID, emergencyContact.getId().toString());
+                result.put(StringUtil.ID, id);
             } catch (Exception e) {
                 e.printStackTrace();
                 result.put(StringUtil.STATUS, StringUtil.FAIL);

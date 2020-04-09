@@ -8,11 +8,7 @@ package com.donatedrop.profile;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 /**
@@ -41,7 +37,8 @@ public class EmergencyContact implements Serializable {
     @Column
     private String relation;
 
-
+    @ManyToOne
+    private ProfileBasic profileBasic;
 
     public EmergencyContact(String name, String phone, String mail, String address, String relation) {
         this.name = name;
@@ -81,14 +78,14 @@ public class EmergencyContact implements Serializable {
 
     @Override
     public String toString() {
-        return "EmergencyContact{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", mail='" + mail + '\'' +
-                ", address='" + address + '\'' +
-                ", relation='" + relation + '\'' +
-                '}';
+        return "EmergencyContact{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + ", phone='" + phone + '\''
+                + ", mail='" + mail + '\''
+                + ", address='" + address + '\''
+                + ", relation='" + relation + '\''
+                + '}';
     }
 
     public String getName() {
@@ -130,6 +127,5 @@ public class EmergencyContact implements Serializable {
     public void setRelation(String relation) {
         this.relation = relation;
     }
-    
-    
+
 }
