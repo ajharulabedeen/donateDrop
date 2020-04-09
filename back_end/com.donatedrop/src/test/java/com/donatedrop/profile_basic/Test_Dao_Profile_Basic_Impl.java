@@ -343,8 +343,33 @@ public class Test_Dao_Profile_Basic_Impl {
         result = dao_Profile_Basic_I.deleteEmergencyContact(emergencyContactID, userID);
         System.out.println("\n\n>>" + result + "\n\n");
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+    }
 
 
+    //dependency : Basic Profile Save.
+    @Test
+    public void test13_updateEmergencyContact() {
+
+        //        unatherised deletion
+        String userID = "1";
+        String emergencyContactID = "312";
+        EmergencyContact emergencyContact = new EmergencyContact();
+        emergencyContact.setId(Long.parseLong(emergencyContactID));
+        emergencyContact.setAddress("Dhaka, Dhaka");
+        emergencyContact.setRelation("Mamu");
+        emergencyContact.setMail("mail@mail.com");
+        Map<String, String> result = dao_Profile_Basic_I.updateEmergencyContact(emergencyContact, userID);
+
+        System.out.println("\n\n>>" + result + "\n\n");
+        assertEquals(StringUtil.FAIL, result.get(StringUtil.STATUS));
+        assertEquals(StringUtil.UNAUTHERIZED, result.get(StringUtil.ERROR));
+
+        //        athurised deletion
+        userID = "13";
+//        emergencyContactID = "312";
+        result = dao_Profile_Basic_I.updateEmergencyContact(emergencyContact, userID);
+        System.out.println("\n\n>>" + result + "\n\n");
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
 
 //    Helpers :

@@ -53,6 +53,7 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         Map<String, String> result = new HashMap<>();
         ProfileBasic profileBasicOld = getProfileBasicByUserID(profileBasicNew.getUserId());
         if (profileBasicOld != null) {
+            //refactor : follow emegency contact update
             profileBasicOld.setName(profileBasicNew.getName());
             profileBasicOld.setBirthDate(profileBasicNew.getBirthDate());
             profileBasicOld.setCare_of(profileBasicNew.getCare_of());
@@ -254,30 +255,6 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
             result.put(StringUtil.STATUS, StringUtil.FAIL);
         }
         return result;
-//        Refactor : working Code, have to delete later.
-//        profileBasic.getEmergency_contact().add(emergencyContact);
-//
-//        if (profileBasic != null) {
-//            try {
-//                entityManager.merge(profileBasic);
-//                result.put(StringUtil.STATUS, StringUtil.OK);
-//                String id = profileBasic
-//                        .getEmergency_contact()
-//                        .get(profileBasic
-//                                .getEmergency_contact()
-//                                .size() - 1)
-//                        .getId()
-//                        .toString();
-////                result.put(StringUtil.ID, emergencyContact.getId().toString());
-//                result.put(StringUtil.ID, id);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//                result.put(StringUtil.STATUS, StringUtil.FAIL);
-//            }
-//        } else {
-//            result.put(StringUtil.STATUS, StringUtil.FAIL);
-//        }
-//        return result;
     }
 
     @Override
@@ -289,6 +266,28 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
             //to protect one user deleting, another users information.
             if (emergencyContact.getProfileBasic().getUserId().toString().equals(userID)) {
                 entityManager.remove(emergencyContact);
+                result.put(StringUtil.STATUS, StringUtil.OK);
+            } else {
+                result.put(StringUtil.STATUS, StringUtil.FAIL);
+                result.put(StringUtil.ERROR, StringUtil.UNAUTHERIZED);
+            }
+        } catch (Exception e) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+            result.put(StringUtil.ERROR, StringUtil.NULL);
+        }
+        return result;
+    }
+
+    @Override
+    public Map<String, String> updateEmergencyContact(EmergencyContact emergencyContactUpdate, String userID) {
+        Map<String, String> result = new HashMap<>();
+        try {
+            EmergencyContact emergencyContactOld = entityManager.find(EmergencyContact.class,
+                    Long.parseLong(emergencyContactUpdate.getId().toString()));
+            //to protect one user deleting, another users information.
+            if (emergencyContactOld.getProfileBasic().getUserId().toString().equals(userID)) {
+                emergencyContactUpdate.setProfileBasic(getProfileBasicByUserID(userID));
+                entityManager.merge(emergencyContactUpdate);
                 result.put(StringUtil.STATUS, StringUtil.OK);
             } else {
                 result.put(StringUtil.STATUS, StringUtil.FAIL);
@@ -314,3 +313,29 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
     }
 
 }// class 
+
+//public Map<String, String> deleteEmergencyContact(String emergencyContactID, String userID) {
+//        Refactor : working Code, have to delete later.
+//        profileBasic.getEmergency_contact().add(emergencyContact);
+//
+//        if (profileBasic != null) {
+//            try {
+//                entityManager.merge(profileBasic);
+//                result.put(StringUtil.STATUS, StringUtil.OK);
+//                String id = profileBasic
+//                        .getEmergency_contact()
+//                        .get(profileBasic
+//                                .getEmergency_contact()
+//                                .size() - 1)
+//                        .getId()
+//                        .toString();
+////                result.put(StringUtil.ID, emergencyContact.getId().toString());
+//                result.put(StringUtil.ID, id);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//                result.put(StringUtil.STATUS, StringUtil.FAIL);
+//            }
+//        } else {
+//            result.put(StringUtil.STATUS, StringUtil.FAIL);
+//        }
+//        return result;

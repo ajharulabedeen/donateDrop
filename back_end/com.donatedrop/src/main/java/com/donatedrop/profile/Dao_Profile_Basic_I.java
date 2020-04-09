@@ -77,4 +77,6 @@ public interface Dao_Profile_Basic_I {
 
     public Map<String, String> deleteEmergencyContact(String emergencyContactID, String userID);
 
+    public Map<String, String> updateEmergencyContact(EmergencyContact emergencyContactUpdate, String userID);
+
 }
