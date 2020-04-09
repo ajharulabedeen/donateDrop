@@ -241,29 +241,43 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
     public Map<String, String> addEmergencyContact(EmergencyContact emergencyContact, String userID) {
         Map<String, String> result = new HashMap<>();
         ProfileBasic profileBasic = getProfileBasicByUserID(userID);
-        profileBasic.getEmergency_contact().add(emergencyContact);
-
         if (profileBasic != null) {
             try {
-                entityManager.merge(profileBasic);
+                emergencyContact.setProfileBasic(profileBasic);
+                entityManager.persist(emergencyContact);
                 result.put(StringUtil.STATUS, StringUtil.OK);
-                String id = profileBasic
-                        .getEmergency_contact()
-                        .get(profileBasic
-                                .getEmergency_contact()
-                                .size() - 1)
-                        .getId()
-                        .toString();
-//                result.put(StringUtil.ID, emergencyContact.getId().toString());
-                result.put(StringUtil.ID, id);
+                result.put(StringUtil.ID, emergencyContact.getId().toString());
             } catch (Exception e) {
-                e.printStackTrace();
                 result.put(StringUtil.STATUS, StringUtil.FAIL);
             }
         } else {
             result.put(StringUtil.STATUS, StringUtil.FAIL);
         }
         return result;
+//        Refactor : working Code, have to delete later.
+//        profileBasic.getEmergency_contact().add(emergencyContact);
+//
+//        if (profileBasic != null) {
+//            try {
+//                entityManager.merge(profileBasic);
+//                result.put(StringUtil.STATUS, StringUtil.OK);
+//                String id = profileBasic
+//                        .getEmergency_contact()
+//                        .get(profileBasic
+//                                .getEmergency_contact()
+//                                .size() - 1)
+//                        .getId()
+//                        .toString();
+////                result.put(StringUtil.ID, emergencyContact.getId().toString());
+//                result.put(StringUtil.ID, id);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//                result.put(StringUtil.STATUS, StringUtil.FAIL);
+//            }
+//        } else {
+//            result.put(StringUtil.STATUS, StringUtil.FAIL);
+//        }
+//        return result;
     }
 
     public ProfileBasic getProfileBasicByUserID(String userID) {

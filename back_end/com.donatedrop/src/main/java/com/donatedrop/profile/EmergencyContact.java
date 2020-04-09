@@ -38,6 +38,7 @@ public class EmergencyContact implements Serializable {
     private String relation;
 
     @ManyToOne
+    @JoinColumn(name = "emergency_contact")
     private ProfileBasic profileBasic;
 
     public EmergencyContact(String name, String phone, String mail, String address, String relation) {
@@ -126,6 +127,14 @@ public class EmergencyContact implements Serializable {
 
     public void setRelation(String relation) {
         this.relation = relation;
+    }
+
+    public ProfileBasic getProfileBasic() {
+        return profileBasic;
+    }
+
+    public void setProfileBasic(ProfileBasic profileBasic) {
+        this.profileBasic = profileBasic;
     }
 
 }
