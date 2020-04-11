@@ -6,6 +6,7 @@ import {tap, catchError, map} from 'rxjs/operators';
 import {throwError, BehaviorSubject} from 'rxjs';
 import {ArrayConcatBuiltinFn} from '@angular/compiler-cli/src/ngtsc/partial_evaluator/src/builtin';
 import {Divisions} from './divisions.model';
+import {PhoneNumber} from './phone-number.model';
 
 @Injectable({
   providedIn: 'root'
@@ -121,6 +122,17 @@ export class BasicService {
       'http://127.0.0.1:8080/public/geocode/unions?upzID=' + upzID, this.authService.getHeader()
     );
     // return ['Rudghora', 'Dumuria'];
+  }
+
+  public getPhoneNumbers() {
+    var phoneNumbers: PhoneNumber[] = new Array();
+    for (var x = 0; x < 5; x++) {
+      var p = new PhoneNumber();
+      p.$id = x.toString();
+      p.$number = '0' + x;
+      phoneNumbers.push(p);
+    }
+    return phoneNumbers;
   }
 }// class
 // working

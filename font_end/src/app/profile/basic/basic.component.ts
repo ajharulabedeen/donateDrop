@@ -8,6 +8,7 @@ import {Divisions} from './divisions.model';
 import {Districts} from './districts.model';
 import {Unions} from './unions.model';
 import {Upzillas} from './upzillas.model';
+import {PhoneNumber} from './phone-number.model';
 
 @Component({
   selector: 'app-basic',
@@ -37,8 +38,8 @@ export class BasicComponent implements OnInit {
   religion: string;
   image_address: string;
 
-  //phone numbers
-  phoneNumbers: Divisions[];
+  // phone numbers
+  phoneNumbers: PhoneNumber[];
 
   // address : present
   present_divisions = new Array();
@@ -72,6 +73,8 @@ export class BasicComponent implements OnInit {
 
 
   ngOnInit() {
+
+    this.getPhoneNumbers();
 
     // start : init
     this.blood_group = 'A+';
@@ -193,7 +196,6 @@ export class BasicComponent implements OnInit {
     this.basicService.update(this.getBasic());
   }
 
-
   public getBasic() {
     var basic = new Basic();
     basic.$dept = this.dept;
@@ -219,6 +221,11 @@ export class BasicComponent implements OnInit {
     return basic;
   }
 
+  public getPhoneNumbers() {
+    console.log('\n this.phoneNumbers : \n' + this.phoneNumbers);
+    this.phoneNumbers = this.basicService.getPhoneNumbers();
+    console.log('\n this.phoneNumbers : \n' + this.phoneNumbers);
+  }
 
   // start : present address geo code
   // after division selection

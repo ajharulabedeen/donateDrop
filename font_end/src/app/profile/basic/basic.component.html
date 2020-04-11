@@ -127,50 +127,14 @@
                 <th>Delete</th>
                 <th>Index</th>
                 <th>Number</th>
-                <tr>
+                <tr *ngFor="let p of phoneNumbers">
                   <td>
                     <button class="btn btn-xs btn-danger" (click)="update(e)">Delete
                     </button>
                   </td>
-                  <td>1</td>
+                  <td>{{p.$id}}</td>
                   <td>
-                    0171725555
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <button class="btn btn-sm btn-danger">Delete</button>
-                  </td>
-                  <td>1</td>
-                  <td>
-                    0171725555
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <button class="btn btn-sm btn-danger">Delete</button>
-                  </td>
-                  <td>1</td>
-                  <td>
-                    0171725555
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <button class="btn btn-sm btn-danger">Delete</button>
-                  </td>
-                  <td>1</td>
-                  <td>
-                    0171725555
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <button class="btn btn-sm btn-danger">Delete</button>
-                  </td>
-                  <td>1</td>
-                  <td>
-                    0171725555
+                    {{p.$number}}
                   </td>
                 </tr>
                 </tbody>
