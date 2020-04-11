@@ -293,26 +293,12 @@ export class BasicComponent implements OnInit {
 
   // after upzillas selection
   public getPermanent_unions(upzilaSelected: string) {
-    console.log('selected Unions : ' + this.permanent_upzilla);
     var upzID = this.permanent_upzillas.find(({name}) => name === this.permanent_upzilla);
-    // console.log(this.present_upzillas);
-    console.log('upzID : ' + upzID);
     upzID = upzID['id'];
-    console.log('upzID : ' + upzID);
-    this.permanent_unions = new Array();
-    // refactor :
-    this.basicService.getPresent_unions(upzID)
-      .subscribe((res: Response) => {
-        for (const index in res) {
-          var union = new Unions();
-          union.id = res[index]['id'];
-          union.name = res[index]['name'];
-          // this.present_divisions.push(res[index]['name']);
-          this.permanent_unions.push(union);
-        }
-      });
-    console.log('selected Upzilla  : ' + this.present_upzilla);
-    // this.present_unions = this.basicService.getPresent_unions(upzilaSelected);
+    if (upzID != null) {
+      this.permanent_unions = [];
+      this.permanent_unions = this.basicService.getUnions(upzID);
+    }
   }
 
 // end : permanent address geo code
