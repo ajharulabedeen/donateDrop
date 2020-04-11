@@ -8,6 +8,8 @@ import {ArrayConcatBuiltinFn} from '@angular/compiler-cli/src/ngtsc/partial_eval
 import {Divisions} from './divisions.model';
 import {PhoneNumber} from './phone-number.model';
 import {Districts} from './districts.model';
+import {Upzillas} from './upzillas.model';
+import {Unions} from './unions.model';
 
 @Injectable({
   providedIn: 'root'
@@ -119,24 +121,35 @@ export class BasicService {
     return districts;
   }
 
-  public getPresent_upzillas(distID: string) {
-    return this.http.post(
+  public getUpzillas(distID: string) {
+    var upzillas: Upzillas[] = new Array();
+    this.http.post(
       'http://127.0.0.1:8080/public/geocode/upzillas?distID=' + distID, this.authService.getHeader()
-    );
-    // if (district == 'Dhaka') {
-    //   return ['Dhaka', 'DOhar', 'Nawab Ganj'];
-    // } else if (district == 'Khulna') {
-    //   return ['Dumuria', 'Botighata', 'Fultola'];
-    // } else if (district == 'Barishal') {
-    //   return ['Vola', 'Pirojpur'];
-    // }
+    ).subscribe((res: Response) => {
+      // console.log(res);
+      for (const index in res) {
+        var upz = new Upzillas();
+        upz.id = res[index]['id'];
+        upz.name = res[index]['name'];
+        upzillas.push(upz);
+      }
+    });
+    return upzillas;
   }
 
-  public getPresent_unions(upzID: string) {
-    return this.http.post(
+  public getUnions(upzID: string) {
+    var unions: Unions[] = new Array();
+    this.http.post(
       'http://127.0.0.1:8080/public/geocode/unions?upzID=' + upzID, this.authService.getHeader()
-    );
-    // return ['Rudghora', 'Dumuria'];
+    ).subscribe((res: Response) => {
+      for (const index in res) {
+        var union = new Unions();
+        union.id = res[index]['id'];
+        union.name = res[index]['name'];
+        unions.push(union);
+      }
+    });
+    return unions;
   }
 
   public getPhoneNumbers() {

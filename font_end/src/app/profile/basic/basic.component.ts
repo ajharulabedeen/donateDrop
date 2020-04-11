@@ -44,7 +44,7 @@ export class BasicComponent implements OnInit {
   divisions: Divisions[] = new Array(); // used for both permanent and present.
   // address : present
   present_districts: Districts[] = new Array();
-  present_upzillas = new Array();
+  present_upzillas: Upzillas[] = new Array();
   present_unions = new Array();
   present_division: string;
   present_district: string;
@@ -54,7 +54,7 @@ export class BasicComponent implements OnInit {
 
 // address : permanent
   permanent_districts: Districts[] = new Array();
-  permanent_upzillas = new Array();
+  permanent_upzillas: Upzillas[] = new Array();
   permanent_unions = new Array();
   permanent_division: string;
   permanent_district: string;
@@ -237,52 +237,31 @@ export class BasicComponent implements OnInit {
       divID = divID['id'];
       console.log('selected Division  : ' + this.present_division);
       this.present_districts = this.basicService.getDistricts(divID);
-      this.present_upzillas = new Array();
-      this.present_unions = new Array();
+      this.present_upzillas = [];
+      this.present_unions = [];
     }
   }
 
   // after districts selection
-  public getPresent_upzillas(present_districtselected: string) {
+  public getPresent_upzillas(present_district: string) {
     console.log('selected District  : ' + this.present_district);
     var distID = this.present_districts.find(({name}) => name === this.present_district);
     console.log('distID : ' + distID);
     distID = distID['id'];
     console.log('distID : ' + distID);
-    this.present_upzillas = new Array();
-    this.basicService.getPresent_upzillas(distID)
-      .subscribe((res: Response) => {
-        for (const index in res) {
-          var upz = new Upzillas();
-          upz.id = res[index]['id'];
-          upz.name = res[index]['name'];
-          // this.present_divisions.push(res[index]['name']);
-          this.present_upzillas.push(upz);
-        }
-      });
+    this.present_upzillas = [];
+    this.present_upzillas = this.basicService.getUpzillas(distID);
+    this.present_unions = [];
   }
 
   // after upzillas selection
   public getPresent_unions(upzilaSelected: string) {
     console.log('selected Upzillas: ' + this.present_upzilla);
     var upzID = this.present_upzillas.find(({name}) => name === this.present_upzilla);
-    // console.log(this.present_upzillas);
-    console.log('upzID : ' + upzID);
     upzID = upzID['id'];
-    console.log('upzID : ' + upzID);
-    this.present_unions = new Array();
-    this.basicService.getPresent_unions(upzID)
-      .subscribe((res: Response) => {
-        for (const index in res) {
-          var union = new Unions();
-          union.id = res[index]['id'];
-          union.name = res[index]['name'];
-          // this.present_divisions.push(res[index]['name']);
-          this.present_unions.push(union);
-        }
-      });
-    console.log('selected Upzilla  : ' + this.present_upzilla);
-    // this.present_unions = this.basicService.getPresent_unions(upzilaSelected);
+    // console.log('upzID : ' + upzID);
+    this.present_unions = [];
+    this.present_unions = this.basicService.getUnions(upzID);
   }
 
 // end : present address geo code
