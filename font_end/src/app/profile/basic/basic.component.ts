@@ -20,37 +20,26 @@ export class BasicComponent implements OnInit {
   bloods = new Array();
 
   profileEdit = true;
+  loadedPosts: Basic[] = [];
+  isFetching = false;
+  error = null;
+  basicExist: boolean;
 
+  // basic
+  name: string;
   id: string;
   user_id: string;
-  dept: string;
-  batch: string;
-  student_id: string;
-  passing_year: string;
-  first_name: string;
-  last_name: string;
   birth_date: string;
   gender: string;
   blood_group: string;
   email: string;
   phone: string;
-  address_present: string;
-  address_permanent: string;
-  research_interest: string;
-  skills: string;
-  image_address: string;
   religion: string;
-  social_media_link: string;
-
-  basicExist: boolean;
-
-  constructor(private basicService: BasicService) {
-  }
+  image_address: string;
 
 
-  loadedPosts: Basic[] = [];
-  isFetching = false;
-  error = null;
+
+  // address : present
   present_divisions = new Array();
   present_districts = new Array();
   present_upzillas = new Array();
@@ -61,6 +50,7 @@ export class BasicComponent implements OnInit {
   present_union: string;
   present_street_address: string;
 
+// address : permanent
   permanent_districts = new Array();
   permanent_upzillas = new Array();
   permanent_unions = new Array();
@@ -69,6 +59,16 @@ export class BasicComponent implements OnInit {
   permanent_upzilla: string;
   permanent_uinon: string;
   permanent_street_address: string;
+
+  // education
+  dept: string;
+  batch: string;
+  student_id: string;
+  passing_year: string;
+
+
+  constructor(private basicService: BasicService) {
+  }
 
 
   ngOnInit() {
