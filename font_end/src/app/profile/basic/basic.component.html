@@ -10,7 +10,6 @@
     <div id="basic" class="panel-collapse collapse">
       <div class="panel-body">
         <div class="box-body">
-
           <!--start : Basic single informations-->
           <div class="row box box-primary">
             <!--Name-->
@@ -119,7 +118,7 @@
 
           <!--Start : phone number-->
           <div class="row box box-info">
-            <div class="col-md-6 offset-md-6">
+            <div class="col-md-12">
               <h4 class="h4">Phone Numbers</h4>
               <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal_phoneNumber">Add New
               </button>
@@ -184,7 +183,7 @@
           <div class="row box box-info">
             <h4>Present Address</h4>
             <!-- present division-->
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label>Division</label>
               <div class="form-group">
                 <div class="form-group">
@@ -202,7 +201,7 @@
               </div>
             </div>
             <!-- present district-->
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label>District</label>
               <div class="form-group">
                 <div class="form-group">
@@ -220,7 +219,7 @@
               </div>
             </div>
             <!-- present upzilla-->
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label>Upzilla</label>
               <div class="form-group">
                 <div class="form-group">
@@ -237,7 +236,7 @@
               </div>
             </div>
             <!-- present unions-->
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label>Unions</label>
               <div class="form-group">
                 <div class="form-group">
@@ -260,14 +259,22 @@
                        placeholder="Street Address!">
               </div>
             </div>
+            <button class="btn btn-primary btn-xs" *ngIf="profileEdit" (click)="update()">
+              Update
+              <!-- {{ basicExist ? 'Update' : 'Save' }} -->
+            </button>
+            <button class="btn btn-danger btn-xs" *ngIf="profileEdit" (click)="editProfile()">Cancel</button>
+            <button class="btn btn-primary btn-xs" *ngIf="profileEdit" (click)="save()">
+              Save
+            </button>
           </div>
           <!--end : present address-->
 
           <!--start : permanent address-->
-          <div class="row box box-info">
+          <div class="row box box-body box-info">
             <h4>Permanent Address</h4>
             <!-- permanent division-->
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label>Division</label>
               <div class="form-group">
                 <div class="form-group">
@@ -285,7 +292,7 @@
               </div>
             </div>
             <!-- permanent district-->
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label>District</label>
               <div class="form-group">
                 <div class="form-group">
@@ -303,7 +310,7 @@
               </div>
             </div>
             <!-- permanent upzilla-->
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label>Upzilla</label>
               <div class="form-group">
                 <div class="form-group">
@@ -320,7 +327,7 @@
               </div>
             </div>
             <!-- permanent unions-->
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label>Unions</label>
               <div class="form-group">
                 <div class="form-group">
@@ -343,13 +350,21 @@
                        placeholder="Street Address!">
               </div>
             </div>
+            <button class="btn btn-primary btn-xs" *ngIf="profileEdit" (click)="update()">
+              Update
+              <!-- {{ basicExist ? 'Update' : 'Save' }} -->
+            </button>
+            <button class="btn btn-danger btn-xs" *ngIf="profileEdit" (click)="editProfile()">Cancel</button>
+            <button class="btn btn-primary btn-xs" *ngIf="profileEdit" (click)="save()">
+              Save
+            </button>
           </div>
           <!--end : permanent  address-->
 
           <!-- Start : Emergency Contact-->
-          <div class="box box-danger">
+          <div class="row box box-body box-danger">
             <h3>Emergency Contact</h3>
-            <div class="box-body box-primary">
+            <div class="col-md-12">
               <button type="button" class="btn btn-md btn-primary" data-toggle="modal"
                       data-target="#modal_emegency_contact">
                 Add New
@@ -444,18 +459,26 @@
                 <!-- /.box -->
               </div>
             </div>
+            <button class="btn btn-primary btn-xs" *ngIf="profileEdit" (click)="update()">
+              Update
+              <!-- {{ basicExist ? 'Update' : 'Save' }} -->
+            </button>
+            <button class="btn btn-danger btn-xs" *ngIf="profileEdit" (click)="editProfile()">Cancel</button>
+            <button class="btn btn-primary btn-xs" *ngIf="profileEdit" (click)="save()">
+              Save
+            </button>
           </div>
-
-
           <!-- End : Emergency Contact-->
-
-
         </div>
+        <!--<div class="box-body">-->
       </div>
+      <!--<div class="panel-body">-->
       <div class="panel-footer">End Basic Info.</div>
     </div>
+    <!--<div id="basic" class="panel-collapse collapse">-->
   </div>
 </div>
+<!--panel-group-->
 
 
 <!-- modal new phone number-->
