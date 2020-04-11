@@ -37,6 +37,9 @@ export class BasicComponent implements OnInit {
   religion: string;
   image_address: string;
 
+  //phone numbers
+  phoneNumbers: Divisions[];
+
   // address : present
   present_divisions = new Array();
   present_districts = new Array();
@@ -57,7 +60,6 @@ export class BasicComponent implements OnInit {
   permanent_upzilla: string;
   permanent_uinon: string;
   permanent_street_address: string;
-
   // education
   dept: string;
   batch: string;
