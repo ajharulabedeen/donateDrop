@@ -86,9 +86,19 @@ export class BasicService {
   }
 
   public getPresentDivisions() {
-    return this.http.get(
+    var divisions: Divisions[] = new Array();
+    this.http.get(
       'http://127.0.0.1:8080/public/geocode/divisions', this.authService.getHeader()
-    );
+    ).subscribe((res: Response) => {
+      for (const index in res) {
+        var div= new Divisions();
+        div.id = res[index]['id'];
+        div.name = res[index]['name'];
+        // this.present_divisions.push(res[index]['name']);
+        divisions.push(div);
+      }
+    });
+    return divisions;
   }
 
   public getPresent_districts(divID: string) {

@@ -156,7 +156,7 @@
                           style="width: 100%;" tabindex="-1" aria-hidden="true"
                           (click)="getPresent_districts(present_division)"
                   >
-                    <option *ngFor="let d of present_divisions">
+                    <option *ngFor="let d of divisions">
                       <span (click)="divIDPrint(d.id)">{{d._name}}</span>
                     </option>
                     <!--<option value="d">{{d}}</option>-->
@@ -247,7 +247,7 @@
                           style="width: 100%;" tabindex="-1" aria-hidden="true"
                           (click)="getPermanent_districts(permanent_division)"
                   >
-                    <option *ngFor="let div of present_divisions; let i=index">
+                    <option *ngFor="let div of divisions; let i=index">
                       {{div._name}}
                     </option>
                     <!--<option value="d">{{d}}</option>-->

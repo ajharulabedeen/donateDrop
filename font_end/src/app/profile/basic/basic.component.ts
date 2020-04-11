@@ -42,7 +42,7 @@ export class BasicComponent implements OnInit {
   phoneNumbers: PhoneNumber[];
 
   // address : present
-  present_divisions = new Array();
+  divisions: Divisions[] = new Array(); // used for both permanent and present.
   present_districts = new Array();
   present_upzillas = new Array();
   present_unions = new Array();
@@ -233,7 +233,7 @@ export class BasicComponent implements OnInit {
     if (this.present_division != null) {
       var divID = '3';
       this.present_districts = new Array();
-      divID = this.present_divisions.find(({name}) => name === this.present_division);
+      divID = this.divisions.find(({name}) => name === this.present_division);
       console.log(divID);
       divID = divID['id'];
       this.present_upzillas = new Array();
@@ -245,7 +245,7 @@ export class BasicComponent implements OnInit {
             var dist = new Districts();
             dist.id = res[index]['id'];
             dist.name = res[index]['name'];
-            // this.present_divisions.push(res[index]['name']);
+            // this.divisions.push(res[index]['name']);
             this.present_districts.push(dist);
           }
         });
@@ -303,7 +303,7 @@ export class BasicComponent implements OnInit {
     if (this.permanent_division != null) {
       var divID = '3';
       this.permanent_districts = new Array();
-      divID = this.present_divisions.find(({name}) => name === this.permanent_division);
+      divID = this.divisions.find(({name}) => name === this.permanent_division);
       console.log(divID);
       divID = divID['id'];
       console.log('selected Division  : ' + this.permanent_division);
@@ -375,22 +375,13 @@ export class BasicComponent implements OnInit {
 
 
   public getDivisions() {
-    this.present_divisions = new Array();
-    this.basicService.getPresentDivisions()
-      .subscribe((res: Response) => {
-        for (const index in res) {
-          var div = new Divisions();
-          div.id = res[index]['id'];
-          div.name = res[index]['name'];
-          // this.present_divisions.push(res[index]['name']);
-          this.present_divisions.push(div);
-        }
-      });
-    console.log(this.present_divisions);
+    this.divisions = new Array();
+    this.divisions = this.basicService.getPresentDivisions();
+    console.log(this.divisions);
   }
 
   divisionPrint() {
-    var div = this.present_divisions.find(({name}) => name === this.present_division);
+    var div = this.divisions.find(({name}) => name === this.present_division);
     console.log(div);
     console.log('present_division : ' + this.present_division);
   }
