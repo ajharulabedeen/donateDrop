@@ -283,23 +283,12 @@ export class BasicComponent implements OnInit {
 
   // after districts selection
   public getPermanent_upzillas(present_districtselected: string) {
-    console.log('selected District  : ' + this.permanent_district);
     var distID = this.permanent_districts.find(({name}) => name === this.permanent_district);
     distID = distID['id'];
-    console.log('distID : ' + distID);
     this.permanent_upzillas = [];
     // refactor :
-    this.basicService.getPresent_upzillas(distID)
-      .subscribe((res: Response) => {
-        for (const index in res) {
-          var upz = new Upzillas();
-          upz.id = res[index]['id'];
-          upz.name = res[index]['name'];
-          // this.present_divisions.push(res[index]['name']);
-          this.permanent_upzillas.push(upz);
-        }
-        this.permanent_unions = new Array();
-      });
+    this.permanent_upzillas = this.basicService.getUpzillas(distID);
+    this.permanent_unions = [];
   }
 
   // after upzillas selection
