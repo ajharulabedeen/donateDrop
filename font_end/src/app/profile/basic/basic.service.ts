@@ -88,7 +88,7 @@ export class BasicService {
     return blood;
   }
 
-  public getPresentDivisions() {
+  public getDivisions() {
     var divisions: Divisions[] = new Array();
     this.http.get(
       'http://127.0.0.1:8080/public/geocode/divisions', this.authService.getHeader()

@@ -269,16 +269,15 @@ export class BasicComponent implements OnInit {
   // start : permanent address geo code
   // after division selection
   public getPermanent_districts(present_division: string) {
+    var divID = '3';
     if (this.permanent_division != null) {
-      this.permanent_districts = new Array();
+      this.permanent_districts = [];
       divID = this.divisions.find(({name}) => name === this.permanent_division);
-      // console.log(divID);
       divID = divID['id'];
-      // console.log('selected Division  : ' + this.permanent_division);
-      this.present_districts = this.basicService.getDistricts(divID);
+      this.permanent_districts = this.basicService.getDistricts(divID);
       // refactor : bug > clicking in drop down making other empty. fix > after selection list will empty.
-      this.permanent_upzillas = new Array();
-      this.permanent_unions = new Array();
+      this.permanent_upzillas = [];
+      this.permanent_unions = [];
     }
   }
 
@@ -286,10 +285,9 @@ export class BasicComponent implements OnInit {
   public getPermanent_upzillas(present_districtselected: string) {
     console.log('selected District  : ' + this.permanent_district);
     var distID = this.permanent_districts.find(({name}) => name === this.permanent_district);
-    console.log('distID : ' + distID);
     distID = distID['id'];
     console.log('distID : ' + distID);
-    this.permanent_upzillas = new Array();
+    this.permanent_upzillas = [];
     // refactor :
     this.basicService.getPresent_upzillas(distID)
       .subscribe((res: Response) => {
@@ -332,8 +330,8 @@ export class BasicComponent implements OnInit {
 
 
   public getDivisions() {
-    this.divisions = new Array();
-    this.divisions = this.basicService.getPresentDivisions();
+    this.divisions = [];
+    this.divisions = this.basicService.getDivisions();
     console.log(this.divisions);
   }
 
