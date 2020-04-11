@@ -41,9 +41,9 @@ export class BasicComponent implements OnInit {
   // phone numbers
   phoneNumbers: PhoneNumber[];
 
-  // address : present
   divisions: Divisions[] = new Array(); // used for both permanent and present.
-  present_districts = new Array();
+  // address : present
+  present_districts: Districts[] = new Array();
   present_upzillas = new Array();
   present_unions = new Array();
   present_division: string;
@@ -53,7 +53,7 @@ export class BasicComponent implements OnInit {
   present_street_address: string;
 
 // address : permanent
-  permanent_districts = new Array();
+  permanent_districts: Districts[] = new Array();
   permanent_upzillas = new Array();
   permanent_unions = new Array();
   permanent_division: string;
@@ -230,25 +230,15 @@ export class BasicComponent implements OnInit {
   // start : present address geo code
   // after division selection
   public getPresent_districts(present_division: string) {
+    var divID = '3';
     if (this.present_division != null) {
-      var divID = '3';
       this.present_districts = new Array();
       divID = this.divisions.find(({name}) => name === this.present_division);
-      console.log(divID);
       divID = divID['id'];
-      this.present_upzillas = new Array();
       console.log('selected Division  : ' + this.present_division);
-      this.basicService.getPresent_districts(divID)
-        .subscribe((res: Response) => {
-          console.log(res);
-          for (const index in res) {
-            var dist = new Districts();
-            dist.id = res[index]['id'];
-            dist.name = res[index]['name'];
-            // this.divisions.push(res[index]['name']);
-            this.present_districts.push(dist);
-          }
-        });
+      this.present_districts = this.basicService.getDistricts(divID);
+      this.present_upzillas = new Array();
+      this.present_unions = new Array();
     }
   }
 
@@ -301,27 +291,15 @@ export class BasicComponent implements OnInit {
   // after division selection
   public getPermanent_districts(present_division: string) {
     if (this.permanent_division != null) {
-      var divID = '3';
       this.permanent_districts = new Array();
       divID = this.divisions.find(({name}) => name === this.permanent_division);
-      console.log(divID);
+      // console.log(divID);
       divID = divID['id'];
-      console.log('selected Division  : ' + this.permanent_division);
-      // refactor : have to rename the serve to only get divisions.
-      this.basicService.getPresent_districts(divID)
-        .subscribe((res: Response) => {
-          console.log(res);
-          for (const index in res) {
-            var dist = new Districts();
-            dist.id = res[index]['id'];
-            dist.name = res[index]['name'];
-            // this.present_divisions.push(res[index]['name']);
-            this.permanent_districts.push(dist);
-          }
-          // refactor : clicking in drop down making other empty, after selection list will empty.
-          this.permanent_upzillas = new Array();
-          this.permanent_unions = new Array();
-        });
+      // console.log('selected Division  : ' + this.permanent_division);
+      this.present_districts = this.basicService.getDistricts(divID);
+      // refactor : bug > clicking in drop down making other empty. fix > after selection list will empty.
+      this.permanent_upzillas = new Array();
+      this.permanent_unions = new Array();
     }
   }
 

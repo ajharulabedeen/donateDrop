@@ -7,6 +7,7 @@ import {throwError, BehaviorSubject} from 'rxjs';
 import {ArrayConcatBuiltinFn} from '@angular/compiler-cli/src/ngtsc/partial_evaluator/src/builtin';
 import {Divisions} from './divisions.model';
 import {PhoneNumber} from './phone-number.model';
+import {Districts} from './districts.model';
 
 @Injectable({
   providedIn: 'root'
@@ -91,7 +92,7 @@ export class BasicService {
       'http://127.0.0.1:8080/public/geocode/divisions', this.authService.getHeader()
     ).subscribe((res: Response) => {
       for (const index in res) {
-        var div= new Divisions();
+        var div = new Divisions();
         div.id = res[index]['id'];
         div.name = res[index]['name'];
         // this.present_divisions.push(res[index]['name']);
@@ -101,17 +102,21 @@ export class BasicService {
     return divisions;
   }
 
-  public getPresent_districts(divID: string) {
-    return this.http.post(
+  public getDistricts(divID: string) {
+    var districts: Districts[] = new Array();
+    this.http.post(
       'http://127.0.0.1:8080/public/geocode/districts?divID=' + divID, this.authService.getHeader()
-    );
-    // if (division == 'Dhaka') {
-    //   return ['Dhaka', 'Gazipur', 'Kalna'];
-    // } else if (division == 'Khulna') {
-    //   return ['Jessore', 'Bagerhat', 'Satkhira', 'Khulna'];
-    // } else if (division == 'Barishal') {
-    //   return ['Barishal', 'Vola', 'Pirojpur'];
-    // }
+    ).subscribe((res: Response) => {
+      console.log(res);
+      for (const index in res) {
+        var dist = new Districts();
+        dist.id = res[index]['id'];
+        dist.name = res[index]['name'];
+        // this.present_divisions.push(res[index]['name']);
+        districts.push(dist);
+      }
+    });
+    return districts;
   }
 
   public getPresent_upzillas(distID: string) {
