@@ -37,8 +37,6 @@ export class BasicComponent implements OnInit {
   religion: string;
   image_address: string;
 
-
-
   // address : present
   present_divisions = new Array();
   present_districts = new Array();

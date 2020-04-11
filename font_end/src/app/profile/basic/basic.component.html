@@ -5,112 +5,119 @@
       <h4 class="panel-title">
         <a data-toggle="collapse" href="#basic">Profile Basic Info</a>
         <button class="btn btn-primary btn-xs" *ngIf="!profileEdit" (click)="editProfile()">Change Photo</button>
-        <button class="btn btn-primary btn-xs" *ngIf="profileEdit" (click)="update()">
-          Update
-          <!-- {{ basicExist ? 'Update' : 'Save' }} -->
-        </button>
-        <button class="btn btn-danger btn-xs" *ngIf="profileEdit" (click)="editProfile()">Cancel</button>
-        <button class="btn btn-warnning btn-xs" *ngIf="profileEdit" (click)="save()">
-          Save
-        </button>
       </h4>
     </div>
     <div id="basic" class="panel-collapse collapse">
       <div class="panel-body">
         <div class="box-body">
 
-          <!--Name-->
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Name</label>
-                <input [(ngModel)]="first_name" [disabled]='!profileEdit' type="text" class="form-control"
-                       placeholder="enter ur  name">
-              </div>
-            </div>
-          </div>
-
-          <!-- Start : Gender, Date of Birth, Blood Group -->
-          <div class="row">
-            <!-- start : Date -->
-            <div class="col-md-2">
-              <div class="form-group">
-                <label>Birth Date:</label>
-                <div class="input-group date">
-                  <input [(ngModel)]="birth_date" [disabled]='!profileEdit' type="text" class="form-control pull-right">
+          <!--start : Basic single informations-->
+          <div class="row box box-primary">
+            <!--Name-->
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input [(ngModel)]="first_name" [disabled]='!profileEdit' type="text" class="form-control"
+                         placeholder="enter ur  name">
                 </div>
               </div>
             </div>
-            <div class="col-md-2">
-              <!-- Date -->
-              <div class="form-group">
-                <label>Select Date:</label>
-                <div class="input-group date">
-                  <input [(ngModel)]="birth_date" [disabled]='!profileEdit' type="date" class="form-control pull-right">
+            <!-- Start : Gender, Date of Birth, Blood Group -->
+            <div class="row">
+              <!-- start : Date -->
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label>Birth Date:</label>
+                  <div class="input-group date">
+                    <input [(ngModel)]="birth_date" [disabled]='!profileEdit' type="text"
+                           class="form-control pull-right">
+                  </div>
                 </div>
               </div>
-            </div>
-            <!-- end : Date -->
-            <!--<div class="col-md-3 offset-md-3">-->
-            <div class="col-md-2">
-              <label>Gender</label>
-              <!--<input [(ngModel)]="gender" [disabled]='!profileEdit' type="text" class="form-control pull-right">-->
-              <!-- not now due to complexity to set data after read. -->
-              <div class="form-group">
-                <div class="form-group" data-select2-id="27">
-                  <select [disabled]='!profileEdit' [(ngModel)]="gender"
-                          class="form-control select2 select2-hidden-accessible"
-                          style="width: 100%;" tabindex="-1" aria-hidden="true"
-                  >
-                    <option value="other">Other</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                  </select>
+              <div class="col-md-2">
+                <!-- Date -->
+                <div class="form-group">
+                  <label>Select Date:</label>
+                  <div class="input-group date">
+                    <input [(ngModel)]="birth_date" [disabled]='!profileEdit' type="date"
+                           class="form-control pull-right">
+                  </div>
                 </div>
               </div>
-            </div>
-            <!--<div class="col-md-3 offset-md-3">-->
-            <div class="col-md-2">
-              <label>Blood Group</label>
-              <!--<input [(ngModel)]="blood_group" [disabled]='!profileEdit' type="text" class="form-control pull-right">-->
-              <div class="form-group">
-                <div class="form-group" data-select2-id="27">
-                  <select [disabled]='!profileEdit' [(ngModel)]="blood_group"
-                          class="form-control select2 select2-hidden-accessible"
-                          style="width: 100%;" tabindex="-1" aria-hidden="true"
-                  >
-                    <option *ngFor="let b of bloods">{{b}}</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <label>Religeon</label>
-              <input [(ngModel)]="religion" [disabled]='!profileEdit' type="text" class="form-control pull-right">
-              <!-- <div class="form-group">
+              <!-- end : Date -->
+              <!--<div class="col-md-3 offset-md-3">-->
+              <div class="col-md-2">
+                <label>Gender</label>
+                <!--<input [(ngModel)]="gender" [disabled]='!profileEdit' type="text" class="form-control pull-right">-->
+                <!-- not now due to complexity to set data after read. -->
+                <div class="form-group">
                   <div class="form-group" data-select2-id="27">
-                    <select [disabled]='!profileEdit' class="form-control select2 select2-hidden-accessible"
-                      style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                      <option selected="selected" *ngFor="let b of blood">{{b}}</option>
+                    <select [disabled]='!profileEdit' [(ngModel)]="gender"
+                            class="form-control select2 select2-hidden-accessible"
+                            style="width: 100%;" tabindex="-1" aria-hidden="true"
+                    >
+                      <option value="other">Other</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
                     </select>
                   </div>
-                </div> -->
-            </div>
-          </div>
-          <!-- end : Gender, Date of Birth, Blood Group -->
+                </div>
+              </div>
+              <!--<div class="col-md-3 offset-md-3">-->
+              <div class="col-md-2">
+                <label>Blood Group</label>
+                <!--<input [(ngModel)]="blood_group" [disabled]='!profileEdit' type="text" class="form-control pull-right">-->
+                <div class="form-group">
+                  <div class="form-group" data-select2-id="27">
+                    <select [disabled]='!profileEdit' [(ngModel)]="blood_group"
+                            class="form-control select2 select2-hidden-accessible"
+                            style="width: 100%;" tabindex="-1" aria-hidden="true"
+                    >
+                      <option *ngFor="let b of bloods">{{b}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
 
-          <!-- email-->
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Email</label>
-                <input [(ngModel)]="email" [disabled]='!profileEdit' type="email" class="form-control"
-                       placeholder="Enter Email Address...">
+              <div class="col-md-3">
+                <label>Religeon</label>
+                <input [(ngModel)]="religion" [disabled]='!profileEdit' type="text" class="form-control pull-right">
+                <!-- <div class="form-group">
+                    <div class="form-group" data-select2-id="27">
+                      <select [disabled]='!profileEdit' class="form-control select2 select2-hidden-accessible"
+                        style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                        <option selected="selected" *ngFor="let b of blood">{{b}}</option>
+                      </select>
+                    </div>
+                  </div> -->
               </div>
             </div>
-          </div>
+            <!-- end : Gender, Date of Birth, Blood Group -->
+            <!-- email-->
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Email</label>
+                  <input [(ngModel)]="email" [disabled]='!profileEdit' type="email" class="form-control"
+                         placeholder="Enter Email Address...">
+                </div>
+              </div>
+            </div>
 
+            <button class="btn btn-primary btn-xs" *ngIf="profileEdit" (click)="update()">
+              Update
+              <!-- {{ basicExist ? 'Update' : 'Save' }} -->
+            </button>
+            <button class="btn btn-danger btn-xs" *ngIf="profileEdit" (click)="editProfile()">Cancel</button>
+            <button class="btn btn-primary btn-xs" *ngIf="profileEdit" (click)="save()">
+              Save
+            </button>
+          </div>
+          <!--end : Basic single informations-->
+
+
+          <!--Start : phone number-->
           <div class="row box box-info">
             <div class="col-md-6 offset-md-6">
               <h4 class="h4">Phone Numbers</h4>
@@ -171,6 +178,7 @@
               </table>
             </div>
           </div>
+          <!--end : phone number-->
 
           <!--start : present address-->
           <div class="row box box-info">
@@ -512,8 +520,8 @@
         <div class="form-group">
           <label>Address</label>
           <!--<input [(ngModel)]="result" [disabled]='!edit' type="text" class="form-control"-->
-                 <!--placeholder="Enter Result...... (Max : 512 Character)">-->
-          <textarea class="form-control" >
+          <!--placeholder="Enter Result...... (Max : 512 Character)">-->
+          <textarea class="form-control">
 
           </textarea>
         </div>
