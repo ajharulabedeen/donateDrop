@@ -62,59 +62,33 @@ public class Test_Dao_GEO_Code {
 
     @Test
     public void test_GetDivisions() {
+        dao_GeoCode_I.getDivisions().forEach(o -> System.out.println(o));
         int divisions = dao_GeoCode_I.getDivisions().size();
-//working
-//        List<DivisionsEngName> divEng = dao_GeoCode_I.getDivisions();
-//        for (Iterator<DivisionsEngName> iterator = divEng.iterator(); iterator.hasNext();) {
-//            DivisionsEngName div = iterator.next();
-//            System.out.println(div.toString());
-//        }
         assertEquals(divisions, 8);
     }
 
     @Test
     public void test_getDistricts() {
-        //khulna, id=3 has 10 districts
-        String divID = "3";
+        String divID = "3"; //khulna, id=3 has 10 districts
+        dao_GeoCode_I.getDistricts(divID).forEach(o -> System.out.println(o));
         int districts = dao_GeoCode_I.getDistricts(divID).size();
-//working
-//        List<DistrictsEngName> distEng = dao_GeoCode_I.getDistricts(divID);
-//        for (Iterator<DistrictsEngName> iterator = distEng.iterator(); iterator.hasNext();) {
-//            DistrictsEngName dist = iterator.next();
-//            System.out.println(dist.toString());
-//        }
         assertEquals(districts, 10);
     }
 
     @Test
     public void test_getUpzillas() {
-        //khulna, id=27 has 9 districts
-        String distID = "27";
+        String distID = "27";//khulna, id=27 has 9 districts
+        dao_GeoCode_I.getUpzillas(distID).forEach(o -> System.out.println(o));
         int upzillas = dao_GeoCode_I.getUpzillas(distID).size();
-//working
-//        List<UpzillaEngName> upzEng = dao_GeoCode_I.getUpzillas(distID);
-//        for (Iterator<UpzillaEngName> iterator = upzEng.iterator(); iterator.hasNext();) {
-//            UpzillaEngName dist = iterator.next();
-//            System.out.println(dist.toString());
-//        }
         assertEquals(upzillas, 9);
     }
 
     @Test
     public void test_getUnions() {
-        //Dumuria, id=211 has 14 unions
-        String upzID = "211";
+        String upzID = "211";//Dumuria, id=211 has 14 unions
+        dao_GeoCode_I.getUnions(upzID).forEach(o -> System.out.println(o));
         int upzillas = dao_GeoCode_I.getUnions(upzID).size();
-//working
-//        List<UnionsEngName> upzEng = dao_GeoCode_I.getUnions(upzID);
-//        for (Iterator<UnionsEngName> iterator = upzEng.iterator(); iterator.hasNext();) {
-//            UnionsEngName dist = iterator.next();
-//            System.out.println(dist.toString());
-//        }
         assertEquals(upzillas, 14);
     }
 
-    public void printDivisions() {
-
-    }
 }
