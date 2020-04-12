@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.donatedrop.grocode.Test_Controller_GeoCode" time="0.612" tests="1" errors="1" skipped="0" failures="0">
+<testsuite name="com.donatedrop.grocode.Test_Controller_GeoCode" time="0.157" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_102\jre\bin"/>
@@ -34,8 +34,6 @@
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="os.version" value="10.0"/>
-    <property name="jpda.listen" value="true"/>
-    <property name="jpda.address" value="60730"/>
     <property name="user.home" value="C:\Users\G7"/>
     <property name="user.timezone" value="Asia/Dhaka"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
@@ -43,11 +41,10 @@
     <property name="file.encoding" value="UTF-8"/>
     <property name="user.name" value="G7"/>
     <property name="java.class.path" value="C:\Program Files\NetBeans 8.2\java\maven\boot\plexus-classworlds-2.4.jar"/>
-    <property name="maven.surefire.debug" value="-Xdebug -Xrunjdwp:transport=dt_socket,server=n,address=60730"/>
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_102\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=com.donatedrop.grocode.Test_Controller_GeoCode -DforkMode=once -Dmaven.surefire.debug=-Xdebug -Xrunjdwp:transport=dt_socket,server=n,address=60730 -Djpda.listen=true -Djpda.address=60730 -Dmaven.ext.class.path=C:\Program Files\NetBeans 8.2\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 surefire:test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=com.donatedrop.grocode.Test_Controller_GeoCode -Dmaven.ext.class.path=C:\Program Files\NetBeans 8.2\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 surefire:test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -59,134 +56,10 @@
     <property name="maven.home" value="C:\Program Files\NetBeans 8.2\java\maven"/>
     <property name="file.separator" value="\"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
-    <property name="forkMode" value="once"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="getEmployees" classname="com.donatedrop.grocode.Test_Controller_GeoCode" time="0.612">
-    <error message="java.lang.Integer cannot be cast to java.lang.String" type="java.lang.ClassCastException">java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String
-	at com.donatedrop.grocode.Test_Controller_GeoCode.getEmployees(Test_Controller_GeoCode.java:69)
-</error>
-    <system-out><![CDATA[09:01:17.293 [main] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.donatedrop.grocode.Test_Controller_GeoCode]
-09:01:17.315 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-09:01:17.336 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-09:01:17.396 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.donatedrop.grocode.Test_Controller_GeoCode] from class [org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper]
-09:01:17.441 [main] INFO org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.donatedrop.grocode.Test_Controller_GeoCode], using SpringBootContextLoader
-09:01:17.449 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.donatedrop.grocode.Test_Controller_GeoCode]: class path resource [com/donatedrop/grocode/Test_Controller_GeoCode-context.xml] does not exist
-09:01:17.450 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.donatedrop.grocode.Test_Controller_GeoCode]: class path resource [com/donatedrop/grocode/Test_Controller_GeoCodeContext.groovy] does not exist
-09:01:17.450 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.donatedrop.grocode.Test_Controller_GeoCode]: no resource found for suffixes {-context.xml, Context.groovy}.
-09:01:17.452 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.donatedrop.grocode.Test_Controller_GeoCode]: Test_Controller_GeoCode does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-09:01:17.629 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.donatedrop.grocode.Test_Controller_GeoCode]
-09:01:17.654 [main] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
-09:01:17.655 [main] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
-09:01:17.656 [main] DEBUG org.springframework.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
-09:01:17.678 [main] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Resolved classpath location [com/donatedrop/grocode/] to resources [URL [file:/E:/Drive_H/recover/NTFS_3/backUp/Documents/NetBeansProjects/drop/com.donatedrop/back_end/com.donatedrop/target/test-classes/com/donatedrop/grocode/]]
-09:01:17.679 [main] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Looking for matching resources in directory tree [E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\target\test-classes\com\donatedrop\grocode]
-09:01:17.679 [main] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Searching directory [E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\target\test-classes\com\donatedrop\grocode] for files matching pattern [E:/Drive_H/recover/NTFS_3/backUp/Documents/NetBeansProjects/drop/com.donatedrop/back_end/com.donatedrop/target/test-classes/com/donatedrop/grocode/*.class]
-09:01:17.689 [main] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Resolved location pattern [classpath*:com/donatedrop/grocode/*.class] to resources [file [E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\target\test-classes\com\donatedrop\grocode\AbstractTest.class], file [E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\target\test-classes\com\donatedrop\grocode\NewEmptyJUnitTest.class], file [E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\target\test-classes\com\donatedrop\grocode\ProductServiceControllerTest.class], file [E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\target\test-classes\com\donatedrop\grocode\Test_Controller_GeoCode.class], file [E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\target\test-classes\com\donatedrop\grocode\Test_Dao_GEO_Code.class]]
-09:01:17.748 [main] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Resolved classpath location [com/donatedrop/] to resources [URL [file:/E:/Drive_H/recover/NTFS_3/backUp/Documents/NetBeansProjects/drop/com.donatedrop/back_end/com.donatedrop/target/test-classes/com/donatedrop/], URL [file:/E:/Drive_H/recover/NTFS_3/backUp/Documents/NetBeansProjects/drop/com.donatedrop/back_end/com.donatedrop/target/classes/com/donatedrop/]]
-09:01:17.749 [main] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Looking for matching resources in directory tree [E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\target\test-classes\com\donatedrop]
-09:01:17.749 [main] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Searching directory [E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\target\test-classes\com\donatedrop] for files matching pattern [E:/Drive_H/recover/NTFS_3/backUp/Documents/NetBeansProjects/drop/com.donatedrop/back_end/com.donatedrop/target/test-classes/com/donatedrop/*.class]
-09:01:17.751 [main] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Looking for matching resources in directory tree [E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\target\classes\com\donatedrop]
-09:01:17.751 [main] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Searching directory [E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\target\classes\com\donatedrop] for files matching pattern [E:/Drive_H/recover/NTFS_3/backUp/Documents/NetBeansProjects/drop/com.donatedrop/back_end/com.donatedrop/target/classes/com/donatedrop/*.class]
-09:01:17.756 [main] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Resolved location pattern [classpath*:com/donatedrop/*.class] to resources [file [E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\target\classes\com\donatedrop\DropDonate.class]]
-09:01:17.825 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop\target\classes\com\donatedrop\DropDonate.class]
-09:01:17.827 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.donatedrop.DropDonate for test class com.donatedrop.grocode.Test_Controller_GeoCode
-09:01:17.832 [main] DEBUG org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - @TestExecutionListeners is not present for class [com.donatedrop.grocode.Test_Controller_GeoCode]: using defaults.
-09:01:17.844 [main] INFO org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener]
-09:01:17.903 [main] INFO org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7d4f9aae, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@72e5a8e, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@54e1c68b, org.springframework.test.context.support.DirtiesContextTestExecutionListener@53aac487, org.springframework.test.context.transaction.TransactionalTestExecutionListener@52b1beb6, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@273e7444, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7db12bb6, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@783a467b, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@272113c4, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@73e9cf30, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@771a660, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2d52216b]
-09:01:17.910 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.donatedrop.grocode.Test_Controller_GeoCode]
-09:01:17.911 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.donatedrop.grocode.Test_Controller_GeoCode]
-09:01:17.917 [main] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.donatedrop.grocode.Test_Controller_GeoCode]
-09:01:17.917 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-09:01:17.917 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-09:01:17.919 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.donatedrop.grocode.Test_Controller_GeoCode] from class [org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper]
-09:01:17.920 [main] INFO org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.donatedrop.grocode.Test_Controller_GeoCode], using SpringBootContextLoader
-09:01:17.922 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.donatedrop.grocode.Test_Controller_GeoCode]: class path resource [com/donatedrop/grocode/Test_Controller_GeoCode-context.xml] does not exist
-09:01:17.923 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.donatedrop.grocode.Test_Controller_GeoCode]: class path resource [com/donatedrop/grocode/Test_Controller_GeoCodeContext.groovy] does not exist
-09:01:17.923 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.donatedrop.grocode.Test_Controller_GeoCode]: no resource found for suffixes {-context.xml, Context.groovy}.
-09:01:17.924 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.donatedrop.grocode.Test_Controller_GeoCode]: Test_Controller_GeoCode does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-09:01:17.949 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.donatedrop.grocode.Test_Controller_GeoCode]
-09:01:17.950 [main] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
-09:01:17.950 [main] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
-09:01:17.950 [main] DEBUG org.springframework.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
-09:01:17.951 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.donatedrop.DropDonate for test class com.donatedrop.grocode.Test_Controller_GeoCode
-09:01:17.957 [main] DEBUG org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - @TestExecutionListeners is not present for class [com.donatedrop.grocode.Test_Controller_GeoCode]: using defaults.
-09:01:17.966 [main] INFO org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener]
-09:01:17.974 [main] INFO org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7ef82753, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3b0fe47a, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@202b0582, org.springframework.test.context.support.DirtiesContextTestExecutionListener@235ecd9f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1ca3b418, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@58cbafc2, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@2034b64c, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@75d3a5e0, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@74d1dc36, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7161d8d1, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@74e28667, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1cf6d1be]
-09:01:17.975 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.donatedrop.grocode.Test_Controller_GeoCode]
-09:01:17.976 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.donatedrop.grocode.Test_Controller_GeoCode]
-09:01:17.978 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.donatedrop.grocode.Test_Controller_GeoCode]
-09:01:17.978 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.donatedrop.grocode.Test_Controller_GeoCode]
-09:01:17.984 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@7bba5817 testClass = Test_Controller_GeoCode, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@742ff096 testClass = Test_Controller_GeoCode, locations = '{}', classes = '{class com.donatedrop.DropDonate}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.OverrideAutoConfigurationContextCustomizerFactory$DisableAutoConfigurationContextCustomizer@5656be13, org.springframework.boot.test.autoconfigure.filter.TypeExcludeFiltersContextCustomizer@8de98d8b, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@a930477a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@3eb25e1a, org.springframework.boot.test.context.ImportsContextCustomizer@46aa3318, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@4e08711f, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@bcd99fa0], resourceBasePath = '', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
-09:01:17.985 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.donatedrop.grocode.Test_Controller_GeoCode]
-09:01:17.986 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.donatedrop.grocode.Test_Controller_GeoCode]
-09:01:17.990 [main] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@7bba5817 testClass = Test_Controller_GeoCode, testInstance = com.donatedrop.grocode.Test_Controller_GeoCode@4b29d1d2, testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@742ff096 testClass = Test_Controller_GeoCode, locations = '{}', classes = '{class com.donatedrop.DropDonate}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.OverrideAutoConfigurationContextCustomizerFactory$DisableAutoConfigurationContextCustomizer@5656be13, org.springframework.boot.test.autoconfigure.filter.TypeExcludeFiltersContextCustomizer@8de98d8b, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@a930477a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@3eb25e1a, org.springframework.boot.test.context.ImportsContextCustomizer@46aa3318, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@4e08711f, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@bcd99fa0], resourceBasePath = '', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]]]].
-09:01:18.184 [main] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
-09:01:18.185 [main] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
-09:01:18.185 [main] DEBUG org.springframework.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
-09:01:18.189 [main] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper=true, server.port=-1}
-09:01:18.190 [main] DEBUG org.springframework.core.env.StandardEnvironment - Adding [Inlined Test Properties] PropertySource with highest search precedence
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::        (v1.5.2.RELEASE)
-
-2020-04-12 09:01:19.013  INFO 10484 --- [           main] c.d.grocode.Test_Controller_GeoCode      : Starting Test_Controller_GeoCode on DESKTOP-VC05DSS with PID 10484 (started by G7 in E:\Drive_H\recover\NTFS_3\backUp\Documents\NetBeansProjects\drop\com.donatedrop\back_end\com.donatedrop)
-2020-04-12 09:01:19.015  INFO 10484 --- [           main] c.d.grocode.Test_Controller_GeoCode      : No active profile set, falling back to default profiles: default
-2020-04-12 09:01:19.067  INFO 10484 --- [           main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@31e4bb20: startup date [Sun Apr 12 09:01:19 BDT 2020]; root of context hierarchy
-2020-04-12 09:01:22.323  INFO 10484 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@31e4bb20: startup date [Sun Apr 12 09:01:19 BDT 2020]; root of context hierarchy
-2020-04-12 09:01:22.569  INFO 10484 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
-2020-04-12 09:01:22.572  INFO 10484 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2020-04-12 09:01:22.591  INFO 10484 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/public/geocode/districts],methods=[POST]}" onto public java.util.List<com.donatedrop.geocode.DistrictsEngName> com.donatedrop.geocode.Controller_GeoCode.getDistricts(java.lang.String)
-2020-04-12 09:01:22.594  INFO 10484 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/public/geocode/divisions],methods=[GET]}" onto public java.util.List<com.donatedrop.geocode.DivisionsEngName> com.donatedrop.geocode.Controller_GeoCode.getDivisions()
-2020-04-12 09:01:22.596  INFO 10484 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/public/geocode/upzillas],methods=[POST]}" onto public java.util.List<com.donatedrop.geocode.UpzillaEngName> com.donatedrop.geocode.Controller_GeoCode.getDivisions(java.lang.String)
-2020-04-12 09:01:22.601  INFO 10484 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/public/geocode/unions],methods=[POST]}" onto public java.util.List<com.donatedrop.geocode.UnionsEngName> com.donatedrop.geocode.Controller_GeoCode.getUnions(java.lang.String)
-2020-04-12 09:01:22.693  INFO 10484 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2020-04-12 09:01:22.693  INFO 10484 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2020-04-12 09:01:22.797  INFO 10484 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2020-04-12 09:01:23.988  INFO 10484 --- [           main] b.a.s.AuthenticationManagerConfiguration : 
-
-Using default security password: 18f3790a-dd43-4cb3-ad24-2ceb5c29fefc
-
-2020-04-12 09:01:24.109  INFO 10484 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/css/**'], Ant [pattern='/js/**'], Ant [pattern='/images/**'], Ant [pattern='/webjars/**'], Ant [pattern='/**/favicon.ico'], Ant [pattern='/error']]], []
-2020-04-12 09:01:24.295  INFO 10484 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/**']]], [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4a92c6a9, org.springframework.security.web.context.SecurityContextPersistenceFilter@6d091cad, org.springframework.security.web.header.HeaderWriterFilter@adcfad9, org.springframework.security.web.authentication.logout.LogoutFilter@2dd8ff1d, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@3238e2aa, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3bb5ceb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@35c4e864, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5c9934da, org.springframework.security.web.session.SessionManagementFilter@2c9a6717, org.springframework.security.web.access.ExceptionTranslationFilter@5b5dce5c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4d84049a]
-2020-04-12 09:01:24.347  INFO 10484 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
-2020-04-12 09:01:24.347  INFO 10484 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2020-04-12 09:01:24.372  INFO 10484 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 25 ms
-2020-04-12 09:01:24.641  INFO 10484 --- [           main] c.d.grocode.Test_Controller_GeoCode      : Started Test_Controller_GeoCode in 6.427 seconds (JVM running for 9.053)
-[ {
-  "id" : 1,
-  "name" : "Chattagram"
-}, {
-  "id" : 2,
-  "name" : "Rajshahi"
-}, {
-  "id" : 3,
-  "name" : "Khulna"
-}, {
-  "id" : 4,
-  "name" : "Barisal"
-}, {
-  "id" : 5,
-  "name" : "Sylhet"
-}, {
-  "id" : 6,
-  "name" : "Dhaka"
-}, {
-  "id" : 7,
-  "name" : "Rangpur"
-}, {
-  "id" : 8,
-  "name" : "Mymensingh"
-} ]
-{id=1, name=Chattagram}
-]]></system-out>
-  </testcase>
+  <testcase name="test_getDivisions" classname="com.donatedrop.grocode.Test_Controller_GeoCode" time="0.157"/>
 </testsuite>

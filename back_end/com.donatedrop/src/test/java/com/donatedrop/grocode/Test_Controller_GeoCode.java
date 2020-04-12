@@ -5,70 +5,44 @@
  */
 package com.donatedrop.grocode;
 
-import com.donatedrop.articles.old.ArticleController;
-import com.donatedrop.geocode.Controller_GeoCode;
 import com.donatedrop.geocode.DivisionsEngName;
-import com.donatedrop.geocode.Service_GeoCode_I;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
-
-import org.springframework.web.client.RestTemplate;
+import static org.junit.Assert.*;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.http.MediaType;
 
 /**
  *
  * @author G7
  */
-@RunWith(SpringRunner.class)
-@WebMvcTest(value = Controller_GeoCode.class, secure = false)
-@AutoConfigureMockMvc
-public class Test_Controller_GeoCode {
-
-    @Autowired
-    private MockMvc mvc;
-
-//    @InjectMocks
-    @MockBean
-    private Controller_GeoCode controller_GeoCode;
-
-    @MockBean
-    Service_GeoCode_I service_GeoCode_I;
+public class Test_Controller_GeoCode extends AbstractTest {
 
     public Test_Controller_GeoCode() {
     }
 
+    @Override
+    @Before
+    public void setUp() {
+        super.setUp();
+    }
+    
     @Test
-    public void getEmployees() throws IOException {
-        final String uri = "http://localhost:8080/public/geocode/divisions";
-
-        RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject(uri, String.class);
-        restTemplate.getForObject(uri, String.class);
-//        restTemplate.;
-        System.out.println(result);
-
-        ObjectMapper mapper = new ObjectMapper();
-        List<Map<String, String>> list = new ArrayList<>();
-        list = mapper.readValue(result, List.class);
-        System.out.println(list.get(0));
-        Map<String, String> m = list.get(0);
-        System.out.println("id : " + m.get("id"));
-        System.out.println("Name : " + m.get("name"));
-        System.out.println(list);
+    public void test_getDivisions() throws Exception {
+        final String uriDivisions = "/public/geocode/divisions";
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uriDivisions)
+                .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        DivisionsEngName[] divisions = super.mapFromJson(content, DivisionsEngName[].class);
+//        for (int i = 0; i < divisions.length; i++) {
+//            System.out.println(divisions[i]);
+//        }
+        assertTrue(divisions.length == 8);
     }
 }
