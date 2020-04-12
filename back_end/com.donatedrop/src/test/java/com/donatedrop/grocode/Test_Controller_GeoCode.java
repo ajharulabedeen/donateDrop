@@ -21,6 +21,9 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.http.MediaType;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author G7
  */
@@ -43,9 +46,9 @@ public class Test_Controller_GeoCode extends AbstractTest {
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
-        DivisionsEngName[] divisions = super.mapFromJson(content, DivisionsEngName[].class);
-        printDivisions(divisions);
-        assertTrue(divisions.length == 8);
+        List<DivisionsEngName> divisions = Arrays.asList(super.mapFromJson(content, DivisionsEngName[].class));
+        divisions.forEach(s -> System.out.println(s));
+        assertTrue(divisions.size() == 8);
     }
 
     @Test
@@ -58,9 +61,9 @@ public class Test_Controller_GeoCode extends AbstractTest {
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
-        DistrictsEngName[] districtsEngNames = super.mapFromJson(content, DistrictsEngName[].class);
-        printDistrict(districtsEngNames);
-        assert (districtsEngNames.length == 10);
+        List<DistrictsEngName> districtsEngNames = Arrays.asList(super.mapFromJson(content, DistrictsEngName[].class));
+        districtsEngNames.forEach(s -> System.out.println(s));
+        assert (districtsEngNames.size() == 10);
     }
 
     @Test
@@ -73,9 +76,9 @@ public class Test_Controller_GeoCode extends AbstractTest {
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
-        UpzillaEngName[] upzillaEngNames = super.mapFromJson(content, UpzillaEngName[].class);
-        printUpzillas(upzillaEngNames);
-        assert (upzillaEngNames.length == 9);
+        List<UpzillaEngName> upzillaEngNames = Arrays.asList(super.mapFromJson(content, UpzillaEngName[].class));
+        upzillaEngNames.forEach(s -> System.out.println(s));
+        assert (upzillaEngNames.size() == 9);
     }
 
     @Test
@@ -88,34 +91,9 @@ public class Test_Controller_GeoCode extends AbstractTest {
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
-        UnionsEngName[] unionsEngNames = super.mapFromJson(content, UnionsEngName[].class);
-        printUnions(unionsEngNames);
-        assert (unionsEngNames.length == 14);
-    }
-
-
-    public void printUnions(UnionsEngName[] unionsEngNames) {
-        for (int i = 0; i < unionsEngNames.length; i++) {
-            System.out.println(unionsEngNames[i]);
-        }
-    }
-
-    public void printUpzillas(UpzillaEngName[] upzillaEngNames) {
-        for (int i = 0; i < upzillaEngNames.length; i++) {
-            System.out.println(upzillaEngNames[i]);
-        }
-    }
-
-    public void printDivisions(DivisionsEngName[] divisions) {
-        for (int i = 0; i < divisions.length; i++) {
-            System.out.println(divisions[i]);
-        }
-    }
-
-    public void printDistrict(DistrictsEngName[] districtsEngNames) {
-        for (int i = 0; i < districtsEngNames.length; i++) {
-            System.out.println(districtsEngNames[i]);
-        }
+        List<UnionsEngName> unionsEngNameList = Arrays.asList(super.mapFromJson(content, UnionsEngName[].class));
+        unionsEngNameList.forEach(s -> System.out.println(s));
+        assert (unionsEngNameList.size() == 14);
     }
 
 }

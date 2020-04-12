@@ -11,24 +11,27 @@ import com.donatedrop.geocode.Divisions;
 import com.donatedrop.geocode.DivisionsEngName;
 import com.donatedrop.geocode.UnionsEngName;
 import com.donatedrop.geocode.UpzillaEngName;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
+
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- *
  * @author G7
  */
 @RunWith(SpringRunner.class)
@@ -109,5 +112,9 @@ public class Test_Dao_GEO_Code {
 //            System.out.println(dist.toString());
 //        }
         assertEquals(upzillas, 14);
+    }
+
+    public void printDivisions() {
+
     }
 }
