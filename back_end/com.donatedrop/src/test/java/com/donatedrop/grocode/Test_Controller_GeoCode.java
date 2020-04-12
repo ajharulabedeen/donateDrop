@@ -7,6 +7,7 @@ package com.donatedrop.grocode;
 
 import com.donatedrop.geocode.DistrictsEngName;
 import com.donatedrop.geocode.DivisionsEngName;
+import com.donatedrop.geocode.UnionsEngName;
 import com.donatedrop.geocode.UpzillaEngName;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -69,7 +70,6 @@ public class Test_Controller_GeoCode extends AbstractTest {
         MvcResult mvcResult = mvc.perform(
                 MockMvcRequestBuilders.post(uri)
                         .contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn();
-
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
@@ -78,6 +78,27 @@ public class Test_Controller_GeoCode extends AbstractTest {
         assert (upzillaEngNames.length == 9);
     }
 
+    @Test
+    public void test_getUnions() throws Exception {
+        String distID = "211";//Dumuria, id=211 has 14 unions
+        String uri = "/public/geocode/unions?upzID=" + distID;
+        MvcResult mvcResult = mvc.perform(
+                MockMvcRequestBuilders.post(uri)
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        UnionsEngName[] unionsEngNames = super.mapFromJson(content, UnionsEngName[].class);
+        printUnions(unionsEngNames);
+        assert (unionsEngNames.length == 14);
+    }
+
+
+    public void printUnions(UnionsEngName[] unionsEngNames) {
+        for (int i = 0; i < unionsEngNames.length; i++) {
+            System.out.println(unionsEngNames[i]);
+        }
+    }
 
     public void printUpzillas(UpzillaEngName[] upzillaEngNames) {
         for (int i = 0; i < upzillaEngNames.length; i++) {
