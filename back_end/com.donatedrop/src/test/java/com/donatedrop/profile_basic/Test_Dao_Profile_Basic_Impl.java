@@ -355,6 +355,8 @@ public class Test_Dao_Profile_Basic_Impl {
         String emergencyContactID = "312";
         EmergencyContact emergencyContact = new EmergencyContact();
         emergencyContact.setId(Long.parseLong(emergencyContactID));
+        emergencyContact.setName("Mahbub Gazi");
+        emergencyContact.setPhone("07171000");
         emergencyContact.setAddress("Dhaka, Dhaka");
         emergencyContact.setRelation("Mamu");
         emergencyContact.setMail("mail@mail.com");
