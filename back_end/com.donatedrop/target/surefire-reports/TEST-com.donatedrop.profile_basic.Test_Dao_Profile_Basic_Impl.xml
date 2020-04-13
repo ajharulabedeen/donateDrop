@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl" time="0.525" tests="5" errors="0" skipped="0" failures="0">
+<testsuite name="com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl" time="0.395" tests="13" errors="0" skipped="0" failures="2">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_102\jre\bin"/>
@@ -61,9 +61,46 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="test1_save" classname="com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl" time="0.33"/>
-  <testcase name="test2_findOne" classname="com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl" time="0.051"/>
-  <testcase name="test3_delete" classname="com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl" time="0.054"/>
-  <testcase name="test4_findOneByUser" classname="com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl" time="0.068"/>
-  <testcase name="test5_basicExist" classname="com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl" time="0.022"/>
+  <testcase name="test10_addEmergencyContact" classname="com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl" time="0.121"/>
+  <testcase name="test11_updateEmergencyContact" classname="com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl" time="0.023"/>
+  <testcase name="test12_deleteEmergencyContact" classname="com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl" time="0.012">
+    <failure message="expected:&lt;[UNAUTHERIZED]&gt; but was:&lt;[NULL]&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: expected:<[UNAUTHERIZED]> but was:<[NULL]>
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl.test12_deleteEmergencyContact(Test_Dao_Profile_Basic_Impl.java:348)
+]]></failure>
+    <system-out><![CDATA[2020-04-13 07:50:43.847 DEBUG 18052 --- [           main] org.hibernate.SQL                        : select emergencyc0_.id as id1_9_0_, emergencyc0_.address as address2_9_0_, emergencyc0_.mail as mail3_9_0_, emergencyc0_.name as name4_9_0_, emergencyc0_.phone as phone5_9_0_, emergencyc0_.emergency_contact as emergenc7_9_0_, emergencyc0_.relation as relation6_9_0_, profilebas1_.id as id1_16_1_, profilebas1_.address_permanent as address11_16_1_, profilebas1_.address_present as address12_16_1_, profilebas1_.available as availabl2_16_1_, profilebas1_.birth_date as birth_da3_16_1_, profilebas1_.blood_Group as blood_Gr4_16_1_, profilebas1_.care_of as care_of5_16_1_, profilebas1_.gender as gender6_16_1_, profilebas1_.marital_status as marital_7_16_1_, profilebas1_.name as name8_16_1_, profilebas1_.profession as professi9_16_1_, profilebas1_.user_id as user_id10_16_1_, address2_.id as id1_1_2_, address2_.district as district2_1_2_, address2_.division as division3_1_2_, address2_.street_address as street_a4_1_2_, address2_.union_ward as union_wa5_1_2_, address2_.upzilla as upzilla6_1_2_, address3_.id as id1_1_3_, address3_.district as district2_1_3_, address3_.division as division3_1_3_, address3_.street_address as street_a4_1_3_, address3_.union_ward as union_wa5_1_3_, address3_.upzilla as upzilla6_1_3_ from EmergencyContact emergencyc0_ left outer join ProfileBasic profilebas1_ on emergencyc0_.emergency_contact=profilebas1_.id left outer join Address address2_ on profilebas1_.address_permanent=address2_.id left outer join Address address3_ on profilebas1_.address_present=address3_.id where emergencyc0_.id=?
+Hibernate: select emergencyc0_.id as id1_9_0_, emergencyc0_.address as address2_9_0_, emergencyc0_.mail as mail3_9_0_, emergencyc0_.name as name4_9_0_, emergencyc0_.phone as phone5_9_0_, emergencyc0_.emergency_contact as emergenc7_9_0_, emergencyc0_.relation as relation6_9_0_, profilebas1_.id as id1_16_1_, profilebas1_.address_permanent as address11_16_1_, profilebas1_.address_present as address12_16_1_, profilebas1_.available as availabl2_16_1_, profilebas1_.birth_date as birth_da3_16_1_, profilebas1_.blood_Group as blood_Gr4_16_1_, profilebas1_.care_of as care_of5_16_1_, profilebas1_.gender as gender6_16_1_, profilebas1_.marital_status as marital_7_16_1_, profilebas1_.name as name8_16_1_, profilebas1_.profession as professi9_16_1_, profilebas1_.user_id as user_id10_16_1_, address2_.id as id1_1_2_, address2_.district as district2_1_2_, address2_.division as division3_1_2_, address2_.street_address as street_a4_1_2_, address2_.union_ward as union_wa5_1_2_, address2_.upzilla as upzilla6_1_2_, address3_.id as id1_1_3_, address3_.district as district2_1_3_, address3_.division as division3_1_3_, address3_.street_address as street_a4_1_3_, address3_.union_ward as union_wa5_1_3_, address3_.upzilla as upzilla6_1_3_ from EmergencyContact emergencyc0_ left outer join ProfileBasic profilebas1_ on emergencyc0_.emergency_contact=profilebas1_.id left outer join Address address2_ on profilebas1_.address_permanent=address2_.id left outer join Address address3_ on profilebas1_.address_present=address3_.id where emergencyc0_.id=?
+2020-04-13 07:50:43.848 TRACE 18052 --- [           main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [313]
+
+
+>>{STATUS=FAIL, ERROR=NULL}
+
+
+]]></system-out>
+  </testcase>
+  <testcase name="test13_delete" classname="com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl" time="0.033"/>
+  <testcase name="test1_save" classname="com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl" time="0.064"/>
+  <testcase name="test2_basicExist" classname="com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl" time="0.016"/>
+  <testcase name="test3_findOne" classname="com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl" time="0.006"/>
+  <testcase name="test4_findOneByUser" classname="com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl" time="0.013"/>
+  <testcase name="test5_updateBasic" classname="com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl" time="0.027"/>
+  <testcase name="test6_presentAddressUpdate" classname="com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl" time="0.019"/>
+  <testcase name="test7_permanentAddressUpdate" classname="com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl" time="0.019"/>
+  <testcase name="test8_addPhoneNumber" classname="com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl" time="0.035"/>
+  <testcase name="test9_deletePhoneNumber" classname="com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl" time="0.007">
+    <failure message="expected:&lt;[OK]&gt; but was:&lt;[FAIL]&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: expected:<[OK]> but was:<[FAIL]>
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl.test9_deletePhoneNumber(Test_Dao_Profile_Basic_Impl.java:289)
+]]></failure>
+    <system-out><![CDATA[2020-04-13 07:50:44.093 DEBUG 18052 --- [           main] org.hibernate.SQL                        : SELECT *FROM profilebasic WHERE user_id =12
+Hibernate: SELECT *FROM profilebasic WHERE user_id =12
+
+
+Test : Error in Getting Phone Number ID!
+
+
+]]></system-out>
+  </testcase>
 </testsuite>
