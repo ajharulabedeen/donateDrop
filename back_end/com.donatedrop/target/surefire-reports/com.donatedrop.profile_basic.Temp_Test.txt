@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.donatedrop.profile_basic.Temp_Test
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.168 sec - in com.donatedrop.profile_basic.Temp_Test
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.22 sec - in com.donatedrop.profile_basic.Temp_Test

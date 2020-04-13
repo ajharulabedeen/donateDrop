@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.donatedrop.grocode.Test_Controller_GeoCode
--------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.68 sec - in com.donatedrop.grocode.Test_Controller_GeoCode

@@ -5,17 +5,14 @@
  */
 package com.donatedrop.any;
 
-import com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl;
-import java.lang.reflect.Method;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- *
  * @author G7
  */
 public class NewEmptyJUnitTest {
@@ -23,35 +20,30 @@ public class NewEmptyJUnitTest {
     public NewEmptyJUnitTest() {
     }
 
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
     @Test
-    public void hello() {
-        Method[] methods = Test_Dao_Profile_Basic_Impl.class.getDeclaredMethods();
-        int nMethod = 1;
-        System.out.println("1. List of all methods of Person class");
-        for (Method method : methods) {
-            System.out.printf("%d. %s", ++nMethod, method);
-            System.out.println();
-        }
-        System.out.printf("%d. End - all  methods of Person class", ++nMethod);
+    @Order(3)
+    public void m2() {
+        System.out.println("M2");
     }
 
+    @Test
+    @Order(2)
+    public void m1() {
+        System.out.println("M1");
+    }
+
+    @Test
+    @Order(1)
+    public void m3() {
+        System.out.println("M3");
+    }
 }
+
+//        Method[] methods = Test_Dao_Profile_Basic_Impl.class.getDeclaredMethods();
+//        int nMethod = 1;
+//        System.out.println("1. List of all methods of Person class");
+//        for (Method method : methods) {
+//            System.out.printf("%d. %s", ++nMethod, method);
+//            System.out.println();
+//        }
+//        System.out.printf("%d. End - all  methods of Person class", ++nMethod);

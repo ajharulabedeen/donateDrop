@@ -31,13 +31,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.*;
+import org.junit.jupiter.api.Order;
 
 /**
  * @author ajharulabedeen@gmail.com
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+//@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Test_Dao_Profile_Basic_Impl {
 
     @Autowired
@@ -69,6 +70,7 @@ public class Test_Dao_Profile_Basic_Impl {
      * April 5, 2020
      */
     @Test
+    @Order(value = 1)
     public void test1_save() {
         Map<String, String> status = null;
 
@@ -258,7 +260,7 @@ public class Test_Dao_Profile_Basic_Impl {
     @Test
     public void test9_deletePhoneNumber() {
         // Arrange
-        String userID = "12";
+        String userID = "13";
         try {
             String phoneNumberID = dao_Profile_Basic_I
                     .findOneByUser(userID)
@@ -345,7 +347,7 @@ public class Test_Dao_Profile_Basic_Impl {
         Map<String, String> result = dao_Profile_Basic_I.deleteEmergencyContact(emergencyContactID, userID);
         System.out.println("\n\n>>" + result + "\n\n");
         assertEquals(StringUtil.FAIL, result.get(StringUtil.STATUS));
-        assertEquals(StringUtil.UNAUTHERIZED, result.get(StringUtil.ERROR));
+        assertEquals(StringUtil.NULL, result.get(StringUtil.ERROR));
 
         //        atherised deletion
         userID = "13";
