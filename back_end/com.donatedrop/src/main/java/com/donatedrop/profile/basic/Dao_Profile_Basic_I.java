@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.donatedrop.profile;
+package com.donatedrop.profile.basic;
 
+import com.donatedrop.model.Address;
 import com.donatedrop.articles.PhoneNumber;
-import com.donatedrop.profile.ProfileBasic;
+import com.donatedrop.profile.model.ProfileBasic;
 
 import java.util.Map;
 

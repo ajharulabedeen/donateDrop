@@ -5,33 +5,17 @@
  */
 package com.donatedrop.profile_basic;
 
-import com.donatedrop.profile.Address;
-import com.donatedrop.profile.Dao_Profile_Basic_I;
+import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
 import org.junit.*;
 
-import static org.junit.Assert.*;
-
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.TransactionScoped;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author G7

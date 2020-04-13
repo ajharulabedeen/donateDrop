@@ -6,10 +6,10 @@
 package com.donatedrop.profile_basic;
 
 import com.donatedrop.articles.PhoneNumber;
-import com.donatedrop.profile.Address;
-import com.donatedrop.profile.Dao_Profile_Basic_I;
-import com.donatedrop.profile.EmergencyContact;
-import com.donatedrop.profile.ProfileBasic;
+import com.donatedrop.model.Address;
+import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
+import com.donatedrop.profile.basic.EmergencyContact;
+import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
 import com.donatedrop.util.Utils;
@@ -17,9 +17,7 @@ import com.donatedrop.util.Utils;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
-import java.sql.SQLOutput;
 import java.util.Scanner; // Import the Scanner class to read text files
 
 import org.junit.*;
@@ -30,7 +28,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.annotation.Order;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.*;

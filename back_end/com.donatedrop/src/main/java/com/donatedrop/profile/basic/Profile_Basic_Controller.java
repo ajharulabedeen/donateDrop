@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.donatedrop.profile;
+package com.donatedrop.profile.basic;
 
 import com.donatedrop.model.User;
+import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
+import java.util.Map;
 
 /**
  * @author G-7,
@@ -23,12 +25,9 @@ import java.util.Date;
 @RequestMapping("/public/profile/basic/")
 public class Profile_Basic_Controller {
 
-    @PostMapping("create")
-    public User register(@RequestBody User u) {
-//        System.out.println("User : " + u.toString());
-////        System.out.println("Done -- User : " + u.toString());
-//        u.setPassword(passwordEncoder.encode(u.getPassword()));
-//        u.setLastPasswordResetDate(new Date());
+    @PostMapping("save")
+    public Map<String, String> save(@RequestBody ProfileBasic profileBasic) {
+
         return null;
     }
 }

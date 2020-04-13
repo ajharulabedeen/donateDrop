@@ -1,16 +1,14 @@
-package com.donatedrop.profile;
+package com.donatedrop.profile.basic;
 
+import com.donatedrop.model.Address;
 import com.donatedrop.articles.PhoneNumber;
-import com.donatedrop.profile.ProfileBasic;
+import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.util.StringUtil;
-import com.donatedrop.util.Utils;
-import com.sun.scenario.effect.impl.prism.PrFilterContext;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import javax.xml.transform.sax.SAXSource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

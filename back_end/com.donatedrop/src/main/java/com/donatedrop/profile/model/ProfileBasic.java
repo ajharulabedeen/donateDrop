@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.donatedrop.profile;
+package com.donatedrop.profile.model;
 
+import com.donatedrop.model.Address;
+import com.donatedrop.profile.basic.EmergencyContact;
 import com.donatedrop.articles.PhoneNumber;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
