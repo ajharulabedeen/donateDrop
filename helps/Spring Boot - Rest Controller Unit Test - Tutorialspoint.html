@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<!-- saved from url=(0084)https://www.tutorialspoint.com/spring_boot/spring_boot_rest_controller_unit_test.htm -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.mui-textfield.mui-textfield--float-label > label {-webkit-transition:all .15s ease-out;-moz-transition:all .15s ease-out;-o-transition:all .15s ease-out;transition:all .15s ease-out;}</style><style type="text/css">@keyframes mui-btn-inserted{from{transform:none;}to{transform:none;}}.mui-btn{animation-duration:0.0001s;animation-name:mui-btn-inserted;}@keyframes mui-dropdown-inserted{from{transform:none;}to{transform:none;}}[data-mui-toggle="dropdown"]{animation-duration:0.0001s;animation-name:mui-dropdown-inserted;}@keyframes mui-btn-inserted,mui-dropdown-inserted{from{transform:none;}to{transform:none;}}.mui-btn[data-mui-toggle="dropdown"]{animation-duration:0.0001s;animation-name:mui-btn-inserted,mui-dropdown-inserted;}@keyframes mui-tab-inserted{from{transform:none;}to{transform:none;}}[data-mui-toggle="tab"]{animation-duration:0.0001s;animation-name:mui-tab-inserted;}@keyframes mui-textfield-inserted{from{transform:none;}to{transform:none;}}.mui-textfield > input{animation-duration:0.0001s;animation-name:mui-textfield-inserted;}@keyframes mui-textfield-inserted{from{transform:none;}to{transform:none;}}.mui-textfield > textarea{animation-duration:0.0001s;animation-name:mui-textfield-inserted;}@keyframes mui-select-inserted{from{transform:none;}to{transform:none;}}.mui-select > select{animation-duration:0.0001s;animation-name:mui-select-inserted;}@keyframes mui-node-inserted{from{transform:none;}to{transform:none;}}.mui-select > select ~ .mui-event-trigger{animation-duration:0.0001s;animation-name:mui-node-inserted;}@keyframes mui-node-disabled{from{transform:none;}to{transform:none;}}.mui-select > select:disabled ~ .mui-event-trigger{animation-duration:0.0001s;animation-name:mui-node-disabled;}</style><style id="stndz-style"></style>
+<title>Spring Boot - Rest Controller Unit Test - Tutorialspoint</title>
+
+<meta name="description" content="Spring Boot - Rest Controller Unit Test - Spring Boot provides an easy way to write a Unit Test for Rest Controller file. With the help of SpringJUnit4ClassRunner and MockMvc, we can create a web applic">
+<meta name="keywords" content="C, C++, Python, Java, HTML, CSS, JavaScript, SQL, PHP, jQuery, XML, DOM, Bootstrap, Tutorials, Articles, Programming, training, learning, quiz, preferences, examples, code">
+<link rel="canonical" href="https://www.tutorialspoint.com/spring_boot/spring_boot_rest_controller_unit_test.htm">
+<link rel="shortcut icon" href="https://www.tutorialspoint.com/favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+<link rel="stylesheet" href="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/style-min-v1.css">
+<script async="" src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/async-ads.js.download"></script><script type="text/javascript" async="" src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/analytics.js.download"></script><script src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/script-min-v1.js.download"></script><link rel="stylesheet" type="text/css" href="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/prettify.css">
+<script>function printPage() { window.print(); }</script>
+
+<script type="text/javascript" src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/saved_resource" defer="" async=""></script>
+<script>
+var vitag = vitag || {};
+vitag.outStreamConfig = { enablePC:false, enableMobile:false};
+vitag.smartBannerConfig = { enablePC: false, enableMobile: true, disableHorizontalPosition: "right left middle", disableVerticalPosition: "top middle" };
+</script>
+
+<script data-cfasync="false" type="text/javascript">(function(w, d) { var s = d.createElement('script'); s.src = '//delivery.adrecover.com/18107/adRecover.js'; s.type = 'text/javascript'; s.async = true; (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(s); })(window, document);</script><script src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/adRecover.js.download" type="text/javascript" async=""></script>
+<style>
+.right-menu .mui-btn {
+    background-color:#6eb33f;
+}
+a.demo {
+    background:#6eb33f;
+}
+li.heading {
+    background:#6eb33f;
+}
+.course-box{background:#6eb33f}
+.home-intro-sub p{color:#6eb33f}
+</style>
+<script src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/saved_resource(1)"></script><script>window._BidFilter={site_id:1046,pbjsKey:'vlipb',checkAudio:false};</script><script src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/bidfilter.js.download"></script><script src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/prebid-v3.16.1.js.download"></script><script src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/gpt.js.download"></script><script src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/viPlayer_v29.js.download"></script><script src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/ima3.js.download"></script><script src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/apstag.js.download"></script><script src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/cse_element__en.js.download" type="text/javascript"></script><link type="text/css" rel="stylesheet" href="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/default+en.css"><link type="text/css" rel="stylesheet" href="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/default.css"><link rel="preload" href="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/f.txt" as="script"><script type="text/javascript" src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/f.txt"></script><script src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/pubads_impl_2020040702.js.download" async=""></script><style type="text/css">.gsc-control-cse{font-family:arial, sans-serif}.gsc-control-cse .gsc-table-result{font-family:arial, sans-serif}.gsc-refinementsGradient{background:linear-gradient(to left,rgba(233,233,233,1),rgba(233,233,233,0))}.gsc-control-cse{border-color:#FFFFFF;background-color:#FFFFFF}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#D9D9D9}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#666666;background-color:#CECECE;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhActive,.gsc-refinementHeader.gsc-refinementhActive{color:#FF9900;border-color:#FF9900;background-color:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive,.gsc-refinementHeader.gsc-refinementhInactive{color:#E9E9E9;border-color:#E9E9E9;background-color:#E9E9E9}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-webResult.gsc-result:hover,.gsc-imageResult:hover{border-color:#FFFFFF;background-color:#FFFFFF}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#0000CC}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#0000CC}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#0000CC}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#0000CC}.gsc-cursor-page{color:#0000CC}a.gsc-trailing-more-results:link{color:#0000CC}.gs-webResult .gs-snippet,.gs-imageResult .gs-snippet,.gs-fileFormatType{color:#000000}.gs-webResult div.gs-visibleUrl,.gs-imageResult div.gs-visibleUrl{color:#008000}.gs-webResult div.gs-visibleUrl-short{color:#008000}.gs-webResult div.gs-visibleUrl-short{display:none}.gs-webResult div.gs-visibleUrl-long{display:block}.gs-promotion div.gs-visibleUrl-short{display:none}.gs-promotion div.gs-visibleUrl-long{display:block}.gsc-cursor-box{border-color:#FFFFFF}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#E9E9E9;background-color:#E9E9E9;color:#E9E9E9}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#FF9900;background-color:#FFFFFF;color:#FF9900}.gsc-webResult.gsc-result.gsc-promotion{border-color:#336699;background-color:#FFFFFF}.gsc-completion-title{color:#0000CC}.gsc-completion-snippet{color:#000000}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#0000CC}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#0000CC}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#0000CC}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#0000CC}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#000000}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#008000}.gcsc-find-more-on-google{color:#0000CC}.gcsc-find-more-on-google-magnifier{fill:#0000CC}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:0 9px}.gsib_a{padding:5px 9px 4px 9px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+<body>
+<header id="header" class="fixed">
+<!-- Top sub-menu Starts Here -->
+<div class="mui-appbar mui-container-fulid top-menu">
+<div class="mui-container">
+<div class="top-menu-item home">
+<a href="https://www.tutorialspoint.com/index.htm" target="_blank" title="TutorialsPoint - Home"><i class="fal fa-home"></i> <span>Home</span></a>
+</div>
+<div class="top-menu-item qa">
+<a href="https://www.tutorialspoint.com/about/about_careers.htm" target="_blank" title="Job @ Tutorials Point"><i class="fa fa-suitcase"></i> <span>Jobs</span></a>
+</div>
+<div class="top-menu-item tools">
+<a href="https://www.tutorialspoint.com/online_dev_tools.htm" target="_blank" title="Tools - Online Development and Testing Tools"><i class="fal fa-cogs"></i> <span>Tools</span></a>
+</div>
+<div class="top-menu-item coding-ground">
+<a href="https://www.tutorialspoint.com/codingground.htm" target="_blank" title="Coding Ground - Free Online IDE and Terminal"><i class="fal fa-code"></i> <span>Coding Ground </span></a> 
+</div>
+<div class="top-menu-item current-affairs">
+<a href="https://www.tutorialspoint.com/current_affairs.htm" target="_blank" title="Daily Current Affairs"><i class="fal fa-layer-plus"></i> <span>Current Affairs</span></a>
+</div>
+<div class="top-menu-item upsc-notes">
+<a href="https://www.tutorialspoint.com/upsc_ias_exams.htm" target="_blank" title="UPSC IAS Exams Notes - TutorialsPoint"><i class="fal fa-user-tie"></i> <span>UPSC Notes</span></a>
+</div>      
+<div class="top-menu-item online-tutoris">
+<a href="https://www.tutorialspoint.com/tutor_connect/index.php" target="_blank" title="Top Online Tutors - Tutor Connect"><i class="fal fa-user"></i> <span>Online Tutors</span></a>
+</div>
+<div class="top-menu-item whiteboard">
+<a href="https://www.tutorialspoint.com/whiteboard.htm" target="_blank" title="Free Online Whiteboard"><i class="fal fa-chalkboard"></i> <span>Whiteboard</span></a>
+</div>
+<div class="top-menu-item net-meeting">
+<a href="https://www.tutorialspoint.com/netmeeting.php" target="_blank" title="A free tool for online video conferencing"><i class="fal fa-chalkboard-teacher"></i> <span>Net Meeting</span></a> 
+</div>
+<div class="top-menu-item articles">
+<a href="https://www.tutorix.com/" target="_blank" title="Tutorx - The Best Learning App" rel="nofollow"><i class="fal fa-video"></i> <span>Tutorix</span></a> 
+</div>        
+<div class="social-menu-item">
+<a href="https://www.facebook.com/tutorialspointindia" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint @ Facebook"><i class="fab fa-facebook-f"></i></a> 
+<a href="https://www.twitter.com/tutorialspoint" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint @ Twitter"><i class="fab fa-twitter"></i></a>
+<a href="https://www.linkedin.com/company/tutorialspoint" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint @ Linkedin"><i class="fab fa-linkedin-in"></i></a>
+<a href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint YouTube"><i class="fab fa-youtube"></i></a>
+</div>        
+</div>
+</div>
+<!-- Top sub-menu Ends Here -->
+<!-- Top main-menu Starts Here -->
+<div class="mui-appbar mui-container-fulid mui--appbar-line-height mui--z1 sticky" id="logo-menu">
+<div class="mui-container">
+<div class="left-menu">
+<a href="https://www.tutorialspoint.com/index.htm" title="Tutorialspoint">
+<img class="tp-logo" alt="tutorialspoint" src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/logo.png">
+</a>
+<div class="mui-dropdown">
+<a class="mui-btn mui-btn--primary categories" data-mui-toggle="dropdown"><i class="fa fa-th-large"></i> 
+<span>Categories <span class="mui-caret"></span></span></a>            
+<ul class="mui-dropdown__menu cat-menu">
+<li>
+<ul>
+<li><a href="https://www.tutorialspoint.com/academic_tutorials.htm"><i class="fa fa-caret-right"></i> Academic Tutorials</a></li>
+<li><a href="https://www.tutorialspoint.com/big_data_tutorials.htm"><i class="fa fa-caret-right"></i> Big Data &amp; Analytics </a></li>
+<li><a href="https://www.tutorialspoint.com/computer_programming_tutorials.htm"><i class="fa fa-caret-right"></i> Computer Programming </a></li>
+<li><a href="https://www.tutorialspoint.com/computer_science_tutorials.htm"><i class="fa fa-caret-right"></i> Computer Science </a></li>
+<li><a href="https://www.tutorialspoint.com/database_tutorials.htm"><i class="fa fa-caret-right"></i> Databases </a></li>
+<li><a href="https://www.tutorialspoint.com/devops_tutorials.htm"><i class="fa fa-caret-right"></i> DevOps </a></li>
+<li><a href="https://www.tutorialspoint.com/digital_marketing_tutorials.htm"><i class="fa fa-caret-right"></i> Digital Marketing </a></li>
+<li><a href="https://www.tutorialspoint.com/engineering_tutorials.htm"><i class="fa fa-caret-right"></i> Engineering Tutorials </a></li>
+<li><a href="https://www.tutorialspoint.com/upsc_ias_exams.htm"><i class="fa fa-caret-right"></i> Exams Syllabus </a></li>
+<li><a href="https://www.tutorialspoint.com/famous_monuments.htm"><i class="fa fa-caret-right"></i> Famous Monuments </a></li>
+<li><a href="https://www.tutorialspoint.com/gate_exams_tutorials.htm"><i class="fa fa-caret-right"></i> GATE Exams Tutorials</a></li>
+<li><a href="https://www.tutorialspoint.com/latest_technologies.htm"><i class="fa fa-caret-right"></i> Latest Technologies </a></li>
+<li><a href="https://www.tutorialspoint.com/machine_learning_tutorials.htm"><i class="fa fa-caret-right"></i> Machine Learning </a></li>
+<li><a href="https://www.tutorialspoint.com/mainframe_tutorials.htm"><i class="fa fa-caret-right"></i> Mainframe Development </a></li>
+<li><a href="https://www.tutorialspoint.com/management_tutorials.htm"><i class="fa fa-caret-right"></i> Management Tutorials </a></li>
+<li><a href="https://www.tutorialspoint.com/maths_tutorials.htm"><i class="fa fa-caret-right"></i> Mathematics Tutorials</a></li>
+<li><a href="https://www.tutorialspoint.com/microsoft_technologies_tutorials.htm"><i class="fa fa-caret-right"></i> Microsoft Technologies </a></li>
+<li><a href="https://www.tutorialspoint.com/misc_tutorials.htm"><i class="fa fa-caret-right"></i> Misc tutorials </a></li>
+<li><a href="https://www.tutorialspoint.com/mobile_development_tutorials.htm"><i class="fa fa-caret-right"></i> Mobile Development </a></li>
+<li><a href="https://www.tutorialspoint.com/java_technology_tutorials.htm"><i class="fa fa-caret-right"></i> Java Technologies </a></li>
+<li><a href="https://www.tutorialspoint.com/python_technologies_tutorials.htm"><i class="fa fa-caret-right"></i> Python Technologies </a></li>
+<li><a href="https://www.tutorialspoint.com/sap_tutorials.htm"><i class="fa fa-caret-right"></i> SAP Tutorials </a></li>
+<li><a href="https://www.tutorialspoint.com/scripting_lnaguage_tutorials.htm"><i class="fa fa-caret-right"></i>Programming Scripts </a></li>
+<li><a href="https://www.tutorialspoint.com/selected_reading.htm"><i class="fa fa-caret-right"></i> Selected Reading </a></li>
+<li><a href="https://www.tutorialspoint.com/software_quality_tutorials.htm"><i class="fa fa-caret-right"></i> Software Quality </a></li>
+<li><a href="https://www.tutorialspoint.com/soft_skill_tutorials.htm"><i class="fa fa-caret-right"></i> Soft Skills </a></li>
+<li><a href="https://www.tutorialspoint.com/telecom_tutorials.htm"><i class="fa fa-caret-right"></i> Telecom Tutorials </a></li>
+<li><a href="https://www.tutorialspoint.com/upsc_ias_exams.htm"><i class="fa fa-caret-right"></i> UPSC IAS Exams </a></li>
+<li><a href="https://www.tutorialspoint.com/web_development_tutorials.htm"><i class="fa fa-caret-right"></i> Web Development </a></li>
+<li><a href="https://www.tutorialspoint.com/sports_tutorials.htm"><i class="fa fa-caret-right"></i> Sports Tutorials </a></li>
+<li><a href="https://www.tutorialspoint.com/xml_technologies_tutorials.htm"><i class="fa fa-caret-right"></i> XML Technologies </a></li>
+<li><a href="https://www.tutorialspoint.com/multi_language_tutorials.htm"><i class="fa fa-caret-right"></i> Multi-Language</a></li>
+<li><a href="https://www.tutorialspoint.com/questions_and_answers.htm"><i class="fa fa-caret-right"></i> Interview Questions</a></li>
+</ul>
+</li>
+</ul>
+<div class="clear"></div>
+</div> 
+</div>
+<div class="right-menu">
+<div class="toc-toggle">
+<a href="javascript:void(0);"><i class="fa fa-bars"></i></a>
+</div>
+<div class="mobile-search-btn">
+<a href="https://www.tutorialspoint.com/index.htm"><i class="fal fa-search"></i></a>
+</div>
+<div class="search-box">
+<script async="" src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/f(1).txt"></script>
+<div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" id="gsc-i-id1" placeholder="Custom Search" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; background: url(&quot;https://www.google.com/cse/static/images/1x/googlelogo_lightgrey_46x16dp.png&quot;) left center no-repeat rgb(255, 255, 255); text-indent: 48px; outline: none;" dir="ltr" spellcheck="false"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" style="display: none;" title="Clear search box" role="button"><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>search</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table></form><div class="gsc-results-wrapper-overlay"><div class="gsc-results-close-btn" tabindex="0"></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"><div aria-label="refinement" role="tab" class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"></div></div><div class="gsc-above-wrapper-area-invisible"><table cellspacing="0" cellpadding="0" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td><td class="gsc-orderby-container"><div class="gsc-orderby-invisible"><div class="gsc-orderby-label gsc-inline-block">Sort by:</div><div class="gsc-option-menu-container gsc-inline-block"><div class="gsc-selected-option-container gsc-inline-block"><div class="gsc-selected-option">Relevance</div><div class="gsc-option-selector"></div></div><div class="gsc-option-menu-invisible"><div class="gsc-option-menu-item gsc-option-menu-item-highlighted"><div class="gsc-option">Relevance</div></div><div class="gsc-option-menu-item"><div class="gsc-option">Date</div></div></div></div></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><div><div class="gsc-expansionArea"></div></div></div></div></div></div><div class="gsc-modal-background-image" tabindex="0"></div></div></div></div>
+</div>
+<div class="menu-btn library-btn">
+<a href="https://www.tutorialspoint.com/tutorialslibrary.htm"><i class="fal fa-cubes"></i> <span>Library</span></a>
+</div>
+<div class="menu-btn videos-btn">
+<a href="https://www.tutorialspoint.com/videotutorials/index.php"><i class="fal fa-video"></i> <span>Videos</span></a> 
+</div>
+<div class="menu-btn videos-btn">
+<a href="https://www.tutorialspoint.com/questions/index.php"><i class="fa fa-location-arrow"></i> <span>Q/A</span></a>
+</div>
+<div class="menu-btn ebooks-btn">
+<a href="https://store.tutorialspoint.com/"><i class="fal fa-book"></i> <span>eBooks</span></a>
+</div>
+<div class="mui-dropdown">
+<button class="mui-btn mui-btn--primary mobile-menu" data-mui-toggle="dropdown" type="button">
+<span class="mui-caret"></span>
+</button>
+<ul class="mui-dropdown__menu">
+<li><a href="https://www.tutorialspoint.com/tutorialslibrary.htm"><i class="fal fa-cubes"></i> <span>Library</span></a></li>
+<li><a href="https://www.tutorialspoint.com/videotutorials/index.php"><i class="fal fa-video"></i> <span>Videos</span></a></li>
+<li><a href="https://store.tutorialspoint.com/"><i class="fal fa-book"></i> <span>eBooks</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Top main-menu Ends Here -->
+</header>
+<div class="mui-container-fluid content">
+<div class="mui-container">
+<!-- Tutorial ToC Starts Here -->
+<div class="mui-col-md-3 tutorial-toc">
+<div class="mini-logo">
+<img src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/spring-boot-mini-logo.jpg" alt="Spring Boot Tutorial">
+</div>
+<ul class="toc chapters">
+<li class="heading">Spring Boot Tutorial</li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/index.htm">Spring Boot - Home</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_introduction.htm">Spring Boot - Introduction</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_quick_start.htm">Spring Boot - Quick Start</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_bootstrapping.htm">Spring Boot - Bootstrapping</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_tomcat_deployment.htm">Spring Boot - Tomcat Deployment</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_build_systems.htm">Spring Boot - Build Systems</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_code_structure.htm">Spring Boot - Code Structure</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_beans_and_dependency_injection.htm">Spring Beans &amp; Dependency Injection</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_runners.htm">Spring Boot - Runners</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_application_properties.htm">Spring Boot - Application Properties</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_logging.htm">Spring Boot - Logging</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_building_restful_web_services.htm">Building RESTful Web Services</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_exception_handling.htm">Spring Boot - Exception Handling</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_interceptor.htm">Spring Boot - Interceptor</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_servlet_filter.htm">Spring Boot - Servlet Filter</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_tomcat_port_number.htm">Spring Boot - Tomcat Port Number</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_rest_template.htm">Spring Boot - Rest Template</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_file_handling.htm">Spring Boot - File Handling</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_service_components.htm">Spring Boot - Service Components</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_thymeleaf.htm">Spring Boot - Thymeleaf</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_consuming_restful_web_services.htm">Consuming RESTful Web Services</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_cors_support.htm">Spring Boot - CORS Support</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_internationalization.htm">Spring Boot - Internationalization</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_scheduling.htm">Spring Boot - Scheduling</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_enabling_https.htm">Spring Boot - Enabling HTTPS</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_eureka_server.htm">Spring Boot - Eureka Server</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_service_registration_with_eureka.htm">Service Registration with Eureka</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_zuul_proxy_server_and_routing.htm">Zuul Proxy Server and Routing</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_cloud_configuration_server.htm">Spring Cloud Configuration Server</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_cloud_configuration_client.htm">Spring Cloud Configuration Client</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_actuator.htm">Spring Boot - Actuator</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_admin_server.htm">Spring Boot - Admin Server</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_admin_client.htm">Spring Boot - Admin Client</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_enabling_swagger2.htm">Spring Boot - Enabling Swagger2</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_creating_docker_image.htm">Spring Boot - Creating Docker Image</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_tracing_micro_service_logs.htm">Tracing Micro Service Logs</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_flyway_database.htm">Spring Boot - Flyway Database</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_sending_email.htm">Spring Boot - Sending Email</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_hystrix.htm">Spring Boot - Hystrix</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_web_socket.htm">Spring Boot - Web Socket</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_batch_service.htm">Spring Boot - Batch Service</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_apache_kafka.htm">Spring Boot - Apache Kafka</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_twilio.htm">Spring Boot - Twilio</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_unit_test_cases.htm">Spring Boot - Unit Test Cases</a></li>
+<li style="background-color: rgb(214, 214, 214);"><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_rest_controller_unit_test.htm">Rest Controller Unit Test</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_database_handling.htm">Spring Boot - Database Handling</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_securing_web_applications.htm">Securing Web Applications</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_oauth2_with_jwt.htm">Spring Boot - OAuth2 with JWT</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_google_cloud_platform.htm">Spring Boot - Google Cloud Platform</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_google_oauth2_sign_in.htm">Spring Boot - Google OAuth2 Sign-In</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">Spring Boot Resources</li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_quick_guide.htm">Spring Boot - Quick Guide</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_useful_resources.htm">Spring Boot - Useful Resources</a></li>
+<li><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_discussion.htm">Spring Boot - Discussion </a></li>
+</ul>
+<ul class="toc reading">
+<li class="sreading">Selected Reading</li>
+<li><a target="_top" href="https://www.tutorialspoint.com/upsc_ias_exams.htm">UPSC IAS Exams Notes</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/developers_best_practices/index.htm">Developer's Best Practices</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/questions_and_answers.htm">Questions and Answers</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/effective_resume_writing.htm">Effective Resume Writing</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/hr_interview_questions/index.htm">HR Interview Questions</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/computer_glossary.htm">Computer Glossary</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/computer_whoiswho.htm">Who is Who</a></li>
+</ul>
+<div id="stickyparent" style="position: sticky;">
+<div style="height: 250px; width: 300px; top: 80px; position: fixed;" id="sticky-ad">
+<div class="adsbyvli" data-ad-slot="vi_9012177"></div><script>(vitag.Init = window.vitag.Init || []).push(function(){viAPItag.display("vi_9012177")})</script>
+</div>
+</div>
+</div>
+<!-- Tutorial ToC Ends Here -->
+<!-- Tutorial Content Starts Here -->
+<div class="mui-col-md-6 tutorial-content">
+<h1>Spring Boot - Rest Controller Unit Test</h1>
+<hr>
+<div class="top-ad-heading">Advertisements</div>
+<div style="text-align:center" class="google-top-ads">
+<div id="vi_top_ads" style="text-align:center !important;"><div class="adsbyvli" data-ad-slot="vi_9012178"></div></div>
+   <script>
+     (function() {
+     var adPos = document.getElementById('vi_top_ads');
+     var ad_id_728 = "vi_9012178";
+     var ad_id_650 = "vi_9014435";
+     var ad_id_300 = "vi_9017967";
+     var width = window.innerWidth;
+     var ad_id = ad_id_728;
+     if( width <= 768 ){
+        ad_id =  ad_id_300;
+     }else if( width <= 1435 ){
+        ad_id =  ad_id_650;
+     }
+     adPos.innerHTML = '<div class="adsbyvli" data-ad-slot="' + ad_id + '"></div>';
+     (vitag.displayInit = window.vitag.displayInit || []).push(function () {
+         viAPItag.display(ad_id);
+     });
+     }())
+   </script>
+</div>
+<br>
+<div class="mui-container-fluid button-borders">
+<div class="pre-btn">
+<a href="https://www.tutorialspoint.com/spring_boot/spring_boot_unit_test_cases.htm"><i class="fal fa-chevron-circle-left"></i> Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="https://www.tutorialspoint.com/spring_boot/spring_boot_database_handling.htm">Next Page <i class="fal fa-chevron-circle-right"></i>&nbsp;</a>
+</div>
+</div>
+<div class="clearer"></div>
+<p>Spring Boot provides an easy way to write a Unit Test for Rest Controller file. With the help of SpringJUnit4ClassRunner and MockMvc, we can create a web application context to write Unit Test for Rest Controller file.</p>
+<p>Unit Tests should be written under the <b>src/test/java</b> directory and classpath resources for writing a test should be placed under the <b>src/test/resources</b> directory.</p>
+<p>For Writing a Unit Test, we need to add the Spring Boot Starter Test dependency in your build configuration file as shown below.</p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="tag">&lt;dependency&gt;</span><span class="pln">
+   </span><span class="tag">&lt;groupId&gt;</span><span class="pln">org.springframework.boot</span><span class="tag">&lt;/groupId&gt;</span><span class="pln">
+   </span><span class="tag">&lt;artifactId&gt;</span><span class="pln">spring-boot-starter-test</span><span class="tag">&lt;/artifactId&gt;</span><span class="pln">
+   </span><span class="tag">&lt;scope&gt;</span><span class="pln">test</span><span class="tag">&lt;/scope&gt;</span><span class="pln">
+</span><span class="tag">&lt;/dependency&gt;</span></pre>
+<p>Gradle users can add the following dependency in your build.gradle file.</p>
+<pre class="result notranslate">testCompile('org.springframework.boot:spring-boot-starter-test')
+</pre>
+<p>Before writing a Test case, we should first build RESTful web services. For further information on building RESTful web services, please refer to the chapter on the same given in this tutorial.</p> 
+<h2>Writing a Unit Test for REST Controller</h2>
+<p>In this section, let us see how to write a Unit Test for the REST Controller.</p>
+<p>First, we need to create Abstract class file used to create web application context by using MockMvc and define the mapToJson() and mapFromJson() methods to convert the Java object into JSON string and convert the JSON string into Java object.</p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="kwd">package</span><span class="pln"> com</span><span class="pun">.</span><span class="pln">tutorialspoint</span><span class="pun">.</span><span class="pln">demo</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">io</span><span class="pun">.</span><span class="typ">IOException</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">junit</span><span class="pun">.</span><span class="pln">runner</span><span class="pun">.</span><span class="typ">RunWith</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">springframework</span><span class="pun">.</span><span class="pln">beans</span><span class="pun">.</span><span class="pln">factory</span><span class="pun">.</span><span class="pln">annotation</span><span class="pun">.</span><span class="typ">Autowired</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">springframework</span><span class="pun">.</span><span class="pln">boot</span><span class="pun">.</span><span class="pln">test</span><span class="pun">.</span><span class="pln">context</span><span class="pun">.</span><span class="typ">SpringBootTest</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">springframework</span><span class="pun">.</span><span class="pln">test</span><span class="pun">.</span><span class="pln">context</span><span class="pun">.</span><span class="pln">junit4</span><span class="pun">.</span><span class="typ">SpringJUnit4ClassRunner</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">springframework</span><span class="pun">.</span><span class="pln">test</span><span class="pun">.</span><span class="pln">context</span><span class="pun">.</span><span class="pln">web</span><span class="pun">.</span><span class="typ">WebAppConfiguration</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">springframework</span><span class="pun">.</span><span class="pln">test</span><span class="pun">.</span><span class="pln">web</span><span class="pun">.</span><span class="pln">servlet</span><span class="pun">.</span><span class="typ">MockMvc</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">springframework</span><span class="pun">.</span><span class="pln">test</span><span class="pun">.</span><span class="pln">web</span><span class="pun">.</span><span class="pln">servlet</span><span class="pun">.</span><span class="pln">setup</span><span class="pun">.</span><span class="typ">MockMvcBuilders</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">springframework</span><span class="pun">.</span><span class="pln">web</span><span class="pun">.</span><span class="pln">context</span><span class="pun">.</span><span class="typ">WebApplicationContext</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> com</span><span class="pun">.</span><span class="pln">fasterxml</span><span class="pun">.</span><span class="pln">jackson</span><span class="pun">.</span><span class="pln">core</span><span class="pun">.</span><span class="typ">JsonParseException</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> com</span><span class="pun">.</span><span class="pln">fasterxml</span><span class="pun">.</span><span class="pln">jackson</span><span class="pun">.</span><span class="pln">core</span><span class="pun">.</span><span class="typ">JsonProcessingException</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> com</span><span class="pun">.</span><span class="pln">fasterxml</span><span class="pun">.</span><span class="pln">jackson</span><span class="pun">.</span><span class="pln">databind</span><span class="pun">.</span><span class="typ">JsonMappingException</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> com</span><span class="pun">.</span><span class="pln">fasterxml</span><span class="pun">.</span><span class="pln">jackson</span><span class="pun">.</span><span class="pln">databind</span><span class="pun">.</span><span class="typ">ObjectMapper</span><span class="pun">;</span><span class="pln">
+
+</span><span class="lit">@RunWith</span><span class="pun">(</span><span class="typ">SpringJUnit4ClassRunner</span><span class="pun">.</span><span class="kwd">class</span><span class="pun">)</span><span class="pln">
+</span><span class="lit">@SpringBootTest</span><span class="pun">(</span><span class="pln">classes </span><span class="pun">=</span><span class="pln"> </span><span class="typ">DemoApplication</span><span class="pun">.</span><span class="kwd">class</span><span class="pun">)</span><span class="pln">
+</span><span class="lit">@WebAppConfiguration</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">abstract</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">AbstractTest</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">protected</span><span class="pln"> </span><span class="typ">MockMvc</span><span class="pln"> mvc</span><span class="pun">;</span><span class="pln">
+   </span><span class="lit">@Autowired</span><span class="pln">
+   </span><span class="typ">WebApplicationContext</span><span class="pln"> webApplicationContext</span><span class="pun">;</span><span class="pln">
+
+   </span><span class="kwd">protected</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> setUp</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      mvc </span><span class="pun">=</span><span class="pln"> </span><span class="typ">MockMvcBuilders</span><span class="pun">.</span><span class="pln">webAppContextSetup</span><span class="pun">(</span><span class="pln">webApplicationContext</span><span class="pun">).</span><span class="pln">build</span><span class="pun">();</span><span class="pln">
+   </span><span class="pun">}</span><span class="pln">
+   </span><span class="kwd">protected</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> mapToJson</span><span class="pun">(</span><span class="typ">Object</span><span class="pln"> obj</span><span class="pun">)</span><span class="pln"> </span><span class="kwd">throws</span><span class="pln"> </span><span class="typ">JsonProcessingException</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="typ">ObjectMapper</span><span class="pln"> objectMapper </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ObjectMapper</span><span class="pun">();</span><span class="pln">
+      </span><span class="kwd">return</span><span class="pln"> objectMapper</span><span class="pun">.</span><span class="pln">writeValueAsString</span><span class="pun">(</span><span class="pln">obj</span><span class="pun">);</span><span class="pln">
+   </span><span class="pun">}</span><span class="pln">
+   </span><span class="kwd">protected</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;</span><span class="pln"> T mapFromJson</span><span class="pun">(</span><span class="typ">String</span><span class="pln"> json</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Class</span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;</span><span class="pln"> clazz</span><span class="pun">)</span><span class="pln">
+      </span><span class="kwd">throws</span><span class="pln"> </span><span class="typ">JsonParseException</span><span class="pun">,</span><span class="pln"> </span><span class="typ">JsonMappingException</span><span class="pun">,</span><span class="pln"> </span><span class="typ">IOException</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      
+      </span><span class="typ">ObjectMapper</span><span class="pln"> objectMapper </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ObjectMapper</span><span class="pun">();</span><span class="pln">
+      </span><span class="kwd">return</span><span class="pln"> objectMapper</span><span class="pun">.</span><span class="pln">readValue</span><span class="pun">(</span><span class="pln">json</span><span class="pun">,</span><span class="pln"> clazz</span><span class="pun">);</span><span class="pln">
+   </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></pre>
+<p>Next, write a class file that extends the AbstractTest class and write a Unit Test for each method such GET, POST, PUT and DELETE.</p>
+<p>The code for GET API Test case is given below. This API is to view the list of products.</p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="lit">@Test</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> getProductsList</span><span class="pun">()</span><span class="pln"> </span><span class="kwd">throws</span><span class="pln"> </span><span class="typ">Exception</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="typ">String</span><span class="pln"> uri </span><span class="pun">=</span><span class="pln"> </span><span class="str">"/products"</span><span class="pun">;</span><span class="pln">
+   </span><span class="typ">MvcResult</span><span class="pln"> mvcResult </span><span class="pun">=</span><span class="pln"> mvc</span><span class="pun">.</span><span class="pln">perform</span><span class="pun">(</span><span class="typ">MockMvcRequestBuilders</span><span class="pun">.</span><span class="kwd">get</span><span class="pun">(</span><span class="pln">uri</span><span class="pun">)</span><span class="pln">
+      </span><span class="pun">.</span><span class="pln">accept</span><span class="pun">(</span><span class="typ">MediaType</span><span class="pun">.</span><span class="pln">APPLICATION_JSON_VALUE</span><span class="pun">)).</span><span class="pln">andReturn</span><span class="pun">();</span><span class="pln">
+   
+   </span><span class="kwd">int</span><span class="pln"> status </span><span class="pun">=</span><span class="pln"> mvcResult</span><span class="pun">.</span><span class="pln">getResponse</span><span class="pun">().</span><span class="pln">getStatus</span><span class="pun">();</span><span class="pln">
+   assertEquals</span><span class="pun">(</span><span class="lit">200</span><span class="pun">,</span><span class="pln"> status</span><span class="pun">);</span><span class="pln">
+   </span><span class="typ">String</span><span class="pln"> content </span><span class="pun">=</span><span class="pln"> mvcResult</span><span class="pun">.</span><span class="pln">getResponse</span><span class="pun">().</span><span class="pln">getContentAsString</span><span class="pun">();</span><span class="pln">
+   </span><span class="typ">Product</span><span class="pun">[]</span><span class="pln"> productlist </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">super</span><span class="pun">.</span><span class="pln">mapFromJson</span><span class="pun">(</span><span class="pln">content</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Product</span><span class="pun">[].</span><span class="kwd">class</span><span class="pun">);</span><span class="pln">
+   assertTrue</span><span class="pun">(</span><span class="pln">productlist</span><span class="pun">.</span><span class="pln">length </span><span class="pun">&gt;</span><span class="pln"> </span><span class="lit">0</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></pre>
+<p>The code for POST API test case is given below. This API is to create a product.</p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="lit">@Test</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> createProduct</span><span class="pun">()</span><span class="pln"> </span><span class="kwd">throws</span><span class="pln"> </span><span class="typ">Exception</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="typ">String</span><span class="pln"> uri </span><span class="pun">=</span><span class="pln"> </span><span class="str">"/products"</span><span class="pun">;</span><span class="pln">
+   </span><span class="typ">Product</span><span class="pln"> product </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Product</span><span class="pun">();</span><span class="pln">
+   product</span><span class="pun">.</span><span class="pln">setId</span><span class="pun">(</span><span class="str">"3"</span><span class="pun">);</span><span class="pln">
+   product</span><span class="pun">.</span><span class="pln">setName</span><span class="pun">(</span><span class="str">"Ginger"</span><span class="pun">);</span><span class="pln">
+   
+   </span><span class="typ">String</span><span class="pln"> inputJson </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">super</span><span class="pun">.</span><span class="pln">mapToJson</span><span class="pun">(</span><span class="pln">product</span><span class="pun">);</span><span class="pln">
+   </span><span class="typ">MvcResult</span><span class="pln"> mvcResult </span><span class="pun">=</span><span class="pln"> mvc</span><span class="pun">.</span><span class="pln">perform</span><span class="pun">(</span><span class="typ">MockMvcRequestBuilders</span><span class="pun">.</span><span class="pln">post</span><span class="pun">(</span><span class="pln">uri</span><span class="pun">)</span><span class="pln">
+      </span><span class="pun">.</span><span class="pln">contentType</span><span class="pun">(</span><span class="typ">MediaType</span><span class="pun">.</span><span class="pln">APPLICATION_JSON_VALUE</span><span class="pun">).</span><span class="pln">content</span><span class="pun">(</span><span class="pln">inputJson</span><span class="pun">)).</span><span class="pln">andReturn</span><span class="pun">();</span><span class="pln">
+   
+   </span><span class="kwd">int</span><span class="pln"> status </span><span class="pun">=</span><span class="pln"> mvcResult</span><span class="pun">.</span><span class="pln">getResponse</span><span class="pun">().</span><span class="pln">getStatus</span><span class="pun">();</span><span class="pln">
+   assertEquals</span><span class="pun">(</span><span class="lit">201</span><span class="pun">,</span><span class="pln"> status</span><span class="pun">);</span><span class="pln">
+   </span><span class="typ">String</span><span class="pln"> content </span><span class="pun">=</span><span class="pln"> mvcResult</span><span class="pun">.</span><span class="pln">getResponse</span><span class="pun">().</span><span class="pln">getContentAsString</span><span class="pun">();</span><span class="pln">
+   assertEquals</span><span class="pun">(</span><span class="pln">content</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Product is created successfully"</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></pre>
+<p>The code for PUT API Test case is given below. This API is to update the existing product.</p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="lit">@Test</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> updateProduct</span><span class="pun">()</span><span class="pln"> </span><span class="kwd">throws</span><span class="pln"> </span><span class="typ">Exception</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="typ">String</span><span class="pln"> uri </span><span class="pun">=</span><span class="pln"> </span><span class="str">"/products/2"</span><span class="pun">;</span><span class="pln">
+   </span><span class="typ">Product</span><span class="pln"> product </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Product</span><span class="pun">();</span><span class="pln">
+   product</span><span class="pun">.</span><span class="pln">setName</span><span class="pun">(</span><span class="str">"Lemon"</span><span class="pun">);</span><span class="pln">
+   
+   </span><span class="typ">String</span><span class="pln"> inputJson </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">super</span><span class="pun">.</span><span class="pln">mapToJson</span><span class="pun">(</span><span class="pln">product</span><span class="pun">);</span><span class="pln">
+   </span><span class="typ">MvcResult</span><span class="pln"> mvcResult </span><span class="pun">=</span><span class="pln"> mvc</span><span class="pun">.</span><span class="pln">perform</span><span class="pun">(</span><span class="typ">MockMvcRequestBuilders</span><span class="pun">.</span><span class="pln">put</span><span class="pun">(</span><span class="pln">uri</span><span class="pun">)</span><span class="pln">
+      </span><span class="pun">.</span><span class="pln">contentType</span><span class="pun">(</span><span class="typ">MediaType</span><span class="pun">.</span><span class="pln">APPLICATION_JSON_VALUE</span><span class="pun">).</span><span class="pln">content</span><span class="pun">(</span><span class="pln">inputJson</span><span class="pun">)).</span><span class="pln">andReturn</span><span class="pun">();</span><span class="pln">
+   
+   </span><span class="kwd">int</span><span class="pln"> status </span><span class="pun">=</span><span class="pln"> mvcResult</span><span class="pun">.</span><span class="pln">getResponse</span><span class="pun">().</span><span class="pln">getStatus</span><span class="pun">();</span><span class="pln">
+   assertEquals</span><span class="pun">(</span><span class="lit">200</span><span class="pun">,</span><span class="pln"> status</span><span class="pun">);</span><span class="pln">
+   </span><span class="typ">String</span><span class="pln"> content </span><span class="pun">=</span><span class="pln"> mvcResult</span><span class="pun">.</span><span class="pln">getResponse</span><span class="pun">().</span><span class="pln">getContentAsString</span><span class="pun">();</span><span class="pln">
+   assertEquals</span><span class="pun">(</span><span class="pln">content</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Product is updated successsfully"</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></pre>
+<p>The code for Delete API Test case is given below. This API will delete the existing product.</p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="lit">@Test</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> deleteProduct</span><span class="pun">()</span><span class="pln"> </span><span class="kwd">throws</span><span class="pln"> </span><span class="typ">Exception</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="typ">String</span><span class="pln"> uri </span><span class="pun">=</span><span class="pln"> </span><span class="str">"/products/2"</span><span class="pun">;</span><span class="pln">
+   </span><span class="typ">MvcResult</span><span class="pln"> mvcResult </span><span class="pun">=</span><span class="pln"> mvc</span><span class="pun">.</span><span class="pln">perform</span><span class="pun">(</span><span class="typ">MockMvcRequestBuilders</span><span class="pun">.</span><span class="kwd">delete</span><span class="pun">(</span><span class="pln">uri</span><span class="pun">)).</span><span class="pln">andReturn</span><span class="pun">();</span><span class="pln">
+   </span><span class="kwd">int</span><span class="pln"> status </span><span class="pun">=</span><span class="pln"> mvcResult</span><span class="pun">.</span><span class="pln">getResponse</span><span class="pun">().</span><span class="pln">getStatus</span><span class="pun">();</span><span class="pln">
+   assertEquals</span><span class="pun">(</span><span class="lit">200</span><span class="pun">,</span><span class="pln"> status</span><span class="pun">);</span><span class="pln">
+   </span><span class="typ">String</span><span class="pln"> content </span><span class="pun">=</span><span class="pln"> mvcResult</span><span class="pun">.</span><span class="pln">getResponse</span><span class="pun">().</span><span class="pln">getContentAsString</span><span class="pun">();</span><span class="pln">
+   assertEquals</span><span class="pun">(</span><span class="pln">content</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Product is deleted successsfully"</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></pre>
+<p>The full Controller Test class file is given below −</p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="kwd">package</span><span class="pln"> com</span><span class="pun">.</span><span class="pln">tutorialspoint</span><span class="pun">.</span><span class="pln">demo</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">junit</span><span class="pun">.</span><span class="typ">Assert</span><span class="pun">.</span><span class="pln">assertEquals</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">junit</span><span class="pun">.</span><span class="typ">Assert</span><span class="pun">.</span><span class="pln">assertTrue</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">junit</span><span class="pun">.</span><span class="typ">Before</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">junit</span><span class="pun">.</span><span class="typ">Test</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">springframework</span><span class="pun">.</span><span class="pln">http</span><span class="pun">.</span><span class="typ">MediaType</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">springframework</span><span class="pun">.</span><span class="pln">test</span><span class="pun">.</span><span class="pln">web</span><span class="pun">.</span><span class="pln">servlet</span><span class="pun">.</span><span class="typ">MvcResult</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">springframework</span><span class="pun">.</span><span class="pln">test</span><span class="pun">.</span><span class="pln">web</span><span class="pun">.</span><span class="pln">servlet</span><span class="pun">.</span><span class="pln">request</span><span class="pun">.</span><span class="typ">MockMvcRequestBuilders</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> com</span><span class="pun">.</span><span class="pln">tutorialspoint</span><span class="pun">.</span><span class="pln">demo</span><span class="pun">.</span><span class="pln">model</span><span class="pun">.</span><span class="typ">Product</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ProductServiceControllerTest</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">AbstractTest</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="lit">@Override</span><span class="pln">
+   </span><span class="lit">@Before</span><span class="pln">
+   </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> setUp</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="kwd">super</span><span class="pun">.</span><span class="pln">setUp</span><span class="pun">();</span><span class="pln">
+   </span><span class="pun">}</span><span class="pln">
+   </span><span class="lit">@Test</span><span class="pln">
+   </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> getProductsList</span><span class="pun">()</span><span class="pln"> </span><span class="kwd">throws</span><span class="pln"> </span><span class="typ">Exception</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="typ">String</span><span class="pln"> uri </span><span class="pun">=</span><span class="pln"> </span><span class="str">"/products"</span><span class="pun">;</span><span class="pln">
+      </span><span class="typ">MvcResult</span><span class="pln"> mvcResult </span><span class="pun">=</span><span class="pln"> mvc</span><span class="pun">.</span><span class="pln">perform</span><span class="pun">(</span><span class="typ">MockMvcRequestBuilders</span><span class="pun">.</span><span class="kwd">get</span><span class="pun">(</span><span class="pln">uri</span><span class="pun">)</span><span class="pln">
+         </span><span class="pun">.</span><span class="pln">accept</span><span class="pun">(</span><span class="typ">MediaType</span><span class="pun">.</span><span class="pln">APPLICATION_JSON_VALUE</span><span class="pun">)).</span><span class="pln">andReturn</span><span class="pun">();</span><span class="pln">
+      
+      </span><span class="kwd">int</span><span class="pln"> status </span><span class="pun">=</span><span class="pln"> mvcResult</span><span class="pun">.</span><span class="pln">getResponse</span><span class="pun">().</span><span class="pln">getStatus</span><span class="pun">();</span><span class="pln">
+      assertEquals</span><span class="pun">(</span><span class="lit">200</span><span class="pun">,</span><span class="pln"> status</span><span class="pun">);</span><span class="pln">
+      </span><span class="typ">String</span><span class="pln"> content </span><span class="pun">=</span><span class="pln"> mvcResult</span><span class="pun">.</span><span class="pln">getResponse</span><span class="pun">().</span><span class="pln">getContentAsString</span><span class="pun">();</span><span class="pln">
+      </span><span class="typ">Product</span><span class="pun">[]</span><span class="pln"> productlist </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">super</span><span class="pun">.</span><span class="pln">mapFromJson</span><span class="pun">(</span><span class="pln">content</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Product</span><span class="pun">[].</span><span class="kwd">class</span><span class="pun">);</span><span class="pln">
+      assertTrue</span><span class="pun">(</span><span class="pln">productlist</span><span class="pun">.</span><span class="pln">length </span><span class="pun">&gt;</span><span class="pln"> </span><span class="lit">0</span><span class="pun">);</span><span class="pln">
+   </span><span class="pun">}</span><span class="pln">
+   </span><span class="lit">@Test</span><span class="pln">
+   </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> createProduct</span><span class="pun">()</span><span class="pln"> </span><span class="kwd">throws</span><span class="pln"> </span><span class="typ">Exception</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="typ">String</span><span class="pln"> uri </span><span class="pun">=</span><span class="pln"> </span><span class="str">"/products"</span><span class="pun">;</span><span class="pln">
+      </span><span class="typ">Product</span><span class="pln"> product </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Product</span><span class="pun">();</span><span class="pln">
+      product</span><span class="pun">.</span><span class="pln">setId</span><span class="pun">(</span><span class="str">"3"</span><span class="pun">);</span><span class="pln">
+      product</span><span class="pun">.</span><span class="pln">setName</span><span class="pun">(</span><span class="str">"Ginger"</span><span class="pun">);</span><span class="pln">
+      </span><span class="typ">String</span><span class="pln"> inputJson </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">super</span><span class="pun">.</span><span class="pln">mapToJson</span><span class="pun">(</span><span class="pln">product</span><span class="pun">);</span><span class="pln">
+      </span><span class="typ">MvcResult</span><span class="pln"> mvcResult </span><span class="pun">=</span><span class="pln"> mvc</span><span class="pun">.</span><span class="pln">perform</span><span class="pun">(</span><span class="typ">MockMvcRequestBuilders</span><span class="pun">.</span><span class="pln">post</span><span class="pun">(</span><span class="pln">uri</span><span class="pun">)</span><span class="pln">
+         </span><span class="pun">.</span><span class="pln">contentType</span><span class="pun">(</span><span class="typ">MediaType</span><span class="pun">.</span><span class="pln">APPLICATION_JSON_VALUE</span><span class="pun">)</span><span class="pln">
+         </span><span class="pun">.</span><span class="pln">content</span><span class="pun">(</span><span class="pln">inputJson</span><span class="pun">)).</span><span class="pln">andReturn</span><span class="pun">();</span><span class="pln">
+      
+      </span><span class="kwd">int</span><span class="pln"> status </span><span class="pun">=</span><span class="pln"> mvcResult</span><span class="pun">.</span><span class="pln">getResponse</span><span class="pun">().</span><span class="pln">getStatus</span><span class="pun">();</span><span class="pln">
+      assertEquals</span><span class="pun">(</span><span class="lit">201</span><span class="pun">,</span><span class="pln"> status</span><span class="pun">);</span><span class="pln">
+      </span><span class="typ">String</span><span class="pln"> content </span><span class="pun">=</span><span class="pln"> mvcResult</span><span class="pun">.</span><span class="pln">getResponse</span><span class="pun">().</span><span class="pln">getContentAsString</span><span class="pun">();</span><span class="pln">
+      assertEquals</span><span class="pun">(</span><span class="pln">content</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Product is created successfully"</span><span class="pun">);</span><span class="pln">
+   </span><span class="pun">}</span><span class="pln">
+   </span><span class="lit">@Test</span><span class="pln">
+   </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> updateProduct</span><span class="pun">()</span><span class="pln"> </span><span class="kwd">throws</span><span class="pln"> </span><span class="typ">Exception</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="typ">String</span><span class="pln"> uri </span><span class="pun">=</span><span class="pln"> </span><span class="str">"/products/2"</span><span class="pun">;</span><span class="pln">
+      </span><span class="typ">Product</span><span class="pln"> product </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Product</span><span class="pun">();</span><span class="pln">
+      product</span><span class="pun">.</span><span class="pln">setName</span><span class="pun">(</span><span class="str">"Lemon"</span><span class="pun">);</span><span class="pln">
+      </span><span class="typ">String</span><span class="pln"> inputJson </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">super</span><span class="pun">.</span><span class="pln">mapToJson</span><span class="pun">(</span><span class="pln">product</span><span class="pun">);</span><span class="pln">
+      </span><span class="typ">MvcResult</span><span class="pln"> mvcResult </span><span class="pun">=</span><span class="pln"> mvc</span><span class="pun">.</span><span class="pln">perform</span><span class="pun">(</span><span class="typ">MockMvcRequestBuilders</span><span class="pun">.</span><span class="pln">put</span><span class="pun">(</span><span class="pln">uri</span><span class="pun">)</span><span class="pln">
+         </span><span class="pun">.</span><span class="pln">contentType</span><span class="pun">(</span><span class="typ">MediaType</span><span class="pun">.</span><span class="pln">APPLICATION_JSON_VALUE</span><span class="pun">)</span><span class="pln">
+         </span><span class="pun">.</span><span class="pln">content</span><span class="pun">(</span><span class="pln">inputJson</span><span class="pun">)).</span><span class="pln">andReturn</span><span class="pun">();</span><span class="pln">
+      
+      </span><span class="kwd">int</span><span class="pln"> status </span><span class="pun">=</span><span class="pln"> mvcResult</span><span class="pun">.</span><span class="pln">getResponse</span><span class="pun">().</span><span class="pln">getStatus</span><span class="pun">();</span><span class="pln">
+      assertEquals</span><span class="pun">(</span><span class="lit">200</span><span class="pun">,</span><span class="pln"> status</span><span class="pun">);</span><span class="pln">
+      </span><span class="typ">String</span><span class="pln"> content </span><span class="pun">=</span><span class="pln"> mvcResult</span><span class="pun">.</span><span class="pln">getResponse</span><span class="pun">().</span><span class="pln">getContentAsString</span><span class="pun">();</span><span class="pln">
+      assertEquals</span><span class="pun">(</span><span class="pln">content</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Product is updated successsfully"</span><span class="pun">);</span><span class="pln">
+   </span><span class="pun">}</span><span class="pln">
+   </span><span class="lit">@Test</span><span class="pln">
+   </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> deleteProduct</span><span class="pun">()</span><span class="pln"> </span><span class="kwd">throws</span><span class="pln"> </span><span class="typ">Exception</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="typ">String</span><span class="pln"> uri </span><span class="pun">=</span><span class="pln"> </span><span class="str">"/products/2"</span><span class="pun">;</span><span class="pln">
+      </span><span class="typ">MvcResult</span><span class="pln"> mvcResult </span><span class="pun">=</span><span class="pln"> mvc</span><span class="pun">.</span><span class="pln">perform</span><span class="pun">(</span><span class="typ">MockMvcRequestBuilders</span><span class="pun">.</span><span class="kwd">delete</span><span class="pun">(</span><span class="pln">uri</span><span class="pun">)).</span><span class="pln">andReturn</span><span class="pun">();</span><span class="pln">
+      </span><span class="kwd">int</span><span class="pln"> status </span><span class="pun">=</span><span class="pln"> mvcResult</span><span class="pun">.</span><span class="pln">getResponse</span><span class="pun">().</span><span class="pln">getStatus</span><span class="pun">();</span><span class="pln">
+      assertEquals</span><span class="pun">(</span><span class="lit">200</span><span class="pun">,</span><span class="pln"> status</span><span class="pun">);</span><span class="pln">
+      </span><span class="typ">String</span><span class="pln"> content </span><span class="pun">=</span><span class="pln"> mvcResult</span><span class="pun">.</span><span class="pln">getResponse</span><span class="pun">().</span><span class="pln">getContentAsString</span><span class="pun">();</span><span class="pln">
+      assertEquals</span><span class="pun">(</span><span class="pln">content</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Product is deleted successsfully"</span><span class="pun">);</span><span class="pln">
+   </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></pre>
+<p>You can create an executable JAR file, and run the Spring Boot application by using the Maven or Gradle commands given below −</p>
+<p>For Maven, you can use the command given below −</p>
+<pre class="result notranslate">mvn clean install 
+</pre>
+<p>Now, you can see the test results in console window.</p>
+<img src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/test_results_in_console_window.jpg" alt="Test Results in Console Window">
+<p>For Gradle, you can use the command as shown below −</p>
+<pre class="result notranslate">gradle clean build
+</pre>
+<p>You can see the rest results in console window as shown below.</p>
+<img src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/rest_results_in_console_window.jpg" alt="Rest Results in Console Window">
+<div class="mui-container-fluid button-borders show" id="bottom_navigation">
+<div class="pre-btn">
+<a href="https://www.tutorialspoint.com/spring_boot/spring_boot_unit_test_cases.htm"><i class="fal fa-chevron-circle-left"></i> Previous Page</a>
+<a class="hide-on-mobile" href="javascript:printPage();"><i class="fa fa-print"></i> Print Page</a>
+</div>
+<div class="nxt-btn">
+<a href="https://www.tutorialspoint.com/spring_boot/spring_boot_database_handling.htm">Next Page <i class="fal fa-chevron-circle-right"></i>&nbsp;</a>
+</div>
+</div>
+<div class="google-bottom-ads">
+<div>Advertisements</div>
+<div>
+<div id="vi_bottom_ads"><div class="adsbyvli" data-ad-slot="vi_9013190"></div></div>
+   <script>
+     (function() {
+     var adPos = document.getElementById('vi_bottom_ads');
+     var mobile_ad_id = "vi_9017967";
+     var desktop_ad_id = "vi_9013190";
+     var ad_id = window.innerWidth <= 768 ? mobile_ad_id : desktop_ad_id;
+     adPos.innerHTML = '<div class="adsbyvli" data-ad-slot="' + ad_id + '"></div>';
+     (vitag.displayInit = window.vitag.displayInit || []).push(function () {
+         viAPItag.display(ad_id);
+     });
+     }())
+   </script>
+</div>
+<div class="space-bottom"></div>
+</div>
+</div>
+<!-- Tutorial Content Ends Here -->
+<!-- Right Column Starts Here -->
+<div class="mui-col-md-2 google-right-ads">
+<div class="space-top"></div>
+<div class="google-right-ad" style="margin: 0px auto !important;margin-top:5px;">
+<div class="adsbyvli" data-ad-slot="vi_9017966"></div><script>(vitag.Init = window.vitag.Init || []).push(function(){viAPItag.display("vi_9017966")})</script>
+</div>
+<div class="google-right-ad" style="margin-top:16px;">
+<div class="adsbyvli" data-ad-slot="vi_9017967"></div><script>(vitag.Init = window.vitag.Init || []).push(function(){viAPItag.display("vi_9017967")})</script>
+</div>
+<div class="google-right-ad" style="margin-top:16px;margin-bottom:15px;">
+<div class="adsbyvli" data-ad-slot="vi_9013289"></div><script>(vitag.Init = window.vitag.Init || []).push(function(){viAPItag.display("vi_9013289")})</script>
+</div>
+<div class="space-bottom" style="margin-bottom:15px;"></div>
+</div>
+<!-- Right Column Ends Here -->
+</div>
+</div>
+<div class="clear"></div>
+<footer id="footer">
+<div class="mui--text-center">
+<div class="mui--text-caption mui--text-light">
+<a href="https://www.tutorialspoint.com/index.htm" class="logo"><img class="img-responsive" src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/logo-black.png" alt="Tutorials Point" title="Tutorials Point"></a>
+</div>
+<ul class="mui-list--inline mui--text-body2 mui--text-light">
+<li><a href="https://www.tutorialspoint.com/about/index.htm"><i class="fal fa-globe"></i> About us</a></li>
+<li><a href="https://www.tutorialspoint.com/about/about_terms_of_use.htm"><i class="fal fa-asterisk"></i> Terms of use</a></li>
+<li><a href="https://www.tutorialspoint.com/about/about_privacy.htm"> <i class="fal fa-shield-check"></i> Privacy Policy</a></li>
+<li><a href="https://www.tutorialspoint.com/about/faq.htm"><i class="fal fa-question-circle"></i> FAQ's</a></li>
+<li><a href="https://www.tutorialspoint.com/about/about_helping.htm"><i class="fal fa-hands-helping"></i> Helping</a></li>
+<li><a href="https://www.tutorialspoint.com/about/contact_us.htm"><i class="fal fa-map-marker-alt"></i> Contact</a></li>
+</ul>
+<div class="mui--text-caption mui--text-light bottom-copyright-text">© Copyright 2020. All Rights Reserved.</div>
+</div>
+<script async="" src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/js"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-232293-6');
+</script>
+</footer>
+
+
+<div id="vi_pixel_8383" style="width: 0px; height: 0px; display: none;"></div><img width="0" height="0" src="./Spring Boot - Rest Controller Unit Test - Tutorialspoint_files/impimg.php" style="visibility: hidden !important;display: none;" stndz-blocked=""><table cellspacing="0" cellpadding="0" class="gstl_50 gssb_c" style="width: 213px; display: none; top: 52px; position: absolute; left: 1152px;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>
