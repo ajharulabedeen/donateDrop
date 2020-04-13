@@ -11,14 +11,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 
 /**
- * @author Dell-3460
+ * @author G-7,
  */
 @RestController
+@RequestMapping("/public/profile/basic/")
 public class Profile_Basic_Controller {
 
     @PostMapping("create")
