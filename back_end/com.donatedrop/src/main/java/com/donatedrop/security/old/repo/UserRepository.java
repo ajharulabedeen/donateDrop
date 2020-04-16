@@ -1,4 +1,4 @@
-package com.donatedrop.repo;
+package com.donatedrop.security.old.repo;
 
 import com.donatedrop.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;

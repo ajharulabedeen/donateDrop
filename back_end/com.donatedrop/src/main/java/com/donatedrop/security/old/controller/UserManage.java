@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.donatedrop.controller;
+package com.donatedrop.security.old.controller;
 
 import com.donatedrop.model.User;
-import com.donatedrop.repo.UserRepository;
+import com.donatedrop.security.old.repo.UserRepository;
 
 import java.util.Date;
 

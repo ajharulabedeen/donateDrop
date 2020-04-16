@@ -5,7 +5,7 @@
  */
 package com.donatedrop.profile_basic;
 
-import com.donatedrop.articles.PhoneNumber;
+import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.model.Address;
 import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
 import com.donatedrop.profile.basic.EmergencyContact;

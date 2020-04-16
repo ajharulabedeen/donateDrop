@@ -1,7 +1,7 @@
 package com.donatedrop.service;
 
 import com.donatedrop.model.User;
-import com.donatedrop.repo.UserRepository;
+import com.donatedrop.security.old.repo.UserRepository;
 import com.donatedrop.security.JwtUserFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

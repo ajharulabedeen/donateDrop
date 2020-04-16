@@ -1,6 +1,6 @@
-package com.donatedrop.controller;
+package com.donatedrop.security.old.controller;
 
-import com.donatedrop.repo.UserRepository;
+import com.donatedrop.security.old.repo.UserRepository;
 import com.donatedrop.security.JwtTokenUtil;
 import com.donatedrop.security.JwtUser;
 

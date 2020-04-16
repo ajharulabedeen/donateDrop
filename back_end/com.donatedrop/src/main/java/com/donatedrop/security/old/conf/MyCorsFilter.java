@@ -1,4 +1,4 @@
-package com.donatedrop.conf;
+package com.donatedrop.security.old.conf;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
