@@ -152,7 +152,7 @@ public class Upazilas implements Serializable {
 
     @Override
     public String toString() {
-        return "com.donatedrop.model.Upazilas[ id=" + id + " ]";
+        return "com.donatedrop.models.Upazilas[ id=" + id + " ]";
     }
     
 }

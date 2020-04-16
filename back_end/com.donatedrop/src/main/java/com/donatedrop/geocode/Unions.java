@@ -137,7 +137,7 @@ public class Unions implements Serializable {
 
     @Override
     public String toString() {
-        return "com.donatedrop.model.Unions[ id=" + id + " ]";
+        return "com.donatedrop.models.Unions[ id=" + id + " ]";
     }
     
 }

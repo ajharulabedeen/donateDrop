@@ -2,7 +2,7 @@ package com.donatedrop.article_test;
 
 //package com.gobeshonabd;
 //
-//import com.gobeshonabd.model.Articles;
+//import com.gobeshonabd.models.Articles;
 //import org.junit.Test;
 //import static org.junit.Assert.*;
 ///**

@@ -176,7 +176,7 @@ public class Districts implements Serializable {
 
     @Override
     public String toString() {
-        return "com.donatedrop.model.Districts[ id=" + id + " ]";
+        return "com.donatedrop.models.Districts[ id=" + id + " ]";
     }
     
 }
