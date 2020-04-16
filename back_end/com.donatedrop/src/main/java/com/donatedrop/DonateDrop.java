@@ -7,7 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-public class DropDonate
+public class DonateDrop
     {
 
     @Bean
@@ -18,7 +18,7 @@ public class DropDonate
 
     public static void main(String[] args)
         {
-        SpringApplication.run(DropDonate.class, args);
+        SpringApplication.run(DonateDrop.class, args);
         }
     }
 

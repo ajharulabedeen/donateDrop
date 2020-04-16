@@ -6,7 +6,7 @@
 package com.donatedrop.profile.basic;
 
 import com.donatedrop.model.Address;
-import com.donatedrop.articles.PhoneNumber;
+import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.profile.model.ProfileBasic;
 
 import java.util.Map;

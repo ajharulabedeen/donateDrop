@@ -5,7 +5,7 @@
  */
 package com.donatedrop.grocode;
 
-import com.donatedrop.DropDonate;
+import com.donatedrop.DonateDrop;
 import java.io.IOException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = DropDonate.class)
+@SpringBootTest(classes = DonateDrop.class)
 @WebAppConfiguration
 public abstract class AbstractTest {
    protected MockMvc mvc;
