@@ -5,9 +5,7 @@
  */
 package com.donatedrop.profile.basic;
 
-import com.donatedrop.model.User;
 import com.donatedrop.profile.model.ProfileBasic;
-import com.donatedrop.security.old.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
