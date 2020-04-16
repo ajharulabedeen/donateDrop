@@ -35,7 +35,7 @@ import org.springframework.web.client.RestTemplate;
  * @author G7
  */
 @RunWith(SpringRunner.class)
-@WebMvcTest(value = Controller_GeoCode.class, secure = false)
+@WebMvcTest(value = Controller_GeoCode.class)
 @AutoConfigureMockMvc
 public class NotWorking_Test_Controller_GeoCode {
 
