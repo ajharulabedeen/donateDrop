@@ -5,10 +5,14 @@
  */
 package com.donatedrop.geocode;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import com.donatedrop.geocode.models.DistrictsEngName;
+import com.donatedrop.geocode.models.DivisionsEngName;
+import com.donatedrop.geocode.models.UnionsEngName;
+import com.donatedrop.geocode.models.UpzillaEngName;
 import org.springframework.stereotype.Component;
 
 /**

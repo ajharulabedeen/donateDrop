@@ -12,10 +12,10 @@
     <class>com.donatedrop.articles.NewEntity</class>
     <class>com.donatedrop.entity.ProfileBasic</class>
     <class>com.donatedrop.articles.PhoneNumber</class>
-    <class>com.donatedrop.geocode.Districts</class>
-    <class>com.donatedrop.geocode.Divisions</class>
-    <class>com.donatedrop.geocode.Upazilas</class>
-    <class>com.donatedrop.geocode.Unions</class>
+    <class>com.donatedrop.geocode.models.Districts</class>
+    <class>com.donatedrop.geocode.models.Divisions</class>
+    <class>com.donatedrop.geocode.models.Upazilas</class>
+    <class>com.donatedrop.geocode.models.Unions</class>
     <class>com.donatedrop.model.Emergencycontact</class>
     <class>com.donatedrop.model.Profilebasic</class>
     <class>com.donatedrop.model.Address</class>

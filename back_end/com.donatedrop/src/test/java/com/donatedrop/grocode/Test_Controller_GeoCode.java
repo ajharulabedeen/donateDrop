@@ -5,14 +5,11 @@
  */
 package com.donatedrop.grocode;
 
-import com.donatedrop.geocode.DistrictsEngName;
-import com.donatedrop.geocode.DivisionsEngName;
-import com.donatedrop.geocode.UnionsEngName;
-import com.donatedrop.geocode.UpzillaEngName;
-import org.junit.After;
-import org.junit.AfterClass;
+import com.donatedrop.geocode.models.DistrictsEngName;
+import com.donatedrop.geocode.models.DivisionsEngName;
+import com.donatedrop.geocode.models.UnionsEngName;
+import com.donatedrop.geocode.models.UpzillaEngName;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

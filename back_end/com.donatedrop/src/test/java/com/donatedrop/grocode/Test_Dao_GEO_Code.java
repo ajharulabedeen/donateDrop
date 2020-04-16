@@ -6,17 +6,6 @@
 package com.donatedrop.grocode;
 
 import com.donatedrop.geocode.Dao_GeoCode_I;
-import com.donatedrop.geocode.DistrictsEngName;
-import com.donatedrop.geocode.Divisions;
-import com.donatedrop.geocode.DivisionsEngName;
-import com.donatedrop.geocode.UnionsEngName;
-import com.donatedrop.geocode.UpzillaEngName;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 import org.junit.After;
 import org.junit.AfterClass;

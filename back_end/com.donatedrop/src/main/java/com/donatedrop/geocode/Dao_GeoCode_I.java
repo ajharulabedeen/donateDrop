@@ -5,6 +5,11 @@
  */
 package com.donatedrop.geocode;
 
+import com.donatedrop.geocode.models.DistrictsEngName;
+import com.donatedrop.geocode.models.DivisionsEngName;
+import com.donatedrop.geocode.models.UnionsEngName;
+import com.donatedrop.geocode.models.UpzillaEngName;
+
 import java.util.List;
 
 /**

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.donatedrop.geocode;
+package com.donatedrop.geocode.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,7 +19,7 @@ import lombok.ToString;
 @Entity
 @ToString
 @Table(name = "zzna_divisions_engname")
-public class UnionsEngName {
+public class UpzillaEngName {
     @Getter
     @Setter
     @Id
