@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.http.MediaType;
@@ -24,6 +25,7 @@ import java.util.List;
 /**
  * @author G7
  */
+@SpringBootTest
 public class Test_Controller_GeoCode extends AbstractTest {
 
     public Test_Controller_GeoCode() {

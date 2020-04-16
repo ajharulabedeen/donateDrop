@@ -1,4 +1,4 @@
-package com.donatedrop.any;
+package com.donatedrop.other;
 
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -11,7 +11,7 @@ import javax.persistence.EntityManager;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class NewOrderTest {
+public class EntityManagerTest {
 
     @Autowired
     EntityManager entityManager;

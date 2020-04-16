@@ -6,7 +6,7 @@
 package com.donatedrop.profile_basic;
 
 import com.donatedrop.profile.model.PhoneNumber;
-import com.donatedrop.model.Address;
+import com.donatedrop.models.Address;
 import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
 import com.donatedrop.profile.basic.EmergencyContact;
 import com.donatedrop.profile.model.ProfileBasic;
@@ -25,7 +25,6 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 import org.junit.runner.RunWith;
-import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -144,7 +143,6 @@ public class Test_Dao_Profile_Basic_Impl {
         assertEquals(id, profileBasic.getId().toString());
     }
 
-    //done
     @Test
     public void test4_findOneByUser() {
         String userID = "13";

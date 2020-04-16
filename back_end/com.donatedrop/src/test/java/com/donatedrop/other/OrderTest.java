@@ -1,4 +1,4 @@
-package com.donatedrop.any;
+package com.donatedrop.other;
 
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;

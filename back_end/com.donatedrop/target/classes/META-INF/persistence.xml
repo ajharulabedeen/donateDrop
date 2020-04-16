@@ -16,15 +16,15 @@
     <class>com.donatedrop.geocode.models.Divisions</class>
     <class>com.donatedrop.geocode.models.Upazilas</class>
     <class>com.donatedrop.geocode.models.Unions</class>
-    <class>com.donatedrop.model.Emergencycontact</class>
-    <class>com.donatedrop.model.Profilebasic</class>
-    <class>com.donatedrop.model.Address</class>
+    <class>com.donatedrop.models.Emergencycontact</class>
+    <class>com.donatedrop.models.Profilebasic</class>
+    <class>com.donatedrop.models.Address</class>
     <class>com.donatedrop.profile.basic.EmergencyContact</class>
     <class>com.donatedrop.profile.model.ProfileBasic</class>
     <class>com.donatedrop.profile.model.ProfileAbouts</class>
     <class>com.donatedrop.profile.model.ProfileJobs</class>
     <class>com.donatedrop.profile.model.ProfileEducation</class>
-    <class>com.donatedrop.model.Address</class>
+    <class>com.donatedrop.models.Address</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/donate_drop?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

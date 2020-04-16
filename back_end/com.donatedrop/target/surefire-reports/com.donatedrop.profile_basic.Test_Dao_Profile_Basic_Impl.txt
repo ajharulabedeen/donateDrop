@@ -1,69 +1,40 @@
 -------------------------------------------------------------------------------
 Test set: com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl
 -------------------------------------------------------------------------------
-Tests run: 13, Failures: 0, Errors: 13, Skipped: 0, Time elapsed: 23.252 s <<< FAILURE! - in com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl
-test8_addPhoneNumber  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mailController': Unsatisfied dependency expressed through field 'template'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Tests run: 13, Failures: 8, Errors: 1, Skipped: 0, Time elapsed: 0.257 s <<< FAILURE! - in com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl
+test8_addPhoneNumber  Time elapsed: 0.021 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[OK]> but was:<[FAIL]>
+	at com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl.test8_addPhoneNumber(Test_Dao_Profile_Basic_Impl.java:245)
 
-test6_presentAddressUpdate  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mailController': Unsatisfied dependency expressed through field 'template'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+test6_presentAddressUpdate  Time elapsed: 0.006 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[OK]> but was:<[FAIL]>
+	at com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl.test6_presentAddressUpdate(Test_Dao_Profile_Basic_Impl.java:210)
 
-test3_findOne  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mailController': Unsatisfied dependency expressed through field 'template'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+test3_findOne  Time elapsed: 0.019 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl.test3_findOne(Test_Dao_Profile_Basic_Impl.java:143)
 
-test4_findOneByUser  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mailController': Unsatisfied dependency expressed through field 'template'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+test4_findOneByUser  Time elapsed: 0.007 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<N[OT_N]ULL> but was:<N[]ULL>
+	at com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl.test4_findOneByUser(Test_Dao_Profile_Basic_Impl.java:156)
 
-test2_basicExist  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mailController': Unsatisfied dependency expressed through field 'template'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+test9_deletePhoneNumber  Time elapsed: 0.005 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[OK]> but was:<[FAIL]>
+	at com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl.test9_deletePhoneNumber(Test_Dao_Profile_Basic_Impl.java:290)
 
-test9_deletePhoneNumber  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mailController': Unsatisfied dependency expressed through field 'template'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+test7_permanentAddressUpdate  Time elapsed: 0.005 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[OK]> but was:<[FAIL]>
+	at com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl.test7_permanentAddressUpdate(Test_Dao_Profile_Basic_Impl.java:230)
 
-test7_permanentAddressUpdate  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mailController': Unsatisfied dependency expressed through field 'template'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+test12_deleteEmergencyContact  Time elapsed: 0.01 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[OK]> but was:<[FAIL]>
+	at com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl.test12_deleteEmergencyContact(Test_Dao_Profile_Basic_Impl.java:356)
 
-test12_deleteEmergencyContact  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mailController': Unsatisfied dependency expressed through field 'template'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+test11_updateEmergencyContact  Time elapsed: 0.006 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[UNAUTHERIZED]> but was:<[NULL]>
+	at com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl.test11_updateEmergencyContact(Test_Dao_Profile_Basic_Impl.java:329)
 
-test11_updateEmergencyContact  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mailController': Unsatisfied dependency expressed through field 'template'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-
-test13_delete  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mailController': Unsatisfied dependency expressed through field 'template'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-
-test1_save  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mailController': Unsatisfied dependency expressed through field 'template'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-
-test10_addEmergencyContact  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mailController': Unsatisfied dependency expressed through field 'template'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-
-test5_updateBasic  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mailController': Unsatisfied dependency expressed through field 'template'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.mail.SimpleMailMessage' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+test13_delete  Time elapsed: 0.005 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[OK]> but was:<[FAIL]>
+	at com.donatedrop.profile_basic.Test_Dao_Profile_Basic_Impl.test13_delete(Test_Dao_Profile_Basic_Impl.java:369)
 
