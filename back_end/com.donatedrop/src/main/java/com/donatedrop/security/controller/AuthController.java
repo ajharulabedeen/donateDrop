@@ -45,11 +45,6 @@ class AuthController {
     @Autowired
     UserRepository userRepository;
 
-    @RequestMapping({"/hello"})
-    public String firstPage() {
-        return "<h1>SpringBoot-JWT-JPA</h1>";
-    }
-
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 //    public Map<String, String> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest)
     public ResponseEntity<?> createAuthenticationToken(

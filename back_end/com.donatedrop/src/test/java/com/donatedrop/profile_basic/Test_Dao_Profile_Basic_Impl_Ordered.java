@@ -32,8 +32,8 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
     Dao_Profile_Basic_I dao_Profile_Basic_I;
 
     @Test
-    @Order(1)
-    public void testDaoObject() {
+    @Order(-1)
+    public void test0_DaoObject() {
         System.out.println("\n\n\n---M1---\n\n\n");
         assert (dao_Profile_Basic_I != null);
     }
@@ -45,7 +45,7 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
      * April 5, 2020
      */
     @Test
-    @Order(2)
+    @Order(1)
     public void test1_save() {
         System.out.println("\n\n\n---M2---\n\n\n");
         Map<String, String> status = null;
@@ -97,6 +97,7 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
     }
 
     @Test
+    @Order(2)
     public void test2_basicExist() {
         //test for ProfileBasic not found
         String userID_NotExist = "12";
@@ -113,6 +114,7 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
     }
 
     @Test
+    @Order(3)
     public void test3_findOne() {
         String id = getID();
         ProfileBasic profileBasic = dao_Profile_Basic_I.findOne(id);
@@ -121,6 +123,7 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
     }
 
     @Test
+    @Order(4)
     public void test4_findOneByUser() {
         String userID = "13";
         ProfileBasic profileBasic = dao_Profile_Basic_I.findOneByUser(userID);
@@ -135,6 +138,7 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
 
     //    dependency : save profile basic.
     @Test
+    @Order(5)
     public void test5_updateBasic() {
         // Arrange
         Map<String, String> result = new HashMap<>();
@@ -172,6 +176,7 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
 
     //depedency : findOne By userID.
     @Test
+    @Order(6)
     public void test6_presentAddressUpdate() {
         String userID = "13";
         String distNew = "Dhaka";
@@ -194,6 +199,7 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
 
     //depedency : findOne By userID.
     @Test
+    @Order(7)
     public void test7_permanentAddressUpdate() {
         String userID = "13";
         String distNew = "Khulna";
@@ -213,6 +219,7 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
     }
 
     @Test
+    @Order(8)
     public void test8_addPhoneNumber() {
         String userID = "13";
         PhoneNumber phoneNumberNew = new PhoneNumber("01910-364020");
@@ -233,6 +240,7 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
 
     //dependency : depend on save profile basic, cause without save it will not found any phone number to delete.
     @Test
+    @Order(9)
     public void test9_deletePhoneNumber() {
         // Arrange
         String userID = "13";
@@ -269,6 +277,7 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
 
     //dependency : Basic Profile Save.
     @Test
+    @Order(10)
     public void test10_addEmergencyContact() {
         String userID = "13";
 //String name, String phone, String mail, String address, String relation
@@ -286,6 +295,7 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
 
     //dependency : Basic Profile Save.
     @Test
+    @Order(11)
     public void test11_updateEmergencyContact() {
 
         //        unatherised deletion
@@ -314,6 +324,7 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
 
     //dependency : Basic Profile Save.
     @Test
+    @Order(12)
     public void test12_deleteEmergencyContact() {
 
         //        unatherised deletion
@@ -333,7 +344,7 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
     }
 
     @Test
-    @Order(3)
+    @Order(13)
     public void test13_delete() {
         System.out.println("\n\n\n---M3---\n\n\n");
         String id = getID();
