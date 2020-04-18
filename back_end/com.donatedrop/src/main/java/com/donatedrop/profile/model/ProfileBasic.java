@@ -6,7 +6,6 @@
 package com.donatedrop.profile.model;
 
 import com.donatedrop.models.Address;
-import com.donatedrop.profile.basic.EmergencyContact;
 
 import java.io.Serializable;
 import java.util.List;
@@ -58,19 +57,23 @@ public class ProfileBasic implements Serializable {
     @Column(name = "available")
     private String available;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_permanent")
     private Address address_permanent;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_present")
     private Address address_present;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "phone_number")
     private List<PhoneNumber> phone_number;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "emergency_contact")
     private List<EmergencyContact> emergency_contact;
 

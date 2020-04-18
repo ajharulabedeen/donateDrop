@@ -8,7 +8,7 @@ package com.donatedrop.profile_basic;
 import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.models.Address;
 import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
-import com.donatedrop.profile.basic.EmergencyContact;
+import com.donatedrop.profile.model.EmergencyContact;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;

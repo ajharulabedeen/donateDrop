@@ -3,7 +3,7 @@ package com.donatedrop.profile_basic;
 
 import com.donatedrop.models.Address;
 import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
-import com.donatedrop.profile.basic.EmergencyContact;
+import com.donatedrop.profile.model.EmergencyContact;
 import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.util.DateUtil;
@@ -118,6 +118,7 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
     public void test3_findOne() {
         String id = getID();
         ProfileBasic profileBasic = dao_Profile_Basic_I.findOne(id);
+        //org.hibernate.LazyInitializationException, print will not work.
 //        System.out.println("\n\n---\n" + profileBasic.toString() + "\n---\n\n");
         Assert.assertEquals(id, profileBasic.getId().toString());
     }
@@ -128,7 +129,7 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
         String userID = "13";
         ProfileBasic profileBasic = dao_Profile_Basic_I.findOneByUser(userID);
         System.out.println("\nTest : \n" + profileBasic + "\n\n");
-//        System.out.println("\nTest : \n" + profileBasic.getPhone_number().toString() + "\n\n");
+        System.out.println("\nTest : \n" + profileBasic.getPhone_number().toString() + "\n\n");
         if (profileBasic != null) {
             Assert.assertEquals(userID, profileBasic.getUserId());
         } else {

@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.donatedrop.profile.basic;
+package com.donatedrop.profile.model;
 
-import com.donatedrop.profile.model.ProfileBasic;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;

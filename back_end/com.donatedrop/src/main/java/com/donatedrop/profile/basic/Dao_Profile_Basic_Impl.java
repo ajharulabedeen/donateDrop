@@ -1,6 +1,7 @@
 package com.donatedrop.profile.basic;
 
 import com.donatedrop.models.Address;
+import com.donatedrop.profile.model.EmergencyContact;
 import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.util.StringUtil;
