@@ -301,7 +301,7 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
 
         //        unatherised deletion
         String userID = "1";
-        String emergencyContactID = "312";
+        String emergencyContactID = "4";
         EmergencyContact emergencyContact = new EmergencyContact();
         emergencyContact.setId(Long.parseLong(emergencyContactID));
         emergencyContact.setName("Mahbub Gazi");
