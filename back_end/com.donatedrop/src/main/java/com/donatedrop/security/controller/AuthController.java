@@ -11,6 +11,7 @@ import com.donatedrop.security.models.User;
 import com.donatedrop.security.repo.UserRepository;
 import com.donatedrop.security.service.MyUserDetailsService;
 import com.donatedrop.security.util.JwtUtil;
+import com.donatedrop.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,6 +21,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -104,13 +106,22 @@ class AuthController {
         u.setUserName(u.getUserName());
         u.setEnabled(Boolean.TRUE);
         u.setAuthorities(new ArrayList<>());
-        userRepository.save(u);
         Map<String, String> map = new HashMap<>();
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(u.getUserName());
-        final String token = jwtTokenUtil.generateToken(userDetails);
-        map.put("status", "OK");
-        map.put("token", token);
-        map.put("user_name", u.getUserName());
+        try {
+            userRepository.save(u);
+            map.put(StringUtil.STATUS, StringUtil.OK);
+            final UserDetails userDetails = userDetailsService.loadUserByUsername(u.getUserName());
+            final String token = jwtTokenUtil.generateToken(userDetails);
+            map.put("token", token);
+            map.put("user_name", u.getUserName());
+        } catch (ConstraintViolationException constraintViolationException) {
+            map.put(StringUtil.STATUS, StringUtil.FAIL);
+            map.put(StringUtil.MESSAGE, "Duplicate Entry!");
+        } catch (Exception e) {
+            System.out.println("\n\nException\n\n");
+            map.put(StringUtil.STATUS, StringUtil.FAIL);
+            map.put(StringUtil.MESSAGE, "Duplicate Entry!");
+        }
         return map;
     }
 

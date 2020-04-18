@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.donatedrop.grocode.Test_Controller_GeoCode" time="5.611" tests="4" errors="0" skipped="0" failures="0">
-  <properties/>
-  <testcase name="test_getDistricts" classname="com.donatedrop.grocode.Test_Controller_GeoCode" time="0.269"/>
-  <testcase name="test_getUpzillas" classname="com.donatedrop.grocode.Test_Controller_GeoCode" time="0.013"/>
-  <testcase name="test_getUnions" classname="com.donatedrop.grocode.Test_Controller_GeoCode" time="0.012"/>
-  <testcase name="test_getDivisions" classname="com.donatedrop.grocode.Test_Controller_GeoCode" time="0.01"/>
-</testsuite>

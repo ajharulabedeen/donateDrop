@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.donatedrop.any.OrderTest" time="0.002" tests="5" errors="0" skipped="0" failures="0">
-  <properties/>
-  <testcase name="test2" classname="com.donatedrop.any.OrderTest" time="0"/>
-  <testcase name="test3" classname="com.donatedrop.any.OrderTest" time="0.001"/>
-  <testcase name="test1" classname="com.donatedrop.any.OrderTest" time="0"/>
-  <testcase name="test0" classname="com.donatedrop.any.OrderTest" time="0"/>
-  <testcase name="test4" classname="com.donatedrop.any.OrderTest" time="0.001"/>
-</testsuite>
