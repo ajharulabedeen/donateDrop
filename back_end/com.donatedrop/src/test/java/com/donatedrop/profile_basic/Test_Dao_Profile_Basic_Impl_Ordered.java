@@ -47,7 +47,6 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
     @Test
     @Order(1)
     public void test1_save() {
-        System.out.println("\n\n\n---M2---\n\n\n");
         Map<String, String> status = null;
 
         // Arrange
@@ -280,7 +279,14 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
     @Test
     @Order(10)
     public void test10_addEmergencyContact() {
-        String userID = "13";
+        //arrange
+        String profileBasicID = getID();
+        String userID = "";
+        String emergencyContactID = "";
+        ProfileBasic profileBasic = dao_Profile_Basic_I.findOneWithChild(profileBasicID);
+        userID = profileBasic.getUserId();
+
+
 //String name, String phone, String mail, String address, String relation
         EmergencyContact emergencyContact1 = new EmergencyContact(
                 "Dr Mahbub Gazi.",
@@ -301,8 +307,8 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
 
 //        Arrange
         String profileBasicID = getID();
-        String userID = "1";
-        String emergencyContactID = "4";
+        String userID = "";
+        String emergencyContactID = "";
         ProfileBasic profileBasic = dao_Profile_Basic_I.findOneWithChild(profileBasicID);
         userID = profileBasic.getUserId();
         emergencyContactID = profileBasic.getEmergency_contact().get(0).getId().toString();
@@ -341,7 +347,7 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
         emergencyContactID = profileBasic.getEmergency_contact().get(0).getId().toString();
 
         //        unathorised deletion
-        Map<String, String> result = dao_Profile_Basic_I.deleteEmergencyContact(emergencyContactID, userID+1);
+        Map<String, String> result = dao_Profile_Basic_I.deleteEmergencyContact(emergencyContactID, userID + 1);
         System.out.println("\n\n>>" + result + "\n\n");
         Assert.assertEquals(StringUtil.FAIL, result.get(StringUtil.STATUS));
         Assert.assertEquals(StringUtil.UNAUTHERIZED, result.get(StringUtil.ERROR));

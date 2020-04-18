@@ -57,18 +57,15 @@ public class ProfileBasic implements Serializable {
     @Column(name = "available")
     private String available;
 
-//    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "address_permanent")
     private Address address_permanent;
 
-//    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "address_present")
     private Address address_present;
 
-//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "phone_number")
     private List<PhoneNumber> phone_number;
 
@@ -124,8 +121,6 @@ public class ProfileBasic implements Serializable {
                 + ", \nEmergency_contact=\n" + emergency_contact
                 + '}';
     }
-
-    
 
     public String getUserId() {
         return userId;
