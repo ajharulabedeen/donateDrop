@@ -299,9 +299,15 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
     @Order(11)
     public void test11_updateEmergencyContact() {
 
-        //        unatherised deletion
+//        Arrange
+        String profileBasicID = getID();
         String userID = "1";
         String emergencyContactID = "4";
+        ProfileBasic profileBasic = dao_Profile_Basic_I.findOneWithChild(profileBasicID);
+        userID = profileBasic.getUserId();
+        emergencyContactID = profileBasic.getEmergency_contact().get(0).getId().toString();
+
+        //        unatherised deletion
         EmergencyContact emergencyContact = new EmergencyContact();
         emergencyContact.setId(Long.parseLong(emergencyContactID));
         emergencyContact.setName("Mahbub Gazi");
@@ -309,7 +315,7 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
         emergencyContact.setAddress("Dhaka, Dhaka");
         emergencyContact.setRelation("Mamu");
         emergencyContact.setMail("mail@mail.com");
-        Map<String, String> result = dao_Profile_Basic_I.updateEmergencyContact(emergencyContact, userID);
+        Map<String, String> result = dao_Profile_Basic_I.updateEmergencyContact(emergencyContact, userID+1);
 
         System.out.println("\n\n>>" + result + "\n\n");
         Assert.assertEquals(StringUtil.FAIL, result.get(StringUtil.STATUS));

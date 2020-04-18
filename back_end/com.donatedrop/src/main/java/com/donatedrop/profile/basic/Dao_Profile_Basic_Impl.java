@@ -96,11 +96,35 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         return response;
     }
 
+
     @Override
     public ProfileBasic findOne(String id) {
         ProfileBasic profileBasic = null;
         try {
             profileBasic = entityManager.find(ProfileBasic.class, Long.parseLong(id));
+        } catch (Exception e) {
+            System.out.println("Not Found!");
+            e.printStackTrace();
+        }
+        return profileBasic;
+    }
+
+    /**
+     * @param id
+     * @return
+     * @
+     */
+//    @Override
+    public ProfileBasic findOneWithChild(String id) {
+        ProfileBasic profileBasic = null;
+        try {
+            profileBasic = entityManager.find(ProfileBasic.class, Long.parseLong(id));
+            if (profileBasic != null) {
+                profileBasic.getEmergency_contact().forEach(c -> {
+                });
+                profileBasic.getPhone_number().forEach(p -> {
+                });
+            }
         } catch (Exception e) {
             System.out.println("Not Found!");
             e.printStackTrace();

@@ -37,13 +37,22 @@ public interface Dao_Profile_Basic_I {
      * @param id here id is the primary key of the BasicRepo, it is not the
      * userID.
      * @return ProfileBasic here one profile basic will be returned.
-     * @implNote Not in user now.ff
+     * @apiNote  Not in use now.
      */
     public ProfileBasic findOne(String id);
 
     /**
+     * @param id here id is the primary key of the BasicRepo, it is not the
+     * userID.
+     * @return ProfileBasic here one profile basic will be returned.
+     * @apiNote Not in use now.
+     */
+    public ProfileBasic findOneWithChild(String id);
+
+    /**
      * @param userId where('user_id', $userId)->first();.
      * @return ProfileBasic here one profile basic will be returned.
+     * @apiNote no child will be returned.
      */
     public ProfileBasic findOneByUser(String userId);
 
