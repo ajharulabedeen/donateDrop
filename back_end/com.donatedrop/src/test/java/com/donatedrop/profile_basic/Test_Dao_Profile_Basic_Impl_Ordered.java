@@ -315,15 +315,13 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
         emergencyContact.setAddress("Dhaka, Dhaka");
         emergencyContact.setRelation("Mamu");
         emergencyContact.setMail("mail@mail.com");
-        Map<String, String> result = dao_Profile_Basic_I.updateEmergencyContact(emergencyContact, userID+1);
+        Map<String, String> result = dao_Profile_Basic_I.updateEmergencyContact(emergencyContact, userID + 1);
 
         System.out.println("\n\n>>" + result + "\n\n");
         Assert.assertEquals(StringUtil.FAIL, result.get(StringUtil.STATUS));
         Assert.assertEquals(StringUtil.UNAUTHERIZED, result.get(StringUtil.ERROR));
 
         //        athurised deletion
-        userID = "13";
-//        emergencyContactID = "312";
         result = dao_Profile_Basic_I.updateEmergencyContact(emergencyContact, userID);
         System.out.println("\n\n>>" + result + "\n\n");
         Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
@@ -334,17 +332,21 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
     @Order(12)
     public void test12_deleteEmergencyContact() {
 
-        //        unatherised deletion
+        //        Arrange
+        String profileBasicID = getID();
         String userID = "1";
-        String emergencyContactID = "313";
-        Map<String, String> result = dao_Profile_Basic_I.deleteEmergencyContact(emergencyContactID, userID);
+        String emergencyContactID = "4";
+        ProfileBasic profileBasic = dao_Profile_Basic_I.findOneWithChild(profileBasicID);
+        userID = profileBasic.getUserId();
+        emergencyContactID = profileBasic.getEmergency_contact().get(0).getId().toString();
+
+        //        unathorised deletion
+        Map<String, String> result = dao_Profile_Basic_I.deleteEmergencyContact(emergencyContactID, userID+1);
         System.out.println("\n\n>>" + result + "\n\n");
         Assert.assertEquals(StringUtil.FAIL, result.get(StringUtil.STATUS));
-        Assert.assertEquals(StringUtil.NULL, result.get(StringUtil.ERROR));
+        Assert.assertEquals(StringUtil.UNAUTHERIZED, result.get(StringUtil.ERROR));
 
         //        atherised deletion
-        userID = "13";
-        emergencyContactID = "313";
         result = dao_Profile_Basic_I.deleteEmergencyContact(emergencyContactID, userID);
         System.out.println("\n\n>>" + result + "\n\n");
         Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
