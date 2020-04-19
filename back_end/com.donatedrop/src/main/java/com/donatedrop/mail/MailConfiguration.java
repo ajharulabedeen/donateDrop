@@ -6,6 +6,7 @@
 package com.donatedrop.mail;
 
 import java.util.Properties;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +22,30 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 @ComponentScan(basePackages = {"com.donatedrop.*"})
 public class MailConfiguration {
 
+    @Value("${spring.mail.host}")
+    private String host;
+
+    @Value("${spring.mail.port}")
+    private String port;
+
+    @Value("${spring.mail.username}")
+    private String username;
+
+    @Value("${spring.mail.password}")
+    private String password;
+
+    @Value("${mail.transport.protocol}")
+    private String protocol;
+
+    @Value("${mail.smtp.auth}")
+    private String auth;
+
+    @Value("${spring.mail.properties.mail.smtp.starttls.enable}")
+    private String enable;
+
+    @Value("${mail.debug}")
+    private String debug;
+
     @Bean
     public SimpleMailMessage templateSimpleMessage() {
         SimpleMailMessage message = new SimpleMailMessage();
@@ -32,17 +57,17 @@ public class MailConfiguration {
     @Bean
     public JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost("smtp.gmail.com");
-        mailSender.setPort(587);
+        mailSender.setHost(host);
+        mailSender.setPort(Integer.parseInt(port));
 
-        mailSender.setUsername("gub.cse.files@gmail.com");
-        mailSender.setPassword("(+JGda2993+)");
+        mailSender.setUsername(username);
+        mailSender.setPassword(password);
         System.out.println("\n\n--Pass : " + mailSender.getPassword());
         Properties props = mailSender.getJavaMailProperties();
-        props.put("mail.transport.protocol", "smtp");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.debug", "true");
+        props.put("mail.transport.protocol", protocol);
+        props.put("mail.smtp.auth", auth);
+        props.put("mail.smtp.starttls.enable", enable);
+        props.put("mail.debug", debug);
 
         return mailSender;
     }
