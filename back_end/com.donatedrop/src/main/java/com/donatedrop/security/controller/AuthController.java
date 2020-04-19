@@ -13,6 +13,7 @@ import com.donatedrop.security.service.MyUserDetailsService;
 import com.donatedrop.security.util.JwtUtil;
 import com.donatedrop.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -114,13 +115,13 @@ class AuthController {
             final String token = jwtTokenUtil.generateToken(userDetails);
             map.put("token", token);
             map.put("user_name", u.getUserName());
-        } catch (ConstraintViolationException constraintViolationException) {
+        } catch (DataIntegrityViolationException e) {
             map.put(StringUtil.STATUS, StringUtil.FAIL);
-            map.put(StringUtil.MESSAGE, "Duplicate Entry!");
+            map.put(StringUtil.ERROR, StringUtil.DUPLICATE);
         } catch (Exception e) {
             System.out.println("\n\nException\n\n");
             map.put(StringUtil.STATUS, StringUtil.FAIL);
-            map.put(StringUtil.MESSAGE, "Duplicate Entry!");
+            map.put(StringUtil.ERROR, StringUtil.ERROR);
         }
         return map;
     }

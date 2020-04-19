@@ -6,11 +6,9 @@
 package com.donatedrop.util;
 
 /**
- *
  * @author abedeen
  */
 public class StringUtil {
-
     public static final String STATUS = "STATUS";
     public static final String FAIL = "FAIL";
     public static final String OK = "OK";
@@ -22,4 +20,6 @@ public class StringUtil {
     public static final String MESSAGE = "MESSAGE";
     public static final String UNAUTHERIZED = "UNAUTHERIZED";
     public static final String ERROR = "ERROR";
+    public static final String DUPLICATE = "DUPLICATE";
+    public static final String UNKNOWN = "UNKNOWN";
 }
