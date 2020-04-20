@@ -1,4 +1,4 @@
-package com.donatedrop.configs;
+package com.donatedrop.util;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.donatedrop.configs;
+package com.donatedrop.util;
 
 //import static SpringContextSingletron.applicationContext;
 import java.text.SimpleDateFormat;

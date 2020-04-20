@@ -1,4 +1,4 @@
-package com.donatedrop.util;
+package com.donatedrop.configs;
 
 import java.util.Properties;
 import javax.sql.DataSource;
