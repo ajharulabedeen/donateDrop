@@ -145,7 +145,7 @@ public class Test_Dao_Profile_Basic_Impl {
 
     @Test
     public void test4_findOneByUser() {
-        String userID = "13";
+        String userID = "16";
         ProfileBasic profileBasic = dao_Profile_Basic_I.findOneByUser(userID);
         System.out.println("\nTest : \n" + profileBasic + "\n\n");
 //        System.out.println("\nTest : \n" + profileBasic.getPhone_number().toString() + "\n\n");
