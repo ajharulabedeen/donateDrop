@@ -373,6 +373,24 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
         Assert.assertEquals(StringUtil.OK, response.get(StringUtil.STATUS));
     }
 
+    /**
+     * to test just save of "ProfileBasic" no address or other fields.
+     */
+    @Test
+    public void testSaveProfileBasic() {
+        ProfileBasic profileBasic = new ProfileBasic();
+        profileBasic.setName("Khan Ajharul Abedeen");
+        profileBasic.setGender("Male");
+        profileBasic.setBlood_Group("A+");
+        profileBasic.setAvailable("0");
+        profileBasic.setMaritalStatus("NO");
+        profileBasic.setProfession("Freelance");
+        profileBasic.setCare_of("Khan Atiar Rahman.");
+        profileBasic.setUserId(Utils.getLoggedUserID());
+        Map<String, String> map = dao_Profile_Basic_I.save(profileBasic);
+        System.out.println(map);
+    }
+
 //    Helpers :
 
     /**

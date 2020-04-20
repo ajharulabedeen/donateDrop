@@ -23,9 +23,11 @@ import java.util.Map;
 @RequestMapping("/public/profile/basic/")
 public class Profile_Basic_Controller {
 
+    @Autowired
+    Service_Profile_Basic_I service_profile_basic_i;
+
     @PostMapping("save")
     public Map<String, String> save(@RequestBody ProfileBasic profileBasic) {
-
-        return null;
+        return service_profile_basic_i.save(profileBasic);
     }
 }

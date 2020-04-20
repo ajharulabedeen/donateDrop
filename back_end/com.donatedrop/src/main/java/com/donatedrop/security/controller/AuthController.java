@@ -49,7 +49,6 @@ class AuthController {
     UserRepository userRepository;
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-//    public Map<String, String> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest)
     public ResponseEntity<?> createAuthenticationToken(
             @RequestBody AuthenticationRequest authenticationRequest)
             throws AuthenticationException {
@@ -62,7 +61,7 @@ class AuthController {
             );
         } catch (AuthenticationException e) {
             /**
-             * tried other ways but failed.
+             * tried other ways but failed : Map.
              */
             e.printStackTrace();
             map.put("status", "FAIL");
@@ -127,3 +126,34 @@ class AuthController {
     }
 
 }
+//old code
+//    @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
+////    public Map<String, String> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest)
+//    public ResponseEntity<?> createAuthenticationToken(
+//            @RequestBody AuthenticationRequest authenticationRequest)
+//            throws AuthenticationException {
+//        Map<String, String> map = new HashMap<>();
+//        try {
+//            authenticationManager.authenticate(
+//                    new UsernamePasswordAuthenticationToken(
+//                            authenticationRequest.getUsername(),
+//                            authenticationRequest.getPassword())
+//            );
+//        } catch (AuthenticationException e) {
+//            /**
+//             * tried other ways but failed.
+//             */
+//            e.printStackTrace();
+//            map.put("status", "FAIL");
+//            map.put("message", "Incorrect username or password");
+//            return ResponseEntity.ok(map);
+//        }
+//
+//        final UserDetails userDetails = userDetailsService
+//                .loadUserByUsername(authenticationRequest.getUsername());
+//
+//        final String jwt = jwtTokenUtil.generateToken(userDetails);
+//        map.put("status", "OK");
+//        map.put("message", jwt);
+//        return ResponseEntity.ok(map);
+//    }
