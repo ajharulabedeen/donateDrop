@@ -126,4 +126,16 @@ public class Test_Controller_Basic extends AbstractTest {
         Map<String, String> map = super.mapFromJson(content, Map.class);
         assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
     }
+
+    @Test
+    public void testfindOneByUser() throws Exception {
+        String uri = "/public/profile/basic/findOneByUser";
+        final String uriDivisions = "/public/geocode/divisions";
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uriDivisions)
+                .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        System.out.println(content);
+    }
 }
