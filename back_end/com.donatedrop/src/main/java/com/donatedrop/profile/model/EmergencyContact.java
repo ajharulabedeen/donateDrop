@@ -5,6 +5,7 @@
  */
 package com.donatedrop.profile.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
@@ -37,6 +38,7 @@ public class EmergencyContact implements Serializable {
     @Column
     private String relation;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "emergency_contact")
     private ProfileBasic profileBasic;

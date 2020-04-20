@@ -33,7 +33,9 @@ public class ControllerProfileBasic {
     @GetMapping("findOneByUser")
     public ProfileBasic findOneByUser() {
         ProfileBasic profileBasic = service_profile_basic_i.findOneByUser(Utils.getLoggedUserID());
+        System.out.println("\n\n----");
         System.out.println(profileBasic);
+        System.out.println("\n\n----");
         return profileBasic;
     }
 }

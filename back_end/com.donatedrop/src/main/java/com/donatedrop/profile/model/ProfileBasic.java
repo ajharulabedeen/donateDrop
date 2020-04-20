@@ -6,6 +6,7 @@
 package com.donatedrop.profile.model;
 
 import com.donatedrop.models.Address;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.io.Serializable;
 import java.util.List;
@@ -72,6 +73,7 @@ public class ProfileBasic implements Serializable {
 //    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "emergency_contact")
+    @JsonManagedReference
     private List<EmergencyContact> emergency_contact;
 
     public Long getId() {
