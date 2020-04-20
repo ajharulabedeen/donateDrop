@@ -11,6 +11,7 @@ import com.donatedrop.geocode.models.DivisionsEngName;
 import com.donatedrop.geocode.models.UnionsEngName;
 import com.donatedrop.geocode.models.UpzillaEngName;
 import com.donatedrop.profile.model.ProfileBasic;
+import com.donatedrop.util.StringUtil;
 import com.donatedrop.util.Utils;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,6 +25,7 @@ import org.springframework.http.MediaType;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author G7
@@ -41,11 +43,13 @@ public class Test_Controller_Basic extends AbstractTest {
     }
 
 
+    /**
+     * @throws Exception
+     * @apiNote to test that profile basic will be saved, without full information.
+     */
     @Test
     public void testSave() throws Exception {
-
         String uri = "/public/profile/basic/save";
-
         ProfileBasic profileBasic = new ProfileBasic();
         profileBasic.setName("Khan Ajharul Abedeen");
         profileBasic.setGender("Male");
@@ -56,10 +60,6 @@ public class Test_Controller_Basic extends AbstractTest {
         profileBasic.setCare_of("Khan Atiar Rahman.");
         profileBasic.setUserId(Utils.getLoggedUserID());
 
-//        MvcResult mvcResult = mvc.perform(
-//                MockMvcRequestBuilders.post(uri)
-//                        .contentType(MediaType.APPLICATION_JSON_VALUE)).content(super).andReturn();
-
         String inputJson = super.mapToJson(profileBasic);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
                 .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
@@ -68,10 +68,8 @@ public class Test_Controller_Basic extends AbstractTest {
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
         System.out.println(content);
-
-//        List<DistrictsEngName> districtsEngNames = Arrays.asList(super.mapFromJson(content, DistrictsEngName[].class));
-//        districtsEngNames.forEach(s -> System.out.println(s));
-//        assert (districtsEngNames.size() == 10);
+        Map<String, String> map = super.mapFromJson(content, Map.class);
+        assertEquals(StringUtil.FAIL, map.get(StringUtil.STATUS));
     }
 
 }
