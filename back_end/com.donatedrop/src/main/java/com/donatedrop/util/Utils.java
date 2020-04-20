@@ -6,20 +6,8 @@ public class Utils {
         return "14";
     }
 
-    /**
-     *
-     * @return key for the, result Map. 
-     */
-    public static String key() {
-        return "status";
-    }
-    
-    public static String ok() {
-        return "OK";
-    }
-    
-    public static String fail() {
-        return "FAIL";
+    public static String getLoggedUserEmailID() {
+        return "cse1301096@gmail.com";
     }
 
 }// class
