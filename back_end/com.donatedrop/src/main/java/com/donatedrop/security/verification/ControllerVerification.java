@@ -9,6 +9,7 @@ import com.donatedrop.mail.EmailServiceImpl;
 import com.donatedrop.mail.GMail;
 import com.donatedrop.util.StringUtil;
 import com.donatedrop.util.Utils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +35,7 @@ public class ControllerVerification {
     @RequestMapping(value = "/sendcode", method = RequestMethod.GET)
     public Map<String, String> sendVerficationCode() {
         Map<String, String> response = new HashMap<>();
+        String s = RandomStringUtils.randomAlphabetic(3);
         try {
             emailService.sendSimpleMessage(
                     Utils.getLoggedUserEmailID(),

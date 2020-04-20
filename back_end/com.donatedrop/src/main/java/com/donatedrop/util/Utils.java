@@ -1,5 +1,7 @@
 package com.donatedrop.util;
 
+import java.util.Random;
+
 public class Utils {
 
     public static String getLoggedUserID() {
@@ -8,6 +10,20 @@ public class Utils {
 
     public static String getLoggedUserEmailID() {
         return "cse1301096@gmail.com";
+    }
+
+    public static String getRandomCode(int length) {
+        String randomCode = "";
+        Random rand = new Random();
+        for (int i = 0; i < length; i++) {
+            int type = rand.nextInt(1);
+            if (type == 0) {
+                randomCode += Integer.toString(rand.nextInt(10));
+            } else if (type == 1) {
+//                randomCode += rand.n;
+            }
+        }
+        return randomCode;
     }
 
 }// class
