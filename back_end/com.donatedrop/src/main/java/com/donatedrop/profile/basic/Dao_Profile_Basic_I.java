@@ -24,6 +24,7 @@ public interface Dao_Profile_Basic_I {
 
     /**
      * @return boolean status will be returned as "0" or "1".
+     * @apiNote will update the profile basic information, no phone, education, or other required. Have to set userID.
      */
     public Map<String, String> update(ProfileBasic profileBasicUpdate);
 

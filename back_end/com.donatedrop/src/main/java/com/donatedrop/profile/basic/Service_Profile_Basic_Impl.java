@@ -33,4 +33,9 @@ public class Service_Profile_Basic_Impl implements Service_Profile_Basic_I {
     public Map<String, String> basicExist(String userId) {
         return dao_profile_basic_i.basicExist(userId);
     }
+
+    @Override
+    public Map<String, String> update(ProfileBasic profileBasic) {
+        return dao_profile_basic_i.update(profileBasic);
+    }
 }

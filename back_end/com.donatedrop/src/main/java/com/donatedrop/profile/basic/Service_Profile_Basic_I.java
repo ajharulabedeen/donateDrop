@@ -24,5 +24,11 @@ public interface Service_Profile_Basic_I {
      */
     public Map<String, String> basicExist(String userId);
 
+    /**
+     * @return boolean status will be returned as "0" or "1".
+     * @apiNote this will update the profile basic information, no phone, education, or other required. Have to set userID from controller.
+     */
+    public Map<String, String> update(ProfileBasic profileBasicUpdate);
+
 
 }

@@ -11,33 +11,37 @@ import com.donatedrop.geocode.models.DivisionsEngName;
 import com.donatedrop.geocode.models.UnionsEngName;
 import com.donatedrop.geocode.models.UpzillaEngName;
 import com.donatedrop.models.Address;
+import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
 import com.donatedrop.profile.model.EmergencyContact;
 import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.profile.model.ProfileBasic;
+import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
 import com.donatedrop.util.Utils;
 import org.apache.logging.log4j.message.StringFormattedMessage;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 import org.junit.jupiter.api.Order;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.http.MediaType;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author G7
  */
 @SpringBootTest
 public class Test_Controller_Basic extends AbstractTest {
+
+    @Autowired
+    Dao_Profile_Basic_I dao_Profile_Basic_I;
 
     public Test_Controller_Basic() {
     }
@@ -150,6 +154,34 @@ public class Test_Controller_Basic extends AbstractTest {
         Map<String, String> result = super.mapFromJson(content, Map.class);
         System.out.println(content);
         assertEquals(StringUtil.TRUE, result.get(StringUtil.STATUS));
+    }
+
+    @Test
+    public void testUpdate() throws Exception {
+        String uri = "/public/profile/basic/update";
+        // Arrange
+        String userID = Utils.getLoggedUserID();
+        ProfileBasic profileBasicNew = new ProfileBasic();
+        profileBasicNew.setUserId(userID);
+        profileBasicNew.setName("Khan Ajharul Abedeen");
+        profileBasicNew.setBirthDate(DateUtil.getDate().toString());
+        profileBasicNew.setGender("Male");
+        profileBasicNew.setBlood_Group("A+");
+        profileBasicNew.setAvailable("1");
+        profileBasicNew.setMaritalStatus("NO");
+        profileBasicNew.setProfession("Freelance/Remote");
+        profileBasicNew.setCare_of("Khan Atiar Rahman and Dr Mahbub, Dumuria Khulna.");
+
+        String inputJson = super.mapToJson(profileBasicNew);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        Map<String, String> result = super.mapFromJson(content, Map.class);
+        System.out.println(content);
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
 
 }

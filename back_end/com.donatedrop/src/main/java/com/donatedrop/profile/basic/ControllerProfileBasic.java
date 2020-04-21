@@ -35,8 +35,17 @@ public class ControllerProfileBasic {
         return service_profile_basic_i.findOneByUser(Utils.getLoggedUserID());
     }
 
-    @GetMapping("basicExist")
+    @GetMapping("exist")
     public Map<String, String> basicExist() {
         return service_profile_basic_i.basicExist(Utils.getLoggedUserID());
     }
+
+    @PostMapping("update")
+    public Map<String, String> update(@RequestBody ProfileBasic profileBasic) {
+        profileBasic.setUserId(Utils.getLoggedUserID());
+        return service_profile_basic_i.update(profileBasic);
+    }
+
+
+
 }
