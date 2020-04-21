@@ -20,7 +20,8 @@ export class BasicComponent implements OnInit {
   // dept: string[];
   bloods = new Array();
 
-  care_of: string;
+  careOf: string;
+  available: string;
 
   profileEdit = true;
   loadedPosts: Basic[] = [];
@@ -200,24 +201,12 @@ export class BasicComponent implements OnInit {
 
   public getBasic() {
     var basic = new Basic();
-    // basic.$dept = this.dept;
-    // basic.$batch = this.batch;
-    // basic.$student_id = this.student_id;
-    // basic.$passing_year = this.passing_year;
-    // basic.$first_name = this.first_name;
-    // basic.$last_name = this.last_name;
-    // basic.$birth_date = this.birth_date;
-    // basic.$gender = this.gender;
-    // basic.$blood_group = this.blood_group;
-    // basic.$email = this.email;
-    // basic.$phone = this.phone;
-    // basic.$address_permanent = this.address_present;
-    // basic.$address_permanent = this.address_permanent;
-    // basic.$research_interest = this.research_interest;
-    // basic.$skills = this.skills;
-    // basic.$image_address = this.image_address;
-    // basic.$religion = this.religion;
-    // basic.$social_media_link = this.social_media_link;
+    basic.$birth_date = this.birth_date;
+    basic.$gender = this.gender;
+    basic.$blood_group = this.blood_group;
+    basic.$email = this.email;
+    basic.$phone = this.phone;
+    basic.$profession = this.pr
 
     console.log(basic); // remove
     return basic;

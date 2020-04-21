@@ -99,7 +99,7 @@
 
               <div class="col-md-12">
                 <label>Care of : </label>
-                <input [(ngModel)]="care_of" [disabled]='!profileEdit' type="text" class="form-control pull-right">
+                <input [(ngModel)]="careOf" [disabled]='!profileEdit' type="text" class="form-control pull-right">
               </div>
 
             </div>
@@ -114,6 +114,19 @@
                 </div>
               </div>
             </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Available</label><br>
+                  <input [(ngModel)]="available" type="radio" id="yes" name="gender" value="1">
+                  <label for="yes">Yes</label><br>
+                  <input [(ngModel)]="available" type="radio" id="no" name="gender" value="0">
+                  <label for="no">No</label><br>
+                </div>
+              </div>
+            </div>
+
 
             <button class="btn btn-primary btn-xs" *ngIf="profileEdit" (click)="update()">
               Update
