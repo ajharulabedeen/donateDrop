@@ -20,6 +20,8 @@ export class BasicComponent implements OnInit {
   // dept: string[];
   bloods = new Array();
 
+  care_of: string;
+
   profileEdit = true;
   loadedPosts: Basic[] = [];
   isFetching = false;
@@ -233,7 +235,7 @@ export class BasicComponent implements OnInit {
     var divID = '3';
     if (this.present_division != null) {
       this.present_districts = new Array();
-      divID = this.divisions.find( ({name}) => name === this.present_division);
+      divID = this.divisions.find(({name}) => name === this.present_division);
       divID = divID['id'];
       console.log('selected Division  : ' + this.present_division);
       this.present_districts = this.basicService.getDistricts(divID);

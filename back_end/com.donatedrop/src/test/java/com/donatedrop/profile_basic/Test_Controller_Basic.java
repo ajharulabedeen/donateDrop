@@ -159,6 +159,7 @@ public class Test_Controller_Basic extends AbstractTest {
     @Test
     public void testUpdate() throws Exception {
         String uri = "/public/profile/basic/update";
+
         // Arrange
         String userID = Utils.getLoggedUserID();
         ProfileBasic profileBasicNew = new ProfileBasic();

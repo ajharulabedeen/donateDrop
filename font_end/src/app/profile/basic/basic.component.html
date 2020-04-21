@@ -91,6 +91,17 @@
                     </div>
                   </div> -->
               </div>
+
+              <div class="col-md-12">
+                <label>Profession</label>
+                <input [(ngModel)]="profession" [disabled]='!profileEdit' type="text" class="form-control pull-right">
+              </div>
+
+              <div class="col-md-12">
+                <label>Care of : </label>
+                <input [(ngModel)]="care_of" [disabled]='!profileEdit' type="text" class="form-control pull-right">
+              </div>
+
             </div>
             <!-- end : Gender, Date of Birth, Blood Group -->
             <!-- email-->
