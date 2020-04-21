@@ -32,10 +32,11 @@ public class ControllerProfileBasic {
 
     @GetMapping("findOneByUser")
     public ProfileBasic findOneByUser() {
-        ProfileBasic profileBasic = service_profile_basic_i.findOneByUser(Utils.getLoggedUserID());
-        System.out.println("\n\n----");
-        System.out.println(profileBasic);
-        System.out.println("\n\n----");
-        return profileBasic;
+        return service_profile_basic_i.findOneByUser(Utils.getLoggedUserID());
+    }
+
+    @GetMapping("basicExist")
+    public Map<String, String> basicExist() {
+        return service_profile_basic_i.basicExist(Utils.getLoggedUserID());
     }
 }

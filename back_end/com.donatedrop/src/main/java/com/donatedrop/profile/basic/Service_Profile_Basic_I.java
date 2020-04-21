@@ -18,4 +18,11 @@ public interface Service_Profile_Basic_I {
      */
     public ProfileBasic findOneByUser(String userId);
 
+    /**
+     * @param userId
+     * @return Map Not Exist : {status=false}; Exist : {status=true}
+     */
+    public Map<String, String> basicExist(String userId);
+
+
 }

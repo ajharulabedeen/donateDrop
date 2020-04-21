@@ -16,6 +16,7 @@ import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.util.StringUtil;
 import com.donatedrop.util.Utils;
+import org.apache.logging.log4j.message.StringFormattedMessage;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -138,5 +139,17 @@ public class Test_Controller_Basic extends AbstractTest {
         System.out.println(content);
     }
 
-    
+    @Test
+    public void testBasicExist() throws Exception {
+        String uri = "/public/profile/basic/basicExist";
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
+                .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        Map<String, String> result = super.mapFromJson(content, Map.class);
+        System.out.println(content);
+        assertEquals(StringUtil.TRUE, result.get(StringUtil.STATUS));
+    }
+
 }

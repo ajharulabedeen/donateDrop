@@ -28,4 +28,9 @@ public class Service_Profile_Basic_Impl implements Service_Profile_Basic_I {
     public ProfileBasic findOneByUser(String userId) {
         return dao_profile_basic_i.findOneByUser(userId);
     }
+
+    @Override
+    public Map<String, String> basicExist(String userId) {
+        return dao_profile_basic_i.basicExist(userId);
+    }
 }
