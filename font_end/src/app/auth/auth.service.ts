@@ -26,10 +26,8 @@ export class AuthService {
       .post<AuthResponseData>(
         'http://127.0.0.1:8080/register',
         {
-          username: email,
-          password: password,
-          email: email,
-          enabled: 'true'
+          userName: email,
+          password: password
         }
         // , this.getHeaderRegister()
       )
@@ -53,7 +51,7 @@ export class AuthService {
             resData.expires_in);
         })
       );
-  }//sing up.
+  }// sing up.
 
 
   login(email: string, password: string) {
