@@ -62,7 +62,7 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
             profileBasicOld.setBlood_Group(profileBasicNew.getBlood_Group());
             profileBasicOld.setAvailable(profileBasicNew.getAvailable());
             profileBasicOld.setReligion(profileBasicNew.getReligion());
-            profileBasicOld.setEmaprofileBasicNew.getEmail());
+            profileBasicOld.setEmail(profileBasicNew.getEmail());
             try {
                 entityManager.merge(profileBasicOld);
                 result.put(StringUtil.STATUS, StringUtil.OK);
