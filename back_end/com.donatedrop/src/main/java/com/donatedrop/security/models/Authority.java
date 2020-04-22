@@ -16,7 +16,7 @@ public class Authority {
     private Long id;
 
     @Column(name = "NAME", length = 50)
-    @NotNull
+//    @NotNull
     private String name;
 
     public String getName() {

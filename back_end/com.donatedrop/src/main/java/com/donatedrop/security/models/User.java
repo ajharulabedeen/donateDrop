@@ -19,17 +19,17 @@ public class User  implements Serializable{
     private Long id;
 
     @Column(name = "USERNAME", length = 50, unique = true)
-    @NotNull
+//    @NotNull
 //    @Size(min = 4, max = 50)
     private String userName;
 
     @Column(name = "PASSWORD", length = 100)
-    @NotNull
+//    @NotNull
 //    @Size(min = 4, max = 100)
     private String password;
 
     @Column(name = "ENABLED")
-    @NotNull
+//    @NotNull
     private Boolean enabled;
 
     @ManyToMany(fetch = FetchType.EAGER)

@@ -48,27 +48,27 @@ public class ProfileEducation implements Serializable {
     @Column(name = "id")
     private Long id;
     @Basic(optional = false)
-    @NotNull
+//    @NotNull
 //    @Size(min = 1, max = 512)
     @Column(name = "user_id")
     private String userId;
     @Basic(optional = false)
-    @NotNull
+//    @NotNull
 //    @Size(min = 1, max = 512)
     @Column(name = "degree_name")
     private String degreeName;
     @Basic(optional = false)
-    @NotNull
+//    @NotNull
 //    @Size(min = 1, max = 512)
     @Column(name = "institue_name")
     private String institueName;
     @Basic(optional = false)
-    @NotNull
+//    @NotNull
 //    @Size(min = 1, max = 512)
     @Column(name = "passing_year")
     private String passingYear;
     @Basic(optional = false)
-    @NotNull
+//    @NotNull
 //    @Size(min = 1, max = 512)
     @Column(name = "result")
     private String result;

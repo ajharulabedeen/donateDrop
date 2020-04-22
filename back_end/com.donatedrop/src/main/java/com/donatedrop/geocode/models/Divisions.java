@@ -46,17 +46,17 @@ public class Divisions implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull
+//    @NotNull
 //    @Size(min = 1, max = 25)
     @Column(name = "name")
     private String name;
     @Basic(optional = false)
-    @NotNull
+//    @NotNull
 //    @Size(min = 1, max = 25)
     @Column(name = "bn_name")
     private String bnName;
     @Basic(optional = false)
-    @NotNull
+//    @NotNull
 //    @Size(min = 1, max = 50)
     @Column(name = "url")
     private String url;
