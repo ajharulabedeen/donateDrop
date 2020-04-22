@@ -32,7 +32,7 @@ public class EmergencyContact implements Serializable {
     private String phone;
     @Column
     private String mail;
-    @Size(max = 1024)
+//    @Size(max = 1024)
     @Column
     private String address;
     @Column

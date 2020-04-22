@@ -44,17 +44,17 @@ public class Unions implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 25)
+//    @Size(min = 1, max = 25)
     @Column(name = "name")
     private String name;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 25)
+//    @Size(min = 1, max = 25)
     @Column(name = "bn_name")
     private String bnName;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
+//    @Size(min = 1, max = 50)
     @Column(name = "url")
     private String url;
     @JoinColumn(name = "upazilla_id", referencedColumnName = "id")

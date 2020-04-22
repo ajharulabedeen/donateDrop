@@ -46,13 +46,13 @@ public class ProfileAbouts implements Serializable {
     private Long id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 512)
+//    @Size(min = 1, max = 512)
     @Column(name = "user_id")
     private String userId;
     @Basic(optional = false)
     @NotNull
     @Lob
-    @Size(min = 1, max = 16777215)
+//    @Size(min = 1, max = 16777215)
     @Column(name = "about_me")
     private String aboutMe;
     @Column(name = "created_at")

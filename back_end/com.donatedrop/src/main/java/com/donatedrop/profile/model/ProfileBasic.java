@@ -24,31 +24,31 @@ public class ProfileBasic implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Size(max = 256)
+//    @Size(max = 256)
     @Column(name = "user_id")
     private String userId;
 
-    @Size(max = 512)
+//    @Size(max = 512)
     @Column(name = "name")
     private String name;
 
-    @Size(max = 512)
+//    @Size(max = 512)
     @Column(name = "birth_date")
     private String birthDate;
 
-    @Size(max = 1024)
+//    @Size(max = 1024)
     @Column(name = "care_of")
     private String care_of;
 
-    @Size(max = 512)
+//    @Size(max = 512)
     @Column(name = "gender")
     private String gender;
 
-    @Size(max = 256)
+//    @Size(max = 256)
     @Column(name = "marital_status")
     private String maritalStatus;
 
-    @Size(max = 256)
+//    @Size(max = 256)
     @Column(name = "profession")
     private String profession;
 

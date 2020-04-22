@@ -5,6 +5,8 @@
  */
 package com.donatedrop.security.controller;
 
+import com.donatedrop.profile.basic.Service_Profile_Basic_I;
+import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.security.models.AuthenticationRequest;
 import com.donatedrop.security.models.AuthenticationResponse;
 import com.donatedrop.security.models.User;
@@ -48,6 +50,9 @@ class AuthController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    Service_Profile_Basic_I service_profile_basic_i;
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(
@@ -115,6 +120,11 @@ class AuthController {
         Map<String, String> map = new HashMap<>();
         try {
             userRepository.save(u);
+
+            ProfileBasic profileBasic = new ProfileBasic();
+            profileBasic.setUserId(u.getId().toString());
+            service_profile_basic_i.save(profileBasic);
+
             final UserDetails userDetails = userDetailsService.loadUserByUsername(u.getUserName());
             final String token = jwtTokenUtil.generateToken(userDetails);
             map.put(StringUtil.STATUS, StringUtil.OK);

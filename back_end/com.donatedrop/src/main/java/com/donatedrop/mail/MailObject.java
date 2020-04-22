@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 public class MailObject {
     @Email
     @NotNull
-    @Size(min = 1, message = "Please, set an email address to send the message to it")
+//    @Size(min = 1, message = "Please, set an email address to send the message to it")
     private String to;
     private String subject;
     private String text;

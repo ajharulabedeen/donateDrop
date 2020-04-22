@@ -51,37 +51,37 @@ public class ProfileJobs implements Serializable {
     private Long id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 512)
+//    @Size(min = 1, max = 512)
     @Column(name = "user_id")
     private String userId;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 512)
+//    @Size(min = 1, max = 512)
     @Column(name = "organization_name")
     private String organizationName;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 512)
+//    @Size(min = 1, max = 512)
     @Column(name = "type")
     private String type;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 512)
+//    @Size(min = 1, max = 512)
     @Column(name = "role")
     private String role;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 512)
+//    @Size(min = 1, max = 512)
     @Column(name = "started")
     private String started;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 512)
+//    @Size(min = 1, max = 512)
     @Column(name = "job_left")
     private String job_left;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 512)
+//    @Size(min = 1, max = 512)
     @Column(name = "current_status")
     private String currentStatus;
     @Column(name = "created_at")

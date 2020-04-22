@@ -50,23 +50,23 @@ public class Districts implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 25)
+//    @Size(min = 1, max = 25)
     @Column(name = "name")
     private String name;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 25)
+//    @Size(min = 1, max = 25)
     @Column(name = "bn_name")
     private String bnName;
-    @Size(max = 15)
+//    @Size(max = 15)
     @Column(name = "lat")
     private String lat;
-    @Size(max = 15)
+//    @Size(max = 15)
     @Column(name = "lon")
     private String lon;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
+//    @Size(min = 1, max = 50)
     @Column(name = "url")
     private String url;
     @JoinColumn(name = "division_id", referencedColumnName = "id")
