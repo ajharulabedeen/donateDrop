@@ -30,16 +30,16 @@ export class BasicComponent implements OnInit {
   basicExist: boolean;
 
   // basic
-  name: string;
   id: string;
-  user_id: string;
-  birth_date: string;
+  userId: string;
+  name: string;
+  birthDate: string;
+  care_of: string;
   gender: string;
-  blood_group: string;
-  email: string;
-  phone: string;
-  religion: string;
-  image_address: string;
+  maritalStatus: string;
+  profession: string;
+  blood_Group: string;
+  available: string;
 
   // phone numbers
   phoneNumbers: PhoneNumber[];
