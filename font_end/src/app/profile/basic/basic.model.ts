@@ -10,11 +10,7 @@ export class Basic {
   private  blood_Group:string;
   private  available:string;
   private  religion:string;
-    
-  
-  
-
-
+  private  email:string;
     /**
      * Getter $id
      * @return {string}
@@ -192,5 +188,22 @@ export class Basic {
 		this.religion = value;
 	}
 
+        /**
+     * Getter $email
+     * @return {string}
+     */
+	public get $email(): string {
+		return this.email;
+	}
+
+    /**
+     * Setter $email
+     * @param {string} value
+     */
+	public set $email(value: string) {
+		this.email = value;
+	}
+
 
 }//class
+

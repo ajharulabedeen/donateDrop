@@ -39,6 +39,7 @@ export class BasicComponent implements OnInit {
   blood_Group: string;
   available: string;
   religion: string;
+  email: string;
 
 
   // phone numbers
@@ -201,12 +202,16 @@ export class BasicComponent implements OnInit {
 
   public getBasic() {
     var basic = new Basic();
-    basic.$birth_date = this.birth_date;
+    basic.$name = this.name;
+    basic.$birth_date = this.birthDate;
     basic.$gender = this.gender;
-    basic.$blood_group = this.blood_group;
+    basic.$blood_Group = this.blood_Group;
+    basic.$religion = this.religion;
+    basic.$profession = this.profession;
+    basic.$care_of = this.care_of;
     basic.$email = this.email;
-    basic.$phone = this.phone;
-    basic.$profession = this.pr
+    basic.$available = this.available;
+
 
     console.log(basic); // remove
     return basic;
