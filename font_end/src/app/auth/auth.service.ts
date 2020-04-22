@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {throwError, BehaviorSubject} from 'rxjs';
 import {catchError, tap, subscribeOn} from 'rxjs/operators';
 import {User} from './user.model';
+import {StringUtil} from './StringUtil';
 
 
 export interface AuthResponseData {
@@ -31,6 +32,12 @@ export class AuthService {
         }
         // , this.getHeaderRegister()
       )
+      // working, but error in UI.
+      // .subscribe(res => {
+      //   console.log(res);
+      // });
+
+      // working, but error in UI. have to fix
       .pipe(
         // catchError(this.handleError),//not working; problem: unable to distinguish between login and singuperror.
         catchError(errorRes => {
@@ -44,11 +51,28 @@ export class AuthService {
           return throwError(errorMessage);
         }),
         tap(resData => {
-          return this.handleAuthentication(
-            resData.user,
-            resData.token_type,
-            resData.user,
-            resData.expires_in);
+          console.log(resData);
+          console.log('STATUS : ' + resData.STATUS);
+          if (resData.STATUS === StringUtil.OK) {
+            return this.handleAuthentication(
+              // resData.user,
+              ' ',
+              // resData.token_type,
+              resData.token,
+              resData.user_name,
+              // resData.expires_in
+              1
+            );
+          } else if (resData.STATUS === StringUtil.FAIL) {
+            let errorMessage2 = 'An unknown error occurred!';
+            errorMessage2 = 'DUPLICATE';
+            return throwError(errorMessage2);
+          }
+          // return this.handleAuthentication(
+          //   resData.user,
+          //   resData.token_type,
+          //   resData.user,
+          //   resData.expires_in);
         })
       );
   }// sing up.
@@ -57,9 +81,10 @@ export class AuthService {
   login(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        'http://127.0.0.1:8000/api/login',
+        'http://127.0.0.1:8080/authenticate',
         {
-          email: email,
+          // email: email,
+          username: email,
           password: password,
         }
       )
@@ -77,6 +102,8 @@ export class AuthService {
         }),
         tap(resData => {
           this.token = resData.access_token;
+          console.log('Loggin Response Data : \n\n' + resData.STATUS);
+          console.log('Loggin Response Data : ' + resData.TOKEN);
           return this.handleAuthentication(
             resData.user,
             resData.token_type,
@@ -86,7 +113,7 @@ export class AuthService {
       );
   }// loggin
 
-  //not working; problem: unable to distinguish between login and singuperror.
+  // not working; problem: unable to distinguish between login and singuperror.
   private handleError(errorRes: HttpErrorResponse) {
     let errorMessage = 'An unknown error occurred!';
     if (errorRes.error.error.match('Email or Password does not exist.')) {

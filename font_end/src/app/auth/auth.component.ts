@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
-import { AuthService, AuthResponseData } from './auth.service';
+import {AuthService, AuthResponseData} from './auth.service';
 
 
 @Component({
@@ -16,7 +16,8 @@ export class AuthComponent implements OnInit {
   error: string = null;
 
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {
+  }
 
   ngOnInit() {
     window.dispatchEvent(new Event('resize'));
@@ -46,12 +47,13 @@ export class AuthComponent implements OnInit {
 
     authObs.subscribe(
       resData => {
-        console.log("Auth Component Subscribe : ");
+        console.log('Auth Component Subscribe : ');
         // console.log(resData);
         // console.log(resData.access_token);
         this.isLoading = false;
         // this.router.navigate(['/timeline']);
-        this.router.navigate(['/profile']);
+        // this.router.navigate(['/profile']);
+        this.router.navigate(['/user/profile']);
         // this.router.navigate(['/dashboard']);
         // this.router.navigate(['/home']);
       },
@@ -62,8 +64,8 @@ export class AuthComponent implements OnInit {
         this.isLoading = false;
       },
     );
-    form.reset();//have to active
-  }//onSubmit
+    form.reset(); // have to active
+  }// onSubmit
 
 
 }//class
