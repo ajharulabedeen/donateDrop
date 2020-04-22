@@ -123,6 +123,26 @@
               </div>
             </div>
 
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Marital Status</label><br>
+                  <div class="col-md-1">
+                    <input [(ngModel)]="maritalStatus" type="radio" id="m_yes" value="1">
+                    <label for="m_yes">Yes</label><br>
+                  </div>
+                  <div class="col-md-1">
+                    <input [(ngModel)]="maritalStatus" type="radio" id="m_no" value="0">
+                    <label for="m_no">No</label><br>
+                  </div>
+                  <div class="col-md-1">
+                    <input [(ngModel)]="maritalStatus" type="radio" id="m_skip" value="0">
+                    <label for="m_skip">Skip</label><br>
+                  </div>
+                </div>
+              </div>
+            </div>
+
 
             <button class="btn btn-primary btn-xs" *ngIf="profileEdit" (click)="update()">
               Update

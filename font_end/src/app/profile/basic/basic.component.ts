@@ -211,6 +211,7 @@ export class BasicComponent implements OnInit {
     basic.$care_of = this.care_of;
     basic.$email = this.email;
     basic.$available = this.available;
+    basic.$maritalStatus = this.maritalStatus;
 
 
     console.log(basic); // remove
