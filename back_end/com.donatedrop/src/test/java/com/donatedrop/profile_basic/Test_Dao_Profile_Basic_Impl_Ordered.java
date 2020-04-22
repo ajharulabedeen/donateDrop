@@ -155,6 +155,8 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
         profileBasicNew.setMaritalStatus("NO");
         profileBasicNew.setProfession("Freelance/Remote");
         profileBasicNew.setCare_of("Khan Atiar Rahman and Dr Mahbub, Dumuria Khulna.");
+        profileBasicNew.setReligion("Private");
+        profileBasicNew.setEmail("Mail@mail.com");
         // Act
         result = dao_Profile_Basic_I.update(profileBasicNew);
         // Assertion
@@ -172,6 +174,8 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
         Assert.assertEquals(profileBasicNew.getProfession(), profileBasicSaved.getProfession());
         Assert.assertEquals(profileBasicNew.getBlood_Group(), profileBasicSaved.getBlood_Group());
         Assert.assertEquals(profileBasicNew.getAvailable(), profileBasicSaved.getAvailable());
+        Assert.assertEquals(profileBasicNew.getReligion(), profileBasicSaved.getReligion());
+        Assert.assertEquals(profileBasicNew.getEmail(), profileBasicSaved.getEmail());
     }
 
     //depedency : findOne By userID.
