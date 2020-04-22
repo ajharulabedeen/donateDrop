@@ -170,8 +170,11 @@ public class Test_Controller_Basic extends AbstractTest {
         profileBasicNew.setBlood_Group("A+");
         profileBasicNew.setAvailable("1");
         profileBasicNew.setMaritalStatus("NO");
-        profileBasicNew.setProfession("Freelance/Remote");
-        profileBasicNew.setCare_of("Khan Atiar Rahman and Dr Mahbub, Dumuria Khulna.");
+        profileBasicNew.setProfession("Remote");
+        profileBasicNew.setCare_of("Khan Atiar Rahman");
+        profileBasicNew.setReligion("NoMo NoMo");
+        profileBasicNew.setEmail("dim@dimdim.co");
+
 
         String inputJson = super.mapToJson(profileBasicNew);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
@@ -183,6 +186,21 @@ public class Test_Controller_Basic extends AbstractTest {
         Map<String, String> result = super.mapFromJson(content, Map.class);
         System.out.println(content);
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        //have to do more verification. by calling the full app.
+        //refactor : stop child loading, need to create new method to get only basics.
+        ProfileBasic profileBasicSaved = dao_Profile_Basic_I.findOneByUser(userID);
+        Assert.assertEquals(profileBasicNew.getName(), profileBasicSaved.getName());
+        Assert.assertEquals(profileBasicNew.getBirthDate(), profileBasicSaved.getBirthDate());
+        Assert.assertEquals(profileBasicNew.getCare_of(), profileBasicSaved.getCare_of());
+//        assertEquals("DimDim", profileBasicSaved.getCare_of());//for test the test, :P
+        Assert.assertEquals(profileBasicNew.getGender(), profileBasicSaved.getGender());
+        Assert.assertEquals(profileBasicNew.getMaritalStatus(), profileBasicSaved.getMaritalStatus());
+        Assert.assertEquals(profileBasicNew.getProfession(), profileBasicSaved.getProfession());
+        Assert.assertEquals(profileBasicNew.getBlood_Group(), profileBasicSaved.getBlood_Group());
+        Assert.assertEquals(profileBasicNew.getAvailable(), profileBasicSaved.getAvailable());
+        Assert.assertEquals(profileBasicNew.getReligion(), profileBasicSaved.getReligion());
+        Assert.assertEquals(profileBasicNew.getEmail(), profileBasicSaved.getEmail());
     }
 
 }
