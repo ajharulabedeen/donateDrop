@@ -203,7 +203,7 @@ export class BasicComponent implements OnInit {
   public getBasic() {
     var basic = new Basic();
     basic.$name = this.name;
-    basic.$birth_date = this.birthDate;
+    basic.$birthDate = this.birthDate;
     basic.$gender = this.gender;
     basic.$blood_Group = this.blood_Group;
     basic.$religion = this.religion;
