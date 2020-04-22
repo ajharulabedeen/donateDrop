@@ -65,6 +65,7 @@ export class AuthService {
             );
           } else if (resData.STATUS === StringUtil.FAIL) {
             let errorMessage2 = 'An unknown error occurred!';
+            console.log('\n\n----Fail----\n\n');
             errorMessage2 = 'DUPLICATE';
             return throwError(errorMessage2);
           }
@@ -73,6 +74,7 @@ export class AuthService {
           //   resData.token_type,
           //   resData.user,
           //   resData.expires_in);
+          return throwError('DUPLICATE');
         })
       );
   }// sing up.
@@ -197,4 +199,4 @@ export class AuthService {
   }
 
 
-}//main class
+} // main class

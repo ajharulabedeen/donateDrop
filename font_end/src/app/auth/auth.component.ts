@@ -59,7 +59,7 @@ export class AuthComponent implements OnInit {
       },
       errorMessage => {
         console.log(errorMessage);
-        console.log(errorMessage.error);
+        // console.log(errorMessage.error);
         this.error = errorMessage;
         this.isLoading = false;
       },
@@ -68,4 +68,4 @@ export class AuthComponent implements OnInit {
   }// onSubmit
 
 
-}//class
+}// class
