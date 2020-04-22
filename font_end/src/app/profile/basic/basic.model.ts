@@ -9,6 +9,10 @@ export class Basic {
   private  profession:string;
   private  blood_Group:string;
   private  available:string;
+  private  religion:string;
+    
+  
+  
 
 
     /**
@@ -171,6 +175,22 @@ export class Basic {
 		this.available = value;
 	}
 
+
+  /**
+     * Getter $religion
+     * @return {string}
+     */
+	public get $religion(): string {
+		return this.religion;
+	}
+
+    /**
+     * Setter $religion
+     * @param {string} value
+     */
+	public set $religion(value: string) {
+		this.religion = value;
+	}
 
 
 }//class

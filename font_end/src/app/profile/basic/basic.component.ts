@@ -20,8 +20,6 @@ export class BasicComponent implements OnInit {
   // dept: string[];
   bloods = new Array();
 
-  careOf: string;
-  available: string;
 
   profileEdit = true;
   loadedPosts: Basic[] = [];
@@ -40,6 +38,8 @@ export class BasicComponent implements OnInit {
   profession: string;
   blood_Group: string;
   available: string;
+  religion: string;
+
 
   // phone numbers
   phoneNumbers: PhoneNumber[];

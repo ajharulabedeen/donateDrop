@@ -17,7 +17,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label>Name</label>
-                  <input [(ngModel)]="first_name" [disabled]='!profileEdit' type="text" class="form-control"
+                  <input [(ngModel)]="name" [disabled]='!profileEdit' type="text" class="form-control"
                          placeholder="enter ur  name">
                 </div>
               </div>
@@ -29,7 +29,7 @@
                 <div class="form-group">
                   <label>Birth Date:</label>
                   <div class="input-group date">
-                    <input [(ngModel)]="birth_date" [disabled]='!profileEdit' type="text"
+                    <input [(ngModel)]="birthDate" [disabled]='!profileEdit' type="text"
                            class="form-control pull-right">
                   </div>
                 </div>
@@ -39,7 +39,7 @@
                 <div class="form-group">
                   <label>Select Date:</label>
                   <div class="input-group date">
-                    <input [(ngModel)]="birth_date" [disabled]='!profileEdit' type="date"
+                    <input [(ngModel)]="birthDate" [disabled]='!profileEdit' type="date"
                            class="form-control pull-right">
                   </div>
                 </div>
@@ -69,7 +69,7 @@
                 <!--<input [(ngModel)]="blood_group" [disabled]='!profileEdit' type="text" class="form-control pull-right">-->
                 <div class="form-group">
                   <div class="form-group" data-select2-id="27">
-                    <select [disabled]='!profileEdit' [(ngModel)]="blood_group"
+                    <select [disabled]='!profileEdit' [(ngModel)]="blood_Group"
                             class="form-control select2 select2-hidden-accessible"
                             style="width: 100%;" tabindex="-1" aria-hidden="true"
                     >
@@ -82,14 +82,6 @@
               <div class="col-md-3">
                 <label>Religeon</label>
                 <input [(ngModel)]="religion" [disabled]='!profileEdit' type="text" class="form-control pull-right">
-                <!-- <div class="form-group">
-                    <div class="form-group" data-select2-id="27">
-                      <select [disabled]='!profileEdit' class="form-control select2 select2-hidden-accessible"
-                        style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                        <option selected="selected" *ngFor="let b of blood">{{b}}</option>
-                      </select>
-                    </div>
-                  </div> -->
               </div>
 
               <div class="col-md-12">
@@ -99,7 +91,7 @@
 
               <div class="col-md-12">
                 <label>Care of : </label>
-                <input [(ngModel)]="careOf" [disabled]='!profileEdit' type="text" class="form-control pull-right">
+                <input [(ngModel)]="care_of" [disabled]='!profileEdit' type="text" class="form-control pull-right">
               </div>
 
             </div>
@@ -126,26 +118,6 @@
                   <div class="col-md-1">
                     <input [(ngModel)]="available" type="radio" id="no" value="0">
                     <label for="no">No</label><br>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label>Meriteial Status : </label><br>
-                  <div class="col-md-1">
-                    <input [(ngModel)]="available" type="radio" id="married_yes" name="gender" value="1">
-                    <label for="yes">Yes</label>
-                  </div>
-                  <div class="col-md-1">
-                    <input [(ngModel)]="available" type="radio" id="married_no" name="gender" value="0">
-                    <label for="no">No</label>
-                  </div>
-                  <div class="col-md-1">
-                    <input [(ngModel)]="available" type="radio" id="married_skip" name="gender" value="-1">
-                    <label for="no">Skip</label>
                   </div>
                 </div>
               </div>
