@@ -61,6 +61,11 @@ public class ProfileBasic implements Serializable {
     @Column(name = "religion")
     private String religion;
 
+    @Column(name = "email")
+    private String email;
+
+
+
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "address_permanent")
     private Address address_permanent;
@@ -239,4 +244,11 @@ public class ProfileBasic implements Serializable {
         this.religion = religion;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
