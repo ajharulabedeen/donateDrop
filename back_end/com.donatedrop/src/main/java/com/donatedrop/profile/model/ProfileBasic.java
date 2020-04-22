@@ -58,6 +58,9 @@ public class ProfileBasic implements Serializable {
     @Column(name = "available")
     private String available;
 
+    @Column(name = "religion")
+    private String religion;
+
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "address_permanent")
     private Address address_permanent;
@@ -226,6 +229,14 @@ public class ProfileBasic implements Serializable {
 
     public void setAddress_present(Address address_present) {
         this.address_present = address_present;
+    }
+
+    public String getReligion() {
+        return religion;
+    }
+
+    public void setReligion(String religion) {
+        this.religion = religion;
     }
 
 }
