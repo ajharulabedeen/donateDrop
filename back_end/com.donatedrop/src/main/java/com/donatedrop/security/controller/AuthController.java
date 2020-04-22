@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -59,13 +60,18 @@ class AuthController {
                             authenticationRequest.getUsername(),
                             authenticationRequest.getPassword())
             );
+        } catch (BadCredentialsException credentialsException) {
+            System.out.println("\n\nBadCredentialsException\n\n");
+            map.put(StringUtil.STATUS, StringUtil.FAIL);
+            map.put(StringUtil.MESSAGE, "BadCredentialsException");
+            return ResponseEntity.ok(map);
         } catch (AuthenticationException e) {
             /**
              * tried other ways but failed : Map.
              */
             e.printStackTrace();
-            map.put("status", "FAIL");
-            map.put("message", "Incorrect username or password");
+            map.put(StringUtil.STATUS, StringUtil.FAIL);
+            map.put(StringUtil.MESSAGE, "Incorrect username or password");
             return ResponseEntity.ok(map);
         }
 
