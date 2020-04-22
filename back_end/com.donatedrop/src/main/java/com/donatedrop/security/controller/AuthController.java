@@ -73,8 +73,8 @@ class AuthController {
                 .loadUserByUsername(authenticationRequest.getUsername());
 
         final String jwt = jwtTokenUtil.generateToken(userDetails);
-        map.put("status", "OK");
-        map.put("message", jwt);
+        map.put(StringUtil.STATUS, StringUtil.OK);
+        map.put(StringUtil.TOKEN, jwt);
         return ResponseEntity.ok(map);
     }
 
@@ -109,10 +109,10 @@ class AuthController {
         Map<String, String> map = new HashMap<>();
         try {
             userRepository.save(u);
-            map.put(StringUtil.STATUS, StringUtil.OK);
             final UserDetails userDetails = userDetailsService.loadUserByUsername(u.getUserName());
             final String token = jwtTokenUtil.generateToken(userDetails);
-            map.put("token", token);
+            map.put(StringUtil.STATUS, StringUtil.OK);
+            map.put(StringUtil.TOKEN, token);
             map.put("user_name", u.getUserName());
         } catch (DataIntegrityViolationException e) {
             map.put(StringUtil.STATUS, StringUtil.FAIL);
