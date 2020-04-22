@@ -39,12 +39,12 @@ export class BasicService {
 
   public update(basic: Basic) {
     this.http.post(
-      'http://127.0.0.1:8000/api/basic/update', basic, this.authService.getHeader()
+      'http://127.0.0.1:8080/public/profile/basic/update', basic, this.authService.getHeader()
     ).subscribe((res: Response) => {
       console.log(res);
       this.loading = false;
     });
-  }//create
+  }// create
 
 
   public getCurrentUserBasic() {
