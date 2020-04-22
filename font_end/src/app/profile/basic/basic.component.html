@@ -112,11 +112,11 @@
                 <div class="form-group">
                   <label>Available</label><br>
                   <div class="col-md-1">
-                    <input [(ngModel)]="available" type="radio" id="yes" value="1">
+                    <input [(ngModel)]="available" type="radio" id="yes" value="1" name="available">
                     <label for="yes">Yes</label><br>
                   </div>
                   <div class="col-md-1">
-                    <input [(ngModel)]="available" type="radio" id="no" value="0">
+                    <input [(ngModel)]="available" type="radio" id="no" value="0" name="available">
                     <label for="no">No</label><br>
                   </div>
                 </div>
@@ -128,15 +128,15 @@
                 <div class="form-group">
                   <label>Marital Status</label><br>
                   <div class="col-md-1">
-                    <input [(ngModel)]="maritalStatus" type="radio" id="m_yes" value="1">
+                    <input [(ngModel)]="maritalStatus" type="radio" id="m_yes" value="1" name="MaritalStatus">
                     <label for="m_yes">Yes</label><br>
                   </div>
                   <div class="col-md-1">
-                    <input [(ngModel)]="maritalStatus" type="radio" id="m_no" value="0">
+                    <input [(ngModel)]="maritalStatus" type="radio" id="m_no" value="0" name="MaritalStatus">
                     <label for="m_no">No</label><br>
                   </div>
                   <div class="col-md-1">
-                    <input [(ngModel)]="maritalStatus" type="radio" id="m_skip" value="0">
+                    <input [(ngModel)]="maritalStatus" type="radio" id="m_skip" value="-1" name="MaritalStatus">
                     <label for="m_skip">Skip</label><br>
                   </div>
                 </div>

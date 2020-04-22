@@ -24,31 +24,31 @@ public class ProfileBasic implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-//    @Size(max = 256)
+    //    @Size(max = 256)
     @Column(name = "user_id")
     private String userId;
 
-//    @Size(max = 512)
+    //    @Size(max = 512)
     @Column(name = "name")
     private String name;
 
-//    @Size(max = 512)
+    //    @Size(max = 512)
     @Column(name = "birth_date")
     private String birthDate;
 
-//    @Size(max = 1024)
+    //    @Size(max = 1024)
     @Column(name = "care_of")
     private String care_of;
 
-//    @Size(max = 512)
+    //    @Size(max = 512)
     @Column(name = "gender")
     private String gender;
 
-//    @Size(max = 256)
+    //    @Size(max = 256)
     @Column(name = "marital_status")
     private String maritalStatus;
 
-//    @Size(max = 256)
+    //    @Size(max = 256)
     @Column(name = "profession")
     private String profession;
 
@@ -65,7 +65,6 @@ public class ProfileBasic implements Serializable {
     private String email;
 
 
-
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "address_permanent")
     private Address address_permanent;
@@ -78,7 +77,7 @@ public class ProfileBasic implements Serializable {
     @JoinColumn(name = "phone_number")
     private List<PhoneNumber> phone_number;
 
-//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    //    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "emergency_contact")
     @JsonManagedReference
@@ -124,6 +123,8 @@ public class ProfileBasic implements Serializable {
                 + ", maritalStatus='" + maritalStatus + '\''
                 + ", profession='" + profession + '\''
                 + ", blood_Group='" + blood_Group + '\''
+                + ", religion='" + religion + '\''
+                + ", email='" + email + '\''
                 + ", available='" + available + '\''
                 + ", \nAddress_permanent=\n" + address_permanent
                 + ", \nAddress_current=\n" + address_present

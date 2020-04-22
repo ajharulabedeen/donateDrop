@@ -43,9 +43,9 @@ public class ControllerProfileBasic {
     @PostMapping("update")
     public Map<String, String> update(@RequestBody ProfileBasic profileBasic) {
         profileBasic.setUserId(Utils.getLoggedUserID());
+        System.out.println(profileBasic);
         return service_profile_basic_i.update(profileBasic);
     }
-
 
 
 }
