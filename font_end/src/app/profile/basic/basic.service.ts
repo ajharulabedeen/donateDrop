@@ -162,6 +162,14 @@ export class BasicService {
     }
     return phoneNumbers;
   }
+
+  public addPhoneNumber(newNumber: PhoneNumber) {
+    return this.http.post(
+      'http://127.0.0.1:8080/public/profile/basic/addPhoneNumber', newNumber, this.authService.getHeader()
+    );
+  }
+
+
 }// class
 // working
 // {

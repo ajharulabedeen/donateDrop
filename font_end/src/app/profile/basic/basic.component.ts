@@ -316,12 +316,15 @@ export class BasicComponent implements OnInit {
     console.log('divID : ' + id);
   }
 
-  public savePhoneNumber() {
+  public addPhoneNumber() {
     console.log(this.phoneNumber);
     var newNumber = new PhoneNumber();
     newNumber.$number = this.phoneNumber;
-    newNumber.$id = Object.keys(this.phoneNumbers).length+1;
-    this.phoneNumbers.push(newNumber);
+    // newNumber.$id = Object.keys(this.phoneNumbers).length + 1;
+    // this.phoneNumbers.push(newNumber);
+    this.basicService.addPhoneNumber(newNumber).subscribe(res => {
+      console.log(res);
+    });
   }
 
 
