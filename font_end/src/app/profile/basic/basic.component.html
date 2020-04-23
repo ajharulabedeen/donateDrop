@@ -79,16 +79,19 @@
                 </div>
               </div>
 
+              <!--religion-->
               <div class="col-md-3">
                 <label>Religeon</label>
                 <input [(ngModel)]="religion" [disabled]='!profileEdit' type="text" class="form-control pull-right">
               </div>
 
+              <!--profession-->
               <div class="col-md-12">
                 <label>Profession</label>
                 <input [(ngModel)]="profession" [disabled]='!profileEdit' type="text" class="form-control pull-right">
               </div>
 
+              <!--care of-->
               <div class="col-md-12">
                 <label>Care of : </label>
                 <input [(ngModel)]="care_of" [disabled]='!profileEdit' type="text" class="form-control pull-right">
@@ -107,6 +110,7 @@
               </div>
             </div>
 
+            <!--Available-->
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
@@ -123,6 +127,7 @@
               </div>
             </div>
 
+            <!--Marital Status-->
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
@@ -143,7 +148,7 @@
               </div>
             </div>
 
-
+            <!--profile basic operations-->
             <button class="btn btn-primary btn-xs" *ngIf="profileEdit" (click)="update()">
               Update
               <!-- {{ basicExist ? 'Update' : 'Save' }} -->
@@ -499,13 +504,13 @@
       <div class="modal-body">
         <div class="form-group">
           <label>Phone Number</label>
-          <input [(ngModel)]="phone" [disabled]='!profileEdit' type="text" class="form-control"
+          <input [(ngModel)]="phoneNumber" [disabled]='!profileEdit' type="text" class="form-control"
                  placeholder="Enter Phone Number...">
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="save()">Save</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="savePhoneNumber()">Save</button>
       </div>
     </div>
   </div>

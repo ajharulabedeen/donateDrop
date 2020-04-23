@@ -44,6 +44,7 @@ export class BasicComponent implements OnInit {
 
   // phone numbers
   phoneNumbers: PhoneNumber[];
+  phoneNumber: string;
 
   divisions: Divisions[] = new Array(); // used for both permanent and present.
   // address : present
@@ -212,8 +213,6 @@ export class BasicComponent implements OnInit {
     basic.$email = this.email;
     basic.$available = this.available;
     basic.$maritalStatus = this.maritalStatus;
-
-
     console.log(basic); // remove
     return basic;
   }
@@ -316,4 +315,14 @@ export class BasicComponent implements OnInit {
   divIDPrint(id: string) {
     console.log('divID : ' + id);
   }
+
+  public savePhoneNumber() {
+    console.log(this.phoneNumber);
+    var newNumber = new PhoneNumber();
+    newNumber.$number = this.phoneNumber;
+    newNumber.$id = Object.keys(this.phoneNumbers).length+1;
+    this.phoneNumbers.push(newNumber);
+  }
+
+
 } // class
