@@ -172,12 +172,12 @@
                 <th>Delete</th>
                 <th>Index</th>
                 <th>Number</th>
-                <tr *ngFor="let p of phoneNumbers">
+                <tr *ngFor="let p of phoneNumbers; let i=index">
                   <td>
                     <button class="btn btn-xs btn-danger" (click)="update(e)">Delete
                     </button>
                   </td>
-                  <td>{{p.$id}}</td>
+                  <td>{{i+1}}</td>
                   <td>
                     {{p.$number}}
                   </td>
