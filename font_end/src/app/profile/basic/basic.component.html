@@ -174,7 +174,7 @@
                 <th>Number</th>
                 <tr *ngFor="let p of phoneNumbers; let i=index">
                   <td>
-                    <button class="btn btn-xs btn-danger" (click)="update(e)">Delete
+                    <button class="btn btn-xs btn-danger" (click)="deletePhoneNumber(p)">Delete
                     </button>
                   </td>
                   <td>{{i+1}}</td>

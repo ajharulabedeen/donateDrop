@@ -28,6 +28,7 @@ export class BasicService {
   data: Object;
   loading: boolean;
   phoneNumbers: PhoneNumber[] = new Array();
+  deleteStatus: string;
 
   create(basic: Basic) {
     this.http.post(
@@ -89,6 +90,11 @@ export class BasicService {
       this.basic.next(bas);
     });
   }// get current user basic.
+
+  public getPhoneNumbers() {
+    return this.phoneNumbers;
+  }
+
 
   public getDept() {
     var dept: string[] = ['CSE', 'EEE', 'TEX', 'FTDM', 'BBS', 'BBA', 'LAW'];
@@ -165,17 +171,6 @@ export class BasicService {
   }
 
 
-  public getPhoneNumbers() {
-    // for (var x = 0; x < 5; x++) {
-    //   var p = new PhoneNumber();
-    //   p.$id = x.toString();
-    //   p.$number = '0' + x;
-    //   phoneNumbers.push(p);
-    // }
-    console.log(this.phoneNumbers);
-    return this.phoneNumbers;
-  }
-
   public addPhoneNumber(phoneNumber: string): PhoneNumber {
     var newNumber = new PhoneNumber();
     newNumber.$number = phoneNumber;
@@ -194,6 +189,23 @@ export class BasicService {
   }
 
 
+  public deletePhoneNumber(p: PhoneNumber): string {
+    this.http.post(
+      'http://127.0.0.1:8080/public/profile/basic/deletePhoneNumber', p, this.authService.getHeader())
+      .subscribe(res => {
+        console.log(res);
+        if (res['STATUS'] === 'OK') {
+          console.log('OK');
+          this.deleteStatus = 'OK';
+        }
+        if (res['STATUS'] === 'FAIL') {
+          this.deleteStatus = 'FAIL';
+          console.log('FAIL');
+        }
+      });
+    console.log('After Assingn in service: ' + this.deleteStatus);
+    return this.deleteStatus;
+  }
 }// class
 // working
 // {
