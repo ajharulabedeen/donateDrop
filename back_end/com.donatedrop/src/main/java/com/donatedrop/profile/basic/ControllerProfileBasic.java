@@ -5,6 +5,7 @@
  */
 package com.donatedrop.profile.basic;
 
+import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,11 @@ public class ControllerProfileBasic {
         profileBasic.setUserId(Utils.getLoggedUserID());
         System.out.println(profileBasic);
         return service_profile_basic_i.update(profileBasic);
+    }
+
+    @PostMapping("addPhoneNumber")
+    public Map<String, String> addPhoneNumber(@RequestBody PhoneNumber phoneNumber) {
+        return service_profile_basic_i.addPhoneNumber(phoneNumber, Utils.getLoggedUserID());
     }
 
 

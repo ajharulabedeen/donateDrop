@@ -36,15 +36,15 @@ public interface Dao_Profile_Basic_I {
 
     /**
      * @param id here id is the primary key of the BasicRepo, it is not the
-     * userID.
+     *           userID.
      * @return ProfileBasic here one profile basic will be returned.
-     * @apiNote  Not in use now.
+     * @apiNote Not in use now.
      */
     public ProfileBasic findOne(String id);
 
     /**
      * @param id here id is the primary key of the BasicRepo, it is not the
-     * userID.
+     *           userID.
      * @return ProfileBasic here one profile basic will be returned.
      * @apiNote Not in use now.
      */
@@ -65,21 +65,21 @@ public interface Dao_Profile_Basic_I {
 
     /**
      * @param address PK of the Address.
-     * @return Map<String,String> = {"status","OK"} -/- {"status","FAIL"}
+     * @return Map<String , String> = {"status","OK"} -/- {"status","FAIL"}
      */
     public Map<String, String> updatePresentAddress(Address address, String userID);
 
     /**
      * @param address PK of the Address.
-     * @return Map<String,String> = {"status","OK"} -/- {"status","FAIL"}
+     * @return Map<String , String> = {"status","OK"} -/- {"status","FAIL"}
      */
     public Map<String, String> updatePermanentAddress(Address address, String userID);
 
     /**
-     *
      * @param phoneNumber
      * @param userID
      * @return success status.
+     * @apiNote STATUS OK  and ID of the phone number for successfull Save else and STATUS FAIL.
      */
     public Map<String, String> addPhoneNumber(PhoneNumber phoneNumber, String userID);
 
