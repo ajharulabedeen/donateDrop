@@ -324,6 +324,13 @@ export class BasicComponent implements OnInit {
     // this.phoneNumbers.push(newNumber);
     this.basicService.addPhoneNumber(newNumber).subscribe(res => {
       console.log(res);
+      if (res['STATUS'] === 'OK') {
+        newNumber.$id = res['ID'];
+        this.phoneNumbers.push(newNumber);
+      }
+      if (res['STATUS'] === 'FAIL') {
+        console.log('\n\n FAIL to ADD new phone number!');
+      }
     });
   }
 
