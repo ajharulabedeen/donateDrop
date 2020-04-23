@@ -318,20 +318,11 @@ export class BasicComponent implements OnInit {
 
   public addPhoneNumber() {
     console.log(this.phoneNumber);
-    var newNumber = new PhoneNumber();
-    newNumber.$number = this.phoneNumber;
-    // newNumber.$id = Object.keys(this.phoneNumbers).length + 1;
-    // this.phoneNumbers.push(newNumber);
-    this.basicService.addPhoneNumber(newNumber).subscribe(res => {
-      console.log(res);
-      if (res['STATUS'] === 'OK') {
-        newNumber.$id = res['ID'];
-        this.phoneNumbers.push(newNumber);
-      }
-      if (res['STATUS'] === 'FAIL') {
-        console.log('\n\n FAIL to ADD new phone number!');
-      }
-    });
+    var newNumber: PhoneNumber;
+    newNumber = this.basicService.addPhoneNumber(this.phoneNumber);
+    if (newNumber != null) {
+      this.phoneNumbers.push(newNumber);
+    }
   }
 
 
