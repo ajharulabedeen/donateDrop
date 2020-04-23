@@ -234,20 +234,19 @@ export class BasicComponent implements OnInit {
 
   public deletePhoneNumber(p: PhoneNumber) {
     console.log(p);
+    this.phoneNumbers = this.phoneNumbers.filter(obj => obj !== p);
     const status = this.basicService.deletePhoneNumber(p);
     console.log('\n\n status component: ' + status);
     if (status === 'OK') {
       console.log('Delete Success!');
-      this.phoneNumbers = this.phoneNumbers.filter(obj => obj !== p);
+
     }
   }
 
 
   // start : present address geo code
   // after division selection
-  public getPresent_districts(present_division:
-                                string
-  ) {
+  public getPresent_districts(present_division: string) {
     var divID = '3';
     if (this.present_division != null) {
       this.present_districts = new Array();
@@ -261,12 +260,7 @@ export class BasicComponent implements OnInit {
   }
 
   // after districts selection
-  public
-
-  getPresent_upzillas(present_district
-                        :
-                        string
-  ) {
+  public getPresent_upzillas(present_district: string) {
     console.log('selected District  : ' + this.present_district);
     var distID = this.present_districts.find(({name}) => name === this.present_district);
     console.log('distID : ' + distID);
@@ -278,12 +272,7 @@ export class BasicComponent implements OnInit {
   }
 
   // after upzillas selection
-  public
-
-  getPresent_unions(upzilaSelected
-                      :
-                      string
-  ) {
+  public getPresent_unions(upzilaSelected: string) {
     console.log('selected Upzillas: ' + this.present_upzilla);
     var upzID = this.present_upzillas.find(({name}) => name === this.present_upzilla);
     upzID = upzID['id'];
@@ -296,12 +285,7 @@ export class BasicComponent implements OnInit {
 
   // start : permanent address geo code
   // after division selection
-  public
-
-  getPermanent_districts(present_division
-                           :
-                           string
-  ) {
+  public getPermanent_districts(present_division: string) {
     var divID = '3';
     if (this.permanent_division != null) {
       this.permanent_districts = [];
@@ -315,12 +299,7 @@ export class BasicComponent implements OnInit {
   }
 
   // after districts selection
-  public
-
-  getPermanent_upzillas(present_districtselected
-                          :
-                          string
-  ) {
+  public getPermanent_upzillas(present_districtselected: string) {
     var distID = this.permanent_districts.find(({name}) => name === this.permanent_district);
     distID = distID['id'];
     this.permanent_upzillas = [];
@@ -330,12 +309,7 @@ export class BasicComponent implements OnInit {
   }
 
   // after upzillas selection
-  public
-
-  getPermanent_unions(upzilaSelected
-                        :
-                        string
-  ) {
+  public getPermanent_unions(upzilaSelected: string) {
     var upzID = this.permanent_upzillas.find(({name}) => name === this.permanent_upzilla);
     upzID = upzID['id'];
     if (upzID != null) {
@@ -347,24 +321,19 @@ export class BasicComponent implements OnInit {
 // end : permanent address geo code
 
 
-  public
-
-  getDivisions() {
+  public getDivisions() {
     this.divisions = [];
     this.divisions = this.basicService.getDivisions();
     console.log(this.divisions);
   }
 
-  divisionPrint() {
+  public divisionPrint() {
     var div = this.divisions.find(({name}) => name === this.present_division);
     console.log(div);
     console.log('present_division : ' + this.present_division);
   }
 
-  divIDPrint(id
-               :
-               string
-  ) {
+  divIDPrint(id: string) {
     console.log('divID : ' + id);
   }
 
