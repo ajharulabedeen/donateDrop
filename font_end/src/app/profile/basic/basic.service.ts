@@ -55,11 +55,13 @@ export class BasicService {
     ).subscribe((b: Basic) => {
       this.loading = false;
       console.log(b);
-      console.log(b['phone_number']);
 
-      phoneNumbers = b['phone_number'];
+      // phone number
       for (const key in b['phone_number']) {
-        console.log(key);
+        const phoneNumber = new PhoneNumber();
+        phoneNumber.$id = b['phone_number'][key]['id'];
+        phoneNumber.$number = b['phone_number'][key]['number'];
+        this.phoneNumbers.push(phoneNumber);
       }
 
 
