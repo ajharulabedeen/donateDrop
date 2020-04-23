@@ -228,7 +228,10 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
             try {
                 entityManager.merge(profileBasic);
                 result.put(StringUtil.STATUS, StringUtil.OK);
+//                result.put(StringUtil.ID, phoneNumber.getId().toString());
+                result.put(StringUtil.ID, phoneNumbers.get(phoneNumbers.size() - 1).getId().toString());
             } catch (Exception e) {
+                e.printStackTrace();
                 result.put(StringUtil.STATUS, StringUtil.FAIL);
             }
         } else {

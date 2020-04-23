@@ -57,6 +57,7 @@ public class Test_Controller_Basic extends AbstractTest {
      * @throws Exception
      * @apiNote to test that profile basic will be saved, without full information.
      */
+    //    String uri = "/public/profile/basic/save";
     @Test
     @Order(1)
     public void testSave() throws Exception {
@@ -83,6 +84,7 @@ public class Test_Controller_Basic extends AbstractTest {
         assertEquals(StringUtil.FAIL, map.get(StringUtil.STATUS));
     }
 
+    //    String uri = "/public/profile/basic/save";
     @Test
     @Order(2)
     public void testfullSave() throws Exception {
@@ -132,6 +134,7 @@ public class Test_Controller_Basic extends AbstractTest {
         assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
     }
 
+    //    String uri = "/public/profile/basic/findOneByUser";
     @Test
     public void testfindOneByUser() throws Exception {
         String uri = "/public/profile/basic/findOneByUser";
@@ -143,9 +146,10 @@ public class Test_Controller_Basic extends AbstractTest {
         System.out.println(content);
     }
 
+    //    String uri = "/public/profile/basic/exist";
     @Test
     public void testBasicExist() throws Exception {
-        String uri = "/public/profile/basic/basicExist";
+        String uri = "/public/profile/basic/exist";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
                 .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
         int status = mvcResult.getResponse().getStatus();
@@ -156,6 +160,7 @@ public class Test_Controller_Basic extends AbstractTest {
         assertEquals(StringUtil.TRUE, result.get(StringUtil.STATUS));
     }
 
+    //    String uri = "/public/profile/basic/update";
     @Test
     public void testUpdate() throws Exception {
         String uri = "/public/profile/basic/update";
@@ -202,5 +207,8 @@ public class Test_Controller_Basic extends AbstractTest {
         Assert.assertEquals(profileBasicNew.getReligion(), profileBasicSaved.getReligion());
         Assert.assertEquals(profileBasicNew.getEmail(), profileBasicSaved.getEmail());
     }
+
+
+
 
 }

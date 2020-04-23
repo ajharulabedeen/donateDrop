@@ -225,8 +225,8 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
     @Test
     @Order(8)
     public void test8_addPhoneNumber() {
-        String userID = "13";
-        PhoneNumber phoneNumberNew = new PhoneNumber("01910-364020");
+        String userID = "16";
+        PhoneNumber phoneNumberNew = new PhoneNumber("01910-664020");
         Map<String, String> result = dao_Profile_Basic_I.addPhoneNumber(phoneNumberNew, userID);
         System.out.println("\n\n" + result + "\n\n");
         Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
