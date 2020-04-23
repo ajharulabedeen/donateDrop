@@ -10,6 +10,7 @@ import {PhoneNumber} from './phone-number.model';
 import {Districts} from './districts.model';
 import {Upzillas} from './upzillas.model';
 import {Unions} from './unions.model';
+import {forEachComment} from 'tslint';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,7 @@ export class BasicService {
 
   data: Object;
   loading: boolean;
+  phoneNumbers: PhoneNumber[] = new Array();
 
   create(basic: Basic) {
     this.http.post(
@@ -48,11 +50,19 @@ export class BasicService {
 
 
   public getCurrentUserBasic() {
-    return this.http.post<Basic>(
-      'http://127.0.0.1:8000/api/basic/findOneById', [], this.authService.getHeader(),
+    return this.http.get<Basic>(
+      'http://127.0.0.1:8080/public/profile/basic/findOneByUser', [], this.authService.getHeader(),
     ).subscribe((b: Basic) => {
       this.loading = false;
       console.log(b);
+      console.log(b['phone_number']);
+
+      phoneNumbers = b['phone_number'];
+      for (const key in b['phone_number']) {
+        console.log(key);
+      }
+
+
       // console.log(b["dept"]);
       const bas = new Basic();
       bas.$id = b['id'];
@@ -152,15 +162,16 @@ export class BasicService {
     return unions;
   }
 
+
   public getPhoneNumbers() {
-    var phoneNumbers: PhoneNumber[] = new Array();
-    for (var x = 0; x < 5; x++) {
-      var p = new PhoneNumber();
-      p.$id = x.toString();
-      p.$number = '0' + x;
-      phoneNumbers.push(p);
-    }
-    return phoneNumbers;
+    // for (var x = 0; x < 5; x++) {
+    //   var p = new PhoneNumber();
+    //   p.$id = x.toString();
+    //   p.$number = '0' + x;
+    //   phoneNumbers.push(p);
+    // }
+    console.log(this.phoneNumbers);
+    return this.phoneNumbers;
   }
 
   public addPhoneNumber(phoneNumber: string): PhoneNumber {
