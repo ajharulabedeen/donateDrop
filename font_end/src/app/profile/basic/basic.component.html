@@ -207,6 +207,7 @@
                     </option>
                     <!--<option value="d">{{d}}</option>-->
                   </select>
+                  <input [(ngModel)]="present_division" [disabled]='true' type="text" class="form-control">
                 </div>
               </div>
             </div>
@@ -225,8 +226,7 @@
                     </option>
                     <!--<option value="d">{{d}}</option>-->
                   </select>
-                  <input [(ngModel)]="present_district" [disabled]='!profileEdit' type="text" class="form-control"
-                         placeholder="Street Address!">
+                  <input [(ngModel)]="present_district" [disabled]='true' type="text" class="form-control">
                 </div>
                 <!--<div class="form-group">-->
                 <!--&lt;!&ndash;<label>Street Address</label>&ndash;&gt;-->
@@ -249,6 +249,7 @@
                       {{up.name}}
                     </option>
                   </select>
+                  <input [(ngModel)]="present_upzilla" [disabled]='true' type="text" class="form-control">
                 </div>
               </div>
             </div>
@@ -265,6 +266,7 @@
                       {{un.name}}
                     </option>
                   </select>
+                  <input [(ngModel)]="present_union" [disabled]='true' type="text" class="form-control">
                 </div>
               </div>
             </div>
@@ -272,18 +274,21 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label>Street Address</label>
-                <input [(ngModel)]="street_address" [disabled]='!profileEdit' type="text" class="form-control"
+                <input [(ngModel)]="present_street_address" [disabled]='!profileEdit' type="text" class="form-control"
                        placeholder="Street Address!">
               </div>
+              <!--<input [(ngModel)]="present_upzilla" [disabled]='!profileEdit' type="text" class="form-control">-->
             </div>
-            <button class="btn btn-primary btn-xs" *ngIf="profileEdit" (click)="update()">
-              Update
-              <!-- {{ basicExist ? 'Update' : 'Save' }} -->
-            </button>
-            <button class="btn btn-danger btn-xs" *ngIf="profileEdit" (click)="editProfile()">Cancel</button>
-            <button class="btn btn-primary btn-xs" *ngIf="profileEdit" (click)="save()">
-              Save
-            </button>
+            <div class="col-md-12">
+              <button class="btn btn-primary btn-xs" *ngIf="profileEdit" (click)="update()">
+                Update
+                <!-- {{ basicExist ? 'Update' : 'Save' }} -->
+              </button>
+              <button class="btn btn-danger btn-xs" *ngIf="profileEdit" (click)="editProfile()">Cancel</button>
+              <button class="btn btn-primary btn-xs" *ngIf="profileEdit" (click)="save()">
+                Save
+              </button>
+            </div>
           </div>
           <!--end : present address-->
 

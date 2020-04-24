@@ -118,17 +118,9 @@ export class BasicComponent implements OnInit {
       // address : present
       console.log('res : ' + b['address_present']['id']);
       this.present_division = b['address_present']['division'];
-      console.log('present_division : ' + this.present_division);
-
       this.present_district = b['address_present']['district'];
-      console.log('present_district : ' + this.present_district);
-
       this.present_upzilla = b['address_present']['upzilla'];
-      console.log('present_upzilla : ' + this.present_upzilla);
-
       this.present_union = b['address_present']['union_ward'];
-      console.log('present_union : ' + this.present_union);
-
       this.present_street_address = b['address_present']['street_address'];
       // address : permanent
 
