@@ -310,6 +310,7 @@
                     </option>
                     <!--<option value="d">{{d}}</option>-->
                   </select>
+                  <input [(ngModel)]="permanent_division" [disabled]='true' type="text" class="form-control">
                 </div>
               </div>
             </div>
@@ -328,6 +329,7 @@
                     </option>
                     <!--<option value="d">{{d}}</option>-->
                   </select>
+                  <input [(ngModel)]="permanent_district" [disabled]='true' type="text" class="form-control">
                 </div>
               </div>
             </div>
@@ -345,6 +347,7 @@
                       {{up.name}}
                     </option>
                   </select>
+                  <input [(ngModel)]="permanent_upzilla" [disabled]='true' type="text" class="form-control">
                 </div>
               </div>
             </div>
@@ -353,7 +356,7 @@
               <label>Unions</label>
               <div class="form-group">
                 <div class="form-group">
-                  <select [disabled]='!profileEdit' [(ngModel)]="p_uinon"
+                  <select [disabled]='!profileEdit' [(ngModel)]="permanent_uinon"
                           class="form-control select2 select2-hidden-accessible"
                           style="width: 100%;" tabindex="-1" aria-hidden="true"
                   >
@@ -361,6 +364,7 @@
                       {{un.name}}
                     </option>
                   </select>
+                  <input [(ngModel)]="permanent_uinon" [disabled]='true' type="text" class="form-control">
                 </div>
               </div>
             </div>
@@ -368,7 +372,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label>Street Address</label>
-                <input [(ngModel)]="street_address" [disabled]='!profileEdit' type="text" class="form-control"
+                <input [(ngModel)]="permanent_street_address" [disabled]='!profileEdit' type="text" class="form-control"
                        placeholder="Street Address!">
               </div>
             </div>

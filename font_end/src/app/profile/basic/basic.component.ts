@@ -123,6 +123,11 @@ export class BasicComponent implements OnInit {
       this.present_union = b['address_present']['union_ward'];
       this.present_street_address = b['address_present']['street_address'];
       // address : permanent
+      this.permanent_division = b['address_permanent']['division'];
+      this.permanent_district = b['address_permanent']['district'];
+      this.permanent_upzilla = b['address_permanent']['upzilla'];
+      this.permanent_uinon = b['address_permanent']['union_ward'];
+      this.permanent_street_address = b['address_permanent']['street_address'];
 
     });
     // refactor : not in use now.
