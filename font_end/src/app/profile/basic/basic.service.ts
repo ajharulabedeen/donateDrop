@@ -86,7 +86,7 @@ export class BasicService {
       // bas.$research_interest = b['research_interest'];
       // bas.$skills = b['skills'];
       // bas.$social_media_link = b['social_media_link'];
-      console.log('bas : ' + bas.$dept);
+      // console.log('bas : ' + bas.$dept);
       this.basic.next(bas);
     });
   }// get current user basic.
