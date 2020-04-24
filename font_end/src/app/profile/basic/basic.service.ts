@@ -27,8 +27,9 @@ export class BasicService {
 
   data: Object;
   loading: boolean;
-  phoneNumbers: PhoneNumber[] = new Array();
   deleteStatus: string;
+  phoneNumbers: PhoneNumber[] = new Array();
+  bas: Basic = new Basic();
 
   create(basic: Basic) {
     this.http.post(
@@ -37,7 +38,7 @@ export class BasicService {
       console.log(res);
       this.loading = false;
     });
-  }//create
+  } // create
 
 
   public update(basic: Basic) {
@@ -65,34 +66,30 @@ export class BasicService {
         this.phoneNumbers.push(phoneNumber);
       }
 
-
-      // console.log(b["dept"]);
-      const bas = new Basic();
-      bas.$id = b['id'];
-      // bas.$dept = b['dept'];
-      // bas.$batch = b['batch'];
-      // bas.$student_id = b['student_id'];
-      // bas.$passing_year = b['passing_year'];
-      // bas.$first_name = b['first_name'];
-      // bas.$last_name = b['last_name'];
-      // bas.$birth_date = b['birth_date'];
-      // bas.$gender = b['gender'];
-      // bas.$blood_group = b['blood_group'];
-      // bas.$religion = b['religion'];
-      // bas.$email = b['email'];
-      // bas.$phone = b['phone'];
+      // basic information
+      this.bas.$id = b['id'];
+      this.bas.$name = b['name'];
+      this.bas.$birthDate = b['birthDate'];
+      this.bas.$gender = b['gender'];
+      this.bas.$blood_Group = b['blood_Group'];
+      this.bas.$religion = b['religion'];
+      this.bas.$email = b['email'];
       // bas.$address_permanent = b['address_permanent'];
       // bas.$address_present = b['address_present'];
       // bas.$research_interest = b['research_interest'];
       // bas.$skills = b['skills'];
       // bas.$social_media_link = b['social_media_link'];
       // console.log('bas : ' + bas.$dept);
-      this.basic.next(bas);
+      // this.basic.next(this.bas);
     });
   }// get current user basic.
 
   public getPhoneNumbers() {
     return this.phoneNumbers;
+  }
+
+  public getBasicInformation() {
+    return this.bas;
   }
 
 
@@ -207,9 +204,7 @@ export class BasicService {
     return this.deleteStatus;
   }
 
-  getBasicInformation() {
-    return undefined;
-  }
+
 }// class
 // working
 // {
