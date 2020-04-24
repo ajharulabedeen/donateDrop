@@ -82,7 +82,7 @@ export class BasicComponent implements OnInit {
     this.setPhoneNumbers();
     this.setBasicInformation();
     // start : init
-    this.blood_group = 'A+';
+    this.blood_Group = 'A+';
     this.gender = 'other';
     // this.present_division = 'Dhaka';
     // this.present_district = 'Dhaka';
@@ -218,7 +218,7 @@ export class BasicComponent implements OnInit {
   }
 
   public setBasicInformation() {
-    const basic = new Basic();
+    var basic = new Basic();
     try {
       basic = this.basicService.getBasicInformation();
     } catch (e) {
@@ -260,8 +260,8 @@ export class BasicComponent implements OnInit {
     var divID = '3';
     if (this.present_division != null) {
       this.present_districts = new Array();
-      divID = this.divisions.find(({name}) => name === this.present_division);
-      divID = divID['id'];
+      var division : Divisions = this.divisions.find( ({name}) => name === this.present_division );
+      divID = division.id;
       console.log('selected Division  : ' + this.present_division);
       this.present_districts = this.basicService.getDistricts(divID);
       this.present_upzillas = [];
@@ -271,14 +271,19 @@ export class BasicComponent implements OnInit {
 
   // after districts selection
   public getPresent_upzillas(present_district: string) {
-    console.log('selected District  : ' + this.present_district);
-    var distID = this.present_districts.find(({name}) => name === this.present_district);
-    console.log('distID : ' + distID);
-    distID = distID['id'];
-    console.log('distID : ' + distID);
-    this.present_upzillas = [];
-    this.present_upzillas = this.basicService.getUpzillas(distID);
-    this.present_unions = [];
+    try {
+      console.log('selected District  : ' + this.present_district);
+      var distID = this.present_districts.find(({name}) => name === this.present_district);
+      console.log('distID : ' + distID);
+      distID = distID['id'];
+      console.log('distID : ' + distID);
+      this.present_upzillas = [];
+      this.present_upzillas = this.basicService.getUpzillas(distID);
+      this.present_unions = [];
+    } catch (e) {
+      console.log('Error in setting Uninons Name!');
+    }
+
   }
 
   // after upzillas selection

@@ -1,20 +1,20 @@
 export class Divisions {
-  private _id: String;
-  private _name: String;
+  private _id: string;
+  private _name: string;
 
-  get id(): String {
+  get id(): string {
     return this._id;
   }
 
-  set id(value: String) {
+  set id(value: string) {
     this._id = value;
   }
 
-  get name(): String {
+  get name(): string {
     return this._name;
   }
 
-  set name(value: String) {
+  set name(value: string) {
     this._name = value;
   }
 }
