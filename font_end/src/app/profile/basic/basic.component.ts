@@ -289,8 +289,8 @@ export class BasicComponent implements OnInit {
   // after upzillas selection
   public getPresent_unions(upzilaSelected: string) {
     console.log('selected Upzillas: ' + this.present_upzilla);
-    var upzID = this.present_upzillas.find(({name}) => name === this.present_upzilla);
-    upzID = upzID['id'];
+    var upz : Upzillas = this.present_upzillas.find(({name}) => name === this.present_upzilla);
+    var upzID = upz.id;
     // console.log('upzID : ' + upzID);
     this.present_unions = [];
     this.present_unions = this.basicService.getUnions(upzID);
