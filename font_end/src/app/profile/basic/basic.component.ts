@@ -273,9 +273,9 @@ export class BasicComponent implements OnInit {
   public getPresent_upzillas(present_district: string) {
     try {
       console.log('selected District  : ' + this.present_district);
-      var distID = this.present_districts.find(({name}) => name === this.present_district);
-      console.log('distID : ' + distID);
-      distID = distID['id'];
+      var dist : Districts = this.present_districts.find(({name}) => name === this.present_district);
+      console.log('distID : ' + dist);
+      var distID = dist.id; // distID = distID['id'];
       console.log('distID : ' + distID);
       this.present_upzillas = [];
       this.present_upzillas = this.basicService.getUpzillas(distID);
