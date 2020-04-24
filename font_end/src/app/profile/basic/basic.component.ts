@@ -325,8 +325,8 @@ export class BasicComponent implements OnInit {
 
   // after upzillas selection
   public getPermanent_unions(upzilaSelected: string) {
-    var upzID = this.permanent_upzillas.find(({name}) => name === this.permanent_upzilla);
-    upzID = upzID['id'];
+    var upz: Upzillas = this.permanent_upzillas.find(({name}) => name === this.permanent_upzilla);
+    var upzID = upz.id;
     if (upzID != null) {
       this.permanent_unions = [];
       this.permanent_unions = this.basicService.getUnions(upzID);
