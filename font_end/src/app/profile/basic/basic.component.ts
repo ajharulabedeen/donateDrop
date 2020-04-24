@@ -43,7 +43,7 @@ export class BasicComponent implements OnInit {
 
 
   // phone numbers
-  phoneNumbers: PhoneNumber[];
+  phoneNumbers: PhoneNumber[]; // will be inited at first.
   phoneNumber: string;
 
   divisions: Divisions[] = new Array(); // used for both permanent and present.
@@ -79,8 +79,8 @@ export class BasicComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getPhoneNumbers();
-
+    this.setPhoneNumbers();
+    this.setBasicInformation();
     // start : init
     this.blood_group = 'A+';
     this.gender = 'other';
@@ -217,7 +217,18 @@ export class BasicComponent implements OnInit {
     return basic;
   }
 
-  public getPhoneNumbers() {
+  public setBasicInformation() {
+    const basic = new Basic();
+    try {
+      basic = this.basicService.getBasicInformation();
+    } catch (e) {
+      console.log('Error in Setting Basic Information!');
+    }
+    console.log(basic);
+  }
+
+
+  public setPhoneNumbers() {
     console.log('\n this.phoneNumbers : \n' + this.phoneNumbers);
     this.phoneNumbers = this.basicService.getPhoneNumbers();
     console.log('\n this.phoneNumbers : \n' + this.phoneNumbers);
@@ -239,7 +250,6 @@ export class BasicComponent implements OnInit {
     console.log('\n\n status component: ' + status);
     if (status === 'OK') {
       console.log('Delete Success!');
-
     }
   }
 

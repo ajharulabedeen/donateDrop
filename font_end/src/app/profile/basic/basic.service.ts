@@ -206,6 +206,10 @@ export class BasicService {
     console.log('After Assingn in service: ' + this.deleteStatus);
     return this.deleteStatus;
   }
+
+  getBasicInformation() {
+    return undefined;
+  }
 }// class
 // working
 // {
