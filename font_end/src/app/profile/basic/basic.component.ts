@@ -83,7 +83,7 @@ export class BasicComponent implements OnInit {
     this.blood_Group = 'A+';
     this.gender = 'other';
     // this.present_division = 'Dhaka';
-    // this.present_district = 'Dhaka';
+    this.present_district = 'Dhaka';
     // end : init
     this.bloods = this.basicService.getBloodGroup();
     this.getDivisions();
@@ -91,17 +91,9 @@ export class BasicComponent implements OnInit {
 
     this.basicExist = false;
     console.log('this.basicExist  : ' + this.basicExist);
-    this.basicService.getCurrentUserBasic().subscribe((b: Basic) => {
+    this.basicService.getCurrentUserBasic().subscribe(b => {
       // this.loading = false;
-      console.log(b);
-
-      // phone number
-      for (const key in b['phone_number']) {
-        const phoneNumber = new PhoneNumber();
-        phoneNumber.$id = b['phone_number'][key]['id'];
-        phoneNumber.$number = b['phone_number'][key]['number'];
-        this.phoneNumbers.push(phoneNumber);
-      }
+      console.log('res : ' + b);
 
       // basic information
       this.name = b['name'];
@@ -115,7 +107,33 @@ export class BasicComponent implements OnInit {
       this.available = b['available'];
       this.maritalStatus = b['maritalStatus'];
 
+      // phone number
+      for (const key in b['phone_number']) {
+        const phoneNumber = new PhoneNumber();
+        phoneNumber.$id = b['phone_number'][key]['id'];
+        phoneNumber.$number = b['phone_number'][key]['number'];
+        this.phoneNumbers.push(phoneNumber);
+      }
+
+      // address : present
+      console.log('res : ' + b['address_present']['id']);
+      this.present_division = b['address_present']['division'];
+      console.log('present_division : ' + this.present_division);
+
+      this.present_district = b['address_present']['district'];
+      console.log('present_district : ' + this.present_district);
+
+      this.present_upzilla = b['address_present']['upzilla'];
+      console.log('present_upzilla : ' + this.present_upzilla);
+
+      this.present_union = b['address_present']['union_ward'];
+      console.log('present_union : ' + this.present_union);
+
+      this.present_street_address = b['address_present']['street_address'];
+      // address : permanent
+
     });
+    // refactor : not in use now.
     this.setPhoneNumbers();
     // refactor : setBasicInformation not working
     this.setBasicInformation();

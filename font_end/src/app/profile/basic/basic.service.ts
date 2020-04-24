@@ -53,7 +53,7 @@ export class BasicService {
   // bas: Basic = new Basic();
 
   public getCurrentUserBasic() {
-    return this.http.get<Basic>(
+    return this.http.get(
       'http://127.0.0.1:8080/public/profile/basic/findOneByUser', this.authService.getHeader(),
     );
 
