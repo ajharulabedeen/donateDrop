@@ -52,7 +52,7 @@ export class BasicService {
 
   public getCurrentUserBasic() {
     return this.http.get<Basic>(
-      'http://127.0.0.1:8080/public/profile/basic/findOneByUser', [], this.authService.getHeader(),
+      'http://127.0.0.1:8080/public/profile/basic/findOneByUser', this.authService.getHeader(),
     ).subscribe((b: Basic) => {
       this.loading = false;
       console.log(b);
