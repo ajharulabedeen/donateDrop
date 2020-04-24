@@ -17,8 +17,8 @@ import {forEachComment} from 'tslint';
 })
 export class BasicService {
   // currentBasic : Basic;
-  basic = new BehaviorSubject<Basic>(null);
-  currentBasic = this.basic.asObservable();
+  basicObserverable = new BehaviorSubject<Basic>(null);
+  currentBasic = this.basicObserverable.asObservable();
 
   // constructor(private http: HttpClient) { }
   constructor(private http: HttpClient,
@@ -50,38 +50,37 @@ export class BasicService {
     });
   }// create
 
+  // bas: Basic = new Basic();
 
   public getCurrentUserBasic() {
     return this.http.get<Basic>(
       'http://127.0.0.1:8080/public/profile/basic/findOneByUser', this.authService.getHeader(),
-    ).subscribe((b: Basic) => {
-      this.loading = false;
-      console.log(b);
+    );
 
-      // phone number
-      for (const key in b['phone_number']) {
-        const phoneNumber = new PhoneNumber();
-        phoneNumber.$id = b['phone_number'][key]['id'];
-        phoneNumber.$number = b['phone_number'][key]['number'];
-        this.phoneNumbers.push(phoneNumber);
-      }
-
-      // basic information
-      this.bas.$id = b['id'];
-      this.bas.$name = b['name'];
-      this.bas.$birthDate = b['birthDate'];
-      this.bas.$gender = b['gender'];
-      this.bas.$blood_Group = b['blood_Group'];
-      this.bas.$religion = b['religion'];
-      this.bas.$email = b['email'];
-      // bas.$address_permanent = b['address_permanent'];
-      // bas.$address_present = b['address_present'];
-      // bas.$research_interest = b['research_interest'];
-      // bas.$skills = b['skills'];
-      // bas.$social_media_link = b['social_media_link'];
-      // console.log('bas : ' + bas.$dept);
-      // this.basic.next(this.bas);
-    });
+    // refactor : setBasicInformation not working, phone number is working, but in same way not the basic info.
+    //   .subscribe((b: Basic) => {
+    //   this.loading = false;
+    //   console.log(b);
+    //
+    //   // phone number
+    //   for (const key in b['phone_number']) {
+    //     const phoneNumber = new PhoneNumber();
+    //     phoneNumber.$id = b['phone_number'][key]['id'];
+    //     phoneNumber.$number = b['phone_number'][key]['number'];
+    //     this.phoneNumbers.push(phoneNumber);
+    //   }
+    //
+    //   // basic information
+    //   this.bas.$id = b['id'];
+    //   console.log('response name : ' + b['name']);
+    //   this.bas.$name = b['name'];
+    //   console.log('service : ' + this.bas['name']);
+    //   this.bas.$birthDate = b['birthDate'];
+    //   this.bas.$gender = b['gender'];
+    //   this.bas.$blood_Group = b['blood_Group'];
+    //   this.bas.$religion = b['religion'];
+    //   this.bas.$email = b['email'];
+    // });
   }// get current user basic.
 
   public getPhoneNumbers() {
@@ -89,6 +88,9 @@ export class BasicService {
   }
 
   public getBasicInformation() {
+    // this.bas
+    this.basicObserverable.next(this.bas);
+    console.log('service : ' + this.bas['name']);
     return this.bas;
   }
 
@@ -205,6 +207,9 @@ export class BasicService {
   }
 
 
+  getName() {
+    return this.bas.$name;
+  }
 }// class
 // working
 // {

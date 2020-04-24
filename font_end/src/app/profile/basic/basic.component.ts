@@ -79,8 +79,6 @@ export class BasicComponent implements OnInit {
 
   ngOnInit() {
 
-    this.setPhoneNumbers();
-    this.setBasicInformation();
     // start : init
     this.blood_Group = 'A+';
     this.gender = 'other';
@@ -93,97 +91,34 @@ export class BasicComponent implements OnInit {
 
     this.basicExist = false;
     console.log('this.basicExist  : ' + this.basicExist);
-    this.basicService.getCurrentUserBasic();
-    this.basicService.basic.subscribe(b => {
-      // for (const key in b) {
-      //   // console.log(key);
-      //   switch (key) {
-      //     case 'user_id': {
-      //       this.user_id = b[key];
-      //       break;
-      //     }
-      //     case 'dept': {
-      //       this.dept = b[key];
-      //       break;
-      //     }
-      //     case 'batch': {
-      //       this.batch = b[key];
-      //       break;
-      //     }
-      //     case 'student_id': {
-      //       this.student_id = b[key];
-      //       break;
-      //     }
-      //     case 'passing_year': {
-      //       this.passing_year = b[key];
-      //       break;
-      //     }
-      //     case 'first_name': {
-      //       this.first_name = b[key];
-      //       break;
-      //     }
-      //     case 'last_name': {
-      //       this.last_name = b[key];
-      //       break;
-      //     }
-      //     case 'birth_date': {
-      //       this.birth_date = b[key];
-      //       // console.log("this.birth_date  : " + this.birth_date);
-      //       break;
-      //     }
-      //     case 'gender': {
-      //       this.gender = b[key];
-      //       break;
-      //     }
-      //     case 'blood_group': {
-      //       this.blood_group = b[key];
-      //       break;
-      //     }
-      //     case 'email': {
-      //       this.email = b[key];
-      //       break;
-      //     }
-      //     case 'phone': {
-      //       this.phone = b[key];
-      //       console.log('Phone : ' + this.phone);
-      //       break;
-      //     }
-      //     case 'address_present': {
-      //       this.address_present = b[key];
-      //       break;
-      //     }
-      //     case 'address_permanent': {
-      //       this.address_permanent = b[key];
-      //       break;
-      //     }
-      //     case 'research_interest': {
-      //       this.research_interest = b[key];
-      //       break;
-      //     }
-      //     case 'skills': {
-      //       this.skills = b[key];
-      //       break;
-      //     }
-      //     case 'image_address': {
-      //       this.image_address = b[key];
-      //       break;
-      //     }
-      //     case 'religion': {
-      //       this.religion = b[key];
-      //       break;
-      //     }
-      //     case 'social_media_link': {
-      //       this.social_media_link = b[key];
-      //       break;
-      //     }
-      //     default: {
-      //       // console.log("Invalid choice");
-      //       break;
-      //     }
-      //   }
-      // } // for
+    this.basicService.getCurrentUserBasic().subscribe((b: Basic) => {
+      // this.loading = false;
+      console.log(b);
+
+      // phone number
+      for (const key in b['phone_number']) {
+        const phoneNumber = new PhoneNumber();
+        phoneNumber.$id = b['phone_number'][key]['id'];
+        phoneNumber.$number = b['phone_number'][key]['number'];
+        this.phoneNumbers.push(phoneNumber);
+      }
+
+      // basic information
+      this.name = b['name'];
+      this.birthDate = b['birthDate'];
+      this.gender = b['gender'];
+      this.blood_Group = b['blood_Group'];
+      this.religion = b['religion'];
+      this.profession = b['profession'];
+      this.care_of = b['care_of'];
+      this.email = b['email'];
+      this.available = b['available'];
+      this.maritalStatus = b['maritalStatus'];
+
     });
-    console.log('this.basicExist  : ' + this.basicExist);
+    this.setPhoneNumbers();
+    // refactor : setBasicInformation not working
+    this.setBasicInformation();
 
   }// ngOnInint.
 
@@ -217,14 +152,22 @@ export class BasicComponent implements OnInit {
     return basic;
   }
 
+  // refactor : setBasicInformation not working
   public setBasicInformation() {
-    var basic = new Basic();
+    console.log('\n\n--setBasicInformation');
     try {
-      basic = this.basicService.getBasicInformation();
+      var basic: Basic = this.basicService.getBasicInformation();
+      this.name = basic.$name;
+      this.name = this.basicService.getName();
+      console.log(this.name);
+      console.log('\n\n name : ' + basic['name']);
+      console.log('\n\n $name : ' + basic.$name);
+      this.birthDate = basic.$birthDate;
+      this.gender = basic.$gender;
+      console.log(basic);
     } catch (e) {
       console.log('Error in Setting Basic Information!');
     }
-    console.log(basic);
   }
 
 
