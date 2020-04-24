@@ -260,7 +260,7 @@ export class BasicComponent implements OnInit {
     var divID = '3';
     if (this.present_division != null) {
       this.present_districts = new Array();
-      var division : Divisions = this.divisions.find( ({name}) => name === this.present_division );
+      var division: Divisions = this.divisions.find(({name}) => name === this.present_division);
       divID = division.id;
       console.log('selected Division  : ' + this.present_division);
       this.present_districts = this.basicService.getDistricts(divID);
@@ -273,7 +273,7 @@ export class BasicComponent implements OnInit {
   public getPresent_upzillas(present_district: string) {
     try {
       console.log('selected District  : ' + this.present_district);
-      var dist : Districts = this.present_districts.find(({name}) => name === this.present_district);
+      var dist: Districts = this.present_districts.find(({name}) => name === this.present_district);
       console.log('distID : ' + dist);
       var distID = dist.id; // distID = distID['id'];
       console.log('distID : ' + distID);
@@ -289,7 +289,7 @@ export class BasicComponent implements OnInit {
   // after upzillas selection
   public getPresent_unions(upzilaSelected: string) {
     console.log('selected Upzillas: ' + this.present_upzilla);
-    var upz : Upzillas = this.present_upzillas.find(({name}) => name === this.present_upzilla);
+    var upz: Upzillas = this.present_upzillas.find(({name}) => name === this.present_upzilla);
     var upzID = upz.id;
     // console.log('upzID : ' + upzID);
     this.present_unions = [];
@@ -304,8 +304,8 @@ export class BasicComponent implements OnInit {
     var divID = '3';
     if (this.permanent_division != null) {
       this.permanent_districts = [];
-      divID = this.divisions.find(({name}) => name === this.permanent_division);
-      divID = divID['id'];
+      var div: Divisions = this.divisions.find(({name}) => name === this.permanent_division);
+      var divID = div.id;
       this.permanent_districts = this.basicService.getDistricts(divID);
       // refactor : bug > clicking in drop down making other empty. fix > after selection list will empty.
       this.permanent_upzillas = [];
