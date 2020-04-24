@@ -315,8 +315,8 @@ export class BasicComponent implements OnInit {
 
   // after districts selection
   public getPermanent_upzillas(present_districtselected: string) {
-    var distID = this.permanent_districts.find(({name}) => name === this.permanent_district);
-    distID = distID['id'];
+    var dist: Districts = this.permanent_districts.find(({name}) => name === this.permanent_district);
+    var distID = dist.id;
     this.permanent_upzillas = [];
     // refactor :
     this.permanent_upzillas = this.basicService.getUpzillas(distID);
