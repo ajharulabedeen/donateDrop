@@ -11,6 +11,7 @@ import {Districts} from './districts.model';
 import {Upzillas} from './upzillas.model';
 import {Unions} from './unions.model';
 import {forEachComment} from 'tslint';
+import {Address} from '../../model/address.model';
 
 @Injectable({
   providedIn: 'root'

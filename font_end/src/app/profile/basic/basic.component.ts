@@ -46,9 +46,9 @@ export class BasicComponent implements OnInit {
 
   // phone numbers
   phoneNumbers: PhoneNumber[]; // will be inited at first.
+  emergencyContacts: EmergencyContact[] = new Array();
   phoneNumber: string;
 
-  emergencyContacts: EmergencyContact[];
 
   divisions: Divisions[] = new Array(); // used for both permanent and present.
   // address : present
@@ -129,6 +129,7 @@ export class BasicComponent implements OnInit {
         emergencyContact.$phone = b['emergency_contact'][key]['phone'];
         emergencyContact.$address = b['emergency_contact'][key]['address'];
         emergencyContact.$relation = b['emergency_contact'][key]['relation'];
+        console.log('---emergencyContacts : ' + this.emergencyContacts);
         this.emergencyContacts.push(emergencyContact);
       }
 
