@@ -296,7 +296,7 @@ public class Test_Controller_Basic extends AbstractTest {
         String distNew = "Dhaka";
         String upzNew = "Gazipur";
         String unionNew = "Kapasia";
-        String streetAddressNew = "Road No 10";
+        String streetAddressNew = "Road No 101";
 
         Address addressPermanentNew = new Address();
         addressPermanentNew.setDivision(divNew);
@@ -320,11 +320,11 @@ public class Test_Controller_Basic extends AbstractTest {
 //        System.out.println("\n\n" + result + "\n\n");
 //        Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
 //
-//        Address addressPresentSaved = dao_Profile_Basic_I.findOneByUser(userID).getAddress_present();
-//        String divSaved = addressPresentSaved.getDistrict();
-//        String distSaved = addressPresentSaved.getDivision();
-//        Assert.assertEquals(divSaved, divNew);
-//        Assert.assertEquals(distSaved, distNew);
+        Address addressPresentSaved = dao_Profile_Basic_I.findOneByUser("16").getAddress_permanent();
+        String divSaved = addressPresentSaved.getDistrict();
+        String distSaved = addressPresentSaved.getDivision();
+        Assert.assertEquals(divSaved, divNew);
+        Assert.assertEquals(distSaved, distNew);
     }
 
 
