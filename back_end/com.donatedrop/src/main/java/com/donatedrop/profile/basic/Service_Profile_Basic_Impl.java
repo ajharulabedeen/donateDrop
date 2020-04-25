@@ -54,4 +54,9 @@ public class Service_Profile_Basic_Impl implements Service_Profile_Basic_I {
     public Map<String, String> updatePresentAddress(Address address, String userID) {
         return dao_profile_basic_i.updatePresentAddress(address, userID);
     }
+
+    @Override
+    public Map<String, String> updatePermanentAddress(Address address, String userID) {
+        return dao_profile_basic_i.updatePermanentAddress(address, userID);
+    }
 }

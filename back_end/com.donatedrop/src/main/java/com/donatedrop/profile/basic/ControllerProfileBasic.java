@@ -64,5 +64,9 @@ public class ControllerProfileBasic {
         return service_profile_basic_i.updatePresentAddress(address, Utils.getLoggedUserID());
     }
 
+    @PostMapping("updatePermanentAddress")
+    public Map<String, String> updatePermanentAddress(@RequestBody Address address) {
+        return service_profile_basic_i.updatePermanentAddress(address, Utils.getLoggedUserID());
+    }
 
 }
