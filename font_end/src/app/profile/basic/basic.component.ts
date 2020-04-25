@@ -10,6 +10,7 @@ import {Unions} from './unions.model';
 import {Upzillas} from './upzillas.model';
 import {PhoneNumber} from './phone-number.model';
 import {Address} from '../../model/address.model';
+import {EmergencyContact} from './emergency-contact.model';
 
 @Component({
   selector: 'app-basic',
@@ -46,6 +47,8 @@ export class BasicComponent implements OnInit {
   // phone numbers
   phoneNumbers: PhoneNumber[]; // will be inited at first.
   phoneNumber: string;
+
+  emergencyContacts: EmergencyContact[];
 
   divisions: Divisions[] = new Array(); // used for both permanent and present.
   // address : present
@@ -110,12 +113,23 @@ export class BasicComponent implements OnInit {
       this.available = b['available'];
       this.maritalStatus = b['maritalStatus'];
 
-      // phone number
+      // phone numbers
       for (const key in b['phone_number']) {
         const phoneNumber = new PhoneNumber();
         phoneNumber.$id = b['phone_number'][key]['id'];
         phoneNumber.$number = b['phone_number'][key]['number'];
         this.phoneNumbers.push(phoneNumber);
+      }
+
+      // emergency_contact
+      for (const key in b['emergency_contact']) {
+        const emergencyContact = new EmergencyContact();
+        emergencyContact.$id = b['emergency_contact'][key]['id'];
+        emergencyContact.$name = b['emergency_contact'][key]['name'];
+        emergencyContact.$phone = b['emergency_contact'][key]['phone'];
+        emergencyContact.$address = b['emergency_contact'][key]['address'];
+        emergencyContact.$relation = b['emergency_contact'][key]['relation'];
+        this.emergencyContacts.push(emergencyContact);
       }
 
       // address : present
@@ -133,6 +147,7 @@ export class BasicComponent implements OnInit {
       this.permanent_upzilla = b['address_permanent']['upzilla'];
       this.permanent_uinon = b['address_permanent']['union_ward'];
       this.permanent_street_address = b['address_permanent']['street_address'];
+
 
     });
     // refactor : not in use now.

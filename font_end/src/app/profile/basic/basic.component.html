@@ -411,8 +411,7 @@
                         <th>Mail</th>
                         <th>Adress</th>
                       </tr>
-
-                      <tr>
+                      <tr *ngFor="let e of emergencyContacts; let i=index">
                         <td>
                           <button class="btn btn-xs btn-danger" (click)="delete(e.id)">Delete</button>
                         </td>
@@ -422,46 +421,12 @@
                             Edit
                           </button>
                         </td>
-                        <td>Index</td>
-                        <td>Name</td>
-                        <td>Phone</td>
-                        <td>Relation</td>
-                        <td>Mail</td>
-                        <td>Adress</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <button class="btn btn-xs btn-danger" (click)="delete(e.id)">Delete</button>
-                        </td>
-                        <td>
-                          <button class="btn btn-xs btn-primary" data-toggle="modal"
-                                  data-target="#modal_emegency_contact">
-                            Edit
-                          </button>
-                        </td>
-                        <td>Index</td>
-                        <td>Name</td>
-                        <td>Phone</td>
-                        <td>Relation</td>
-                        <td>Mail</td>
-                        <td>Adress</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <button class="btn btn-xs btn-danger" (click)="delete(e.id)">Delete</button>
-                        </td>
-                        <td>
-                          <button class="btn btn-xs btn-primary" data-toggle="modal"
-                                  data-target="#modal_emegency_contact">
-                            Edit
-                          </button>
-                        </td>
-                        <td>Index</td>
-                        <td>Name</td>
-                        <td>Phone</td>
-                        <td>Relation</td>
-                        <td>Mail</td>
-                        <td>Adress</td>
+                        <td>{{i+1}}</td>
+                        <td>{{e.$name}}</td>
+                        <td>{{e.$phone}}</td>
+                        <td>{{e.$relation}}</td>
+                        <td>{{e.$mail}}</td>
+                        <td>{{e.$address}}</td>
                       </tr>
 
 
