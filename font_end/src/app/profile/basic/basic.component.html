@@ -280,7 +280,7 @@
               <!--<input [(ngModel)]="present_upzilla" [disabled]='!profileEdit' type="text" class="form-control">-->
             </div>
             <div class="col-md-12">
-              <button class="btn btn-primary btn-xs" *ngIf="profileEdit" (click)="update()">
+              <button class="btn btn-primary btn-xs" *ngIf="profileEdit" (click)="update_address_present()">
                 Update
                 <!-- {{ basicExist ? 'Update' : 'Save' }} -->
               </button>
@@ -376,7 +376,7 @@
                        placeholder="Street Address!">
               </div>
             </div>
-            <button class="btn btn-primary btn-xs" *ngIf="profileEdit" (click)="update()">
+            <button class="btn btn-primary btn-xs" *ngIf="profileEdit" (click)="update_address_permanent()">
               Update
               <!-- {{ basicExist ? 'Update' : 'Save' }} -->
             </button>

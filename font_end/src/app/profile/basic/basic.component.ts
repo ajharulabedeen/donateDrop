@@ -9,6 +9,7 @@ import {Districts} from './districts.model';
 import {Unions} from './unions.model';
 import {Upzillas} from './upzillas.model';
 import {PhoneNumber} from './phone-number.model';
+import {Address} from '../../model/address.model';
 
 @Component({
   selector: 'app-basic',
@@ -56,6 +57,7 @@ export class BasicComponent implements OnInit {
   present_upzilla: string;
   present_union: string;
   present_street_address: string;
+  present_address_id: string;
 
 // address : permanent
   permanent_districts: Districts[] = new Array();
@@ -66,6 +68,7 @@ export class BasicComponent implements OnInit {
   permanent_upzilla: string;
   permanent_uinon: string;
   permanent_street_address: string;
+  permanent_address_id: string;
   // education
   dept: string;
   batch: string;
@@ -117,12 +120,14 @@ export class BasicComponent implements OnInit {
 
       // address : present
       console.log('res : ' + b['address_present']['id']);
+      this.present_address_id = b['address_present']['id'];
       this.present_division = b['address_present']['division'];
       this.present_district = b['address_present']['district'];
       this.present_upzilla = b['address_present']['upzilla'];
       this.present_union = b['address_present']['union_ward'];
       this.present_street_address = b['address_present']['street_address'];
       // address : permanent
+      this.permanent_address_id = b['address_permanent']['id'];
       this.permanent_division = b['address_permanent']['division'];
       this.permanent_district = b['address_permanent']['district'];
       this.permanent_upzilla = b['address_permanent']['upzilla'];
@@ -308,6 +313,29 @@ export class BasicComponent implements OnInit {
 
   divIDPrint(id: string) {
     console.log('divID : ' + id);
+  }
+
+
+  public update_address_permanent() {
+    const addressPermanent = new Address();
+    addressPermanent.$id = this.permanent_address_id;
+    addressPermanent.$division = this.permanent_district;
+    addressPermanent.$district = this.permanent_district;
+    addressPermanent.$upzilla = this.permanent_upzilla;
+    addressPermanent.$union_ward = this.permanent_uinon;
+    addressPermanent.$street_address = this.permanent_street_address;
+    console.log('\n update_address_addressPermanent : ' + addressPermanent);
+  }
+
+  public update_address_present() {
+    const addressPresent = new Address();
+    addressPresent.$id = this.present_address_id;
+    addressPresent.$division = this.present_division;
+    addressPresent.$district = this.present_district;
+    addressPresent.$upzilla = this.present_upzilla;
+    addressPresent.$union_ward = this.present_union;
+    addressPresent.$street_address = this.present_street_address;
+    console.log('\n update_address_present : ' + addressPresent.$id);
   }
 
 
