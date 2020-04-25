@@ -248,6 +248,26 @@ export class BasicService {
       });
     return updateStatus;
   }
+
+  addEmergencyContact(emergencyContact: EmergencyContact) {
+    // var addStatus: string;
+    return this.http.post(
+      'http://127.0.0.1:8080/public/profile/basic/addEmergencyContact', emergencyContact,
+      this.authService.getHeader());
+    // refactor : not working : addStatus, being used before value return there.
+    //   .subscribe(res => {
+    //     console.log(res);
+    //     if (res['STATUS'] === 'OK') {
+    //       console.log('OK');
+    //       addStatus = 'OK';
+    //     }
+    //     if (res['STATUS'] === 'FAIL') {
+    //       addStatus = 'FAIL';
+    //       console.log('FAIL');
+    //     }
+    //   });
+    // return addStatus;
+  }
 }// class
 // working
 // {

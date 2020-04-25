@@ -365,7 +365,7 @@ export class BasicComponent implements OnInit {
   }
 
 
-  save_emergency_contact() {
+  public save_emergency_contact() {
     var emergencyContact = new EmergencyContact();
     // emergencyContact.$id=this.emergencyContactId;
     emergencyContact.$name = this.emergencyContactName;
@@ -374,5 +374,17 @@ export class BasicComponent implements OnInit {
     emergencyContact.$address = this.emergencyContactAddress;
     emergencyContact.$relation = this.emergencyContactRelation;
     console.log(emergencyContact.toString());
+    const status = this.basicService.addEmergencyContact(emergencyContact)
+      .subscribe(res => {
+          if (res['STATUS'] === 'OK') {
+            emergencyContact.$id = res['ID']
+            this.emergencyContacts.push(emergencyContact);
+          }
+          if (res['STATUS'] === 'FAIL') {
+            console.log('FAIL');
+          }
+        }
+      );
+
   }
 } // class
