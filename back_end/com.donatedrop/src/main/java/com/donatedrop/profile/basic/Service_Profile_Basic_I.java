@@ -1,5 +1,6 @@
 package com.donatedrop.profile.basic;
 
+import com.donatedrop.models.Address;
 import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.profile.model.ProfileBasic;
 
@@ -39,6 +40,13 @@ public interface Service_Profile_Basic_I {
      */
     public Map<String, String> addPhoneNumber(PhoneNumber phoneNumber, String userID);
 
+    public Map<String, String> deletePhoneNumber(String phoneNumberID, String userID);
+
+    /**
+     * @param address PK of the Address.
+     * @return Map<String   ,   String> = {"status","OK"} -/- {"status","FAIL"}
+     */
+//    public Map<String, String> updatePresentAddress(Address address, String userID);
 
 
 }

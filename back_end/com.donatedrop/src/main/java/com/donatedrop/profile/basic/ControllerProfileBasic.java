@@ -53,5 +53,10 @@ public class ControllerProfileBasic {
         return service_profile_basic_i.addPhoneNumber(phoneNumber, Utils.getLoggedUserID());
     }
 
+    @PostMapping("deletePhoneNumber")
+    public Map<String, String> deletePhoneNumber(@RequestBody PhoneNumber phoneNumber) {
+        return service_profile_basic_i.deletePhoneNumber(phoneNumber.getId().toString(), Utils.getLoggedUserID());
+    }
+
 
 }

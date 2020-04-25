@@ -227,5 +227,22 @@ public class Test_Controller_Basic extends AbstractTest {
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
 
+    //    String uri = "/public/profile/basic/deletePhoneNumber";
+    @Test
+    public void testDeletePhoneNumber() throws Exception {
+        String uri = "/public/profile/basic/deletePhoneNumber";
+        // Arrange
+        PhoneNumber phoneNumberNew = new PhoneNumber();
+        phoneNumberNew.setId(Long.parseLong("118"));
+        String inputJson = super.mapToJson(phoneNumberNew);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
 
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        Map<String, String> result = super.mapFromJson(content, Map.class);
+        System.out.println(content);
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+    }
 }

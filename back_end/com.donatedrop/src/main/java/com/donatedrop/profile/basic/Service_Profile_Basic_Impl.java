@@ -44,4 +44,11 @@ public class Service_Profile_Basic_Impl implements Service_Profile_Basic_I {
     public Map<String, String> addPhoneNumber(PhoneNumber phoneNumber, String userID) {
         return dao_profile_basic_i.addPhoneNumber(phoneNumber, userID);
     }
+
+    @Override
+    public Map<String, String> deletePhoneNumber(String phoneNumberID, String userID) {
+        return dao_profile_basic_i.deletePhoneNumber(phoneNumberID, userID);
+    }
+
+//    @Override
 }
