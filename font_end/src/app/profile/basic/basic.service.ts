@@ -211,9 +211,9 @@ export class BasicService {
     return this.bas.$name;
   }
 
+  // refactor : single method to update
   update_address_present(address: Address): string {
     var updateStatus: string;
-
     this.http.post(
       'http://127.0.0.1:8080/public/profile/basic/updatePresentAddress', address, this.authService.getHeader())
       .subscribe(res => {
@@ -230,6 +230,23 @@ export class BasicService {
     return updateStatus;
   }
 
+  update_address_permanent(addressPermanent: Address) {
+    var updateStatus: string;
+    this.http.post(
+      'http://127.0.0.1:8080/public/profile/basic/updatePermanentAddress', addressPermanent, this.authService.getHeader())
+      .subscribe(res => {
+        console.log(res);
+        if (res['STATUS'] === 'OK') {
+          console.log('OK');
+          updateStatus = 'OK';
+        }
+        if (res['STATUS'] === 'FAIL') {
+          updateStatus = 'FAIL';
+          console.log('FAIL');
+        }
+      });
+    return updateStatus;
+  }
 }// class
 // working
 // {

@@ -324,8 +324,8 @@ export class BasicComponent implements OnInit {
     addressPermanent.$upzilla = this.permanent_upzilla;
     addressPermanent.$union_ward = this.permanent_uinon;
     addressPermanent.$street_address = this.permanent_street_address;
-    console.log('\n update_address_addressPermanent : ' + addressPermanent);
-    // this.basicService.update_address(addressPermanent).subscribe();
+    const status = this.basicService.update_address_permanent(addressPermanent);
+    console.log('\n update_address_permanent  : ' + status);
   }
 
   public update_address_present() {
