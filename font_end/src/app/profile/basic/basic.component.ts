@@ -46,8 +46,16 @@ export class BasicComponent implements OnInit {
 
   // phone numbers
   phoneNumbers: PhoneNumber[]; // will be inited at first.
-  emergencyContacts: EmergencyContact[] = new Array();
   phoneNumber: string;
+
+  // emergencyContacts
+  emergencyContacts: EmergencyContact[] = new Array();
+  emergencyContactId: string;
+  emergencyContactName: string;
+  emergencyContactPhone: string;
+  emergencyContactEmail: string;
+  emergencyContactAddress: string;
+  emergencyContactRelation: string;
 
 
   divisions: Divisions[] = new Array(); // used for both permanent and present.
@@ -357,4 +365,14 @@ export class BasicComponent implements OnInit {
   }
 
 
+  save_emergency_contact() {
+    var emergencyContact = new EmergencyContact();
+    // emergencyContact.$id=this.emergencyContactId;
+    emergencyContact.$name = this.emergencyContactName;
+    emergencyContact.$phone = this.emergencyContactPhone;
+    emergencyContact.$mail = this.emergencyContactEmail;
+    emergencyContact.$address = this.emergencyContactAddress;
+    emergencyContact.$relation = this.emergencyContactRelation;
+    console.log(emergencyContact.toString());
+  }
 } // class

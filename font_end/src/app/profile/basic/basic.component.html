@@ -513,36 +513,36 @@
       <div class="modal-body">
         <div class="form-group">
           <label>Name</label>
-          <input [(ngModel)]="degree_name" [disabled]='!edit' type="text" class="form-control"
+          <!--<input [(ngModel)]="emergencyContactName" [disabled]='!edit' type="text" class="form-control"-->
+          <input [(ngModel)]="emergencyContactName"  type="text" class="form-control"
                  placeholder="Enter Degree Name... (Max : 512 Character)">
         </div>
         <div class="form-group">
           <label>Phone</label>
-          <input [(ngModel)]="institue_name" [disabled]='!edit' type="text" class="form-control"
+          <input [(ngModel)]="emergencyContactPhone"  type="text" class="form-control"
                  placeholder="Enter Institute Name...... (Max : 512 Character)">
         </div>
         <div class="form-group">
           <label>Relation</label>
-          <input [(ngModel)]="passing_year" [disabled]='!edit' type="text" class="form-control"
+          <input [(ngModel)]="emergencyContactRelation" type="text" class="form-control"
                  placeholder="Enter Passing Year ...... (Max : 512 Character)">
         </div>
         <div class="form-group">
           <label>Email</label>
-          <input [(ngModel)]="result" [disabled]='!edit' type="text" class="form-control"
+          <input [(ngModel)]="emergencyContactEmail" type="text" class="form-control"
                  placeholder="Enter Result...... (Max : 512 Character)">
         </div>
         <div class="form-group">
           <label>Address</label>
-          <!--<input [(ngModel)]="result" [disabled]='!edit' type="text" class="form-control"-->
-          <!--placeholder="Enter Result...... (Max : 512 Character)">-->
-          <textarea class="form-control">
+          <textarea [(ngModel)]="emergencyContactAddress" class="form-control">
 
           </textarea>
         </div>
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="save()">Save</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="save_emergency_contact()">Save
+          </button>
         </div>
       </div>
     </div>
