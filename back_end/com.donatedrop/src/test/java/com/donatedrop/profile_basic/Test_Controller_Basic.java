@@ -245,4 +245,46 @@ public class Test_Controller_Basic extends AbstractTest {
         System.out.println(content);
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
+
+    @Test
+//    @Order(6)
+    public void test6_presentAddressUpdate() throws Exception {
+        String uri = "/public/profile/basic/updatePresentAddress";
+
+        String divNew = "Dhaka";
+        String distNew = "Dhaka";
+        String upzNew = "Gazipur";
+        String unionNew = "Kapasia";
+        String streetAddressNew = "Road No 10";
+
+        Address addressPresentNew = new Address();
+        addressPresentNew.setDivision(divNew);
+        addressPresentNew.setDistrict(distNew);
+        addressPresentNew.setUpzilla(upzNew);
+        addressPresentNew.setUnion_ward(unionNew);
+        addressPresentNew.setStreet_address(streetAddressNew);
+
+        String inputJson = super.mapToJson(addressPresentNew);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        Map<String, String> result = super.mapFromJson(content, Map.class);
+        System.out.println(content);
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+
+//        Map<String, String> result = dao_Profile_Basic_I.updatePresentAddress(addressPresentNew, userID);
+//        System.out.println("\n\n" + result + "\n\n");
+//        Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+//
+//        Address addressPresentSaved = dao_Profile_Basic_I.findOneByUser(userID).getAddress_present();
+//        String divSaved = addressPresentSaved.getDistrict();
+//        String distSaved = addressPresentSaved.getDivision();
+//        Assert.assertEquals(divSaved, divNew);
+//        Assert.assertEquals(distSaved, distNew);
+    }
+
+
 }

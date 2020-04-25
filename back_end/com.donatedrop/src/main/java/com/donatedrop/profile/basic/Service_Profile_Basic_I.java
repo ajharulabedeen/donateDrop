@@ -46,7 +46,7 @@ public interface Service_Profile_Basic_I {
      * @param address PK of the Address.
      * @return Map<String   ,   String> = {"status","OK"} -/- {"status","FAIL"}
      */
-//    public Map<String, String> updatePresentAddress(Address address, String userID);
+    public Map<String, String> updatePresentAddress(Address address, String userID);
 
 
 }
