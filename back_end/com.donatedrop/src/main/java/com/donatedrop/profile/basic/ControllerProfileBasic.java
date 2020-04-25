@@ -6,6 +6,7 @@
 package com.donatedrop.profile.basic;
 
 import com.donatedrop.models.Address;
+import com.donatedrop.profile.model.EmergencyContact;
 import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.util.Utils;
@@ -67,6 +68,11 @@ public class ControllerProfileBasic {
     @PostMapping("updatePermanentAddress")
     public Map<String, String> updatePermanentAddress(@RequestBody Address address) {
         return service_profile_basic_i.updatePermanentAddress(address, Utils.getLoggedUserID());
+    }
+
+    @PostMapping("addEmergencyContact")
+    public Map<String, String> addEmergencyContact(@RequestBody EmergencyContact emergencyContact) {
+        return service_profile_basic_i.addEmergencyContact(emergencyContact, Utils.getLoggedUserID());
     }
 
 }

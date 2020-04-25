@@ -52,10 +52,10 @@ public class Test_Controller_Basic extends AbstractTest {
         super.setUp();
     }
 
-
     /**
      * @throws Exception
-     * @apiNote to test that profile basic will be saved, without full information.
+     * @apiNote to test that profile basic will be saved, without full
+     * information.
      */
     //    String uri = "/public/profile/basic/save";
     @Test
@@ -180,7 +180,6 @@ public class Test_Controller_Basic extends AbstractTest {
         profileBasicNew.setReligion("NoMo NoMo");
         profileBasicNew.setEmail("dim@dimdim.co");
 
-
         String inputJson = super.mapToJson(profileBasicNew);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
                 .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
@@ -207,7 +206,6 @@ public class Test_Controller_Basic extends AbstractTest {
         Assert.assertEquals(profileBasicNew.getReligion(), profileBasicSaved.getReligion());
         Assert.assertEquals(profileBasicNew.getEmail(), profileBasicSaved.getEmail());
     }
-
 
     //    String uri = "/public/profile/basic/addPhoneNumber";
     @Test
@@ -286,7 +284,6 @@ public class Test_Controller_Basic extends AbstractTest {
 //        Assert.assertEquals(distSaved, distNew);
     }
 
-
     @Test
 //    @Order(6)
     public void test7_updatePermanentAddress() throws Exception {
@@ -327,5 +324,30 @@ public class Test_Controller_Basic extends AbstractTest {
         Assert.assertEquals(distSaved, distNew);
     }
 
+    @Test
+//    @Order(10)
+    public void test10_addEmergencyContact() throws Exception {
+        String uri = "/public/profile/basic/addEmergencyContact";
+        //String name, String phone, String mail, String address, String relation
+        EmergencyContact emergencyContact1 = new EmergencyContact(
+                "KKK Bir",
+                "01612-174128",
+                "mahbub@mail.com",
+                "Khulna, Bangladsh",
+                "Uncle"
+        );
+
+        String inputJson = super.mapToJson(emergencyContact1);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        Map<String, String> result = super.mapFromJson(content, Map.class);
+        System.out.println(content);
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+
+    }
 
 }

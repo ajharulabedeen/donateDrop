@@ -1,6 +1,7 @@
 package com.donatedrop.profile.basic;
 
 import com.donatedrop.models.Address;
+import com.donatedrop.profile.model.EmergencyContact;
 import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.profile.model.ProfileBasic;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,5 +59,10 @@ public class Service_Profile_Basic_Impl implements Service_Profile_Basic_I {
     @Override
     public Map<String, String> updatePermanentAddress(Address address, String userID) {
         return dao_profile_basic_i.updatePermanentAddress(address, userID);
+    }
+
+    @Override
+    public Map<String, String> addEmergencyContact(EmergencyContact emergencyContact, String userID) {
+        return dao_profile_basic_i.addEmergencyContact(emergencyContact, userID);
     }
 }

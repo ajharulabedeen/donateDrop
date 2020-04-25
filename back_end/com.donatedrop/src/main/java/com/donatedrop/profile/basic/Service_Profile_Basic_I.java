@@ -1,6 +1,7 @@
 package com.donatedrop.profile.basic;
 
 import com.donatedrop.models.Address;
+import com.donatedrop.profile.model.EmergencyContact;
 import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.profile.model.ProfileBasic;
 
@@ -54,6 +55,7 @@ public interface Service_Profile_Basic_I {
      */
     public Map<String, String> updatePermanentAddress(Address address, String userID);
 
+    public Map<String, String> addEmergencyContact(EmergencyContact emergencyContact, String userID);
 
 
 }
