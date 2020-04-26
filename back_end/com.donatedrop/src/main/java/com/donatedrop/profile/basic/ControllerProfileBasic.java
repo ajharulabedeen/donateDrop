@@ -80,4 +80,9 @@ public class ControllerProfileBasic {
         return service_profile_basic_i.deleteEmergencyContact(emergencyContactID, Utils.getLoggedUserID());
     }
 
+    @PostMapping("updateEmergencyContact")
+    public Map<String, String> updateEmergencyContact(@RequestBody EmergencyContact emergencyContactUpdate) {
+        return service_profile_basic_i.updateEmergencyContact(emergencyContactUpdate, Utils.getLoggedUserID());
+    }
+
 }

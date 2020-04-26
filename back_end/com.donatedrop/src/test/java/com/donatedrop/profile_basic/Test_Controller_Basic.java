@@ -366,7 +366,6 @@ public class Test_Controller_Basic extends AbstractTest {
 //                MockMvcRequestBuilders.post(uri)
 //                        .contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn();
 
-
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
@@ -374,5 +373,47 @@ public class Test_Controller_Basic extends AbstractTest {
         System.out.println(content);
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
+
+
+    @Test
+    @Order(11)
+    public void test11_updateEmergencyContact() throws Exception {
+////        Arrange
+//        String profileBasicID = getID();
+//        String userID = "";
+//        String emergencyContactID = "";
+//        ProfileBasic profileBasic = dao_Profile_Basic_I.findOneWithChild(profileBasicID);
+//        userID = profileBasic.getUserId();
+//        emergencyContactID = profileBasic.getEmergency_contact().get(0).getId().toString();
+
+        //        unatherised deletion
+        EmergencyContact emergencyContact = new EmergencyContact();
+        emergencyContact.setId(Long.parseLong("203"));
+        emergencyContact.setName("Mahbub Gazi");
+        emergencyContact.setPhone("07171000");
+        emergencyContact.setAddress("Dhaka, Dhaka");
+        emergencyContact.setRelation("Mamu");
+        emergencyContact.setMail("mail@mail.com");
+
+        String emergencyContactID = "203";
+        String uri = "/public/profile/basic/updateEmergencyContact";
+//        String inputJson = super.mapToJson(emergencyContact);
+//        MvcResult mvcResult = mvc.perform(
+//                MockMvcRequestBuilders.post(uri)
+//                        .contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+        String inputJson = super.mapToJson(emergencyContact);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+//        MvcResult mvcResult = mvc.perform(
+//                MockMvcRequestBuilders.post(uri)
+//                        .contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        Map<String, String> result = super.mapFromJson(content, Map.class);
+        System.out.println(content);
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+    }
+
 
 }

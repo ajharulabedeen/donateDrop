@@ -317,7 +317,7 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
         userID = profileBasic.getUserId();
         emergencyContactID = profileBasic.getEmergency_contact().get(0).getId().toString();
 
-        //        unatherised deletion
+        //unatherised deletion
         EmergencyContact emergencyContact = new EmergencyContact();
         emergencyContact.setId(Long.parseLong(emergencyContactID));
         emergencyContact.setName("Mahbub Gazi");
@@ -331,7 +331,7 @@ public class Test_Dao_Profile_Basic_Impl_Ordered {
         Assert.assertEquals(StringUtil.FAIL, result.get(StringUtil.STATUS));
         Assert.assertEquals(StringUtil.UNAUTHERIZED, result.get(StringUtil.ERROR));
 
-        //        athurised deletion
+        //athurised deletion
         result = dao_Profile_Basic_I.updateEmergencyContact(emergencyContact, userID);
         System.out.println("\n\n>>" + result + "\n\n");
         Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
