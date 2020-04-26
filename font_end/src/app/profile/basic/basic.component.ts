@@ -377,7 +377,7 @@ export class BasicComponent implements OnInit {
     const status = this.basicService.addEmergencyContact(emergencyContact)
       .subscribe(res => {
           if (res['STATUS'] === 'OK') {
-            emergencyContact.$id = res['ID']
+            emergencyContact.$id = res['ID'];
             this.emergencyContacts.push(emergencyContact);
           }
           if (res['STATUS'] === 'FAIL') {
@@ -386,5 +386,9 @@ export class BasicComponent implements OnInit {
         }
       );
 
+  }
+
+  delete_emergency_contact(id: string) {
+    console.log('delete_emergency_contact ' + id);
   }
 } // class
