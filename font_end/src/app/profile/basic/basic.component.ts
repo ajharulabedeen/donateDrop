@@ -57,6 +57,13 @@ export class BasicComponent implements OnInit {
   emergencyContactAddress: string;
   emergencyContactRelation: string;
 
+  editEmergencyContactId: string;
+  editEmergencyContactName: string;
+  editEmergencyContactPhone: string;
+  editEmergencyContactEmail: string;
+  editEmergencyContactAddress: string;
+  editEmergencyContactRelation: string;
+
 
   divisions: Divisions[] = new Array(); // used for both permanent and present.
   // address : present
@@ -136,6 +143,7 @@ export class BasicComponent implements OnInit {
         emergencyContact.$name = b['emergency_contact'][key]['name'];
         emergencyContact.$phone = b['emergency_contact'][key]['phone'];
         emergencyContact.$address = b['emergency_contact'][key]['address'];
+        emergencyContact.$mail = b['emergency_contact'][key]['mail'];
         emergencyContact.$relation = b['emergency_contact'][key]['relation'];
         console.log('---emergencyContacts : ' + this.emergencyContacts);
         this.emergencyContacts.push(emergencyContact);
@@ -398,5 +406,28 @@ export class BasicComponent implements OnInit {
         console.log('FAIL');
       }
     });
+  }
+
+  public editEmergencyContact(e: EmergencyContact) {
+
+    this.editEmergencyContactId = e.$id;
+    this.editEmergencyContactName = e.$name;
+    this.editEmergencyContactPhone = e.$phone;
+    this.editEmergencyContactEmail = e.$mail;
+    this.editEmergencyContactAddress = e.$address;
+    this.editEmergencyContactRelation = e.$relation;
+
+    // var editEmergencyContact = new EmergencyContact();
+    // editEmergencyContact.$id = this.editEmergencyContactId;
+    // editEmergencyContact.$name = this.editEmergencyContactName;
+    // editEmergencyContact.$phone = this.editEmergencyContactPhone;
+    // editEmergencyContact.$mail = this.editEmergencyContactEmail;
+    // editEmergencyContact.$address = this.editEmergencyContactAddress;
+    // editEmergencyContact.$relation = this.editEmergencyContactRelation;
+
+
+    console.log(emergencyContact.toString());
+
+
   }
 } // class
