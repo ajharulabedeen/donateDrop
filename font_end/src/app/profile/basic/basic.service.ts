@@ -275,6 +275,12 @@ export class BasicService {
       'http://127.0.0.1:8080/public/profile/basic/deleteEmergencyContact?emergencyContactID=' + emergencyContactID,
       this.authService.getHeader());
   }
+
+  editEmergencyContact(editEmergencyContact: EmergencyContact) {
+    return this.http.post(
+      'http://127.0.0.1:8080/public/profile/basic/updateEmergencyContact', editEmergencyContact,
+      this.authService.getHeader());
+  }
 }// class
 // working
 // {

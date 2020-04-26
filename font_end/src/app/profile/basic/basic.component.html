@@ -414,7 +414,7 @@
                         <!-- Edit  -->
                         <td>
                           <button class="btn btn-xs btn-primary" data-toggle="modal"
-                                  data-target="#edit_modal_emegency_contact" (click)="editEmergencyContact(e)">
+                                  data-target="#edit_modal_emegency_contact" (click)="setEmergencyContact(e)">
                             Edit
                           </button>
                         </td>
@@ -573,7 +573,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="save_emergency_contact()">Save
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="editEmergencyContact()">Update
           </button>
         </div>
       </div>

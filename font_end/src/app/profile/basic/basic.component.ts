@@ -408,26 +408,33 @@ export class BasicComponent implements OnInit {
     });
   }
 
-  public editEmergencyContact(e: EmergencyContact) {
-
+  public setEmergencyContact(e: EmergencyContact) {
     this.editEmergencyContactId = e.$id;
     this.editEmergencyContactName = e.$name;
     this.editEmergencyContactPhone = e.$phone;
     this.editEmergencyContactEmail = e.$mail;
     this.editEmergencyContactAddress = e.$address;
     this.editEmergencyContactRelation = e.$relation;
+  }
 
-    // var editEmergencyContact = new EmergencyContact();
-    // editEmergencyContact.$id = this.editEmergencyContactId;
-    // editEmergencyContact.$name = this.editEmergencyContactName;
-    // editEmergencyContact.$phone = this.editEmergencyContactPhone;
-    // editEmergencyContact.$mail = this.editEmergencyContactEmail;
-    // editEmergencyContact.$address = this.editEmergencyContactAddress;
-    // editEmergencyContact.$relation = this.editEmergencyContactRelation;
-
-
-    console.log(emergencyContact.toString());
-
-
+  public editEmergencyContact() {
+    var editEmergencyContact = new EmergencyContact();
+    editEmergencyContact.$id = this.editEmergencyContactId;
+    editEmergencyContact.$name = this.editEmergencyContactName;
+    editEmergencyContact.$phone = this.editEmergencyContactPhone;
+    editEmergencyContact.$mail = this.editEmergencyContactEmail;
+    editEmergencyContact.$address = this.editEmergencyContactAddress;
+    editEmergencyContact.$relation = this.editEmergencyContactRelation;
+    // console.log(emergencyContact.toString());
+    this.basicService.editEmergencyContact(editEmergencyContact).subscribe(res => {
+      if (res['STATUS'] === 'OK') {
+        console.log('emergency Contact Update!');
+        // this.emergencyContacts = this.emergencyContacts.filter(obj => obj !== e);
+        // this.emergencyContacts = this.emergencyContacts.filter(obj => obj !== e);
+      }
+      if (res['STATUS'] === 'FAIL') {
+        console.log('FAIL');
+      }
+    });
   }
 } // class
