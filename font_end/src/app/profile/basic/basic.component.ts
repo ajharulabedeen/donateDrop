@@ -408,6 +408,8 @@ export class BasicComponent implements OnInit {
     });
   }
 
+  eEmergency: EmergencyContact;
+
   public setEmergencyContact(e: EmergencyContact) {
     this.editEmergencyContactId = e.$id;
     this.editEmergencyContactName = e.$name;
@@ -415,22 +417,26 @@ export class BasicComponent implements OnInit {
     this.editEmergencyContactEmail = e.$mail;
     this.editEmergencyContactAddress = e.$address;
     this.editEmergencyContactRelation = e.$relation;
+    console.log(e.toString());
+    this.eEmergency = e;
+    // this.emergencyContacts = this.emergencyContacts.filter(obj => obj !== this.eEmergency);
   }
 
   public editEmergencyContact() {
-    var editEmergencyContact = new EmergencyContact();
-    editEmergencyContact.$id = this.editEmergencyContactId;
-    editEmergencyContact.$name = this.editEmergencyContactName;
-    editEmergencyContact.$phone = this.editEmergencyContactPhone;
-    editEmergencyContact.$mail = this.editEmergencyContactEmail;
-    editEmergencyContact.$address = this.editEmergencyContactAddress;
-    editEmergencyContact.$relation = this.editEmergencyContactRelation;
+    var e = new EmergencyContact();
+    e.$id = this.editEmergencyContactId;
+    e.$name = this.editEmergencyContactName;
+    e.$phone = this.editEmergencyContactPhone;
+    e.$mail = this.editEmergencyContactEmail;
+    e.$address = this.editEmergencyContactAddress;
+    e.$relation = this.editEmergencyContactRelation;
     // console.log(emergencyContact.toString());
-    this.basicService.editEmergencyContact(editEmergencyContact).subscribe(res => {
+    this.basicService.editEmergencyContact(e).subscribe(res => {
       if (res['STATUS'] === 'OK') {
         console.log('emergency Contact Update!');
-        // this.emergencyContacts = this.emergencyContacts.filter(obj => obj !== e);
-        // this.emergencyContacts = this.emergencyContacts.filter(obj => obj !== e);
+        // this.emergencyContacts = this.emergencyContacts.filter(obj => obj !== editEmergencyContact);
+        this.emergencyContacts = this.emergencyContacts.filter(obj => obj !== this.eEmergency);
+        this.emergencyContacts.push(e);
       }
       if (res['STATUS'] === 'FAIL') {
         console.log('FAIL');

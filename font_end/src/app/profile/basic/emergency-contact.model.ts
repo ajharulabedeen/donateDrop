@@ -103,12 +103,20 @@ export class EmergencyContact {
   }
 
   public toString() {
-    console.log('id : ' + this.id);
-    console.log('name : ' + this.name);
-    console.log('address : ' + this.address);
-    console.log('phone : ' + this.phone);
-    console.log('mail : ' + this.mail);
-    console.log('relation : ' + this.relation);
+    return 'id : ' + this.id +
+      'name : ' + this.name +
+      'address : ' + this.address +
+      'phone : ' + this.phone +
+      'mail : ' + this.mail +
+      'relation : ' + this.relation;
+
+
+    // console.log('id : ' + this.id);
+    // console.log('name : ' + this.name);
+    // console.log('address : ' + this.address);
+    // console.log('phone : ' + this.phone);
+    // console.log('mail : ' + this.mail);
+    // console.log('relation : ' + this.relation);
   }
 
 
