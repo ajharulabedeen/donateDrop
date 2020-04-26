@@ -25,6 +25,7 @@
     <class>com.donatedrop.profile.model.ProfileJobs</class>
     <class>com.donatedrop.profile.model.ProfileEducation</class>
     <class>com.donatedrop.models.Address</class>
+    <class>com.donatedrop.history.History</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/donate_drop?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
