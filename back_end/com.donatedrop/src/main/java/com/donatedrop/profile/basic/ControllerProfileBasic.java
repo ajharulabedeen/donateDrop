@@ -75,4 +75,9 @@ public class ControllerProfileBasic {
         return service_profile_basic_i.addEmergencyContact(emergencyContact, Utils.getLoggedUserID());
     }
 
+    @PostMapping("deleteEmergencyContact")
+    public Map<String, String> deleteEmergencyContact(String emergencyContactID) {
+        return service_profile_basic_i.deleteEmergencyContact(emergencyContactID, Utils.getLoggedUserID());
+    }
+
 }

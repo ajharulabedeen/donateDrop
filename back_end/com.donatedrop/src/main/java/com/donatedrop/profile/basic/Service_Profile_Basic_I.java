@@ -57,5 +57,6 @@ public interface Service_Profile_Basic_I {
 
     public Map<String, String> addEmergencyContact(EmergencyContact emergencyContact, String userID);
 
+    public Map<String, String> deleteEmergencyContact(String emergencyContactID, String userID);
 
 }

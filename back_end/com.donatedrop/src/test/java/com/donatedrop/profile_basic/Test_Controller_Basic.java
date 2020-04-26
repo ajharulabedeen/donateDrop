@@ -350,4 +350,29 @@ public class Test_Controller_Basic extends AbstractTest {
 
     }
 
+
+    @Test
+//    @Order(12)
+    public void test12_deleteEmergencyContact() throws Exception {
+        String emergencyContactID = "200";
+        String uri = "/public/profile/basic/deleteEmergencyContact?emergencyContactID=" + emergencyContactID;
+
+//        String inputJson = super.mapToJson("");
+        MvcResult mvcResult = mvc.perform(
+                MockMvcRequestBuilders.post(uri)
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+
+//        MvcResult mvcResult = mvc.perform(
+//                MockMvcRequestBuilders.post(uri)
+//                        .contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+
+
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        Map<String, String> result = super.mapFromJson(content, Map.class);
+        System.out.println(content);
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+    }
+
 }

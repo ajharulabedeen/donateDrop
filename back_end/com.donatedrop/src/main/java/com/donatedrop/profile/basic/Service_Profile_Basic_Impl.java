@@ -65,4 +65,9 @@ public class Service_Profile_Basic_Impl implements Service_Profile_Basic_I {
     public Map<String, String> addEmergencyContact(EmergencyContact emergencyContact, String userID) {
         return dao_profile_basic_i.addEmergencyContact(emergencyContact, userID);
     }
+
+    @Override
+    public Map<String, String> deleteEmergencyContact(String emergencyContactID, String userID) {
+        return dao_profile_basic_i.deleteEmergencyContact(emergencyContactID, userID);
+    }
 }
