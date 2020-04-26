@@ -385,10 +385,18 @@ export class BasicComponent implements OnInit {
           }
         }
       );
-
   }
 
-  delete_emergency_contact(id: string) {
-    console.log('delete_emergency_contact ' + id);
+  public deleteEmergencyContact(e: EmergencyContact) {
+    // console.log('delete_emergency_contact ' + id);
+    this.basicService.deleteEmergencyContact(e.$id).subscribe(res => {
+      if (res['STATUS'] === 'OK') {
+        console.log('emergency Contact delete!');
+        this.emergencyContacts = this.emergencyContacts.filter(obj => obj !== e);
+      }
+      if (res['STATUS'] === 'FAIL') {
+        console.log('FAIL');
+      }
+    });
   }
 } // class

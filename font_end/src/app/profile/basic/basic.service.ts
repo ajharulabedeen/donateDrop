@@ -269,6 +269,12 @@ export class BasicService {
     //   });
     // return addStatus;
   }
+
+  public deleteEmergencyContact(emergencyContactID: string) {
+    return this.http.post(
+      'http://127.0.0.1:8080/public/profile/basic/deleteEmergencyContact?emergencyContactID=' + emergencyContactID,
+      this.authService.getHeader());
+  }
 }// class
 // working
 // {
