@@ -60,6 +60,20 @@ public class History implements Serializable {
     @JoinColumn(name = "profile_id")
     private ProfileBasic profileBasic;
 
+    public History() {
+    }
+
+    public History(Long id, String userId, String date, String location, String patientDescription, String refferedBy, String note, ProfileBasic profileBasic) {
+        this.id = id;
+        this.userId = userId;
+        this.date = date;
+        this.location = location;
+        this.patientDescription = patientDescription;
+        this.refferedBy = refferedBy;
+        this.note = note;
+        this.profileBasic = profileBasic;
+    }
+
     public Long getId() {
         return id;
     }
@@ -68,6 +82,64 @@ public class History implements Serializable {
         this.id = id;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getPatientDescription() {
+        return patientDescription;
+    }
+
+    public void setPatientDescription(String patientDescription) {
+        this.patientDescription = patientDescription;
+    }
+
+    public String getRefferedBy() {
+        return refferedBy;
+    }
+
+    public void setRefferedBy(String refferedBy) {
+        this.refferedBy = refferedBy;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public ProfileBasic getProfileBasic() {
+        return profileBasic;
+    }
+
+    public void setProfileBasic(ProfileBasic profileBasic) {
+        this.profileBasic = profileBasic;
+    }
+
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
