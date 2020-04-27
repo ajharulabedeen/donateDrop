@@ -106,7 +106,7 @@ public class Test_Dao_History_Impl {
         history.setId(Long.parseLong(historyID));
         history.setUserId(userID);//will be set from service.
         history.setDate(DateUtil.getDate().toString());
-        history.setLocation("Karakoram, Shimla.");
+        history.setLocation("Karakoram, Shimla, India!");
         history.setPatientDescription("Kidney/Heart");
         history.setRefferedBy("Mobile call!");
         history.setNote("Went to at night.");
@@ -121,6 +121,16 @@ public class Test_Dao_History_Impl {
         result = dao_history_i.update(history, userID);
         System.out.println("\n>>" + result + "\n");
         Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        History historySaved = dao_history_i.findOne(historyID);
+        // date test will be failed, due to second misMatch
+//        assert (historySaved.getDate().toString() == history.getDate().toString());
+        System.out.println(historySaved.getLocation().equals(history.getLocation())); // true
+        System.out.println(historySaved.getLocation() == history.getLocation()); // false
+
+        assert (historySaved.getLocation().equals(history.getLocation()));
+        assert (historySaved.getPatientDescription().equals(history.getPatientDescription()));
+        assert (historySaved.getRefferedBy().equals(history.getRefferedBy()));
+        assert (historySaved.getNote().equals(history.getNote()));
     }
 
 
