@@ -2,6 +2,7 @@ package com.donatedrop.history;
 
 import com.donatedrop.profile.model.EmergencyContact;
 
+import java.util.List;
 import java.util.Map;
 
 public interface Service_History_I {
@@ -21,5 +22,10 @@ public interface Service_History_I {
     public History findOne(String historyID);
 
     public Map<String, String> delete(String historyID, String userID);
+
+    public int getTotalCount(String userID);
+
+    public List<History> getAllHistory(String userID, int start, int perPage);
+
 
 }

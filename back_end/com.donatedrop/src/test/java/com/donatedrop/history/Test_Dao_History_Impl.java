@@ -152,7 +152,7 @@ public class Test_Dao_History_Impl {
 
     @Test
     public void testGetAllHistory() {
-        List<History> historyList = dao_history_i.getAllHistory("15", 1, 105);
+        List<History> historyList = dao_history_i.getAllHistory("15", 1, 10);
         historyList.forEach(h -> System.out.println(h.toString()));
     }
 

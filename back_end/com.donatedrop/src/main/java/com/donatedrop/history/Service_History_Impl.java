@@ -9,7 +9,9 @@ import org.springframework.stereotype.Component;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import javax.websocket.OnError;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -36,10 +38,21 @@ public class Service_History_Impl implements Service_History_I {
     public History findOne(String historyID) {
         return dao_History_I.findOne(historyID);
     }
-    
+
     @Override
     public Map<String, String> delete(String historyID, String userID) {
         return dao_History_I.delete(historyID, userID);
     }
+
+    @Override
+    public int getTotalCount(String userID) {
+        return dao_History_I.getTotalCount(userID);
+    }
+
+    @Override
+    public List<History> getAllHistory(String userID, int start, int perPage) {
+        return dao_History_I.getAllHistory(userID, start, perPage);
+    }
+
 
 }// class
