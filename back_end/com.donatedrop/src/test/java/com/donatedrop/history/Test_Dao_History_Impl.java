@@ -75,6 +75,17 @@ public class Test_Dao_History_Impl {
 
     @Test
     @Order(2)
+    public void testFindOne() {
+        String historyID = getID();
+        History history = dao_history_i.findOne(historyID);
+//        System.out.println(history.toString());//error : parent init problem
+        System.out.println(history.getLocation());
+        assert (history != null);
+    }
+
+
+    @Test
+    @Order(3)
     public void testUpdate() {
         Map<String, String> result = new HashMap<>();
 
@@ -101,7 +112,6 @@ public class Test_Dao_History_Impl {
         result = dao_history_i.update(history, userID);
         System.out.println("\n>>" + result + "\n");
         Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
-
     }
 
 

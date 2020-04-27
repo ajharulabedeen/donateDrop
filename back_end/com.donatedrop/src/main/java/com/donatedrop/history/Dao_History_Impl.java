@@ -59,5 +59,16 @@ public class Dao_History_Impl implements Dao_History_I {
         return result;
     }
 
+    @Override
+    public History findOne(String historyID) {
+        History history = null;
+        try {
+            history = entityManager.find(History.class, new Long(historyID));
+        } catch (Exception e) {
+            System.out.println("Fail : findOne History!");
+        }
+        return history;
+    }
+
 
 }// class

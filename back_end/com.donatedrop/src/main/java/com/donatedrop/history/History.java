@@ -138,8 +138,7 @@ public class History implements Serializable {
         this.profileBasic = profileBasic;
     }
 
-    
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -162,7 +161,15 @@ public class History implements Serializable {
 
     @Override
     public String toString() {
-        return "com.donatedrop.history.History[ id=" + id + " ]";
+        return "History{" +
+                "id=" + id +
+                ", userId='" + userId + '\'' +
+                ", date='" + date + '\'' +
+                ", location='" + location + '\'' +
+                ", patientDescription='" + patientDescription + '\'' +
+                ", refferedBy='" + refferedBy + '\'' +
+                ", note='" + note + '\'' +
+                ", profileBasic=" + profileBasic +
+                '}';
     }
-
 }

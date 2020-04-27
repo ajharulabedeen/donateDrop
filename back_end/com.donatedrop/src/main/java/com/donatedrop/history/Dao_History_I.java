@@ -15,4 +15,10 @@ public interface Dao_History_I {
 
     public Map<String, String> update(History history, String userID);
 
+    /**
+     * @return
+     * @apiNote parent will not be back
+     */
+    public History findOne(String historyID);
+
 }
