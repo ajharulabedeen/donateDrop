@@ -134,6 +134,28 @@ public class Test_Dao_History_Impl {
     }
 
 
+    @Test
+    @Order(5)
+    public void testDelete() {
+        Map<String, String> result = new HashMap<>();
+        String historyID = getID();
+        String userID = Utils.getLoggedUserID();
+
+        //        unautherised
+        result = dao_history_i.delete(historyID, userID + 1);
+        System.out.println("\n>>" + result + "\n");
+        Assert.assertEquals(StringUtil.FAIL, result.get(StringUtil.STATUS));
+        Assert.assertEquals(StringUtil.UNAUTHERIZED, result.get(StringUtil.ERROR));
+
+        //        autherised
+        result = dao_history_i.delete(historyID, userID);
+        System.out.println("\n>>" + result + "\n");
+        Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+
+        assert (dao_history_i.findOne(historyID) == null);
+    }
+
+
 //    Helpers :
 
     /**

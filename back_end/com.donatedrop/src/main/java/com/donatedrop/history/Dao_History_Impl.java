@@ -87,5 +87,26 @@ public class Dao_History_Impl implements Dao_History_I {
         return history;
     }
 
+    @Override
+    public Map<String, String> delete(String historyID, String userID) {
+        Map<String, String> result = new HashMap<>();
+        try {
+            History history = entityManager.find(History.class,
+                    Long.parseLong(historyID));
+            //to protect one user delete, another users information.
+            if (history.getProfileBasic().getUserId().toString().equals(userID)) {
+                entityManager.remove(history);
+                result.put(StringUtil.STATUS, StringUtil.OK);
+            } else {
+                result.put(StringUtil.STATUS, StringUtil.FAIL);
+                result.put(StringUtil.ERROR, StringUtil.UNAUTHERIZED);
+            }
+        } catch (Exception e) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+            result.put(StringUtil.ERROR, StringUtil.NULL);
+        }
+        return result;
+    }
+
 
 }// class

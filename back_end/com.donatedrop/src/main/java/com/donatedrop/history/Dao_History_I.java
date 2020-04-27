@@ -27,4 +27,6 @@ public interface Dao_History_I {
      */
     public History findOneWithParent(String historyID);
 
+    public Map<String, String> delete(String historyID, String userID);
+
 }
