@@ -45,7 +45,7 @@ public class Test_Dao_History_Impl {
      */
     @Test
     @Order(1)
-    public void test1_save() {
+    public void testSave() {
         Map<String, String> status = null;
         String userID = Utils.getLoggedUserID();
         String id = "";
@@ -132,7 +132,6 @@ public class Test_Dao_History_Impl {
         assert (historySaved.getRefferedBy().equals(history.getRefferedBy()));
         assert (historySaved.getNote().equals(history.getNote()));
     }
-
 
     @Test
     @Order(5)
