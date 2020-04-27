@@ -70,5 +70,22 @@ public class Dao_History_Impl implements Dao_History_I {
         return history;
     }
 
+    @Override
+    public History findOneWithParent(String historyID) {
+        History history = null;
+        try {
+            history = entityManager.find(History.class, new Long(historyID));
+            //to init profileBasic
+            history.getProfileBasic();
+            history.getProfileBasic().getPhone_number().forEach(p -> {
+            });
+            history.getProfileBasic().getEmergency_contact().forEach(p -> {
+            });
+        } catch (Exception e) {
+            System.out.println("Fail : findOne History!");
+        }
+        return history;
+    }
+
 
 }// class

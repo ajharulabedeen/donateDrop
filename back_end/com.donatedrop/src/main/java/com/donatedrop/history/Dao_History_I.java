@@ -21,4 +21,10 @@ public interface Dao_History_I {
      */
     public History findOne(String historyID);
 
+    /**
+     * @return
+     * @apiNote with parent
+     */
+    public History findOneWithParent(String historyID);
+
 }
