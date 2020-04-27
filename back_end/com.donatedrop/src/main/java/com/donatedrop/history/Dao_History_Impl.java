@@ -97,4 +97,10 @@ public class Dao_History_Impl implements Dao_History_I {
                 .setMaxResults(perPage).getResultList();
     }
 
+    @Override
+    public int getTotalCount(String userID) {
+        String query = "SELECT * FROM `history` WHERE user_id =" + userID;
+        return entityManager.createNativeQuery(query).getResultList().size();
+    }
+
 }// class

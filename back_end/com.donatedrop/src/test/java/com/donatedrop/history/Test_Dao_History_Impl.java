@@ -156,7 +156,12 @@ public class Test_Dao_History_Impl {
         historyList.forEach(h -> System.out.println(h.toString()));
     }
 
-//    Helpers :
+    @Test
+    public void testGetTotalCount() {
+        System.out.println("\nTotal : \n" + dao_history_i.getTotalCount("15"));
+    }
+
+    //    Helpers :
     //    @Test
     @Transactional
     public void saveManyHistory() {
@@ -176,6 +181,7 @@ public class Test_Dao_History_Impl {
             System.out.println(history.getId());
         }
     }
+
 
     /**
      * will store the last save id, that can be used for later for other method.
