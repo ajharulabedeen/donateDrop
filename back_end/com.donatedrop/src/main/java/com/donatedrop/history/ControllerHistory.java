@@ -9,11 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- *
  * @author G7
  */
 @RestController
-@RequestMapping("/url")
+@RequestMapping("/public/user/history")
 public class ControllerHistory {
-    
+
 }

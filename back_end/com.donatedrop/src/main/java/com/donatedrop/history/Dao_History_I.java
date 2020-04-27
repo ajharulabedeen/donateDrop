@@ -2,6 +2,7 @@ package com.donatedrop.history;
 
 import com.donatedrop.profile.model.EmergencyContact;
 
+import java.util.List;
 import java.util.Map;
 
 public interface Dao_History_I {
@@ -20,7 +21,10 @@ public interface Dao_History_I {
      * @apiNote parent will not be back
      */
     public History findOne(String historyID);
-    
+
     public Map<String, String> delete(String historyID, String userID);
+
+    public List<History> getAllHistory(String userID, int start, int perPage);
+
 
 }

@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -86,6 +87,14 @@ public class Dao_History_Impl implements Dao_History_I {
             result.put(StringUtil.ERROR, StringUtil.NULL);
         }
         return result;
+    }
+
+    @Override
+    public List<History> getAllHistory(String userID, int start, int perPage) {
+        String query = "SELECT * FROM `history` WHERE user_id =" + userID;
+        return entityManager.createNativeQuery(query, History.class)
+                .setFirstResult(start)
+                .setMaxResults(perPage).getResultList();
     }
 
 }// class

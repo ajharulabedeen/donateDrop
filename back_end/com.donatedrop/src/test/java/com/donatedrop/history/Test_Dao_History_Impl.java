@@ -1,6 +1,5 @@
 package com.donatedrop.history;
 
-
 import com.donatedrop.models.Address;
 import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
 import com.donatedrop.profile.model.EmergencyContact;
@@ -17,6 +16,10 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+import javax.xml.transform.sax.SAXSource;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -26,12 +29,15 @@ import java.util.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest
 public class Test_Dao_History_Impl {
+
     @Autowired
     Dao_History_I dao_history_i;
 
     @Autowired
     Dao_Profile_Basic_I dao_profile_basic_i;
 
+    @PersistenceContext
+    EntityManager entityManager;
 
     @Test
     @Order(-1)
@@ -144,8 +150,32 @@ public class Test_Dao_History_Impl {
         assert (dao_history_i.findOne(historyID) == null);
     }
 
+    @Test
+    public void testGetAllHistory() {
+        List<History> historyList = dao_history_i.getAllHistory("15", 1, 105);
+        historyList.forEach(h -> System.out.println(h.toString()));
+    }
 
 //    Helpers :
+    //    @Test
+    @Transactional
+    public void saveManyHistory() {
+        Map<String, String> status = new HashMap<>();
+        String userID = "16";
+        for (int x = 0; x < 100; x++) {
+            System.out.println("\nHistory Save\n");
+            History history = new History();
+            history.setUserId(userID);//will be set from service.
+            history.setDate(DateUtil.getDate().toString());
+            history.setLocation("Karakom,WestPoint, Dhaka.");
+            history.setPatientDescription("Kidney");
+            history.setRefferedBy("Mobile");
+            history.setNote("Went to at night.");
+            history.setUserId(userID);
+            entityManager.persist(history);
+            System.out.println(history.getId());
+        }
+    }
 
     /**
      * will store the last save id, that can be used for later for other method.
