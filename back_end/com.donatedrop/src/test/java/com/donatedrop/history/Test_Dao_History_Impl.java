@@ -73,6 +73,37 @@ public class Test_Dao_History_Impl {
         Assert.assertEquals(StringUtil.OK, status.get(StringUtil.STATUS));
     }
 
+    @Test
+    @Order(2)
+    public void testUpdate() {
+        Map<String, String> result = new HashMap<>();
+
+        String historyID = getID();
+        String userID = Utils.getLoggedUserID();
+
+        System.out.println("\nHistory Update\n");
+        History history = new History();
+        history.setId(Long.parseLong(historyID));
+        history.setUserId(userID);//will be set from service.
+        history.setDate(DateUtil.getDate().toString());
+        history.setLocation("Karakoram, Shimla.");
+        history.setPatientDescription("Kidney/Heart");
+        history.setRefferedBy("Mobile call!");
+        history.setNote("Went to at night.");
+
+        //unathurised update
+        result = dao_history_i.update(history, userID + 1);//fail test
+        System.out.println("\n>>" + result + "\n");
+        Assert.assertEquals(StringUtil.FAIL, result.get(StringUtil.STATUS));
+        Assert.assertEquals(StringUtil.UNAUTHERIZED, result.get(StringUtil.ERROR));
+
+        //athurised update
+        result = dao_history_i.update(history, userID);
+        System.out.println("\n>>" + result + "\n");
+        Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+
+    }
+
 
 //    Helpers :
 

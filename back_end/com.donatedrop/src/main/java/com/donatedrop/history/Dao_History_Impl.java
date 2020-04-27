@@ -1,6 +1,7 @@
 package com.donatedrop.history;
 
 import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
+import com.donatedrop.profile.model.EmergencyContact;
 import com.donatedrop.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -36,5 +37,27 @@ public class Dao_History_Impl implements Dao_History_I {
         return status;
     }
 
+    @Override
+    public Map<String, String> update(History historyUpdate, String userID) {
+        Map<String, String> result = new HashMap<>();
+        try {
+            History historyOld = entityManager.find(History.class,
+                    Long.parseLong(historyUpdate.getId().toString()));
+            //to protect one user update, another users information.
+            if (historyOld.getProfileBasic().getUserId().toString().equals(userID)) {
+                historyUpdate.setProfileBasic(dao_profile_basic_i.getProfileBasicByUserID(userID));
+                entityManager.merge(historyUpdate);
+                result.put(StringUtil.STATUS, StringUtil.OK);
+            } else {
+                result.put(StringUtil.STATUS, StringUtil.FAIL);
+                result.put(StringUtil.ERROR, StringUtil.UNAUTHERIZED);
+            }
+        } catch (Exception e) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+            result.put(StringUtil.ERROR, StringUtil.NULL);
+        }
+        return result;
+    }
 
-}
+
+}// class
