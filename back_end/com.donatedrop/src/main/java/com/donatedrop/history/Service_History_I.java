@@ -16,16 +16,9 @@ public interface Service_History_I {
     public Map<String, String> update(History history, String userID);
 
     /**
-     * @return
-     * @apiNote parent will not be back
+     * @return @apiNote parent will not be back
      */
     public History findOne(String historyID);
-
-    /**
-     * @return
-     * @apiNote with parent
-     */
-    public History findOneWithParent(String historyID);
 
     public Map<String, String> delete(String historyID, String userID);
 

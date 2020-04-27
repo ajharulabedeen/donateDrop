@@ -36,12 +36,7 @@ public class Service_History_Impl implements Service_History_I {
     public History findOne(String historyID) {
         return dao_History_I.findOne(historyID);
     }
-
-    @Override
-    public History findOneWithParent(String historyID) {
-        return dao_History_I.findOneWithParent(historyID);
-    }
-
+    
     @Override
     public Map<String, String> delete(String historyID, String userID) {
         return dao_History_I.delete(historyID, userID);

@@ -55,10 +55,11 @@ public class History implements Serializable {
     @Column(name = "note")
     private String note;
 
-    @JsonBackReference
-    @ManyToOne
-    @JoinColumn(name = "profile_id")
-    private ProfileBasic profileBasic;
+//    Note : Will make, in time query cause profileBasic is not required.
+//    @JsonBackReference
+//    @ManyToOne
+//    @JoinColumn(name = "profile_id")
+//    private ProfileBasic profileBasic;
 
     public History() {
     }
@@ -71,7 +72,7 @@ public class History implements Serializable {
         this.patientDescription = patientDescription;
         this.refferedBy = refferedBy;
         this.note = note;
-        this.profileBasic = profileBasic;
+//        this.profileBasic = profileBasic;
     }
 
     public Long getId() {
@@ -130,13 +131,13 @@ public class History implements Serializable {
         this.note = note;
     }
 
-    public ProfileBasic getProfileBasic() {
-        return profileBasic;
-    }
-
-    public void setProfileBasic(ProfileBasic profileBasic) {
-        this.profileBasic = profileBasic;
-    }
+//    public ProfileBasic getProfileBasic() {
+//        return profileBasic;
+//    }
+//
+//    public void setProfileBasic(ProfileBasic profileBasic) {
+//        this.profileBasic = profileBasic;
+//    }
 
 
     @Override
@@ -169,7 +170,6 @@ public class History implements Serializable {
                 ", patientDescription='" + patientDescription + '\'' +
                 ", refferedBy='" + refferedBy + '\'' +
                 ", note='" + note + '\'' +
-                ", profileBasic=" + profileBasic +
                 '}';
     }
 }

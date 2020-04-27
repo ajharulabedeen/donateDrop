@@ -83,16 +83,6 @@ public class Test_Dao_History_Impl {
         assert (history != null);
     }
 
-
-    @Test
-    @Order(3)
-    public void testFindOneWithParent() {
-        String historyID = getID();
-        History history = dao_history_i.findOneWithParent(historyID);
-        System.out.println("\n\n" + history.toString());//error : parent init problem
-        assert (history != null);
-    }
-
     @Test
     @Order(4)
     public void testUpdate() {

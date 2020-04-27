@@ -26,8 +26,6 @@ public class Dao_History_Impl implements Dao_History_I {
     public Map<String, String> save(History history) {
         Map<String, String> status = new HashMap<>();
         try {
-            history.setProfileBasic(dao_profile_basic_i
-                    .getProfileBasicByUserID(history.getUserId()));
             entityManager.persist(history);
             status.put(StringUtil.STATUS, StringUtil.OK);
             status.put(StringUtil.ID, history.getId().toString());
@@ -44,8 +42,7 @@ public class Dao_History_Impl implements Dao_History_I {
             History historyOld = entityManager.find(History.class,
                     Long.parseLong(historyUpdate.getId().toString()));
             //to protect one user update, another users information.
-            if (historyOld.getProfileBasic().getUserId().toString().equals(userID)) {
-                historyUpdate.setProfileBasic(dao_profile_basic_i.getProfileBasicByUserID(userID));
+            if (historyOld.getUserId().toString().equals(userID)) {
                 entityManager.merge(historyUpdate);
                 result.put(StringUtil.STATUS, StringUtil.OK);
             } else {
@@ -71,30 +68,13 @@ public class Dao_History_Impl implements Dao_History_I {
     }
 
     @Override
-    public History findOneWithParent(String historyID) {
-        History history = null;
-        try {
-            history = entityManager.find(History.class, new Long(historyID));
-            //to init profileBasic
-            history.getProfileBasic();
-            history.getProfileBasic().getPhone_number().forEach(p -> {
-            });
-            history.getProfileBasic().getEmergency_contact().forEach(p -> {
-            });
-        } catch (Exception e) {
-            System.out.println("Fail : findOne History!");
-        }
-        return history;
-    }
-
-    @Override
     public Map<String, String> delete(String historyID, String userID) {
         Map<String, String> result = new HashMap<>();
         try {
             History history = entityManager.find(History.class,
                     Long.parseLong(historyID));
             //to protect one user delete, another users information.
-            if (history.getProfileBasic().getUserId().toString().equals(userID)) {
+            if (history.getUserId().toString().equals(userID)) {
                 entityManager.remove(history);
                 result.put(StringUtil.STATUS, StringUtil.OK);
             } else {
@@ -107,6 +87,5 @@ public class Dao_History_Impl implements Dao_History_I {
         }
         return result;
     }
-
 
 }// class
