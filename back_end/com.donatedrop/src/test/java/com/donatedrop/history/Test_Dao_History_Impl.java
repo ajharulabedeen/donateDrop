@@ -47,27 +47,25 @@ public class Test_Dao_History_Impl {
     @Order(1)
     public void test1_save() {
         Map<String, String> status = null;
-//
+        String userID = Utils.getLoggedUserID();
+        String id = "";
         // Arrange
         try {
             System.out.println("\nHistory Save\n");
             History history = new History();
-            history.setUserId(Utils.getLoggedUserID());//will be set from service.
+            history.setUserId(userID);//will be set from service.
             history.setDate(DateUtil.getDate().toString());
             history.setLocation("Karakom,WestPoint, Dhaka.");
             history.setPatientDescription("Kidney");
             history.setRefferedBy("Mobile");
             history.setNote("Went to at night.");
-            history.setProfileBasic(dao_profile_basic_i.findOne());//will be set from service
-
-
+//            history.setProfileBasic(dao_profile_basic_i.getProfileBasicByUserID(userID));//will be set from service
 //        ACT
-//            status = dao_Profile_Basic_I.save(profileBasic);
-//            System.out.println(status);
-//            id = status.get(StringUtil.ID);
-//            System.out.println("\nID : " + id);
-//            storeID(id);
-//            System.out.println("Count : " + count++);
+            status = dao_history_i.save(history);
+            System.out.println(status);
+            id = status.get(StringUtil.ID);
+            System.out.println("\nID : " + id);
+            storeID(id);
         } catch (Exception e) {
             storeID(id);
         }
