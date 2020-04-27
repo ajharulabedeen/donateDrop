@@ -29,6 +29,10 @@ public class Test_Dao_History_Impl {
     @Autowired
     Dao_History_I dao_history_i;
 
+    @Autowired
+    Dao_Profile_Basic_I dao_profile_basic_i;
+
+
     @Test
     @Order(-1)
     public void test0_DaoObject() {
@@ -42,52 +46,33 @@ public class Test_Dao_History_Impl {
     @Test
     @Order(1)
     public void test1_save() {
-//        Map<String, String> status = null;
+        Map<String, String> status = null;
 //
-//        // Arrange
-//        try {
-//            System.out.println("\nProfile Basic Dao Test!\n");
-//            ProfileBasic profileBasic = new ProfileBasic();
-//            profileBasic.setName("Khan Ajharul Abedeen");
-//
-//            Address address_present = new Address("Khulna", "Khulna", "Dumuria", "Rudghora", "Mikshimil East");
-//            profileBasic.setAddress_present(address_present);
-//            Address address_permanet = new Address("Khulna", "Khulna", "Dumuria", "Rudghora", "Mikshimil East");
-//            profileBasic.setAddress_permanent(address_permanet);
-//
-//            List<EmergencyContact> emergencyContacts = new ArrayList<>();
-//            EmergencyContact emergencyContact1 = new EmergencyContact("Mahbub", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle");
-//            EmergencyContact emergencyContact2 = new EmergencyContact("Prof. Altaf", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle");
-//            emergencyContacts.add(emergencyContact1);
-//            emergencyContacts.add(emergencyContact2);
-//            profileBasic.setEmergency_contact(emergencyContacts);
-//
-//            List<PhoneNumber> phoneNumbers = Arrays.asList(
-//                    new PhoneNumber("01717034420"),
-//                    new PhoneNumber("01717034420"),
-//                    new PhoneNumber("01712034420")
-//            );
-//            profileBasic.setPhone_number(phoneNumbers);
-//            profileBasic.setGender("Male");
-//            profileBasic.setBlood_Group("A+");
-//            profileBasic.setAvailable("0");
-//            profileBasic.setMaritalStatus("NO");
-//            profileBasic.setProfession("Freelance");
-//            profileBasic.setCare_of("Khan Atiar Rahman.");
-//            profileBasic.setUserId(Utils.getLoggedUserID());
-//
-////        ACT
+        // Arrange
+        try {
+            System.out.println("\nHistory Save\n");
+            History history = new History();
+            history.setUserId(Utils.getLoggedUserID());//will be set from service.
+            history.setDate(DateUtil.getDate().toString());
+            history.setLocation("Karakom,WestPoint, Dhaka.");
+            history.setPatientDescription("Kidney");
+            history.setRefferedBy("Mobile");
+            history.setNote("Went to at night.");
+            history.setProfileBasic(dao_profile_basic_i.findOne());//will be set from service
+
+
+//        ACT
 //            status = dao_Profile_Basic_I.save(profileBasic);
 //            System.out.println(status);
 //            id = status.get(StringUtil.ID);
 //            System.out.println("\nID : " + id);
 //            storeID(id);
 //            System.out.println("Count : " + count++);
-//        } catch (Exception e) {
-//            storeID(id);
-//        }
+        } catch (Exception e) {
+            storeID(id);
+        }
 ////        Assert
-//        Assert.assertEquals(StringUtil.OK, status.get(StringUtil.STATUS));
+        Assert.assertEquals(StringUtil.OK, status.get(StringUtil.STATUS));
     }
 
 
@@ -103,7 +88,7 @@ public class Test_Dao_History_Impl {
      */
     public void storeID(String id) {
         try {
-            FileWriter myWriter = new FileWriter("filename.txt");
+            FileWriter myWriter = new FileWriter("history.txt");
             myWriter.write(id);
             myWriter.close();
             System.out.println("Successfully wrote to the file.");
@@ -116,7 +101,7 @@ public class Test_Dao_History_Impl {
     public String getID() {
         String id = "";
         try {
-            File myObj = new File("filename.txt");
+            File myObj = new File("history.txt");
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();

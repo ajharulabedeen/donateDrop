@@ -328,6 +328,7 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         return result;
     }
 
+    @Override
     public ProfileBasic getProfileBasicByUserID(String userID) {
         String sql = "SELECT *FROM profilebasic WHERE user_id =" + userID;
         List<ProfileBasic> list = entityManager

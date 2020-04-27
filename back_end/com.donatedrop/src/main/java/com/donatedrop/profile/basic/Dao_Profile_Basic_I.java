@@ -65,13 +65,13 @@ public interface Dao_Profile_Basic_I {
 
     /**
      * @param address PK of the Address.
-     * @return Map<String , String> = {"status","OK"} -/- {"status","FAIL"}
+     * @return Map<String       ,       String> = {"status","OK"} -/- {"status","FAIL"}
      */
     public Map<String, String> updatePresentAddress(Address address, String userID);
 
     /**
      * @param address PK of the Address.
-     * @return Map<String , String> = {"status","OK"} -/- {"status","FAIL"}
+     * @return Map<String       ,       String> = {"status","OK"} -/- {"status","FAIL"}
      */
     public Map<String, String> updatePermanentAddress(Address address, String userID);
 
@@ -90,5 +90,12 @@ public interface Dao_Profile_Basic_I {
     public Map<String, String> deleteEmergencyContact(String emergencyContactID, String userID);
 
     public Map<String, String> updateEmergencyContact(EmergencyContact emergencyContactUpdate, String userID);
+
+    /**
+     * @param userID
+     * @return profileBasic profieBasic will be returned with no child.
+     * @apiNote profileBasic will be returned but child will be back.
+     */
+    public ProfileBasic getProfileBasicByUserID(String userID);
 
 }
