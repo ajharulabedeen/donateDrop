@@ -161,12 +161,18 @@ public class Test_Dao_History_Impl {
         System.out.println("\nTotal : \n" + dao_history_i.getTotalCount("15"));
     }
 
+    @Test
+    public void testSearch() {
+        List<History> historyList = dao_history_i.search("15", "note", "khulna", 0, 10);
+        historyList.forEach(h -> System.out.println("\n" + h.toString() + "\n"));
+    }
+
     //    Helpers :
     @Test
 //    @Transactional
     public void saveManyHistory() {
         Map<String, String> status = new HashMap<>();
-        String userID = "16";
+        String userID = "15";
 //        bug : data are not being save
 //        for (int x = 0; x < 100; x++) {
 //            System.out.println("\nHistory Save\n");
@@ -193,8 +199,7 @@ public class Test_Dao_History_Impl {
 //        history.setUserId(userID);
 //        entityManager.persist(history);
 //        System.out.println(history.getId());
-
-        for (int x = 0; x < 100; x++) {
+        for (int x = 0; x < 10; x++) {
             System.out.println("\nHistory Save\n");
             History history = new History();
             history.setUserId(userID);//will be set from service.
@@ -207,7 +212,6 @@ public class Test_Dao_History_Impl {
             dao_history_i.save(history);
             System.out.println(history.getId());
         }
-
     }
 
 
