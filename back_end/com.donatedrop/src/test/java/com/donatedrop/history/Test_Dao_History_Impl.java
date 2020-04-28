@@ -1,6 +1,7 @@
 package com.donatedrop.history;
 
 import com.donatedrop.models.Address;
+import com.donatedrop.other.DumpData;
 import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
 import com.donatedrop.profile.model.EmergencyContact;
 import com.donatedrop.profile.model.PhoneNumber;
@@ -19,7 +20,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import javax.xml.transform.sax.SAXSource;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -162,24 +162,52 @@ public class Test_Dao_History_Impl {
     }
 
     //    Helpers :
-    //    @Test
-    @Transactional
+    @Test
+//    @Transactional
     public void saveManyHistory() {
         Map<String, String> status = new HashMap<>();
         String userID = "16";
+//        bug : data are not being save
+//        for (int x = 0; x < 100; x++) {
+//            System.out.println("\nHistory Save\n");
+//            History history = new History();
+//            history.setUserId(userID);//will be set from service.
+//            history.setDate(DateUtil.getDate().toString());
+//            history.setLocation(DumpData.getLocation());
+//            history.setPatientDescription(DumpData.getPatientDescription());
+//            history.setRefferedBy(DumpData.getRefferedBy());
+//            history.setNote(DumpData.getNote());
+//            history.setUserId(userID);
+//            entityManager.persist(history);
+//            System.out.println(history.getId());
+//        }
+
+//        bug : data are not being save
+//        History history = new History();
+//        history.setUserId(userID);//will be set from service.
+//        history.setDate(DateUtil.getDate().toString());
+//        history.setLocation(DumpData.getLocation());
+//        history.setPatientDescription(DumpData.getPatientDescription());
+//        history.setRefferedBy(DumpData.getRefferedBy());
+//        history.setNote(DumpData.getNote());
+//        history.setUserId(userID);
+//        entityManager.persist(history);
+//        System.out.println(history.getId());
+
         for (int x = 0; x < 100; x++) {
             System.out.println("\nHistory Save\n");
             History history = new History();
             history.setUserId(userID);//will be set from service.
             history.setDate(DateUtil.getDate().toString());
-            history.setLocation("Karakom,WestPoint, Dhaka.");
-            history.setPatientDescription("Kidney");
-            history.setRefferedBy("Mobile");
-            history.setNote("Went to at night.");
+            history.setLocation(DumpData.getLocation());
+            history.setPatientDescription(DumpData.getPatientDescription());
+            history.setRefferedBy(DumpData.getRefferedBy());
+            history.setNote(DumpData.getNote());
             history.setUserId(userID);
-            entityManager.persist(history);
+            dao_history_i.save(history);
             System.out.println(history.getId());
         }
+
     }
 
 
