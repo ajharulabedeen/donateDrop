@@ -24,10 +24,11 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -77,11 +78,13 @@ public class Test_ControllerHistory extends AbstractTest {
         System.out.println(content);
         Map<String, String> map = super.mapFromJson(content, Map.class);
         assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
+        if (map.get(StringUtil.STATUS).equals(StringUtil.OK)) {
+            storeID(map.get(StringUtil.ID));
+        }
     }
 
 
-//    ---------------------: OLD CODE :---------------------------
-
+    //    ---------------------: START : OLD CODE :---------------------------
     //    String uri = "/public/profile/basic/save";
     @Test
     @Order(2)
@@ -348,7 +351,6 @@ public class Test_ControllerHistory extends AbstractTest {
 
     }
 
-
     @Test
 //    @Order(12)
     public void test12_deleteEmergencyContact() throws Exception {
@@ -412,6 +414,46 @@ public class Test_ControllerHistory extends AbstractTest {
         System.out.println(content);
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
+//    ---------------------: END : OLD CODE :---------------------------
 
+//    Helpers --------------------------------
+
+    /**
+     * will store the last save id, that can be used for later for other method.
+     * Though there is question does it, right to a result from unit test, as
+     * main goal of the unit test is to keep the test as much as possible
+     * independent.
+     *
+     * @param id
+     */
+    public void storeID(String id) {
+        try {
+            FileWriter myWriter = new FileWriter("history_controller.txt");
+            myWriter.write(id);
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+    public String getID() {
+        String id = "";
+        try {
+            File myObj = new File("history_controller.txt");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                id = data;
+//                System.out.println(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        return id;
+    }
 
 }

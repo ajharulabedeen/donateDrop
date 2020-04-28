@@ -28,8 +28,8 @@ public class ControllerHistory {
         return service_history_i.save(history);
     }
 
-//    @PostMapping("update")
-//    public Map<String, String> update(@RequestBody History history) {
-//        return service_history_i.save(history);
-//    }
+    @PostMapping("update")
+    public Map<String, String> update(@RequestBody History history) {
+        return service_history_i.save(history);
+    }
 }
