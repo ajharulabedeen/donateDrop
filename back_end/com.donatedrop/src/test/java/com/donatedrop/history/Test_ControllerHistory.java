@@ -3,13 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.donatedrop.profile_basic;
+package com.donatedrop.history;
 
-import com.donatedrop.grocode.*;
-import com.donatedrop.geocode.models.DistrictsEngName;
-import com.donatedrop.geocode.models.DivisionsEngName;
-import com.donatedrop.geocode.models.UnionsEngName;
-import com.donatedrop.geocode.models.UpzillaEngName;
+import com.donatedrop.grocode.AbstractTest;
 import com.donatedrop.models.Address;
 import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
 import com.donatedrop.profile.model.EmergencyContact;
@@ -18,32 +14,36 @@ import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
 import com.donatedrop.util.Utils;
-import org.apache.logging.log4j.message.StringFormattedMessage;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
-
 import org.junit.jupiter.api.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.http.MediaType;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author G7
  */
 @SpringBootTest
-public class Test_Controller_Basic extends AbstractTest {
+public class Test_ControllerHistory extends AbstractTest {
 
     @Autowired
     Dao_Profile_Basic_I dao_Profile_Basic_I;
 
-    public Test_Controller_Basic() {
+    @Autowired
+    Dao_History_I dao_history_i;
+
+    public Test_ControllerHistory() {
     }
 
     @Override
@@ -52,27 +52,22 @@ public class Test_Controller_Basic extends AbstractTest {
         super.setUp();
     }
 
-    /**
-     * @throws Exception
-     * @apiNote to test that profile basic will be saved, without full
-     * information.
-     */
-    //    String uri = "/public/profile/basic/save";
+    //    String uri = "/public/user/history/save";
     @Test
     @Order(1)
     public void testSave() throws Exception {
-        String uri = "/public/profile/basic/save";
-        ProfileBasic profileBasic = new ProfileBasic();
-        profileBasic.setName("Khan Ajharul Abedeen");
-        profileBasic.setGender("Male");
-        profileBasic.setBlood_Group("A+");
-        profileBasic.setAvailable("0");
-        profileBasic.setMaritalStatus("NO");
-        profileBasic.setProfession("Freelance");
-        profileBasic.setCare_of("Khan Atiar Rahman.");
-        profileBasic.setUserId(Utils.getLoggedUserID());
+        String uri = "/public/user/history/save";
+        String userID = "15";
+        System.out.println("\nHistory Save\n");
+        History history = new History();
+        history.setUserId(userID);//will be set from service.
+        history.setDate(DateUtil.getDate().toString());
+        history.setLocation("Karakom,WestPoint, Dhaka.");
+        history.setPatientDescription("Kidney");
+        history.setRefferedBy("Mobile");
+        history.setNote("Went to at night.");
 
-        String inputJson = super.mapToJson(profileBasic);
+        String inputJson = super.mapToJson(history);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
                 .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
 
@@ -83,6 +78,9 @@ public class Test_Controller_Basic extends AbstractTest {
         Map<String, String> map = super.mapFromJson(content, Map.class);
         assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
     }
+
+
+//    ---------------------: OLD CODE :---------------------------
 
     //    String uri = "/public/profile/basic/save";
     @Test

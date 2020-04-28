@@ -54,5 +54,9 @@ public class Service_History_Impl implements Service_History_I {
         return dao_History_I.getAllHistory(userID, start, perPage);
     }
 
+    @Override
+    public List<History> search(String userID, String column, String key, int start, int perPage) {
+        return dao_History_I.search(userID, column, key, start, perPage);
+    }
 
 }// class

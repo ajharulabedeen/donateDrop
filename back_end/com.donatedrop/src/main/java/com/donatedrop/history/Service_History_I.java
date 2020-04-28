@@ -27,5 +27,6 @@ public interface Service_History_I {
 
     public List<History> getAllHistory(String userID, int start, int perPage);
 
+    public List<History> search(String userID, String column, String key, int start, int perPage);
 
 }

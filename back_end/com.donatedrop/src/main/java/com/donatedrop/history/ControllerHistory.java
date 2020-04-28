@@ -5,8 +5,13 @@
  */
 package com.donatedrop.history;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Map;
 
 /**
  * @author G7
@@ -15,4 +20,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/public/user/history")
 public class ControllerHistory {
 
+    @Autowired
+    Service_History_I service_history_i;
+
+    @PostMapping("save")
+    public Map<String, String> save(@RequestBody History history) {
+        return service_history_i.save(history);
+    }
+
+//    @PostMapping("update")
+//    public Map<String, String> update(@RequestBody History history) {
+//        return service_history_i.save(history);
+//    }
 }
