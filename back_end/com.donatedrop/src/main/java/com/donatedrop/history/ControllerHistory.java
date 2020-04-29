@@ -9,6 +9,7 @@ import com.donatedrop.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -36,6 +37,14 @@ public class ControllerHistory {
         return service_history_i.delete(historyID, Utils.getLoggedUserID());
     }
 
+    @PostMapping("search")
+    public List<History> search(@RequestParam String userID,
+                                @RequestParam String column,
+                                @RequestParam String key,
+                                @RequestParam int start,
+                                @RequestParam int perPage) {
 
+        return service_history_i.search(userID, column, key, start, perPage);
+    }
 
 }
