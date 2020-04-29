@@ -163,7 +163,7 @@ public class Test_Dao_History_Impl {
 
     @Test
     public void testSearch() {
-        List<History> historyList = dao_history_i.search("15", "note", "", 18, 10);
+        List<History> historyList = dao_history_i.search("15", "note", "khulna", 0, 10);
         System.out.println("\n");
         historyList.forEach(h -> System.out.println(h.toString()));
         System.out.println("\n");
@@ -171,7 +171,7 @@ public class Test_Dao_History_Impl {
 
     @Test
     public void testSearchCount() {
-        int count = dao_history_i.searchCount("15", "note", "", 0, 10);
+        int count = dao_history_i.searchCount("15", "note", "k", 0);
         System.out.println("\nCount : " + count + "\n");
     }
 
