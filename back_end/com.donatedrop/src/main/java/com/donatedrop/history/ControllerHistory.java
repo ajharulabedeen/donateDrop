@@ -7,10 +7,7 @@ package com.donatedrop.history;
 
 import com.donatedrop.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -34,5 +31,9 @@ public class ControllerHistory {
         return service_history_i.update(history, Utils.getLoggedUserID());
     }
 
+    @PostMapping("delete")
+    public Map<String, String> delete(@RequestParam String historyID) {
+        return service_history_i.delete(historyID, Utils.getLoggedUserID());
+    }
 
 }

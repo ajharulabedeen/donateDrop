@@ -6,6 +6,7 @@
 package com.donatedrop.history;
 
 import com.donatedrop.geocode.AbstractTest;
+import com.donatedrop.geocode.models.DistrictsEngName;
 import com.donatedrop.models.Address;
 import com.donatedrop.other.TestUtil;
 import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
@@ -110,6 +111,23 @@ public class Test_ControllerHistory extends AbstractTest {
         String content = mvcResult.getResponse().getContentAsString();
         System.out.println(content);
         Map<String, String> map = super.mapFromJson(content, Map.class);
+        assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
+    }
+
+    //    String uri = "/public/user/history/delete";
+    @Test
+    @Order(3)
+    public void testDelete() throws Exception {
+        String historyID = "121";
+        String uri = "/public/user/history/delete?historyID=" + historyID;
+        MvcResult mvcResult = mvc.perform(
+                MockMvcRequestBuilders.post(uri)
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        Map<String, String> map = super.mapFromJson(content, Map.class);
+        System.out.println("\nhistory delete : \n" + map + "\n");
         assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
     }
 
