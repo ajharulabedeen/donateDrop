@@ -30,4 +30,6 @@ public interface Dao_History_I {
 
     public List<History> search(String userID, String column, String key, int start, int perPage);
 
+    public int searchCount(String userID, String column, String key, int start, int perPage);
+
 }

@@ -36,4 +36,6 @@ public class ControllerHistory {
         return service_history_i.delete(historyID, Utils.getLoggedUserID());
     }
 
+
+
 }

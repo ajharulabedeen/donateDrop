@@ -111,4 +111,11 @@ public class Dao_History_Impl implements Dao_History_I {
                 .setMaxResults(perPage).getResultList();
     }
 
+    @Override
+    public int searchCount(String userID, String column, String key, int start, int perPage) {
+        String q = "SELECT * FROM history WHERE user_id=" + userID + " AND " + column + " LIKE '%" + key + "%' ORDER BY id ASC";
+        return entityManager.createNativeQuery(q, History.class)
+                .setFirstResult(start)
+                .getResultList().size();
+    }
 }// class
