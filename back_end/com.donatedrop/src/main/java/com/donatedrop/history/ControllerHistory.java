@@ -47,4 +47,14 @@ public class ControllerHistory {
         return service_history_i.search(userID, column, key, start, perPage);
     }
 
+    @PostMapping("searchCount")
+    public Map<String, Integer> searchCount(@RequestBody RequestSearch requestSearch) {
+        String userID = requestSearch.getUserID();
+        String column = requestSearch.getColumn();
+        String key = requestSearch.getKey();
+        int start = requestSearch.getStart();
+        int perPage = requestSearch.getPerPage();
+        return service_history_i.searchCount(userID, column, key, start);
+    }
+
 }

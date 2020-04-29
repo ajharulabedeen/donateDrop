@@ -137,7 +137,7 @@ public class Test_ControllerHistory extends AbstractTest {
     public void testSearh() throws Exception {
         String uri = "/public/user/history/search";
 //        "15", "note", "khulna", 0, 10
-        RequestSearch requestSearch = new RequestSearch("15", "patient_description", "k", 0, 10);
+        RequestSearch requestSearch = new RequestSearch("15", "patient_description", "", 0, 10);
 
         String inputJson = super.mapToJson(requestSearch);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
@@ -159,7 +159,7 @@ public class Test_ControllerHistory extends AbstractTest {
     public void testSearchCount() throws Exception {
         String uri = "/public/user/history/searchCount";
 //        "15", "note", "khulna", 0, 10
-        RequestSearch requestSearch = new RequestSearch("15", "patient_description", "k", 0, 10);
+        RequestSearch requestSearch = new RequestSearch("15", "patient_description", "kh", 0, 10);
 
         String inputJson = super.mapToJson(requestSearch);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
@@ -169,9 +169,9 @@ public class Test_ControllerHistory extends AbstractTest {
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
         System.out.println(content);
-        List<History> historyList = Arrays.asList(super.mapFromJson(content, History[].class));
-        historyList.forEach(h -> System.out.println(h.toString()));
-//        assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
+        Map<String, Integer> map = super.mapFromJson(content, Map.class);
+        System.out.println("\n" + map.get(StringUtil.COUNT) + "\n");
+//        assertEquals(StringUtil.COUNT, map.get(StringUtil.STATUS));
     }
 
 

@@ -59,4 +59,9 @@ public class Service_History_Impl implements Service_History_I {
         return dao_History_I.search(userID, column, key, start, perPage);
     }
 
+    @Override
+    public Map<String, Integer> searchCount(String userID, String column, String key, int start) {
+        return dao_History_I.searchCount(userID, column, key, start);
+    }
+
 }// class
