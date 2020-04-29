@@ -104,11 +104,11 @@ export class EmergencyContact {
 
   public toString() {
     return 'id : ' + this.id +
-      'name : ' + this.name +
-      'address : ' + this.address +
-      'phone : ' + this.phone +
-      'mail : ' + this.mail +
-      'relation : ' + this.relation;
+      '\nname : ' + this.name +
+      '\naddress : ' + this.address +
+      '\nphone : ' + this.phone +
+      '\nmail : ' + this.mail +
+      '\nrelation : ' + this.relation;
 
 
     // console.log('id : ' + this.id);

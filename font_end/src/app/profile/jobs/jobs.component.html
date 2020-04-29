@@ -22,43 +22,42 @@
         <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#modal_work">
           Add New
         </button>
-
         <div class="col-xs-12">
           <div class="box">
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
                 <tbody>
-                  <tr>
-                    <th>Index</th>
-                    <th>Instition Name</th>
-                    <th>Type</th>
-                    <th>Role</th>
-                    <th>Started</th>
-                    <th>Leave</th>
-                    <th>Current Status</th>
-                    <th>Operation</th>
-                  </tr>
-                  <tr *ngFor="let j of jobsArray; let i=index">
-                    <td>{{i+1}}</td>
-                    <td>{{j.organization_name}}</td>
-                    <td>{{j.type}}</td>
-                    <td>{{j.role}}</td>
-                    <td>{{j.started}}</td>
-                    <td>{{j.leave}}</td>
-                    <td>{{j.current_status}}</td>
-                    <td>
-                      <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modal_work" (click)="update(j)">Edit</button>
-                      <button class="btn btn-xs btn-warning" (click)="delete(j.id)">Delete</button>
-                    </td>
-                  </tr>
+                <tr>
+                  <th>Index</th>
+                  <th>Instition Name</th>
+                  <th>Type</th>
+                  <th>Role</th>
+                  <th>Started</th>
+                  <th>Leave</th>
+                  <th>Current Status</th>
+                  <th>Operation</th>
+                </tr>
+                <tr *ngFor="let j of jobsArray; let i=index">
+                  <td>{{i+1}}</td>
+                  <td>{{j.organization_name}}</td>
+                  <td>{{j.type}}</td>
+                  <td>{{j.role}}</td>
+                  <td>{{j.started}}</td>
+                  <td>{{j.leave}}</td>
+                  <td>{{j.current_status}}</td>
+                  <td>
+                    <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modal_work"
+                            (click)="update(j)">Edit
+                    </button>
+                    <button class="btn btn-xs btn-warning" (click)="delete(j.id)">Delete</button>
+                  </td>
+                </tr>
                 </tbody>
               </table>
             </div>
           </div>
           <div class="panel-footer">Work History</div>
         </div>
-
-        s
       </div>
     </div>
 
@@ -69,11 +68,9 @@
 </div>
 
 
-
-
 <!-- Modal  work-->
 <div class="modal fade" id="modal_work" tabindex="-1" role="dialog" aria-labelledby="modal_workLabel"
-  aria-hidden="true">
+     aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -86,7 +83,8 @@
       <div class="modal-body">
         <div class="form-group">
           <label>Organization Name</label>
-          <input [(ngModel)]="organization_name" [disabled]='!edit' type="text" class="form-control" placeholder="Enter ...">
+          <input [(ngModel)]="organization_name" [disabled]='!edit' type="text" class="form-control"
+                 placeholder="Enter ...">
         </div>
         <div class="form-group">
           <label>Type</label>
@@ -106,13 +104,14 @@
         </div>
         <div class="form-group">
           <label>Current Status</label>
-          <input [(ngModel)]="current_status" [disabled]='!edit' type="text" class="form-control" placeholder="Enter ...">
+          <input [(ngModel)]="current_status" [disabled]='!edit' type="text" class="form-control"
+                 placeholder="Enter ...">
         </div>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="save()" >Save</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="save()">Save</button>
       </div>
     </div>
   </div>
