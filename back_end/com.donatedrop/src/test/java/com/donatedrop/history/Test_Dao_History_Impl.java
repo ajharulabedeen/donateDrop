@@ -225,7 +225,7 @@ public class Test_Dao_History_Impl {
      */
     public void storeID(String id) {
         try {
-            FileWriter myWriter = new FileWriter("history.txt");
+            FileWriter myWriter = new FileWriter("history_dao.txt");
             myWriter.write(id);
             myWriter.close();
             System.out.println("Successfully wrote to the file.");
@@ -238,7 +238,7 @@ public class Test_Dao_History_Impl {
     public String getID() {
         String id = "";
         try {
-            File myObj = new File("history.txt");
+            File myObj = new File("history_dao.txt");
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();

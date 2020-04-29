@@ -33,4 +33,6 @@ public class ControllerHistory {
     public Map<String, String> update(@RequestBody History history) {
         return service_history_i.update(history, Utils.getLoggedUserID());
     }
+
+
 }

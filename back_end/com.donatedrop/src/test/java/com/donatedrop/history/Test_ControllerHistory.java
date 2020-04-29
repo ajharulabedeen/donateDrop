@@ -7,6 +7,7 @@ package com.donatedrop.history;
 
 import com.donatedrop.geocode.AbstractTest;
 import com.donatedrop.models.Address;
+import com.donatedrop.other.TestUtil;
 import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
 import com.donatedrop.profile.model.EmergencyContact;
 import com.donatedrop.profile.model.PhoneNumber;
@@ -88,7 +89,7 @@ public class Test_ControllerHistory extends AbstractTest {
     @Order(2)
     public void testUpdate() throws Exception {
         String uri = "/public/user/history/update";
-        String userID = "15";
+        String userID = TestUtil.userID;
         String historyID = getID();
         System.out.println("\nHistory Update\n");
         History history = new History();
@@ -110,9 +111,6 @@ public class Test_ControllerHistory extends AbstractTest {
         System.out.println(content);
         Map<String, String> map = super.mapFromJson(content, Map.class);
         assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
-        if (map.get(StringUtil.STATUS).equals(StringUtil.OK)) {
-            storeID(map.get(StringUtil.ID));
-        }
     }
 
 
