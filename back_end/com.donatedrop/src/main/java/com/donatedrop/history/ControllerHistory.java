@@ -38,12 +38,12 @@ public class ControllerHistory {
     }
 
     @PostMapping("search")
-    public List<History> search(@RequestParam String userID,
-                                @RequestParam String column,
-                                @RequestParam String key,
-                                @RequestParam int start,
-                                @RequestParam int perPage) {
-
+    public List<History> search(@RequestBody RequestSearch requestSearch) {
+        String userID = requestSearch.getUserID();
+        String column = requestSearch.getColumn();
+        String key = requestSearch.getKey();
+        int start = requestSearch.getStart();
+        int perPage = requestSearch.getPerPage();
         return service_history_i.search(userID, column, key, start, perPage);
     }
 

@@ -7,6 +7,17 @@ public class RequestSearch {
     int start;
     int perPage;
 
+    public RequestSearch() {
+    }
+
+    public RequestSearch(String userID, String column, String key, int start, int perPage) {
+        this.userID = userID;
+        this.column = column;
+        this.key = key;
+        this.start = start;
+        this.perPage = perPage;
+    }
+
     public String getUserID() {
         return userID;
     }

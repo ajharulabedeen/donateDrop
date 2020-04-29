@@ -131,6 +131,27 @@ public class Test_ControllerHistory extends AbstractTest {
         assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
     }
 
+    //    String uri = "/public/user/history/delete";
+    @Test
+    @Order(4)
+    public void testSearh() throws Exception {
+        String uri = "/public/user/history/search";
+//        "15", "note", "khulna", 0, 10
+        RequestSearch requestSearch = new RequestSearch("15", "patient_description", "k", 0, 10);
+
+        String inputJson = super.mapToJson(requestSearch);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        System.out.println(content);
+        List<History> historyList = Arrays.asList(super.mapFromJson(content, History[].class));
+        historyList.forEach(h -> System.out.println(h.toString()));
+//        assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
+    }
+
 
     //    ---------------------: START : OLD CODE :---------------------------
     //    String uri = "/public/profile/basic/save";
