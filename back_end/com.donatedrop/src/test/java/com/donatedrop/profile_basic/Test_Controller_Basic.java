@@ -5,7 +5,7 @@
  */
 package com.donatedrop.profile_basic;
 
-import com.donatedrop.grocode.*;
+import com.donatedrop.geocode.AbstractTest;
 import com.donatedrop.geocode.models.DistrictsEngName;
 import com.donatedrop.geocode.models.DivisionsEngName;
 import com.donatedrop.geocode.models.UnionsEngName;

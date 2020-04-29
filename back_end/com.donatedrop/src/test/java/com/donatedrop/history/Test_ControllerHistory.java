@@ -5,7 +5,7 @@
  */
 package com.donatedrop.history;
 
-import com.donatedrop.grocode.AbstractTest;
+import com.donatedrop.geocode.AbstractTest;
 import com.donatedrop.models.Address;
 import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
 import com.donatedrop.profile.model.EmergencyContact;
@@ -66,6 +66,38 @@ public class Test_ControllerHistory extends AbstractTest {
         history.setLocation("Karakom,WestPoint, Dhaka.");
         history.setPatientDescription("Kidney");
         history.setRefferedBy("Mobile");
+        history.setNote("Went to at night.");
+
+        String inputJson = super.mapToJson(history);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        System.out.println(content);
+        Map<String, String> map = super.mapFromJson(content, Map.class);
+        assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
+        if (map.get(StringUtil.STATUS).equals(StringUtil.OK)) {
+            storeID(map.get(StringUtil.ID));
+        }
+    }
+
+    //    String uri = "/public/user/history/update";
+    @Test
+    @Order(2)
+    public void testUpdate() throws Exception {
+        String uri = "/public/user/history/update";
+        String userID = "15";
+        String historyID = getID();
+        System.out.println("\nHistory Update\n");
+        History history = new History();
+        history.setId(new Long(historyID));//will be set from service.
+        history.setUserId(userID);//will be set from service.
+        history.setDate(DateUtil.getDate().toString());
+        history.setLocation("Karakom, WestPoint, Dhaka.");
+        history.setPatientDescription("Kidney Update, Update");
+        history.setRefferedBy("Mobile/");
         history.setNote("Went to at night.");
 
         String inputJson = super.mapToJson(history);
@@ -161,52 +193,52 @@ public class Test_ControllerHistory extends AbstractTest {
         assertEquals(StringUtil.TRUE, result.get(StringUtil.STATUS));
     }
 
-    //    String uri = "/public/profile/basic/update";
-    @Test
-    public void testUpdate() throws Exception {
-        String uri = "/public/profile/basic/update";
-
-        // Arrange
-        String userID = Utils.getLoggedUserID();
-        ProfileBasic profileBasicNew = new ProfileBasic();
-        profileBasicNew.setUserId(userID);
-        profileBasicNew.setName("Khan Ajharul Abedeen");
-        profileBasicNew.setBirthDate(DateUtil.getDate().toString());
-        profileBasicNew.setGender("Male");
-        profileBasicNew.setBlood_Group("A+");
-        profileBasicNew.setAvailable("1");
-        profileBasicNew.setMaritalStatus("NO");
-        profileBasicNew.setProfession("Remote");
-        profileBasicNew.setCare_of("Khan Atiar Rahman");
-        profileBasicNew.setReligion("NoMo NoMo");
-        profileBasicNew.setEmail("dim@dimdim.co");
-
-        String inputJson = super.mapToJson(profileBasicNew);
-        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
-                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
-
-        int status = mvcResult.getResponse().getStatus();
-        assertEquals(200, status);
-        String content = mvcResult.getResponse().getContentAsString();
-        Map<String, String> result = super.mapFromJson(content, Map.class);
-        System.out.println(content);
-        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
-        Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
-        //have to do more verification. by calling the full app.
-        //refactor : stop child loading, need to create new method to get only basics.
-        ProfileBasic profileBasicSaved = dao_Profile_Basic_I.findOneByUser(userID);
-        Assert.assertEquals(profileBasicNew.getName(), profileBasicSaved.getName());
-        Assert.assertEquals(profileBasicNew.getBirthDate(), profileBasicSaved.getBirthDate());
-        Assert.assertEquals(profileBasicNew.getCare_of(), profileBasicSaved.getCare_of());
-//        assertEquals("DimDim", profileBasicSaved.getCare_of());//for test the test, :P
-        Assert.assertEquals(profileBasicNew.getGender(), profileBasicSaved.getGender());
-        Assert.assertEquals(profileBasicNew.getMaritalStatus(), profileBasicSaved.getMaritalStatus());
-        Assert.assertEquals(profileBasicNew.getProfession(), profileBasicSaved.getProfession());
-        Assert.assertEquals(profileBasicNew.getBlood_Group(), profileBasicSaved.getBlood_Group());
-        Assert.assertEquals(profileBasicNew.getAvailable(), profileBasicSaved.getAvailable());
-        Assert.assertEquals(profileBasicNew.getReligion(), profileBasicSaved.getReligion());
-        Assert.assertEquals(profileBasicNew.getEmail(), profileBasicSaved.getEmail());
-    }
+//    //    String uri = "/public/profile/basic/update";
+//    @Test
+//    public void testUpdate() throws Exception {
+//        String uri = "/public/profile/basic/update";
+//
+//        // Arrange
+//        String userID = Utils.getLoggedUserID();
+//        ProfileBasic profileBasicNew = new ProfileBasic();
+//        profileBasicNew.setUserId(userID);
+//        profileBasicNew.setName("Khan Ajharul Abedeen");
+//        profileBasicNew.setBirthDate(DateUtil.getDate().toString());
+//        profileBasicNew.setGender("Male");
+//        profileBasicNew.setBlood_Group("A+");
+//        profileBasicNew.setAvailable("1");
+//        profileBasicNew.setMaritalStatus("NO");
+//        profileBasicNew.setProfession("Remote");
+//        profileBasicNew.setCare_of("Khan Atiar Rahman");
+//        profileBasicNew.setReligion("NoMo NoMo");
+//        profileBasicNew.setEmail("dim@dimdim.co");
+//
+//        String inputJson = super.mapToJson(profileBasicNew);
+//        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+//                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+//
+//        int status = mvcResult.getResponse().getStatus();
+//        assertEquals(200, status);
+//        String content = mvcResult.getResponse().getContentAsString();
+//        Map<String, String> result = super.mapFromJson(content, Map.class);
+//        System.out.println(content);
+//        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+//        Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+//        //have to do more verification. by calling the full app.
+//        //refactor : stop child loading, need to create new method to get only basics.
+//        ProfileBasic profileBasicSaved = dao_Profile_Basic_I.findOneByUser(userID);
+//        Assert.assertEquals(profileBasicNew.getName(), profileBasicSaved.getName());
+//        Assert.assertEquals(profileBasicNew.getBirthDate(), profileBasicSaved.getBirthDate());
+//        Assert.assertEquals(profileBasicNew.getCare_of(), profileBasicSaved.getCare_of());
+////        assertEquals("DimDim", profileBasicSaved.getCare_of());//for test the test, :P
+//        Assert.assertEquals(profileBasicNew.getGender(), profileBasicSaved.getGender());
+//        Assert.assertEquals(profileBasicNew.getMaritalStatus(), profileBasicSaved.getMaritalStatus());
+//        Assert.assertEquals(profileBasicNew.getProfession(), profileBasicSaved.getProfession());
+//        Assert.assertEquals(profileBasicNew.getBlood_Group(), profileBasicSaved.getBlood_Group());
+//        Assert.assertEquals(profileBasicNew.getAvailable(), profileBasicSaved.getAvailable());
+//        Assert.assertEquals(profileBasicNew.getReligion(), profileBasicSaved.getReligion());
+//        Assert.assertEquals(profileBasicNew.getEmail(), profileBasicSaved.getEmail());
+//    }
 
     //    String uri = "/public/profile/basic/addPhoneNumber";
     @Test

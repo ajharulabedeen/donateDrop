@@ -5,6 +5,7 @@
  */
 package com.donatedrop.history;
 
+import com.donatedrop.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +31,6 @@ public class ControllerHistory {
 
     @PostMapping("update")
     public Map<String, String> update(@RequestBody History history) {
-        return service_history_i.save(history);
+        return service_history_i.update(history, Utils.getLoggedUserID());
     }
 }

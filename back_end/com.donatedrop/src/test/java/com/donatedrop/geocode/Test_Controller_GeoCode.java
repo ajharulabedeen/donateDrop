@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.donatedrop.grocode;
+package com.donatedrop.geocode;
 
 import com.donatedrop.geocode.models.DistrictsEngName;
 import com.donatedrop.geocode.models.DivisionsEngName;

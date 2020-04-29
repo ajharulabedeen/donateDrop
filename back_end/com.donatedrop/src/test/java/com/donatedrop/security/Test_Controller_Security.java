@@ -9,7 +9,7 @@ import com.donatedrop.geocode.models.DistrictsEngName;
 import com.donatedrop.geocode.models.DivisionsEngName;
 import com.donatedrop.geocode.models.UnionsEngName;
 import com.donatedrop.geocode.models.UpzillaEngName;
-import com.donatedrop.grocode.AbstractTest;
+import com.donatedrop.geocode.AbstractTest;
 import com.donatedrop.security.models.User;
 import org.junit.Before;
 import org.junit.Test;
