@@ -23,4 +23,5 @@ public class StringUtil {
     public static final String DUPLICATE = "DUPLICATE";
     public static final String UNKNOWN = "UNKNOWN";
     public static final String TOKEN = "TOKEN";
+    public static final String COUNT = "COUNT";
 }
