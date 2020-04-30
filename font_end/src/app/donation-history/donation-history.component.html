@@ -3,12 +3,6 @@
   <app-asidenavbar></app-asidenavbar>
   <div class="content-wrapper">
     <h1 align="center">History</h1>
-    <h2 align="center">History</h2>
-    <h3 align="center">History</h3>
-    <h4 align="center">History</h4>
-    <h5 align="center">History</h5>
-    <h6 align="center">History</h6>
-
     <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#modal_work">
       Add New
     </button>
@@ -18,16 +12,26 @@
           <table class="table table-hover">
             <tbody>
             <tr>
+              <th>Delete</th>
+              <th>Edit</th>
               <th>Index</th>
-              <th>Instition Name</th>
-              <th>Type</th>
-              <th>Role</th>
-              <th>Started</th>
-              <th>Leave</th>
-              <th>Current Status</th>
-              <th>Operation</th>
+              <th>Date</th>
+              <th>Location</th>
+              <th>Patient Type</th>
+              <th>Note</th>
+              <th>Reffered By</th>
             </tr>
             <tr *ngFor="let j of jobsArray; let i=index">
+              <!--delete-->
+              <td>
+                <button class="btn btn-xs btn-warning" (click)="delete(j.id)">Delete</button>
+              </td>
+              <!--edit-->
+              <td>
+                <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modal_work"
+                        (click)="update(j)">Edit
+                </button>
+              </td>
               <td>{{i+1}}</td>
               <td>{{j.organization_name}}</td>
               <td>{{j.type}}</td>
@@ -35,12 +39,6 @@
               <td>{{j.started}}</td>
               <td>{{j.leave}}</td>
               <td>{{j.current_status}}</td>
-              <td>
-                <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modal_work"
-                        (click)="update(j)">Edit
-                </button>
-                <button class="btn btn-xs btn-warning" (click)="delete(j.id)">Delete</button>
-              </td>
             </tr>
             </tbody>
           </table>
