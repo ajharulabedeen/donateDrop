@@ -14,6 +14,13 @@
     </h4>
 
     <!-- sort by column name -->
+    <!--start : search fields and search key or search value -->
+    <div class="col-md-12 offset-md-12">
+      <div class="form-group">
+        <label>Value : </label>
+        <input [(ngModel)]="basic_value_search" type="text" class="form-control" placeholder="search...">
+      </div>
+    </div>
     <div class="col-md-12 offset-md-12">
       <div class="form-group">
         <h4>Search By :</h4>
@@ -31,8 +38,61 @@
         </select>
       </div>
     </div>
+    <!-- end : search fields selection and search key or search value-->
+
+    <!-- Start : showing all profiles after search -->
+    <!--            start : basic search pagination panel-->
+    <!--      perPage-->
+    <div class="col-md-2 offset-md-2">
+      <div style="text-align: center" class="form-group">
+        <label>Per Page</label>
+        <input style="text-align: center" [(ngModel)]="basicSearch_perPage" type="number" class="form-control"
+               value="{{basicSearch_perPage}}" (ngModelChange)="refreshTable_basicSearch()">
+      </div>
+    </div>
+    <!--      total-->
+    <div class="col-md-2 offset-md-2">
+      <div style="text-align: center" class="form-group">
+        <label>Total </label>
+        <input style="text-align: center" disabled="true" [(ngModel)]="basicSearch_total" type="number"
+               class="form-control" value="{{basicSearch_total}}">
+      </div>
+    </div>
+    <!--      prePage/nextPage-->
+    <div class="col-md-3 offset-md-3">
+      <div class="form-group" style="text-align: center">
+        <button class="btn btn-primary btn-xs" (click)="basicSearch_previousPage()">Previous</button>
+        <label class="btn btn-danger btn-xs ">Page Number</label>
+        <button class="btn btn-primary btn-xs" (click)="basicSearch_nextPage()">Next</button>
+        <input style="text-align: center" [(ngModel)]="basicSearch_pageNumber" type="number" class="form-control"
+               value="{{basicSearch_pageNumber}}">
+      </div>
+    </div>
+    <!--       sort by ASC or DESC -->
+    <div class="col-md-3 offset-md-3">
+      <div class="form-group" style="text-align: center">
+        <h4>Sort Order</h4>
+        <input type="radio" name="m_pay" [(ngModel)]="basicSearch_sort_by" value="ASC" checked="checked">Ascending<br>
+        <input type="radio" name="m_pay" [(ngModel)]="basicSearch_sort_by" value="DESC">Descending<br>
+      </div>
+    </div>
+    <!--       sort by column name -->
+    <div>
+      <h4>Sort By</h4>
+      <select [(ngModel)]="basicSearch_sort_on">
+        <option value="student_id" [selected]="true">Student ID</option>
+        <option value="batch">Batch</option>
+        <option value="passing_year">Passing Year</option>
+        <option value="dept">Dept</option>
+        <option value="gender">Gender</option>
+      </select>
+    </div>
+    <!--            end : basic search pagination panel-->
+
+
     <!--END : Search-->
 
+    <!--start : table-->
     <div class="col-xs-12">
       <div class="box">
         <div class="box-body table-responsive no-padding">
@@ -73,7 +133,7 @@
       </div>
       <div class="panel-footer">Work History</div>
     </div>
-
+    <!--end : table-->
 
   </div>
 
