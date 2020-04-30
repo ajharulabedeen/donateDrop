@@ -6,7 +6,34 @@
     <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#modal_work">
       Add New
     </button>
-    <div class="col-xs-12g">
+
+    <!--START : Search-->
+    <h4>
+      <button class="btn btn-info" (click)="setBasicSearchCount()">Search</button>
+      <button class="btn btn-xs btn-primary" (click)="refreshTable_basicSearch()">Refresh</button>
+    </h4>
+
+    <!-- sort by column name -->
+    <div class="col-md-12 offset-md-12">
+      <div class="form-group">
+        <h4>Search By :</h4>
+        <select [(ngModel)]="basic_search_by">
+          <option value="batch">Student Batch</option>
+          <option value="student_id">Student ID</option>
+          <option value="dept">Dept</option>
+          <option value="first_name">First Name</option>
+          <option value="last_name">Last Name</option>
+          <option value="skills">Skills</option>
+          <option value="research_interest">Research Interest</option>
+          <option value="phone">Phone</option>
+          <option value="email">email</option>
+          <option value="address">Address</option>
+        </select>
+      </div>
+    </div>
+    <!--END : Search-->
+
+    <div class="col-xs-12">
       <div class="box">
         <div class="box-body table-responsive no-padding">
           <table class="table table-hover">
@@ -46,6 +73,8 @@
       </div>
       <div class="panel-footer">Work History</div>
     </div>
+
+
   </div>
 
 
