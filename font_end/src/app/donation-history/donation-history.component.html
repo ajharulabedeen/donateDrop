@@ -156,7 +156,6 @@
             </div>
           </div>
           <div class="col-md-6">
-            <!-- Date -->
             <div class="form-group">
               <label>Select Date:</label>
               <div class="input-group date">
@@ -167,32 +166,24 @@
 
 
           <div class="form-group">
-            <label>Organization Name</label>
+            <label>Location</label>
             <input [(ngModel)]="organization_name" [disabled]='!edit' type="text" class="form-control"
                    placeholder="Enter ...">
           </div>
           <div class="form-group">
-            <label>Type</label>
-            <input [(ngModel)]="type" [disabled]='!edit' type="text" class="form-control" placeholder="Enter ...">
+            <label>Patient Type/Description</label>
+            <input [(ngModel)]="type" type="text" class="form-control" placeholder="Enter ...">
           </div>
           <div class="form-group">
-            <label>Role</label>
-            <input [(ngModel)]="role" [disabled]='!edit' type="text" class="form-control" placeholder="Enter ...">
+            <label>Reffered By</label>
+            <input [(ngModel)]="role" type="text" class="form-control" placeholder="Enter ...">
           </div>
           <div class="form-group">
-            <label>Started</label>
-            <input [(ngModel)]="started" [disabled]='!edit' type="text" class="form-control" placeholder="Enter ...">
-          </div>
-          <div class="form-group">
-            <label>Leave</label>
-            <input [(ngModel)]="leave" [disabled]='!edit' type="text" class="form-control" placeholder="Enter ...">
-          </div>
-          <div class="form-group">
-            <label>Current Status</label>
-            <input [(ngModel)]="current_status" [disabled]='!edit' type="text" class="form-control"
-                   placeholder="Enter ...">
-          </div>
+            <label>Note</label>
+            <textarea class="col-md-12" [(ngModel)]="started">
 
+            </textarea>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
