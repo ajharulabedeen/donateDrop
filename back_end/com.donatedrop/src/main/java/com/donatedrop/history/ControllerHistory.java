@@ -24,6 +24,7 @@ public class ControllerHistory {
 
     @PostMapping("save")
     public Map<String, String> save(@RequestBody History history) {
+        history.setUserId(Utils.getLoggedUserID());
         return service_history_i.save(history);
     }
 
