@@ -53,4 +53,10 @@ export class DonationHistoryService {
     //   console.log(res);
     // });
   }
+
+  public delete(deleteId: string) {
+    return this.http.post(
+      'http://127.0.0.1:8080/public/user/history/delete?historyID=' + deleteId, [],
+      this.authService.getHeader());
+  }
 }// class

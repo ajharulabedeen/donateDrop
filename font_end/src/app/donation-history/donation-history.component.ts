@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DonationHistoryService} from './donation-history.service';
 import {SearchRequest} from './search-request.model';
 import {History} from './history.model';
+import {Districts} from '../profile/basic/districts.model';
 
 @Component({
   selector: 'app-donation-history',
@@ -96,11 +97,19 @@ export class DonationHistoryComponent implements OnInit {
         this.historyDonation.push(history);
       }
     });
-
-
   }
 
   public deleteDonation() {
     console.log('delete : ' + this.deleteId);
+    this.serviceHistory.delete(this.deleteId).subscribe(res => {
+      console.log(res);
+      if (res['STATUS'] === 'OK') {
+        var hist: History = this.historyDonation.find(({id}) => id === this.deleteId);
+        console.log(hist);
+        this.historyDonation = this.historyDonation.filter(obj => obj !== hist);
+      }
+    });
   }
+
+
 }// class
