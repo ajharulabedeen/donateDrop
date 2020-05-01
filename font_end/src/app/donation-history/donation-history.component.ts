@@ -28,16 +28,20 @@ export class DonationHistoryComponent implements OnInit {
   public searchCount() {
     var srcRequest = new SearchRequest();
     srcRequest.column = this.searchBy;
-    srcRequest.key = this.searchKey;
+    srcRequest.key = '%' + this.searchKey + '%';
     srcRequest.start = '0';
     srcRequest.perPage = this.perPage;
     srcRequest.userID = '';
     console.log(srcRequest);
     this.serviceHistory.getHistoryCount(srcRequest).subscribe(res => {
       console.log(res);
+      this.total = res['COUNT'];
     });
     // userID, column, key, start
   }
 
+  public getAll() {
+
+  }
 
 }
