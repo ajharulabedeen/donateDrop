@@ -132,19 +132,40 @@
   </div>
 
 
-  <!-- Modal  work-->
+  <!-- Modal  : New History-->
   <div class="modal fade" id="modal_work" tabindex="-1" role="dialog" aria-labelledby="modal_workLabel"
        aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modal_workLabel">New Work History</h5>
+        <div align="center" class="modal-header">
+          <h3 class="modal-title" id="modal_workLabel">New Work History</h3>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
 
         <div class="modal-body">
+
+          <!--Date-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Birth Date:</label>
+              <div class="input-group date">
+                <input [(ngModel)]="birthDate" type="text" class="form-control pull-right">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <!-- Date -->
+            <div class="form-group">
+              <label>Select Date:</label>
+              <div class="input-group date">
+                <input [(ngModel)]="birthDate" type="date" class="form-control pull-right">
+              </div>
+            </div>
+          </div>
+
+
           <div class="form-group">
             <label>Organization Name</label>
             <input [(ngModel)]="organization_name" [disabled]='!edit' type="text" class="form-control"
