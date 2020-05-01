@@ -14,6 +14,7 @@ export class DonationHistoryComponent implements OnInit {
   pageNumber: string;
   sortBy: string;
   searchKey: string;
+  public historyDonation: History[];
 
   constructor(private serviceHistory: DonationHistoryService) {
   }
@@ -41,6 +42,19 @@ export class DonationHistoryComponent implements OnInit {
   }
 
   public getAll() {
+    var srcRequest = new SearchRequest();
+    srcRequest.column = this.searchBy;
+    srcRequest.key = '%' + this.searchKey + '%';
+    srcRequest.start = '0';
+    srcRequest.perPage = this.perPage;
+    srcRequest.userID = '';
+    console.log(srcRequest);
+    // this.serviceHistory.getHistory(srcRequest).subscribe(res => {
+    //   console.log(res);
+    //   // this.total = res['COUNT'];
+    // });
+    this.historyDonation = this.serviceHistory.getHistory(srcRequest);
+    console.log(this.historyDonation);
 
   }
 
