@@ -88,7 +88,11 @@ export class DonationHistoryComponent implements OnInit {
     history.$reffered_by = this.refferedBy;
 
     this.serviceHistory.save(history).subscribe(res => {
-
+      console.log(res);
+      if (res['STATUS'] === 'OK') {
+        history.$id = res['ID'];
+        this.historyDonation.push(history);
+      }
     });
 
 

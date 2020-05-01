@@ -47,8 +47,10 @@ export class DonationHistoryService {
   public save(history: History) {
     return this.http.post(
       'http://127.0.0.1:8080/public/user/history/save', history,
-      this.authService.getHeader()).subscribe(res => {
-      console.log(res);
-    });
+      this.authService.getHeader());
+
+    //   .subscribe(res => {
+    //   console.log(res);
+    // });
   }
 }// class
