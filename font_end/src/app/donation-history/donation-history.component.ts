@@ -84,8 +84,8 @@ export class DonationHistoryComponent implements OnInit {
     history.$date = this.donationDate;
     history.$location = this.donationLocation;
     history.$note = this.donationNote;
-    history.$patient_description = this.patientType;
-    history.$reffered_by = this.refferedBy;
+    history.$patientDescription = this.patientType;
+    history.$refferedBy = this.refferedBy;
 
     this.serviceHistory.save(history).subscribe(res => {
       console.log(res);

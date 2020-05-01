@@ -35,8 +35,8 @@ export class DonationHistoryService {
         his.$date = res[key]['date'];
         his.$location = res[key]['location'];
         his.$note = res[key]['note'];
-        his.$patient_description = res[key]['patientDescription'];
-        his.$reffered_by = res[key]['refferedBy'];
+        his.$patientDescription = res[key]['patientDescription'];
+        his.$refferedBy = res[key]['refferedBy'];
         his.$user_id = res[key]['userId'];
         h.push(his);
       }
