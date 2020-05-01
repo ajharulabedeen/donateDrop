@@ -58,23 +58,39 @@ export class DonationHistoryComponent implements OnInit {
     srcRequest.start = '0';
     srcRequest.perPage = this.perPage;
     srcRequest.userID = '';
+    // workings
     // console.log(srcRequest);
-    this.serviceHistory.getHistory(srcRequest).subscribe(res => {
-      console.log(res);
-      for (const key in res) {
-        var his = new History();
-        his.$id = res[key]['id'];
-        his.$date = res[key]['date'];
-        his.$location = res[key]['location'];
-        his.$note = res[key]['note'];
-        his.$patient_description = res[key]['patientDescription'];
-        his.$reffered_by = res[key]['refferedBy'];
-        his.$user_id = res[key]['userId'];
-        this.historyDonation.push(his);
-      }
-    });
-    // this.historyDonation = this.serviceHistory.getHistory(srcRequest);
-    // console.log(this.historyDonation);
+    // this.serviceHistory.getHistory(srcRequest).subscribe(res => {
+    //   console.log(res);
+    //   for (const key in res) {
+    //     var his = new History();
+    //     his.$id = res[key]['id'];
+    //     his.$date = res[key]['date'];
+    //     his.$location = res[key]['location'];
+    //     his.$note = res[key]['note'];
+    //     his.$patient_description = res[key]['patientDescription'];
+    //     his.$reffered_by = res[key]['refferedBy'];
+    //     his.$user_id = res[key]['userId'];
+    //     this.historyDonation.push(his);
+    //   }
+    // });
+    this.historyDonation = this.serviceHistory.getHistory(srcRequest);
+    console.log(this.historyDonation);
   }
 
-}
+
+  public saveHistory() {
+    var history = new History();
+    history.$date = this.donationDate;
+    history.$location = this.donationLocation;
+    history.$note = this.donationNote;
+    history.$patient_description = this.patientType;
+    history.$reffered_by = this.refferedBy;
+
+    this.serviceHistory.save(history).subscribe(res => {
+
+    });
+
+
+  }
+}// class

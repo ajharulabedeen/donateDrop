@@ -165,7 +165,7 @@
           </div>
           <div class="form-group">
             <label>Location</label>
-            <input [(ngModel)]="donationLocation" [disabled]='!edit' type="text" class="form-control"
+            <input [(ngModel)]="donationLocation" type="text" class="form-control"
                    placeholder="Enter ...">
           </div>
           <div class="form-group">
@@ -185,7 +185,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="save()">Save</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveHistory()">Save</button>
         </div>
       </div>
     </div>
