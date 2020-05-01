@@ -103,7 +103,7 @@
               <th>Note</th>
               <th>Reffered By</th>
             </tr>
-            <tr *ngFor="let j of jobsArray; let i=index">
+            <tr *ngFor="let h of historyDonation; let i=index">
               <!--delete-->
               <td>
                 <button class="btn btn-xs btn-warning" (click)="delete(j.id)">Delete</button>
@@ -115,12 +115,11 @@
                 </button>
               </td>
               <td>{{i+1}}</td>
-              <td>{{j.organization_name}}</td>
-              <td>{{j.type}}</td>
-              <td>{{j.role}}</td>
-              <td>{{j.started}}</td>
-              <td>{{j.leave}}</td>
-              <td>{{j.current_status}}</td>
+              <td>{{h.date}}</td>
+              <td>{{h.location}}</td>
+              <td>{{h.patient}}</td>
+              <td>{{h.note}}</td>
+              <td>{{h.reffered_by}}</td>
             </tr>
             </tbody>
           </table>

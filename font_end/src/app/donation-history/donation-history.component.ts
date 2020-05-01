@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DonationHistoryService} from './donation-history.service';
 import {SearchRequest} from './search-request.model';
+import {History} from './history.model';
 
 @Component({
   selector: 'app-donation-history',
@@ -14,7 +15,7 @@ export class DonationHistoryComponent implements OnInit {
   pageNumber: string;
   sortBy: string;
   searchKey: string;
-  public historyDonation: History[];
+  public historyDonation: History[] = new Array();
 
   constructor(private serviceHistory: DonationHistoryService) {
   }
@@ -49,12 +50,23 @@ export class DonationHistoryComponent implements OnInit {
     srcRequest.perPage = this.perPage;
     srcRequest.userID = '';
     console.log(srcRequest);
-    // this.serviceHistory.getHistory(srcRequest).subscribe(res => {
-    //   console.log(res);
-    //   // this.total = res['COUNT'];
-    // });
-    this.historyDonation = this.serviceHistory.getHistory(srcRequest);
-    console.log(this.historyDonation);
+    this.serviceHistory.getHistory(srcRequest).subscribe(res => {
+      console.log(res);
+      for (const key in res) {
+        var his = new History();
+        his.$id = res['id'];
+        his.$date = res['date'];
+        his.$location = res['location'];
+        his.$note = res['note'];
+        his.$patient_description = res['patientDescription'];
+        his.$reffered_by = res['refferedBy'];
+        his.$user_id = res['userId'];
+        this.historyDonation.push(his);
+      }
+    });
+
+    // this.historyDonation = this.serviceHistory.getHistory(srcRequest);
+    // console.log(this.historyDonation);
 
   }
 

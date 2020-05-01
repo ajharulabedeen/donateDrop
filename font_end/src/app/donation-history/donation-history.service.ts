@@ -18,28 +18,29 @@ export class DonationHistoryService {
   }
 
   public getHistory(srcRequest: SearchRequest): History[] {
-    // return this.http.post(
-    //   'http://127.0.0.1:8080/public/user/history/search', srcRequest,
-    //   this.authService.getHeader());
-
-    var h: History[];
-
-    this.http.post(
+    return this.http.post(
       'http://127.0.0.1:8080/public/user/history/search', srcRequest,
-      this.authService.getHeader()).subscribe(res => {
-      for (const key in res) {
-        var his = new History();
-        his.$id = res['id'];
-        his.$date = res['date'];
-        his.$date = res['location'];
-        his.$date = res['note'];
-        his.$date = res['patientDescription'];
-        his.$date = res['refferedBy'];
-        his.$date = res['userId'];
-        h.push(his);
-      }
-    });
-    return h;
+      this.authService.getHeader());
+
+    // var h: History[] = new Array();
+    //
+    // this.http.post(
+    //   'http://127.0.0.1:8080/public/user/history/search', srcRequest,
+    //   this.authService.getHeader()).subscribe(res => {
+    //   console.log(res);
+    //   for (const key in res) {
+    //     var his = new History();
+    //     his.$id = res['id'];
+    //     his.$date = res['date'];
+    //     his.$location = res['location'];
+    //     his.$note = res['note'];
+    //     his.$patient_description = res['patientDescription'];
+    //     his.$reffered_by = res['refferedBy'];
+    //     his.$user_id = res['userId'];
+    //     h.push(his);
+    //   }
+    // });
+    // return h;
   }
 
 
