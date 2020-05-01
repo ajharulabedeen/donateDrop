@@ -3,9 +3,46 @@ export class History {
   private date: string;
   private location: string;
   private note: string;
-  private patient_description: string;
-  private reffered_by: string;
+  private patientDescription : string;
   private user_id: string;
+
+    /**
+     * Getter $refferedBy
+     * @return {string}
+     */
+	public get $refferedBy(): string {
+		return this.refferedBy;
+	}
+
+    /**
+     * Setter $refferedBy
+     * @param {string} value
+     */
+	public set $refferedBy(value: string) {
+		this.refferedBy = value;
+	}
+  private refferedBy: string;
+
+
+
+   /**
+     * Getter $patientDescription
+     * @return {string}
+     */
+	public get $patientDescription(): string {
+		return this.patientDescription;
+	}
+
+    /**
+     * Setter $patientDescription
+     * @param {string} value
+     */
+	public set $patientDescription(value: string) {
+		this.patientDescription = value;
+	}
+
+
+
 
 
   /**
@@ -38,22 +75,6 @@ export class History {
    */
   public get $note(): string {
     return this.note;
-  }
-
-  /**
-   * Getter $patient_description
-   * @return {string}
-   */
-  public get $patient_description(): string {
-    return this.patient_description;
-  }
-
-  /**
-   * Getter $reffered_by
-   * @return {string}
-   */
-  public get $reffered_by(): string {
-    return this.reffered_by;
   }
 
   /**
@@ -94,22 +115,6 @@ export class History {
    */
   public set $note(value: string) {
     this.note = value;
-  }
-
-  /**
-   * Setter $patient_description
-   * @param {string} value
-   */
-  public set $patient_description(value: string) {
-    this.patient_description = value;
-  }
-
-  /**
-   * Setter $reffered_by
-   * @param {string} value
-   */
-  public set $reffered_by(value: string) {
-    this.reffered_by = value;
   }
 
   /**
