@@ -39,7 +39,7 @@ public class ControllerHistory {
 
     @PostMapping("search")
     public List<History> search(@RequestBody RequestSearch requestSearch) {
-        String userID = requestSearch.getUserID();
+        String userID = Utils.getLoggedUserID();
         String column = requestSearch.getColumn();
         String key = requestSearch.getKey();
         int start = requestSearch.getStart();
@@ -49,11 +49,12 @@ public class ControllerHistory {
 
     @PostMapping("searchCount")
     public Map<String, Integer> searchCount(@RequestBody RequestSearch requestSearch) {
-        String userID = requestSearch.getUserID();
+        String userID = Utils.getLoggedUserID();
         String column = requestSearch.getColumn();
         String key = requestSearch.getKey();
         int start = requestSearch.getStart();
         int perPage = requestSearch.getPerPage();
+        System.out.println(requestSearch.toString());
         return service_history_i.searchCount(userID, column, key, start);
     }
 

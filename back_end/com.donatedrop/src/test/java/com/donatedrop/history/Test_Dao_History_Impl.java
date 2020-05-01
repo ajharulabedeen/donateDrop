@@ -171,7 +171,7 @@ public class Test_Dao_History_Impl {
 
     @Test
     public void testSearchCount() {
-        Map<String, Integer> count = dao_history_i.searchCount("15", "note", "kh", 0);
+        Map<String, Integer> count = dao_history_i.searchCount("16", "note", "%kh", 0);
         System.out.println("\nCount : " + count.get(StringUtil.COUNT) + "\n");
     }
 

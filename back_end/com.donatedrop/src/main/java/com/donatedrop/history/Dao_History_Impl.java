@@ -114,7 +114,7 @@ public class Dao_History_Impl implements Dao_History_I {
     @Override
     public Map<String, Integer> searchCount(String userID, String column, String key, int start) {
         Map<String, Integer> result = new HashMap<>();
-        String q = "SELECT * FROM history WHERE user_id=" + userID + " AND " + column + " LIKE '%" + key + "%' ORDER BY id ASC";
+        String q = "SELECT * FROM history WHERE user_id=" + userID + " AND " + column + " LIKE '" + key + "' ORDER BY id ASC";
         int count = entityManager.createNativeQuery(q, History.class)
                 .setFirstResult(start)
                 .getResultList().size();
