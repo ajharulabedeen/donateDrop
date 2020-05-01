@@ -23,6 +23,8 @@ export class DonationHistoryComponent implements OnInit {
   refferedBy: string;
   donationNote: string;
 
+  deleteId: string;
+
 
   // historyDonation = new Array();
 
@@ -96,5 +98,9 @@ export class DonationHistoryComponent implements OnInit {
     });
 
 
+  }
+
+  public deleteDonation() {
+    console.log('delete : ' + this.deleteId);
   }
 }// class

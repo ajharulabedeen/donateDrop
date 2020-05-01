@@ -107,7 +107,7 @@
               <!--delete-->
               <td>
                 donation_delete
-                <button class="btn btn-xs btn-warning" (click)="delete(j.id)" data-toggle="modal"
+                <button class="btn btn-xs btn-warning" (click)=" deleteId = h.$id" data-toggle="modal"
                         data-target="#donation_delete">Delete
                 </button>
               </td>
@@ -216,7 +216,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-secondary btn-danger" (click)="delete(r.id)"
+          <button type="button" class="btn btn-secondary btn-danger" (click)="deleteDonation()"
                   data-dismiss="modal">
             Delete
           </button>
