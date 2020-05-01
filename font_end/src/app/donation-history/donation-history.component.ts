@@ -17,6 +17,13 @@ export class DonationHistoryComponent implements OnInit {
   searchKey: string;
   public historyDonation: History[] = new Array();
 
+  donationDate: string;
+  donationLocation: string;
+  patientType: string;
+  refferedBy: string;
+  donationNote: string;
+
+
   // historyDonation = new Array();
 
   constructor(private serviceHistory: DonationHistoryService) {

@@ -151,7 +151,7 @@
             <div class="form-group">
               <label>Birth Date:</label>
               <div class="input-group date">
-                <input [(ngModel)]="birthDate" type="text" class="form-control pull-right">
+                <input [(ngModel)]="donationDate" type="text" class="form-control pull-right">
               </div>
             </div>
           </div>
@@ -159,28 +159,26 @@
             <div class="form-group">
               <label>Select Date:</label>
               <div class="input-group date">
-                <input [(ngModel)]="birthDate" type="date" class="form-control pull-right">
+                <input [(ngModel)]="donationDate" type="date" class="form-control pull-right">
               </div>
             </div>
           </div>
-
-
           <div class="form-group">
             <label>Location</label>
-            <input [(ngModel)]="organization_name" [disabled]='!edit' type="text" class="form-control"
+            <input [(ngModel)]="donationLocation" [disabled]='!edit' type="text" class="form-control"
                    placeholder="Enter ...">
           </div>
           <div class="form-group">
             <label>Patient Type/Description</label>
-            <input [(ngModel)]="type" type="text" class="form-control" placeholder="Enter ...">
+            <input [(ngModel)]="patientType" type="text" class="form-control" placeholder="Enter ...">
           </div>
           <div class="form-group">
             <label>Reffered By</label>
-            <input [(ngModel)]="role" type="text" class="form-control" placeholder="Enter ...">
+            <input [(ngModel)]="refferedBy" type="text" class="form-control" placeholder="Enter ...">
           </div>
           <div class="form-group">
             <label>Note</label>
-            <textarea class="col-md-12" [(ngModel)]="started">
+            <textarea class="col-md-12" [(ngModel)]="donationNote">
 
             </textarea>
           </div>
