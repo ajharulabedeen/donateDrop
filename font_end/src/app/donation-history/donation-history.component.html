@@ -49,7 +49,7 @@
       <div style="text-align: center" class="form-group">
         <label>Start</label>
         <input style="text-align: center" [(ngModel)]="startHistory" type="number" class="form-control"
-               value="{{perPage}}" (ngModelChange)="refreshTable_basicSearch()">
+               value="{{startHistory}}" (ngModelChange)="getAll()">
       </div>
     </div>
 
@@ -58,7 +58,7 @@
       <div style="text-align: center" class="form-group">
         <label>Per Page</label>
         <input style="text-align: center" [(ngModel)]="perPage" type="number" class="form-control"
-               value="{{perPage}}" (ngModelChange)="refreshTable_basicSearch()">
+               value="{{perPage}}" (ngModelChange)="getAll()">
       </div>
     </div>
 

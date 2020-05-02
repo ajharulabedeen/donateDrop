@@ -36,6 +36,8 @@ export class DonationHistoryComponent implements OnInit {
   ngOnInit() {
     this.searchBy = 'location';
     this.searchKey = '';
+    this.startHistory = '0';
+    this.perPage = '10';
     window.dispatchEvent(new Event('resize'));
     document.body.className = 'hold-transition skin-blue sidebar-mini';
   }
