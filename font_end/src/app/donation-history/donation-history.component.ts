@@ -61,7 +61,7 @@ export class DonationHistoryComponent implements OnInit {
     var srcRequest = new SearchRequest();
     srcRequest.column = this.searchBy;
     srcRequest.key = '%' + this.searchKey + '%';
-    srcRequest.start = '0';
+    srcRequest.start = this.startHistory;
     srcRequest.perPage = this.perPage;
     srcRequest.userID = '';
     // workings
