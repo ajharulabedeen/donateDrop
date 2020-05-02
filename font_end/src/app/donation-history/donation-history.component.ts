@@ -97,6 +97,7 @@ export class DonationHistoryComponent implements OnInit {
       if (res['STATUS'] === 'OK') {
         history.$id = res['ID'];
         this.historyDonation.push(history);
+        this.searchCount();
       }
     });
   }
@@ -109,6 +110,7 @@ export class DonationHistoryComponent implements OnInit {
         var hist: History = this.historyDonation.find(({id}) => id === this.deleteId);
         console.log(hist);
         this.historyDonation = this.historyDonation.filter(obj => obj !== hist);
+        this.searchCount();
       }
     });
   }
