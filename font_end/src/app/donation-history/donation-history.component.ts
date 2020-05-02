@@ -25,6 +25,7 @@ export class DonationHistoryComponent implements OnInit {
   donationNote: string;
 
   deleteId: string;
+  startHistory: string;
 
 
   // historyDonation = new Array();
