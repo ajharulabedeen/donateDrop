@@ -119,7 +119,16 @@ export class DonationHistoryComponent implements OnInit {
 
 
   public nextPage() {
-    this.startHistory += this.perPage;
-    this.getAll();
+    if (this.startHistory <= this.total) {
+      this.startHistory += this.perPage;
+      this.getAll();
+    }
+  }
+
+  public previousPage() {
+    if (this.startHistory > 0) {
+      this.startHistory -= this.perPage;
+      this.getAll();
+    }
   }
 }// class
