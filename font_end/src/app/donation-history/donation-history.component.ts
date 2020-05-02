@@ -11,9 +11,9 @@ import {Districts} from '../profile/basic/districts.model';
 })
 export class DonationHistoryComponent implements OnInit {
   searchBy: string;
-  perPage: string;
+  perPage: number;
   total: string;
-  pageNumber: string;
+  pageNumber: number;
   sortBy: string;
   searchKey: string;
   public historyDonation: History[] = new Array();
@@ -25,7 +25,7 @@ export class DonationHistoryComponent implements OnInit {
   donationNote: string;
 
   deleteId: string;
-  startHistory: string;
+  startHistory: number;
 
 
   // historyDonation = new Array();
@@ -36,7 +36,7 @@ export class DonationHistoryComponent implements OnInit {
   ngOnInit() {
     this.searchBy = 'location';
     this.searchKey = '';
-    this.startHistory = '0';
+    this.startHistory = 0;
     this.perPage = '10';
     window.dispatchEvent(new Event('resize'));
     document.body.className = 'hold-transition skin-blue sidebar-mini';
@@ -118,4 +118,8 @@ export class DonationHistoryComponent implements OnInit {
   }
 
 
+  public nextPage() {
+    this.startHistory += this.perPage;
+    this.getAll();
+  }
 }// class
