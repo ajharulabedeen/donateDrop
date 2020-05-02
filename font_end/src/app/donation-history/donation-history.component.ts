@@ -79,6 +79,7 @@ export class DonationHistoryComponent implements OnInit {
     //   }
     // });
     this.historyDonation = this.serviceHistory.getHistory(srcRequest);
+    this.searchCount();
     console.log(this.historyDonation);
   }
 
