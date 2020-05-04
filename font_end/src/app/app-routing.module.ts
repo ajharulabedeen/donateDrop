@@ -15,6 +15,7 @@ import { RecordRtcComponent } from './record-rtc/record-rtc.component';
 import { RecordClearComponent } from './record-clear/record-clear.component';
 import {DonationHistoryComponent} from './donation-history/donation-history.component';
 import {PersonalInfoComponent} from './profile/personal-info/personal-info.component';
+import {AgentComponent} from './admin/agent/agent.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'user/profile', component: ProfileComponent },
   { path: 'user/donation_history', component: DonationHistoryComponent},
   { path: 'user/personal_info', component: PersonalInfoComponent},
+  { path: 'user/agent', component: AgentComponent},
 ];
 
 @NgModule({

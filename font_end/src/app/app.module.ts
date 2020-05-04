@@ -25,6 +25,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { RecordRtcComponent } from './record-rtc/record-rtc.component';
 import { RecordClearComponent } from './record-clear/record-clear.component';
 import { DonationHistoryComponent } from './donation-history/donation-history.component';
+import {AdminModule} from './admin/admin.module';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import { DonationHistoryComponent } from './donation-history/donation-history.co
     EventModule,
     CKEditorModule,
     BrowserModule,
+    AdminModule
     // RecordRTC
 
     // NgModel
