@@ -105,7 +105,11 @@ public class AgentRequest implements Serializable {
 
     @Override
     public String toString() {
-        return "com.donatedrop.agent.AgentRequest[ id=" + id + " ]";
+        return "AgentRequest{" +
+                "id=" + id +
+                ", profileID='" + profileID + '\'' +
+                ", dateRequest='" + dateRequest + '\'' +
+                ", status='" + status + '\'' +
+                '}';
     }
-
 }
