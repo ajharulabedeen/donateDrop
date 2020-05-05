@@ -25,7 +25,7 @@ public class AgentRequest implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "user_id")
+    @Column(name = "user_id", unique = true)
     private String userID;
 
     @Column(name = "request_date")
