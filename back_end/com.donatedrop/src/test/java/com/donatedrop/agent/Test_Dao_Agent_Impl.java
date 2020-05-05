@@ -2,12 +2,16 @@ package com.donatedrop.agent;
 
 import com.donatedrop.other.TestUtil;
 import com.donatedrop.util.DateUtil;
+import com.donatedrop.util.StringUtil;
+import jdk.nashorn.internal.AssertsEnabled;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
 
 @SpringBootTest
 public class Test_Dao_Agent_Impl {
@@ -26,11 +30,18 @@ public class Test_Dao_Agent_Impl {
     @Order(2)
     public void testSaveRequest() {
         AgentRequest agentRequest = new AgentRequest();
-        agentRequest.setUserID(TestUtil.userID+1);
+        agentRequest.setUserID(TestUtil.userID + 3);
         agentRequest.setRequestDate(DateUtil.getDate().toString());
         agentRequest.setStatus("0");
         Map<String, String> result = dao_agent_i.saveRequest(agentRequest);
         System.out.println("\nResult : \n" + result);
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
+
+    @Test
+    public void testDeleteRequest() {
+
+    }
+
 
 }
