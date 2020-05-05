@@ -25,8 +25,8 @@ public class AgentRequest implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "profile_id")
-    private String profileID;
+    @Column(name = "user_id")
+    private String userID;
 
     @Column(name = "request_date")
     private String requestDate;
@@ -42,7 +42,7 @@ public class AgentRequest implements Serializable {
     }
 
     public AgentRequest(String profileID, String requestDate, String status) {
-        this.profileID = profileID;
+        this.userID = profileID;
         this.requestDate = requestDate;
         this.status = status;
     }
@@ -51,12 +51,12 @@ public class AgentRequest implements Serializable {
         this.id = id;
     }
 
-    public String getProfileID() {
-        return profileID;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setProfileID(String profileID) {
-        this.profileID = profileID;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getRequestDate() {
@@ -99,7 +99,7 @@ public class AgentRequest implements Serializable {
     public String toString() {
         return "AgentRequest{" +
                 "id=" + id +
-                ", profileID='" + profileID + '\'' +
+                ", userID='" + userID + '\'' +
                 ", requestDate='" + requestDate + '\'' +
                 ", status='" + status + '\'' +
                 '}';
