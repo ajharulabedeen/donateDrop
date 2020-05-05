@@ -14,11 +14,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- *
  * @author G7
  */
 @Entity
-@Table(name="agent_request")
+@Table(name = "agent_request")
 public class AgentRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -29,8 +28,8 @@ public class AgentRequest implements Serializable {
     @Column(name = "profile_id")
     private String profileID;
 
-    @Column(name = "date_request")
-    private String dateRequest;
+    @Column(name = "request_date")
+    private String requestDate;
 
     @Column(name = "status")
     private String status;
@@ -42,16 +41,9 @@ public class AgentRequest implements Serializable {
     public AgentRequest() {
     }
 
-    public AgentRequest(String profileID, String dateRequest, String status) {
+    public AgentRequest(String profileID, String requestDate, String status) {
         this.profileID = profileID;
-        this.dateRequest = dateRequest;
-        this.status = status;
-    }
-
-    public AgentRequest(Long id, String profileID, String dateRequest, String status) {
-        this.id = id;
-        this.profileID = profileID;
-        this.dateRequest = dateRequest;
+        this.requestDate = requestDate;
         this.status = status;
     }
 
@@ -67,12 +59,12 @@ public class AgentRequest implements Serializable {
         this.profileID = profileID;
     }
 
-    public String getDateRequest() {
-        return dateRequest;
+    public String getRequestDate() {
+        return requestDate;
     }
 
-    public void setDateRequest(String dateRequest) {
-        this.dateRequest = dateRequest;
+    public void setRequestDate(String requestDate) {
+        this.requestDate = requestDate;
     }
 
     public String getStatus() {
@@ -108,7 +100,7 @@ public class AgentRequest implements Serializable {
         return "AgentRequest{" +
                 "id=" + id +
                 ", profileID='" + profileID + '\'' +
-                ", dateRequest='" + dateRequest + '\'' +
+                ", requestDate='" + requestDate + '\'' +
                 ", status='" + status + '\'' +
                 '}';
     }
