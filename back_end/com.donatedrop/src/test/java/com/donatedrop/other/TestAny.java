@@ -9,7 +9,7 @@ public class TestAny {
     public void testBCrypt() {
         System.out.println("Test!");
         int i = 0;
-        while (i < 5) {
+        while (i < 10) {
             String password = "password";
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             String hashedPassword = passwordEncoder.encode(password);
