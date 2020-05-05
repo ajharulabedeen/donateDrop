@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@Transactional
 @Component
 public class Dao_Agent_Impl implements Dao_Agent_I {
 
@@ -25,7 +25,6 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
      * @return
      * @apiNote for successful save, saved id will be back. OK status
      */
-    @Transactional
     @Override
     public Map<String, String> saveRequest(AgentRequest agentRequest) {
         Map<String, String> result = new HashMap<>();
@@ -49,9 +48,26 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
     @Override
     public Map<String, String> deleteRequest(String userID) {
         Map<String, String> result = new HashMap<>();
-        String rquestID = getAgentRequestByUserID(userID).getId().toString();
+        String requestID = getAgentRequestByUserID(userID).getId().toString();
         try {
-            entityManager.remove(entityManager.find(AgentRequest.class, new Long(rquestID)));
+            AgentRequest agentRequest = entityManager.find(AgentRequest.class, new Long(requestID));
+            entityManager.remove(agentRequest);
+            result.put(StringUtil.STATUS, StringUtil.OK);
+            result.put(StringUtil.MESSAGE, StringUtil.SAVE);
+        } catch (Exception e) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+            result.put(StringUtil.MESSAGE, StringUtil.UNKNOWN);
+        }
+        return result;
+    }
+
+    @Override
+    public Map<String, String> reviewRequest(String requestID, String value) {
+        Map<String, String> result = new HashMap<>();
+        try {
+            AgentRequest agentRequest = entityManager.find(AgentRequest.class, new Long(requestID));
+            agentRequest.setStatus(value);
+            entityManager.merge(agentRequest);
             result.put(StringUtil.STATUS, StringUtil.OK);
             result.put(StringUtil.MESSAGE, StringUtil.SAVE);
         } catch (Exception e) {
