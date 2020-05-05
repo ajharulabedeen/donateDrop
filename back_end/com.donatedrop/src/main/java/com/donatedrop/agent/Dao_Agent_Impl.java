@@ -1,14 +1,18 @@
 package com.donatedrop.agent;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.donatedrop.util.StringUtil;
+import org.hibernate.exception.ConstraintViolationException;
+//import org.hibernate.exception.ConstraintViolationException;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.HashMap;
 import java.util.Map;
 
-@Transactional
+
 @Component
 public class Dao_Agent_Impl implements Dao_Agent_I {
 
@@ -20,10 +24,28 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
      * @return
      * @apiNote for successful save, saved id will be back. OK status
      */
+    @Transactional
+    @Override
     public Map<String, String> saveRequest(AgentRequest agentRequest) {
-        return null;
+        Map<String, String> result = new HashMap<>();
+        try {
+            entityManager.persist(agentRequest);
+            result.put(StringUtil.STATUS, StringUtil.OK);
+            result.put(StringUtil.MESSAGE, StringUtil.SAVE);
+        } catch (org.springframework.dao.DataIntegrityViolationException e) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+            result.put(StringUtil.MESSAGE, StringUtil.DUPLICATE);
+        } catch (ConstraintViolationException constraintViolationException) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+            result.put(StringUtil.MESSAGE, StringUtil.DUPLICATE);
+        } catch (Exception e) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+            result.put(StringUtil.MESSAGE, StringUtil.UNKNOWN);
+        }
+        return result;
     }
 
+    @Override
     public Map<String, String> deleteRequest(AgentRequest agentRequest) {
         return null;
     }
