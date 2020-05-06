@@ -11,12 +11,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 import java.util.Random;
 
-@RunWith(SpringRunner.class)
+
 @SpringBootTest
 public class DumpData {
 
     @Autowired
-    public static Dao_GeoCode_I dao_geoCode_i;
+    public Dao_GeoCode_I dao_geoCode_i;
 
     static Random r = new Random();
 
@@ -172,16 +172,10 @@ public class DumpData {
         return title[r.nextInt(title.length)] + " " + fName[r.nextInt(fName.length)] + " " + lName[r.nextInt(lName.length)];
     }
 
-    @Test
-    public void testAddress() {
-        for (int x = 0; x < 50; x++) {
-            System.out.println(DumpData.getAddress());
-        }
-    }
 
-    public static String getAddress() {
-
-        System.out.println("\n" + dao_geoCode_i.toString() + "\n");
+    public String getAddress() {
+        Random r = new Random();
+//        System.out.println("\n" + dao_geoCode_i.toString() + "\n");
 
         List<DivisionsEngName> divisionsList = dao_geoCode_i.getDivisions();
         int divRand = r.nextInt(divisionsList.size());
