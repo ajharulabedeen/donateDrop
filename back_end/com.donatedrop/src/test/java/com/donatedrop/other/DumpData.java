@@ -124,5 +124,13 @@ public class DumpData {
 
     }
 
+    public static String getPhoneNumber() {
+        Random r = new Random();
+        String[] operators1 = {"013", "014", "015", "016", "017", "018", "019"};
+        String operators2 = Integer.toString(r.nextInt(10)) + Integer.toString(r.nextInt(10));
+        String operator = operators1[r.nextInt(operators1.length)] + operators2;
+        return operator;
+    }
+
 //    public static
 }
