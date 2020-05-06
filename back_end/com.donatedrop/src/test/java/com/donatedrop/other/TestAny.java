@@ -23,7 +23,6 @@ public class TestAny {
             String password = "password";
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             String hashedPassword = passwordEncoder.encode(password);
-
             System.out.println(hashedPassword);
             i++;
         }
@@ -48,6 +47,11 @@ public class TestAny {
         for (int x = 0; x < 5; x++) {
             System.out.println(DumpData.getAddress());
         }
+    }
+
+    @Test
+    public void testGetStreetAddress() {
+        System.out.println(DumpData.getStreetAddress());
     }
 
 }// class

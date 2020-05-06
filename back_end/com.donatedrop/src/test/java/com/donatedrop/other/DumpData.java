@@ -11,14 +11,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 import java.util.Random;
 
-
 @SpringBootTest
 public class DumpData {
 
-    @Autowired
-    public Dao_GeoCode_I dao_geoCode_i;
-
-    static Random r = new Random();
+    public static Random r = new Random();
 
     public static String getHospitalName() {
         String[] hospital = {
@@ -72,7 +68,7 @@ public class DumpData {
                 "Al-arafa clinic, Rajshahi.",
                 "Islami Bank Medical College and Hospital, Rajshahi.",
                 "D Hospital Hatemkha ,Rajshahi."};
-        return hospital[r.nextInt(hospital.length)];
+        return hospital[r.nextInt(hospital.length - 1)];
     }
 
     public static String getNote() {
@@ -90,7 +86,7 @@ public class DumpData {
                 "No Need to think about it.",
                 "Patinet Diead, after :("
         };
-        return note[r.nextInt(note.length)];
+        return note[r.nextInt(note.length - 1)];
     }
 
     public static String getPatientDescription() {
@@ -107,7 +103,7 @@ public class DumpData {
                 "Delivary Case",
                 "Lucomia"
         };
-        return patientDescription[r.nextInt(patientDescription.length)];
+        return patientDescription[r.nextInt(patientDescription.length - 1)];
     }
 
     public static String getRefferedBy() {
@@ -121,9 +117,8 @@ public class DumpData {
                 "GUCC Club",
                 "Blood Club",
                 "FB post",
-                "DD post",
-        };
-        return ref[r.nextInt(ref.length)];
+                "DD post",};
+        return ref[r.nextInt(ref.length - 1)];
     }
 
     public static String getLocation() {
@@ -131,9 +126,9 @@ public class DumpData {
         String[] location2 = {"Gazipur", "Khulna", "Mymensing", "Rangpur", "Kustia Sadar", "Dumuria", "Mishimil"};
         String[] location3 = {"Ashsoni", "Fultola", "Bagura", "", "Kustia Sadar", "Dumuria", "Mishimil"};
         Random random = new Random();
-        String l = location1[random.nextInt(location1.length)] + ", "
-                + location2[random.nextInt(location2.length)] + ", "
-                + location3[random.nextInt(location3.length)];
+        String l = location1[random.nextInt(location1.length - 1)] + ", "
+                + location2[random.nextInt(location2.length - 1)] + ", "
+                + location3[random.nextInt(location3.length - 1)];
         return l;
 
     }
@@ -141,7 +136,7 @@ public class DumpData {
     public static String getPhoneNumber() {
         String[] operators1 = {"013", "014", "015", "016", "017", "018", "019"};
         String operators2 = Integer.toString(r.nextInt(10)) + Integer.toString(r.nextInt(10));
-        String operator = operators1[r.nextInt(operators1.length)] + operators2;
+        String operator = operators1[r.nextInt(operators1.length - 1)] + operators2;
 
         String number = "";
         for (int x = 0; x < 6; x++) {
@@ -169,7 +164,7 @@ public class DumpData {
                 "Laiba", "Manahil", "Mohammed", "Aahil", "Eshal", "Manha", "Aisha", "Aaban",
                 "A\'ishah", "Aleena", "Afnan", "A\'shadieeyah", "Amelia", "Rayyan", "Zayan",
                 "Rehan", "Maryam", "Aiza", "Amreen", "Usman", "Nimra", "Shaista", "Zoya", "A\'idah"};
-        return title[r.nextInt(title.length)] + " " + fName[r.nextInt(fName.length)] + " " + lName[r.nextInt(lName.length)];
+        return title[r.nextInt(title.length - 1)] + " " + fName[r.nextInt(fName.length - 1)] + " " + lName[r.nextInt(lName.length - 1)];
     }
 
     public static String getAddress() {
@@ -1164,20 +1159,19 @@ public class DumpData {
                 "West Juri, Juri, Moulvibazar, Sylhet",
                 "West Poilanpur, Osmaninagar, Sylhet, Sylhet",
                 "Whykong, Teknaf, Coxsbazar, Chattagram",
-                "Zindarpur, Kalai, Joypurhat, Rajshahi",
-        };
+                "Zindarpur, Kalai, Joypurhat, Rajshahi",};
 
-        return addr[r.nextInt(addr.length)];
+        return addr[r.nextInt(addr.length - 1)];
     }
 
     public static String getGender() {
         String[] gender = {"Male", "Female", "Other"};
-        return gender[r.nextInt(gender.length)];
+        return gender[r.nextInt(gender.length - 1)];
     }
 
     public static String getBloodGroup() {
         String[] blood = {"A+", "B+", "O+", "A-", "B-", "O-", "AB+", "AB-"};
-        return blood[r.nextInt(blood.length)];
+        return blood[r.nextInt(blood.length - 1)];
     }
 
     public static String getProfession() {
@@ -1187,15 +1181,31 @@ public class DumpData {
                 "GM", "CEOE", "Self Empoyed", "Freelancer", "Journalist",
                 "Businessman"
         };
-        return profession[r.nextInt(profession.length)];
+        return profession[r.nextInt(profession.length - 1)];
     }
 
     public static String getRelation() {
-        String[] relation = {"Uncle", "Aunty""Mama", "Chaca", "Kaka", "Mami", "Father", "Mother"
+        String[] relation = {"Uncle", "Aunty",
+                "Mama", "Chaca", "Kaka", "Mami", "Father", "Mother",
                 "Brother", "Sister", "Wife", "Husband", "Son", "Daughter", "Nephew"};
-        return relation[r.nextInt(relation.length)];
+        return relation[r.nextInt(relation.length - 1)];
     }
 
+    public static String getStreetAddress() {
+        String[] street = {"street", "road", "rasta"};
+        int number = 0;
+        Random r = new Random();
+        number = r.nextInt(100);
+        return Integer.toString(number) + " " + street[street.length - 1] + ", ";
+    }
 
-//    public static
+    public static String getMarterialStatus() {
+        String[] status = {"YES", "NO", "NOT DISCLOSE", "DIVORCE"};
+        return status[r.nextInt(status.length - 1)];
+    }
+
+    public static String getReligion() {
+        String[] status = {"Islam", "Jesus", "Hindu", "Doudhp", "Athiest", "None"};
+        return status[r.nextInt(status.length - 1)];
+    }
 }

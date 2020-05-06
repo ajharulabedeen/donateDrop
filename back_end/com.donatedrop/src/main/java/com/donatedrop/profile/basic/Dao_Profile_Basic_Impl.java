@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -97,7 +98,6 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
 //        System.out.println("response (dao) : " + response.toString());
         return response;
     }
-
 
     @Override
     public ProfileBasic findOne(String id) {
@@ -340,6 +340,17 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         }
         return profileBasic;
     }
+
+
+    public void deleteAll() {
+        String q = "SELECT * FROM `profilebasic`";
+        List<ProfileBasic> basicList = entityManager.createNativeQuery(q, ProfileBasic.class).getResultList();
+        for (Iterator<ProfileBasic> iterator = basicList.iterator(); iterator.hasNext();) {
+            ProfileBasic next = iterator.next();
+            entityManager.remove(next);
+        }
+    }
+
 
 }// class 
 

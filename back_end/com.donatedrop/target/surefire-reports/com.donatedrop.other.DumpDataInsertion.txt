@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.donatedrop.other.DumpDataInsertion
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 15.535 s <<< FAILURE! - in com.donatedrop.other.DumpDataInsertion
+testUserCreationWithProfile  Time elapsed: 0.18 s  <<< ERROR!
+java.lang.RuntimeException: Uncompilable source code - annotation @org.junit.jupiter.api.Test not applicable in this type context
+	at com.donatedrop.other.DumpDataInsertion.testUserCreationWithProfile(DumpDataInsertion.java:39)
+

@@ -1,5 +1,10 @@
 package com.donatedrop.other;
 
+import com.donatedrop.geocode.Dao_GeoCode_I;
+import com.donatedrop.geocode.models.DistrictsEngName;
+import com.donatedrop.geocode.models.DivisionsEngName;
+import com.donatedrop.geocode.models.UnionsEngName;
+import com.donatedrop.geocode.models.UpzillaEngName;
 import com.donatedrop.models.Address;
 import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
 import com.donatedrop.profile.model.EmergencyContact;
@@ -7,13 +12,18 @@ import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.security.models.User;
 import com.donatedrop.security.repo.UserRepository;
+import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.Utils;
 import org.hibernate.annotations.NaturalId;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.TransactionScoped;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,6 +32,8 @@ import java.util.Random;
 @SpringBootTest
 public class DumpDataInsertion {
 
+    @PersistenceContext
+    EntityManager entityManager;
 
     @Autowired
     UserRepository userRepository;
@@ -29,6 +41,23 @@ public class DumpDataInsertion {
     @Autowired
     Dao_Profile_Basic_I dao_profile_basic_i;
 
+    @Autowired
+    Dao_GeoCode_I dao_GeoCode_I;
+
+    @Test
+    @Transactional
+    public void testEntityManager() {
+        System.out.println(entityManager.toString());
+        entityManager.getTransaction().commit();
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        User user = new User();
+        user.setUserName("dim@gmail.com");
+        user.setPassword(passwordEncoder.encode("123456"));
+        user.setEnabled(true);
+        user.setAuthorities(new ArrayList<>());
+        entityManager.persist(user);
+
+    }
 
     @Test
     public void testUserCreationWithProfile() {
@@ -39,6 +68,15 @@ public class DumpDataInsertion {
         }// for
 //        System.out.println("\n" + userCreation("x1") + "\n");
     }
+
+    public void insertData() {
+        for (int x = 0; x < 1000; x++) {
+            System.out.println(x);
+            String userID = userCreation(Integer.toString(x));
+            saveProfile(userID);
+        }// for
+    }
+
 
     public String userCreation(String mail) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -53,15 +91,13 @@ public class DumpDataInsertion {
     }
 
     public void saveProfile(String userID) {
-        Random r = new Random();
         System.out.println("\nProfile Basic Dao Test!\n");
+        Random r = new Random();
+
         ProfileBasic profileBasic = new ProfileBasic();
         profileBasic.setName(DumpData.getName());
-
-        Address address_present = new Address("Khulna", "Khulna", "Dumuria", "Rudghora", "Mikshimil East");
-        profileBasic.setAddress_present(address_present);
-        Address address_permanet = new Address("Khulna", "Khulna", "Dumuria", "Rudghora", "Mikshimil East");
-        profileBasic.setAddress_permanent(address_permanet);
+        profileBasic.setAddress_present(getAddress());
+        profileBasic.setAddress_permanent(getAddress());
 
         List<EmergencyContact> emergencyContacts = new ArrayList<>();
         for (int x = 0; x < r.nextInt(4); x++) {
@@ -80,13 +116,66 @@ public class DumpDataInsertion {
 
         profileBasic.setGender(DumpData.getGender());
         profileBasic.setBlood_Group(DumpData.getBloodGroup());
-        profileBasic.setAvailable("0");
-        profileBasic.setMaritalStatus("NO");
+        profileBasic.setAvailable(Integer.toString(r.nextInt(1)));
+        profileBasic.setMaritalStatus(DumpData.getMarterialStatus());
         profileBasic.setProfession(DumpData.getProfession());
         profileBasic.setCare_of(DumpData.getName());
+        profileBasic.setBirthDate(DateUtil.getDate().toString());
+        profileBasic.setReligion(DumpData.getReligion());
         profileBasic.setUserId(userID);
 
         dao_profile_basic_i.save(profileBasic);
+    }
+
+    public Address getAddress() {
+        Random r = new Random();
+        Address address_permanet = new Address();
+        String divID = "";
+        String divName = "";
+        String distID = "";
+        String distName = "";
+        String upzID = "";
+        String upzName = "";
+        String unionID = "";
+        String unionName = "";
+        try {
+            List<DivisionsEngName> divisionsList = dao_GeoCode_I.getDivisions();
+            int divRand = r.nextInt(divisionsList.size() - 1);
+            divID = divisionsList.get(divRand).getId().toString();
+            divName = divisionsList.get(divRand).getName().toString();
+            address_permanet.setDivision(divName);
+        } catch (Exception e) {
+            System.out.println("Exception in Gettting Division!" + divID + "\n");
+        }
+        try {
+            List<DistrictsEngName> districtsEngNameList = dao_GeoCode_I.getDistricts(divID);
+            int distRand = r.nextInt(districtsEngNameList.size() - 1);
+            distID = districtsEngNameList.get(distRand).getId().toString();
+            distName = districtsEngNameList.get(distRand).getName().toString();
+            address_permanet.setDistrict(distName);
+        } catch (Exception e) {
+            System.out.println("Exception in Gettting District! : " + distID + "\n");
+        }
+        try {
+            List<UpzillaEngName> upzillaEngNameList = dao_GeoCode_I.getUpzillas(distID);
+            int upzRand = r.nextInt(upzillaEngNameList.size() - 1);
+            upzID = upzillaEngNameList.get(upzRand).getId().toString();
+            upzName = upzillaEngNameList.get(upzRand).getName().toString();
+            address_permanet.setUpzilla(upzName);
+        } catch (Exception e) {
+            System.out.println("Exception in Gettting Upzilla! : " + upzID + "\n");
+        }
+        try {
+            List<UnionsEngName> unionsEngNameList = dao_GeoCode_I.getUnions(upzID);
+            int unionRand = r.nextInt(unionsEngNameList.size() - 1);
+            unionID = unionsEngNameList.get(unionRand).getId().toString();
+            unionName = unionsEngNameList.get(unionRand).getName().toString();
+            address_permanet.setUnion_ward(unionName);
+        } catch (Exception e) {
+            System.out.println("Exception in Gettting Unions! : " + unionID + "\n");
+        }
+        address_permanet.setStreet_address(DumpData.getStreetAddress());
+        return address_permanet;
     }
 
 }// class
