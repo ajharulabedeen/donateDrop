@@ -129,7 +129,12 @@ public class DumpData {
         String[] operators1 = {"013", "014", "015", "016", "017", "018", "019"};
         String operators2 = Integer.toString(r.nextInt(10)) + Integer.toString(r.nextInt(10));
         String operator = operators1[r.nextInt(operators1.length)] + operators2;
-        return operator;
+
+        String number = "";
+        for (int x = 0; x < 6; x++) {
+            number += Integer.toString(r.nextInt(10));
+        }
+        return operator + "-" + number;
     }
 
 //    public static
