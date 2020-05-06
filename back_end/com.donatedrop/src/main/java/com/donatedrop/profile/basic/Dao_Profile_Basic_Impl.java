@@ -22,6 +22,7 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
     @PersistenceContext
     private EntityManager entityManager;
 
+
     @Override
     public Map<String, String> save(ProfileBasic profileBasic) {
         String status = "";
@@ -342,12 +343,19 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
     }
 
 
-    public void deleteAll() {
+    public void deleteAll_ProfileBasic() {
         String q = "SELECT * FROM `profilebasic`";
         List<ProfileBasic> basicList = entityManager.createNativeQuery(q, ProfileBasic.class).getResultList();
-        for (Iterator<ProfileBasic> iterator = basicList.iterator(); iterator.hasNext();) {
+        for (Iterator<ProfileBasic> iterator = basicList.iterator(); iterator.hasNext(); ) {
             ProfileBasic next = iterator.next();
             entityManager.remove(next);
+        }
+    }
+
+    public void insertProfileBasicBatch(List<ProfileBasic> basicList) {
+        for (Iterator<ProfileBasic> iterator = basicList.iterator(); iterator.hasNext();) {
+            ProfileBasic next = iterator.next();
+            entityManager.persist(next);
         }
     }
 
