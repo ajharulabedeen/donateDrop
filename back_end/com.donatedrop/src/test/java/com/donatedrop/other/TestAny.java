@@ -48,13 +48,6 @@ public class TestAny {
         }
     }
 
-    @Test
-    public void testAddress() {
-        for (int x = 0; x < 50; x++) {
-            System.out.println(getAddress());
-        }
-    }
-
     public String getAddress() {
         Random r = new Random();
 //        System.out.println("\n" + dao_GeoCode_I.toString() + "\n");

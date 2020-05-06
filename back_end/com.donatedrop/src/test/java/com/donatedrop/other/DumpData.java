@@ -173,33 +173,5 @@ public class DumpData {
     }
 
 
-    public String getAddress() {
-        Random r = new Random();
-//        System.out.println("\n" + dao_geoCode_i.toString() + "\n");
-
-        List<DivisionsEngName> divisionsList = dao_geoCode_i.getDivisions();
-        int divRand = r.nextInt(divisionsList.size());
-        String divID = divisionsList.get(divRand).getId().toString();
-        String divName = divisionsList.get(divRand).getName().toString();
-
-        List<DistrictsEngName> districtsEngNameList = dao_geoCode_i.getDistricts(divID);
-        int distRand = r.nextInt(districtsEngNameList.size());
-        String distID = districtsEngNameList.get(distRand).getId().toString();
-        String distName = districtsEngNameList.get(distRand).getName().toString();
-
-        List<UpzillaEngName> upzillaEngNameList = dao_geoCode_i.getUpzillas(distID);
-        int upzRand = r.nextInt(upzillaEngNameList.size());
-        String upzID = upzillaEngNameList.get(upzRand).getId().toString();
-        String upzName = upzillaEngNameList.get(upzRand).getName().toString();
-
-        List<UnionsEngName> unionsEngNameList = dao_geoCode_i.getUnions(upzID);
-        int unionRand = r.nextInt(unionsEngNameList.size());
-        String unionID = unionsEngNameList.get(unionRand).getId().toString();
-        String unionName = unionsEngNameList.get(unionRand).getName().toString();
-
-        return unionName + ", " + upzName + ", " + distName + ", " + divName;
-    }
-
-
 //    public static
 }

@@ -91,39 +91,7 @@ public class Test_Dao_GEO_Code {
     }
 
 
-//    @org.junit.jupiter.api.Test
-//    public void testAddress() {
-//        for (int x = 0; x < 50; x++) {
-//            System.out.println(getAddress());
-//        }
-//    }
-//
-//    public String getAddress() {
-//        Random r = new Random();
-//        System.out.println("\n" + dao_GeoCode_I.toString() + "\n");
-//
-//        List<DivisionsEngName> divisionsList = dao_GeoCode_I.getDivisions();
-//        int divRand = r.nextInt(divisionsList.size());
-//        String divID = divisionsList.get(divRand).getId().toString();
-//        String divName = divisionsList.get(divRand).getName().toString();
-//
-//        List<DistrictsEngName> districtsEngNameList = dao_GeoCode_I.getDistricts(divID);
-//        int distRand = r.nextInt(districtsEngNameList.size());
-//        String distID = districtsEngNameList.get(distRand).getId().toString();
-//        String distName = districtsEngNameList.get(distRand).getName().toString();
-//
-//        List<UpzillaEngName> upzillaEngNameList = dao_GeoCode_I.getUpzillas(distID);
-//        int upzRand = r.nextInt(upzillaEngNameList.size());
-//        String upzID = upzillaEngNameList.get(upzRand).getId().toString();
-//        String upzName = upzillaEngNameList.get(upzRand).getName().toString();
-//
-//        List<UnionsEngName> unionsEngNameList = dao_GeoCode_I.getUnions(upzID);
-//        int unionRand = r.nextInt(unionsEngNameList.size());
-//        String unionID = unionsEngNameList.get(unionRand).getId().toString();
-//        String unionName = unionsEngNameList.get(unionRand).getName().toString();
-//
-//        return unionName + ", " + upzName + ", " + distName + ", " + divName;
-//    }
+
 
 
 }
