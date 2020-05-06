@@ -1,8 +1,23 @@
 package com.donatedrop.other;
 
+import com.donatedrop.geocode.Dao_GeoCode_I;
+import com.donatedrop.geocode.models.*;
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
 import java.util.Random;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class DumpData {
+
+    @Autowired
+    public static Dao_GeoCode_I dao_geoCode_i;
+
     static Random r = new Random();
 
     public static String getHospitalName() {
@@ -156,6 +171,41 @@ public class DumpData {
                 "Rehan", "Maryam", "Aiza", "Amreen", "Usman", "Nimra", "Shaista", "Zoya", "A\'idah"};
         return title[r.nextInt(title.length)] + " " + fName[r.nextInt(fName.length)] + " " + lName[r.nextInt(lName.length)];
     }
+
+    @Test
+    public void testAddress() {
+        for (int x = 0; x < 50; x++) {
+            System.out.println(DumpData.getAddress());
+        }
+    }
+
+    public static String getAddress() {
+
+        System.out.println("\n" + dao_geoCode_i.toString() + "\n");
+
+        List<DivisionsEngName> divisionsList = dao_geoCode_i.getDivisions();
+        int divRand = r.nextInt(divisionsList.size());
+        String divID = divisionsList.get(divRand).getId().toString();
+        String divName = divisionsList.get(divRand).getName().toString();
+
+        List<DistrictsEngName> districtsEngNameList = dao_geoCode_i.getDistricts(divID);
+        int distRand = r.nextInt(districtsEngNameList.size());
+        String distID = districtsEngNameList.get(distRand).getId().toString();
+        String distName = districtsEngNameList.get(distRand).getName().toString();
+
+        List<UpzillaEngName> upzillaEngNameList = dao_geoCode_i.getUpzillas(distID);
+        int upzRand = r.nextInt(upzillaEngNameList.size());
+        String upzID = upzillaEngNameList.get(upzRand).getId().toString();
+        String upzName = upzillaEngNameList.get(upzRand).getName().toString();
+
+        List<UnionsEngName> unionsEngNameList = dao_geoCode_i.getUnions(upzID);
+        int unionRand = r.nextInt(unionsEngNameList.size());
+        String unionID = unionsEngNameList.get(unionRand).getId().toString();
+        String unionName = unionsEngNameList.get(unionRand).getName().toString();
+
+        return unionName + ", " + upzName + ", " + distName + ", " + divName;
+    }
+
 
 //    public static
 }
