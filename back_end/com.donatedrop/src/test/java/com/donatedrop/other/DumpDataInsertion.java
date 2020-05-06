@@ -28,6 +28,7 @@ public class DumpDataInsertion {
     @Autowired
     Dao_Profile_Basic_I dao_profile_basic_i;
 
+
     @Test
     public void testUserCreationWithProfile() {
         for (int x = 0; x < 1000; x++) {
@@ -62,24 +63,27 @@ public class DumpDataInsertion {
         profileBasic.setAddress_permanent(address_permanet);
 
         List<EmergencyContact> emergencyContacts = new ArrayList<>();
-        EmergencyContact emergencyContact1 = new EmergencyContact("Mahbub", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle");
-        EmergencyContact emergencyContact2 = new EmergencyContact("Prof. Altaf", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle");
+        EmergencyContact emergencyContact1 = new EmergencyContact(
+                "Mahbub", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle"
+        );
+        EmergencyContact emergencyContact2 = new EmergencyContact(
+                "Prof. Altaf", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle");
         emergencyContacts.add(emergencyContact1);
         emergencyContacts.add(emergencyContact2);
         profileBasic.setEmergency_contact(emergencyContacts);
 
         List<PhoneNumber> phoneNumbers = Arrays.asList(
-                new PhoneNumber("01717034420"),
-                new PhoneNumber("01717034420"),
-                new PhoneNumber("01712034420")
+                new PhoneNumber(DumpData.getPhoneNumber()),
+                new PhoneNumber(DumpData.getPhoneNumber()),
+                new PhoneNumber(DumpData.getPhoneNumber())
         );
         profileBasic.setPhone_number(phoneNumbers);
-        profileBasic.setGender("Male");
-        profileBasic.setBlood_Group("A+");
+        profileBasic.setGender(DumpData.getGender());
+        profileBasic.setBlood_Group(DumpData.getBloodGroup());
         profileBasic.setAvailable("0");
         profileBasic.setMaritalStatus("NO");
-        profileBasic.setProfession("Freelance");
-        profileBasic.setCare_of("Khan Atiar Rahman.");
+        profileBasic.setProfession(DumpData.getProfession());
+        profileBasic.setCare_of(DumpData.getName());
         profileBasic.setUserId(userID);
 
         dao_profile_basic_i.save(profileBasic);

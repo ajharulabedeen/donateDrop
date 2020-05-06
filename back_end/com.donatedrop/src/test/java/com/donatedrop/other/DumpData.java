@@ -1170,5 +1170,26 @@ public class DumpData {
         return addr[r.nextInt(addr.length)];
     }
 
+    public static String getGender() {
+        String[] gender = {"Male", "Female", "Other"};
+        return gender[r.nextInt(gender.length)];
+    }
+
+    public static String getBloodGroup() {
+        String[] blood = {"A+", "B+", "O+", "A-", "B-", "O-", "AB+", "AB-"};
+        return blood[r.nextInt(blood.length)];
+    }
+
+    public static String getProfession() {
+        String[] profession = {
+                "Farmer", "Doctor", "Engineer", "Driver", "Karpentor",
+                "Plumber", "Laywer", "Govt. Employee", "Priavte Employee",
+                "GM", "CEOE", "Self Empoyed", "Freelancer", "Journalist",
+                "Businessman"
+        };
+        return profession[r.nextInt(profession.length)];
+    }
+
+
 //    public static
 }
