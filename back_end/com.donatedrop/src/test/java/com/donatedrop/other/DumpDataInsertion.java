@@ -17,6 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 @SpringBootTest
 public class DumpDataInsertion {
@@ -52,10 +53,10 @@ public class DumpDataInsertion {
     }
 
     public void saveProfile(String userID) {
-
+        Random r = new Random();
         System.out.println("\nProfile Basic Dao Test!\n");
         ProfileBasic profileBasic = new ProfileBasic();
-        profileBasic.setName("Khan Ajharul Abedeen");
+        profileBasic.setName(DumpData.getName());
 
         Address address_present = new Address("Khulna", "Khulna", "Dumuria", "Rudghora", "Mikshimil East");
         profileBasic.setAddress_present(address_present);
@@ -63,21 +64,20 @@ public class DumpDataInsertion {
         profileBasic.setAddress_permanent(address_permanet);
 
         List<EmergencyContact> emergencyContacts = new ArrayList<>();
-        EmergencyContact emergencyContact1 = new EmergencyContact(
-                "Mahbub", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle"
-        );
-        EmergencyContact emergencyContact2 = new EmergencyContact(
-                "Prof. Altaf", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle");
-        emergencyContacts.add(emergencyContact1);
-        emergencyContacts.add(emergencyContact2);
+        for (int x = 0; x < r.nextInt(4); x++) {
+            EmergencyContact emergencyContact1 = new EmergencyContact(
+                    DumpData.getName(), DumpData.getPhoneNumber(), DumpData.getName() + "@mail.com", DumpData.getAddress(), DumpData.getRelation()
+            );
+            emergencyContacts.add(emergencyContact1);
+        }
         profileBasic.setEmergency_contact(emergencyContacts);
 
-        List<PhoneNumber> phoneNumbers = Arrays.asList(
-                new PhoneNumber(DumpData.getPhoneNumber()),
-                new PhoneNumber(DumpData.getPhoneNumber()),
-                new PhoneNumber(DumpData.getPhoneNumber())
-        );
+        List<PhoneNumber> phoneNumbers = new ArrayList<>();
+        for (int x = 0; x < r.nextInt(4); x++) {
+            phoneNumbers.add(new PhoneNumber(DumpData.getPhoneNumber()));
+        }
         profileBasic.setPhone_number(phoneNumbers);
+
         profileBasic.setGender(DumpData.getGender());
         profileBasic.setBlood_Group(DumpData.getBloodGroup());
         profileBasic.setAvailable("0");

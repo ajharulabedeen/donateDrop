@@ -1190,6 +1190,12 @@ public class DumpData {
         return profession[r.nextInt(profession.length)];
     }
 
+    public static String getRelation() {
+        String[] relation = {"Uncle", "Aunty""Mama", "Chaca", "Kaka", "Mami", "Father", "Mother"
+                "Brother", "Sister", "Wife", "Husband", "Son", "Daughter", "Nephew"};
+        return relation[r.nextInt(relation.length)];
+    }
+
 
 //    public static
 }
