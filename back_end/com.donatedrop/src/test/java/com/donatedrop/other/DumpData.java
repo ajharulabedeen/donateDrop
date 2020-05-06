@@ -3,7 +3,7 @@ package com.donatedrop.other;
 import java.util.Random;
 
 public class DumpData {
-    static Random random = new Random();
+    static Random r = new Random();
 
     public static String getHospitalName() {
         String[] hospital = {
@@ -57,8 +57,7 @@ public class DumpData {
                 "Al-arafa clinic, Rajshahi.",
                 "Islami Bank Medical College and Hospital, Rajshahi.",
                 "D Hospital Hatemkha ,Rajshahi."};
-        Random random = new Random();
-        return hospital[random.nextInt(hospital.length)];
+        return hospital[r.nextInt(hospital.length)];
     }
 
     public static String getNote() {
@@ -76,7 +75,7 @@ public class DumpData {
                 "No Need to think about it.",
                 "Patinet Diead, after :("
         };
-        return note[random.nextInt(note.length)];
+        return note[r.nextInt(note.length)];
     }
 
     public static String getPatientDescription() {
@@ -93,7 +92,7 @@ public class DumpData {
                 "Delivary Case",
                 "Lucomia"
         };
-        return patientDescription[random.nextInt(patientDescription.length)];
+        return patientDescription[r.nextInt(patientDescription.length)];
     }
 
     public static String getRefferedBy() {
@@ -109,7 +108,7 @@ public class DumpData {
                 "FB post",
                 "DD post",
         };
-        return ref[random.nextInt(ref.length)];
+        return ref[r.nextInt(ref.length)];
     }
 
     public static String getLocation() {
@@ -125,7 +124,6 @@ public class DumpData {
     }
 
     public static String getPhoneNumber() {
-        Random r = new Random();
         String[] operators1 = {"013", "014", "015", "016", "017", "018", "019"};
         String operators2 = Integer.toString(r.nextInt(10)) + Integer.toString(r.nextInt(10));
         String operator = operators1[r.nextInt(operators1.length)] + operators2;
@@ -135,6 +133,28 @@ public class DumpData {
             number += Integer.toString(r.nextInt(10));
         }
         return operator + "-" + number;
+    }
+
+    public static String getName() {
+        String[] title = {"Khan", "Seikh", "Soiad", "Mughul", "Pathan",
+                "Mst", "MD", "Dr.", "Eng", "Lion", "Munsi", "Begum", "Khatun", "BiBi",
+                "Pddar", "Goldar", "Ahhmed", "Gazi"};
+        String[] fName = {
+                "Labib", "Abdul Haseeb", "Abdul Kabir", "Abdul Qaadir",
+                "Akram", "Aza", "Fujai", "Ghannam", "Ghiyath",
+                "Huzayfah", "Jabbar", "Jabr", "Khalil", "Mahbub",
+                "Man", "Main", "Mufaddal", "Murabbi", "Nur", "Qanit",
+                "Qatadah", "Qays", "Ubayy", "Wadid", "Zaid", "Zayd",
+                "Zaim", "Ablah", "Ajeebah", "Ameera", "Anniyah", "Ateefa",
+                "Buhaysah", "Buhayyah", "Eshal", "Fiza", "Hayud", "Ibthaj",
+                "Kaheesha", "Kashifah", "Mawiyah", "Mehrnaz", "Muruj",
+                "Nadirah", "Qudsiyah", "Rihab", "Saadia", "Zuhayra",
+                "Aatirah", "Zia", "Ziya"};
+        String[] lName = {
+                "Laiba", "Manahil", "Mohammed", "Aahil", "Eshal", "Manha", "Aisha", "Aaban",
+                "A\'ishah", "Aleena", "Afnan", "A\'shadieeyah", "Amelia", "Rayyan", "Zayan",
+                "Rehan", "Maryam", "Aiza", "Amreen", "Usman", "Nimra", "Shaista", "Zoya", "A\'idah"};
+        return title[r.nextInt(title.length)] + " " + fName[r.nextInt(fName.length)] + " " + lName[r.nextInt(lName.length)];
     }
 
 //    public static

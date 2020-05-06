@@ -26,4 +26,11 @@ public class TestAny {
         }
     }
 
+    @Test
+    public void testGetName() {
+        for (int x = 0; x < 50; x++) {
+            System.out.println(DumpData.getName());
+        }
+    }
+
 }
