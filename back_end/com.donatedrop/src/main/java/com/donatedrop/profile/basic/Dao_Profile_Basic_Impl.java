@@ -341,25 +341,6 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         }
         return profileBasic;
     }
-
-
-    public void deleteAll_ProfileBasic() {
-        String q = "SELECT * FROM `profilebasic`";
-        List<ProfileBasic> basicList = entityManager.createNativeQuery(q, ProfileBasic.class).getResultList();
-        for (Iterator<ProfileBasic> iterator = basicList.iterator(); iterator.hasNext(); ) {
-            ProfileBasic next = iterator.next();
-            entityManager.remove(next);
-        }
-    }
-
-    public void insertProfileBasicBatch(List<ProfileBasic> basicList) {
-        for (Iterator<ProfileBasic> iterator = basicList.iterator(); iterator.hasNext();) {
-            ProfileBasic next = iterator.next();
-            entityManager.persist(next);
-        }
-    }
-
-
 }// class 
 
 //public Map<String, String> deleteEmergencyContact(String emergencyContactID, String userID) {
