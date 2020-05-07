@@ -1,48 +1,45 @@
 export class History {
-  private id: string;
+  public id: string;
   private date: string;
   private location: string;
   private note: string;
-  private patientDescription : string;
+  private patientDescription: string;
   private user_id: string;
 
-    /**
-     * Getter $refferedBy
-     * @return {string}
-     */
-	public get $refferedBy(): string {
-		return this.refferedBy;
-	}
+  /**
+   * Getter $refferedBy
+   * @return {string}
+   */
+  public get $refferedBy(): string {
+    return this.refferedBy;
+  }
 
-    /**
-     * Setter $refferedBy
-     * @param {string} value
-     */
-	public set $refferedBy(value: string) {
-		this.refferedBy = value;
-	}
+  /**
+   * Setter $refferedBy
+   * @param {string} value
+   */
+  public set $refferedBy(value: string) {
+    this.refferedBy = value;
+  }
+
   private refferedBy: string;
 
 
+  /**
+   * Getter $patientDescription
+   * @return {string}
+   */
+  public get $patientDescription(): string {
+    return this.patientDescription;
+  }
 
-   /**
-     * Getter $patientDescription
-     * @return {string}
-     */
-	public get $patientDescription(): string {
-		return this.patientDescription;
-	}
-
-    /**
-     * Setter $patientDescription
-     * @param {string} value
-     */
-	public set $patientDescription(value: string) {
-		this.patientDescription = value;
-	}
-
-
-
+  /**
+   * Setter $patientDescription
+   * @param {string} value
+   */
+  public set $patientDescription(value: string) {
+    this.patientDescription = value;
+  }
 
 
   /**

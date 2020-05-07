@@ -47,7 +47,7 @@ export class DonationHistoryComponent implements OnInit {
     srcRequest.column = this.searchBy;
     srcRequest.key = '%' + this.searchKey + '%';
     srcRequest.start = '0';
-    srcRequest.perPage = this.perPage;
+    srcRequest.perPage = this.perPage.toString();
     srcRequest.userID = '';
     console.log(srcRequest);
     this.serviceHistory.getHistoryCount(srcRequest).subscribe(res => {
@@ -61,8 +61,8 @@ export class DonationHistoryComponent implements OnInit {
     var srcRequest = new SearchRequest();
     srcRequest.column = this.searchBy;
     srcRequest.key = '%' + this.searchKey + '%';
-    srcRequest.start = this.startHistory;
-    srcRequest.perPage = this.perPage;
+    srcRequest.start = this.startHistory.toString();
+    srcRequest.perPage = this.perPage.toString();
     srcRequest.userID = '';
     // workings
     // console.log(srcRequest);
@@ -119,7 +119,7 @@ export class DonationHistoryComponent implements OnInit {
 
 
   public nextPage() {
-    if (this.startHistory <= this.total) {
+    if (this.startHistory.toString() <= this.total) {
       this.startHistory += this.perPage;
       this.getAll();
     }
