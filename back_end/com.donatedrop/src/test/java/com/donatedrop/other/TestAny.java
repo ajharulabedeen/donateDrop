@@ -71,7 +71,7 @@ public class TestAny {
 
     @Test
     public void testGetUsers() {
-        daoDump.getUsers(0,10).forEach(user -> System.out.println(user.getId()));
+        daoDump.getUsers(0, 10).forEach(user -> System.out.println(user.getId()));
     }
 
 }// class

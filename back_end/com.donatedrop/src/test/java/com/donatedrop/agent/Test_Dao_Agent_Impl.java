@@ -1,5 +1,7 @@
 package com.donatedrop.agent;
 
+import com.donatedrop.other.DumpDao;
+import com.donatedrop.other.DumpData;
 import com.donatedrop.other.TestUtil;
 import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
@@ -18,6 +20,9 @@ public class Test_Dao_Agent_Impl {
 
     @Autowired
     Dao_Agent_I dao_agent_i;
+
+    @Autowired
+    DumpDao dumpDao;
 
     @Test
     @Order(1)
@@ -53,6 +58,18 @@ public class Test_Dao_Agent_Impl {
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
 
+    @Test
+    public void testInsertAgent() {
+        dumpDao.getUsers(0, 20).forEach(user -> {
+            AgentRequest agentRequest = new AgentRequest();
+            agentRequest.setUserID(user.getId().toString());
+            agentRequest.setRequestDate(DateUtil.getDate().toString());
+            agentRequest.setStatus("0");
+            Map<String, String> result = dao_agent_i.saveRequest(agentRequest);
+            System.out.println("\nResult : \n" + result);
+        });
 
+
+    }
 
 }
