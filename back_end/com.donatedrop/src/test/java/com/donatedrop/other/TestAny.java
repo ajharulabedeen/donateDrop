@@ -17,7 +17,7 @@ import java.util.Random;
 public class TestAny {
 
     @Autowired
-    DumpDao testGenerelDao;
+    DumpDao daoDump;
 
     @Test
     public void testBCrypt() {
@@ -60,13 +60,18 @@ public class TestAny {
 
     @Test
     public void testGenerelDao() {
-        testGenerelDao.getAllUsers().forEach(user -> System.out.println(user.getId()));
+        daoDump.getAllUsers().forEach(user -> System.out.println(user.getId()));
     }
 
     @Test
     public void testGenerelDaoGetAllProfileBasics() {
         System.out.println("\n");
-        testGenerelDao.getAllProfileBasic(10, 15).forEach(user -> System.out.println(user.getGender()));
+        daoDump.getAllProfileBasic(10, 15).forEach(user -> System.out.println(user.getGender()));
+    }
+
+    @Test
+    public void testGetUsers() {
+        daoDump.getUsers(0,10).forEach(user -> System.out.println(user.getId()));
     }
 
 }// class
