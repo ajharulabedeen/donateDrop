@@ -34,6 +34,9 @@ public class AgentRequest implements Serializable {
     @Column(name = "status")
     private String status;
 
+    @Column(name = "note")
+    private String note = "note";
+
     public Long getId() {
         return id;
     }
@@ -75,6 +78,14 @@ public class AgentRequest implements Serializable {
         this.status = status;
     }
 
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -97,11 +108,11 @@ public class AgentRequest implements Serializable {
 
     @Override
     public String toString() {
-        return "AgentRequest{" +
-                "id=" + id +
-                ", userID='" + userID + '\'' +
-                ", requestDate='" + requestDate + '\'' +
-                ", status='" + status + '\'' +
-                '}';
+        return "AgentRequest{"
+                + "id=" + id
+                + ", userID='" + userID + '\''
+                + ", requestDate='" + requestDate + '\''
+                + ", status='" + status + '\''
+                + '}';
     }
 }
