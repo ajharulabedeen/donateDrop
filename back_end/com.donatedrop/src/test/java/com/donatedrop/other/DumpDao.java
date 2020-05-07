@@ -12,7 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @Component
-public class TestGenerelDao {
+public class DumpDao {
 
     @PersistenceContext
     EntityManager entityManager;
@@ -25,7 +25,7 @@ public class TestGenerelDao {
     }
 
 
-    public List<ProfileBasic> getAllProfileBasic() {
+    public List<ProfileBasic> getAllProfileBasic(int start, int max) {
         String q = "SELECT * FROM `profilebasic`";
         List<ProfileBasic> basicList =
                 entityManager.createNativeQuery(q, ProfileBasic.class)
