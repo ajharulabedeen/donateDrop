@@ -1,3 +1,25 @@
-<div align="center">
-  <h1>Agent Management</h1>
+<!--<h1 align="center" class="jumbotron">-->
+<h5 align="center" style="font-size: 50px;">
+  <span class="text-danger"><b style="color: limegreen">Donate</b>DROP</span>
+  <span>|</span>
+  <span class="logo text-teal">Agent Management</span>
+</h5>
+
+<div align="center" class="tab">
+  <button class="tablinks" (click)="tabChange(event, 'about')">About</button>
+  <button class="tablinks" (click)="tabChange(event, 'news')">News</button>
+  <button class="tablinks" (click)="tabChange(event, 'mobile_payments')">Administration</button>
+  <button class="tablinks" (click)="tabChange(event, 'loggin')">Loggin</button>
+</div>
+
+<div align="center" id="about" class="tabcontent">
+  <h1>About Us</h1>
+  <h5>Groon University Alomni Association!</h5>
+  <!--<app-news-public></app-news-public>-->
+</div>
+<div align="center" id="news" class="tabcontent">
+  <!--<app-news-public></app-news-public>-->
+</div>
+<div align="center" id="loggin" class="tabcontent">
+
 </div>
