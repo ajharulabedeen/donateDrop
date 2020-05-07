@@ -13,7 +13,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.List;
 import java.util.Random;
 
+@SpringBootTest
 public class TestAny {
+
+    @Autowired
+    TestGenerelDao testGenerelDao;
 
     @Test
     public void testBCrypt() {
@@ -52,6 +56,17 @@ public class TestAny {
     @Test
     public void testGetStreetAddress() {
         System.out.println(DumpData.getStreetAddress());
+    }
+
+    @Test
+    public void testGenerelDao() {
+        testGenerelDao.getAllUsers().forEach(user -> System.out.println(user.getId()));
+    }
+
+    @Test
+    public void testGenerelDaoGetAllProfileBasics() {
+        System.out.println("\n");
+        testGenerelDao.getAllProfileBasic().forEach(user -> System.out.println(user.getName()));
     }
 
 }// class

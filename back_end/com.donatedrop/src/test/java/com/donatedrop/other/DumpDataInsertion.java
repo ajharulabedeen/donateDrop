@@ -33,47 +33,40 @@ import java.util.Random;
 
 @SpringBootTest
 public class DumpDataInsertion {
-    
+
     @PersistenceContext
     EntityManager entityManager;
-    
+
     @Autowired
     UserRepository userRepository;
-    
+
     @Autowired
     Dao_Profile_Basic_I dao_profile_basic_i;
-    
+
     @Autowired
     Dao_Profile_Basic_Impl dao_profile_basic_impl;
-    
+
     @Autowired
     Dao_GeoCode_I dao_GeoCode_I;
-    
+
     @Test
     public void testEntityManager() {
         dao_profile_basic_impl.deleteAll_ProfileBasic();
     }
-    
+
     @Test
     public void testUserCreationWithProfile() {
-        
+
         List<User> userList = userRepository.findAll();
         List<ProfileBasic> basicList = new ArrayList<>();
-        for (Iterator<User> iterator = userList.iterator(); iterator.hasNext();) {
+        for (Iterator<User> iterator = userList.iterator(); iterator.hasNext(); ) {
             User user = iterator.next();
             ProfileBasic profileBasic = getProfile(user.getId().toString());
             basicList.add(profileBasic);
         }
         dao_profile_basic_impl.insertProfileBasicBatch(basicList);
-
-//        for (int x = 0; x < 1000; x++) {
-//            System.out.println(x);
-//            String userID = userCreation(Integer.toString(x));
-////            saveProfile(userID);
-//        }// for
-//        System.out.println("\n" + userCreation("x1") + "\n");
     }
-    
+
     public void insertData() {
         for (int x = 0; x < 1000; x++) {
             System.out.println(x);
@@ -81,7 +74,7 @@ public class DumpDataInsertion {
 //            saveProfile(userID);
         }// for
     }
-    
+
     public String userCreation(String mail) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         User user = new User();
@@ -93,16 +86,16 @@ public class DumpDataInsertion {
         userRepository.save(user);
         return user.getId().toString();
     }
-    
+
     public ProfileBasic getProfile(String userID) {
         System.out.println("\nProfile Basic Dao Test!\n");
         Random r = new Random();
-        
+
         ProfileBasic profileBasic = new ProfileBasic();
         profileBasic.setName(DumpData.getName());
         profileBasic.setAddress_present(getAddress());
         profileBasic.setAddress_permanent(getAddress());
-        
+
         List<EmergencyContact> emergencyContacts = new ArrayList<>();
         for (int x = 0; x < r.nextInt(4); x++) {
             EmergencyContact emergencyContact1 = new EmergencyContact(
@@ -111,13 +104,13 @@ public class DumpDataInsertion {
             emergencyContacts.add(emergencyContact1);
         }
         profileBasic.setEmergency_contact(emergencyContacts);
-        
+
         List<PhoneNumber> phoneNumbers = new ArrayList<>();
         for (int x = 0; x < r.nextInt(4); x++) {
             phoneNumbers.add(new PhoneNumber(DumpData.getPhoneNumber()));
         }
         profileBasic.setPhone_number(phoneNumbers);
-        
+
         profileBasic.setGender(DumpData.getGender());
         profileBasic.setBlood_Group(DumpData.getBloodGroup());
         profileBasic.setAvailable(Integer.toString(r.nextInt(1)));
@@ -131,7 +124,7 @@ public class DumpDataInsertion {
 //        dao_profile_basic_i.save(profileBasic);
         return profileBasic;
     }
-    
+
     public Address getAddress() {
         Random r = new Random();
         Address address_permanet = new Address();
@@ -182,5 +175,5 @@ public class DumpDataInsertion {
         address_permanet.setStreet_address(DumpData.getStreetAddress());
         return address_permanet;
     }
-    
+
 }// class
