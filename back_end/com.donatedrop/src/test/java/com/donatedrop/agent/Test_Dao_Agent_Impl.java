@@ -46,7 +46,8 @@ public class Test_Dao_Agent_Impl {
     @Test
     @Order(3)
     public void testReviewRequest() {
-        Map<String, String> result = dao_agent_i.reviewRequest("16" + 2, "-1");
+//        String id = dumpDao.getUsers(0, 10).get(0).getId().toString();
+        Map<String, String> result = dao_agent_i.reviewRequest("22904", "-1");
         System.out.println("\nResult : \n" + result);
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
@@ -59,6 +60,14 @@ public class Test_Dao_Agent_Impl {
     }
 
     @Test
+    public void testGetAllRequestAgent() {
+        dao_agent_i.getAgentRequests(0, 10).forEach(ar -> {
+            System.out.println(ar.toString());
+        });
+    }
+
+    //    not need
+    @Test
     public void testInsertAgent() {
         dumpDao.getUsers(0, 20).forEach(user -> {
             AgentRequest agentRequest = new AgentRequest();
@@ -68,8 +77,6 @@ public class Test_Dao_Agent_Impl {
             Map<String, String> result = dao_agent_i.saveRequest(agentRequest);
             System.out.println("\nResult : \n" + result);
         });
-
-
     }
 
 }

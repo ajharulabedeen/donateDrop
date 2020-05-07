@@ -1,5 +1,6 @@
 package com.donatedrop.agent;
 
+import java.util.List;
 import java.util.Map;
 
 public interface Dao_Agent_I {
@@ -18,4 +19,9 @@ public interface Dao_Agent_I {
      * @apiNote 1 = approved, 0=not reviewed, -1= rejected.
      */
     public Map<String, String> reviewRequest(String requestID, String value);
+
+    /**
+     *
+     */
+    public List<AgentRequest> getAgentRequests(int start, int max);
 }

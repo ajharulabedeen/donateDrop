@@ -77,6 +77,16 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
         return result;
     }
 
+    @Override
+    public List<AgentRequest> getAgentRequests(int start, int max) {
+        String q = "SELECT * FROM `agent_request`";
+        return entityManager
+                .createNativeQuery(q, AgentRequest.class)
+                .setFirstResult(start)
+                .setMaxResults(max)
+                .getResultList();
+    }
+
     public AgentRequest getAgentRequestByUserID(String userID) {
         String q = "SELECT * FROM `agent_request` WHERE user_id=" + userID;
         List<AgentRequest> requestList = entityManager.createNativeQuery(q, AgentRequest.class).getResultList();
@@ -86,5 +96,6 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
         }
         return agentRequest;
     }
+
 
 }
