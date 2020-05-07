@@ -49,9 +49,12 @@ public class DumpDataInsertion {
     @Autowired
     Dao_GeoCode_I dao_GeoCode_I;
 
+    @Autowired
+    DumpDao dumpDao;
+
     @Test
     public void testEntityManager() {
-        dao_profile_basic_impl.deleteAll_ProfileBasic();
+        dumpDao.deleteAll_ProfileBasic();
     }
 
     @Test
@@ -59,12 +62,12 @@ public class DumpDataInsertion {
 
         List<User> userList = userRepository.findAll();
         List<ProfileBasic> basicList = new ArrayList<>();
-        for (Iterator<User> iterator = userList.iterator(); iterator.hasNext(); ) {
+        for (Iterator<User> iterator = userList.iterator(); iterator.hasNext();) {
             User user = iterator.next();
             ProfileBasic profileBasic = getProfile(user.getId().toString());
             basicList.add(profileBasic);
         }
-        dao_profile_basic_impl.insertProfileBasicBatch(basicList);
+        dumpDao.insertProfileBasicBatch(basicList);
     }
 
     public void insertData() {
