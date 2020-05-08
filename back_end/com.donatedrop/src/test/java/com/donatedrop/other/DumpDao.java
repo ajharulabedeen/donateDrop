@@ -1,5 +1,6 @@
 package com.donatedrop.other;
 
+import com.donatedrop.agent.AgentRequest;
 import com.donatedrop.agent.AgentRequestReview;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.security.models.User;
@@ -39,6 +40,15 @@ public class DumpDao {
                 .setMaxResults(max)
                 .getResultList();
         return basicList;
+    }
+
+    public List<AgentRequest> getAgentRequests(int start, int max) {
+        String q = "SELECT * FROM `agent_request`";
+        return entityManager
+                .createNativeQuery(q, AgentRequest.class)
+                .setFirstResult(start)
+                .setMaxResults(max)
+                .getResultList();
     }
 
     public void deleteAll_ProfileBasic() throws Exception {

@@ -31,7 +31,9 @@ public class ControllerAgent {
     }
 
     @PostMapping("reviewRequest")
-    public Map<String, String> reviewRequest(@RequestParam String requestID, @RequestParam String value) {
+    public Map<String, String> reviewRequest(@RequestBody RequestReviewRequest requestReviewRequest) {
+        String requestID = requestReviewRequest.getRequestID();
+        String value = requestReviewRequest.getValue();
         return service_Agent_I.reviewRequest(requestID, value);
     }
 

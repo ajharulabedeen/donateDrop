@@ -53,12 +53,12 @@ public class DumpDataInsertion {
     DumpDao dumpDao;
 
     @Test
-    public void testEntityManager() {
+    public void testEntityManager() throws Exception{
         dumpDao.deleteAll_ProfileBasic();
     }
 
     @Test
-    public void testUserCreationWithProfile() {
+    public void testUserCreationWithProfile() throws Exception {
 
         List<User> userList = userRepository.findAll();
         List<ProfileBasic> basicList = new ArrayList<>();

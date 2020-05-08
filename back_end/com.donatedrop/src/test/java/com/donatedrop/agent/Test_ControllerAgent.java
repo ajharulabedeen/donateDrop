@@ -94,9 +94,9 @@ public class Test_ControllerAgent extends AbstractTest {
         }
     }
 
-    //        String uri = "/public/geocode/upzillas?distID=" + distID;
+    //        String uri = "/public/user/deleteRequest?userID=" + userID;
     @Test
-    @Order(3)
+    @Order(2)
     public void testDelete() throws Exception {
         String userID = getID();
         String uri = "/public/user/deleteRequest?userID=" + userID;
@@ -109,6 +109,31 @@ public class Test_ControllerAgent extends AbstractTest {
         Map<String, String> map = super.mapFromJson(content, Map.class);
         System.out.println("\nAgent Request: \n" + map + "\n");
         assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
+    }
+
+    //        String uri = "/public/user/reviewRequest";
+    @Test
+    @Order(3)
+    public void testReviewRequest() throws Exception {
+//     arrange
+        String requestID = dumpDao.getAgentRequests(0, 5).get(0).getId().toString();
+        System.out.println("requestID : " + requestID);
+        String value = "-3";
+        String uri = "/public/user/reviewRequest";
+        RequestReviewRequest reviewRequest = new RequestReviewRequest(requestID, value);
+//      act
+        String inputJson = super.mapToJson(reviewRequest);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+//assert
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        Map<String, String> map = super.mapFromJson(content, Map.class);
+        System.out.println("\nAgent Request Review: \n" + map + "\n");
+        assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
+
+//        further verification can be done by reading the agent request.
     }
 
 
