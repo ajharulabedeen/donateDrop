@@ -2,30 +2,47 @@ package com.donatedrop.agent;
 
 import java.util.List;
 import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
 
-public interface Dao_Agent_I {
+public class Service_Agent_Impl implements Service_Agent_I {
+
+    @Autowired
+    Dao_Agent_I dao_agent_i;
+
     /**
      * @param agentRequest
      * @return
      * @apiNote for successful save, saved id will be back. OK status
      */
-    public Map<String, String> saveRequest(AgentRequest agentRequest);
+    public Map<String, String> saveRequest(AgentRequest agentRequest) {
+        return dao_agent_i.saveRequest(agentRequest);
+    }
 
-    public Map<String, String> deleteRequest(String userID);
+    public Map<String, String> deleteRequest(String userID) {
+        return dao_agent_i.deleteRequest(userID);
+    }
 
     /**
      * @param requestID
      * @return
      * @apiNote 1 = approved, 0=not reviewed, -1= rejected.
      */
-    public Map<String, String> reviewRequest(String requestID, String value);
+    public Map<String, String> reviewRequest(String requestID, String value) {
+        return dao_agent_i.reviewRequest(requestID, value);
+    }
 
     /**
      *
      */
-    public List<AgentRequest> getAgentRequests(int start, int max);
+    public List<AgentRequest> getAgentRequests(int start, int max) {
+        return dao_agent_i.getAgentRequests(start, max);
+    }
 
-    public List<AgentRequestReview> getAgentRequestsReview(int start, int max, String column, String key);
+    public List<AgentRequestReview> getAgentRequestsReview(int start, int max, String column, String key) {
+        return dao_agent_i.getAgentRequestsReview(start, max, column, key);
+    }
 
-    public Map<String,String> getAgentRequestsReviewCount(String column, String key);
+    public Map<String, String> getAgentRequestsReviewCount(String column, String key) {
+        return getAgentRequestsReviewCount(column, key);
+    }
 }

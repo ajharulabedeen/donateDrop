@@ -3,7 +3,7 @@ package com.donatedrop.agent;
 import java.util.List;
 import java.util.Map;
 
-public interface Dao_Agent_I {
+public interface Service_Agent_I {
     /**
      * @param agentRequest
      * @return
