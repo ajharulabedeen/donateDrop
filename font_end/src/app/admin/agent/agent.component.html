@@ -34,10 +34,9 @@
         <h4>Search By :</h4>
         <select [(ngModel)]="searchBy">
           <option value="date">Date</option>
-          <option value="location">Location</option>
-          <option value="note">Note</option>
-          <option value="patient_description">Patient Description</option>
-          <option value="reffered_by">Reffered By</option>
+          <option value="note">Location</option>
+          <option value="name">Note</option>
+          <option value="phone_number">Patient Description</option>
         </select>
       </div>
     </div>
@@ -94,14 +93,17 @@
         <table class="table table-hover">
           <tbody>
           <tr>
-            <th>Delete</th>
-            <th>Edit</th>
+            <th>Approve</th>
+            <th>Reject</th>
+            <th>Hold</th>
             <th>Index</th>
-            <th>Date</th>
-            <th>Location</th>
-            <th>Patient Type</th>
+            <th>Request Date</th>
+            <th>Name</th>
+            <th>Adress Present</th>
+            <th>Adress Permanent</th>
+            <th>Phone Numbers</th>
+            <th>Professions</th>
             <th>Note</th>
-            <th>Reffered By</th>
           </tr>
           <tr *ngFor="let h of historyDonation; let i=index">
             <!--delete-->
