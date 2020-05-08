@@ -6,14 +6,11 @@
 package com.donatedrop.agent;
 
 import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
- *
  * @author G7
  */
 @RestController
@@ -27,5 +24,11 @@ public class ControllerAgent {
     public Map<String, String> saveRequest(@RequestBody AgentRequest agentRequest) {
         return service_Agent_I.saveRequest(agentRequest);
     }
+
+    @PostMapping("deleteRequest")
+    public Map<String, String> deleteRequest(@RequestParam String userID) {
+        return service_Agent_I.deleteRequest(userID);
+    }
+
 
 }

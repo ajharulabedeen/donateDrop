@@ -25,4 +25,5 @@ public class StringUtil {
     public static final String TOKEN = "TOKEN";
     public static final String COUNT = "COUNT";
     public static final String SAVE = "SAVED";
+    public static final String DELETE = "DELETED";
 }

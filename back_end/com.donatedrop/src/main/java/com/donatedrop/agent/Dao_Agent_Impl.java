@@ -54,7 +54,7 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
             AgentRequest agentRequest = entityManager.find(AgentRequest.class, new Long(requestID));
             entityManager.remove(agentRequest);
             result.put(StringUtil.STATUS, StringUtil.OK);
-            result.put(StringUtil.MESSAGE, StringUtil.SAVE);
+            result.put(StringUtil.MESSAGE, StringUtil.DELETE);
         } catch (Exception e) {
             result.put(StringUtil.STATUS, StringUtil.FAIL);
             result.put(StringUtil.MESSAGE, StringUtil.UNKNOWN);

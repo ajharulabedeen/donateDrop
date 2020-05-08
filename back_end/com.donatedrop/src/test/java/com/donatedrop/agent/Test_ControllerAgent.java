@@ -64,12 +64,12 @@ public class Test_ControllerAgent extends AbstractTest {
     @Test
     @Order(1)
     public void testSave() throws Exception {
+        //      arrange
         String uri = "/public/user/saveRequest";
         System.out.println("\nAgent Request Save\n");
         BigInteger userIDBigInteger = dumpDao.getNotRequestedAgentUser(0, 5).get(0);
         Integer userID = ((BigInteger) userIDBigInteger).intValue();
         System.out.println("userID : " + userID);
-
         AgentRequest agentRequest = new AgentRequest();
         agentRequest.setUserID(userID.toString());
         agentRequest.setRequestDate(DateUtil.getDate().toString());
@@ -83,13 +83,34 @@ public class Test_ControllerAgent extends AbstractTest {
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
+//      act
         System.out.println(content);
+
+//      assert
         Map<String, String> map = super.mapFromJson(content, Map.class);
         assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
         if (map.get(StringUtil.STATUS).equals(StringUtil.OK)) {
             storeID(userID.toString());
         }
     }
+
+    //        String uri = "/public/geocode/upzillas?distID=" + distID;
+    @Test
+    @Order(3)
+    public void testDelete() throws Exception {
+        String userID = getID();
+        String uri = "/public/user/deleteRequest?userID=" + userID;
+        MvcResult mvcResult = mvc.perform(
+                MockMvcRequestBuilders.post(uri)
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        Map<String, String> map = super.mapFromJson(content, Map.class);
+        System.out.println("\nAgent Request: \n" + map + "\n");
+        assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
+    }
+
 
     //    Start : old Code
     //    String uri = "/public/user/history/update";
@@ -121,22 +142,6 @@ public class Test_ControllerAgent extends AbstractTest {
         assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
     }
 
-    //    String uri = "/public/user/history/delete";
-    @Test
-    @Order(3)
-    public void testDelete() throws Exception {
-        String historyID = "121";
-        String uri = "/public/user/history/delete?historyID=" + historyID;
-        MvcResult mvcResult = mvc.perform(
-                MockMvcRequestBuilders.post(uri)
-                        .contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn();
-        int status = mvcResult.getResponse().getStatus();
-        assertEquals(200, status);
-        String content = mvcResult.getResponse().getContentAsString();
-        Map<String, String> map = super.mapFromJson(content, Map.class);
-        System.out.println("\nhistory delete : \n" + map + "\n");
-        assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
-    }
 
     //    String uri = "/public/user/history/search";
     @Test
