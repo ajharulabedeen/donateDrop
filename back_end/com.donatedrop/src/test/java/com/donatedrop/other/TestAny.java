@@ -74,4 +74,16 @@ public class TestAny {
         daoDump.getUsers(0, 10).forEach(user -> System.out.println(user.getId()));
     }
 
+    @Test
+    public void testAgentRequestReview() {
+        daoDump.getAllAgentRequestReview().forEach(agentRequestReview -> {
+            String addr = agentRequestReview.getPermanentStreet()
+                    + ", " + agentRequestReview.getPermanentUnion()
+                    + ", " + agentRequestReview.getPermanentUpz()
+                    + ", " + agentRequestReview.getPermanentDist()
+                    + ", " + agentRequestReview.getPermanentDiv();
+            System.out.println(addr);
+        });
+    }
+
 }// class

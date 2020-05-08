@@ -1,5 +1,6 @@
 package com.donatedrop.other;
 
+import com.donatedrop.agent.AgentRequestReview;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.security.models.User;
 import com.donatedrop.security.repo.UserRepository;
@@ -58,6 +59,14 @@ public class DumpDao {
                 .setMaxResults(max)
                 .getResultList();
         return userList;
+    }
+
+    public List<AgentRequestReview> getAllAgentRequestReview() {
+        String q = "SELECT * FROM `agent_request_review`";
+        List<AgentRequestReview> agentRequestReviews
+                = entityManager.createNativeQuery(q, AgentRequestReview.class)
+                .getResultList();
+        return agentRequestReviews;
     }
 
 }

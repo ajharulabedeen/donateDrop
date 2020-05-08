@@ -289,5 +289,33 @@ public class AgentRequestReview implements Serializable {
     public void setPermanentStreet(String permanentStreet) {
         this.permanentStreet = permanentStreet;
     }
-    
+
+    @Override
+    public String toString() {
+        return "AgentRequestReview{" +
+                "profileId=" + profileId +
+                ", name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", profession='" + profession + '\'' +
+                ", userId='" + userId + '\'' +
+                ", addressPermanent=" + addressPermanent +
+                ", addressPresent=" + addressPresent +
+                ", requestId=" + requestId +
+                ", requestDate='" + requestDate + '\'' +
+                ", status='" + status + '\'' +
+                ", note='" + note + '\'' +
+                ", presentId=" + presentId +
+                ", presentDiv='" + presentDiv + '\'' +
+                ", presentDist='" + presentDist + '\'' +
+                ", presentUpz='" + presentUpz + '\'' +
+                ", presentUnion='" + presentUnion + '\'' +
+                ", presentStreet='" + presentStreet + '\'' +
+                ", permanentId=" + permanentId +
+                ", permanentDiv='" + permanentDiv + '\'' +
+                ", permanentDist='" + permanentDist + '\'' +
+                ", permanentUpz='" + permanentUpz + '\'' +
+                ", permanentUnion='" + permanentUnion + '\'' +
+                ", permanentStreet='" + permanentStreet + '\'' +
+                '}';
+    }
 }
