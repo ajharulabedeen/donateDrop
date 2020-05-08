@@ -89,6 +89,8 @@ public class AgentRequestReview implements Serializable {
     private String presentUnion;
     @Column(name = "present_street")
     private String presentStreet;
+    @Column
+    private String username;
     @Basic(optional = false)
     @Column(name = "permanent_id")
     private long permanentId;
@@ -242,6 +244,14 @@ public class AgentRequestReview implements Serializable {
         this.presentStreet = presentStreet;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public long getPermanentId() {
         return permanentId;
     }
@@ -290,6 +300,8 @@ public class AgentRequestReview implements Serializable {
         this.permanentStreet = permanentStreet;
     }
 
+
+
     @Override
     public String toString() {
         return "AgentRequestReview{" +
@@ -310,6 +322,7 @@ public class AgentRequestReview implements Serializable {
                 ", presentUpz='" + presentUpz + '\'' +
                 ", presentUnion='" + presentUnion + '\'' +
                 ", presentStreet='" + presentStreet + '\'' +
+                ", username='" + username + '\'' +
                 ", permanentId=" + permanentId +
                 ", permanentDiv='" + permanentDiv + '\'' +
                 ", permanentDist='" + permanentDist + '\'' +
