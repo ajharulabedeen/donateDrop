@@ -137,7 +137,27 @@ public class Test_ControllerAgent extends AbstractTest {
     }
 
 
+    //        String uri = "/public/user/getAgentRequestsToReview";
+    @Test
+    @Order(3)
+    public void testGetAgentRequestsToReview() throws Exception {
+//     arrange
 
+        String uri = "/public/user/getAgentRequestsToReview";
+        RequestGetAgentRequests requestGetAgentRequests = new RequestGetAgentRequests(0, 30, "username", "%1%");
+//      act
+        String inputJson = super.mapToJson(requestGetAgentRequests);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+//assert
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        List<AgentRequestToReview> agentRequestListToReviews = Arrays.asList(super.mapFromJson(content, AgentRequestToReview[].class));
+        agentRequestListToReviews.forEach(agentRequestToReview -> System.out.println(agentRequestToReview));
+
+//        further verification can be done by reading the agent request.
+    }
 
 
     //    Start : old Code

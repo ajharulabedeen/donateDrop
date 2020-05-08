@@ -40,7 +40,7 @@ public class Service_Agent_Impl implements Service_Agent_I {
         return dao_agent_i.getAgentRequests(start, max);
     }
 
-    public List<AgentRequestReview> getAgentRequestsToReview(int start, int max, String column, String key) {
+    public List<AgentRequestToReview> getAgentRequestsToReview(int start, int max, String column, String key) {
         return dao_agent_i.getAgentRequestsToReview(start, max, column, key);
     }
 

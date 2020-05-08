@@ -5,7 +5,7 @@
  */
 package com.donatedrop.history;
 
-import com.donatedrop.agent.AgentRequestReview;
+import com.donatedrop.agent.AgentRequestToReview;
 import com.donatedrop.geocode.AbstractTest;
 import com.donatedrop.other.TestUtil;
 import com.donatedrop.profile.basic.Dao_Profile_Basic_I;

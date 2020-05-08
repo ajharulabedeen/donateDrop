@@ -1,7 +1,7 @@
 package com.donatedrop.other;
 
 import com.donatedrop.agent.AgentRequest;
-import com.donatedrop.agent.AgentRequestReview;
+import com.donatedrop.agent.AgentRequestToReview;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.security.models.User;
 import com.donatedrop.security.repo.UserRepository;
@@ -95,13 +95,13 @@ public class DumpDao {
      * @return
      * @apiNote No need any more, used in main code.
      */
-    public List<AgentRequestReview> getAllAgentRequestReview(int start, int max, String column, String key) {
+    public List<AgentRequestToReview> getAllAgentRequestReview(int start, int max, String column, String key) {
 //        String q = "SELECT * FROM `agent_request_review`";
-        List<AgentRequestReview> agentRequestReviews = new ArrayList<>();
+        List<AgentRequestToReview> agentRequestReviews = new ArrayList<>();
         try {
             String q = "SELECT * FROM `agent_request_review` WHERE `agent_request_review`.`" + column + "` LIKE '" + key + "'";
             agentRequestReviews
-                    = entityManager.createNativeQuery(q, AgentRequestReview.class)
+                    = entityManager.createNativeQuery(q, AgentRequestToReview.class)
                     .setFirstResult(start)
                     .setMaxResults(max)
                     .getResultList();

@@ -99,13 +99,13 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
     }
 
     @Override
-    public List<AgentRequestReview> getAgentRequestsToReview(int start, int max, String column, String key) {
+    public List<AgentRequestToReview> getAgentRequestsToReview(int start, int max, String column, String key) {
         //        String q = "SELECT * FROM `agent_request_review`";
-        List<AgentRequestReview> agentRequestReviews = new ArrayList<>();
+        List<AgentRequestToReview> agentRequestReviews = new ArrayList<>();
         try {
             String q = "SELECT * FROM `agent_request_review` WHERE `agent_request_review`.`" + column + "` LIKE '" + key + "'";
             agentRequestReviews
-                    = entityManager.createNativeQuery(q, AgentRequestReview.class)
+                    = entityManager.createNativeQuery(q, AgentRequestToReview.class)
                             .setFirstResult(start)
                             .setMaxResults(max)
                             .getResultList();

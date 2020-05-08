@@ -24,31 +24,31 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "agent_request_review")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "AgentRequestReview.findAll", query = "SELECT a FROM AgentRequestReview a")
-    , @NamedQuery(name = "AgentRequestReview.findByProfileId", query = "SELECT a FROM AgentRequestReview a WHERE a.profileId = :profileId")
-    , @NamedQuery(name = "AgentRequestReview.findByName", query = "SELECT a FROM AgentRequestReview a WHERE a.name = :name")
-    , @NamedQuery(name = "AgentRequestReview.findByGender", query = "SELECT a FROM AgentRequestReview a WHERE a.gender = :gender")
-    , @NamedQuery(name = "AgentRequestReview.findByProfession", query = "SELECT a FROM AgentRequestReview a WHERE a.profession = :profession")
-    , @NamedQuery(name = "AgentRequestReview.findByUserId", query = "SELECT a FROM AgentRequestReview a WHERE a.userId = :userId")
-    , @NamedQuery(name = "AgentRequestReview.findByAddressPermanent", query = "SELECT a FROM AgentRequestReview a WHERE a.addressPermanent = :addressPermanent")
-    , @NamedQuery(name = "AgentRequestReview.findByAddressPresent", query = "SELECT a FROM AgentRequestReview a WHERE a.addressPresent = :addressPresent")
-    , @NamedQuery(name = "AgentRequestReview.findByRequestId", query = "SELECT a FROM AgentRequestReview a WHERE a.requestId = :requestId")
-    , @NamedQuery(name = "AgentRequestReview.findByRequestDate", query = "SELECT a FROM AgentRequestReview a WHERE a.requestDate = :requestDate")
-    , @NamedQuery(name = "AgentRequestReview.findByStatus", query = "SELECT a FROM AgentRequestReview a WHERE a.status = :status")
-    , @NamedQuery(name = "AgentRequestReview.findByNote", query = "SELECT a FROM AgentRequestReview a WHERE a.note = :note")
-    , @NamedQuery(name = "AgentRequestReview.findByPresentId", query = "SELECT a FROM AgentRequestReview a WHERE a.presentId = :presentId")
-    , @NamedQuery(name = "AgentRequestReview.findByPresentDiv", query = "SELECT a FROM AgentRequestReview a WHERE a.presentDiv = :presentDiv")
-    , @NamedQuery(name = "AgentRequestReview.findByPresentDist", query = "SELECT a FROM AgentRequestReview a WHERE a.presentDist = :presentDist")
-    , @NamedQuery(name = "AgentRequestReview.findByPresentUpz", query = "SELECT a FROM AgentRequestReview a WHERE a.presentUpz = :presentUpz")
-    , @NamedQuery(name = "AgentRequestReview.findByPresentUnion", query = "SELECT a FROM AgentRequestReview a WHERE a.presentUnion = :presentUnion")
-    , @NamedQuery(name = "AgentRequestReview.findByPresentStreet", query = "SELECT a FROM AgentRequestReview a WHERE a.presentStreet = :presentStreet")
-    , @NamedQuery(name = "AgentRequestReview.findByPermanentId", query = "SELECT a FROM AgentRequestReview a WHERE a.permanentId = :permanentId")
-    , @NamedQuery(name = "AgentRequestReview.findByPermanentDiv", query = "SELECT a FROM AgentRequestReview a WHERE a.permanentDiv = :permanentDiv")
-    , @NamedQuery(name = "AgentRequestReview.findByPermanentDist", query = "SELECT a FROM AgentRequestReview a WHERE a.permanentDist = :permanentDist")
-    , @NamedQuery(name = "AgentRequestReview.findByPermanentUpz", query = "SELECT a FROM AgentRequestReview a WHERE a.permanentUpz = :permanentUpz")
-    , @NamedQuery(name = "AgentRequestReview.findByPermanentUnion", query = "SELECT a FROM AgentRequestReview a WHERE a.permanentUnion = :permanentUnion")
-    , @NamedQuery(name = "AgentRequestReview.findByPermanentStreet", query = "SELECT a FROM AgentRequestReview a WHERE a.permanentStreet = :permanentStreet")})
-public class AgentRequestReview implements Serializable {
+    @NamedQuery(name = "AgentRequestToReview.findAll", query = "SELECT a FROM AgentRequestToReview a")
+    , @NamedQuery(name = "AgentRequestToReview.findByProfileId", query = "SELECT a FROM AgentRequestToReview a WHERE a.profileId = :profileId")
+    , @NamedQuery(name = "AgentRequestToReview.findByName", query = "SELECT a FROM AgentRequestToReview a WHERE a.name = :name")
+    , @NamedQuery(name = "AgentRequestToReview.findByGender", query = "SELECT a FROM AgentRequestToReview a WHERE a.gender = :gender")
+    , @NamedQuery(name = "AgentRequestToReview.findByProfession", query = "SELECT a FROM AgentRequestToReview a WHERE a.profession = :profession")
+    , @NamedQuery(name = "AgentRequestToReview.findByUserId", query = "SELECT a FROM AgentRequestToReview a WHERE a.userId = :userId")
+    , @NamedQuery(name = "AgentRequestToReview.findByAddressPermanent", query = "SELECT a FROM AgentRequestToReview a WHERE a.addressPermanent = :addressPermanent")
+    , @NamedQuery(name = "AgentRequestToReview.findByAddressPresent", query = "SELECT a FROM AgentRequestToReview a WHERE a.addressPresent = :addressPresent")
+    , @NamedQuery(name = "AgentRequestToReview.findByRequestId", query = "SELECT a FROM AgentRequestToReview a WHERE a.requestId = :requestId")
+    , @NamedQuery(name = "AgentRequestToReview.findByRequestDate", query = "SELECT a FROM AgentRequestToReview a WHERE a.requestDate = :requestDate")
+    , @NamedQuery(name = "AgentRequestToReview.findByStatus", query = "SELECT a FROM AgentRequestToReview a WHERE a.status = :status")
+    , @NamedQuery(name = "AgentRequestToReview.findByNote", query = "SELECT a FROM AgentRequestToReview a WHERE a.note = :note")
+    , @NamedQuery(name = "AgentRequestToReview.findByPresentId", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentId = :presentId")
+    , @NamedQuery(name = "AgentRequestToReview.findByPresentDiv", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentDiv = :presentDiv")
+    , @NamedQuery(name = "AgentRequestToReview.findByPresentDist", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentDist = :presentDist")
+    , @NamedQuery(name = "AgentRequestToReview.findByPresentUpz", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentUpz = :presentUpz")
+    , @NamedQuery(name = "AgentRequestToReview.findByPresentUnion", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentUnion = :presentUnion")
+    , @NamedQuery(name = "AgentRequestToReview.findByPresentStreet", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentStreet = :presentStreet")
+    , @NamedQuery(name = "AgentRequestToReview.findByPermanentId", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentId = :permanentId")
+    , @NamedQuery(name = "AgentRequestToReview.findByPermanentDiv", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentDiv = :permanentDiv")
+    , @NamedQuery(name = "AgentRequestToReview.findByPermanentDist", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentDist = :permanentDist")
+    , @NamedQuery(name = "AgentRequestToReview.findByPermanentUpz", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentUpz = :permanentUpz")
+    , @NamedQuery(name = "AgentRequestToReview.findByPermanentUnion", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentUnion = :permanentUnion")
+    , @NamedQuery(name = "AgentRequestToReview.findByPermanentStreet", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentStreet = :permanentStreet")})
+public class AgentRequestToReview implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
@@ -105,7 +105,7 @@ public class AgentRequestReview implements Serializable {
     @Column(name = "permanent_street")
     private String permanentStreet;
 
-    public AgentRequestReview() {
+    public AgentRequestToReview() {
     }
 
     public long getProfileId() {
@@ -304,7 +304,7 @@ public class AgentRequestReview implements Serializable {
 
     @Override
     public String toString() {
-        return "AgentRequestReview{" +
+        return "AgentRequestToReview{" +
                 "profileId=" + profileId +
                 ", name='" + name + '\'' +
                 ", gender='" + gender + '\'' +

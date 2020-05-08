@@ -25,7 +25,7 @@ public interface Service_Agent_I {
      */
     public List<AgentRequest> getAgentRequests(int start, int max);
 
-    public List<AgentRequestReview> getAgentRequestsToReview(int start, int max, String column, String key);
+    public List<AgentRequestToReview> getAgentRequestsToReview(int start, int max, String column, String key);
 
     public Map<String,String> getAgentRequestsToReviewCount(String column, String key);
 }

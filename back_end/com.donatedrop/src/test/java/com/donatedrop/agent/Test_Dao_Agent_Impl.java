@@ -80,14 +80,12 @@ public class Test_Dao_Agent_Impl {
         });
     }
 
-
     @Test
     public void testGetAgentRequestsReviewCount() {
         Map<String, String> result = dao_agent_i.getAgentRequestsToReviewCount("username", "%1%");
         System.out.println(result);
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
-
 
     //    not part dao layer
     @Test

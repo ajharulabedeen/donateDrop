@@ -5,6 +5,7 @@
  */
 package com.donatedrop.agent;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,13 @@ public class ControllerAgent {
         return service_Agent_I.reviewRequest(requestID, value);
     }
 
-
+    @PostMapping("getAgentRequestsToReview")
+    public List<AgentRequestToReview> reviewRequest(@RequestBody RequestGetAgentRequests requestGetAgentRequests) {
+        int start = requestGetAgentRequests.getStart();
+        int max = requestGetAgentRequests.getMax();
+        String column = requestGetAgentRequests.getColumn();
+        String key = requestGetAgentRequests.getKey();
+        return service_Agent_I.getAgentRequestsToReview(start, max, column, key);
+    }
 
 }
