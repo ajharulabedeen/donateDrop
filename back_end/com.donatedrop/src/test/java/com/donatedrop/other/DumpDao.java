@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.math.BigInteger;
 import java.sql.SQLSyntaxErrorException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -65,6 +66,15 @@ public class DumpDao {
                 .getResultList();
         return userList;
     }
+
+    public List<BigInteger> getNotRequestedAgentUser(int start, int max) {
+        String q = "SELECT `user`.`ID` FROM `user` WHERE `user`.`ID` NOT IN (SELECT `agent_request`.`user_id` FROM `agent_request`)";
+        return entityManager.createNativeQuery(q)
+                .setFirstResult(start)
+                .setMaxResults(max)
+                .getResultList();
+    }
+
 
     /**
      * @param start

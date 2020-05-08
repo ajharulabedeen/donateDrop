@@ -3,12 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.donatedrop.history;
+package com.donatedrop.agent;
 
-import com.donatedrop.agent.AgentRequestReview;
+import com.donatedrop.history.*;
 import com.donatedrop.geocode.AbstractTest;
+import com.donatedrop.geocode.models.DistrictsEngName;
+import com.donatedrop.models.Address;
+import com.donatedrop.other.DumpDao;
 import com.donatedrop.other.TestUtil;
 import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
+import com.donatedrop.profile.model.EmergencyContact;
+import com.donatedrop.profile.model.PhoneNumber;
+import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
 import com.donatedrop.util.Utils;
@@ -26,6 +32,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
@@ -34,15 +41,16 @@ import static org.junit.Assert.assertEquals;
  * @author G7
  */
 @SpringBootTest
-public class Test_ControllerHistory extends AbstractTest {
+public class Test_ControllerAgent extends AbstractTest {
+
 
     @Autowired
-    Dao_Profile_Basic_I dao_Profile_Basic_I;
+    DumpDao dumpDao;
 
     @Autowired
     Dao_History_I dao_history_i;
 
-    public Test_ControllerHistory() {
+    public Test_ControllerAgent() {
     }
 
     @Override
@@ -51,39 +59,40 @@ public class Test_ControllerHistory extends AbstractTest {
         super.setUp();
     }
 
-    //    /public/user/history/save
+
+    //    String uri = "/public/user/saveRequest";
     @Test
     @Order(1)
     public void testSave() throws Exception {
-        String uri = "/public/user/history/save";
-        String userID = "15";
-        System.out.println("\nHistory Save\n");
-        History history = new History();
-        history.setUserId(userID);//will be set from service.
-        history.setDate(DateUtil.getDate().toString());
-        history.setLocation("Karakom,WestPoint, Dhaka.");
-        history.setPatientDescription("Kidney");
-        history.setRefferedBy("Mobile");
-        history.setNote("Went to at night.");
-
-        String inputJson = super.mapToJson(history);
-        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
-                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
-
-        int status = mvcResult.getResponse().getStatus();
-        assertEquals(200, status);
-        String content = mvcResult.getResponse().getContentAsString();
-        System.out.println(content);
-        Map<String, String> map = super.mapFromJson(content, Map.class);
-        assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
-        if (map.get(StringUtil.STATUS).equals(StringUtil.OK)) {
-            storeID(map.get(StringUtil.ID));
-        }
+        String uri = "/public/user/saveRequest";
+        System.out.println("\nAgent Request Save\n");
+        BigInteger userIDBigInteger = dumpDao.getNotRequestedAgentUser(0, 5).get(0);
+        Integer userID = ((BigInteger) userIDBigInteger).intValue();
+        System.out.println("userID : " + userID);
+//        History history = new History();
+//        history.setUserId(userID);//will be set from service.
+//        history.setDate(DateUtil.getDate().toString());
+//        history.setLocation("Karakom,WestPoint, Dhaka.");
+//        history.setPatientDescription("Kidney");
+//        history.setRefferedBy("Mobile");
+//        history.setNote("Went to at night.");
+//
+//        String inputJson = super.mapToJson(history);
+//        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+//                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+//
+//        int status = mvcResult.getResponse().getStatus();
+//        assertEquals(200, status);
+//        String content = mvcResult.getResponse().getContentAsString();
+//        System.out.println(content);
+//        Map<String, String> map = super.mapFromJson(content, Map.class);
+//        assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
+//        if (map.get(StringUtil.STATUS).equals(StringUtil.OK)) {
+//            storeID(map.get(StringUtil.ID));
+//        }
     }
 
-
-    //    String uri = "/public/user/history/save";
-
+    //    Start : old Code
     //    String uri = "/public/user/history/update";
     @Test
     @Order(2)
@@ -151,15 +160,14 @@ public class Test_ControllerHistory extends AbstractTest {
 //        assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
     }
 
-
     //    String uri = "/public/user/history/search";
     @Test
     @Order(5)
     public void testSearchCount() throws Exception {
         String uri = "/public/user/history/searchCount";
 //        "15", "note", "khulna", 0, 10
-        RequestSearch requestSearch =
-                new RequestSearch("15", "location", "%kh%", 0, 10);
+        RequestSearch requestSearch
+                = new RequestSearch("15", "location", "%kh%", 0, 10);
 
         String inputJson = super.mapToJson(requestSearch);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
@@ -173,6 +181,7 @@ public class Test_ControllerHistory extends AbstractTest {
         System.out.println("\n" + map.get(StringUtil.COUNT) + "\n");
 //        assertEquals(StringUtil.COUNT, map.get(StringUtil.STATUS));
     }
+//    end : old Code
 
 //    Helpers --------------------------------
 
