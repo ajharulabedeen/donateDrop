@@ -69,27 +69,26 @@ public class Test_ControllerAgent extends AbstractTest {
         BigInteger userIDBigInteger = dumpDao.getNotRequestedAgentUser(0, 5).get(0);
         Integer userID = ((BigInteger) userIDBigInteger).intValue();
         System.out.println("userID : " + userID);
-//        History history = new History();
-//        history.setUserId(userID);//will be set from service.
-//        history.setDate(DateUtil.getDate().toString());
-//        history.setLocation("Karakom,WestPoint, Dhaka.");
-//        history.setPatientDescription("Kidney");
-//        history.setRefferedBy("Mobile");
-//        history.setNote("Went to at night.");
-//
-//        String inputJson = super.mapToJson(history);
-//        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
-//                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
-//
-//        int status = mvcResult.getResponse().getStatus();
-//        assertEquals(200, status);
-//        String content = mvcResult.getResponse().getContentAsString();
-//        System.out.println(content);
-//        Map<String, String> map = super.mapFromJson(content, Map.class);
-//        assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
-//        if (map.get(StringUtil.STATUS).equals(StringUtil.OK)) {
-//            storeID(map.get(StringUtil.ID));
-//        }
+
+        AgentRequest agentRequest = new AgentRequest();
+        agentRequest.setUserID(userID.toString());
+        agentRequest.setRequestDate(DateUtil.getDate().toString());
+        agentRequest.setStatus("0");
+        agentRequest.setNote("Test Note!");
+
+        String inputJson = super.mapToJson(agentRequest);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        System.out.println(content);
+        Map<String, String> map = super.mapFromJson(content, Map.class);
+        assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
+        if (map.get(StringUtil.STATUS).equals(StringUtil.OK)) {
+            storeID(userID.toString());
+        }
     }
 
     //    Start : old Code
