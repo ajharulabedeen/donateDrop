@@ -4,11 +4,16 @@ import com.donatedrop.agent.AgentRequestReview;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.security.models.User;
 import com.donatedrop.security.repo.UserRepository;
+import com.sun.javafx.scene.control.skin.TableHeaderRow;
+import org.assertj.core.internal.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.sql.SQLSyntaxErrorException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -61,11 +66,20 @@ public class DumpDao {
         return userList;
     }
 
-    public List<AgentRequestReview> getAllAgentRequestReview() {
-        String q = "SELECT * FROM `agent_request_review`";
-        List<AgentRequestReview> agentRequestReviews
-                = entityManager.createNativeQuery(q, AgentRequestReview.class)
-                .getResultList();
+    public List<AgentRequestReview> getAllAgentRequestReview(int start, int max, String column, String key) {
+//        String q = "SELECT * FROM `agent_request_review`";
+        List<AgentRequestReview> agentRequestReviews = new ArrayList<>();
+        try {
+            String q = "SELECT * FROM `agent_request_review` WHERE `agent_request_review`.`" + column + "` LIKE '" + key + "'";
+            agentRequestReviews
+                    = entityManager.createNativeQuery(q, AgentRequestReview.class)
+                    .setFirstResult(start)
+                    .setMaxResults(max)
+                    .getResultList();
+            return agentRequestReviews;
+        } catch (Exception exception) {
+            System.out.println("org.hibernate.exception.SQLGrammarException");
+        }
         return agentRequestReviews;
     }
 
