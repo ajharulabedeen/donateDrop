@@ -66,7 +66,22 @@ public class Test_Dao_Agent_Impl {
         });
     }
 
-    //    not need
+    @Test
+    public void testGetAgentRequestsReview() {
+        dao_agent_i.getAgentRequestsReview(0, 30, "present_div", "%%").forEach(agentRequestReview -> {
+            String addr = agentRequestReview.getPermanentStreet()
+                    + " " + agentRequestReview.getPermanentUnion()
+                    + ", " + agentRequestReview.getPermanentUpz()
+                    + ", " + agentRequestReview.getPermanentDist()
+                    + ", " + agentRequestReview.getPermanentDiv();
+            System.out.println(addr);
+            System.out.println(agentRequestReview.getUsername());
+            System.out.println("-------------------------------");
+        });
+    }
+
+
+    //    not part dao layer
     @Test
     public void testInsertAgent() {
         dumpDao.getUsers(0, 20).forEach(user -> {
@@ -78,5 +93,7 @@ public class Test_Dao_Agent_Impl {
             System.out.println("\nResult : \n" + result);
         });
     }
+
+
 
 }

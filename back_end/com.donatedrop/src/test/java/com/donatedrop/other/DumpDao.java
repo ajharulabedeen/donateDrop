@@ -66,6 +66,14 @@ public class DumpDao {
         return userList;
     }
 
+    /**
+     * @param start
+     * @param max
+     * @param column
+     * @param key
+     * @return
+     * @apiNote No need any more, used in main code.
+     */
     public List<AgentRequestReview> getAllAgentRequestReview(int start, int max, String column, String key) {
 //        String q = "SELECT * FROM `agent_request_review`";
         List<AgentRequestReview> agentRequestReviews = new ArrayList<>();

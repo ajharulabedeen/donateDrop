@@ -24,4 +24,6 @@ public interface Dao_Agent_I {
      *
      */
     public List<AgentRequest> getAgentRequests(int start, int max);
+
+    public List<AgentRequestReview> getAgentRequestsReview(int start, int max, String column, String key);
 }

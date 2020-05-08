@@ -76,7 +76,7 @@ public class TestAny {
 
     @Test
     public void testAgentRequestReview() {
-        daoDump.getAllAgentRequestReview(0, 30, "present_div", "%Kh%").forEach(agentRequestReview -> {
+        daoDump.getAllAgentRequestReview(0, 30, "present_div", "%%").forEach(agentRequestReview -> {
             String addr = agentRequestReview.getPermanentStreet()
                     + " " + agentRequestReview.getPermanentUnion()
                     + ", " + agentRequestReview.getPermanentUpz()
