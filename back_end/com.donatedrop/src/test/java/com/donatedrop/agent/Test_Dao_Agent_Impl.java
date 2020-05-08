@@ -67,8 +67,8 @@ public class Test_Dao_Agent_Impl {
     }
 
     @Test
-    public void testGetAgentRequestsReview() {
-        dao_agent_i.getAgentRequestsReview(0, 30, "name", "%1%").forEach(agentRequestReview -> {
+    public void testGetAgentRequestsToReview() {
+        dao_agent_i.getAgentRequestsToReview(0, 30, "username", "%1%").forEach(agentRequestReview -> {
             String addr = agentRequestReview.getPermanentStreet()
                     + " " + agentRequestReview.getPermanentUnion()
                     + ", " + agentRequestReview.getPermanentUpz()
@@ -83,7 +83,7 @@ public class Test_Dao_Agent_Impl {
 
     @Test
     public void testGetAgentRequestsReviewCount() {
-        Map<String, String> result = dao_agent_i.getAgentRequestsReviewCount("username", "%1%");
+        Map<String, String> result = dao_agent_i.getAgentRequestsToReviewCount("username", "%1%");
         System.out.println(result);
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }

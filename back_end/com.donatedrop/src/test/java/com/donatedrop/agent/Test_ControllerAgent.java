@@ -96,7 +96,7 @@ public class Test_ControllerAgent extends AbstractTest {
 
     //        String uri = "/public/user/deleteRequest?userID=" + userID;
     @Test
-    @Order(2)
+    @Order(-2)
     public void testDelete() throws Exception {
         String userID = getID();
         String uri = "/public/user/deleteRequest?userID=" + userID;
@@ -135,6 +135,9 @@ public class Test_ControllerAgent extends AbstractTest {
 
 //        further verification can be done by reading the agent request.
     }
+
+
+
 
 
     //    Start : old Code

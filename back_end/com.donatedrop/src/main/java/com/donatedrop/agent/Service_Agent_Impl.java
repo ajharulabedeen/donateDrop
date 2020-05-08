@@ -40,11 +40,11 @@ public class Service_Agent_Impl implements Service_Agent_I {
         return dao_agent_i.getAgentRequests(start, max);
     }
 
-    public List<AgentRequestReview> getAgentRequestsReview(int start, int max, String column, String key) {
-        return dao_agent_i.getAgentRequestsReview(start, max, column, key);
+    public List<AgentRequestReview> getAgentRequestsToReview(int start, int max, String column, String key) {
+        return dao_agent_i.getAgentRequestsToReview(start, max, column, key);
     }
 
-    public Map<String, String> getAgentRequestsReviewCount(String column, String key) {
-        return getAgentRequestsReviewCount(column, key);
+    public Map<String, String> getAgentRequestsToReviewCount(String column, String key) {
+        return getAgentRequestsToReviewCount(column, key);
     }
 }

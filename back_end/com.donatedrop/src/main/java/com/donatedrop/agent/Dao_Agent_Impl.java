@@ -99,7 +99,7 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
     }
 
     @Override
-    public List<AgentRequestReview> getAgentRequestsReview(int start, int max, String column, String key) {
+    public List<AgentRequestReview> getAgentRequestsToReview(int start, int max, String column, String key) {
         //        String q = "SELECT * FROM `agent_request_review`";
         List<AgentRequestReview> agentRequestReviews = new ArrayList<>();
         try {
@@ -117,7 +117,7 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
     }
 
     @Override
-    public Map<String, String> getAgentRequestsReviewCount(String column, String key) {
+    public Map<String, String> getAgentRequestsToReviewCount(String column, String key) {
         Map<String, String> result = new HashMap<>();
         try {
             String q = "SELECT  count(*) FROM `agent_request_review` WHERE `agent_request_review`.`" + column + "` LIKE '" + key + "'";
