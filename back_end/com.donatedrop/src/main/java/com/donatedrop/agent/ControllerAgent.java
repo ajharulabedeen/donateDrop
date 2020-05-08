@@ -30,5 +30,10 @@ public class ControllerAgent {
         return service_Agent_I.deleteRequest(userID);
     }
 
+    @PostMapping("reviewRequest")
+    public Map<String, String> reviewRequest(@RequestParam String requestID, @RequestParam String value) {
+        return service_Agent_I.reviewRequest(requestID, value);
+    }
+
 
 }

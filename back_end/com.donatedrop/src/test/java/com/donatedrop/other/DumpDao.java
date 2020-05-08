@@ -41,20 +41,22 @@ public class DumpDao {
         return basicList;
     }
 
-    public void deleteAll_ProfileBasic() {
-        String q = "SELECT * FROM `profilebasic`";
-        List<ProfileBasic> basicList = entityManager.createNativeQuery(q, ProfileBasic.class).getResultList();
-        for (Iterator<ProfileBasic> iterator = basicList.iterator(); iterator.hasNext(); ) {
-            ProfileBasic next = iterator.next();
-            entityManager.remove(next);
-        }
+    public void deleteAll_ProfileBasic() throws Exception {
+        throw new Exception("Are you to dele all profile! If Sure, please active the method code.");
+//        String q = "SELECT * FROM `profilebasic`";
+//        List<ProfileBasic> basicList = entityManager.createNativeQuery(q, ProfileBasic.class).getResultList();
+//        for (Iterator<ProfileBasic> iterator = basicList.iterator(); iterator.hasNext(); ) {
+//            ProfileBasic next = iterator.next();
+//            entityManager.remove(next);
+//        }
     }
 
-    public void insertProfileBasicBatch(List<ProfileBasic> basicList) {
-        for (Iterator<ProfileBasic> iterator = basicList.iterator(); iterator.hasNext(); ) {
-            ProfileBasic next = iterator.next();
-            entityManager.persist(next);
-        }
+    public void insertProfileBasicBatch(List<ProfileBasic> basicList) throws Exception {
+        throw new Exception("Are you to dele all profile! If Sure, please active the method code.");
+        //        for (Iterator<ProfileBasic> iterator = basicList.iterator(); iterator.hasNext(); ) {
+//            ProfileBasic next = iterator.next();
+//            entityManager.persist(next);
+//        }
     }
 
     public List<User> getUsers(int start, int max) {
@@ -74,7 +76,6 @@ public class DumpDao {
                 .setMaxResults(max)
                 .getResultList();
     }
-
 
     /**
      * @param start
