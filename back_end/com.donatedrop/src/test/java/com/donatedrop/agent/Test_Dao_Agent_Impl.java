@@ -68,7 +68,7 @@ public class Test_Dao_Agent_Impl {
 
     @Test
     public void testGetAgentRequestsReview() {
-        dao_agent_i.getAgentRequestsReview(0, 30, "present_div", "%%").forEach(agentRequestReview -> {
+        dao_agent_i.getAgentRequestsReview(0, 30, "name", "%1%").forEach(agentRequestReview -> {
             String addr = agentRequestReview.getPermanentStreet()
                     + " " + agentRequestReview.getPermanentUnion()
                     + ", " + agentRequestReview.getPermanentUpz()
@@ -78,6 +78,14 @@ public class Test_Dao_Agent_Impl {
             System.out.println(agentRequestReview.getUsername());
             System.out.println("-------------------------------");
         });
+    }
+
+
+    @Test
+    public void testGetAgentRequestsReviewCount() {
+        Map<String, String> result = dao_agent_i.getAgentRequestsReviewCount("username", "%1%");
+        System.out.println(result);
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
 
 
@@ -93,7 +101,6 @@ public class Test_Dao_Agent_Impl {
             System.out.println("\nResult : \n" + result);
         });
     }
-
 
 
 }

@@ -98,6 +98,7 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
         return agentRequest;
     }
 
+    @Override
     public List<AgentRequestReview> getAgentRequestsReview(int start, int max, String column, String key) {
         //        String q = "SELECT * FROM `agent_request_review`";
         List<AgentRequestReview> agentRequestReviews = new ArrayList<>();
@@ -105,13 +106,30 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
             String q = "SELECT * FROM `agent_request_review` WHERE `agent_request_review`.`" + column + "` LIKE '" + key + "'";
             agentRequestReviews
                     = entityManager.createNativeQuery(q, AgentRequestReview.class)
-                    .setFirstResult(start)
-                    .setMaxResults(max)
-                    .getResultList();
+                            .setFirstResult(start)
+                            .setMaxResults(max)
+                            .getResultList();
             return agentRequestReviews;
         } catch (Exception exception) {
             System.out.println("org.hibernate.exception.SQLGrammarException");
         }
         return agentRequestReviews;
     }
+
+    @Override
+    public Map<String, String> getAgentRequestsReviewCount(String column, String key) {
+        Map<String, String> result = new HashMap<>();
+        try {
+            String q = "SELECT  count(*) FROM `agent_request_review` WHERE `agent_request_review`.`" + column + "` LIKE '" + key + "'";
+            String count = entityManager.createNativeQuery(q).getResultList().get(0).toString();
+            result.put(StringUtil.STATUS, StringUtil.OK);
+            result.put(StringUtil.COUNT, count);
+            return result;
+        } catch (Exception e) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+            System.out.println("Error in Agent Request Counting!");
+        }
+        return result;
+    }
+
 }
