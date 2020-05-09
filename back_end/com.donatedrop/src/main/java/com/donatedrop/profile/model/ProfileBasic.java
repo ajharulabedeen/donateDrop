@@ -74,7 +74,7 @@ public class ProfileBasic implements Serializable {
     private Address address_present;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "phone_number")
+    @JoinColumn(name = "profile_id")
     private List<PhoneNumber> phone_number;
 
     //    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
