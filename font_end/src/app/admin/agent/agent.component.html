@@ -17,7 +17,7 @@
   <!--START : Search-->
   <div>
     <h4 align="left">
-      <button class="btn btn-info" (click)="getAll()">Search</button>
+      <button class="btn btn-info" (click)="getAgentRequestsToReview()">Search</button>
       <!--<button class="btn btn-xs btn-primary" (click)="searchCount()">Refresh</button>-->
     </h4>
     <!-- sort by column name -->
@@ -32,7 +32,7 @@
     <div align="left" class="col-md-12 offset-md-12">
       <div class="form-group">
         <h4>Search By :</h4>
-        <select [(ngModel)]="searchBy">
+        <select [(ngModel)]="searchByColumn">
           <option value="date">Date</option>
           <option value="note">Location</option>
           <option value="name">Note</option>
@@ -54,7 +54,7 @@
     <div class="col-md-2 offset-md-2">
       <div style="text-align: center" class="form-group">
         <label>Start</label>
-        <input style="text-align: center" [(ngModel)]="startHistory" type="number" class="form-control"
+        <input style="text-align: center" [(ngModel)]="startRequests" type="number" class="form-control"
                value="{{startHistory}}" (ngModelChange)="getAll()">
       </div>
     </div>

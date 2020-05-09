@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {AgentServiceService} from './agent-service.service';
+import {RequestGetAgentRequests} from './request-get-agent-requests.model';
 
 @Component({
   selector: 'app-agent',
@@ -7,10 +9,24 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AgentComponent implements OnInit {
 
-  constructor() {
+  searchKey: string;
+  searchByColumn: string;
+  total = 0;
+  startRequests = 0;
+  perPage = 0;
+  pageNumber = 0;
+
+
+  constructor(private agentService: AgentServiceService) {
   }
 
   ngOnInit() {
+  }
+
+  public getAgentRequestsToReview() {
+    const agentSearch : RequestGetAgentRequests = new RequestGetAgentRequests(
+      this.startRequests.toString(), this.perPage.toString(), this.searchByColumn, this.searchKey);
+    console.log(agentSearch);
   }
 
   // start : for tab in font end.
