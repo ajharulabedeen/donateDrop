@@ -104,16 +104,17 @@
             <th>Index</th>
             <th>Request Date</th>
             <th>Name</th>
+            <th>User Name</th>
+            <th>Gender</th>
+            <th>Phone Numbers</th>
+            <th>Note</th>
+            <th>Professions</th>
             <th>Adress Present</th>
             <th>Adress Permanent</th>
-            <th>Phone Numbers</th>
-            <th>Professions</th>
-            <th>Note</th>
           </tr>
-          <tr *ngFor="let h of historyDonation; let i=index">
+          <tr *ngFor="let ar of agentRequestsToReview; let i=index">
             <!--delete-->
             <td>
-              donation_delete
               <button class="btn btn-xs btn-warning" (click)=" deleteId = h.$id" data-toggle="modal"
                       data-target="#donation_delete">Delete
               </button>
@@ -124,12 +125,21 @@
                       (click)="update(j)">Edit
               </button>
             </td>
+            <td>
+              <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal_work"
+                      (click)="update(j)">Hold
+              </button>
+            </td>
             <td>{{i+1}}</td>
-            <td>{{h.date}}</td>
-            <td>{{h.location}}</td>
-            <td>{{h.$patientDescription}}</td>
-            <td>{{h.note}}</td>
-            <td>{{h.$refferedBy}}</td>
+            <td>{{ar.requestDate}}</td>
+            <td>{{ar.name}}</td>
+            <td>{{ar.username}}</td>
+            <td>{{ar.gender}}</td>
+            <td>{{ar.phone_number}}</td>
+            <td>{{ar.note}}</td>
+            <td>{{ar.profession}}</td>
+            <td>{{ar.presentStreet}},{{ar.presentUnion}},{{ar.presentUpz}},{{ar.presentDist}},{{ar.presentDiv}}</td>
+            <td>{{ar.permanentStreet}},{{ar.permanentUnion}},{{ar.permanentUpz}},{{ar.permanentDist}},{{ar.permanentDiv}}</td>
           </tr>
           </tbody>
         </table>

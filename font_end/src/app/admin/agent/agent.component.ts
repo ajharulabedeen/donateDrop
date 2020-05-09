@@ -24,6 +24,8 @@ export class AgentComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.searchKey = '%1%';
+    this.getAgentRequestsToReview();
   }
 
   public getAgentRequestsToReview() {
@@ -52,7 +54,7 @@ export class AgentComponent implements OnInit {
         // artr.phone_number = res[key]['phone_number'];
         artr.phone_number = '';
         for (const phoneKey in res[key]['phone_number']) {
-          artr.phone_number += res[key]['phone_number'][phoneKey]['number'] + ' ';
+          artr.phone_number += res[key]['phone_number'][phoneKey]['number'] + ';\n';
           console.log(res[key]['phone_number'][phoneKey]['number']);
         }
         // console.log(artr.phone_number);
