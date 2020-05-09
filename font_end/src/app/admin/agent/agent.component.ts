@@ -16,6 +16,7 @@ export class AgentComponent implements OnInit {
   startRequests = 0;
   perPage = 10;
   pageNumber = 0;
+  phoneNumber = '';
 
   agentRequestsToReview: AgentRequestToReview[] = new Array();
 
@@ -48,7 +49,14 @@ export class AgentComponent implements OnInit {
         artr.permanentUnion = res[key]['permanentUnion'];
         artr.permanentUpz = res[key]['permanentUpz'];
 
-        artr.phone_number = res[key]['phone_number'];
+        // artr.phone_number = res[key]['phone_number'];
+        artr.phone_number = '';
+        for (const phoneKey in res[key]['phone_number']) {
+          artr.phone_number += res[key]['phone_number'][phoneKey]['number'] + ' ';
+          console.log(res[key]['phone_number'][phoneKey]['number']);
+        }
+        // console.log(artr.phone_number);
+        console.log(res[key]['phone_number']);
 
         artr.presentDist = res[key]['presentDist'];
         artr.presentDiv = res[key]['presentDiv'];

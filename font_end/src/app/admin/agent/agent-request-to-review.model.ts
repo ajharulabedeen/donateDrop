@@ -15,7 +15,7 @@ export class AgentRequestToReview {
   public permanentUnion: string;
   public permanentUpz: string;
 
-  public phone_number: PhoneNumber;
+  public phone_number: string;
 
   public presentDist: string;
   public presentDiv: string;
