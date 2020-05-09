@@ -82,6 +82,27 @@ public class DumpDao {
                 .getResultList();
     }
 
+//    start : no need :
+
+    public List<AgentRequestToReview> getAllAgentRequestReviewPhoneNumber(int start, int max, String column, String key) {
+//        String q = "SELECT * FROM `agent_request_review`";
+        List<AgentRequestToReview> agentRequestReviews = new ArrayList<>();
+        try {
+            String q = "SELECT agent_request_review.* FROM agent_request_review, phonenumber " +
+                    "WHERE agent_request_review.profile_id = phonenumber.profile_id " +
+                    "AND phonenumber.number LIKE '" + key + "'";
+            agentRequestReviews
+                    = entityManager.createNativeQuery(q, AgentRequestToReview.class)
+                    .setFirstResult(start)
+                    .setMaxResults(max)
+                    .getResultList();
+            return agentRequestReviews;
+        } catch (Exception exception) {
+            System.out.println("org.hibernate.exception.SQLGrammarException");
+        }
+        return agentRequestReviews;
+    }
+
     /**
      * @param start
      * @param max
@@ -106,5 +127,5 @@ public class DumpDao {
         }
         return agentRequestReviews;
     }
-
+//    end : no need :
 }
