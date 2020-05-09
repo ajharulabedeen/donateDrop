@@ -336,6 +336,7 @@ public class AgentRequestToReview implements Serializable {
                 ", permanentUpz='" + permanentUpz + '\'' +
                 ", permanentUnion='" + permanentUnion + '\'' +
                 ", permanentStreet='" + permanentStreet + '\'' +
+                ", phoneNumber='" + phone_number + '\'' +
                 '}';
     }
 }
