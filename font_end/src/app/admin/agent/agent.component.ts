@@ -80,7 +80,11 @@ export class AgentComponent implements OnInit {
         this.agentRequestsToReview.push(artr);
       }
     });
-    console.log(this.agentRequestsToReview);
+    // console.log(this.agentRequestsToReview);
+    this.agentService.getAgentRequestsToReviewCount(agentSearch).subscribe(res => {
+      console.log(res);
+      this.total = res['COUNT'];
+    });
   }
 
   // start : for tab in font end.

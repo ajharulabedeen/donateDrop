@@ -20,6 +20,13 @@ export class AgentServiceService {
       this.authService.getHeader());
   }
 
+  // http://localhost:8080/public/user/getAgentRequestsToReview
+  public getAgentRequestsToReviewCount(agentSearch: RequestGetAgentRequests) {
+    return this.http.post(
+      'http://localhost:8080/public/user/getAgentRequestsToReviewCount', agentSearch,
+      this.authService.getHeader());
+  }
+
 
   // start : old code
   public getHistoryCount(searchRequest: SearchRequest) {
