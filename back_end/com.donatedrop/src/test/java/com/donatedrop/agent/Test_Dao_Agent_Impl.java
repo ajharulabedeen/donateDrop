@@ -74,6 +74,7 @@ public class Test_Dao_Agent_Impl {
                     + ", " + agentRequestReview.getPermanentDist()
                     + ", " + agentRequestReview.getPermanentDiv();
             System.out.println(addr);
+            System.out.println(agentRequestReview.getPhone_number());
             System.out.println(agentRequestReview.getUsername());
             System.out.println("-------------------------------");
         });
