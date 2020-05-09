@@ -24,14 +24,16 @@ export class AgentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.searchKey = '%1%';
+    this.searchKey = '';
     this.getAgentRequestsToReview();
   }
 
   public getAgentRequestsToReview() {
+    var finalSearchKey = '%' + this.searchKey + '%';
     const agentSearch: RequestGetAgentRequests = new RequestGetAgentRequests(
-      this.startRequests.toString(), this.perPage.toString(), this.searchByColumn, this.searchKey);
+      this.startRequests.toString(), this.perPage.toString(), this.searchByColumn, finalSearchKey);
     console.log(agentSearch);
+    this.agentRequestsToReview = [];
     this.agentService.getAgentRequestsToReview(agentSearch).subscribe(res => {
       console.log(res);
       for (const key in res) {
