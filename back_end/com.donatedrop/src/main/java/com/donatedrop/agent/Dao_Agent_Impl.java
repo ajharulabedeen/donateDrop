@@ -104,18 +104,22 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
     public List<AgentRequestToReview> getAgentRequestsToReview(int start, int max, String column, String key) {
         //        String q = "SELECT * FROM `agent_request_review`";
         List<AgentRequestToReview> agentRequestReviews = new ArrayList<>();
+        String q = "";
         try {
             if (column.equals(StringUtil.PHONENUMBER)) {
-//                String
+                System.out.println();
+                q = "SELECT agent_request_review.* FROM agent_request_review, phonenumber " +
+                        "WHERE agent_request_review.profile_id = phonenumber.profile_id " +
+                        "AND phonenumber.number LIKE '" + key + "'";
             } else {
-                String q = "SELECT * FROM `agent_request_review` WHERE `agent_request_review`.`" + column + "` LIKE '" + key + "'";
-                agentRequestReviews
-                        = entityManager.createNativeQuery(q, AgentRequestToReview.class)
-                        .setFirstResult(start)
-                        .setMaxResults(max)
-                        .getResultList();
-                return agentRequestReviews;
+                q = "SELECT * FROM `agent_request_review` WHERE `agent_request_review`.`" + column + "` LIKE '" + key + "'";
             }
+            agentRequestReviews
+                    = entityManager.createNativeQuery(q, AgentRequestToReview.class)
+                    .setFirstResult(start)
+                    .setMaxResults(max)
+                    .getResultList();
+            return agentRequestReviews;
 
         } catch (Exception exception) {
             System.out.println("org.hibernate.exception.SQLGrammarException");

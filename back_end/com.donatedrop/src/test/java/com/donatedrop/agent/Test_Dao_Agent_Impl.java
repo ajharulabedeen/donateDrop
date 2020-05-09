@@ -87,6 +87,14 @@ public class Test_Dao_Agent_Impl {
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
 
+    @Test
+    public void testGetAgentRequestsReviewPhoneNumber() {
+        dao_agent_i.getAgentRequestsToReview(0, 30, "username", "%15%").forEach(agentRequestReview -> {
+            System.out.println(agentRequestReview.toString());
+        });
+    }
+
+
     //    not part dao layer
     @Test
     public void testInsertAgent() {
