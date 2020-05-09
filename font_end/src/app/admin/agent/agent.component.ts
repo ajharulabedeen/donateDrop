@@ -87,6 +87,22 @@ export class AgentComponent implements OnInit {
     });
   }
 
+
+  public nextPage() {
+    if (this.startRequests <= this.total) {
+      this.startRequests += this.perPage;
+      this.getAgentRequestsToReview();
+    }
+  }
+
+  public previousPage() {
+    if (this.startRequests > 0) {
+      this.startRequests -= this.perPage;
+      this.getAgentRequestsToReview();
+    }
+  }
+
+
   // start : for tab in font end.
   public tabChange(evt, tabName) {
     var i, tabcontent, tablinks;
