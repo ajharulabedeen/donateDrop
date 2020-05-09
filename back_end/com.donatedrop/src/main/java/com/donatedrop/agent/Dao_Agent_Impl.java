@@ -1,5 +1,7 @@
 package com.donatedrop.agent;
 
+import com.donatedrop.agent.models.AgentRequest;
+import com.donatedrop.agent.models.AgentRequestToReview;
 import com.donatedrop.util.StringUtil;
 import org.hibernate.exception.ConstraintViolationException;
 //import org.hibernate.exception.ConstraintViolationException;

@@ -1,4 +1,4 @@
-package com.donatedrop.agent;
+package com.donatedrop.agent.models;
 
 public class RequestReviewRequest {
     private String requestID;

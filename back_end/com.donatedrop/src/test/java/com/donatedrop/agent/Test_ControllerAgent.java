@@ -5,20 +5,16 @@
  */
 package com.donatedrop.agent;
 
+import com.donatedrop.agent.models.AgentRequest;
+import com.donatedrop.agent.models.AgentRequestToReview;
+import com.donatedrop.agent.models.RequestGetAgentRequests;
+import com.donatedrop.agent.models.RequestReviewRequest;
 import com.donatedrop.history.*;
 import com.donatedrop.geocode.AbstractTest;
-import com.donatedrop.geocode.models.DistrictsEngName;
-import com.donatedrop.models.Address;
 import com.donatedrop.other.DumpDao;
 import com.donatedrop.other.TestUtil;
-import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
-import com.donatedrop.profile.model.EmergencyContact;
-import com.donatedrop.profile.model.PhoneNumber;
-import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
-import com.donatedrop.util.Utils;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Order;
@@ -155,6 +151,27 @@ public class Test_ControllerAgent extends AbstractTest {
         String content = mvcResult.getResponse().getContentAsString();
         List<AgentRequestToReview> agentRequestListToReviews = Arrays.asList(super.mapFromJson(content, AgentRequestToReview[].class));
         agentRequestListToReviews.forEach(agentRequestToReview -> System.out.println(agentRequestToReview));
+
+//        further verification can be done by reading the agent request.
+    }
+
+    //        String uri = "/public/user/getAgentRequestsToReviewCount";
+    @Test
+    @Order(4)
+    public void testGetAgentRequestsToReviewCount() throws Exception {
+//     arrange
+        String uri = "/public/user/getAgentRequestsToReviewCount";
+        RequestGetAgentRequests requestGetAgentRequests = new RequestGetAgentRequests(0, 30, "username", "%15%");
+//      act
+        String inputJson = super.mapToJson(requestGetAgentRequests);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+//assert
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        Map<String, String> result = super.mapFromJson(content, Map.class);
+        System.out.println("\n" + result + "\n");
 
 //        further verification can be done by reading the agent request.
     }

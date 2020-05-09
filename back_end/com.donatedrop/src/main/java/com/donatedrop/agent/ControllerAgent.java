@@ -8,6 +8,10 @@ package com.donatedrop.agent;
 import java.util.List;
 import java.util.Map;
 
+import com.donatedrop.agent.models.AgentRequest;
+import com.donatedrop.agent.models.AgentRequestToReview;
+import com.donatedrop.agent.models.RequestGetAgentRequests;
+import com.donatedrop.agent.models.RequestReviewRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,12 +43,19 @@ public class ControllerAgent {
     }
 
     @PostMapping("getAgentRequestsToReview")
-    public List<AgentRequestToReview> reviewRequest(@RequestBody RequestGetAgentRequests requestGetAgentRequests) {
+    public List<AgentRequestToReview> getAgentRequestsToReview(@RequestBody RequestGetAgentRequests requestGetAgentRequests) {
         int start = requestGetAgentRequests.getStart();
         int max = requestGetAgentRequests.getMax();
         String column = requestGetAgentRequests.getColumn();
         String key = requestGetAgentRequests.getKey();
         return service_Agent_I.getAgentRequestsToReview(start, max, column, key);
+    }
+
+    @PostMapping("getAgentRequestsToReviewCount")
+    public Map<String, String> getAgentRequestsToReviewCount(@RequestBody RequestGetAgentRequests requestGetAgentRequests) {
+        String column = requestGetAgentRequests.getColumn();
+        String key = requestGetAgentRequests.getKey();
+        return service_Agent_I.getAgentRequestsToReviewCount(column, key);
     }
 
 }

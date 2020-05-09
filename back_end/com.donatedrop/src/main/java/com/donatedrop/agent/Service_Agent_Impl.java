@@ -2,6 +2,9 @@ package com.donatedrop.agent;
 
 import java.util.List;
 import java.util.Map;
+
+import com.donatedrop.agent.models.AgentRequest;
+import com.donatedrop.agent.models.AgentRequestToReview;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -45,6 +48,6 @@ public class Service_Agent_Impl implements Service_Agent_I {
     }
 
     public Map<String, String> getAgentRequestsToReviewCount(String column, String key) {
-        return getAgentRequestsToReviewCount(column, key);
+        return dao_agent_i.getAgentRequestsToReviewCount(column, key);
     }
 }

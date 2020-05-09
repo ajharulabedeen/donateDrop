@@ -1,5 +1,8 @@
 package com.donatedrop.agent;
 
+import com.donatedrop.agent.models.AgentRequest;
+import com.donatedrop.agent.models.AgentRequestToReview;
+
 import java.util.List;
 import java.util.Map;
 

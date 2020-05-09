@@ -1,4 +1,4 @@
-package com.donatedrop.agent;
+package com.donatedrop.agent.models;
 
 public class RequestGetAgentRequests {
     private int start;

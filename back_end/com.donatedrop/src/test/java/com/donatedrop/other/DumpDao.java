@@ -1,22 +1,17 @@
 package com.donatedrop.other;
 
-import com.donatedrop.agent.AgentRequest;
-import com.donatedrop.agent.AgentRequestToReview;
+import com.donatedrop.agent.models.AgentRequest;
+import com.donatedrop.agent.models.AgentRequestToReview;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.security.models.User;
 import com.donatedrop.security.repo.UserRepository;
-import com.sun.javafx.scene.control.skin.TableHeaderRow;
-import org.assertj.core.internal.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.math.BigInteger;
-import java.sql.SQLSyntaxErrorException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 @Component
