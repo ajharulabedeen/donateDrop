@@ -30,6 +30,12 @@ public class PhoneNumber implements Serializable {
     @Column
     private String number;
 
+
+    public PhoneNumber(Long id, String number) {
+        this.id = id;
+        this.number = number;
+    }
+
     public PhoneNumber(String number) {
         this.number = number;
     }
@@ -74,5 +80,5 @@ public class PhoneNumber implements Serializable {
     public void setNumber(String number) {
         this.number = number;
     }
-    
+
 }
