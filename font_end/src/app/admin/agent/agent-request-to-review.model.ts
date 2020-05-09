@@ -6,7 +6,7 @@ export class AgentRequestToReview {
 
   public gender: string;
   public name: string;
-  note: string;
+  public note: string;
 
   public permanentDist: string;
   public permanentDiv: string;

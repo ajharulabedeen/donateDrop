@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AgentServiceService} from './agent-service.service';
 import {RequestGetAgentRequests} from './request-get-agent-requests.model';
+import {AgentRequestToReview} from './agent-request-to-review.model';
 
 @Component({
   selector: 'app-agent',
@@ -16,6 +17,7 @@ export class AgentComponent implements OnInit {
   perPage = 10;
   pageNumber = 0;
 
+  agentRequestsToReview: AgentRequestToReview[] = new Array();
 
   constructor(private agentService: AgentServiceService) {
   }
@@ -29,7 +31,44 @@ export class AgentComponent implements OnInit {
     console.log(agentSearch);
     this.agentService.getAgentRequestsToReview(agentSearch).subscribe(res => {
       console.log(res);
+      for (const key in res) {
+        var artr = new AgentRequestToReview();
+
+        artr.addressPermanent = res[key]['addressPermanent'];
+        artr.addressPresent = res[key]['addressPresent'];
+
+        artr.gender = res[key]['gender'];
+        artr.name = res[key]['name'];
+        artr.note = res[key]['note'];
+
+        artr.permanentDist = res[key]['permanentDist'];
+        artr.permanentDiv = res[key]['permanentDiv'];
+        artr.permanentId = res[key]['permanentId'];
+        artr.permanentStreet = res[key]['permanentStreet'];
+        artr.permanentUnion = res[key]['permanentUnion'];
+        artr.permanentUpz = res[key]['permanentUpz'];
+
+        artr.phone_number = res[key]['phone_number'];
+
+        artr.presentDist = res[key]['presentDist'];
+        artr.presentDiv = res[key]['presentDiv'];
+        artr.presentId = res[key]['presentId'];
+        artr.presentStreet = res[key]['presentStreet'];
+        artr.presentUnion = res[key]['presentUnion'];
+        artr.presentUpz = res[key]['presentUpz'];
+
+        artr.profession = res[key]['profession'];
+        artr.profileId = res[key]['profileId'];
+        artr.requestDate = res[key]['requestDate'];
+        artr.requestId = res[key]['requestId'];
+        artr.status = res[key]['status'];
+        artr.userId = res[key]['userId'];
+        artr.username = res[key]['username'];
+
+        this.agentRequestsToReview.push(artr);
+      }
     });
+    console.log(this.agentRequestsToReview);
   }
 
   // start : for tab in font end.
