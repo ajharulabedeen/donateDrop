@@ -3,6 +3,7 @@ import {SearchRequest} from '../../donation-history/search-request.model';
 import {HttpClient} from '@angular/common/http';
 import {History} from '../../donation-history/history.model';
 import {AuthService} from '../../auth/auth.service';
+import {RequestGetAgentRequests} from './request-get-agent-requests.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,10 @@ export class AgentServiceService {
   }
 
   // http://localhost:8080/public/user/getAgentRequestsToReview
-  public getAgentRequestsToReview(){
-
+  public getAgentRequestsToReview(agentSearch: RequestGetAgentRequests) {
+    return this.http.post(
+      'http://localhost:8080/public/user/getAgentRequestsToReview', agentSearch,
+      this.authService.getHeader());
   }
 
 

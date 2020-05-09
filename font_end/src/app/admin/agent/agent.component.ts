@@ -10,10 +10,10 @@ import {RequestGetAgentRequests} from './request-get-agent-requests.model';
 export class AgentComponent implements OnInit {
 
   searchKey: string;
-  searchByColumn: string;
+  searchByColumn = 'username';
   total = 0;
   startRequests = 0;
-  perPage = 0;
+  perPage = 10;
   pageNumber = 0;
 
 
@@ -24,9 +24,12 @@ export class AgentComponent implements OnInit {
   }
 
   public getAgentRequestsToReview() {
-    const agentSearch : RequestGetAgentRequests = new RequestGetAgentRequests(
+    const agentSearch: RequestGetAgentRequests = new RequestGetAgentRequests(
       this.startRequests.toString(), this.perPage.toString(), this.searchByColumn, this.searchKey);
     console.log(agentSearch);
+    this.agentService.getAgentRequestsToReview(agentSearch).subscribe(res => {
+      console.log(res);
+    });
   }
 
   // start : for tab in font end.
