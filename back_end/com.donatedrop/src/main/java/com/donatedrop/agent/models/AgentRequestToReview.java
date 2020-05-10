@@ -116,6 +116,35 @@ public class AgentRequestToReview implements Serializable {
     public AgentRequestToReview() {
     }
 
+    public AgentRequestToReview(long profileId, String name, String gender, String profession, String userId, BigInteger addressPermanent, BigInteger addressPresent, long requestId, String requestDate, String status, String noteApplicant, long presentId, String presentDiv, String presentDist, String presentUpz, String presentUnion, String presentStreet, String username, long permanentId, String permanentDiv, String permanentDist, String permanentUpz, String permanentUnion, String permanentStreet, List<PhoneNumber> phone_number) {
+        this.profileId = profileId;
+        this.name = name;
+        this.gender = gender;
+        this.profession = profession;
+        this.userId = userId;
+        this.addressPermanent = addressPermanent;
+        this.addressPresent = addressPresent;
+        this.requestId = requestId;
+        this.requestDate = requestDate;
+        this.status = status;
+        this.noteApplicant = noteApplicant;
+        this.presentId = presentId;
+        this.presentDiv = presentDiv;
+        this.presentDist = presentDist;
+        this.presentUpz = presentUpz;
+        this.presentUnion = presentUnion;
+        this.presentStreet = presentStreet;
+        this.username = username;
+        this.permanentId = permanentId;
+        this.permanentDiv = permanentDiv;
+        this.permanentDist = permanentDist;
+        this.permanentUpz = permanentUpz;
+        this.permanentUnion = permanentUnion;
+        this.permanentStreet = permanentStreet;
+        this.phone_number = phone_number;
+    }
+
+    
     
     public long getProfileId() {
         return profileId;
