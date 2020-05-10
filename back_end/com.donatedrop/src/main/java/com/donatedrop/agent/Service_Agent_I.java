@@ -1,8 +1,6 @@
 package com.donatedrop.agent;
 
-import com.donatedrop.agent.models.AgentRequest;
-import com.donatedrop.agent.models.AgentRequestToReview;
-import com.donatedrop.agent.models.RequestGetAgentRequestsReview;
+import com.donatedrop.agent.models.*;
 
 import java.util.List;
 import java.util.Map;
@@ -31,5 +29,12 @@ public interface Service_Agent_I {
 
     public List<AgentRequestToReview> getAgentRequestsToReview(RequestGetAgentRequestsReview requestGetAgentRequests);
 
-    public Map<String,String> getAgentRequestsToReviewCount(String column, String key);
+    public Map<String, String> getAgentRequestsToReviewCount(String column, String key);
+
+    public Map<String, String> updateAdminNote(RequestAdminNote requestAdminNote);
+
+    public Map<String, String> updateApplicantNote(RequestApplicantNote requestApplicantNote);
+
+    public Map<String, String> updatePersonalNote(RequestPersonalNote requestPersonalNote);
+
 }

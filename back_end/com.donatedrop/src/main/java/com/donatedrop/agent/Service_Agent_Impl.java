@@ -3,9 +3,7 @@ package com.donatedrop.agent;
 import java.util.List;
 import java.util.Map;
 
-import com.donatedrop.agent.models.AgentRequest;
-import com.donatedrop.agent.models.AgentRequestToReview;
-import com.donatedrop.agent.models.RequestGetAgentRequestsReview;
+import com.donatedrop.agent.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -57,4 +55,20 @@ public class Service_Agent_Impl implements Service_Agent_I {
     public Map<String, String> getAgentRequestsToReviewCount(String column, String key) {
         return dao_agent_i.getAgentRequestsToReviewCount(column, key);
     }
+
+    @Override
+    public Map<String, String> updateAdminNote(RequestAdminNote requestAdminNote) {
+        return dao_agent_i.updateAdminNote(requestAdminNote);
+    }
+
+    @Override
+    public Map<String, String> updateApplicantNote(RequestApplicantNote requestApplicantNote) {
+        return dao_agent_i.updateApplicantNote(requestApplicantNote);
+    }
+
+    @Override
+    public Map<String, String> updatePersonalNote(RequestPersonalNote requestPersonalNote) {
+        return dao_agent_i.updatePersonalNote(requestPersonalNote);
+    }
+
 }
