@@ -2,6 +2,7 @@ package com.donatedrop.agent;
 
 import com.donatedrop.agent.models.AgentRequest;
 import com.donatedrop.agent.models.AgentRequestToReview;
+import com.donatedrop.agent.models.RequestAdminNote;
 import com.donatedrop.agent.models.RequestGetAgentRequestsReview;
 
 import java.util.List;
@@ -32,4 +33,6 @@ public interface Dao_Agent_I {
     public List<AgentRequestToReview> getAgentRequestsToReview(RequestGetAgentRequestsReview requestGetAgentRequestsReview);
 
     public Map<String,String> getAgentRequestsToReviewCount(String column, String key);
+    
+    public Map<String, String> updateAdminNote(RequestAdminNote requestAdminNote);
 }

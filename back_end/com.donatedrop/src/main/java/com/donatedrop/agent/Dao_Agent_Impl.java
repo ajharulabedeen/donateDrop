@@ -2,6 +2,7 @@ package com.donatedrop.agent;
 
 import com.donatedrop.agent.models.AgentRequest;
 import com.donatedrop.agent.models.AgentRequestToReview;
+import com.donatedrop.agent.models.RequestAdminNote;
 import com.donatedrop.agent.models.RequestGetAgentRequestsReview;
 import com.donatedrop.util.StringUtil;
 import org.hibernate.exception.ConstraintViolationException;
@@ -150,6 +151,23 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
         } catch (Exception e) {
             result.put(StringUtil.STATUS, StringUtil.FAIL);
             System.out.println("Error in Agent Request Counting!");
+        }
+        return result;
+    }
+
+    @Override
+    public Map<String, String> updateAdminNote(RequestAdminNote requestAdminNote) {
+        Map<String, String> result = new HashMap<>();
+        try {
+            AgentRequest agentRequest = entityManager.find(AgentRequest.class, new Long(requestAdminNote.getRequestId()));
+            if (agentRequest != null) {
+                agentRequest.setNoteAdmin(requestAdminNote.getAdminNote());
+                entityManager.merge(agentRequest);
+                result.put(StringUtil.STATUS, StringUtil.OK);
+            }
+
+        } catch (Exception e) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
         }
         return result;
     }
