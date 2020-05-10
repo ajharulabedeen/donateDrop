@@ -152,6 +152,9 @@ export class AgentComponent implements OnInit {
     console.log(adminNote);
     this.agentService.updateAdminNote(adminNote).subscribe(res => {
       console.log(res);
+      if (res['STATUS'] === 'OK') {
+       this.getAgentRequestsToReview();
+      }
     });
   }
 
