@@ -5,6 +5,7 @@ import {AgentRequestToReview} from './agent-request-to-review.model';
 import {RequestReviewRequest} from './request-review-request.model';
 import {ReviewValue} from './review-value.model';
 import {RequestAdminNote} from './request-admin-note.model';
+import {RequestPersonalNote} from './request-personal-note.model';
 
 @Component({
   selector: 'app-agent',
@@ -160,9 +161,9 @@ export class AgentComponent implements OnInit {
   }
 
   public updatePersonalNote() {
-    const adminNote = new RequestAdminNote(this.requestID, this.adminNote);
-    console.log(adminNote);
-    this.agentService.updateAdminNote(adminNote).subscribe(res => {
+    const personalNoteObj = new RequestPersonalNote(this.requestID, this.personalNote);
+    console.log(personalNoteObj);
+    this.agentService.updatePersonalNote(personalNoteObj).subscribe(res => {
       console.log(res);
       if (res['STATUS'] === 'OK') {
         this.getAgentRequestsToReview();

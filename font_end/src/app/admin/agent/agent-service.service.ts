@@ -6,6 +6,7 @@ import {AuthService} from '../../auth/auth.service';
 import {RequestGetAgentRequests} from './request-get-agent-requests.model';
 import {RequestReviewRequest} from './request-review-request.model';
 import {RequestAdminNote} from './request-admin-note.model';
+import {RequestPersonalNote} from './request-personal-note.model';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,12 @@ export class AgentServiceService {
   public updateAdminNote(adminNote: RequestAdminNote) {
     return this.http.post(
       'http://localhost:8080/public/user/updateAdminNote', adminNote,
+      this.authService.getHeader());
+  }
+
+  public updatePersonalNote(personalNote: RequestPersonalNote) {
+    return this.http.post(
+      'http://localhost:8080/public/user/updatePersonalNote', personalNote,
       this.authService.getHeader());
   }
 

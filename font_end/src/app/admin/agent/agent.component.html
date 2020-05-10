@@ -152,10 +152,11 @@
               {{ar.noteAdmin}}
             </td>
             <td>
-              <button class="btn btn-xs btn-danger" (click)="personalNote=ar.personalNote; requestID=ar.requestId"
+              <button class="btn btn-xs btn-danger" (click)=" personalNote=ar.notePersonal; requestID=ar.requestId"
                       data-toggle="modal"
                       data-target="#modal_personalNote">Edit
               </button>
+              <br>
               {{ar.notePersonal}}
             </td>
             <td>{{ar.profession}}</td>
@@ -233,7 +234,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateAdminNote()">Save</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updatePersonalNote()">Save</button>
       </div>
     </div>
   </div>
