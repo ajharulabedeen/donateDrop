@@ -1,6 +1,7 @@
 package com.donatedrop.agent;
 
 import com.donatedrop.agent.models.AgentRequest;
+import com.donatedrop.agent.models.RequestAdminNote;
 import com.donatedrop.agent.models.RequestGetAgentRequestsReview;
 import com.donatedrop.other.DumpDao;
 import com.donatedrop.other.TestUtil;
@@ -101,6 +102,10 @@ public class Test_Dao_Agent_Impl {
     public void testUpdateAdminNote() {
         String requestID = dao_agent_i.getAgentRequests(0, 10).get(0).getId().toString();
         System.out.println(requestID);
+        RequestAdminNote adminNote = new RequestAdminNote(requestID, "Please provide additional Documents!");
+        Map<String, String> result = dao_agent_i.updateAdminNote(adminNote);
+        System.out.println(result);
+        //        assertEquals();
     }
 
     //    not part dao layer
