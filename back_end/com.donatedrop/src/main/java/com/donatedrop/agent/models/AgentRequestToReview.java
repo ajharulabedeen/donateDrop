@@ -116,6 +116,7 @@ public class AgentRequestToReview implements Serializable {
     public AgentRequestToReview() {
     }
 
+    
     public long getProfileId() {
         return profileId;
     }
@@ -203,6 +204,24 @@ public class AgentRequestToReview implements Serializable {
     public void setNoteApplicant(String noteApplicant) {
         this.noteApplicant = noteApplicant;
     }
+
+    public String getNoteAdmin() {
+        return noteAdmin;
+    }
+
+    public void setNoteAdmin(String noteAdmin) {
+        this.noteAdmin = noteAdmin;
+    }
+
+    public String getNotePersonal() {
+        return notePersonal;
+    }
+
+    public void setNotePersonal(String notePersonal) {
+        this.notePersonal = notePersonal;
+    }
+    
+    
 
     public long getPresentId() {
         return presentId;
