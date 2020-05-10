@@ -35,6 +35,15 @@ public class AgentRequest implements Serializable {
     @Column(name = "status")
     private String status;
 
+    @Column(name = "accept_date")
+    private String acceptDate;
+
+    @Column(name = "reject_date")
+    private String rejectDate;
+
+    @Column(name = "freeze_date")
+    private String freezeDate;
+
     @Lob
     @Column(name = "note_applicant")
     private String noteApplicant = "note applicant!";
@@ -132,13 +141,43 @@ public class AgentRequest implements Serializable {
         return true;
     }
 
+    public String getAcceptDate() {
+        return acceptDate;
+    }
+
+    public void setAcceptDate(String acceptDate) {
+        this.acceptDate = acceptDate;
+    }
+
+    public String getRejectDate() {
+        return rejectDate;
+    }
+
+    public void setRejectDate(String rejectDate) {
+        this.rejectDate = rejectDate;
+    }
+
+    public String getFreezeDate() {
+        return freezeDate;
+    }
+
+    public void setFreezeDate(String freezeDate) {
+        this.freezeDate = freezeDate;
+    }
+
     @Override
     public String toString() {
-        return "AgentRequest{"
-                + "id=" + id
-                + ", userID='" + userID + '\''
-                + ", requestDate='" + requestDate + '\''
-                + ", status='" + status + '\''
-                + '}';
+        return "AgentRequest{" +
+                "id=" + id +
+                ", userID='" + userID + '\'' +
+                ", requestDate='" + requestDate + '\'' +
+                ", status='" + status + '\'' +
+                ", acceptDate='" + acceptDate + '\'' +
+                ", rejectDate='" + rejectDate + '\'' +
+                ", freezeDate='" + freezeDate + '\'' +
+                ", noteApplicant='" + noteApplicant + '\'' +
+                ", noteAdmin='" + noteAdmin + '\'' +
+                ", notePersonal='" + notePersonal + '\'' +
+                '}';
     }
 }
