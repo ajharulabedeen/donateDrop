@@ -39,7 +39,7 @@ export class AgentComponent implements OnInit {
     console.log(agentSearch);
     this.agentRequestsToReview = [];
     this.agentService.getAgentRequestsToReview(agentSearch).subscribe(res => {
-      console.log(res);
+      console.log('res : ' + res);
       for (const key in res) {
         var artr = new AgentRequestToReview();
 
@@ -48,7 +48,10 @@ export class AgentComponent implements OnInit {
 
         artr.gender = res[key]['gender'];
         artr.name = res[key]['name'];
-        artr.note = res[key]['note'];
+        artr.noteApplicant = res[key]['noteApplicant'];
+        artr.noteAdmin = res[key]['noteAdmin'];
+        artr.notePersonal = res[key]['notePersonal'];
+        console.log(res[key]['notePersonal']);
 
         artr.permanentDist = res[key]['permanentDist'];
         artr.permanentDiv = res[key]['permanentDiv'];
@@ -64,7 +67,7 @@ export class AgentComponent implements OnInit {
           console.log(res[key]['phone_number'][phoneKey]['number']);
         }
         // console.log(artr.phone_number);
-        console.log(res[key]['phone_number']);
+        // console.log(res[key]['phone_number']);
 
         artr.presentDist = res[key]['presentDist'];
         artr.presentDiv = res[key]['presentDiv'];
