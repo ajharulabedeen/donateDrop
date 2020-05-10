@@ -101,11 +101,14 @@ public class Test_Dao_Agent_Impl {
     @Test
     public void testUpdateAdminNote() {
         String requestID = dao_agent_i.getAgentRequests(0, 10).get(0).getId().toString();
+        String note = "ADMIN NOTE : Please provide additional Documents!";
         System.out.println(requestID);
-        RequestAdminNote adminNote = new RequestAdminNote(requestID, "Please provide additional Documents!");
+        RequestAdminNote adminNote = new RequestAdminNote(requestID, note);
         Map<String, String> result = dao_agent_i.updateAdminNote(adminNote);
         System.out.println(result);
-        //        assertEquals();
+        AgentRequest agentRequest = dao_agent_i.getOneAgentRequest(requestID);
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        assertEquals(note, agentRequest.getNoteAdmin());
     }
 
     //    not part dao layer

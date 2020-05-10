@@ -121,9 +121,9 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
             }
             agentRequestReviews
                     = entityManager.createNativeQuery(q, AgentRequestToReview.class)
-                            .setFirstResult(start)
-                            .setMaxResults(max)
-                            .getResultList();
+                    .setFirstResult(start)
+                    .setMaxResults(max)
+                    .getResultList();
             return agentRequestReviews;
 
         } catch (Exception exception) {
@@ -172,4 +172,8 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
         return result;
     }
 
+    @Override
+    public AgentRequest getOneAgentRequest(String requestID) {
+        return entityManager.find(AgentRequest.class, new Long(requestID));
+    }
 }

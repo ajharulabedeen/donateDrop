@@ -32,7 +32,9 @@ public interface Dao_Agent_I {
 
     public List<AgentRequestToReview> getAgentRequestsToReview(RequestGetAgentRequestsReview requestGetAgentRequestsReview);
 
-    public Map<String,String> getAgentRequestsToReviewCount(String column, String key);
-    
+    public Map<String, String> getAgentRequestsToReviewCount(String column, String key);
+
     public Map<String, String> updateAdminNote(RequestAdminNote requestAdminNote);
+
+    public AgentRequest getOneAgentRequest(String requestID);
 }
