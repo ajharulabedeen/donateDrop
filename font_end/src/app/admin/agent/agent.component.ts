@@ -23,6 +23,7 @@ export class AgentComponent implements OnInit {
 
   requestID: string;
   adminNote: string;
+  personalNote: string;
 
   agentRequestsToReview: AgentRequestToReview[] = new Array();
   rivewValue: ReviewValue = new ReviewValue();
@@ -153,7 +154,18 @@ export class AgentComponent implements OnInit {
     this.agentService.updateAdminNote(adminNote).subscribe(res => {
       console.log(res);
       if (res['STATUS'] === 'OK') {
-       this.getAgentRequestsToReview();
+        this.getAgentRequestsToReview();
+      }
+    });
+  }
+
+  public updatePersonalNote() {
+    const adminNote = new RequestAdminNote(this.requestID, this.adminNote);
+    console.log(adminNote);
+    this.agentService.updateAdminNote(adminNote).subscribe(res => {
+      console.log(res);
+      if (res['STATUS'] === 'OK') {
+        this.getAgentRequestsToReview();
       }
     });
   }
