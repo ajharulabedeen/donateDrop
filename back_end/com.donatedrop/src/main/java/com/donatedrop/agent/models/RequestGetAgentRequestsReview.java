@@ -1,15 +1,15 @@
 package com.donatedrop.agent.models;
 
-public class RequestGetAgentRequests {
+public class RequestGetAgentRequestsReview {
     private int start;
     private int max;
     private String column;
     private String key;
 
-    public RequestGetAgentRequests() {
+    public RequestGetAgentRequestsReview() {
     }
 
-    public RequestGetAgentRequests(int start, int max, String column, String key) {
+    public RequestGetAgentRequestsReview(int start, int max, String column, String key) {
         this.start = start;
         this.max = max;
         this.column = column;

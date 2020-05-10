@@ -2,6 +2,7 @@ package com.donatedrop.agent;
 
 import com.donatedrop.agent.models.AgentRequest;
 import com.donatedrop.agent.models.AgentRequestToReview;
+import com.donatedrop.agent.models.RequestGetAgentRequestsReview;
 import com.donatedrop.util.StringUtil;
 import org.hibernate.exception.ConstraintViolationException;
 //import org.hibernate.exception.ConstraintViolationException;
@@ -101,23 +102,27 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
     }
 
     @Override
-    public List<AgentRequestToReview> getAgentRequestsToReview(int start, int max, String column, String key) {
+    public List<AgentRequestToReview> getAgentRequestsToReview(RequestGetAgentRequestsReview requestGetAgentRequestsReview) {
+        int start = requestGetAgentRequestsReview.getStart();
+        int max = requestGetAgentRequestsReview.getMax();
+        String column = requestGetAgentRequestsReview.getColumn();
+        String key = requestGetAgentRequestsReview.getKey();
         //        String q = "SELECT * FROM `agent_request_review`";
         List<AgentRequestToReview> agentRequestReviews = new ArrayList<>();
         String q = "";
         try {
             if (column.equals(StringUtil.PHONENUMBER)) {
-                q = "SELECT agent_request_review.* FROM agent_request_review, phonenumber " +
-                        "WHERE agent_request_review.profile_id = phonenumber.profile_id " +
-                        "AND phonenumber.number LIKE '" + key + "'";
+                q = "SELECT agent_request_review.* FROM agent_request_review, phonenumber "
+                        + "WHERE agent_request_review.profile_id = phonenumber.profile_id "
+                        + "AND phonenumber.number LIKE '" + key + "'";
             } else {
                 q = "SELECT * FROM `agent_request_review` WHERE `agent_request_review`.`" + column + "` LIKE '" + key + "'";
             }
             agentRequestReviews
                     = entityManager.createNativeQuery(q, AgentRequestToReview.class)
-                    .setFirstResult(start)
-                    .setMaxResults(max)
-                    .getResultList();
+                            .setFirstResult(start)
+                            .setMaxResults(max)
+                            .getResultList();
             return agentRequestReviews;
 
         } catch (Exception exception) {
@@ -132,9 +137,9 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
         String q = "";
         try {
             if (column.equals(StringUtil.PHONENUMBER)) {
-                q = "SELECT count(*) FROM agent_request_review, phonenumber " +
-                        "WHERE agent_request_review.profile_id = phonenumber.profile_id " +
-                        "AND phonenumber.number LIKE '" + key + "'";
+                q = "SELECT count(*) FROM agent_request_review, phonenumber "
+                        + "WHERE agent_request_review.profile_id = phonenumber.profile_id "
+                        + "AND phonenumber.number LIKE '" + key + "'";
             } else {
                 q = "SELECT  count(*) FROM `agent_request_review` WHERE `agent_request_review`.`" + column + "` LIKE '" + key + "'";
             }

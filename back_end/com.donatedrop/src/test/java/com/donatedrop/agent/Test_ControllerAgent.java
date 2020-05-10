@@ -7,7 +7,7 @@ package com.donatedrop.agent;
 
 import com.donatedrop.agent.models.AgentRequest;
 import com.donatedrop.agent.models.AgentRequestToReview;
-import com.donatedrop.agent.models.RequestGetAgentRequests;
+import com.donatedrop.agent.models.RequestGetAgentRequestsReview;
 import com.donatedrop.agent.models.RequestReviewRequest;
 import com.donatedrop.history.*;
 import com.donatedrop.geocode.AbstractTest;
@@ -140,7 +140,7 @@ public class Test_ControllerAgent extends AbstractTest {
 //     arrange
 
         String uri = "/public/user/getAgentRequestsToReview";
-        RequestGetAgentRequests requestGetAgentRequests = new RequestGetAgentRequests(0, 30, "username", "%1%");
+        RequestGetAgentRequestsReview requestGetAgentRequests = new RequestGetAgentRequestsReview(0, 30, "username", "%1%");
 //      act
         String inputJson = super.mapToJson(requestGetAgentRequests);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
@@ -161,7 +161,7 @@ public class Test_ControllerAgent extends AbstractTest {
     public void testGetAgentRequestsToReviewCount() throws Exception {
 //     arrange
         String uri = "/public/user/getAgentRequestsToReviewCount";
-        RequestGetAgentRequests requestGetAgentRequests = new RequestGetAgentRequests(0, 30, "username", "%15%");
+        RequestGetAgentRequestsReview requestGetAgentRequests = new RequestGetAgentRequestsReview(0, 30, "username", "%15%");
 //      act
         String inputJson = super.mapToJson(requestGetAgentRequests);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)

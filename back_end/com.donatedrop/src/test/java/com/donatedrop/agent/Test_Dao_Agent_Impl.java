@@ -1,6 +1,7 @@
 package com.donatedrop.agent;
 
 import com.donatedrop.agent.models.AgentRequest;
+import com.donatedrop.agent.models.RequestGetAgentRequestsReview;
 import com.donatedrop.other.DumpDao;
 import com.donatedrop.other.TestUtil;
 import com.donatedrop.util.DateUtil;
@@ -67,7 +68,8 @@ public class Test_Dao_Agent_Impl {
 
     @Test
     public void testGetAgentRequestsToReview() {
-        dao_agent_i.getAgentRequestsToReview(0, 30, "username", "%1%").forEach(agentRequestReview -> {
+        RequestGetAgentRequestsReview agentRequestsReview = new RequestGetAgentRequestsReview(0, 30, "username", "%1%");
+        dao_agent_i.getAgentRequestsToReview(agentRequestsReview).forEach(agentRequestReview -> {
             String addr = agentRequestReview.getPermanentStreet()
                     + " " + agentRequestReview.getPermanentUnion()
                     + ", " + agentRequestReview.getPermanentUpz()
@@ -89,7 +91,8 @@ public class Test_Dao_Agent_Impl {
 
     @Test
     public void testGetAgentRequestsReviewPhoneNumber() {
-        dao_agent_i.getAgentRequestsToReview(0, 30, "username", "%15%").forEach(agentRequestReview -> {
+        RequestGetAgentRequestsReview agentRequestsReview = new RequestGetAgentRequestsReview(0, 30, "username", "%15%");
+        dao_agent_i.getAgentRequestsToReview(agentRequestsReview).forEach(agentRequestReview -> {
             System.out.println(agentRequestReview.toString());
         });
     }
