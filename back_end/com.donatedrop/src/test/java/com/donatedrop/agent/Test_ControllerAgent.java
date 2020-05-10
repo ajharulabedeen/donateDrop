@@ -197,7 +197,28 @@ public class Test_ControllerAgent extends AbstractTest {
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
         assertEquals(note, dao_agent_i.getOneAgentRequest(requestID).getNoteAdmin());
     }
-//    http://localhost:8080/public/user/updateApplicantNote
+
+    //    http://localhost:8080/public/user/updateApplicantNote
+    @Test
+    public void testUpdateApplicantNote() throws Exception {
+//     arrange
+        String uri = "/public/user/updateApplicantNote";
+        String requestID = dao_agent_i.getAgentRequests(0, 10).get(0).getId().toString();
+        String note = "Controller : updateApplicantNote NOTE : Please provide additional Documents!";
+        System.out.println(requestID);
+        RequestApplicantNote applicantNote = new RequestApplicantNote(requestID, note);
+//      act
+        String inputJson = super.mapToJson(applicantNote);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+//assert
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        Map<String, String> result = super.mapFromJson(content, Map.class);
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        assertEquals(note, dao_agent_i.getOneAgentRequest(requestID).getNoteApplicant());
+    }
 //    http://localhost:8080/public/user/updatePersonalNote
 
 
