@@ -20,6 +20,9 @@ export class AgentComponent implements OnInit {
   pageNumber = 0;
   phoneNumber = '';
 
+  requestID : string;
+  adminNote: string;
+
   agentRequestsToReview: AgentRequestToReview[] = new Array();
   rivewValue: ReviewValue = new ReviewValue();
 

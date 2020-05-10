@@ -143,8 +143,18 @@
             <td>{{ar.gender}}</td>
             <td>{{ar.phone_number}}</td>
             <td>{{ar.noteApplicant}}</td>
-            <td>{{ar.noteAdmin}}</td>
-            <td>{{ar.notePersonal}}</td>
+            <td>
+              <button class="btn btn-xs btn-info" (click)="requestReject(ar.requestId)" data-toggle="modal"
+                      data-target="#modal_adminNote">Edit
+              </button>
+              {{ar.noteAdmin}}
+            </td>
+            <td>
+              <button class="btn btn-xs btn-danger" (click)="requestReject(ar.requestId)" data-toggle="modal"
+                      data-target="#modal_adminNote">Edit
+              </button>
+              {{ar.notePersonal}}
+            </td>
             <td>{{ar.profession}}</td>
             <td>{{ar.presentStreet}},{{ar.presentUnion}},{{ar.presentUpz}},{{ar.presentDist}},{{ar.presentDiv}}</td>
             <td>
@@ -167,3 +177,36 @@
 <div align="center" id="loggin" class="tabcontent">
 
 </div>
+
+
+<!-- Modal  : Update Admin-->
+<div class="modal fade" id="modal_adminNote" tabindex="-1" role="dialog" aria-labelledby="modal_workLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div align="center" class="modal-header">
+        <h3 class="modal-title" id="modal_workLabel">Update Admin Note</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Admin Note</label>
+          <textarea class="col-md-12" rows="20" [(ngModel)]="donationNote">
+
+            </textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveHistory()">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- <app-footernavbar></app-footernavbar> -->
+  <!-- <app-settingsnavbar></app-settingsnavbar> -->
+</div>
+
+
