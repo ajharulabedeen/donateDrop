@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 /**
@@ -34,8 +35,17 @@ public class AgentRequest implements Serializable {
     @Column(name = "status")
     private String status;
 
-    @Column(name = "note")
-    private String note = "note";
+    @Lob
+    @Column(name = "note_applicant")
+    private String noteApplicant = "note applicant!";
+
+    @Lob
+    @Column(name = "note_admin")
+    private String noteAdmin = "note admin";
+
+    @Lob
+    @Column(name = "note_personal")
+    private String notePersonal = "note personal";
 
     public Long getId() {
         return id;
@@ -78,12 +88,28 @@ public class AgentRequest implements Serializable {
         this.status = status;
     }
 
-    public String getNote() {
-        return note;
+    public String getNoteApplicant() {
+        return noteApplicant;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setNoteApplicant(String noteApplicant) {
+        this.noteApplicant = noteApplicant;
+    }
+
+    public String getNoteAdmin() {
+        return noteAdmin;
+    }
+
+    public void setNoteAdmin(String noteAdmin) {
+        this.noteAdmin = noteAdmin;
+    }
+
+    public String getNotePersonal() {
+        return notePersonal;
+    }
+
+    public void setNotePersonal(String notePersonal) {
+        this.notePersonal = notePersonal;
     }
 
     @Override

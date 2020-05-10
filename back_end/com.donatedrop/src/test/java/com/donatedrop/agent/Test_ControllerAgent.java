@@ -70,7 +70,7 @@ public class Test_ControllerAgent extends AbstractTest {
         agentRequest.setUserID(userID.toString());
         agentRequest.setRequestDate(DateUtil.getDate().toString());
         agentRequest.setStatus("0");
-        agentRequest.setNote("Test Note!");
+        agentRequest.setNoteApplicant("Test Note!");
 
         String inputJson = super.mapToJson(agentRequest);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
