@@ -1,9 +1,6 @@
 package com.donatedrop.agent;
 
-import com.donatedrop.agent.models.AgentRequest;
-import com.donatedrop.agent.models.RequestAdminNote;
-import com.donatedrop.agent.models.RequestApplicantNote;
-import com.donatedrop.agent.models.RequestGetAgentRequestsReview;
+import com.donatedrop.agent.models.*;
 import com.donatedrop.other.DumpDao;
 import com.donatedrop.other.TestUtil;
 import com.donatedrop.util.DateUtil;
@@ -124,6 +121,20 @@ public class Test_Dao_Agent_Impl {
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
         assertEquals(note, agentRequest.getNoteApplicant());
     }
+
+    @Test
+    public void testUpdatePersonalNote() {
+        String requestID = dao_agent_i.getAgentRequests(0, 10).get(0).getId().toString();
+        String note = "Personal NOTE : Dont called him tree time not receive!";
+        System.out.println(requestID);
+        RequestPersonalNote requestPersonalNote = new RequestPersonalNote(requestID, note);
+        Map<String, String> result = dao_agent_i.updatePersonalNote(requestPersonalNote);
+        System.out.println(result);
+        AgentRequest agentRequest = dao_agent_i.getOneAgentRequest(requestID);
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        assertEquals(note, agentRequest.getNotePersonal());
+    }
+
 
     //    not part dao layer
     @Test

@@ -169,6 +169,7 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
         return result;
     }
 
+    @Override
     public Map<String, String> updateApplicantNote(RequestApplicantNote requestApplicantNote) {
         Map<String, String> result = new HashMap<>();
         try {
@@ -185,6 +186,22 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
         return result;
     }
 
+    @Override
+    public Map<String, String> updatePersonalNote(RequestPersonalNote requestPersonalNote) {
+        Map<String, String> result = new HashMap<>();
+        try {
+            AgentRequest agentRequest = entityManager.find(AgentRequest.class, new Long(requestPersonalNote.getRequestId()));
+            if (agentRequest != null) {
+                agentRequest.setNotePersonal(requestPersonalNote.getPersonalNote());
+                entityManager.merge(agentRequest);
+                result.put(StringUtil.STATUS, StringUtil.OK);
+            }
+
+        } catch (Exception e) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+        }
+        return result;
+    }
 
     @Override
     public AgentRequest getOneAgentRequest(String requestID) {
