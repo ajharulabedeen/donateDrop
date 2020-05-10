@@ -4,6 +4,7 @@ import {RequestGetAgentRequests} from './request-get-agent-requests.model';
 import {AgentRequestToReview} from './agent-request-to-review.model';
 import {RequestReviewRequest} from './request-review-request.model';
 import {ReviewValue} from './review-value.model';
+import {RequestAdminNote} from './request-admin-note.model';
 
 @Component({
   selector: 'app-agent',
@@ -20,7 +21,7 @@ export class AgentComponent implements OnInit {
   pageNumber = 0;
   phoneNumber = '';
 
-  requestID : string;
+  requestID: string;
   adminNote: string;
 
   agentRequestsToReview: AgentRequestToReview[] = new Array();
@@ -146,4 +147,13 @@ export class AgentComponent implements OnInit {
   // end : for tab in font end.
 
 
-}
+  public updateAdminNote() {
+    const adminNote = new RequestAdminNote(this.requestID, this.adminNote);
+    console.log(adminNote);
+    this.agentService.updateAdminNote(adminNote).subscribe(res => {
+      console.log(res);
+    });
+  }
+
+
+}// class
