@@ -2,6 +2,7 @@ package com.donatedrop.agent;
 
 import com.donatedrop.agent.models.AgentRequest;
 import com.donatedrop.agent.models.RequestAdminNote;
+import com.donatedrop.agent.models.RequestApplicantNote;
 import com.donatedrop.agent.models.RequestGetAgentRequestsReview;
 import com.donatedrop.other.DumpDao;
 import com.donatedrop.other.TestUtil;
@@ -109,6 +110,19 @@ public class Test_Dao_Agent_Impl {
         AgentRequest agentRequest = dao_agent_i.getOneAgentRequest(requestID);
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
         assertEquals(note, agentRequest.getNoteAdmin());
+    }
+
+    @Test
+    public void testUpdateApplicantNote() {
+        String requestID = dao_agent_i.getAgentRequests(0, 10).get(0).getId().toString();
+        String note = "APPLICANT NOTE : President of collage Blood Club!";
+        System.out.println(requestID);
+        RequestApplicantNote requestApplicantNote = new RequestApplicantNote(requestID, note);
+        Map<String, String> result = dao_agent_i.updateApplicantNote(requestApplicantNote);
+        System.out.println(result);
+        AgentRequest agentRequest = dao_agent_i.getOneAgentRequest(requestID);
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        assertEquals(note, agentRequest.getNoteApplicant());
     }
 
     //    not part dao layer

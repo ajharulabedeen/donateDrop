@@ -1,9 +1,6 @@
 package com.donatedrop.agent;
 
-import com.donatedrop.agent.models.AgentRequest;
-import com.donatedrop.agent.models.AgentRequestToReview;
-import com.donatedrop.agent.models.RequestAdminNote;
-import com.donatedrop.agent.models.RequestGetAgentRequestsReview;
+import com.donatedrop.agent.models.*;
 import com.donatedrop.util.StringUtil;
 import org.hibernate.exception.ConstraintViolationException;
 //import org.hibernate.exception.ConstraintViolationException;
@@ -171,6 +168,23 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
         }
         return result;
     }
+
+    public Map<String, String> updateApplicantNote(RequestApplicantNote requestApplicantNote) {
+        Map<String, String> result = new HashMap<>();
+        try {
+            AgentRequest agentRequest = entityManager.find(AgentRequest.class, new Long(requestApplicantNote.getRequestId()));
+            if (agentRequest != null) {
+                agentRequest.setNoteApplicant(requestApplicantNote.getApplicantNote());
+                entityManager.merge(agentRequest);
+                result.put(StringUtil.STATUS, StringUtil.OK);
+            }
+
+        } catch (Exception e) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+        }
+        return result;
+    }
+
 
     @Override
     public AgentRequest getOneAgentRequest(String requestID) {
