@@ -5,10 +5,7 @@
  */
 package com.donatedrop.agent;
 
-import com.donatedrop.agent.models.AgentRequest;
-import com.donatedrop.agent.models.AgentRequestToReview;
-import com.donatedrop.agent.models.RequestGetAgentRequestsReview;
-import com.donatedrop.agent.models.RequestReviewRequest;
+import com.donatedrop.agent.models.*;
 import com.donatedrop.history.*;
 import com.donatedrop.geocode.AbstractTest;
 import com.donatedrop.other.DumpDao;
@@ -42,6 +39,9 @@ public class Test_ControllerAgent extends AbstractTest {
 
     @Autowired
     DumpDao dumpDao;
+
+    @Autowired
+    Dao_Agent_I dao_agent_i;
 
     @Autowired
     Dao_History_I dao_history_i;
@@ -138,7 +138,6 @@ public class Test_ControllerAgent extends AbstractTest {
     @Order(3)
     public void testGetAgentRequestsToReview() throws Exception {
 //     arrange
-
         String uri = "/public/user/getAgentRequestsToReview";
         RequestGetAgentRequestsReview requestGetAgentRequests = new RequestGetAgentRequestsReview(0, 30, "username", "%1%");
 //      act
@@ -175,6 +174,31 @@ public class Test_ControllerAgent extends AbstractTest {
 
 //        further verification can be done by reading the agent request.
     }
+
+    //    http://localhost:8080/public/user/updateAdminNote
+//    @org.junit.jupiter.api.Test
+    @Test
+    public void testUpdateAdminNote() throws Exception {
+//     arrange
+        String uri = "/public/user/updateAdminNote";
+        String requestID = dao_agent_i.getAgentRequests(0, 10).get(0).getId().toString();
+        String note = "Controller : ADMIN NOTE : Please provide additional Documents!";
+        System.out.println(requestID);
+        RequestAdminNote adminNote = new RequestAdminNote(requestID, note);
+//      act
+        String inputJson = super.mapToJson(adminNote);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+//assert
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        Map<String, String> result = super.mapFromJson(content, Map.class);
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        assertEquals(note, dao_agent_i.getOneAgentRequest(requestID).getNoteAdmin());
+    }
+//    http://localhost:8080/public/user/updateApplicantNote
+//    http://localhost:8080/public/user/updatePersonalNote
 
 
     //    Start : old Code
