@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {AgentServiceService} from './agent-service.service';
 import {RequestGetAgentRequests} from './request-get-agent-requests.model';
 import {AgentRequestToReview} from './agent-request-to-review.model';
+import {RequestReviewRequest} from './request-review-request.model';
+import {ReviewValue} from './review-value.model';
 
 @Component({
   selector: 'app-agent',
@@ -19,6 +21,7 @@ export class AgentComponent implements OnInit {
   phoneNumber = '';
 
   agentRequestsToReview: AgentRequestToReview[] = new Array();
+  rivewValue: ReviewValue = new ReviewValue();
 
   constructor(private agentService: AgentServiceService) {
   }
@@ -26,10 +29,6 @@ export class AgentComponent implements OnInit {
   ngOnInit() {
     this.searchKey = '';
     this.getAgentRequestsToReview();
-  }
-
-  public reviewRequest() {
-    RequestRivew.ACCEPT;
   }
 
   public getAgentRequestsToReview() {
@@ -91,7 +90,6 @@ export class AgentComponent implements OnInit {
     });
   }
 
-
   public nextPage() {
     if (this.startRequests <= this.total) {
       this.startRequests += this.perPage;
@@ -104,6 +102,24 @@ export class AgentComponent implements OnInit {
       this.startRequests -= this.perPage;
       this.getAgentRequestsToReview();
     }
+  }
+
+  public requestReject(requestId: string) {
+    const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestId, 'REJECT');
+    // console.log(requestId);
+    // console.log(reviewRequestObj);
+    this.agentService.requestReview(reviewRequestReject).subscribe(res => {
+      console.log(res);
+    });
+  }
+
+  public requestAccept(requestId: string, value: string) {
+    const reviewRequestAccept: RequestReviewRequest = new RequestReviewRequest(requestId, value);
+    // console.log(requestId);
+    console.log(reviewRequestAccept);
+    this.agentService.requestReview(reviewRequestAccept).subscribe(res => {
+      console.log(res);
+    });
   }
 
 

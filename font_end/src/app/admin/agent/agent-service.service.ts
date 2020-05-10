@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {History} from '../../donation-history/history.model';
 import {AuthService} from '../../auth/auth.service';
 import {RequestGetAgentRequests} from './request-get-agent-requests.model';
+import {RequestReviewRequest} from './request-review-request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,13 @@ export class AgentServiceService {
       this.authService.getHeader());
   }
 
+  // http://localhost:8080/public/user/reviewRequest
+
+  public requestReview(reviewRequestObj: RequestReviewRequest) {
+    return this.http.post(
+      'http://localhost:8080/public/user/reviewRequest', reviewRequestObj,
+      this.authService.getHeader());
+  }
 
   // start : old code
   public getHistoryCount(searchRequest: SearchRequest) {
@@ -79,4 +87,5 @@ export class AgentServiceService {
   }
 
   // end : old code
+
 }

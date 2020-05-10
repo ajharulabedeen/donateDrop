@@ -113,18 +113,19 @@
             <th>Adress Permanent</th>
           </tr>
           <tr *ngFor="let ar of agentRequestsToReview; let i=index">
-            <!--delete-->
+            <!--Reject-->
             <td>
-              <button class="btn btn-xs btn-warning" (click)=" deleteId = h.$id" data-toggle="modal"
-                      data-target="#donation_delete">Delete
+              <button class="btn btn-xs btn-warning" (click)="requestReject(ar.requestId)" data-toggle="modal"
+                      data-target="#donation_delete">Reject
               </button>
             </td>
             <!--edit-->
             <td>
               <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modal_work"
-                      (click)="update(j)">Edit
+                      (click)="requestAccept(ar.requestId, rivewValue.ACCEPT)">Approve
               </button>
             </td>
+            <!--Hold-->
             <td>
               <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal_work"
                       (click)="update(j)">Hold
@@ -139,7 +140,9 @@
             <td>{{ar.note}}</td>
             <td>{{ar.profession}}</td>
             <td>{{ar.presentStreet}},{{ar.presentUnion}},{{ar.presentUpz}},{{ar.presentDist}},{{ar.presentDiv}}</td>
-            <td>{{ar.permanentStreet}},{{ar.permanentUnion}},{{ar.permanentUpz}},{{ar.permanentDist}},{{ar.permanentDiv}}</td>
+            <td>
+              {{ar.permanentStreet}},{{ar.permanentUnion}},{{ar.permanentUpz}},{{ar.permanentDist}},{{ar.permanentDiv}}
+            </td>
           </tr>
           </tbody>
         </table>
