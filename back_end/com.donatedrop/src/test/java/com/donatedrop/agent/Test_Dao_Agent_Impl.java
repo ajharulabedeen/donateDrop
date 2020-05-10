@@ -97,6 +97,11 @@ public class Test_Dao_Agent_Impl {
         });
     }
 
+    @Test
+    public void testUpdateAdminNote() {
+        String requestID = dao_agent_i.getAgentRequests(0, 10).get(0).getId().toString();
+        System.out.println(requestID);
+    }
 
     //    not part dao layer
     @Test
