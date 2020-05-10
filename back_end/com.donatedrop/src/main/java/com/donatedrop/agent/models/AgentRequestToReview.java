@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
         , @NamedQuery(name = "AgentRequestToReview.findByRequestId", query = "SELECT a FROM AgentRequestToReview a WHERE a.requestId = :requestId")
         , @NamedQuery(name = "AgentRequestToReview.findByRequestDate", query = "SELECT a FROM AgentRequestToReview a WHERE a.requestDate = :requestDate")
         , @NamedQuery(name = "AgentRequestToReview.findByStatus", query = "SELECT a FROM AgentRequestToReview a WHERE a.status = :status")
-        , @NamedQuery(name = "AgentRequestToReview.findByNote", query = "SELECT a FROM AgentRequestToReview a WHERE a.note = :note")
+//        , @NamedQuery(name = "AgentRequestToReview.findByNote", query = "SELECT a FROM AgentRequestToReview a WHERE a.note = :note")
         , @NamedQuery(name = "AgentRequestToReview.findByPresentId", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentId = :presentId")
         , @NamedQuery(name = "AgentRequestToReview.findByPresentDiv", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentDiv = :presentDiv")
         , @NamedQuery(name = "AgentRequestToReview.findByPresentDist", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentDist = :presentDist")
@@ -70,8 +70,16 @@ public class AgentRequestToReview implements Serializable {
     private String requestDate;
     @Column(name = "status")
     private String status;
-    @Column(name = "note")
-    private String note;
+
+    @Column(name = "note_applicant")
+    private String noteApplicant;
+
+    @Column(name = "note_admin")
+    private String noteAdmin = "note admin";
+
+    @Column(name = "note_personal")
+    private String notePersonal = "note personal";
+
     @Basic(optional = false)
     @Column(name = "present_id")
     private long presentId;
@@ -104,7 +112,6 @@ public class AgentRequestToReview implements Serializable {
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "profile_id")
     private List<PhoneNumber> phone_number;
-
 
     public AgentRequestToReview() {
     }
@@ -189,12 +196,12 @@ public class AgentRequestToReview implements Serializable {
         this.status = status;
     }
 
-    public String getNote() {
-        return note;
+    public String getNoteApplicant() {
+        return noteApplicant;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setNoteApplicant(String noteApplicant) {
+        this.noteApplicant = noteApplicant;
     }
 
     public long getPresentId() {
@@ -322,7 +329,9 @@ public class AgentRequestToReview implements Serializable {
                 ", requestId=" + requestId +
                 ", requestDate='" + requestDate + '\'' +
                 ", status='" + status + '\'' +
-                ", note='" + note + '\'' +
+                ", noteApplicant='" + noteApplicant + '\'' +
+                ", noteAdmin='" + noteAdmin + '\'' +
+                ", notePersonal='" + notePersonal + '\'' +
                 ", presentId=" + presentId +
                 ", presentDiv='" + presentDiv + '\'' +
                 ", presentDist='" + presentDist + '\'' +
@@ -336,7 +345,7 @@ public class AgentRequestToReview implements Serializable {
                 ", permanentUpz='" + permanentUpz + '\'' +
                 ", permanentUnion='" + permanentUnion + '\'' +
                 ", permanentStreet='" + permanentStreet + '\'' +
-                ", phoneNumber='" + phone_number + '\'' +
+                ", phone_number=" + phone_number +
                 '}';
     }
 }
