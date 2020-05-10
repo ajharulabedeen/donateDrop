@@ -28,6 +28,10 @@ export class AgentComponent implements OnInit {
     this.getAgentRequestsToReview();
   }
 
+  public reviewRequest() {
+    RequestRivew.ACCEPT;
+  }
+
   public getAgentRequestsToReview() {
     var finalSearchKey = '%' + this.searchKey + '%';
     const agentSearch: RequestGetAgentRequests = new RequestGetAgentRequests(
