@@ -6,14 +6,17 @@
 </h5>
 
 <div align="center" class="tab">
-  <button class="tablinks" (click)="tabChange(event, 'request_review')">Request Review</button>
+  <button class="tablinks" (click)="tabChange(event, 'request_review')">Review</button>
+  <button class="tablinks" (click)="tabChange(event, 'accepted')">Accepted</button>
+  <button class="tablinks" (click)="tabChange(event, 'rejected')">Rejected</button>
+  <button class="tablinks" (click)="tabChange(event, 'hold')">Hold</button>
   <button class="tablinks" (click)="tabChange(event, 'news')">News</button>
   <button class="tablinks" (click)="tabChange(event, 'mobile_payments')">Administration</button>
   <button class="tablinks" (click)="tabChange(event, 'loggin')">Loggin</button>
 </div>
 
 <!--Start : Rivew Request-->
-<div align="center" id="request_review">
+<div align="center" id="request_review" class="tabcontent">
   <!--START : Search-->
   <div>
     <h4 align="left">

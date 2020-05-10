@@ -29,6 +29,7 @@ export class AgentComponent implements OnInit {
   ngOnInit() {
     this.searchKey = '';
     this.getAgentRequestsToReview();
+    this.tabChange(event, 'request_review');
   }
 
   public getAgentRequestsToReview() {
@@ -105,9 +106,7 @@ export class AgentComponent implements OnInit {
   }
 
   public requestReject(requestId: string) {
-    const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestId, 'REJECT');
-    // console.log(requestId);
-    // console.log(reviewRequestObj);
+    const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestId, this.rivewValue.REJECT);
     this.agentService.requestReview(reviewRequestReject).subscribe(res => {
       console.log(res);
     });
