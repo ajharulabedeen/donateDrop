@@ -133,7 +133,7 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
     }
 
     @Override
-    public Map<String, String> getAgentRequestsToReviewCount(String column, String key) {
+    public Map<String, String> getAgentRequestsToReviewCount(String column, String key, String statusType) {
         Map<String, String> result = new HashMap<>();
         String q = "";
         try {
@@ -141,11 +141,11 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
                 q = "SELECT count(*) FROM agent_request_review, phonenumber "
                         + "WHERE agent_request_review.profile_id = phonenumber.profile_id "
                         + " AND phonenumber.number LIKE '" + key + "'"
-                        + "`agent_request_review`.`status`='0'";
+                        + "`agent_request_review`.`status`='"+statusType+"'";
             } else {
                 q = "SELECT  count(*) FROM `agent_request_review` WHERE `agent_request_review`.`"
                         + column + "` LIKE '" + key + "'"
-                        + " AND `agent_request_review`.`status`='0'";
+                        + " AND `agent_request_review`.`status`='"+statusType+"'";
             }
             String count = entityManager.createNativeQuery(q).getResultList().get(0).toString();
             result.put(StringUtil.STATUS, StringUtil.OK);

@@ -52,8 +52,8 @@ public class Service_Agent_Impl implements Service_Agent_I {
     }
 
     @Override
-    public Map<String, String> getAgentRequestsToReviewCount(String column, String key) {
-        return dao_agent_i.getAgentRequestsToReviewCount(column, key);
+    public Map<String, String> getAgentRequestsToReviewCount(String column, String key, String statusType) {
+        return dao_agent_i.getAgentRequestsToReviewCount(column, key, statusType);
     }
 
     @Override

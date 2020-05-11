@@ -159,7 +159,7 @@ public class Test_ControllerAgent extends AbstractTest {
 //     arrange
         String uri = "/public/user/getAgentRequestsToReviewCount";
         RequestGetAgentRequestsReview requestGetAgentRequests
-                = new RequestGetAgentRequestsReview(0, 30, "username", "%15%", "0");
+                = new RequestGetAgentRequestsReview(0, 30, "username", "%%", StatusType.ACCEPT);
 //      act
         String inputJson = super.mapToJson(requestGetAgentRequests);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)

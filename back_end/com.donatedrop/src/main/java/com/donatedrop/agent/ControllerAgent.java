@@ -48,7 +48,8 @@ public class ControllerAgent {
     public Map<String, String> getAgentRequestsToReviewCount(@RequestBody RequestGetAgentRequestsReview requestGetAgentRequests) {
         String column = requestGetAgentRequests.getColumn();
         String key = requestGetAgentRequests.getKey();
-        return service_Agent_I.getAgentRequestsToReviewCount(column, key);
+        String statusType = requestGetAgentRequests.getStatusType();
+        return service_Agent_I.getAgentRequestsToReviewCount(column, key, statusType);
     }
 
     @PostMapping("updateAdminNote")

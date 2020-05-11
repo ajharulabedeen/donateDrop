@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface Service_Agent_I {
+
     /**
      * @param agentRequest
      * @return
@@ -29,7 +30,7 @@ public interface Service_Agent_I {
 
     public List<AgentRequestToReview> getAgentRequestsToReview(RequestGetAgentRequestsReview requestGetAgentRequests);
 
-    public Map<String, String> getAgentRequestsToReviewCount(String column, String key);
+    public Map<String, String> getAgentRequestsToReviewCount(String column, String key, String statusType);
 
     public Map<String, String> updateAdminNote(RequestAdminNote requestAdminNote);
 
