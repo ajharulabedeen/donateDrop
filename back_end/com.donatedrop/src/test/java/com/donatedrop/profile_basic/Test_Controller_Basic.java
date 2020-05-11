@@ -352,7 +352,7 @@ public class Test_Controller_Basic extends AbstractTest {
 
 
     @Test
-//    @Order(12)
+    @Order(12)
     public void test12_deleteEmergencyContact() throws Exception {
         String emergencyContactID = "200";
         String uri = "/public/profile/basic/deleteEmergencyContact?emergencyContactID=" + emergencyContactID;

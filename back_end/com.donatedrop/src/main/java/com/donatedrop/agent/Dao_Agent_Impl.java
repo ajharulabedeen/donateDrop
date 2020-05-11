@@ -105,6 +105,7 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
         int max = requestGetAgentRequestsReview.getMax();
         String column = requestGetAgentRequestsReview.getColumn();
         String key = requestGetAgentRequestsReview.getKey();
+        String status = requestGetAgentRequestsReview.getStatusType();
         //        String q = "SELECT * FROM `agent_request_review`";
         List<AgentRequestToReview> agentRequestReviews = new ArrayList<>();
         String q = "";
@@ -112,11 +113,11 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
             if (column.equals(StringUtil.PHONENUMBER)) {
                 q = "SELECT agent_request_review.* FROM agent_request_review, phonenumber "
                         + "WHERE agent_request_review.profile_id = phonenumber.profile_id "
-                        + "AND phonenumber.number LIKE '" + key + "'";
+                        + " AND phonenumber.number LIKE '" + key + "'";
             } else {
                 q = "SELECT * FROM `agent_request_review` WHERE `agent_request_review`.`"
                         + column + "` LIKE '" + key + "'"
-                        + "AND `agent_request_review`.`status`=0";
+                        + " AND `agent_request_review`.`status`='" + status + "'";
             }
             agentRequestReviews
                     = entityManager.createNativeQuery(q, AgentRequestToReview.class)
@@ -139,12 +140,12 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
             if (column.equals(StringUtil.PHONENUMBER)) {
                 q = "SELECT count(*) FROM agent_request_review, phonenumber "
                         + "WHERE agent_request_review.profile_id = phonenumber.profile_id "
-                        + "AND phonenumber.number LIKE '" + key + "'"
+                        + " AND phonenumber.number LIKE '" + key + "'"
                         + "`agent_request_review`.`status`='0'";
             } else {
                 q = "SELECT  count(*) FROM `agent_request_review` WHERE `agent_request_review`.`"
                         + column + "` LIKE '" + key + "'"
-                        + "AND `agent_request_review`.`status`='0'";
+                        + " AND `agent_request_review`.`status`='0'";
             }
             String count = entityManager.createNativeQuery(q).getResultList().get(0).toString();
             result.put(StringUtil.STATUS, StringUtil.OK);

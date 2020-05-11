@@ -13,37 +13,37 @@ import java.util.List;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- * @author G7
- */
 @Entity
 @Table(name = "agent_request_review")
 @XmlRootElement
 @NamedQueries({
-        @NamedQuery(name = "AgentRequestToReview.findAll", query = "SELECT a FROM AgentRequestToReview a")
-        , @NamedQuery(name = "AgentRequestToReview.findByProfileId", query = "SELECT a FROM AgentRequestToReview a WHERE a.profileId = :profileId")
-        , @NamedQuery(name = "AgentRequestToReview.findByName", query = "SELECT a FROM AgentRequestToReview a WHERE a.name = :name")
-        , @NamedQuery(name = "AgentRequestToReview.findByGender", query = "SELECT a FROM AgentRequestToReview a WHERE a.gender = :gender")
-        , @NamedQuery(name = "AgentRequestToReview.findByProfession", query = "SELECT a FROM AgentRequestToReview a WHERE a.profession = :profession")
-        , @NamedQuery(name = "AgentRequestToReview.findByUserId", query = "SELECT a FROM AgentRequestToReview a WHERE a.userId = :userId")
-        , @NamedQuery(name = "AgentRequestToReview.findByAddressPermanent", query = "SELECT a FROM AgentRequestToReview a WHERE a.addressPermanent = :addressPermanent")
-        , @NamedQuery(name = "AgentRequestToReview.findByAddressPresent", query = "SELECT a FROM AgentRequestToReview a WHERE a.addressPresent = :addressPresent")
-        , @NamedQuery(name = "AgentRequestToReview.findByRequestId", query = "SELECT a FROM AgentRequestToReview a WHERE a.requestId = :requestId")
-        , @NamedQuery(name = "AgentRequestToReview.findByRequestDate", query = "SELECT a FROM AgentRequestToReview a WHERE a.requestDate = :requestDate")
-        , @NamedQuery(name = "AgentRequestToReview.findByStatus", query = "SELECT a FROM AgentRequestToReview a WHERE a.status = :status")
-//        , @NamedQuery(name = "AgentRequestToReview.findByNote", query = "SELECT a FROM AgentRequestToReview a WHERE a.note = :note")
-        , @NamedQuery(name = "AgentRequestToReview.findByPresentId", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentId = :presentId")
-        , @NamedQuery(name = "AgentRequestToReview.findByPresentDiv", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentDiv = :presentDiv")
-        , @NamedQuery(name = "AgentRequestToReview.findByPresentDist", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentDist = :presentDist")
-        , @NamedQuery(name = "AgentRequestToReview.findByPresentUpz", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentUpz = :presentUpz")
-        , @NamedQuery(name = "AgentRequestToReview.findByPresentUnion", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentUnion = :presentUnion")
-        , @NamedQuery(name = "AgentRequestToReview.findByPresentStreet", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentStreet = :presentStreet")
-        , @NamedQuery(name = "AgentRequestToReview.findByPermanentId", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentId = :permanentId")
-        , @NamedQuery(name = "AgentRequestToReview.findByPermanentDiv", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentDiv = :permanentDiv")
-        , @NamedQuery(name = "AgentRequestToReview.findByPermanentDist", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentDist = :permanentDist")
-        , @NamedQuery(name = "AgentRequestToReview.findByPermanentUpz", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentUpz = :permanentUpz")
-        , @NamedQuery(name = "AgentRequestToReview.findByPermanentUnion", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentUnion = :permanentUnion")
-        , @NamedQuery(name = "AgentRequestToReview.findByPermanentStreet", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentStreet = :permanentStreet")})
+    @NamedQuery(name = "AgentRequestToReview.findAll", query = "SELECT a FROM AgentRequestToReview a")
+    , @NamedQuery(name = "AgentRequestToReview.findByProfileId", query = "SELECT a FROM AgentRequestToReview a WHERE a.profileId = :profileId")
+    , @NamedQuery(name = "AgentRequestToReview.findByName", query = "SELECT a FROM AgentRequestToReview a WHERE a.name = :name")
+    , @NamedQuery(name = "AgentRequestToReview.findByGender", query = "SELECT a FROM AgentRequestToReview a WHERE a.gender = :gender")
+    , @NamedQuery(name = "AgentRequestToReview.findByProfession", query = "SELECT a FROM AgentRequestToReview a WHERE a.profession = :profession")
+    , @NamedQuery(name = "AgentRequestToReview.findByUserId", query = "SELECT a FROM AgentRequestToReview a WHERE a.userId = :userId")
+    , @NamedQuery(name = "AgentRequestToReview.findByAddressPermanent", query = "SELECT a FROM AgentRequestToReview a WHERE a.addressPermanent = :addressPermanent")
+    , @NamedQuery(name = "AgentRequestToReview.findByAddressPresent", query = "SELECT a FROM AgentRequestToReview a WHERE a.addressPresent = :addressPresent")
+    , @NamedQuery(name = "AgentRequestToReview.findByRequestId", query = "SELECT a FROM AgentRequestToReview a WHERE a.requestId = :requestId")
+    , @NamedQuery(name = "AgentRequestToReview.findByRequestDate", query = "SELECT a FROM AgentRequestToReview a WHERE a.requestDate = :requestDate")
+    , @NamedQuery(name = "AgentRequestToReview.findByAcceptDate", query = "SELECT a FROM AgentRequestToReview a WHERE a.acceptDate = :acceptDate")
+    , @NamedQuery(name = "AgentRequestToReview.findByRejectDate", query = "SELECT a FROM AgentRequestToReview a WHERE a.rejectDate = :rejectDate")
+    , @NamedQuery(name = "AgentRequestToReview.findByFreezeDate", query = "SELECT a FROM AgentRequestToReview a WHERE a.freezeDate = :freezeDate")
+    , @NamedQuery(name = "AgentRequestToReview.findByStatus", query = "SELECT a FROM AgentRequestToReview a WHERE a.status = :status")
+    , @NamedQuery(name = "AgentRequestToReview.findByPresentId", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentId = :presentId")
+    , @NamedQuery(name = "AgentRequestToReview.findByPresentDiv", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentDiv = :presentDiv")
+    , @NamedQuery(name = "AgentRequestToReview.findByPresentDist", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentDist = :presentDist")
+    , @NamedQuery(name = "AgentRequestToReview.findByPresentUpz", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentUpz = :presentUpz")
+    , @NamedQuery(name = "AgentRequestToReview.findByPresentUnion", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentUnion = :presentUnion")
+    , @NamedQuery(name = "AgentRequestToReview.findByPresentStreet", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentStreet = :presentStreet")
+    , @NamedQuery(name = "AgentRequestToReview.findByUsername", query = "SELECT a FROM AgentRequestToReview a WHERE a.username = :username")
+    , @NamedQuery(name = "AgentRequestToReview.findByPermanentId", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentId = :permanentId")
+    , @NamedQuery(name = "AgentRequestToReview.findByPermanentDiv", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentDiv = :permanentDiv")
+    , @NamedQuery(name = "AgentRequestToReview.findByPermanentDist", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentDist = :permanentDist")
+    , @NamedQuery(name = "AgentRequestToReview.findByPermanentUpz", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentUpz = :permanentUpz")
+    , @NamedQuery(name = "AgentRequestToReview.findByPermanentUnion", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentUnion = :permanentUnion")
+    , @NamedQuery(name = "AgentRequestToReview.findByPermanentStreet", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentStreet = :permanentStreet")})
 public class AgentRequestToReview implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -68,18 +68,23 @@ public class AgentRequestToReview implements Serializable {
     private long requestId;
     @Column(name = "request_date")
     private String requestDate;
+    @Column(name = "accept_date")
+    private String acceptDate;
+    @Column(name = "reject_date")
+    private String rejectDate;
+    @Column(name = "freeze_date")
+    private String freezeDate;
     @Column(name = "status")
     private String status;
-
+    @Lob
     @Column(name = "note_applicant")
     private String noteApplicant;
-
+    @Lob
     @Column(name = "note_admin")
-    private String noteAdmin = "note admin";
-
+    private String noteAdmin;
+    @Lob
     @Column(name = "note_personal")
-    private String notePersonal = "note personal";
-
+    private String notePersonal;
     @Basic(optional = false)
     @Column(name = "present_id")
     private long presentId;
@@ -93,7 +98,7 @@ public class AgentRequestToReview implements Serializable {
     private String presentUnion;
     @Column(name = "present_street")
     private String presentStreet;
-    @Column
+    @Column(name = "username")
     private String username;
     @Basic(optional = false)
     @Column(name = "permanent_id")
@@ -116,7 +121,7 @@ public class AgentRequestToReview implements Serializable {
     public AgentRequestToReview() {
     }
 
-    public AgentRequestToReview(long profileId, String name, String gender, String profession, String userId, BigInteger addressPermanent, BigInteger addressPresent, long requestId, String requestDate, String status, String noteApplicant, long presentId, String presentDiv, String presentDist, String presentUpz, String presentUnion, String presentStreet, String username, long permanentId, String permanentDiv, String permanentDist, String permanentUpz, String permanentUnion, String permanentStreet, List<PhoneNumber> phone_number) {
+    public AgentRequestToReview(long profileId, String name, String gender, String profession, String userId, BigInteger addressPermanent, BigInteger addressPresent, long requestId, String requestDate, String acceptDate, String rejectDate, String freezeDate, String status, String noteApplicant, String noteAdmin, String notePersonal, long presentId, String presentDiv, String presentDist, String presentUpz, String presentUnion, String presentStreet, String username, long permanentId, String permanentDiv, String permanentDist, String permanentUpz, String permanentUnion, String permanentStreet, List<PhoneNumber> phone_number) {
         this.profileId = profileId;
         this.name = name;
         this.gender = gender;
@@ -126,8 +131,13 @@ public class AgentRequestToReview implements Serializable {
         this.addressPresent = addressPresent;
         this.requestId = requestId;
         this.requestDate = requestDate;
+        this.acceptDate = acceptDate;
+        this.rejectDate = rejectDate;
+        this.freezeDate = freezeDate;
         this.status = status;
         this.noteApplicant = noteApplicant;
+        this.noteAdmin = noteAdmin;
+        this.notePersonal = notePersonal;
         this.presentId = presentId;
         this.presentDiv = presentDiv;
         this.presentDist = presentDist;
@@ -218,6 +228,30 @@ public class AgentRequestToReview implements Serializable {
         this.requestDate = requestDate;
     }
 
+    public String getAcceptDate() {
+        return acceptDate;
+    }
+
+    public void setAcceptDate(String acceptDate) {
+        this.acceptDate = acceptDate;
+    }
+
+    public String getRejectDate() {
+        return rejectDate;
+    }
+
+    public void setRejectDate(String rejectDate) {
+        this.rejectDate = rejectDate;
+    }
+
+    public String getFreezeDate() {
+        return freezeDate;
+    }
+
+    public void setFreezeDate(String freezeDate) {
+        this.freezeDate = freezeDate;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -249,8 +283,6 @@ public class AgentRequestToReview implements Serializable {
     public void setNotePersonal(String notePersonal) {
         this.notePersonal = notePersonal;
     }
-    
-    
 
     public long getPresentId() {
         return presentId;
@@ -376,6 +408,9 @@ public class AgentRequestToReview implements Serializable {
                 ", addressPresent=" + addressPresent +
                 ", requestId=" + requestId +
                 ", requestDate='" + requestDate + '\'' +
+                ", acceptDate='" + acceptDate + '\'' +
+                ", rejectDate='" + rejectDate + '\'' +
+                ", freezeDate='" + freezeDate + '\'' +
                 ", status='" + status + '\'' +
                 ", noteApplicant='" + noteApplicant + '\'' +
                 ", noteAdmin='" + noteAdmin + '\'' +

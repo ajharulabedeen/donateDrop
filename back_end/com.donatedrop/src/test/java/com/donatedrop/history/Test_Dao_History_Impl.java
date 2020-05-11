@@ -177,7 +177,7 @@ public class Test_Dao_History_Impl {
 
 
     //    Helpers :
-    @Test
+//    @Test
 //    @Transactional
     public void saveManyHistory() {
         Map<String, String> status = new HashMap<>();
