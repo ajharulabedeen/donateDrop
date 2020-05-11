@@ -3,10 +3,10 @@ import {SearchRequest} from '../../donation-history/search-request.model';
 import {HttpClient} from '@angular/common/http';
 import {History} from '../../donation-history/history.model';
 import {AuthService} from '../../auth/auth.service';
-import {RequestGetAgentRequests} from './request-get-agent-requests.model';
-import {RequestReviewRequest} from './request-review-request.model';
-import {RequestAdminNote} from './request-admin-note.model';
-import {RequestPersonalNote} from './request-personal-note.model';
+import {RequestGetAgentRequests} from './models/request-get-agent-requests.model';
+import {RequestReviewRequest} from './models/request-review-request.model';
+import {RequestAdminNote} from './models/request-admin-note.model';
+import {RequestPersonalNote} from './models/request-personal-note.model';
 
 @Injectable({
   providedIn: 'root'

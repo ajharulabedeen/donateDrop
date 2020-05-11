@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {AgentServiceService} from './agent-service.service';
-import {RequestGetAgentRequests} from './request-get-agent-requests.model';
-import {AgentRequestToReview} from './agent-request-to-review.model';
-import {RequestReviewRequest} from './request-review-request.model';
-import {ReviewValue} from './review-value.model';
-import {RequestAdminNote} from './request-admin-note.model';
-import {RequestPersonalNote} from './request-personal-note.model';
+import {RequestGetAgentRequests} from './models/request-get-agent-requests.model';
+import {AgentRequestToReview} from './models/agent-request-to-review.model';
+import {RequestReviewRequest} from './models/request-review-request.model';
+import {ReviewValue} from './models/review-value.model';
+import {RequestAdminNote} from './models/request-admin-note.model';
+import {RequestPersonalNote} from './models/request-personal-note.model';
 
 @Component({
   selector: 'app-agent',
@@ -41,7 +41,7 @@ export class AgentComponent implements OnInit {
   public getAgentRequestsToReview() {
     var finalSearchKey = '%' + this.searchKey + '%';
     const agentSearch: RequestGetAgentRequests = new RequestGetAgentRequests(
-      this.startRequests.toString(), this.perPage.toString(), this.searchByColumn, finalSearchKey);
+      this.startRequests.toString(), this.perPage.toString(), this.searchByColumn, finalSearchKey, '0');
     console.log(agentSearch);
     this.agentRequestsToReview = [];
     this.agentService.getAgentRequestsToReview(agentSearch).subscribe(res => {
