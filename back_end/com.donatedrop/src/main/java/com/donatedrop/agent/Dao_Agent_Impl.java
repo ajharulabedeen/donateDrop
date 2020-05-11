@@ -116,7 +116,7 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
             } else {
                 q = "SELECT * FROM `agent_request_review` WHERE `agent_request_review`.`"
                         + column + "` LIKE '" + key + "'"
-                        + "`agent_request_review`.`status`=0";
+                        + "AND `agent_request_review`.`status`=0";
             }
             agentRequestReviews
                     = entityManager.createNativeQuery(q, AgentRequestToReview.class)

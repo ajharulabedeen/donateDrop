@@ -67,7 +67,8 @@ public class Test_Dao_Agent_Impl {
 
     @Test
     public void testGetAgentRequestsToReview() {
-        RequestGetAgentRequestsReview agentRequestsReview = new RequestGetAgentRequestsReview(0, 30, "username", "%1%");
+        RequestGetAgentRequestsReview agentRequestsReview =
+                new RequestGetAgentRequestsReview(0, 30, "username", "%1%", StatusType.ZERO);
         dao_agent_i.getAgentRequestsToReview(agentRequestsReview).forEach(agentRequestReview -> {
             String addr = agentRequestReview.getPermanentStreet()
                     + " " + agentRequestReview.getPermanentUnion()
@@ -90,7 +91,8 @@ public class Test_Dao_Agent_Impl {
 
     @Test
     public void testGetAgentRequestsReviewPhoneNumber() {
-        RequestGetAgentRequestsReview agentRequestsReview = new RequestGetAgentRequestsReview(0, 30, "username", "%15%");
+        RequestGetAgentRequestsReview agentRequestsReview =
+                new RequestGetAgentRequestsReview(0, 30, "phonenumber", "%815%", StatusType.ZERO);
         dao_agent_i.getAgentRequestsToReview(agentRequestsReview).forEach(agentRequestReview -> {
             System.out.println(agentRequestReview.toString());
         });

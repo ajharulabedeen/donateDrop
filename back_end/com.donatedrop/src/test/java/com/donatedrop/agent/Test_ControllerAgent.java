@@ -36,7 +36,6 @@ import static org.junit.Assert.assertEquals;
 @SpringBootTest
 public class Test_ControllerAgent extends AbstractTest {
 
-
     @Autowired
     DumpDao dumpDao;
 
@@ -54,7 +53,6 @@ public class Test_ControllerAgent extends AbstractTest {
     public void setUp() {
         super.setUp();
     }
-
 
     //    String uri = "/public/user/saveRequest";
     @Test
@@ -132,14 +130,14 @@ public class Test_ControllerAgent extends AbstractTest {
 //        further verification can be done by reading the agent request.
     }
 
-
     //        String uri = "/public/user/getAgentRequestsToReview";
     @Test
     @Order(3)
     public void testGetAgentRequestsToReview() throws Exception {
 //     arrange
         String uri = "/public/user/getAgentRequestsToReview";
-        RequestGetAgentRequestsReview requestGetAgentRequests = new RequestGetAgentRequestsReview(0, 30, "username", "%1%");
+        RequestGetAgentRequestsReview requestGetAgentRequests
+                = new RequestGetAgentRequestsReview(0, 30, "username", "%1%", "0");
 //      act
         String inputJson = super.mapToJson(requestGetAgentRequests);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
@@ -160,7 +158,8 @@ public class Test_ControllerAgent extends AbstractTest {
     public void testGetAgentRequestsToReviewCount() throws Exception {
 //     arrange
         String uri = "/public/user/getAgentRequestsToReviewCount";
-        RequestGetAgentRequestsReview requestGetAgentRequests = new RequestGetAgentRequestsReview(0, 30, "username", "%15%");
+        RequestGetAgentRequestsReview requestGetAgentRequests
+                = new RequestGetAgentRequestsReview(0, 30, "username", "%15%", "0");
 //      act
         String inputJson = super.mapToJson(requestGetAgentRequests);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
@@ -220,7 +219,6 @@ public class Test_ControllerAgent extends AbstractTest {
         assertEquals(note, dao_agent_i.getOneAgentRequest(requestID).getNoteApplicant());
     }
 
-
     //    http://localhost:8080/public/user/updatePersonalNote
     @Test
     public void testupdatePersonalNote() throws Exception {
@@ -242,7 +240,6 @@ public class Test_ControllerAgent extends AbstractTest {
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
         assertEquals(note, dao_agent_i.getOneAgentRequest(requestID).getNotePersonal());
     }
-
 
     //    Start : old Code
     //    String uri = "/public/user/history/update";
@@ -273,7 +270,6 @@ public class Test_ControllerAgent extends AbstractTest {
         Map<String, String> map = super.mapFromJson(content, Map.class);
         assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
     }
-
 
     //    String uri = "/public/user/history/search";
     @Test
@@ -320,7 +316,6 @@ public class Test_ControllerAgent extends AbstractTest {
 //    end : old Code
 
 //    Helpers --------------------------------
-
     /**
      * will store the last save id, that can be used for later for other method.
      * Though there is question does it, right to a result from unit test, as
