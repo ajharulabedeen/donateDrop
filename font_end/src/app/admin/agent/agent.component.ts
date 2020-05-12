@@ -16,7 +16,8 @@ export class AgentComponent implements OnInit {
 
   ngOnInit() {
     // this.tabChange(event, 'request_review');
-    this.tabChange(event, 'accepted');
+    // this.tabChange(event, 'accepted');
+    this.tabChange(event, 'rejected');
   }
 
   // start : for tab in font end.
