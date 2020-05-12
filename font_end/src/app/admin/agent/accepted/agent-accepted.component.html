@@ -103,7 +103,7 @@
         <tr *ngFor="let ar of agentRequestsToReview; let i=index">
           <!--Reject-->
           <td>
-            <button class="btn btn-xs btn-danger" (click)="requestReject(ar.requestId)" data-toggle="modal"
+            <button class="btn btn-xs btn-danger" (click)="requestFreeze(ar.requestId)" data-toggle="modal"
                     data-target="#donation_delete">Freeze
             </button>
             <br>

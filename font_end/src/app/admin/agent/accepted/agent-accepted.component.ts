@@ -114,10 +114,6 @@ export class AgentAcceptedComponent implements OnInit {
   }
 
   public requestReject(requestId: string) {
-    const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestId, this.rivewValue.REJECT);
-    this.agentService.requestReview(reviewRequestReject).subscribe(res => {
-      console.log(res);
-    });
   }
 
   public requestAccept(requestId: string, value: string) {
@@ -151,4 +147,16 @@ export class AgentAcceptedComponent implements OnInit {
     });
   }
 
+  public requestFreeze(requestIdFreeze: string) {
+    const reviewRequestFreeze: RequestReviewRequest = new RequestReviewRequest(requestIdFreeze, this.rivewValue.FREEZE);
+    this.agentService.requestReview(reviewRequestFreeze).subscribe(res => {
+      console.log(res);
+      if (res['STATUS'] === 'OK') {
+        // this.getAgentRequestsToReview();
+        var artr: AgentRequestToReview = this.agentRequestsToReview.find(({requestId}) => requestId === requestIdFreeze);
+        this.agentRequestsToReview = this.agentRequestsToReview.filter(obj => obj !== artr);
+        this.total -= 1;
+      }
+    });
+  }
 }
