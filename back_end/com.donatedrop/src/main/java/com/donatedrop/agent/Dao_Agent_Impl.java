@@ -1,6 +1,8 @@
 package com.donatedrop.agent;
 
 import com.donatedrop.agent.models.*;
+import com.donatedrop.util.DateUtil;
+import com.donatedrop.util.GetDate;
 import com.donatedrop.util.StringUtil;
 import org.hibernate.exception.ConstraintViolationException;
 //import org.hibernate.exception.ConstraintViolationException;
@@ -31,6 +33,7 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
     public Map<String, String> saveRequest(AgentRequest agentRequest) {
         Map<String, String> result = new HashMap<>();
         try {
+            agentRequest.setRequestDate(GetDate.getDate());
             entityManager.persist(agentRequest);
             result.put(StringUtil.STATUS, StringUtil.OK);
             result.put(StringUtil.MESSAGE, StringUtil.SAVE);
@@ -68,6 +71,14 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
         Map<String, String> result = new HashMap<>();
         try {
             AgentRequest agentRequest = entityManager.find(AgentRequest.class, new Long(reviewRequest.getRequestID()));
+            if (reviewRequest.getValue().equals(StatusType.ACCEPT)) {
+                agentRequest.setAcceptDate(GetDate.getDate());
+            } else if (reviewRequest.getValue().equals(StatusType.REJECT)) {
+                agentRequest.setRejectDate(GetDate.getDate());
+            } else if (reviewRequest.getValue().equals(StatusType.FREEZE)) {
+                agentRequest.setFreezeDate(GetDate.getDate());
+            }
+
             agentRequest.setStatus(reviewRequest.getValue());
             entityManager.merge(agentRequest);
             result.put(StringUtil.STATUS, StringUtil.OK);
@@ -141,11 +152,11 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
                 q = "SELECT count(*) FROM agent_request_review, phonenumber "
                         + "WHERE agent_request_review.profile_id = phonenumber.profile_id "
                         + " AND phonenumber.number LIKE '" + key + "'"
-                        + "`agent_request_review`.`status`='"+statusType+"'";
+                        + "`agent_request_review`.`status`='" + statusType + "'";
             } else {
                 q = "SELECT  count(*) FROM `agent_request_review` WHERE `agent_request_review`.`"
                         + column + "` LIKE '" + key + "'"
-                        + " AND `agent_request_review`.`status`='"+statusType+"'";
+                        + " AND `agent_request_review`.`status`='" + statusType + "'";
             }
             String count = entityManager.createNativeQuery(q).getResultList().get(0).toString();
             result.put(StringUtil.STATUS, StringUtil.OK);

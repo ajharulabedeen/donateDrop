@@ -114,7 +114,6 @@ public class Test_ControllerAgent extends AbstractTest {
         String requestID = dumpDao.getAgentRequests(0, 5).get(0).getId().toString();
         System.out.println("requestID : " + requestID);
         String value = StatusType.FREEZE;
-        String valueWrong = "StatusType";
         String uri = "/public/user/reviewRequest";
         RequestReviewRequest reviewRequest = new RequestReviewRequest(requestID, value);
 //      act
