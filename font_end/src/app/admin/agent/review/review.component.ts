@@ -6,6 +6,7 @@ import {RequestReviewRequest} from '../models/request-review-request.model';
 import {ReviewValue} from '../models/review-value.model';
 import {RequestAdminNote} from '../models/request-admin-note.model';
 import {RequestPersonalNote} from '../models/request-personal-note.model';
+import {History} from '../../../donation-history/history.model';
 
 @Component({
   selector: 'app-agent-review',
@@ -117,15 +118,25 @@ export class ReviewComponent implements OnInit {
     const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestId, this.rivewValue.REJECT);
     this.agentService.requestReview(reviewRequestReject).subscribe(res => {
       console.log(res);
+      if (res['STATUS'] === 'OK') {
+        this.getAgentRequestsToReview();
+      }
     });
   }
 
-  public requestAccept(requestId: string, value: string) {
-    const reviewRequestAccept: RequestReviewRequest = new RequestReviewRequest(requestId, value);
+  public requestAccept(requestIdAccept: string, value: string) {
+    const reviewRequestAccept: RequestReviewRequest = new RequestReviewRequest(requestIdAccept, value);
     // console.log(requestId);
     console.log(reviewRequestAccept);
     this.agentService.requestReview(reviewRequestAccept).subscribe(res => {
       console.log(res);
+      if (res['STATUS'] === 'OK') {
+        // this.getAgentRequestsToReview();
+        // var hist: History = this.historyDonation.find(({id}) => id === this.deleteId);
+        var artr: AgentRequestToReview = this.agentRequestsToReview.find(({requestId}) => requestId === requestIdAccept);
+        this.agentRequestsToReview = this.agentRequestsToReview.filter(obj => obj !== artr);
+        this.total -=1;
+      }
     });
   }
 
