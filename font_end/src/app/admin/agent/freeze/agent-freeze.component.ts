@@ -40,7 +40,7 @@ export class AgentFreezeComponent implements OnInit {
   public getAgentRequestsToReview() {
     var finalSearchKey = '%' + this.searchKey + '%';
     const agentSearch: RequestGetAgentRequests = new RequestGetAgentRequests(
-      this.startRequests.toString(), this.perPage.toString(), this.searchByColumn, finalSearchKey, 'REJECT');
+      this.startRequests.toString(), this.perPage.toString(), this.searchByColumn, finalSearchKey, 'FREEZE');
     console.log(agentSearch);
     this.agentRequestsToReview = [];
     this.agentService.getAgentRequestsToReview(agentSearch).subscribe(res => {
@@ -83,7 +83,7 @@ export class AgentFreezeComponent implements OnInit {
 
         artr.profession = res[key]['profession'];
         artr.profileId = res[key]['profileId'];
-        artr.requestDate = res[key]['rejectDate'];
+        artr.requestDate = res[key]['freezeDate'];
         // console.log(res[key]['rejectDate']);
 
         artr.requestId = res[key]['requestId'];
