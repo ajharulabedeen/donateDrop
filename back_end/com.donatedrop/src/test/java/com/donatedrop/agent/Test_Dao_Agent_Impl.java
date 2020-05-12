@@ -47,14 +47,17 @@ public class Test_Dao_Agent_Impl {
     public void testReviewRequest() {
 //        String id = dumpDao.getUsers(0, 10).get(0).getId().toString();
         int max = 5;
-        String requestID = dumpDao.getAgentRequests(0, 5).get(2).getId().toString();
+        String requestID = dumpDao.getAgentRequests(2, 5).get(2).getId().toString();
         System.out.println("requestID : " + requestID);
-        String value = StatusType.FREEZE;
-        RequestReviewRequest reviewRequest = new RequestReviewRequest(requestID, value);
+        String reviewValue = StatusType.FREEZE;
+        RequestReviewRequest reviewRequest = new RequestReviewRequest(requestID, reviewValue);
 
         Map<String, String> result = dao_agent_i.reviewRequest(reviewRequest);
         System.out.println("\nResult : \n" + result);
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        AgentRequest agentRequest = dao_agent_i.getOneAgentRequest(requestID);
+        System.out.println("\nRequest Status : \n" + agentRequest.getStatus());
+        assertEquals(agentRequest.getStatus(), reviewValue);
     }
 
     @Test
