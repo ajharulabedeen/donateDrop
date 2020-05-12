@@ -21,7 +21,7 @@ public interface Service_Agent_I {
      * @return
      * @apiNote 1 = approved, 0=not reviewed, -1= rejected.
      */
-    public Map<String, String> reviewRequest(String requestID, String value);
+    public Map<String, String> reviewRequest(RequestReviewRequest reviewRequest);
 
     /**
      *

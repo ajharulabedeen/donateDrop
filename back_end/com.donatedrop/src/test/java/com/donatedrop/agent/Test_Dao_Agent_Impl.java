@@ -46,7 +46,13 @@ public class Test_Dao_Agent_Impl {
     @Order(3)
     public void testReviewRequest() {
 //        String id = dumpDao.getUsers(0, 10).get(0).getId().toString();
-        Map<String, String> result = dao_agent_i.reviewRequest("22904", "-1");
+        int max = 5;
+        String requestID = dumpDao.getAgentRequests(0, 5).get(2).getId().toString();
+        System.out.println("requestID : " + requestID);
+        String value = StatusType.FREEZE;
+        RequestReviewRequest reviewRequest = new RequestReviewRequest(requestID, value);
+
+        Map<String, String> result = dao_agent_i.reviewRequest(reviewRequest);
         System.out.println("\nResult : \n" + result);
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
@@ -84,7 +90,7 @@ public class Test_Dao_Agent_Impl {
 
     @Test
     public void testGetAgentRequestsReviewCount() {
-        Map<String, String> result = dao_agent_i.getAgentRequestsToReviewCount("username", "%%", StatusType.ZERO);
+        Map<String, String> result = dao_agent_i.getAgentRequestsToReviewCount("username", "%%", StatusType.ACCEPT);
         System.out.println(result);
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }

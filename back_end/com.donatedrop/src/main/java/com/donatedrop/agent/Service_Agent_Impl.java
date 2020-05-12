@@ -34,8 +34,8 @@ public class Service_Agent_Impl implements Service_Agent_I {
      * @apiNote 1 = approved, 0=not reviewed, -1= rejected.
      */
     @Override
-    public Map<String, String> reviewRequest(String requestID, String value) {
-        return dao_agent_i.reviewRequest(requestID, value);
+    public Map<String, String> reviewRequest(RequestReviewRequest reviewRequest) {
+        return dao_agent_i.reviewRequest(reviewRequest);
     }
 
     /**

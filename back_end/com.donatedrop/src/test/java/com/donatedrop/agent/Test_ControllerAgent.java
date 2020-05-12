@@ -112,7 +112,7 @@ public class Test_ControllerAgent extends AbstractTest {
 //     arrange
         String requestID = dumpDao.getAgentRequests(0, 5).get(0).getId().toString();
         System.out.println("requestID : " + requestID);
-        String value = "-3";
+        String value = StatusType.FREEZE;
         String uri = "/public/user/reviewRequest";
         RequestReviewRequest reviewRequest = new RequestReviewRequest(requestID, value);
 //      act
@@ -316,6 +316,7 @@ public class Test_ControllerAgent extends AbstractTest {
 //    end : old Code
 
 //    Helpers --------------------------------
+
     /**
      * will store the last save id, that can be used for later for other method.
      * Though there is question does it, right to a result from unit test, as

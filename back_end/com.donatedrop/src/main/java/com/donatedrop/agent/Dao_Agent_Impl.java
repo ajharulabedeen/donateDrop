@@ -64,11 +64,11 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
     }
 
     @Override
-    public Map<String, String> reviewRequest(String requestID, String value) {
+    public Map<String, String> reviewRequest(RequestReviewRequest reviewRequest) {
         Map<String, String> result = new HashMap<>();
         try {
-            AgentRequest agentRequest = entityManager.find(AgentRequest.class, new Long(requestID));
-            agentRequest.setStatus(value);
+            AgentRequest agentRequest = entityManager.find(AgentRequest.class, new Long(reviewRequest.getRequestID()));
+            agentRequest.setStatus(reviewRequest.getValue());
             entityManager.merge(agentRequest);
             result.put(StringUtil.STATUS, StringUtil.OK);
             result.put(StringUtil.MESSAGE, StringUtil.SAVE);
