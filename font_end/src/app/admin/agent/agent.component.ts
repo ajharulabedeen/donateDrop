@@ -30,7 +30,9 @@ export class AgentComponent implements OnInit {
       tablinks[i].className = tablinks[i].className.replace(' active', '');
     }
     document.getElementById(tabName).style.display = 'block';
-    evt.currentTarget.className += ' active';
+    // document.getElementById(tabName).style.background = 'pink';
+    // evt.currentTarget.className += ' active';
+    // console.log(evt.currentTarget.className);
     // evt.currentTarget.style.backgroundColor = 'pink';
   }
 

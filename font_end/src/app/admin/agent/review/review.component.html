@@ -1,6 +1,6 @@
 <!--<div align="center" id="request_review" class="tabcontent">-->
 <!--START : Search-->
-<div>
+<div class="wrapper">
   <h3 class="text-orange" align="cennter">Agent Requests in Hold</h3>
   <h4 align="left">
     <button class="btn btn-info" (click)="getAgentRequestsToReview()">Search</button>
@@ -75,7 +75,7 @@
       <input type="radio" name="m_pay" [(ngModel)]="sortBy" value="DESC">Descending<br>
     </div>
   </div>
-</div>
+<!--</div>-->
 <!--END : Search-->
 <!--start : table-->
 <div class="col-xs-12">
@@ -155,7 +155,7 @@
   <div class="panel-footer">Review Request</div>
 </div>
 <!--end : table-->
-<!--</div>-->
+</div>
 
 
 <!-- Modal  : Update note Admin-->
