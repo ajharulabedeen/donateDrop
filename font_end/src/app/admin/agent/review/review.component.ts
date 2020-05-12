@@ -143,6 +143,20 @@ export class ReviewComponent implements OnInit {
     });
   }
 
+  public requestHold(requestIdHold: string, HOLD: string) {
+    const reviewRequestHold: RequestReviewRequest = new RequestReviewRequest(requestIdHold, HOLD);
+    this.agentService.requestReview(reviewRequestHold).subscribe(res => {
+      console.log(res);
+      if (res['STATUS'] === 'OK') {
+        // this.getAgentRequestsToReview();
+        var artr: AgentRequestToReview = this.agentRequestsToReview.find(({requestId}) => requestId === requestIdHold);
+        this.agentRequestsToReview = this.agentRequestsToReview.filter(obj => obj !== artr);
+        this.total -= 1;
+      }
+    });
+  }
+
+
   public updateAdminNote() {
     const adminNote = new RequestAdminNote(this.requestID, this.adminNote);
     console.log(adminNote);
@@ -164,4 +178,6 @@ export class ReviewComponent implements OnInit {
       }
     });
   }
+
+
 }
