@@ -85,8 +85,6 @@
         <tbody>
         <tr>
           <th>Approve</th>
-          <th>Reject</th>
-          <th>Hold</th>
           <th>Index</th>
           <th>Request Date</th>
           <th>Name</th>
@@ -101,22 +99,10 @@
           <th>Adress Permanent</th>
         </tr>
         <tr *ngFor="let ar of agentRequestsToReview; let i=index">
-          <!--Reject-->
-          <td>
-            <button class="btn btn-xs btn-warning" (click)="requestReject(ar.requestId)" data-toggle="modal"
-                    data-target="#donation_delete">Reject
-            </button>
-          </td>
-          <!--edit-->
+          <!--accept-->
           <td>
             <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modal_work"
                     (click)="requestAccept(ar.requestId, rivewValue.ACCEPT)">Approve
-            </button>
-          </td>
-          <!--Hold-->
-          <td>
-            <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal_work"
-                    (click)="update(j)">Hold
             </button>
           </td>
           <td>{{i+1}}</td>
@@ -129,7 +115,7 @@
           <td>
             <button class="btn btn-xs btn-info" (click)=" adminNote=ar.noteAdmin; requestID=ar.requestId"
                     data-toggle="modal"
-                    data-target="#modal_adminNote">Edit
+                    data-target="#modal_reject_adminNote">Edit
             </button>
             <br>
             {{ar.noteAdmin}}
@@ -137,7 +123,7 @@
           <td>
             <button class="btn btn-xs btn-danger" (click)=" personalNote=ar.notePersonal; requestID=ar.requestId"
                     data-toggle="modal"
-                    data-target="#modal_personalNote">Edit
+                    data-target="#modal_reject_personalNote">Edit
             </button>
             <br>
             {{ar.notePersonal}}
@@ -159,7 +145,7 @@
 
 
 <!-- Modal  : Update note Admin-->
-<div class="modal fade" id="modal_adminNote" tabindex="-1" role="dialog" aria-labelledby="modal_workLabel"
+<div class="modal fade" id="modal_reject_adminNote" tabindex="-1" role="dialog" aria-labelledby="modal_workLabel"
      aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -189,7 +175,7 @@
 </div>
 
 <!-- Modal  : Update note Personal-->
-<div class="modal fade" id="modal_personalNote" tabindex="-1" role="dialog" aria-labelledby="modal_workLabel"
+<div class="modal fade" id="modal_reject_personalNote" tabindex="-1" role="dialog" aria-labelledby="modal_workLabel"
      aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

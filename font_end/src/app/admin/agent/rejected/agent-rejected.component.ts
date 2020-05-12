@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ReviewValue} from '../models/review-value.model';
 import {RequestPersonalNote} from '../models/request-personal-note.model';
 import {RequestReviewRequest} from '../models/request-review-request.model';
@@ -56,7 +56,7 @@ export class AgentRejectedComponent implements OnInit {
         artr.noteApplicant = res[key]['noteApplicant'];
         artr.noteAdmin = res[key]['noteAdmin'];
         artr.notePersonal = res[key]['notePersonal'];
-        console.log(res[key]['notePersonal']);
+        // console.log(res[key]['notePersonal']);
 
         artr.permanentDist = res[key]['permanentDist'];
         artr.permanentDiv = res[key]['permanentDiv'];
@@ -83,7 +83,9 @@ export class AgentRejectedComponent implements OnInit {
 
         artr.profession = res[key]['profession'];
         artr.profileId = res[key]['profileId'];
-        artr.requestDate = res[key]['requestDate'];
+        artr.requestDate = res[key]['rejectDate'];
+        // console.log(res[key]['rejectDate']);
+
         artr.requestId = res[key]['requestId'];
         artr.status = res[key]['status'];
         artr.userId = res[key]['userId'];
