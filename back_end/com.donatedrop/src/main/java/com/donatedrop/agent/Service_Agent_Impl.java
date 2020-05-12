@@ -1,9 +1,11 @@
 package com.donatedrop.agent;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.donatedrop.agent.models.*;
+import com.donatedrop.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -29,13 +31,23 @@ public class Service_Agent_Impl implements Service_Agent_I {
     }
 
     /**
-     * @param requestID
+     * @param reviewRequest
      * @return
      * @apiNote 1 = approved, 0=not reviewed, -1= rejected.
      */
     @Override
     public Map<String, String> reviewRequest(RequestReviewRequest reviewRequest) {
-        return dao_agent_i.reviewRequest(reviewRequest);
+        Map<String, String> result = new HashMap<>();
+        if (reviewRequest.getValue().equals(StatusType.ACCEPT)
+                || reviewRequest.getValue().equals(StatusType.REJECT)
+                || reviewRequest.getValue().equals(StatusType.FREEZE)) {
+
+            return dao_agent_i.reviewRequest(reviewRequest);
+        } else {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+            result.put(StringUtil.MESSAGE, StringUtil.UNAUTHERIZEDVALUE);
+            return result;
+        }
     }
 
     /**

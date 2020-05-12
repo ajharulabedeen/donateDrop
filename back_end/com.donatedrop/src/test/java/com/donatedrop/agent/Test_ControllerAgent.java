@@ -29,6 +29,7 @@ import java.math.BigInteger;
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * @author G7
@@ -108,11 +109,12 @@ public class Test_ControllerAgent extends AbstractTest {
     //        String uri = "/public/user/reviewRequest";
     @Test
     @Order(3)
-    public void testReviewRequest() throws Exception {
-//     arrange
+    public void testReviewRequestWithRigthtValue() throws Exception {
+        //     arrange
         String requestID = dumpDao.getAgentRequests(0, 5).get(0).getId().toString();
         System.out.println("requestID : " + requestID);
         String value = StatusType.FREEZE;
+        String valueWrong = "StatusType";
         String uri = "/public/user/reviewRequest";
         RequestReviewRequest reviewRequest = new RequestReviewRequest(requestID, value);
 //      act
@@ -126,8 +128,39 @@ public class Test_ControllerAgent extends AbstractTest {
         Map<String, String> map = super.mapFromJson(content, Map.class);
         System.out.println("\nAgent Request Review: \n" + map + "\n");
         assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
-
 //        further verification can be done by reading the agent request.
+        AgentRequest agentRequest = dao_agent_i.getOneAgentRequest(requestID);
+        System.out.println("\nRequest Status : \n" + agentRequest.getStatus());
+        assertEquals(agentRequest.getStatus(), value);
+    }
+
+    @Test
+    @Order(4)
+    public void testReviewRequestWithWrongValue() throws Exception {
+//     arrange
+        String requestID = dumpDao.getAgentRequests(0, 5).get(0).getId().toString();
+        System.out.println("requestID : " + requestID);
+        String valueWrong = "StatusType";
+        String uri = "/public/user/reviewRequest";
+        RequestReviewRequest reviewRequest = new RequestReviewRequest(requestID, valueWrong);
+//      act
+        String inputJsonWrong = super.mapToJson(reviewRequest);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJsonWrong)).andReturn();
+//assert
+        int statusWrong = mvcResult.getResponse().getStatus();
+        assertEquals(200, statusWrong);
+        String contentWrong = mvcResult.getResponse().getContentAsString();
+        Map<String, String> map = super.mapFromJson(contentWrong, Map.class);
+
+        System.out.println("\nAgent Request Review(Wrong): \n" + map + "\n");
+        assertEquals(StringUtil.FAIL, map.get(StringUtil.STATUS));
+
+        //        further verification can be done by reading the agent request.
+        AgentRequest agentRequest = dao_agent_i.getOneAgentRequest(requestID);
+        System.out.println("\nRequest Status : \n" + agentRequest.getStatus());
+        assertNotEquals(agentRequest.getStatus(), valueWrong);
+
     }
 
     //        String uri = "/public/user/getAgentRequestsToReview";

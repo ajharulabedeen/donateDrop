@@ -19,6 +19,7 @@ public class StringUtil {
     public static final String FALSE = "FALSE";
     public static final String MESSAGE = "MESSAGE";
     public static final String UNAUTHERIZED = "UNAUTHERIZED";
+    public static final String UNAUTHERIZEDVALUE = "UNAUTHERIZEDVALUE";
     public static final String ERROR = "ERROR";
     public static final String DUPLICATE = "DUPLICATE";
     public static final String UNKNOWN = "UNKNOWN";
