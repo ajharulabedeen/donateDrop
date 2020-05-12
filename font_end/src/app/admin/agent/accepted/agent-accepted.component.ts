@@ -83,7 +83,9 @@ export class AgentAcceptedComponent implements OnInit {
 
         artr.profession = res[key]['profession'];
         artr.profileId = res[key]['profileId'];
-        artr.requestDate = res[key]['requestDate'];
+        artr.requestDate = res[key]['acceptDate'];
+        console.log('acceptDate : ' + res[key]['acceptDate']);
+
         artr.requestId = res[key]['requestId'];
         artr.status = res[key]['status'];
         artr.userId = res[key]['userId'];
