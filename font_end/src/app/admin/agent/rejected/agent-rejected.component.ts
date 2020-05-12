@@ -115,19 +115,18 @@ export class AgentRejectedComponent implements OnInit {
     }
   }
 
-  public requestReject(requestId: string) {
-    const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestId, this.rivewValue.REJECT);
-    this.agentService.requestReview(reviewRequestReject).subscribe(res => {
-      console.log(res);
-    });
-  }
-
-  public requestAccept(requestId: string, value: string) {
-    const reviewRequestAccept: RequestReviewRequest = new RequestReviewRequest(requestId, value);
+  public requestAccept(requestIdAccept: string, value: string) {
+    const reviewRequestAccept: RequestReviewRequest = new RequestReviewRequest(requestIdAccept, value);
     // console.log(requestId);
     console.log(reviewRequestAccept);
     this.agentService.requestReview(reviewRequestAccept).subscribe(res => {
       console.log(res);
+      if (res['STATUS'] === 'OK') {
+        // this.getAgentRequestsToReview();
+        var artr: AgentRequestToReview = this.agentRequestsToReview.find(({requestId}) => requestId === requestIdAccept);
+        this.agentRequestsToReview = this.agentRequestsToReview.filter(obj => obj !== artr);
+        this.total -= 1;
+      }
     });
   }
 
