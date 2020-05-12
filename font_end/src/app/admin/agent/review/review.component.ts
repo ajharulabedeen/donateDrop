@@ -114,12 +114,15 @@ export class ReviewComponent implements OnInit {
     }
   }
 
-  public requestReject(requestId: string) {
-    const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestId, this.rivewValue.REJECT);
+  public requestReject(requestIdReject: string) {
+    const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestIdReject, this.rivewValue.REJECT);
     this.agentService.requestReview(reviewRequestReject).subscribe(res => {
       console.log(res);
       if (res['STATUS'] === 'OK') {
-        this.getAgentRequestsToReview();
+        // this.getAgentRequestsToReview();
+        var artr: AgentRequestToReview = this.agentRequestsToReview.find(({requestId}) => requestId === requestIdReject);
+        this.agentRequestsToReview = this.agentRequestsToReview.filter(obj => obj !== artr);
+        this.total -= 1;
       }
     });
   }
@@ -135,7 +138,7 @@ export class ReviewComponent implements OnInit {
         // var hist: History = this.historyDonation.find(({id}) => id === this.deleteId);
         var artr: AgentRequestToReview = this.agentRequestsToReview.find(({requestId}) => requestId === requestIdAccept);
         this.agentRequestsToReview = this.agentRequestsToReview.filter(obj => obj !== artr);
-        this.total -=1;
+        this.total -= 1;
       }
     });
   }
