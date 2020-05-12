@@ -15,7 +15,8 @@ import {RequestPersonalNote} from './models/request-personal-note.model';
 export class AgentComponent implements OnInit {
 
   ngOnInit() {
-    this.tabChange(event, 'request_review');
+    // this.tabChange(event, 'request_review');
+    this.tabChange(event, 'accepted');
   }
 
   // start : for tab in font end.

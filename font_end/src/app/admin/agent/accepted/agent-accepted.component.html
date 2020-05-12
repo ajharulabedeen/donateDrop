@@ -84,9 +84,9 @@
       <table class="table table-hover">
         <tbody>
         <tr>
-          <th>Approve</th>
-          <th>Reject</th>
-          <th>Hold</th>
+          <th>Actions</th>
+          <!--<th>Freeze</th>-->
+          <!--<th>Detials</th>-->
           <th>Index</th>
           <th>Request Date</th>
           <th>Name</th>
@@ -103,22 +103,18 @@
         <tr *ngFor="let ar of agentRequestsToReview; let i=index">
           <!--Reject-->
           <td>
-            <button class="btn btn-xs btn-warning" (click)="requestReject(ar.requestId)" data-toggle="modal"
-                    data-target="#donation_delete">Reject
+            <button class="btn btn-xs btn-danger" (click)="requestReject(ar.requestId)" data-toggle="modal"
+                    data-target="#donation_delete">Freeze
+            </button>
+            <br>
+            <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modal_work"
+                    (click)="requestAccept(ar.requestId, rivewValue.ACCEPT)">Details
             </button>
           </td>
           <!--edit-->
-          <td>
-            <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modal_work"
-                    (click)="requestAccept(ar.requestId, rivewValue.ACCEPT)">Approve
-            </button>
-          </td>
-          <!--Hold-->
-          <td>
-            <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal_work"
-                    (click)="update(j)">Hold
-            </button>
-          </td>
+          <!--<td>-->
+
+          <!--</td>-->
           <td>{{i+1}}</td>
           <td>{{ar.requestDate}}</td>
           <td>{{ar.name}}</td>
