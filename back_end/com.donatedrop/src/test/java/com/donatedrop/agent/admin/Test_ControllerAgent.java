@@ -5,7 +5,8 @@
  */
 package com.donatedrop.agent.admin;
 
-import com.donatedrop.agent.admin.models.*;
+import com.donatedrop.agent.Dao_Agent_I;
+import com.donatedrop.agent.models.*;
 import com.donatedrop.history.*;
 import com.donatedrop.geocode.AbstractTest;
 import com.donatedrop.other.DumpDao;

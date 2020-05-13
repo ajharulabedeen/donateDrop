@@ -1,4 +1,4 @@
-package com.donatedrop.agent.admin.models;
+package com.donatedrop.agent.models;
 
 public class RequestAdminNote {
     private String requestId;

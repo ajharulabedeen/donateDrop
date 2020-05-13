@@ -1,6 +1,7 @@
-package com.donatedrop.agent.admin;
+package com.donatedrop.agent;
 
 import com.donatedrop.agent.admin.models.*;
+import com.donatedrop.agent.models.*;
 import com.donatedrop.util.GetDate;
 import com.donatedrop.util.StringUtil;
 import org.hibernate.exception.ConstraintViolationException;

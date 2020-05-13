@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.donatedrop.agent.admin;
+package com.donatedrop.agent;
 
 import java.util.List;
 import java.util.Map;
 
 import com.donatedrop.agent.admin.models.*;
+import com.donatedrop.agent.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

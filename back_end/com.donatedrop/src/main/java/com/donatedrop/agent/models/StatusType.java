@@ -1,4 +1,4 @@
-package com.donatedrop.agent.admin.models;
+package com.donatedrop.agent.models;
 
 public class StatusType {
     public static final String REJECT = "REJECT";
