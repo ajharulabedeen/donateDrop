@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.donatedrop.agent.admin.models;
+package com.donatedrop.agent.donner.models;
 
 import java.io.Serializable;
 import javax.persistence.Column;
