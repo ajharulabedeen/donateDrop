@@ -2,6 +2,7 @@ package com.donatedrop.other;
 
 import com.donatedrop.agent.admin.model.AgentRequest;
 import com.donatedrop.agent.admin.model.AgentRequestToReview;
+import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.security.models.User;
 import com.donatedrop.security.repo.UserRepository;
@@ -31,16 +32,25 @@ public class DumpDao {
         String q = "SELECT * FROM `profilebasic`";
         List<ProfileBasic> basicList
                 = entityManager.createNativeQuery(q, ProfileBasic.class)
-                .setFirstResult(start)
-                .setMaxResults(max)
-                .getResultList();
+                        .setFirstResult(start)
+                        .setMaxResults(max)
+                        .getResultList();
         return basicList;
     }
 
-    public List<AgentRequest> getAgentRequests(int start, int max) {
+    public List<AgentRequest> getAgentAdminRequests(int start, int max) {
         String q = "SELECT * FROM `agent_request`";
         return entityManager
                 .createNativeQuery(q, AgentRequest.class)
+                .setFirstResult(start)
+                .setMaxResults(max)
+                .getResultList();
+    }
+
+    public List<DonnerRequestToAgent> getAgentDonnersRequests(int start, int max) {
+        String q = "SELECT * FROM `request_donner_to_agent`";
+        return entityManager
+                .createNativeQuery(q, DonnerRequestToAgent.class)
                 .setFirstResult(start)
                 .setMaxResults(max)
                 .getResultList();
@@ -68,9 +78,9 @@ public class DumpDao {
         String q = "SELECT * FROM `user`";
         List<User> userList
                 = entityManager.createNativeQuery(q, User.class)
-                .setFirstResult(start)
-                .setMaxResults(max)
-                .getResultList();
+                        .setFirstResult(start)
+                        .setMaxResults(max)
+                        .getResultList();
         return userList;
     }
 
@@ -95,21 +105,19 @@ public class DumpDao {
         return entityManager.createNativeQuery(q).getResultList();
     }
 
-
 //    start : no need :
-
     public List<AgentRequestToReview> getAllAgentRequestReviewPhoneNumber(int start, int max, String column, String key) {
 //        String q = "SELECT * FROM `agent_request_review`";
         List<AgentRequestToReview> agentRequestReviews = new ArrayList<>();
         try {
-            String q = "SELECT agent_request_review.* FROM agent_request_review, phonenumber " +
-                    "WHERE agent_request_review.profile_id = phonenumber.profile_id " +
-                    "AND phonenumber.number LIKE '" + key + "'";
+            String q = "SELECT agent_request_review.* FROM agent_request_review, phonenumber "
+                    + "WHERE agent_request_review.profile_id = phonenumber.profile_id "
+                    + "AND phonenumber.number LIKE '" + key + "'";
             agentRequestReviews
                     = entityManager.createNativeQuery(q, AgentRequestToReview.class)
-                    .setFirstResult(start)
-                    .setMaxResults(max)
-                    .getResultList();
+                            .setFirstResult(start)
+                            .setMaxResults(max)
+                            .getResultList();
             return agentRequestReviews;
         } catch (Exception exception) {
             System.out.println("org.hibernate.exception.SQLGrammarException");
@@ -132,9 +140,9 @@ public class DumpDao {
             String q = "SELECT * FROM `agent_request_review` WHERE `agent_request_review`.`" + column + "` LIKE '" + key + "'";
             agentRequestReviews
                     = entityManager.createNativeQuery(q, AgentRequestToReview.class)
-                    .setFirstResult(start)
-                    .setMaxResults(max)
-                    .getResultList();
+                            .setFirstResult(start)
+                            .setMaxResults(max)
+                            .getResultList();
             return agentRequestReviews;
         } catch (Exception exception) {
             System.out.println("org.hibernate.exception.SQLGrammarException");

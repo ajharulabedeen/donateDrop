@@ -5,8 +5,11 @@
  */
 package com.donatedrop.agent.doner;
 
+import com.donatedrop.agent.admin.model.AgentRequest;
 import com.donatedrop.agent.donner.Dao_AgentDonner_I;
 import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
+import com.donatedrop.agent.models.RequestReviewRequest;
+import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.other.DumpDao;
 import com.donatedrop.util.StringUtil;
 import org.hibernate.event.internal.DefaultPersistOnFlushEventListener;
@@ -82,6 +85,24 @@ public class Test_Dao_AgentDonner_Impl {
                 = dao_agentDonner_i.deleteRequestByUserID(userID);
         System.out.println("\n" + result.toString() + "\n");
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+    }
+
+    @Test
+    @Order(2)
+    public void testReviewDonnerRequest() {
+//        String id = dumpDao.getUsers(0, 10).get(0).getId().toString();
+        int max = 5;
+        String requestID = dumpDao.getAgentDonnersRequests(2, 5).get(1).getId().toString();
+        System.out.println("requestID : " + requestID);
+        String reviewValue = StatusType.ACCEPT;
+        RequestReviewRequest reviewRequest = new RequestReviewRequest(requestID, reviewValue);
+
+        Map<String, String> result = dao_agentDonner_i.reviewDonnerRequest(reviewRequest);
+        System.out.println("\nResult : \n" + result);
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        DonnerRequestToAgent donnerRequestToAgent = dao_agentDonner_i.findOne(requestID);
+        System.out.println("\nRequest Status : \n" + donnerRequestToAgent.getStatus());
+        assertEquals(donnerRequestToAgent.getStatus(), reviewValue);
     }
 
 

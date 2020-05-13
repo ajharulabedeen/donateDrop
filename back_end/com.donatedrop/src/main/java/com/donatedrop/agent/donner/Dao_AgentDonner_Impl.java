@@ -5,11 +5,11 @@
  */
 package com.donatedrop.agent.donner;
 
-import com.donatedrop.agent.admin.model.AgentRequest;
+import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
+import com.donatedrop.agent.models.RequestReviewRequest;
 import com.donatedrop.util.GetDate;
 import com.donatedrop.util.StringUtil;
-import org.hibernate.event.internal.DefaultPersistOnFlushEventListener;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Component;
 
@@ -84,5 +84,29 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
         return result;
     }
 
+    @Override
+    public Map<String, String> reviewDonnerRequest(RequestReviewRequest reviewRequest) {
+        Map<String, String> result = new HashMap<>();
+        try {
+            DonnerRequestToAgent donnerRequestToAgent =
+                    entityManager.find(DonnerRequestToAgent.class, new Long(reviewRequest.getRequestID()));
+            if (reviewRequest.getValue().equals(StatusType.ACCEPT)) {
+                donnerRequestToAgent.setAcceptDate(GetDate.getDate());
+            } else if (reviewRequest.getValue().equals(StatusType.REJECT)) {
+                donnerRequestToAgent.setRejectDate(GetDate.getDate());
+            } else if (reviewRequest.getValue().equals(StatusType.REMOVE)) {
+                donnerRequestToAgent.setRemoveDate(GetDate.getDate());
+            }
+            donnerRequestToAgent.setStatus(reviewRequest.getValue());
+            entityManager.merge(donnerRequestToAgent);
+            result.put(StringUtil.STATUS, StringUtil.OK);
+            result.put(StringUtil.MESSAGE, StringUtil.SAVE);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+            result.put(StringUtil.MESSAGE, StringUtil.UNKNOWN);
+        }
+        return result;
+    }
 
 }

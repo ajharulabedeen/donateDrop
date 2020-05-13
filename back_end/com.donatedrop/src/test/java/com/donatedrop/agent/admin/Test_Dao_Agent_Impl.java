@@ -6,7 +6,7 @@ import com.donatedrop.agent.admin.model.AgentRequest;
 import com.donatedrop.agent.admin.model.RequestPersonalNote;
 import com.donatedrop.agent.models.RequestReviewRequest;
 import com.donatedrop.agent.admin.model.RequestAdminNote;
-import com.donatedrop.agent.admin.model.StatusType;
+import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.other.DumpDao;
 import com.donatedrop.other.TestUtil;
 import com.donatedrop.util.DateUtil;
@@ -53,7 +53,7 @@ public class Test_Dao_Agent_Impl {
     public void testReviewRequest() {
 //        String id = dumpDao.getUsers(0, 10).get(0).getId().toString();
         int max = 5;
-        String requestID = dumpDao.getAgentRequests(2, 5).get(2).getId().toString();
+        String requestID = dumpDao.getAgentAdminRequests(2, 5).get(2).getId().toString();
         System.out.println("requestID : " + requestID);
         String reviewValue = StatusType.FREEZE;
         RequestReviewRequest reviewRequest = new RequestReviewRequest(requestID, reviewValue);

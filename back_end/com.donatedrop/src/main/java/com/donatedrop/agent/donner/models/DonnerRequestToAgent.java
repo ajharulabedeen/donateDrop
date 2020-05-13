@@ -32,6 +32,8 @@ public class DonnerRequestToAgent implements Serializable {
     String requestDate;
     @Column(name = "accept_date")
     String acceptDate;
+    @Column(name = "reject_date")
+    String rejectDate;
     @Column(name = "remove_date")
     String removeDate;
     @Column(name = "status")
@@ -61,8 +63,7 @@ public class DonnerRequestToAgent implements Serializable {
         this.noteAgentPersonal = noteAgentPersonal;
     }
 
-    
-    
+
     public Long getId() {
         return id;
     }
@@ -93,6 +94,14 @@ public class DonnerRequestToAgent implements Serializable {
 
     public void setAcceptDate(String acceptDate) {
         this.acceptDate = acceptDate;
+    }
+
+    public String getRejectDate() {
+        return rejectDate;
+    }
+
+    public void setRejectDate(String rejectDate) {
+        this.rejectDate = rejectDate;
     }
 
     public String getRemoveDate() {
@@ -142,6 +151,7 @@ public class DonnerRequestToAgent implements Serializable {
                 ", userIdDonner='" + userIdDonner + '\'' +
                 ", requestDate='" + requestDate + '\'' +
                 ", acceptDate='" + acceptDate + '\'' +
+                ", rejectDate='" + rejectDate + '\'' +
                 ", removeDate='" + removeDate + '\'' +
                 ", status='" + status + '\'' +
                 ", noteDonner='" + noteDonner + '\'' +

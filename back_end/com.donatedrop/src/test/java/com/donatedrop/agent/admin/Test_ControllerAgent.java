@@ -12,7 +12,7 @@ import com.donatedrop.agent.admin.model.RequestPersonalNote;
 import com.donatedrop.agent.models.RequestReviewRequest;
 import com.donatedrop.agent.admin.model.RequestAdminNote;
 import com.donatedrop.agent.admin.model.AgentRequestToReview;
-import com.donatedrop.agent.admin.model.StatusType;
+import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.history.*;
 import com.donatedrop.geocode.AbstractTest;
 import com.donatedrop.other.DumpDao;
@@ -118,7 +118,7 @@ public class Test_ControllerAgent extends AbstractTest {
     @Order(3)
     public void testReviewRequestWithRigthtValue() throws Exception {
         //     arrange
-        String requestID = dumpDao.getAgentRequests(0, 5).get(0).getId().toString();
+        String requestID = dumpDao.getAgentAdminRequests(0, 5).get(0).getId().toString();
         System.out.println("requestID : " + requestID);
         String value = StatusType.FREEZE;
         String uri = "/public/user/reviewRequest";
@@ -144,7 +144,7 @@ public class Test_ControllerAgent extends AbstractTest {
     @Order(4)
     public void testReviewRequestWithWrongValue() throws Exception {
 //     arrange
-        String requestID = dumpDao.getAgentRequests(0, 5).get(0).getId().toString();
+        String requestID = dumpDao.getAgentAdminRequests(0, 5).get(0).getId().toString();
         System.out.println("requestID : " + requestID);
         String valueWrong = "StatusType";
         String uri = "/public/user/reviewRequest";

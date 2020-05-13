@@ -2,7 +2,7 @@ package com.donatedrop.agent.admin;
 
 //import com.donatedrop.agent.admin.models.*;
 import com.donatedrop.agent.admin.model.AgentRequest;
-import com.donatedrop.agent.admin.model.StatusType;
+import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.agent.admin.model.RequestApplicantNote;
 import com.donatedrop.agent.admin.model.RequestAdminNote;
 import com.donatedrop.agent.models.RequestReviewRequest;
