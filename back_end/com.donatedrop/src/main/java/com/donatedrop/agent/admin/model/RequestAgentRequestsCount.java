@@ -1,4 +1,4 @@
-package com.donatedrop.agent.models;
+package com.donatedrop.agent.admin.model;
 
 public class RequestAgentRequestsCount {
     String column;

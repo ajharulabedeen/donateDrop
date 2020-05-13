@@ -1,11 +1,18 @@
-package com.donatedrop.agent;
+package com.donatedrop.agent.admin;
 
+import com.donatedrop.agent.admin.model.AgentRequest;
+import com.donatedrop.agent.admin.model.StatusType;
+import com.donatedrop.agent.admin.model.RequestApplicantNote;
+import com.donatedrop.agent.admin.model.RequestAdminNote;
+import com.donatedrop.agent.admin.model.RequestReviewRequest;
+import com.donatedrop.agent.admin.model.RequestGetAgentRequestsReview;
+import com.donatedrop.agent.admin.model.AgentRequestToReview;
+import com.donatedrop.agent.admin.model.RequestPersonalNote;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.donatedrop.agent.admin.models.*;
-import com.donatedrop.agent.models.*;
+//import com.donatedrop.agent.admin.models.*;
 import com.donatedrop.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
