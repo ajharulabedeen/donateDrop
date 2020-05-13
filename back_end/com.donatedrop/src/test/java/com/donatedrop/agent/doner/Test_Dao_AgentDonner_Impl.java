@@ -9,6 +9,7 @@ import com.donatedrop.agent.donner.Dao_AgentDonner_I;
 import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
 import com.donatedrop.other.DumpDao;
 import com.donatedrop.util.StringUtil;
+import org.hibernate.event.internal.DefaultPersistOnFlushEventListener;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -18,12 +19,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * @author G7
  */
 @SpringBootTest
 public class Test_Dao_AgentDonner_Impl {
+
     @Autowired
     DumpDao dumpDao;
 
@@ -48,4 +52,13 @@ public class Test_Dao_AgentDonner_Impl {
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
 
+    //refactor : have to set another user ID.
+    @Test
+    @Order(1)
+    public void testFindOne() {
+        String requestID = "23001";
+        DonnerRequestToAgent donnerRequestToAgentSaved = dao_agentDonner_i.findOne(requestID);
+        System.out.println("\n" + donnerRequestToAgentSaved.toString() + "\n");
+        assertNotNull(donnerRequestToAgentSaved);
+    }
 }

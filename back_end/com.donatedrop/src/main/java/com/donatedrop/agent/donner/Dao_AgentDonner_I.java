@@ -7,4 +7,8 @@ import java.util.Map;
 
 public interface Dao_AgentDonner_I {
     public Map<String, String> saveRequest(DonnerRequestToAgent donnerRequestToAgent);
+
+    public DonnerRequestToAgent findOne(String donnerAgentRequestID);
+
+//    public DonnerRequestToAgent findOne(String donnerAgentRequestID);
 }

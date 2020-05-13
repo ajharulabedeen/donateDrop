@@ -8,6 +8,7 @@ package com.donatedrop.agent.donner;
 import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
 import com.donatedrop.util.GetDate;
 import com.donatedrop.util.StringUtil;
+import org.hibernate.event.internal.DefaultPersistOnFlushEventListener;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Component;
 
@@ -46,5 +47,10 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
             result.put(StringUtil.MESSAGE, StringUtil.UNKNOWN);
         }
         return result;
+    }
+
+    @Override
+    public DonnerRequestToAgent findOne(String donnerAgentRequestID) {
+        return entityManager.find(DonnerRequestToAgent.class, new Long(donnerAgentRequestID));
     }
 }
