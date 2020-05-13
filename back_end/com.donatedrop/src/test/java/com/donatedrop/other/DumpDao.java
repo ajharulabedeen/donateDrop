@@ -74,7 +74,7 @@ public class DumpDao {
         return userList;
     }
 
-    public List<BigInteger> getNotRequestedAgentUser(int start, int max) {
+    public List<BigInteger> getNotRequestedAsAgentUsers(int start, int max) {
         String q = "SELECT `user`.`ID` FROM `user` WHERE `user`.`ID` NOT IN (SELECT `agent_request`.`user_id` FROM `agent_request`)";
         return entityManager.createNativeQuery(q)
                 .setFirstResult(start)
@@ -82,6 +82,8 @@ public class DumpDao {
                 .getResultList();
     }
 
+    
+    
 //    start : no need :
 
     public List<AgentRequestToReview> getAllAgentRequestReviewPhoneNumber(int start, int max, String column, String key) {

@@ -69,7 +69,7 @@ public class Test_ControllerAgent extends AbstractTest {
         //      arrange
         String uri = "/public/user/saveRequest";
         System.out.println("\nAgent Request Save\n");
-        BigInteger userIDBigInteger = dumpDao.getNotRequestedAgentUser(0, 5).get(0);
+        BigInteger userIDBigInteger = dumpDao.getNotRequestedAsAgentUsers(0, 5).get(0);
         Integer userID = ((BigInteger) userIDBigInteger).intValue();
         System.out.println("userID : " + userID);
         AgentRequest agentRequest = new AgentRequest();
