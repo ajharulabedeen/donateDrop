@@ -1,7 +1,7 @@
 package com.donatedrop.other;
 
-import com.donatedrop.agent.models.AgentRequest;
-import com.donatedrop.agent.models.AgentRequestToReview;
+import com.donatedrop.agent.admin.models.AgentRequest;
+import com.donatedrop.agent.admin.models.AgentRequestToReview;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.security.models.User;
 import com.donatedrop.security.repo.UserRepository;
