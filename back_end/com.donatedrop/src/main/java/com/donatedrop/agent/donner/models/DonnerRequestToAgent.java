@@ -12,11 +12,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.Table;
 
 /**
  * @author G7
  */
 @Entity
+@Table(name = "request_donner_to_agent")
 public class DonnerRequestToAgent implements Serializable {
 
     private static final long serialVersionUID = 1L;
