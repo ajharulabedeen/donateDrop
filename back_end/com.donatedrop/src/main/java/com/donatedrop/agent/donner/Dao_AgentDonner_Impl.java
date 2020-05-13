@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,6 +21,7 @@ import java.util.Map;
  * @author G7
  */
 @Component
+@Transactional
 public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
 
     @PersistenceContext

@@ -6,11 +6,18 @@
 package com.donatedrop.agent.doner;
 
 import com.donatedrop.agent.donner.Dao_AgentDonner_I;
+import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
 import com.donatedrop.other.DumpDao;
+import com.donatedrop.util.StringUtil;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author G7
@@ -26,13 +33,19 @@ public class Test_Dao_AgentDonner_Impl {
     @Test
     @Order(0)
     public void testLayerWiring() {
-        System.out.println("\n" + dao_agentDonner_i+"\n");
+        System.out.println("\n" + dao_agentDonner_i + "\n");
     }
 
     @Test
     @Order(1)
     public void testSaveRequestDonnerToAgent() {
-
+        String userID = dumpDao.getNotRequestedDonnerToAgentUsers(0, 5).get(0).toString();
+        DonnerRequestToAgent donnerRequestToAgent = new DonnerRequestToAgent();
+        donnerRequestToAgent.setUserIdDonner(userID);
+        donnerRequestToAgent.setNoteDonner("I am from your home town!");
+        Map<String, String> result = dao_agentDonner_i.saveRequest(donnerRequestToAgent);
+        System.out.println("\n" + result + "\n");
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
 
 }

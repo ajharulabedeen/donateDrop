@@ -46,6 +46,23 @@ public class DonnerRequestToAgent implements Serializable {
     @Column(name = "note_agent_personal")
     String noteAgentPersonal;
 
+    public DonnerRequestToAgent() {
+    }
+
+    public DonnerRequestToAgent(Long id, String userIdDonner, String requestDate, String acceptDate, String removeDate, String status, String noteDonner, String noteAgent, String noteAgentPersonal) {
+        this.id = id;
+        this.userIdDonner = userIdDonner;
+        this.requestDate = requestDate;
+        this.acceptDate = acceptDate;
+        this.removeDate = removeDate;
+        this.status = status;
+        this.noteDonner = noteDonner;
+        this.noteAgent = noteAgent;
+        this.noteAgentPersonal = noteAgentPersonal;
+    }
+
+    
+    
     public Long getId() {
         return id;
     }
