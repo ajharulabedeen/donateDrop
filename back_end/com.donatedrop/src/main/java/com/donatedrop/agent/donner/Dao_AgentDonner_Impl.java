@@ -71,16 +71,16 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
     @Override
     public Map<String, String> deleteRequestByUserID(String userID) {
         Map<String, String> result = new HashMap<>();
-//        String requestID = getAgentRequestByUserID(userID).getId().toString();
-//        try {
-//            AgentRequest agentRequest = entityManager.find(AgentRequest.class, new Long(requestID));
-//            entityManager.remove(agentRequest);
-//            result.put(StringUtil.STATUS, StringUtil.OK);
-//            result.put(StringUtil.MESSAGE, StringUtil.DELETE);
-//        } catch (Exception e) {
-//            result.put(StringUtil.STATUS, StringUtil.FAIL);
-//            result.put(StringUtil.MESSAGE, StringUtil.UNKNOWN);
-//        }
+        String requestID = findOneRequestUserID(userID).getId().toString();
+        try {
+            DonnerRequestToAgent donnerRequestToAgent = entityManager.find(DonnerRequestToAgent.class, new Long(requestID));
+            entityManager.remove(donnerRequestToAgent);
+            result.put(StringUtil.STATUS, StringUtil.OK);
+            result.put(StringUtil.MESSAGE, StringUtil.DELETE);
+        } catch (Exception e) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+            result.put(StringUtil.MESSAGE, StringUtil.UNKNOWN);
+        }
         return result;
     }
 

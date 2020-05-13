@@ -73,7 +73,16 @@ public class Test_Dao_AgentDonner_Impl {
         assertNotNull(donnerRequestToAgentSaved);
     }
 
-
+    // refactor : automatic user id
+    @Test
+    @Order(1)
+    public void testDeleteRequestByUserID() {
+        String userID = "11148";
+        Map<String, String> result
+                = dao_agentDonner_i.deleteRequestByUserID(userID);
+        System.out.println("\n" + result.toString() + "\n");
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+    }
 
 
 }
