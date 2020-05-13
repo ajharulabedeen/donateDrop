@@ -24,10 +24,10 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/public/user/")
-public class ControllerAgent {
+public class ControllerAgentAdmin {
 
     @Autowired
-    Service_Agent_I service_Agent_I;
+    Service_AgentAdmin_I service_Agent_I;
 
     @PostMapping("saveRequest")
     public Map<String, String> saveRequest(@RequestBody AgentRequest agentRequest) {

@@ -26,7 +26,7 @@ import java.util.Map;
 
 @Transactional
 @Component
-public class Dao_Agent_Impl implements Dao_Agent_I {
+public class Dao_AgentAdmin_Impl implements Dao_AgentAdmin_I {
 
     @PersistenceContext
     EntityManager entityManager;

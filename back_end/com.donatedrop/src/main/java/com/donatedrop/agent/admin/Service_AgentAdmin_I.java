@@ -12,7 +12,8 @@ import com.donatedrop.agent.admin.model.RequestPersonalNote;
 import java.util.List;
 import java.util.Map;
 
-public interface Dao_Agent_I {
+public interface Service_AgentAdmin_I {
+
     /**
      * @param agentRequest
      * @return
@@ -34,7 +35,7 @@ public interface Dao_Agent_I {
      */
     public List<AgentRequest> getAgentRequests(int start, int max);
 
-    public List<AgentRequestToReview> getAgentRequestsToReview(RequestGetAgentRequestsReview requestGetAgentRequestsReview);
+    public List<AgentRequestToReview> getAgentRequestsToReview(RequestGetAgentRequestsReview requestGetAgentRequests);
 
     public Map<String, String> getAgentRequestsToReviewCount(String column, String key, String statusType);
 
@@ -43,8 +44,5 @@ public interface Dao_Agent_I {
     public Map<String, String> updateApplicantNote(RequestApplicantNote requestApplicantNote);
 
     public Map<String, String> updatePersonalNote(RequestPersonalNote requestPersonalNote);
-
-    public AgentRequest getOneAgentRequest(String requestID);
-
 
 }

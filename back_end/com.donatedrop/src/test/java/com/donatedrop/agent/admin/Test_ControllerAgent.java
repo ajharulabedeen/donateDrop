@@ -48,7 +48,7 @@ public class Test_ControllerAgent extends AbstractTest {
     DumpDao dumpDao;
 
     @Autowired
-    Dao_Agent_I dao_agent_i;
+    Dao_AgentAdmin_I dao_agent_i;
 
     @Autowired
     Dao_History_I dao_history_i;

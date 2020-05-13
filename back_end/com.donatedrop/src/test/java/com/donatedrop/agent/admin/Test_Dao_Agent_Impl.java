@@ -24,7 +24,7 @@ import static org.junit.Assert.assertEquals;
 public class Test_Dao_Agent_Impl {
 
     @Autowired
-    Dao_Agent_I dao_agent_i;
+    Dao_AgentAdmin_I dao_agent_i;
 
     @Autowired
     DumpDao dumpDao;

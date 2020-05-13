@@ -18,10 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Service_Agent_Impl implements Service_Agent_I {
+public class Service_AgentAdmin_Impl implements Service_AgentAdmin_I {
 
     @Autowired
-    Dao_Agent_I dao_agent_i;
+    Dao_AgentAdmin_I dao_agent_i;
 
     /**
      * @param agentRequest
