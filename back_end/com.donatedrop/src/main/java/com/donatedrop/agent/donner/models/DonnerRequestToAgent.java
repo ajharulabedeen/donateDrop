@@ -26,24 +26,24 @@ public class DonnerRequestToAgent implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
+    @Column(name = "user_id_donner")
     String userIdDonner;
-    @Column
+    @Column(name = "request_date")
     String requestDate;
-    @Column
+    @Column(name = "accept_date")
     String acceptDate;
-    @Column
+    @Column(name = "remove_date")
     String removeDate;
-    @Column
+    @Column(name = "status")
     String status;
     @Lob
-    @Column
+    @Column(name = "note_donner")
     String noteDonner;
     @Lob
-    @Column
+    @Column(name = "note_agent")
     String noteAgent;
     @Lob
-    @Column
+    @Column(name = "note_agent_personal")
     String noteAgentPersonal;
 
     public Long getId() {
