@@ -5,6 +5,11 @@
  */
 package com.donatedrop.agent.donner;
 
+import com.donatedrop.agent.admin.model.AgentRequestToReview;
+import com.donatedrop.agent.admin.model.RequestAdminNote;
+import com.donatedrop.agent.admin.model.RequestApplicantNote;
+import com.donatedrop.agent.admin.model.RequestGetAgentRequestsReview;
+import com.donatedrop.agent.admin.model.RequestPersonalNote;
 import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
 import com.donatedrop.agent.models.RequestReviewRequest;
@@ -35,6 +40,7 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
         Map<String, String> result = new HashMap<>();
         try {
             donnerRequestToAgent.setRequestDate(GetDate.getDate());
+            donnerRequestToAgent.setStatus(StatusType.ZERO);
             entityManager.persist(donnerRequestToAgent);
             result.put(StringUtil.STATUS, StringUtil.OK);
             result.put(StringUtil.MESSAGE, StringUtil.SAVE);
@@ -108,5 +114,30 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
         }
         return result;
     }
+
+    @Override
+    public List<AgentRequestToReview> getAgentRequestsToReview(RequestGetAgentRequestsReview requestGetAgentRequestsReview) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+//    @Override
+//    public Map<String, String> getAgentRequestsToReviewCount(String column, String key, String statusType) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+//
+//    @Override
+//    public Map<String, String> updateAdminNote(RequestAdminNote requestAdminNote) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+//
+//    @Override
+//    public Map<String, String> updateApplicantNote(RequestApplicantNote requestApplicantNote) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+//
+//    @Override
+//    public Map<String, String> updatePersonalNote(RequestPersonalNote requestPersonalNote) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
 }

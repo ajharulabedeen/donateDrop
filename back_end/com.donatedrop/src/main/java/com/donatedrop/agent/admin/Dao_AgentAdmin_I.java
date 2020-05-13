@@ -35,6 +35,9 @@ public interface Dao_AgentAdmin_I {
      */
     public List<AgentRequest> getAgentRequests(int start, int max);
 
+
+    public AgentRequest getOneAgentRequest(String requestID);
+
     public List<AgentRequestToReview> getAgentRequestsToReview(RequestGetAgentRequestsReview requestGetAgentRequestsReview);
 
     public Map<String, String> getAgentRequestsToReviewCount(String column, String key, String statusType);
@@ -44,8 +47,6 @@ public interface Dao_AgentAdmin_I {
     public Map<String, String> updateApplicantNote(RequestApplicantNote requestApplicantNote);
 
     public Map<String, String> updatePersonalNote(RequestPersonalNote requestPersonalNote);
-
-    public AgentRequest getOneAgentRequest(String requestID);
 
 
 }
