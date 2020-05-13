@@ -10,5 +10,10 @@ public interface Dao_AgentDonner_I {
 
     public DonnerRequestToAgent findOne(String donnerAgentRequestID);
 
+    public DonnerRequestToAgent findOneRequestUserID(String userID);
+
+    public Map<String, String> deleteRequestByUserID(String userID);
+
+
 //    public DonnerRequestToAgent findOne(String donnerAgentRequestID);
 }

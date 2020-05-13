@@ -61,4 +61,19 @@ public class Test_Dao_AgentDonner_Impl {
         System.out.println("\n" + donnerRequestToAgentSaved.toString() + "\n");
         assertNotNull(donnerRequestToAgentSaved);
     }
+
+    // refactor : automatic user id
+    @Test
+    @Order(1)
+    public void testFindOneRequestUserID() {
+        String userID = "11148";
+        DonnerRequestToAgent donnerRequestToAgentSaved
+                = dao_agentDonner_i.findOneRequestUserID(userID);
+        System.out.println("\n" + donnerRequestToAgentSaved.toString() + "\n");
+        assertNotNull(donnerRequestToAgentSaved);
+    }
+
+
+
+
 }
