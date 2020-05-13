@@ -82,8 +82,20 @@ public class DumpDao {
                 .getResultList();
     }
 
-    
-    
+    public List<BigInteger> getNotRequestedDonnerToAgentUsers(int start, int max) {
+        String q = "SELECT `user`.`ID` FROM `user` WHERE `user`.`ID` NOT IN( SELECT `request_donner_to_agent`.`user_id_donner` FROM `request_donner_to_agent` )";
+        return entityManager.createNativeQuery(q)
+                .setFirstResult(start)
+                .setMaxResults(max)
+                .getResultList();
+    }
+
+    public List<BigInteger> getNotRequestedDonnerToAgentUsersCount() {
+        String q = "SELECT count(*) FROM `user` WHERE `user`.`ID` NOT IN( SELECT `request_donner_to_agent`.`user_id_donner` FROM `request_donner_to_agent` )";
+        return entityManager.createNativeQuery(q).getResultList();
+    }
+
+
 //    start : no need :
 
     public List<AgentRequestToReview> getAllAgentRequestReviewPhoneNumber(int start, int max, String column, String key) {
