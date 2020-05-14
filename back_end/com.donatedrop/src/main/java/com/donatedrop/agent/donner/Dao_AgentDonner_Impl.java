@@ -5,6 +5,7 @@
  */
 package com.donatedrop.agent.donner;
 
+import com.donatedrop.agent.admin.model.AgentRequest;
 import com.donatedrop.agent.admin.model.AgentRequestToReview;
 import com.donatedrop.agent.admin.model.RequestAdminNote;
 import com.donatedrop.agent.admin.model.RequestApplicantNote;
@@ -13,6 +14,7 @@ import com.donatedrop.agent.admin.model.RequestPersonalNote;
 import com.donatedrop.agent.donner.models.DonnerToAgentRequestReview;
 import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
+import com.donatedrop.agent.models.RequestNote;
 import com.donatedrop.agent.models.RequestReviewRequest;
 import com.donatedrop.util.GetDate;
 import com.donatedrop.util.StringUtil;
@@ -71,7 +73,7 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
     }
 
     @Override
-    public DonnerRequestToAgent findOne(String donnerAgentRequestID) {
+    public DonnerRequestToAgent findOneRequestById(String donnerAgentRequestID) {
         return entityManager.find(DonnerRequestToAgent.class, new Long(donnerAgentRequestID));
     }
 
@@ -176,23 +178,59 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
         return result;
     }
 
-    //    @Override
-//    public Map<String, String> getAgentRequestsToReviewCount(String column, String key, String statusType) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-//
-//    @Override
-//    public Map<String, String> updateAdminNote(RequestAdminNote requestAdminNote) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-//
-//    @Override
-//    public Map<String, String> updateApplicantNote(RequestApplicantNote requestApplicantNote) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-//
-//    @Override
-//    public Map<String, String> updatePersonalNote(RequestPersonalNote requestPersonalNote) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
+    @Override
+    public Map<String, String> updateAgentNote(RequestNote requestNote) {
+        Map<String, String> result = new HashMap<>();
+        try {
+            DonnerRequestToAgent donnerRequestToAgent = entityManager.find(DonnerRequestToAgent.class,
+                    new Long(requestNote.getRequestId()));
+            if (donnerRequestToAgent != null) {
+                donnerRequestToAgent.setNoteAgent(requestNote.getNote());
+                entityManager.merge(donnerRequestToAgent);
+                result.put(StringUtil.STATUS, StringUtil.OK);
+            }
+
+        } catch (Exception e) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+        }
+        return result;
+    }
+
+    @Override
+    public Map<String, String> updateNoteDonner(RequestNote requestNote) {
+        Map<String, String> result = new HashMap<>();
+        try {
+            DonnerRequestToAgent donnerRequestToAgent = entityManager.find(DonnerRequestToAgent.class,
+                    new Long(requestNote.getRequestId()));
+            if (donnerRequestToAgent != null) {
+                donnerRequestToAgent.setNoteDonner(requestNote.getNote());
+                entityManager.merge(donnerRequestToAgent);
+                result.put(StringUtil.STATUS, StringUtil.OK);
+            }
+
+        } catch (Exception e) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+        }
+        return result;
+    }
+
+
+    @Override
+    public Map<String, String> updateNoteAgentPersonal(RequestNote requestNote) {
+        Map<String, String> result = new HashMap<>();
+        try {
+            DonnerRequestToAgent donnerRequestToAgent = entityManager.find(DonnerRequestToAgent.class,
+                    new Long(requestNote.getRequestId()));
+            if (donnerRequestToAgent != null) {
+                donnerRequestToAgent.setNoteAgentPersonal(requestNote.getNote());
+                entityManager.merge(donnerRequestToAgent);
+                result.put(StringUtil.STATUS, StringUtil.OK);
+            }
+
+        } catch (Exception e) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+        }
+        return result;
+    }
+
 }

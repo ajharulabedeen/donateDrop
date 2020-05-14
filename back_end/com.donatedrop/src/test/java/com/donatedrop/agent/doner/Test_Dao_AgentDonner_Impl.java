@@ -9,6 +9,7 @@ import com.donatedrop.agent.admin.model.AgentRequest;
 import com.donatedrop.agent.donner.Dao_AgentDonner_I;
 import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
 import com.donatedrop.agent.donner.models.RequestSearchReview;
+import com.donatedrop.agent.models.RequestNote;
 import com.donatedrop.agent.models.RequestReviewRequest;
 import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.other.DumpDao;
@@ -61,7 +62,7 @@ public class Test_Dao_AgentDonner_Impl {
     @Order(1)
     public void testFindOne() {
         String requestID = "23001";
-        DonnerRequestToAgent donnerRequestToAgentSaved = dao_agentDonner_i.findOne(requestID);
+        DonnerRequestToAgent donnerRequestToAgentSaved = dao_agentDonner_i.findOneRequestById(requestID);
         System.out.println("\n" + donnerRequestToAgentSaved.toString() + "\n");
         assertNotNull(donnerRequestToAgentSaved);
     }
@@ -101,7 +102,7 @@ public class Test_Dao_AgentDonner_Impl {
         Map<String, String> result = dao_agentDonner_i.reviewDonnerRequest(reviewRequest);
         System.out.println("\nResult : \n" + result);
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
-        DonnerRequestToAgent donnerRequestToAgent = dao_agentDonner_i.findOne(requestID);
+        DonnerRequestToAgent donnerRequestToAgent = dao_agentDonner_i.findOneRequestById(requestID);
         System.out.println("\nRequest Status : \n" + donnerRequestToAgent.getStatus());
         assertEquals(donnerRequestToAgent.getStatus(), reviewValue);
     }
@@ -124,6 +125,57 @@ public class Test_Dao_AgentDonner_Impl {
                 new RequestSearchReview(0, 5, "phonenumber", "%20%", StatusType.ZERO);
         Map<String, String> result = dao_agentDonner_i.getDonnerToAgentRequestReviewCount(requestSearchReview);
         System.out.println(result);
+    }
+
+    @Test
+    @Order(4)
+    public void testUpdateNoteAgent() {
+        int max = 5;
+        String note = "Please tell me about ur UnionName-Bap-Dadar nam!";
+        String requestID = dumpDao.getAgentDonnersRequests(0, 5).get(1).getId().toString();
+        System.out.println("requestID : " + requestID);
+        RequestNote requestNote = new RequestNote(requestID, note);
+
+        Map<String, String> result = dao_agentDonner_i.updateAgentNote(requestNote);
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+
+        String requestNoteFormDB = dao_agentDonner_i.findOneRequestById(requestID).getNoteAgent();
+        System.out.println("\n" + requestNoteFormDB + "\n");
+        assertEquals(requestNoteFormDB, note);
+    }
+
+    @Test
+    @Order(5)
+    public void testUpdateNoteDonner() {
+        int max = 5;
+        String note = "I am from ur home village!";
+        String requestID = dumpDao.getAgentDonnersRequests(0, 5).get(1).getId().toString();
+        System.out.println("requestID : " + requestID);
+        RequestNote requestNote = new RequestNote(requestID, note);
+
+        Map<String, String> result = dao_agentDonner_i.updateNoteDonner(requestNote);
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+
+        String requestNoteFormDB = dao_agentDonner_i.findOneRequestById(requestID).getNoteDonner();
+        System.out.println("\n" + requestNoteFormDB + "\n");
+        assertEquals(requestNoteFormDB, note);
+    }
+
+    @Test
+    @Order(6)
+    public void testUpdateNoteAgentPersonal() {
+        int max = 5;
+        String note = "i will approve, after meeting with him!";
+        String requestID = dumpDao.getAgentDonnersRequests(0, 5).get(1).getId().toString();
+        System.out.println("requestID : " + requestID);
+        RequestNote requestNote = new RequestNote(requestID, note);
+
+        Map<String, String> result = dao_agentDonner_i.updateNoteAgentPersonal(requestNote);
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+
+        String requestNoteFormDB = dao_agentDonner_i.findOneRequestById(requestID).getNoteAgentPersonal();
+        System.out.println("\n" + requestNoteFormDB + "\n");
+        assertEquals(requestNoteFormDB, note);
     }
 
 }
