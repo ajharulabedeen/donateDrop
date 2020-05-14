@@ -5,7 +5,7 @@
  */
 package com.donatedrop.agent.admin;
 
-import com.donatedrop.agent.admin.model.RequestGetAgentRequestsReview;
+import com.donatedrop.agent.donner.models.RequestSearchReview;
 import com.donatedrop.agent.admin.model.RequestApplicantNote;
 import com.donatedrop.agent.admin.model.AgentRequest;
 import com.donatedrop.agent.admin.model.RequestPersonalNote;
@@ -42,7 +42,7 @@ import static org.junit.Assert.assertNotEquals;
  * @author G7
  */
 @SpringBootTest
-public class Test_ControllerAgent extends AbstractTest {
+public class Test_ControllerAgentAdmin extends AbstractTest {
 
     @Autowired
     DumpDao dumpDao;
@@ -53,7 +53,7 @@ public class Test_ControllerAgent extends AbstractTest {
     @Autowired
     Dao_History_I dao_history_i;
 
-    public Test_ControllerAgent() {
+    public Test_ControllerAgentAdmin() {
     }
 
     @Override
@@ -175,9 +175,9 @@ public class Test_ControllerAgent extends AbstractTest {
     public void testGet_ACCEPT_AgentRequestsToReview() throws Exception {
 //     arrange
         String uri = "/public/user/getAgentRequestsToReview";
-        RequestGetAgentRequestsReview requestGetAgentRequests
-//                = new RequestGetAgentRequestsReview(0, 30, "username", "%1%", "ACCEPT");
-                = new RequestGetAgentRequestsReview(0, 30, "name", "%kh%", StatusType.ACCEPT);
+        RequestSearchReview requestGetAgentRequests
+                = new RequestSearchReview(0, 30, "username", "%1%", "ACCEPT");
+//                = new RequestSearchReview(0, 30, "name", "%kh%", StatusType.ACCEPT);
 //      act
         String inputJson = super.mapToJson(requestGetAgentRequests);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
@@ -198,9 +198,9 @@ public class Test_ControllerAgent extends AbstractTest {
     public void testGet_REJECT_AgentRequestsToReview() throws Exception {
 //     arrange
         String uri = "/public/user/getAgentRequestsToReview";
-        RequestGetAgentRequestsReview requestGetAgentRequests
-//                = new RequestGetAgentRequestsReview(0, 30, "username", "%1%", "ACCEPT");
-                = new RequestGetAgentRequestsReview(0, 30, "name", "%kh%", StatusType.REJECT);
+        RequestSearchReview requestGetAgentRequests
+//                = new RequestSearchReview(0, 30, "username", "%1%", "ACCEPT");
+                = new RequestSearchReview(0, 30, "name", "%kh%", StatusType.REJECT);
 //      act
         String inputJson = super.mapToJson(requestGetAgentRequests);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
@@ -223,8 +223,8 @@ public class Test_ControllerAgent extends AbstractTest {
     public void testGetAgentRequestsToReviewCount() throws Exception {
 //     arrange
         String uri = "/public/user/getAgentRequestsToReviewCount";
-        RequestGetAgentRequestsReview requestGetAgentRequests
-                = new RequestGetAgentRequestsReview(0, 30, "username", "%%", StatusType.ACCEPT);
+        RequestSearchReview requestGetAgentRequests
+                = new RequestSearchReview(0, 30, "username", "%%", StatusType.ACCEPT);
 //      act
         String inputJson = super.mapToJson(requestGetAgentRequests);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)

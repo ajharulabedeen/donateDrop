@@ -1,16 +1,16 @@
-package com.donatedrop.agent.admin.model;
+package com.donatedrop.agent.donner.models;
 
-public class RequestGetAgentRequestsReview {
+public class RequestSearchReview {
     private int start;
     private int max;
     private String column;
     private String key;
     private String statusType;
 
-    public RequestGetAgentRequestsReview() {
+    public RequestSearchReview() {
     }
 
-    public RequestGetAgentRequestsReview(int start, int max, String column, String key, String statusType) {
+    public RequestSearchReview(int start, int max, String column, String key, String statusType) {
         this.start = start;
         this.max = max;
         this.column = column;

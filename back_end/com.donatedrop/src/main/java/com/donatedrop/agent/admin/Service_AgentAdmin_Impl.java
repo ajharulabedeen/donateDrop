@@ -5,7 +5,7 @@ import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.agent.admin.model.RequestApplicantNote;
 import com.donatedrop.agent.admin.model.RequestAdminNote;
 import com.donatedrop.agent.models.RequestReviewRequest;
-import com.donatedrop.agent.admin.model.RequestGetAgentRequestsReview;
+import com.donatedrop.agent.donner.models.RequestSearchReview;
 import com.donatedrop.agent.admin.model.AgentRequestToReview;
 import com.donatedrop.agent.admin.model.RequestPersonalNote;
 import java.util.HashMap;
@@ -67,7 +67,7 @@ public class Service_AgentAdmin_Impl implements Service_AgentAdmin_I {
     }
 
     @Override
-    public List<AgentRequestToReview> getAgentRequestsToReview(RequestGetAgentRequestsReview requestGetAgentRequestsReview) {
+    public List<AgentRequestToReview> getAgentRequestsToReview(RequestSearchReview requestGetAgentRequestsReview) {
         return dao_agent_i.getAgentRequestsToReview(requestGetAgentRequestsReview);
     }
 

@@ -9,7 +9,7 @@ import com.donatedrop.agent.admin.model.AgentRequest;
 import com.donatedrop.agent.admin.model.RequestApplicantNote;
 import com.donatedrop.agent.admin.model.RequestAdminNote;
 import com.donatedrop.agent.models.RequestReviewRequest;
-import com.donatedrop.agent.admin.model.RequestGetAgentRequestsReview;
+import com.donatedrop.agent.donner.models.RequestSearchReview;
 import com.donatedrop.agent.admin.model.AgentRequestToReview;
 import com.donatedrop.agent.admin.model.RequestPersonalNote;
 import java.util.List;
@@ -45,12 +45,12 @@ public class ControllerAgentAdmin {
     }
 
     @PostMapping("getAgentRequestsToReview")
-    public List<AgentRequestToReview> getAgentRequestsToReview(@RequestBody RequestGetAgentRequestsReview requestGetAgentRequestsReview) {
+    public List<AgentRequestToReview> getAgentRequestsToReview(@RequestBody RequestSearchReview requestGetAgentRequestsReview) {
         return service_Agent_I.getAgentRequestsToReview(requestGetAgentRequestsReview);
     }
 
     @PostMapping("getAgentRequestsToReviewCount")
-    public Map<String, String> getAgentRequestsToReviewCount(@RequestBody RequestGetAgentRequestsReview requestGetAgentRequests) {
+    public Map<String, String> getAgentRequestsToReviewCount(@RequestBody RequestSearchReview requestGetAgentRequests) {
         String column = requestGetAgentRequests.getColumn();
         String key = requestGetAgentRequests.getKey();
         String statusType = requestGetAgentRequests.getStatusType();

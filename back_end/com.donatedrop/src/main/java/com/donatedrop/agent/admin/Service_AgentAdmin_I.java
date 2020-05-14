@@ -5,7 +5,7 @@ import com.donatedrop.agent.admin.model.AgentRequest;
 import com.donatedrop.agent.admin.model.RequestApplicantNote;
 import com.donatedrop.agent.admin.model.RequestAdminNote;
 import com.donatedrop.agent.models.RequestReviewRequest;
-import com.donatedrop.agent.admin.model.RequestGetAgentRequestsReview;
+import com.donatedrop.agent.donner.models.RequestSearchReview;
 import com.donatedrop.agent.admin.model.AgentRequestToReview;
 import com.donatedrop.agent.admin.model.RequestPersonalNote;
 
@@ -35,7 +35,7 @@ public interface Service_AgentAdmin_I {
      */
     public List<AgentRequest> getAgentRequests(int start, int max);
 
-    public List<AgentRequestToReview> getAgentRequestsToReview(RequestGetAgentRequestsReview requestGetAgentRequests);
+    public List<AgentRequestToReview> getAgentRequestsToReview(RequestSearchReview requestGetAgentRequests);
 
     public Map<String, String> getAgentRequestsToReviewCount(String column, String key, String statusType);
 

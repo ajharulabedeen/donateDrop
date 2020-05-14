@@ -6,7 +6,7 @@ import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.agent.admin.model.RequestApplicantNote;
 import com.donatedrop.agent.admin.model.RequestAdminNote;
 import com.donatedrop.agent.models.RequestReviewRequest;
-import com.donatedrop.agent.admin.model.RequestGetAgentRequestsReview;
+import com.donatedrop.agent.donner.models.RequestSearchReview;
 import com.donatedrop.agent.admin.model.AgentRequestToReview;
 import com.donatedrop.agent.admin.model.RequestPersonalNote;
 import com.donatedrop.util.GetDate;
@@ -118,7 +118,7 @@ public class Dao_AgentAdmin_Impl implements Dao_AgentAdmin_I {
     }
 
     @Override
-    public List<AgentRequestToReview> getAgentRequestsToReview(RequestGetAgentRequestsReview requestGetAgentRequestsReview) {
+    public List<AgentRequestToReview> getAgentRequestsToReview(RequestSearchReview requestGetAgentRequestsReview) {
         int start = requestGetAgentRequestsReview.getStart();
         int max = requestGetAgentRequestsReview.getMax();
         String column = requestGetAgentRequestsReview.getColumn();

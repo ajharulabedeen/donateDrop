@@ -6,7 +6,7 @@ import com.donatedrop.agent.admin.model.AgentRequest;
 import com.donatedrop.agent.admin.model.RequestApplicantNote;
 import com.donatedrop.agent.admin.model.RequestAdminNote;
 import com.donatedrop.agent.models.RequestReviewRequest;
-import com.donatedrop.agent.admin.model.RequestGetAgentRequestsReview;
+import com.donatedrop.agent.donner.models.RequestSearchReview;
 import com.donatedrop.agent.admin.model.AgentRequestToReview;
 import com.donatedrop.agent.admin.model.RequestPersonalNote;
 
@@ -38,7 +38,7 @@ public interface Dao_AgentAdmin_I {
 
     public AgentRequest getOneAgentRequest(String requestID);
 
-    public List<AgentRequestToReview> getAgentRequestsToReview(RequestGetAgentRequestsReview requestGetAgentRequestsReview);
+    public List<AgentRequestToReview> getAgentRequestsToReview(RequestSearchReview requestGetAgentRequestsReview);
 
     public Map<String, String> getAgentRequestsToReviewCount(String column, String key, String statusType);
 

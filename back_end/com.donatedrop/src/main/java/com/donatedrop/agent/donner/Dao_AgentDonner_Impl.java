@@ -8,8 +8,9 @@ package com.donatedrop.agent.donner;
 import com.donatedrop.agent.admin.model.AgentRequestToReview;
 import com.donatedrop.agent.admin.model.RequestAdminNote;
 import com.donatedrop.agent.admin.model.RequestApplicantNote;
-import com.donatedrop.agent.admin.model.RequestGetAgentRequestsReview;
+import com.donatedrop.agent.donner.models.RequestSearchReview;
 import com.donatedrop.agent.admin.model.RequestPersonalNote;
+import com.donatedrop.agent.donner.models.DonnerToAgentRequestReview;
 import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
 import com.donatedrop.agent.models.RequestReviewRequest;
@@ -73,7 +74,6 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
         return entityManager.find(DonnerRequestToAgent.class, new Long(donnerAgentRequestID));
     }
 
-
     @Override
     public Map<String, String> deleteRequestByUserID(String userID) {
         Map<String, String> result = new HashMap<>();
@@ -94,8 +94,8 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
     public Map<String, String> reviewDonnerRequest(RequestReviewRequest reviewRequest) {
         Map<String, String> result = new HashMap<>();
         try {
-            DonnerRequestToAgent donnerRequestToAgent =
-                    entityManager.find(DonnerRequestToAgent.class, new Long(reviewRequest.getRequestID()));
+            DonnerRequestToAgent donnerRequestToAgent
+                    = entityManager.find(DonnerRequestToAgent.class, new Long(reviewRequest.getRequestID()));
             if (reviewRequest.getValue().equals(StatusType.ACCEPT)) {
                 donnerRequestToAgent.setAcceptDate(GetDate.getDate());
             } else if (reviewRequest.getValue().equals(StatusType.REJECT)) {
@@ -116,7 +116,7 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
     }
 
     @Override
-    public List<AgentRequestToReview> getAgentRequestsToReview(RequestGetAgentRequestsReview requestGetAgentRequestsReview) {
+    public List<DonnerToAgentRequestReview> getDonnerToAgentRequestReview(RequestSearchReview requestGetAgentRequestsReview) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -139,5 +139,4 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
 //    public Map<String, String> updatePersonalNote(RequestPersonalNote requestPersonalNote) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    }
-
 }
