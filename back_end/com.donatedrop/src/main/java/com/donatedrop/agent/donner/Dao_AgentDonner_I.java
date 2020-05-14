@@ -28,8 +28,7 @@ public interface Dao_AgentDonner_I {
 
     public Map<String, String> updateAgentNote(RequestNote requestNote);
 
-
-    Map<String, String> updateNoteDonner(RequestNote requestNote);
+    public Map<String, String> updateNoteDonner(RequestNote requestNote);
 
     public Map<String, String> updateNoteAgentPersonal(RequestNote requestNote);
 

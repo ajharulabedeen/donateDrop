@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
  * @author G7
  */
 @RestController
-@RequestMapping("/public/user/")
+@RequestMapping("/public/user/agent/admin")
 public class ControllerAgentAdmin {
 
     @Autowired

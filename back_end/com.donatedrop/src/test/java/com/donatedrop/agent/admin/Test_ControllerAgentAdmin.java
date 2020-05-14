@@ -62,12 +62,12 @@ public class Test_ControllerAgentAdmin extends AbstractTest {
         super.setUp();
     }
 
-    //    String uri = "/public/user/saveRequest";
+    //    String uri = "/public/user/agent/admin/saveRequest";
     @Test
     @Order(1)
     public void testSave() throws Exception {
         //      arrange
-        String uri = "/public/user/saveRequest";
+        String uri = "/public/user/agent/admin/saveRequest";
         System.out.println("\nAgent Request Save\n");
         BigInteger userIDBigInteger = dumpDao.getNotRequestedAsAgentUsers(0, 5).get(0);
         Integer userID = ((BigInteger) userIDBigInteger).intValue();
@@ -96,12 +96,12 @@ public class Test_ControllerAgentAdmin extends AbstractTest {
         }
     }
 
-    //        String uri = "/public/user/deleteRequest?userID=" + userID;
+    //        String uri = "/public/user/agent/admin/deleteRequest?userID=" + userID;
     @Test
     @Order(-2)
     public void testDelete() throws Exception {
         String userID = getID();
-        String uri = "/public/user/deleteRequest?userID=" + userID;
+        String uri = "/public/user/agent/admin/deleteRequest?userID=" + userID;
         MvcResult mvcResult = mvc.perform(
                 MockMvcRequestBuilders.post(uri)
                         .contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn();
@@ -113,7 +113,7 @@ public class Test_ControllerAgentAdmin extends AbstractTest {
         assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
     }
 
-    //        String uri = "/public/user/reviewRequest";
+    //        String uri = "/public/user/agent/admin/reviewRequest";
     @Test
     @Order(3)
     public void testReviewRequestWithRigthtValue() throws Exception {
@@ -121,7 +121,7 @@ public class Test_ControllerAgentAdmin extends AbstractTest {
         String requestID = dumpDao.getAgentAdminRequests(0, 5).get(0).getId().toString();
         System.out.println("requestID : " + requestID);
         String value = StatusType.FREEZE;
-        String uri = "/public/user/reviewRequest";
+        String uri = "/public/user/agent/admin/reviewRequest";
         RequestReviewRequest reviewRequest = new RequestReviewRequest(requestID, value);
 //      act
         String inputJson = super.mapToJson(reviewRequest);
@@ -147,7 +147,7 @@ public class Test_ControllerAgentAdmin extends AbstractTest {
         String requestID = dumpDao.getAgentAdminRequests(0, 5).get(0).getId().toString();
         System.out.println("requestID : " + requestID);
         String valueWrong = "StatusType";
-        String uri = "/public/user/reviewRequest";
+        String uri = "/public/user/agent/admin/reviewRequest";
         RequestReviewRequest reviewRequest = new RequestReviewRequest(requestID, valueWrong);
 //      act
         String inputJsonWrong = super.mapToJson(reviewRequest);
@@ -169,12 +169,12 @@ public class Test_ControllerAgentAdmin extends AbstractTest {
 
     }
 
-    //        String uri = "/public/user/getAgentRequestsToReview";
+    //        String uri = "/public/user/agent/admin/getAgentRequestsToReview";
     @Test
     @Order(3)
     public void testGet_ACCEPT_AgentRequestsToReview() throws Exception {
 //     arrange
-        String uri = "/public/user/getAgentRequestsToReview";
+        String uri = "/public/user/agent/admin/getAgentRequestsToReview";
         RequestSearchReview requestGetAgentRequests
                 = new RequestSearchReview(0, 30, "phonenumber", "%1%", "ACCEPT");
 //                = new RequestSearchReview(0, 30, "username", "%1%", "ACCEPT");
@@ -193,12 +193,11 @@ public class Test_ControllerAgentAdmin extends AbstractTest {
 //        further verification can be done by reading the agent request.
     }
 
-
     @Test
     @Order(3)
     public void testGet_REJECT_AgentRequestsToReview() throws Exception {
 //     arrange
-        String uri = "/public/user/getAgentRequestsToReview";
+        String uri = "/public/user/agent/admin/getAgentRequestsToReview";
         RequestSearchReview requestGetAgentRequests
 //                = new RequestSearchReview(0, 30, "username", "%1%", "ACCEPT");
                 = new RequestSearchReview(0, 30, "name", "%kh%", StatusType.REJECT);
@@ -216,14 +215,12 @@ public class Test_ControllerAgentAdmin extends AbstractTest {
 //        further verification can be done by reading the agent request.
     }
 
-
-
-    //        String uri = "/public/user/getAgentRequestsToReviewCount";
+    //        String uri = "/public/user/agent/admin/getAgentRequestsToReviewCount";
     @Test
     @Order(4)
     public void testGetAgentRequestsToReviewCount() throws Exception {
 //     arrange
-        String uri = "/public/user/getAgentRequestsToReviewCount";
+        String uri = "/public/user/agent/admin/getAgentRequestsToReviewCount";
         RequestSearchReview requestGetAgentRequests
                 = new RequestSearchReview(0, 30, "username", "%%", StatusType.ACCEPT);
 //      act
@@ -240,12 +237,12 @@ public class Test_ControllerAgentAdmin extends AbstractTest {
 //        further verification can be done by reading the agent request.
     }
 
-    //    http://localhost:8080/public/user/updateAdminNote
+    //    http://localhost:8080/public/user/agent/admin/updateAdminNote
 //    @org.junit.jupiter.api.Test
     @Test
     public void testUpdateAdminNote() throws Exception {
 //     arrange
-        String uri = "/public/user/updateAdminNote";
+        String uri = "/public/user/agent/admin/updateAdminNote";
         String requestID = dao_agent_i.getAgentRequests(0, 10).get(0).getId().toString();
         String note = "Controller : ADMIN NOTE : Please provide additional Documents!";
         System.out.println(requestID);
@@ -263,11 +260,11 @@ public class Test_ControllerAgentAdmin extends AbstractTest {
         assertEquals(note, dao_agent_i.getOneAgentRequest(requestID).getNoteAdmin());
     }
 
-    //    http://localhost:8080/public/user/updateApplicantNote
+    //    http://localhost:8080/public/user/agent/admin/updateApplicantNote
     @Test
     public void testUpdateApplicantNote() throws Exception {
 //     arrange
-        String uri = "/public/user/updateApplicantNote";
+        String uri = "/public/user/agent/admin/updateApplicantNote";
         String requestID = dao_agent_i.getAgentRequests(0, 10).get(0).getId().toString();
         String note = "Controller : updateApplicantNote NOTE : Please provide additional Documents!";
         System.out.println(requestID);
@@ -285,11 +282,11 @@ public class Test_ControllerAgentAdmin extends AbstractTest {
         assertEquals(note, dao_agent_i.getOneAgentRequest(requestID).getNoteApplicant());
     }
 
-    //    http://localhost:8080/public/user/updatePersonalNote
+    //    http://localhost:8080/public/user/agent/admin/updatePersonalNote
     @Test
     public void testupdatePersonalNote() throws Exception {
 //     arrange
-        String uri = "/public/user/updatePersonalNote";
+        String uri = "/public/user/agent/admin/updatePersonalNote";
         String requestID = dao_agent_i.getAgentRequests(0, 10).get(0).getId().toString();
         String note = "Controller : update Personal NOTE : Please provide additional Documents!";
         System.out.println(requestID);
@@ -307,79 +304,6 @@ public class Test_ControllerAgentAdmin extends AbstractTest {
         assertEquals(note, dao_agent_i.getOneAgentRequest(requestID).getNotePersonal());
     }
 
-    //    Start : old Code
-    //    String uri = "/public/user/history/update";
-    @Test
-    @Order(2)
-    public void testUpdate() throws Exception {
-        String uri = "/public/user/history/update";
-        String userID = TestUtil.userID;
-        String historyID = getID();
-        System.out.println("\nHistory Update\n");
-        History history = new History();
-        history.setId(new Long(historyID));//will be set from service.
-        history.setUserId(userID);//will be set from service.
-        history.setDate(DateUtil.getDate().toString());
-        history.setLocation("Karakom, WestPoint, Dhaka.");
-        history.setPatientDescription("Kidney Update, Update");
-        history.setRefferedBy("Mobile/");
-        history.setNote("Went to at night.");
-
-        String inputJson = super.mapToJson(history);
-        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
-                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
-
-        int status = mvcResult.getResponse().getStatus();
-        assertEquals(200, status);
-        String content = mvcResult.getResponse().getContentAsString();
-        System.out.println(content);
-        Map<String, String> map = super.mapFromJson(content, Map.class);
-        assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
-    }
-
-    //    String uri = "/public/user/history/search";
-    @Test
-    @Order(4)
-    public void testSearh() throws Exception {
-        String uri = "/public/user/history/search";
-//        "15", "note", "khulna", 0, 10
-        RequestSearch requestSearch = new RequestSearch("16", "patient_description", "", 0, 10);
-
-        String inputJson = super.mapToJson(requestSearch);
-        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
-                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
-
-        int status = mvcResult.getResponse().getStatus();
-        assertEquals(200, status);
-        String content = mvcResult.getResponse().getContentAsString();
-        System.out.println(content);
-        List<History> historyList = Arrays.asList(super.mapFromJson(content, History[].class));
-        historyList.forEach(h -> System.out.println(h.toString()));
-//        assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
-    }
-
-    //    String uri = "/public/user/history/search";
-    @Test
-    @Order(5)
-    public void testSearchCount() throws Exception {
-        String uri = "/public/user/history/searchCount";
-//        "15", "note", "khulna", 0, 10
-        RequestSearch requestSearch
-                = new RequestSearch("15", "location", "%kh%", 0, 10);
-
-        String inputJson = super.mapToJson(requestSearch);
-        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
-                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
-
-        int status = mvcResult.getResponse().getStatus();
-        assertEquals(200, status);
-        String content = mvcResult.getResponse().getContentAsString();
-        System.out.println(content);
-        Map<String, Integer> map = super.mapFromJson(content, Map.class);
-        System.out.println("\n" + map.get(StringUtil.COUNT) + "\n");
-//        assertEquals(StringUtil.COUNT, map.get(StringUtil.STATUS));
-    }
-//    end : old Code
 
 //    Helpers --------------------------------
 
