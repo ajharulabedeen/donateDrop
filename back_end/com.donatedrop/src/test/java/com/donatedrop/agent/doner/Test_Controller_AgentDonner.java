@@ -202,7 +202,8 @@ public class Test_Controller_AgentDonner extends AbstractTest {
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
-        List<DonnerToAgentRequestToReview> agentRequestListToReviews = Arrays.asList(super.mapFromJson(content, DonnerToAgentRequestToReview.class));
+//        System.out.println("\n" + content + "\n");
+        List<DonnerToAgentRequestToReview> agentRequestListToReviews = Arrays.asList(super.mapFromJson(content, DonnerToAgentRequestToReview[].class));
         agentRequestListToReviews.forEach(donnerToAgentRequestReview -> System.out.println(donnerToAgentRequestReview));
         assertTrue(agentRequestListToReviews.size() >= 0);
 

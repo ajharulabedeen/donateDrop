@@ -200,7 +200,7 @@ public class Test_ControllerAgentAdmin extends AbstractTest {
         String uri = "/public/user/agent/admin/getAgentRequestsToReview";
         RequestSearchReview requestGetAgentRequests
 //                = new RequestSearchReview(0, 30, "username", "%1%", "ACCEPT");
-                = new RequestSearchReview(0, 30, "name", "%kh%", StatusType.REJECT);
+                = new RequestSearchReview(0, 30, "name", "%%", StatusType.REJECT);
 //      act
         String inputJson = super.mapToJson(requestGetAgentRequests);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
@@ -209,6 +209,7 @@ public class Test_ControllerAgentAdmin extends AbstractTest {
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
+//        System.out.println("\n" + content + "\n");
         List<AgentRequestToReview> agentRequestListToReviews = Arrays.asList(super.mapFromJson(content, AgentRequestToReview[].class));
         agentRequestListToReviews.forEach(agentRequestToReview -> System.out.println(agentRequestToReview));
 

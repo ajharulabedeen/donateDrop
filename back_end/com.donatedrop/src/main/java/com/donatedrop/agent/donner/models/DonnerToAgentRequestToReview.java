@@ -5,53 +5,48 @@
  */
 package com.donatedrop.agent.donner.models;
 
+import com.donatedrop.profile.model.PhoneNumber;
+
 import java.io.Serializable;
 import java.math.BigInteger;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import java.util.List;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
  * @author G7
  */
 @Entity
 @Table(name = "donner_to_agent_request_review")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "DonnerToAgentRequestToReview.findAll", query = "SELECT d FROM DonnerToAgentRequestToReview d")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByProfileId", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.profileId = :profileId")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByName", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.name = :name")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByGender", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.gender = :gender")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByProfession", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.profession = :profession")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByUserId", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.userId = :userId")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByAddressPermanent", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.addressPermanent = :addressPermanent")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByAddressPresent", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.addressPresent = :addressPresent")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByRequestId", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.requestId = :requestId")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByRequestDate", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.requestDate = :requestDate")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByAcceptDate", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.acceptDate = :acceptDate")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByRejectDate", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.rejectDate = :rejectDate")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByRemoveDate", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.removeDate = :removeDate")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByStatus", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.status = :status")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPresentId", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.presentId = :presentId")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPresentDiv", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.presentDiv = :presentDiv")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPresentDist", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.presentDist = :presentDist")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPresentUpz", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.presentUpz = :presentUpz")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPresentUnion", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.presentUnion = :presentUnion")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPresentStreet", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.presentStreet = :presentStreet")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByUsername", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.username = :username")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPermanentId", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.permanentId = :permanentId")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPermanentDiv", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.permanentDiv = :permanentDiv")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPermanentDist", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.permanentDist = :permanentDist")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPermanentUpz", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.permanentUpz = :permanentUpz")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPermanentUnion", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.permanentUnion = :permanentUnion")
-    , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPermanentStreet", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.permanentStreet = :permanentStreet")})
+        @NamedQuery(name = "DonnerToAgentRequestToReview.findAll", query = "SELECT d FROM DonnerToAgentRequestToReview d")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByProfileId", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.profileId = :profileId")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByName", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.name = :name")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByGender", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.gender = :gender")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByProfession", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.profession = :profession")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByUserId", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.userId = :userId")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByAddressPermanent", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.addressPermanent = :addressPermanent")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByAddressPresent", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.addressPresent = :addressPresent")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByRequestId", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.requestId = :requestId")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByRequestDate", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.requestDate = :requestDate")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByAcceptDate", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.acceptDate = :acceptDate")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByRejectDate", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.rejectDate = :rejectDate")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByRemoveDate", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.removeDate = :removeDate")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByStatus", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.status = :status")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPresentId", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.presentId = :presentId")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPresentDiv", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.presentDiv = :presentDiv")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPresentDist", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.presentDist = :presentDist")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPresentUpz", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.presentUpz = :presentUpz")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPresentUnion", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.presentUnion = :presentUnion")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPresentStreet", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.presentStreet = :presentStreet")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByUsername", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.username = :username")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPermanentId", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.permanentId = :permanentId")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPermanentDiv", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.permanentDiv = :permanentDiv")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPermanentDist", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.permanentDist = :permanentDist")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPermanentUpz", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.permanentUpz = :permanentUpz")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPermanentUnion", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.permanentUnion = :permanentUnion")
+        , @NamedQuery(name = "DonnerToAgentRequestToReview.findByPermanentStreet", query = "SELECT d FROM DonnerToAgentRequestToReview d WHERE d.permanentStreet = :permanentStreet")})
 public class DonnerToAgentRequestToReview implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -121,6 +116,10 @@ public class DonnerToAgentRequestToReview implements Serializable {
     private String permanentUnion;
     @Column(name = "permanent_street")
     private String permanentStreet;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "profile_id")
+    private List<PhoneNumber> phone_number;
 
     public DonnerToAgentRequestToReview() {
     }
@@ -357,4 +356,47 @@ public class DonnerToAgentRequestToReview implements Serializable {
         this.permanentStreet = permanentStreet;
     }
 
+    public List<PhoneNumber> getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(List<PhoneNumber> phone_number) {
+        this.phone_number = phone_number;
+    }
+
+    @Override
+    public String toString() {
+        return "DonnerToAgentRequestToReview{" +
+                "profileId=" + profileId +
+                ", name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", profession='" + profession + '\'' +
+                ", userId='" + userId + '\'' +
+                ", addressPermanent=" + addressPermanent +
+                ", addressPresent=" + addressPresent +
+                ", requestId=" + requestId +
+                ", requestDate='" + requestDate + '\'' +
+                ", acceptDate='" + acceptDate + '\'' +
+                ", rejectDate='" + rejectDate + '\'' +
+                ", removeDate='" + removeDate + '\'' +
+                ", status='" + status + '\'' +
+                ", noteDonner='" + noteDonner + '\'' +
+                ", noteAgent='" + noteAgent + '\'' +
+                ", noteAgentPersonal='" + noteAgentPersonal + '\'' +
+                ", presentId=" + presentId +
+                ", presentDiv='" + presentDiv + '\'' +
+                ", presentDist='" + presentDist + '\'' +
+                ", presentUpz='" + presentUpz + '\'' +
+                ", presentUnion='" + presentUnion + '\'' +
+                ", presentStreet='" + presentStreet + '\'' +
+                ", username='" + username + '\'' +
+                ", permanentId=" + permanentId +
+                ", permanentDiv='" + permanentDiv + '\'' +
+                ", permanentDist='" + permanentDist + '\'' +
+                ", permanentUpz='" + permanentUpz + '\'' +
+                ", permanentUnion='" + permanentUnion + '\'' +
+                ", permanentStreet='" + permanentStreet + '\'' +
+                ", phone_number=" + phone_number +
+                '}';
+    }
 }
