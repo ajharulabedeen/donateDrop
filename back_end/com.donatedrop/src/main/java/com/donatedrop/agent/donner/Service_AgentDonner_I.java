@@ -10,7 +10,7 @@ import com.donatedrop.agent.models.RequestReviewRequest;
 import java.util.List;
 import java.util.Map;
 
-public interface Dao_AgentDonner_I {
+public interface Service_AgentDonner_I {
 
     public Map<String, String> saveRequest(DonnerRequestToAgent donnerRequestToAgent);
 
