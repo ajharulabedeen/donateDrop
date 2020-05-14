@@ -111,10 +111,19 @@ public class Test_Dao_AgentDonner_Impl {
     @Order(2)
     public void testGetDonnerToAgentRequestReview() {
         RequestSearchReview requestSearchReview =
-                new RequestSearchReview(0, 5, "phonenumber", "%0171%", StatusType.ZERO);
+                new RequestSearchReview(0, 5, "phonenumber", "%%", StatusType.ZERO);
         dao_agentDonner_i.getDonnerToAgentRequestReview(requestSearchReview).forEach(donnerToAgentRequestReview -> {
             System.out.println(donnerToAgentRequestReview.toString());
         });
+    }
+
+    @Test
+    @Order(3)
+    public void testGetDonnerToAgentRequestReviewCount() {
+        RequestSearchReview requestSearchReview =
+                new RequestSearchReview(0, 5, "phonenumber", "%20%", StatusType.ZERO);
+        Map<String, String> result = dao_agentDonner_i.getDonnerToAgentRequestReviewCount(requestSearchReview);
+        System.out.println(result);
     }
 
 }

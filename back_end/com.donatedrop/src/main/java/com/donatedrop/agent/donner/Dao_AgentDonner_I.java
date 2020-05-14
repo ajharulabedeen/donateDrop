@@ -20,7 +20,9 @@ public interface Dao_AgentDonner_I {
 
     public Map<String, String> reviewDonnerRequest(RequestReviewRequest reviewRequest);
 
-    public List<DonnerToAgentRequestReview> getDonnerToAgentRequestReview(RequestSearchReview requestGetAgentRequestsReview);
+    public List<DonnerToAgentRequestReview> getDonnerToAgentRequestReview(RequestSearchReview requestSearchReview);
+
+    public Map<String, String> getDonnerToAgentRequestReviewCount(RequestSearchReview requestSearchReview);
 
 //    public Map<String, String> getAgentRequestsToReviewCount(String column, String key, String statusType);
 //
