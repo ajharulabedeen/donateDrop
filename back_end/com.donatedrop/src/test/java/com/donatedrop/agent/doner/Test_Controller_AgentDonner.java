@@ -28,6 +28,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 @SpringBootTest
 public class Test_Controller_AgentDonner extends AbstractTest {
@@ -47,20 +48,15 @@ public class Test_Controller_AgentDonner extends AbstractTest {
     public void testSveRequestDonnerToAgent() throws Exception {
         String uri = "/public/user/agent/donner/saveRequest";
         System.out.println("\nAgent Donner Request Save\n");
-//        BigInteger userIDBigInteger = dumpDao.getNotRequestedDonnerToAgentUsers(0, 5).get(0);
-//        Integer userID = ((BigInteger) userIDBigInteger).intValue();
-//        System.out.println("userID : " + userID);
+        BigInteger userIDBigInteger = dumpDao.getNotRequestedDonnerToAgentUsers(0, 5).get(0);
+        Integer userID = ((BigInteger) userIDBigInteger).intValue();
+        System.out.println("userID : " + userID);
 
-        String userID = dumpDao.getNotRequestedDonnerToAgentUsers(0, 5).get(0).toString();
         DonnerRequestToAgent donnerRequestToAgent = new DonnerRequestToAgent();
-        donnerRequestToAgent.setUserIdDonner(userID);
-        donnerRequestToAgent.setNoteDonner("I am from your home town!");
-
-//        DonnerRequestToAgent donnerRequestToAgent = new DonnerRequestToAgent();
-//        donnerRequestToAgent.setUserIdDonner(userID.toString());
-//        donnerRequestToAgent.setRequestDate(DateUtil.getDate().toString());
-//        donnerRequestToAgent.setStatus("0");
-//        donnerRequestToAgent.setNoteDonner("I am from ur university!");
+        donnerRequestToAgent.setUserIdDonner(userID.toString());
+        donnerRequestToAgent.setRequestDate(DateUtil.getDate().toString());
+        donnerRequestToAgent.setStatus("0");
+        donnerRequestToAgent.setNoteDonner("I am from ur university!");
 
         String inputJson = super.mapToJson(donnerRequestToAgent);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
@@ -83,8 +79,20 @@ public class Test_Controller_AgentDonner extends AbstractTest {
     @Test
     @Order(1)
     //"/public/user/agent/donner/findOneRequestById";
-    public void testFindOneRequestById() {
-        String url = "/public/user/agent/donner/findOneRequestById";
+    // RequestParam String donnerAgentRequestID
+    public void testFindOneRequestById() throws Exception {
+        String donnerAgentRequestID = dumpDao.getAgentDonnersRequests(0, 5).get(0).getId().toString();
+        String uri = "/public/user/agent/donner/findOneRequestById?donnerAgentRequestID=" + donnerAgentRequestID;
+
+        MvcResult mvcResult = mvc.perform(
+                MockMvcRequestBuilders.post(uri)
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        DonnerRequestToAgent donnerRequestToAgent = super.mapFromJson(content, DonnerRequestToAgent.class);
+        System.out.println(donnerRequestToAgent);
+        assertNotNull(donnerRequestToAgent);
     }
 
     @Test
