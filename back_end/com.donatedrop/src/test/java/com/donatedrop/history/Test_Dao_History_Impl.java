@@ -1,6 +1,7 @@
 package com.donatedrop.history;
 
 import com.donatedrop.models.Address;
+import com.donatedrop.other.DumpDao;
 import com.donatedrop.other.DumpData;
 import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
 import com.donatedrop.profile.model.EmergencyContact;
@@ -10,10 +11,7 @@ import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
 import com.donatedrop.util.Utils;
 import org.junit.Assert;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -25,6 +23,9 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
+
+//import static org.junit.jupiter.api.Assertions;//not working
+import static org.junit.Assert.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest
@@ -38,6 +39,9 @@ public class Test_Dao_History_Impl {
 
     @PersistenceContext
     EntityManager entityManager;
+
+    @Autowired
+    DumpDao dumpDao;
 
     @Test
     @Order(-1)
@@ -53,7 +57,8 @@ public class Test_Dao_History_Impl {
     @Order(1)
     public void testSave() {
         Map<String, String> status = null;
-        String userID = Utils.getLoggedUserID();
+//        String userID = Utils.getLoggedUserID();
+        String userID = dumpDao.getUsers(0, 10).get(0).getId().toString();
         String id = "";
         // Arrange
         try {
@@ -90,12 +95,13 @@ public class Test_Dao_History_Impl {
     }
 
     @Test
-    @Order(4)
+    @Order(3)
     public void testUpdate() {
         Map<String, String> result = new HashMap<>();
 
         String historyID = getID();
-        String userID = Utils.getLoggedUserID();
+        String userID = dao_history_i.findOne(historyID).getUserId();
+//        String userID = Utils.getLoggedUserID();
 
         System.out.println("\nHistory Update\n");
         History history = new History();
@@ -130,11 +136,44 @@ public class Test_Dao_History_Impl {
     }
 
     @Test
+    @Order(4)
+    public void testGetAllHistory() {
+        List<History> historyList = dao_history_i.getAllHistory("15", 1, 10);
+        historyList.forEach(h -> System.out.println(h.toString()));
+        assertNotNull(historyList);
+    }
+
+    @Test
     @Order(5)
+    public void testGetTotalCount() {
+        System.out.println("\nTotal : \n" + dao_history_i.getTotalCount("15"));
+    }
+
+    @Test
+    @Order(6)
+    public void testSearch() {
+        List<History> historyList = dao_history_i.search("15", "note", "khulna", 0, 10);
+        System.out.println("\n");
+        historyList.forEach(h -> System.out.println(h.toString()));
+        System.out.println("\n");
+        assertNotNull(historyList);
+    }
+
+    @Test
+    @Order(7)
+    public void testSearchCount() {
+        Map<String, Integer> count = dao_history_i.searchCount("16", "note", "%kh", 0);
+        System.out.println("\nCount : " + count.get(StringUtil.COUNT) + "\n");
+        assertNotNull(count.get(StringUtil.COUNT));
+    }
+
+    @Test
+    @Order(8)
     public void testDelete() {
         Map<String, String> result = new HashMap<>();
         String historyID = getID();
-        String userID = Utils.getLoggedUserID();
+        String userID = dao_history_i.findOne(historyID).getUserId();
+//        String userID = Utils.getLoggedUserID();
 
         //        unautherised
         result = dao_history_i.delete(historyID, userID + 1);
@@ -148,31 +187,6 @@ public class Test_Dao_History_Impl {
         Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
 
         assert (dao_history_i.findOne(historyID) == null);
-    }
-
-    @Test
-    public void testGetAllHistory() {
-        List<History> historyList = dao_history_i.getAllHistory("15", 1, 10);
-        historyList.forEach(h -> System.out.println(h.toString()));
-    }
-
-    @Test
-    public void testGetTotalCount() {
-        System.out.println("\nTotal : \n" + dao_history_i.getTotalCount("15"));
-    }
-
-    @Test
-    public void testSearch() {
-        List<History> historyList = dao_history_i.search("15", "note", "khulna", 0, 10);
-        System.out.println("\n");
-        historyList.forEach(h -> System.out.println(h.toString()));
-        System.out.println("\n");
-    }
-
-    @Test
-    public void testSearchCount() {
-        Map<String, Integer> count = dao_history_i.searchCount("16", "note", "%kh", 0);
-        System.out.println("\nCount : " + count.get(StringUtil.COUNT) + "\n");
     }
 
 
