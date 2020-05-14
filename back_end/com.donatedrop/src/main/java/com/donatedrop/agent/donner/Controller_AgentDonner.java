@@ -6,7 +6,7 @@
 package com.donatedrop.agent.donner;
 
 import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
-import com.donatedrop.agent.donner.models.DonnerToAgentRequestReview;
+import com.donatedrop.agent.donner.models.DonnerToAgentRequestToReview;
 import com.donatedrop.agent.donner.models.RequestSearchReview;
 import com.donatedrop.agent.models.RequestNote;
 import com.donatedrop.agent.models.RequestReviewRequest;
@@ -53,7 +53,7 @@ public class Controller_AgentDonner {
     }
 
     @PostMapping("getDonnerToAgentRequestToReview")
-    public List<DonnerToAgentRequestReview> getDonnerToAgentRequestToReview(@RequestBody RequestSearchReview requestSearchReview) {
+    public List<DonnerToAgentRequestToReview> getDonnerToAgentRequestToReview(@RequestBody RequestSearchReview requestSearchReview) {
         return service_AgentDonner_I.getDonnerToAgentRequestToReview(requestSearchReview);
     }
 

@@ -3,7 +3,7 @@ package com.donatedrop.agent.donner;
 import com.donatedrop.agent.donner.models.RequestSearchReview;
 import com.donatedrop.agent.admin.model.*;
 import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
-import com.donatedrop.agent.donner.models.DonnerToAgentRequestReview;
+import com.donatedrop.agent.donner.models.DonnerToAgentRequestToReview;
 import com.donatedrop.agent.models.RequestNote;
 import com.donatedrop.agent.models.RequestReviewRequest;
 import com.donatedrop.agent.models.StatusType;
@@ -51,7 +51,7 @@ public class Service_AgentDonner_Impl implements Service_AgentDonner_I {
         }
     }
 
-    public List<DonnerToAgentRequestReview> getDonnerToAgentRequestToReview(RequestSearchReview requestSearchReview) {
+    public List<DonnerToAgentRequestToReview> getDonnerToAgentRequestToReview(RequestSearchReview requestSearchReview) {
         return agentDonner_I.getDonnerToAgentRequestToReview(requestSearchReview);
     }
 

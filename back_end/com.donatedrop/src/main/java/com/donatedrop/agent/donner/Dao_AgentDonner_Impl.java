@@ -11,7 +11,7 @@ import com.donatedrop.agent.admin.model.RequestAdminNote;
 import com.donatedrop.agent.admin.model.RequestApplicantNote;
 import com.donatedrop.agent.donner.models.RequestSearchReview;
 import com.donatedrop.agent.admin.model.RequestPersonalNote;
-import com.donatedrop.agent.donner.models.DonnerToAgentRequestReview;
+import com.donatedrop.agent.donner.models.DonnerToAgentRequestToReview;
 import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
 import com.donatedrop.agent.models.RequestNote;
@@ -119,14 +119,14 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
     }
 
     @Override
-    public List<DonnerToAgentRequestReview> getDonnerToAgentRequestToReview(RequestSearchReview requestGetAgentRequestsReview) {
+    public List<DonnerToAgentRequestToReview> getDonnerToAgentRequestToReview(RequestSearchReview requestGetAgentRequestsReview) {
         int start = requestGetAgentRequestsReview.getStart();
         int max = requestGetAgentRequestsReview.getMax();
         String column = requestGetAgentRequestsReview.getColumn();
         String key = requestGetAgentRequestsReview.getKey();
         String status = requestGetAgentRequestsReview.getStatusType();
         //        String q = "SELECT * FROM `agent_request_review`";
-        List<DonnerToAgentRequestReview> donnerToAgentRequestReviews = new ArrayList<>();
+        List<DonnerToAgentRequestToReview> donnerToAgentRequestReviews = new ArrayList<>();
         String q = "";
         try {
             if (column.equals(StringUtil.PHONENUMBER)) {
@@ -140,7 +140,7 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
                         + " AND `donner_to_agent_request_review`.`status`='" + status + "'";
             }
             donnerToAgentRequestReviews
-                    = entityManager.createNativeQuery(q, DonnerToAgentRequestReview.class)
+                    = entityManager.createNativeQuery(q, DonnerToAgentRequestToReview.class)
                     .setFirstResult(start)
                     .setMaxResults(max)
                     .getResultList();

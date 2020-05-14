@@ -110,7 +110,7 @@ public class Test_Dao_AgentDonner_Impl {
 
     @Test
     @Order(2)
-    public void testGetDonnerToAgentRequestReview() {
+    public void testGetDonnerToAgentRequestToReview() {
         RequestSearchReview requestSearchReview =
                 new RequestSearchReview(0, 5, "phonenumber", "%%", StatusType.ZERO);
         dao_agentDonner_i.getDonnerToAgentRequestToReview(requestSearchReview).forEach(donnerToAgentRequestReview -> {
@@ -120,7 +120,7 @@ public class Test_Dao_AgentDonner_Impl {
 
     @Test
     @Order(3)
-    public void testGetDonnerToAgentRequestReviewCount() {
+    public void testGetDonnerToAgentRequestToReviewCount() {
         RequestSearchReview requestSearchReview =
                 new RequestSearchReview(0, 5, "phonenumber", "%20%", StatusType.ZERO);
         Map<String, String> result = dao_agentDonner_i.getDonnerToAgentRequestReviewCount(requestSearchReview);

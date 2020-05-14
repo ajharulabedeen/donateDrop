@@ -1,8 +1,11 @@
 package com.donatedrop.agent.doner;
 
 import com.donatedrop.agent.admin.model.AgentRequest;
+import com.donatedrop.agent.admin.model.AgentRequestToReview;
 import com.donatedrop.agent.donner.Dao_AgentDonner_I;
 import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
+import com.donatedrop.agent.donner.models.DonnerToAgentRequestToReview;
+import com.donatedrop.agent.donner.models.RequestSearchReview;
 import com.donatedrop.agent.models.RequestReviewRequest;
 import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.geocode.AbstractTest;
@@ -26,11 +29,12 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 @SpringBootTest
 public class Test_Controller_AgentDonner extends AbstractTest {
@@ -184,9 +188,23 @@ public class Test_Controller_AgentDonner extends AbstractTest {
 
     @Test
     @Order(1)
-    //"/public/user/agent/donner/getDonnerToAgentRequestReview";
-    public void testGetDonnerToAgentRequestReview() {
-        String url = "/public/user/agent/donner/getDonnerToAgentRequestReview";
+    //"/public/user/agent/donner/getDonnerToAgentRequestToReview";
+    public void testGetDonnerToAgentRequestToReview() throws Exception {
+        String uri = "/public/user/agent/donner/getDonnerToAgentRequestToReview";
+        RequestSearchReview requestSearchReview =
+                new RequestSearchReview(0, 5, "username", "%%", StatusType.ZERO);
+
+        //      act
+        String inputJson = super.mapToJson(requestSearchReview);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+//assert
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        List<DonnerToAgentRequestToReview> agentRequestListToReviews = Arrays.asList(super.mapFromJson(content, DonnerToAgentRequestToReview.class));
+        agentRequestListToReviews.forEach(donnerToAgentRequestReview -> System.out.println(donnerToAgentRequestReview));
+        assertTrue(agentRequestListToReviews.size() >= 0);
 
     }
 
@@ -195,6 +213,9 @@ public class Test_Controller_AgentDonner extends AbstractTest {
     //"/public/user/agent/donner/getDonnerToAgentRequestReviewCount";
     public void testGetDonnerToAgentRequestReviewCount() {
         String url = "/public/user/agent/donner/getDonnerToAgentRequestReviewCount";
+        RequestSearchReview requestSearchReview =
+                new RequestSearchReview(0, 5, "phonenumber", "%%", StatusType.ZERO);
+
     }
 
     @Test
