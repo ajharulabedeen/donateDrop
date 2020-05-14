@@ -15,9 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author G7
@@ -30,52 +28,52 @@ public class Controller_AgentDonner {
     Service_AgentDonner_I service_AgentDonner_I;
 
     @PostMapping("saveRequest")
-    public Map<String, String> saveRequest(DonnerRequestToAgent donnerRequestToAgent) {
+    public Map<String, String> saveRequest(@RequestBody DonnerRequestToAgent donnerRequestToAgent) {
         return service_AgentDonner_I.saveRequest(donnerRequestToAgent);
     }
 
     @PostMapping("findOneRequestById")
-    public DonnerRequestToAgent findOneRequestById(String donnerAgentRequestID) {
+    public DonnerRequestToAgent findOneRequestById(@RequestParam String donnerAgentRequestID) {
         return service_AgentDonner_I.findOneRequestById(donnerAgentRequestID);
     }
 
     @PostMapping("findOneRequestUserID")
-    public DonnerRequestToAgent findOneRequestUserID(String userID) {
+    public DonnerRequestToAgent findOneRequestUserID(@RequestParam String userID) {
         return service_AgentDonner_I.findOneRequestUserID(userID);
     }
 
     @PostMapping("deleteRequestByUserID")
-    public Map<String, String> deleteRequestByUserID(String userID) {
+    public Map<String, String> deleteRequestByUserID(@RequestParam String userID) {
         return service_AgentDonner_I.deleteRequestByUserID(userID);
     }
 
     @PostMapping("reviewDonnerRequest")
-    public Map<String, String> reviewDonnerRequest(RequestReviewRequest reviewRequest) {
+    public Map<String, String> reviewDonnerRequest(@RequestBody RequestReviewRequest reviewRequest) {
         return service_AgentDonner_I.reviewDonnerRequest(reviewRequest);
     }
 
     @PostMapping("getDonnerToAgentRequestReview")
-    public List<DonnerToAgentRequestReview> getDonnerToAgentRequestReview(RequestSearchReview requestSearchReview) {
+    public List<DonnerToAgentRequestReview> getDonnerToAgentRequestReview(@RequestBody RequestSearchReview requestSearchReview) {
         return service_AgentDonner_I.getDonnerToAgentRequestReview(requestSearchReview);
     }
 
     @PostMapping("getDonnerToAgentRequestReviewCount")
-    public Map<String, String> getDonnerToAgentRequestReviewCount(RequestSearchReview requestSearchReview) {
+    public Map<String, String> getDonnerToAgentRequestReviewCount(@RequestBody RequestSearchReview requestSearchReview) {
         return service_AgentDonner_I.getDonnerToAgentRequestReviewCount(requestSearchReview);
     }
 
     @PostMapping("updateAgentNote")
-    public Map<String, String> updateAgentNote(RequestNote requestNote) {
+    public Map<String, String> updateAgentNote(@RequestBody RequestNote requestNote) {
         return service_AgentDonner_I.updateAgentNote(requestNote);
     }
 
     @PostMapping("updateNoteDonner")
-    Map<String, String> updateNoteDonner(RequestNote requestNote) {
+    Map<String, String> updateNoteDonner(@RequestBody RequestNote requestNote) {
         return service_AgentDonner_I.updateNoteDonner(requestNote);
     }
 
     @PostMapping("updateNoteAgentPersonal")
-    public Map<String, String> updateNoteAgentPersonal(RequestNote requestNote) {
+    public Map<String, String> updateNoteAgentPersonal(@RequestBody RequestNote requestNote) {
         return service_AgentDonner_I.updateNoteAgentPersonal(requestNote);
     }
 

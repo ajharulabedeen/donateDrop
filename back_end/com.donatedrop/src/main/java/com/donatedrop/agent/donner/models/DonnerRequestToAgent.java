@@ -26,7 +26,7 @@ public class DonnerRequestToAgent implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "user_id_donner")
+    @Column(name = "user_id_donner", unique = true)
     String userIdDonner;
     @Column(name = "request_date")
     String requestDate;
