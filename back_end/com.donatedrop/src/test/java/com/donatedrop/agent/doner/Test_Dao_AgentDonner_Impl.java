@@ -8,6 +8,7 @@ package com.donatedrop.agent.doner;
 import com.donatedrop.agent.admin.model.AgentRequest;
 import com.donatedrop.agent.donner.Dao_AgentDonner_I;
 import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
+import com.donatedrop.agent.donner.models.RequestSearchReview;
 import com.donatedrop.agent.models.RequestReviewRequest;
 import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.other.DumpDao;
@@ -109,7 +110,11 @@ public class Test_Dao_AgentDonner_Impl {
     @Test
     @Order(2)
     public void testGetDonnerToAgentRequestReview() {
-
+        RequestSearchReview requestSearchReview =
+                new RequestSearchReview(0, 5, "phonenumber", "%0171%", StatusType.ZERO);
+        dao_agentDonner_i.getDonnerToAgentRequestReview(requestSearchReview).forEach(donnerToAgentRequestReview -> {
+            System.out.println(donnerToAgentRequestReview.toString());
+        });
     }
 
 }

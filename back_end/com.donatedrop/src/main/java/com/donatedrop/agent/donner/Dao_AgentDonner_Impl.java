@@ -130,14 +130,15 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
             if (column.equals(StringUtil.PHONENUMBER)) {
                 q = "SELECT donner_to_agent_request_review.* FROM donner_to_agent_request_review, phonenumber "
                         + "WHERE donner_to_agent_request_review.profile_id = phonenumber.profile_id "
-                        + " AND phonenumber.number LIKE '" + key + "'";
+                        + " AND phonenumber.number LIKE '" + key + "'"
+                        + " AND `donner_to_agent_request_review`.`status`='" + status + "'";
             } else {
                 q = "SELECT * FROM `donner_to_agent_request_review` WHERE `donner_to_agent_request_review`.`"
                         + column + "` LIKE '" + key + "'"
                         + " AND `donner_to_agent_request_review`.`status`='" + status + "'";
             }
             donnerToAgentRequestReviews
-                    = entityManager.createNativeQuery(q, AgentRequestToReview.class)
+                    = entityManager.createNativeQuery(q, DonnerToAgentRequestReview.class)
                     .setFirstResult(start)
                     .setMaxResults(max)
                     .getResultList();
