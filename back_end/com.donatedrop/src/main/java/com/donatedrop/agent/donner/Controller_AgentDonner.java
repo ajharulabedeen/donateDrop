@@ -42,10 +42,11 @@ public class Controller_AgentDonner {
         return service_AgentDonner_I.findOneRequestUserID(userID);
     }
 
-    @PostMapping("deleteRequestByUserID")
-    public Map<String, String> deleteRequestByUserID(@RequestParam String userID) {
-        return service_AgentDonner_I.deleteRequestByUserID(userID);
-    }
+    //refactor : have to implement later
+//    @PostMapping("deleteRequestByUserID")
+//    public Map<String, String> deleteRequestByUserID(@RequestParam String userID) {
+//        return service_AgentDonner_I.deleteRequestByUserID(userID);
+//    }
 
     @PostMapping("reviewDonnerRequest")
     public Map<String, String> reviewDonnerRequest(@RequestBody RequestReviewRequest reviewRequest) {

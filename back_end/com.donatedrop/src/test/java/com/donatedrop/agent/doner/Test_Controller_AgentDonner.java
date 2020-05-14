@@ -1,7 +1,10 @@
 package com.donatedrop.agent.doner;
 
 import com.donatedrop.agent.admin.model.AgentRequest;
+import com.donatedrop.agent.donner.Dao_AgentDonner_I;
 import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
+import com.donatedrop.agent.models.RequestReviewRequest;
+import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.geocode.AbstractTest;
 import com.donatedrop.other.DumpDao;
 import com.donatedrop.util.DateUtil;
@@ -40,6 +43,9 @@ public class Test_Controller_AgentDonner extends AbstractTest {
 
     @Autowired
     DumpDao dumpDao;
+
+    @Autowired
+    Dao_AgentDonner_I dao_agentDonner_i;
 
     @Test
     @Order(1)
@@ -116,6 +122,7 @@ public class Test_Controller_AgentDonner extends AbstractTest {
     @Test
     @Order(1)
     //"/public/user/agent/donner/deleteRequestByUserID";
+    //refactor : have to implement later
     public void testDeleteRequestByUserID() {
         String url = "/public/user/agent/donner/deleteRequestByUserID";
     }
@@ -123,8 +130,56 @@ public class Test_Controller_AgentDonner extends AbstractTest {
     @Test
     @Order(1)
     //"/public/user/agent/donner/reviewDonnerRequest";
-    public void testReviewDonnerRequest() {
-        String url = "/public/user/agent/donner/reviewDonnerRequest";
+    public void testReviewDonnerRequestRightValue() throws Exception {
+        String uri = "/public/user/agent/donner/reviewDonnerRequest";
+        int max = 5;
+        String requestID = dumpDao.getAgentDonnersRequests(0, 5).get(1).getId().toString();
+        System.out.println("requestID : " + requestID);
+        String reviewValue = StatusType.REJECT;
+        RequestReviewRequest reviewRequest = new RequestReviewRequest(requestID, reviewValue);
+
+        String inputJson = super.mapToJson(reviewRequest);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+//      act
+        System.out.println(content);
+
+//      assert
+        Map<String, String> map = super.mapFromJson(content, Map.class);
+        assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
+
+        String savedStatus = dao_agentDonner_i.findOneRequestById(requestID).getStatus();
+        assertEquals(reviewValue, savedStatus);
+    }
+
+    @Test
+    @Order(1)
+    //"/public/user/agent/donner/reviewDonnerRequest";
+    public void testReviewDonnerRequestWrongValue() throws Exception {
+        String uri = "/public/user/agent/donner/reviewDonnerRequest";
+        int max = 5;
+        String requestID = dumpDao.getAgentDonnersRequests(0, 5).get(1).getId().toString();
+        System.out.println("requestID : " + requestID);
+        String reviewValue = "--";
+        RequestReviewRequest reviewRequest = new RequestReviewRequest(requestID, reviewValue);
+
+        String inputJson = super.mapToJson(reviewRequest);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+//      act
+        System.out.println(content);
+
+//      assert
+        Map<String, String> map = super.mapFromJson(content, Map.class);
+        assertEquals(StringUtil.FAIL, map.get(StringUtil.STATUS));
     }
 
     @Test
