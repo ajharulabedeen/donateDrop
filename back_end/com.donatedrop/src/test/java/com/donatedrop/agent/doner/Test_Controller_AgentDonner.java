@@ -1,6 +1,5 @@
 package com.donatedrop.agent.doner;
 
-
 import com.donatedrop.agent.admin.model.AgentRequest;
 import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
 import com.donatedrop.geocode.AbstractTest;
@@ -91,15 +90,27 @@ public class Test_Controller_AgentDonner extends AbstractTest {
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
         DonnerRequestToAgent donnerRequestToAgent = super.mapFromJson(content, DonnerRequestToAgent.class);
-        System.out.println(donnerRequestToAgent);
+        System.out.println("\n" + donnerRequestToAgent + "\n");
         assertNotNull(donnerRequestToAgent);
     }
 
     @Test
     @Order(1)
     //"/public/user/agent/donner/findOneRequestUserID";
-    public void testFindOneRequestUserID() {
-        String url = "/public/user/agent/donner/findOneRequestUserID";
+    //@RequestParam String userID
+    public void testFindOneRequestUserID() throws Exception {
+        String userID = dumpDao.getAgentDonnersRequests(0, 5).get(0).getUserIdDonner().toString();
+        String uri = "/public/user/agent/donner/findOneRequestUserID?userID=" + userID;
+
+        MvcResult mvcResult = mvc.perform(
+                MockMvcRequestBuilders.post(uri)
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        DonnerRequestToAgent donnerRequestToAgent = super.mapFromJson(content, DonnerRequestToAgent.class);
+        System.out.println("\n" + donnerRequestToAgent + "\n");
+        assertNotNull(donnerRequestToAgent);
     }
 
     @Test
@@ -190,6 +201,5 @@ public class Test_Controller_AgentDonner extends AbstractTest {
         }
         return id;
     }
-
 
 }
