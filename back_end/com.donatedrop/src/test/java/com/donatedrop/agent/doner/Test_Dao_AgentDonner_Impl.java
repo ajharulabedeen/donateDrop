@@ -113,7 +113,7 @@ public class Test_Dao_AgentDonner_Impl {
     public void testGetDonnerToAgentRequestReview() {
         RequestSearchReview requestSearchReview =
                 new RequestSearchReview(0, 5, "phonenumber", "%%", StatusType.ZERO);
-        dao_agentDonner_i.getDonnerToAgentRequestReview(requestSearchReview).forEach(donnerToAgentRequestReview -> {
+        dao_agentDonner_i.getDonnerToAgentRequestToReview(requestSearchReview).forEach(donnerToAgentRequestReview -> {
             System.out.println(donnerToAgentRequestReview.toString());
         });
     }

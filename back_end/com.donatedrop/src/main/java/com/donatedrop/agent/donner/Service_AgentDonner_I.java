@@ -22,9 +22,9 @@ public interface Service_AgentDonner_I {
 
     public Map<String, String> reviewDonnerRequest(RequestReviewRequest reviewRequest);
 
-    public List<DonnerToAgentRequestReview> getDonnerToAgentRequestReview(RequestSearchReview requestSearchReview);
+    public List<DonnerToAgentRequestReview> getDonnerToAgentRequestToReview(RequestSearchReview requestSearchReview);
 
-    public Map<String, String> getDonnerToAgentRequestReviewCount(RequestSearchReview requestSearchReview);
+    public Map<String, String> getDonnerToAgentRequestToReviewCount(RequestSearchReview requestSearchReview);
 
     public Map<String, String> updateAgentNote(RequestNote requestNote);
 

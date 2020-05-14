@@ -119,7 +119,7 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
     }
 
     @Override
-    public List<DonnerToAgentRequestReview> getDonnerToAgentRequestReview(RequestSearchReview requestGetAgentRequestsReview) {
+    public List<DonnerToAgentRequestReview> getDonnerToAgentRequestToReview(RequestSearchReview requestGetAgentRequestsReview) {
         int start = requestGetAgentRequestsReview.getStart();
         int max = requestGetAgentRequestsReview.getMax();
         String column = requestGetAgentRequestsReview.getColumn();

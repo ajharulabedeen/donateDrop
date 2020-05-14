@@ -47,20 +47,19 @@ public class Controller_AgentDonner {
 //    public Map<String, String> deleteRequestByUserID(@RequestParam String userID) {
 //        return service_AgentDonner_I.deleteRequestByUserID(userID);
 //    }
-
     @PostMapping("reviewDonnerRequest")
     public Map<String, String> reviewDonnerRequest(@RequestBody RequestReviewRequest reviewRequest) {
         return service_AgentDonner_I.reviewDonnerRequest(reviewRequest);
     }
 
-    @PostMapping("getDonnerToAgentRequestReview")
-    public List<DonnerToAgentRequestReview> getDonnerToAgentRequestReview(@RequestBody RequestSearchReview requestSearchReview) {
-        return service_AgentDonner_I.getDonnerToAgentRequestReview(requestSearchReview);
+    @PostMapping("getDonnerToAgentRequestToReview")
+    public List<DonnerToAgentRequestReview> getDonnerToAgentRequestToReview(@RequestBody RequestSearchReview requestSearchReview) {
+        return service_AgentDonner_I.getDonnerToAgentRequestToReview(requestSearchReview);
     }
 
     @PostMapping("getDonnerToAgentRequestReviewCount")
     public Map<String, String> getDonnerToAgentRequestReviewCount(@RequestBody RequestSearchReview requestSearchReview) {
-        return service_AgentDonner_I.getDonnerToAgentRequestReviewCount(requestSearchReview);
+        return service_AgentDonner_I.getDonnerToAgentRequestToReviewCount(requestSearchReview);
     }
 
     @PostMapping("updateAgentNote")

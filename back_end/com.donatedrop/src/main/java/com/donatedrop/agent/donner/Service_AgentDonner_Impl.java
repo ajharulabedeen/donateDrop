@@ -51,11 +51,11 @@ public class Service_AgentDonner_Impl implements Service_AgentDonner_I {
         }
     }
 
-    public List<DonnerToAgentRequestReview> getDonnerToAgentRequestReview(RequestSearchReview requestSearchReview) {
-        return agentDonner_I.getDonnerToAgentRequestReview(requestSearchReview);
+    public List<DonnerToAgentRequestReview> getDonnerToAgentRequestToReview(RequestSearchReview requestSearchReview) {
+        return agentDonner_I.getDonnerToAgentRequestToReview(requestSearchReview);
     }
 
-    public Map<String, String> getDonnerToAgentRequestReviewCount(RequestSearchReview requestSearchReview) {
+    public Map<String, String> getDonnerToAgentRequestToReviewCount(RequestSearchReview requestSearchReview) {
         return agentDonner_I.getDonnerToAgentRequestReviewCount(requestSearchReview);
     }
 
