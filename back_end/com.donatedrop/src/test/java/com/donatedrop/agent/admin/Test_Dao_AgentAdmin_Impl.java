@@ -37,7 +37,7 @@ public class Test_Dao_AgentAdmin_Impl {
     }
 
     //    @Test
-    @Order(2)
+    @Order(1)
     public void testSaveRequest() {
         AgentRequest agentRequest = new AgentRequest();
         agentRequest.setUserID(TestUtil.userID + 3);
@@ -49,7 +49,7 @@ public class Test_Dao_AgentAdmin_Impl {
     }
 
     @Test
-    @Order(3)
+    @Order(2)
     public void testReviewRequest() {
 //        String id = dumpDao.getUsers(0, 10).get(0).getId().toString();
         int max = 5;
@@ -66,7 +66,9 @@ public class Test_Dao_AgentAdmin_Impl {
         assertEquals(agentRequest.getStatus(), reviewValue);
     }
 
-    @Test
+    //    later will activem when able to store insrted requestID.
+//    @Test
+//    @Order(3)
     public void testDeleteRequest() {
         Map<String, String> result = dao_agent_i.deleteRequest("16" + 1);
         System.out.println("\nResult : \n" + result);
@@ -74,6 +76,7 @@ public class Test_Dao_AgentAdmin_Impl {
     }
 
     @Test
+    @Order(4)
     public void testGetAllRequestAgent() {
         dao_agent_i.getAgentRequests(0, 10).forEach(ar -> {
             System.out.println(ar.toString());
@@ -81,6 +84,7 @@ public class Test_Dao_AgentAdmin_Impl {
     }
 
     @Test
+    @Order(5)
     public void testGetAgentRequestsToReview() {
         RequestSearchReview agentRequestsReview =
                 new RequestSearchReview(0, 30, "phonenumber", "%1%", StatusType.ACCEPT);
@@ -100,6 +104,7 @@ public class Test_Dao_AgentAdmin_Impl {
     }
 
     @Test
+    @Order(6)
     public void testGetAgentRequestsReviewCount() {
         Map<String, String> result = dao_agent_i.getAgentRequestsToReviewCount("username", "%%", StatusType.ACCEPT);
         System.out.println(result);
@@ -107,6 +112,7 @@ public class Test_Dao_AgentAdmin_Impl {
     }
 
     @Test
+    @Order(7)
     public void testGetAgentRequestsReviewPhoneNumber() {
         RequestSearchReview agentRequestsReview =
                 new RequestSearchReview(0, 30, "phonenumber", "%815%", StatusType.ZERO);
@@ -116,6 +122,7 @@ public class Test_Dao_AgentAdmin_Impl {
     }
 
     @Test
+    @Order(8)
     public void testUpdateAdminNote() {
         String requestID = dao_agent_i.getAgentRequests(0, 10).get(0).getId().toString();
         String note = "ADMIN NOTE : Please provide additional Documents!";
@@ -129,6 +136,7 @@ public class Test_Dao_AgentAdmin_Impl {
     }
 
     @Test
+    @Order(9)
     public void testUpdateApplicantNote() {
         String requestID = dao_agent_i.getAgentRequests(0, 10).get(0).getId().toString();
         String note = "APPLICANT NOTE : President of collage Blood Club!";
@@ -142,6 +150,7 @@ public class Test_Dao_AgentAdmin_Impl {
     }
 
     @Test
+    @Order(10)
     public void testUpdatePersonalNote() {
         String requestID = dao_agent_i.getAgentRequests(0, 10).get(0).getId().toString();
         String note = "Personal NOTE : Dont called him tree time not receive!";
@@ -156,7 +165,7 @@ public class Test_Dao_AgentAdmin_Impl {
 
 
     //    not part dao layer
-    @Test
+//    @Test
     public void testInsertAgent() {
         dumpDao.getUsers(0, 20).forEach(user -> {
             AgentRequest agentRequest = new AgentRequest();
