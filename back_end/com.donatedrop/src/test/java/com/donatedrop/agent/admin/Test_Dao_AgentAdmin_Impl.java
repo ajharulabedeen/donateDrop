@@ -21,7 +21,7 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 
 @SpringBootTest
-public class Test_Dao_Agent_Impl {
+public class Test_Dao_AgentAdmin_Impl {
 
     @Autowired
     Dao_AgentAdmin_I dao_agent_i;
@@ -36,7 +36,7 @@ public class Test_Dao_Agent_Impl {
         System.out.println("\ndao_agent_i : " + dao_agent_i.toString() + "\n");
     }
 
-//    @Test
+    //    @Test
     @Order(2)
     public void testSaveRequest() {
         AgentRequest agentRequest = new AgentRequest();
@@ -83,17 +83,19 @@ public class Test_Dao_Agent_Impl {
     @Test
     public void testGetAgentRequestsToReview() {
         RequestSearchReview agentRequestsReview =
-                new RequestSearchReview(0, 30, "username", "%1%", StatusType.ZERO);
+                new RequestSearchReview(0, 30, "phonenumber", "%1%", StatusType.ACCEPT);
         dao_agent_i.getAgentRequestsToReview(agentRequestsReview).forEach(agentRequestReview -> {
-            String addr = agentRequestReview.getPermanentStreet()
-                    + " " + agentRequestReview.getPermanentUnion()
-                    + ", " + agentRequestReview.getPermanentUpz()
-                    + ", " + agentRequestReview.getPermanentDist()
-                    + ", " + agentRequestReview.getPermanentDiv();
-            System.out.println(addr);
-            System.out.println(agentRequestReview.getPhone_number());
-            System.out.println(agentRequestReview.getUsername());
-            System.out.println("-------------------------------");
+//            String addr = agentRequestReview.getPermanentStreet()
+//                    + " " + agentRequestReview.getPermanentUnion()
+//                    + ", " + agentRequestReview.getPermanentUpz()
+//                    + ", " + agentRequestReview.getPermanentDist()
+//                    + ", " + agentRequestReview.getPermanentDiv();
+//            System.out.println(addr);
+//            System.out.println(agentRequestReview.getPhone_number());
+//            System.out.println(agentRequestReview.getUsername());
+//            System.out.println("-------------------------------");
+//            System.out.println(agentRequestReview.toString());
+            System.out.println("userID : " + agentRequestReview.getUserId() + "  status : " + agentRequestReview.getStatus());
         });
     }
 

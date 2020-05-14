@@ -176,7 +176,8 @@ public class Test_ControllerAgentAdmin extends AbstractTest {
 //     arrange
         String uri = "/public/user/getAgentRequestsToReview";
         RequestSearchReview requestGetAgentRequests
-                = new RequestSearchReview(0, 30, "username", "%1%", "ACCEPT");
+                = new RequestSearchReview(0, 30, "phonenumber", "%1%", "ACCEPT");
+//                = new RequestSearchReview(0, 30, "username", "%1%", "ACCEPT");
 //                = new RequestSearchReview(0, 30, "name", "%kh%", StatusType.ACCEPT);
 //      act
         String inputJson = super.mapToJson(requestGetAgentRequests);

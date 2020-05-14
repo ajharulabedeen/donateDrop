@@ -22,6 +22,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -117,7 +118,35 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
 
     @Override
     public List<DonnerToAgentRequestReview> getDonnerToAgentRequestReview(RequestSearchReview requestGetAgentRequestsReview) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int start = requestGetAgentRequestsReview.getStart();
+        int max = requestGetAgentRequestsReview.getMax();
+        String column = requestGetAgentRequestsReview.getColumn();
+        String key = requestGetAgentRequestsReview.getKey();
+        String status = requestGetAgentRequestsReview.getStatusType();
+        //        String q = "SELECT * FROM `agent_request_review`";
+        List<DonnerToAgentRequestReview> donnerToAgentRequestReviews = new ArrayList<>();
+        String q = "";
+        try {
+            if (column.equals(StringUtil.PHONENUMBER)) {
+                q = "SELECT donner_to_agent_request_review.* FROM donner_to_agent_request_review, phonenumber "
+                        + "WHERE donner_to_agent_request_review.profile_id = phonenumber.profile_id "
+                        + " AND phonenumber.number LIKE '" + key + "'";
+            } else {
+                q = "SELECT * FROM `donner_to_agent_request_review` WHERE `donner_to_agent_request_review`.`"
+                        + column + "` LIKE '" + key + "'"
+                        + " AND `donner_to_agent_request_review`.`status`='" + status + "'";
+            }
+            donnerToAgentRequestReviews
+                    = entityManager.createNativeQuery(q, AgentRequestToReview.class)
+                    .setFirstResult(start)
+                    .setMaxResults(max)
+                    .getResultList();
+            return donnerToAgentRequestReviews;
+
+        } catch (Exception exception) {
+            System.out.println("org.hibernate.exception.SQLGrammarException");
+        }
+        return donnerToAgentRequestReviews;
     }
 
 //    @Override

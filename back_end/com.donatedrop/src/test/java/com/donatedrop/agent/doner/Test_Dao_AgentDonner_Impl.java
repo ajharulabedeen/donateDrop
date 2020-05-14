@@ -92,7 +92,7 @@ public class Test_Dao_AgentDonner_Impl {
     public void testReviewDonnerRequest() {
 //        String id = dumpDao.getUsers(0, 10).get(0).getId().toString();
         int max = 5;
-        String requestID = dumpDao.getAgentDonnersRequests(0,5).get(1).getId().toString();
+        String requestID = dumpDao.getAgentDonnersRequests(0, 5).get(1).getId().toString();
         System.out.println("requestID : " + requestID);
         String reviewValue = StatusType.ACCEPT;
         RequestReviewRequest reviewRequest = new RequestReviewRequest(requestID, reviewValue);
@@ -106,5 +106,10 @@ public class Test_Dao_AgentDonner_Impl {
     }
 
 
+    @Test
+    @Order(2)
+    public void testGetDonnerToAgentRequestReview() {
+
+    }
 
 }
