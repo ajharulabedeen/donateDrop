@@ -115,7 +115,9 @@ export class AgentDashboardAcceptedComponent implements OnInit {
   }
 
   public requestRemove(requestIdReject: string) {
-    const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestIdReject, this.rivewValue.REMOVE);
+    // const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestIdReject, this.rivewValue.REMOVE);//dont know get working but what problem with, this.s
+    const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestIdReject, 'REMOVE');
+    console.log(reviewRequestReject);
     this.adService.donnerRequestReview(reviewRequestReject).subscribe(res => {
       console.log(res);
       if (res['STATUS'] === 'OK') {
