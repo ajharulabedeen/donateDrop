@@ -118,20 +118,19 @@ export class AgentDashboardReviewComponent implements OnInit {
     }
   }
 
-  //
-  // public requestReject(requestIdReject: string) {
-  //   const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestIdReject, this.rivewValue.REJECT);
-  //   this.agentService.requestReview(reviewRequestReject).subscribe(res => {
-  //     console.log(res);
-  //     if (res['STATUS'] === 'OK') {
-  //       // this.getDonnerRequestsToReview();
-  //       var artr: AgentRequestToReview = this.agentRequestsToReview.find(({requestId}) => requestId === requestIdReject);
-  //       this.donnerRequestsToReview = this.donnerRequestsToReview.filter(obj => obj !== artr);
-  //       this.total -= 1;
-  //     }
-  //   });
-  // }
-  //
+  public requestReject(requestIdReject: string) {
+    const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestIdReject, this.rivewValue.REJECT);
+    this.adService.donnerRequestReview(reviewRequestReject).subscribe(res => {
+      console.log(res);
+      if (res['STATUS'] === 'OK') {
+        // this.getDonnerRequestsToReview();
+        var artr: DonnerToAgentRequestToReview = this.donnerRequestsToReview.find(({requestId}) => requestId === requestIdReject);
+        this.donnerRequestsToReview = this.donnerRequestsToReview.filter(obj => obj !== artr);
+        this.total -= 1;
+      }
+    });
+  }
+
   // public requestAccept(requestIdAccept: string, value: string) {
   //   const reviewRequestAccept: RequestReviewRequest = new RequestReviewRequest(requestIdAccept, value);
   //   // console.log(requestId);

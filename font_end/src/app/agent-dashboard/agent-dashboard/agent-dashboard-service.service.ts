@@ -5,6 +5,7 @@ import {AuthService} from '../../auth/auth.service';
 import {RequestSearchReview} from './model/request-search-review.model';
 import {RequestAdminNote} from '../../admin/agent/models/request-admin-note.model';
 import {RequestNote} from './model/request-note.model';
+import {RequestReviewRequest} from './model/request-review-request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,9 +29,6 @@ export class AgentDashboardServiceService {
       this.authService.getHeader());
   }
 
-  // http://localhost:8080/public/user/agent/donner/reviewDonnerRequest
-
-
   // http://localhost:8080/public/user/agent/donner/updateAgentNote
   public updateAgentNote(note: RequestNote) {
     return this.http.post(
@@ -44,4 +42,12 @@ export class AgentDashboardServiceService {
       'http://localhost:8080/public/user/agent/donner/updateNoteAgentPersonal', note,
       this.authService.getHeader());
   }
+
+  // http://localhost:8080/public/user/agent/donner/reviewDonnerRequest
+  public donnerRequestReview(reviewRequest: RequestReviewRequest) {
+    return this.http.post(
+      'http://localhost:8080/public/user/agent/donner/reviewDonnerRequest', reviewRequest,
+      this.authService.getHeader());
+  }
+
 }

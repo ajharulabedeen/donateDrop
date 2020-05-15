@@ -23,27 +23,29 @@ export class AgentServiceService {
       this.authService.getHeader());
   }
 
-  // http://localhost:8080/public/user/getAgentRequestsToReview
+  // http://localhost:8080/public/user/getAgentRequestsToReviewCount
   public getAgentRequestsToReviewCount(agentSearch: RequestGetAgentRequests) {
     return this.http.post(
       'http://localhost:8080/public/user/agent/admin/getAgentRequestsToReviewCount', agentSearch,
       this.authService.getHeader());
   }
 
-  // http://localhost:8080/public/user/reviewRequest
 
+  // http://localhost:8080/public/user/agent/admin/reviewRequest
   public requestReview(reviewRequestObj: RequestReviewRequest) {
     return this.http.post(
       'http://localhost:8080/public/user/agent/admin/reviewRequest', reviewRequestObj,
       this.authService.getHeader());
   }
 
+  // http://localhost:8080/public/user/agent/admin/updateAdminNote
   public updateAdminNote(adminNote: RequestAdminNote) {
     return this.http.post(
       'http://localhost:8080/public/user/agent/admin/updateAdminNote', adminNote,
       this.authService.getHeader());
   }
 
+  // http://localhost:8080/public/user/agent/admin/updatePersonalNote
   public updatePersonalNote(personalNote: RequestPersonalNote) {
     return this.http.post(
       'http://localhost:8080/public/user/agent/admin/updatePersonalNote', personalNote,
