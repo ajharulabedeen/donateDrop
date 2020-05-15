@@ -131,35 +131,22 @@ export class AgentDashboardReviewComponent implements OnInit {
     });
   }
 
-  // public requestAccept(requestIdAccept: string, value: string) {
-  //   const reviewRequestAccept: RequestReviewRequest = new RequestReviewRequest(requestIdAccept, value);
-  //   // console.log(requestId);
-  //   console.log(reviewRequestAccept);
-  //   this.agentService.requestReview(reviewRequestAccept).subscribe(res => {
-  //     console.log(res);
-  //     if (res['STATUS'] === 'OK') {
-  //       // this.getDonnerRequestsToReview();
-  //       // var hist: History = this.historyDonation.find(({id}) => id === this.deleteId);
-  //       var artr: AgentRequestToReview = this.donnerRequestsToReview.find(({requestId}) => requestId === requestIdAccept);
-  //       this.donnerRequestsToReview = this.donnerRequestsToReview.filter(obj => obj !== artr);
-  //       this.total -= 1;
-  //     }
-  //   });
-  // }
-  //
-  // public requestHold(requestIdHold: string, HOLD: string) {
-  //   const reviewRequestHold: RequestReviewRequest = new RequestReviewRequest(requestIdHold, HOLD);
-  //   this.agentService.requestReview(reviewRequestHold).subscribe(res => {
-  //     console.log(res);
-  //     if (res['STATUS'] === 'OK') {
-  //       // this.getDonnerRequestsToReview();
-  //       var artr: AgentRequestToReview = this.donnerRequestsToReview.find(({requestId}) => requestId === requestIdHold);
-  //       this.donnerRequestsToReview = this.donnerRequestsToReview.filter(obj => obj !== artr);
-  //       this.total -= 1;
-  //     }
-  //   });
-  // }
-  //
+  public requestAccept(requestIdAccept: string, value: string) {
+    const reviewRequestAccept: RequestReviewRequest = new RequestReviewRequest(requestIdAccept, value);
+    // console.log(requestId);
+    console.log(reviewRequestAccept);
+    this.adService.donnerRequestReview(reviewRequestAccept).subscribe(res => {
+      console.log(res);
+      if (res['STATUS'] === 'OK') {
+        // this.getDonnerRequestsToReview();
+        // var hist: History = this.historyDonation.find(({id}) => id === this.deleteId);
+        var artr: DonnerToAgentRequestToReview = this.donnerRequestsToReview.find(({requestId}) => requestId === requestIdAccept);
+        this.donnerRequestsToReview = this.donnerRequestsToReview.filter(obj => obj !== artr);
+        this.total -= 1;
+      }
+    });
+  }
+  
   public updateAgentNote() {
     const note = new RequestNote(this.requestID, this.agentNote);
     console.log(note);
