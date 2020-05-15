@@ -100,7 +100,7 @@
             <th>Adress Present</th>
             <th>Adress Permanent</th>
           </tr>
-          <tr *ngFor="let ar of agentRequestsToReview; let i=index">
+          <tr *ngFor="let ar of donnerRequestsToReview; let i=index">
             <!--Reject-->
             <td>
               <button class="btn btn-xs btn-warning" (click)="requestReject(ar.requestId)" data-toggle="modal"
@@ -119,14 +119,14 @@
             <td>{{ar.username}}</td>
             <td>{{ar.gender}}</td>
             <td>{{ar.phone_number}}</td>
-            <td>{{ar.noteApplicant}}</td>
+            <td>{{ar.noteDonner}}</td>
             <td>
               <button class="btn btn-xs btn-info" (click)=" adminNote=ar.noteAdmin; requestID=ar.requestId"
                       data-toggle="modal"
                       data-target="#modal_adminNote">Edit
               </button>
               <br>
-              {{ar.noteAdmin}}
+              {{ar.noteAgent}}
             </td>
             <td>
               <button class="btn btn-xs btn-danger" (click)=" personalNote=ar.notePersonal; requestID=ar.requestId"
@@ -134,7 +134,7 @@
                       data-target="#modal_personalNote">Edit
               </button>
               <br>
-              {{ar.notePersonal}}
+              {{ar.noteAgentPersonal}}
             </td>
             <td>{{ar.profession}}</td>
             <td>{{ar.presentStreet}},{{ar.presentUnion}},{{ar.presentUpz}},{{ar.presentDist}},{{ar.presentDiv}}</td>
