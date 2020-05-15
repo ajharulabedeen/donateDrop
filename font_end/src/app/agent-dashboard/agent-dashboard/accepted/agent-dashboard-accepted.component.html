@@ -1,7 +1,7 @@
 <!--<div align="center" id="request_review" class="tabcontent">-->
 <!--START : Search-->
 <div class="wrapper">
-  <h3 class="text-orange" align="cennter">Donner Requests</h3>
+  <h3 class="text-orange" align="cennter">Donner Accepted/Current Donners</h3>
   <h4 align="left">
     <button class="btn btn-info" (click)="startRequests=0; getDonnerRequestsToReview(); ">Search</button>
     <!--<button class="btn btn-xs btn-primary" (click)="searchCount()">Refresh</button>-->
@@ -88,7 +88,7 @@
             <th>Approve</th>
             <!--<th>Hold</th>-->
             <th>Index</th>
-            <th>Request Date</th>
+            <th>Accept Date</th>
             <th>Name</th>
             <th>User Name</th>
             <th>Gender</th>
@@ -114,7 +114,7 @@
               </button>
             </td>
             <td>{{i+1}}</td>
-            <td>{{ar.requestDate}}</td>
+            <td>{{ar.acceptDate}}</td>
             <td>{{ar.name}}</td>
             <td>{{ar.username}}</td>
             <td>{{ar.gender}}</td>
@@ -123,7 +123,7 @@
             <td>
               <button class="btn btn-xs btn-info" (click)=" agentNote=ar.noteAgent; requestID=ar.requestId"
                       data-toggle="modal"
-                      data-target="#modal_agent_dashboard_review_agentNote">Edit
+                      data-target="#modal_agent_dashboard_accepted_agentNote">Edit
               </button>
               <br>
               {{ar.noteAgent}}
@@ -131,7 +131,7 @@
             <td>
               <button class="btn btn-xs btn-danger" (click)=" personalNote=ar.notePersonal; requestID=ar.requestId"
                       data-toggle="modal"
-                      data-target="#modal_personalNote">Edit
+                      data-target="#modal_agent_dashboard_accepted_personalNote">Edit
               </button>
               <br>
               {{ar.noteAgentPersonal}}
@@ -153,7 +153,7 @@
 
 
 <!-- Modal  : Update Agent Admin-->
-<div class="modal fade" id="modal_agent_dashboard_review_agentNote" tabindex="-1" role="dialog"
+<div class="modal fade" id="modal_agent_dashboard_accepted_agentNote" tabindex="-1" role="dialog"
      aria-labelledby="modal_workLabel"
      aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -184,7 +184,8 @@
 </div>
 
 <!-- Modal  : Update note Personal-->
-<div class="modal fade" id="modal_personalNote" tabindex="-1" role="dialog" aria-labelledby="modal_workLabel"
+<div class="modal fade" id="modal_agent_dashboard_accepted_personalNote" tabindex="-1" role="dialog"
+     aria-labelledby="modal_workLabel"
      aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -204,7 +205,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateAgentPersonalNote()">Save</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateAgentPersonalNote()">Save
+        </button>
       </div>
     </div>
   </div>
