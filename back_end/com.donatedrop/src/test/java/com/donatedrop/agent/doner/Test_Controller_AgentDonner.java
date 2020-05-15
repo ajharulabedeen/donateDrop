@@ -292,8 +292,30 @@ public class Test_Controller_AgentDonner extends AbstractTest {
     @Test
     @Order(1)
 //    //"/public/user/agent/donner/updateNoteAgentPersonal";
-    public void testUpdateNoteAgentPersonal() {
-        String url = "/public/user/agent/donner/updateNoteAgentPersonal";
+    public void testUpdateNoteAgentPersonal() throws Exception {
+        String uri = "/public/user/agent/donner/updateNoteAgentPersonal";
+        int max = 5;
+        String note = "i will approve, after meeting with him!, telling from my school but seems false info.";
+        String requestID = dumpDao.getAgentDonnersRequests(0, 5).get(1).getId().toString();
+        System.out.println("requestID : " + requestID);
+        RequestNote requestNote = new RequestNote(requestID, note);
+
+        //      act
+        String inputJson = super.mapToJson(requestNote);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+
+        //assert
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+
+        Map<String, String> result = dao_agentDonner_i.updateNoteAgentPersonal(requestNote);
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+
+        String requestNoteFormDB = dao_agentDonner_i.findOneRequestById(requestID).getNoteAgentPersonal();
+        System.out.println("\n" + requestNoteFormDB + "\n");
+        assertEquals(requestNoteFormDB, note);
     }
 
     // helpers : -------------------------
