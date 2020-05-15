@@ -39,7 +39,7 @@ export class AgentDashboardAcceptedComponent implements OnInit {
   public getDonnerRequestsToReview() {
     var finalSearchKey = '%' + this.searchKey + '%';
     const search: RequestSearchReview = new RequestSearchReview(
-      this.startRequests.toString(), this.perPage.toString(), this.searchByColumn, finalSearchKey, 'ACCEPT');
+      this.startRequests.toString(), this.perPage.toString(), this.searchByColumn, finalSearchKey, this.rivewValue.ACCEPT);
     console.log(search);
     this.donnerRequestsToReview = [];
     this.adService.getDonnerToAgentRequestToReview(search).subscribe(res => {
@@ -114,8 +114,8 @@ export class AgentDashboardAcceptedComponent implements OnInit {
     }
   }
 
-  public requestReject(requestIdReject: string) {
-    const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestIdReject, this.rivewValue.REJECT);
+  public requestRemove(requestIdReject: string) {
+    const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestIdReject, this.rivewValue.REMOVE);
     this.adService.donnerRequestReview(reviewRequestReject).subscribe(res => {
       console.log(res);
       if (res['STATUS'] === 'OK') {
