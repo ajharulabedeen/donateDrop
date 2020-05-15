@@ -212,12 +212,24 @@ public class Test_Controller_AgentDonner extends AbstractTest {
     @Test
     @Order(1)
     //"/public/user/agent/donner/getDonnerToAgentRequestReviewCount";
-    public void testGetDonnerToAgentRequestReviewCount() {
-        String url = "/public/user/agent/donner/getDonnerToAgentRequestReviewCount";
+    public void testGetDonnerToAgentRequestReviewCount() throws Exception {
+        String uri = "/public/user/agent/donner/getDonnerToAgentRequestReviewCount";
         RequestSearchReview requestSearchReview =
-                new RequestSearchReview(0, 5, "phonenumber", "%%", StatusType.ZERO);
-
+                new RequestSearchReview(0, 5, "username", "%%", StatusType.ZERO);
+        //      act
+        String inputJson = super.mapToJson(requestSearchReview);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+        //assert
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        //System.out.println("\n" + content + "\n");
+        Map<String, String> result = super.mapFromJson(content, Map.class);
+        System.out.println("\n" + result + "\n");
+        assertTrue(Integer.parseInt(result.get(StringUtil.COUNT).toString()) >= 0);
     }
+
 
     @Test
     @Order(1)
