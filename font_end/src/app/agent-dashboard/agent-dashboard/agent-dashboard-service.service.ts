@@ -39,5 +39,9 @@ export class AgentDashboardServiceService {
   }
 
   // http://localhost:8080/public/user/agent/donner/updateNoteAgentPersonal
-
+  public updateAgentPersonalNote(note: RequestNote) {
+    return this.http.post(
+      'http://localhost:8080/public/user/agent/donner/updateNoteAgentPersonal', note,
+      this.authService.getHeader());
+  }
 }

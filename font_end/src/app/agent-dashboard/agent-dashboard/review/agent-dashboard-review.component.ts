@@ -172,16 +172,15 @@ export class AgentDashboardReviewComponent implements OnInit {
     });
   }
 
-  //
-  // public updatePersonalNote() {
-  //   const personalNoteObj = new RequestPersonalNote(this.requestID, this.personalNote);
-  //   console.log(personalNoteObj);
-  //   this.agentService.updatePersonalNote(personalNoteObj).subscribe(res => {
-  //     console.log(res);
-  //     if (res['STATUS'] === 'OK') {
-  //       this.getDonnerRequestsToReview();
-  //     }
-  //   });
-  // }
+  public updateAgentPersonalNote() {
+    const note = new RequestNote(this.requestID, this.personalNote);
+    console.log(note);
+    this.adService.updateAgentPersonalNote(note).subscribe(res => {
+      console.log(res);
+      if (res['STATUS'] === 'OK') {
+        this.getDonnerRequestsToReview();
+      }
+    });
+  }
 
 }
