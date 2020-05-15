@@ -6,6 +6,7 @@ import com.donatedrop.agent.donner.Dao_AgentDonner_I;
 import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
 import com.donatedrop.agent.donner.models.DonnerToAgentRequestToReview;
 import com.donatedrop.agent.donner.models.RequestSearchReview;
+import com.donatedrop.agent.models.RequestNote;
 import com.donatedrop.agent.models.RequestReviewRequest;
 import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.geocode.AbstractTest;
@@ -234,8 +235,30 @@ public class Test_Controller_AgentDonner extends AbstractTest {
     @Test
     @Order(1)
     //"/public/user/agent/donner/updateAgentNote";
-    public void testUpdateAgentNote() {
-        String url = "/public/user/agent/donner/updateAgentNote";
+    public void testUpdateAgentNote() throws Exception {
+        String uri = "/public/user/agent/donner/updateAgentNote";
+        int max = 5;
+        String note = "Please tell me about ur UnionName-SchooL Name Etc nam!";
+        String requestID = dumpDao.getAgentDonnersRequests(0, 5).get(1).getId().toString();
+        System.out.println("requestID : " + requestID);
+        RequestNote requestNote = new RequestNote(requestID, note);
+
+        //      act
+        String inputJson = super.mapToJson(requestNote);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+        //assert
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        //System.out.println("\n" + content + "\n");
+        Map<String, String> result = super.mapFromJson(content, Map.class);
+        System.out.println("\n" + result + "\n");
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+
+        String requestNoteFormDB = dao_agentDonner_i.findOneRequestById(requestID).getNoteAgent();
+        System.out.println("\n" + requestNoteFormDB + "\n");
+        assertEquals(requestNoteFormDB, note);
     }
 
     @Test
