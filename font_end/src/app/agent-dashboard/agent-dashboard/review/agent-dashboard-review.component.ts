@@ -9,6 +9,7 @@ import {AgentServiceService} from '../../../admin/agent/agent-service.service';
 import {DonnerToAgentRequestToReview} from '../model/donner-to-agent-request-to-review.model';
 import {AgentDashboardServiceService} from '../agent-dashboard-service.service';
 import {RequestSearchReview} from '../model/request-search-review.model';
+import {RequestNote} from '../model/request-note.model';
 
 @Component({
   selector: 'app-agent-dashboard-review',
@@ -160,16 +161,17 @@ export class AgentDashboardReviewComponent implements OnInit {
   //   });
   // }
   //
-  // public updateAdminNote() {
-  //   const agentNote = new RequestAdminNote(this.requestID, this.agentNote);
-  //   console.log(agentNote);
-  //   this.agentService.updateAdminNote(agentNote).subscribe(res => {
-  //     console.log(res);
-  //     if (res['STATUS'] === 'OK') {
-  //       this.getDonnerRequestsToReview();
-  //     }
-  //   });
-  // }
+  public updateAgentNote() {
+    const note = new RequestNote(this.requestID, this.agentNote);
+    console.log(note);
+    this.adService.updateAgentNote(note).subscribe(res => {
+      console.log(res);
+      if (res['STATUS'] === 'OK') {
+        this.getDonnerRequestsToReview();
+      }
+    });
+  }
+
   //
   // public updatePersonalNote() {
   //   const personalNoteObj = new RequestPersonalNote(this.requestID, this.personalNote);

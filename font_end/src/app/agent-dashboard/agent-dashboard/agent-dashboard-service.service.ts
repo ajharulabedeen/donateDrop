@@ -3,6 +3,8 @@ import {RequestGetAgentRequests} from '../../admin/agent/models/request-get-agen
 import {HttpClient} from '@angular/common/http';
 import {AuthService} from '../../auth/auth.service';
 import {RequestSearchReview} from './model/request-search-review.model';
+import {RequestAdminNote} from '../../admin/agent/models/request-admin-note.model';
+import {RequestNote} from './model/request-note.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +29,15 @@ export class AgentDashboardServiceService {
   }
 
   // http://localhost:8080/public/user/agent/donner/reviewDonnerRequest
+
+
   // http://localhost:8080/public/user/agent/donner/updateAgentNote
+  public updateAgentNote(note: RequestNote) {
+    return this.http.post(
+      'http://localhost:8080/public/user/agent/donner/updateAgentNote', note,
+      this.authService.getHeader());
+  }
+
   // http://localhost:8080/public/user/agent/donner/updateNoteAgentPersonal
 
 }
