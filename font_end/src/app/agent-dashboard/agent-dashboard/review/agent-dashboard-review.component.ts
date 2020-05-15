@@ -59,7 +59,7 @@ export class AgentDashboardReviewComponent implements OnInit {
         artr.noteDonner = res[key]['noteDonner'];
         artr.noteAgent = res[key]['noteAgent'];
         artr.noteAgentPersonal = res[key]['noteAgentPersonal'];
-        console.log(res[key]['notePersonal']);
+        // console.log(res[key]['notePersonal']);
 
         artr.permanentDist = res[key]['permanentDist'];
         artr.permanentDiv = res[key]['permanentDiv'];
@@ -72,7 +72,7 @@ export class AgentDashboardReviewComponent implements OnInit {
         artr.phone_number = '';
         for (const phoneKey in res[key]['phone_number']) {
           artr.phone_number += res[key]['phone_number'][phoneKey]['number'] + ';\n';
-          console.log(res[key]['phone_number'][phoneKey]['number']);
+          // console.log(res[key]['phone_number'][phoneKey]['number']);
         }
         // console.log(artr.phone_number);
         // console.log(res[key]['phone_number']);
@@ -146,9 +146,10 @@ export class AgentDashboardReviewComponent implements OnInit {
       }
     });
   }
-  
+
   public updateAgentNote() {
-    const note = new RequestNote(this.requestID, this.agentNote);
+    const note : RequestNote = new RequestNote(this.requestID, this.agentNote);
+    console.log('this.agentNote : ' + this.agentNote);
     console.log(note);
     this.adService.updateAgentNote(note).subscribe(res => {
       console.log(res);

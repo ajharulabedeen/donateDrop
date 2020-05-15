@@ -68,7 +68,7 @@ export class AgentDashboardAcceptedComponent implements OnInit {
         artr.phone_number = '';
         for (const phoneKey in res[key]['phone_number']) {
           artr.phone_number += res[key]['phone_number'][phoneKey]['number'] + ';\n';
-          console.log(res[key]['phone_number'][phoneKey]['number']);
+          // console.log(res[key]['phone_number'][phoneKey]['number']);
         }
         // console.log(artr.phone_number);
         // console.log(res[key]['phone_number']);
@@ -147,11 +147,12 @@ export class AgentDashboardAcceptedComponent implements OnInit {
 
   public updateAgentNote() {
     const note = new RequestNote(this.requestID, this.agentNote);
+    console.log('this.agentNote : ' + this.agentNote);
     console.log(note);
     this.adService.updateAgentNote(note).subscribe(res => {
       console.log(res);
       if (res['STATUS'] === 'OK') {
-        this.getDonnerRequestsToReview();
+        // this.getDonnerRequestsToReview();
       }
     });
   }

@@ -1,6 +1,6 @@
 export class RequestNote {
-  public requestId: string;
   public note: string;
+  public requestId: string;
 
   constructor(requestId: string, note: string) {
     this.requestId = requestId;
