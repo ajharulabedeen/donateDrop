@@ -148,7 +148,7 @@ export class AgentDashboardReviewComponent implements OnInit {
   }
 
   public updateAgentNote() {
-    const note : RequestNote = new RequestNote(this.requestID, this.agentNote);
+    const note: RequestNote = new RequestNote(this.requestID, this.agentNote);
     console.log('this.agentNote : ' + this.agentNote);
     console.log(note);
     this.adService.updateAgentNote(note).subscribe(res => {
@@ -170,4 +170,9 @@ export class AgentDashboardReviewComponent implements OnInit {
     });
   }
 
+  setPersonalNote(requestId: string, notePersonal: string) {
+    console.log(requestId);
+    console.log(notePersonal);
+    this.personalNote = notePersonal;
+  }
 }

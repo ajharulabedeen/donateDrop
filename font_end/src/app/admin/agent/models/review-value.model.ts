@@ -3,4 +3,5 @@ export class ReviewValue {
   public ACCEPT = 'ACCEPT';
   public HOLD = 'HOLD';
   public FREEZE = 'FREEZE';
+  public REMOVE = 'REMOVE';
 }
