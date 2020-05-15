@@ -3,7 +3,7 @@
 <div class="wrapper">
   <h3 class="text-orange" align="cennter">Agent Requests in Hold</h3>
   <h4 align="left">
-    <button class="btn btn-info" (click)="startRequests=0; getAgentRequestsToReview(); ">Search</button>
+    <button class="btn btn-info" (click)="startRequests=0; getDonnerRequestsToReview(); ">Search</button>
     <!--<button class="btn btn-xs btn-primary" (click)="searchCount()">Refresh</button>-->
   </h4>
   <!-- sort by column name -->
@@ -121,9 +121,9 @@
             <td>{{ar.phone_number}}</td>
             <td>{{ar.noteDonner}}</td>
             <td>
-              <button class="btn btn-xs btn-info" (click)=" adminNote=ar.noteAdmin; requestID=ar.requestId"
+              <button class="btn btn-xs btn-info" (click)=" agentNote=ar.noteAgent; requestID=ar.requestId"
                       data-toggle="modal"
-                      data-target="#modal_adminNote">Edit
+                      data-target="#modal_agent_dashboard_review_agentNote">Edit
               </button>
               <br>
               {{ar.noteAgent}}
@@ -152,21 +152,22 @@
 </div>
 
 
-<!-- Modal  : Update note Admin-->
-<div class="modal fade" id="modal_adminNote" tabindex="-1" role="dialog" aria-labelledby="modal_workLabel"
+<!-- Modal  : Update Agent Admin-->
+<div class="modal fade" id="modal_agent_dashboard_review_agentNote" tabindex="-1" role="dialog"
+     aria-labelledby="modal_workLabel"
      aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div align="center" class="modal-header">
-        <h3 class="modal-title" id="modal_workLabel">Update Admin Note</h3>
+        <h3 class="modal-title" id="modal_workLabel">Update Agent Note</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <label>Admin Note</label>
-          <textarea class="col-md-12" rows="20" [(ngModel)]="adminNote">
+          <label>Agent Note</label>
+          <textarea class="col-md-12" rows="20" [(ngModel)]="agentNote">
 
             </textarea>
         </div>

@@ -25,7 +25,7 @@ export class AgentDashboardReviewComponent implements OnInit {
   phoneNumber = '';
 
   requestID: string;
-  adminNote: string;
+  agentNote: string;
   personalNote: string;
 
   donnerRequestsToReview: DonnerToAgentRequestToReview[] = new Array();
@@ -36,10 +36,10 @@ export class AgentDashboardReviewComponent implements OnInit {
 
   ngOnInit() {
     this.searchKey = '';
-    this.getAgentRequestsToReview();
+    this.getDonnerRequestsToReview();
   }
 
-  public getAgentRequestsToReview() {
+  public getDonnerRequestsToReview() {
     var finalSearchKey = '%' + this.searchKey + '%';
     const search: RequestSearchReview = new RequestSearchReview(
       this.startRequests.toString(), this.perPage.toString(), this.searchByColumn, finalSearchKey, '0');
@@ -101,29 +101,29 @@ export class AgentDashboardReviewComponent implements OnInit {
     });
   }
 
-
   // yet to apply
 
-  // public nextPage() {
-  //   if (this.startRequests <= this.total) {
-  //     this.startRequests += this.perPage;
-  //     this.getdonnerRequestsToReview();
-  //   }
-  // }
-  //
-  // public previousPage() {
-  //   if (this.startRequests > 0) {
-  //     this.startRequests -= this.perPage;
-  //     this.getAgentRequestsToReview();
-  //   }
-  // }
+  public nextPage() {
+    if (this.startRequests <= this.total) {
+      this.startRequests += this.perPage;
+      this.getDonnerRequestsToReview();
+    }
+  }
+
+  public previousPage() {
+    if (this.startRequests > 0) {
+      this.startRequests -= this.perPage;
+      this.getDonnerRequestsToReview();
+    }
+  }
+
   //
   // public requestReject(requestIdReject: string) {
   //   const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestIdReject, this.rivewValue.REJECT);
   //   this.agentService.requestReview(reviewRequestReject).subscribe(res => {
   //     console.log(res);
   //     if (res['STATUS'] === 'OK') {
-  //       // this.getAgentRequestsToReview();
+  //       // this.getDonnerRequestsToReview();
   //       var artr: AgentRequestToReview = this.agentRequestsToReview.find(({requestId}) => requestId === requestIdReject);
   //       this.donnerRequestsToReview = this.donnerRequestsToReview.filter(obj => obj !== artr);
   //       this.total -= 1;
@@ -138,7 +138,7 @@ export class AgentDashboardReviewComponent implements OnInit {
   //   this.agentService.requestReview(reviewRequestAccept).subscribe(res => {
   //     console.log(res);
   //     if (res['STATUS'] === 'OK') {
-  //       // this.getAgentRequestsToReview();
+  //       // this.getDonnerRequestsToReview();
   //       // var hist: History = this.historyDonation.find(({id}) => id === this.deleteId);
   //       var artr: AgentRequestToReview = this.donnerRequestsToReview.find(({requestId}) => requestId === requestIdAccept);
   //       this.donnerRequestsToReview = this.donnerRequestsToReview.filter(obj => obj !== artr);
@@ -152,7 +152,7 @@ export class AgentDashboardReviewComponent implements OnInit {
   //   this.agentService.requestReview(reviewRequestHold).subscribe(res => {
   //     console.log(res);
   //     if (res['STATUS'] === 'OK') {
-  //       // this.getAgentRequestsToReview();
+  //       // this.getDonnerRequestsToReview();
   //       var artr: AgentRequestToReview = this.donnerRequestsToReview.find(({requestId}) => requestId === requestIdHold);
   //       this.donnerRequestsToReview = this.donnerRequestsToReview.filter(obj => obj !== artr);
   //       this.total -= 1;
@@ -161,12 +161,12 @@ export class AgentDashboardReviewComponent implements OnInit {
   // }
   //
   // public updateAdminNote() {
-  //   const adminNote = new RequestAdminNote(this.requestID, this.adminNote);
-  //   console.log(adminNote);
-  //   this.agentService.updateAdminNote(adminNote).subscribe(res => {
+  //   const agentNote = new RequestAdminNote(this.requestID, this.agentNote);
+  //   console.log(agentNote);
+  //   this.agentService.updateAdminNote(agentNote).subscribe(res => {
   //     console.log(res);
   //     if (res['STATUS'] === 'OK') {
-  //       this.getAgentRequestsToReview();
+  //       this.getDonnerRequestsToReview();
   //     }
   //   });
   // }
@@ -177,7 +177,7 @@ export class AgentDashboardReviewComponent implements OnInit {
   //   this.agentService.updatePersonalNote(personalNoteObj).subscribe(res => {
   //     console.log(res);
   //     if (res['STATUS'] === 'OK') {
-  //       this.getAgentRequestsToReview();
+  //       this.getDonnerRequestsToReview();
   //     }
   //   });
   // }
