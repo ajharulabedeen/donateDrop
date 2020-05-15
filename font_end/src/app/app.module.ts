@@ -26,6 +26,8 @@ import { RecordRtcComponent } from './record-rtc/record-rtc.component';
 import { RecordClearComponent } from './record-clear/record-clear.component';
 import { DonationHistoryComponent } from './donation-history/donation-history.component';
 import {AdminModule} from './admin/admin.module';
+import {AgentDashboardComponent} from './agent-dashboard/agent-dashboard/agent-dashboard.component';
+import {AgentDashboardModule} from './agent-dashboard/agent-dashboard.module';
 
 
 @NgModule({
@@ -64,7 +66,8 @@ import {AdminModule} from './admin/admin.module';
     EventModule,
     CKEditorModule,
     BrowserModule,
-    AdminModule
+    AdminModule,
+    AgentDashboardModule
     // RecordRTC
 
     // NgModel
