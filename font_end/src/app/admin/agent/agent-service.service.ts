@@ -19,14 +19,14 @@ export class AgentServiceService {
   // http://localhost:8080/public/user/getAgentRequestsToReview
   public getAgentRequestsToReview(agentSearch: RequestGetAgentRequests) {
     return this.http.post(
-      'http://localhost:8080/public/user/getAgentRequestsToReview', agentSearch,
+      'http://localhost:8080/public/user/agent/admin/getAgentRequestsToReview', agentSearch,
       this.authService.getHeader());
   }
 
   // http://localhost:8080/public/user/getAgentRequestsToReview
   public getAgentRequestsToReviewCount(agentSearch: RequestGetAgentRequests) {
     return this.http.post(
-      'http://localhost:8080/public/user/getAgentRequestsToReviewCount', agentSearch,
+      'http://localhost:8080/public/user/agent/admin/getAgentRequestsToReviewCount', agentSearch,
       this.authService.getHeader());
   }
 
