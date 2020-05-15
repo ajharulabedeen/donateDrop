@@ -152,7 +152,7 @@ export class AgentDashboardAcceptedComponent implements OnInit {
     this.adService.updateAgentNote(note).subscribe(res => {
       console.log(res);
       if (res['STATUS'] === 'OK') {
-        // this.getDonnerRequestsToReview();
+        this.getDonnerRequestsToReview();
       }
     });
   }
