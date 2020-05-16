@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-about',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class AboutComponent implements OnInit {
 
   about = "<h1>About About GUB Alumni";
+  todayDate: string;
 
   constructor() { }
 
@@ -15,5 +17,9 @@ export class AboutComponent implements OnInit {
     window.dispatchEvent(new Event('resize'));
     document.body.className = 'hold-transition skin-blue sidebar-mini';
   }
+
+  // showDate(){
+  //   console.log();
+  // }
 
 }

@@ -7,6 +7,11 @@
         <div [innerHTML]="about"></div>
       </section>
     </section>
+
+    <input type="datetime-local"  [(ngModel)]="todayDate">
+    <br>
+    {{todayDate}}
+
   </div>
   <app-footernavbar></app-footernavbar>
   <app-settingsnavbar></app-settingsnavbar>
