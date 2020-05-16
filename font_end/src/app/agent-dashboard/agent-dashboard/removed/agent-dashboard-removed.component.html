@@ -88,7 +88,7 @@
             <!--<th>Approve</th>-->
             <!--<th>Hold</th>-->
             <th>Index</th>
-            <th>Reject Date</th>
+            <th>Remove Date</th>
             <th>Name</th>
             <th>User Name</th>
             <th>Gender</th>
@@ -117,7 +117,7 @@
             <td>
               <button class="btn btn-xs btn-info" (click)=" agentNote=ar.noteAgent; requestID=ar.requestId"
                       data-toggle="modal"
-                      data-target="#modal_agent_dashboard_rejected_agentNote">Edit
+                      data-target="#modal_agent_dashboard_removed_agentNote">Edit
               </button>
               <br>
               {{ar.noteAgent}}
@@ -125,7 +125,7 @@
             <td>
               <button class="btn btn-xs btn-danger" (click)=" personalNote=ar.noteAgentPersonal; requestID=ar.requestId"
                       data-toggle="modal"
-                      data-target="#modal_agent_dashboard_rejected_personalNote">Edit
+                      data-target="#modal_agent_dashboard_removed_personalNote">Edit
               </button>
               <br>
               {{ar.noteAgentPersonal}}
@@ -147,7 +147,7 @@
 
 
 <!-- Modal  : Update Agent Admin-->
-<div class="modal fade" id="modal_agent_dashboard_rejected_agentNote" tabindex="-1" role="dialog"
+<div class="modal fade" id="modal_agent_dashboard_removed_agentNote" tabindex="-1" role="dialog"
      aria-labelledby="modal_workLabel"
      aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -178,7 +178,7 @@
 </div>
 
 <!-- Modal  : Update note Personal-->
-<div class="modal fade" id="modal_agent_dashboard_rejected_personalNote" tabindex="-1" role="dialog"
+<div class="modal fade" id="modal_agent_dashboard_removed_personalNote" tabindex="-1" role="dialog"
      aria-labelledby="modal_workLabel"
      aria-hidden="true">
   <div class="modal-dialog" role="document">
