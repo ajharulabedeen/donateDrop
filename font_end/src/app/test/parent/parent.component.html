@@ -3,9 +3,24 @@
   [ctMsg]="cityMsg"
   [ctArray]="cityArray"
   [studentAddMsg]="stdAddMsg"
+  (addStudentEvent)="saveData($event)">
+  <!--(sendMsgEvent)="printMsg($event)">-->
+  <!--(sendMsgEvent)="printMsg($event)">-->
+</app-childone>
+<p>Name: {{stdFullName}}</p>
+<p>Message: {{msg}}</p>
+<hr>
+<hr>
+<app-childone
+  [ctMsg]="cityMsg"
+  [ctArray]="cityArray"
+  [studentAddMsg]="stdAddMsg"
   (addStudentEvent)="saveData($event)"
   (sendMsgEvent)="printMsg($event)">
+  <!--(sendMsgEvent)="printMsg($event)">-->
 </app-childone>
+<hr>
+<hr>
 <p>Name: {{stdFullName}}</p>
 <p>Message: {{msg}}</p>
 <hr>
