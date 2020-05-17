@@ -11,6 +11,9 @@ export class ChildoneComponent {
   @Input()
   ctMsg: string;
 
+  @Input()
+  reject: string;
+
   @Input('ctArray')
   myctArray: Array<string>
 

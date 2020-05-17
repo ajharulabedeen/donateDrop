@@ -16,7 +16,8 @@
 </div>
 
 <br/><b>{{message}}</b><br/>
-<div>
+<br/><b>{{reject}}</b><br/>
+<div *ngIf="reject">
   Message :<input (input)="msg=$event.target.value"/>
   <br/>
   <button (click)="sendMsg()">Send</button>

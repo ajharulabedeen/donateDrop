@@ -14,6 +14,7 @@ export class ParentComponent {
   cityMsg = 'Indian City Names';
   cityArray = ['Varanasi', 'Delhi', 'Mumbai'];
   stdAddMsg = 'Add Student';
+  rejectValue = '0';
 
   // Property for child component two
   stdMsg = 'Student Leader Detail';

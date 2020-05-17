@@ -1,6 +1,7 @@
 <h1>{{parentTitle}}</h1>
 <app-childone
   [ctMsg]="cityMsg"
+  [reject]="0"
   [ctArray]="cityArray"
   [studentAddMsg]="stdAddMsg"
   (addStudentEvent)="saveData($event)">
@@ -13,6 +14,7 @@
 <hr>
 <app-childone
   [ctMsg]="cityMsg"
+  [reject]="true"
   [ctArray]="cityArray"
   [studentAddMsg]="stdAddMsg"
   (addStudentEvent)="saveData($event)"
