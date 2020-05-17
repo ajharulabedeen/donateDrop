@@ -17,7 +17,12 @@ export class ParentComponent {
 
   // Property for child component two
   stdMsg = 'Student Leader Detail';
-  stdLeaderObj = new Student('Narendra', 'Modi');
+  stdLeaderObj: Student = new Student('Narendra', 'Modi');
+
+// Property for child component two
+  stdMsgAK = 'Student Leader Detail';
+  stdLeaderObjAK: Student = new Student('Arbind', 'Kejriwal');
+
 
   // Property used in parent
   stdFullName = '';

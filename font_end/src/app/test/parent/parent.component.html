@@ -1,16 +1,28 @@
 <h1>{{parentTitle}}</h1>
-<child-one
+<app-childone
   [ctMsg]="cityMsg"
   [ctArray]="cityArray"
   [studentAddMsg]="stdAddMsg"
   (addStudentEvent)="saveData($event)"
   (sendMsgEvent)="printMsg($event)">
-</child-one>
+</app-childone>
 <p>Name: {{stdFullName}}</p>
 <p>Message: {{msg}}</p>
-<child-two
+<hr>
+<hr>
+<!--[studentMsg]="stdMsg"-->
+<!--[stdLeader]="stdLeaderObj"-->
+<app-childtwo
   [studentMsg]="stdMsg"
   [stdLeader]="stdLeaderObj"
   (addNumberEvent)="printSum($event)">
-</child-two>
+</app-childtwo>
 <p>Sum: {{sum}}</p>
+<hr>
+<hr>
+<app-childtwo
+  [studentMsg]="stdMsgAK"
+  [stdLeader]="stdLeaderObjAK"
+  (addNumberEvent)="printSum($event)">
+</app-childtwo>
+
