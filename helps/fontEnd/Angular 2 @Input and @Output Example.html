@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)https://www.concretepage.com/angular-2/angular-2-input-and-output-example -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style id="stndz-style"></style>
+
+<title>Angular 2 @Input and @Output Example</title>
+<meta name="description" content="This page will walk through angular 2 @Input and @Output example. @Input is a decorator to mark an input property and @Output is a decorator to mark an output property.">
+<meta property="og:description" content="This page will walk through angular 2 @Input and @Output example. @Input is a decorator to mark an input property and @Output is a decorator to mark an output property.">
+<meta property="og:image" content="https://www.concretepage.com/angular-2/images/angular-2-input-and-output-example.jpg">
+<meta property="og:title" content="Angular 2 @Input and @Output Example">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.concretepage.com/angular-2/angular-2-input-and-output-example">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@ConcretePage">
+<meta name="ROBOTS" content="INDEX, FOLLOW">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://www.concretepage.com/angular-2/angular-2-input-and-output-example">
+<link rel="icon" href="https://www.concretepage.com/images/favicon.png">
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-37051123-1" type="b944c78a8f05ea9f171d6e83-text/javascript"></script>
+<script type="b944c78a8f05ea9f171d6e83-text/javascript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-37051123-1');
+</script><link href="./Angular 2 @Input and @Output Example_files/styles.01.01.20.css" rel="stylesheet" type="text/css"><script type="b944c78a8f05ea9f171d6e83-text/javascript" src="https://www.concretepage.com/common/js/jquery-2.2.4-and-pretify.js" async=""></script> <script type="b944c78a8f05ea9f171d6e83-text/javascript" src="https://services.bilsyndication.com/adv1/?d=1320" defer="" async=""></script><script type="b944c78a8f05ea9f171d6e83-text/javascript"> var vitag = vitag || {};</script><style>._3vFA8--container{height:0;width:100%;position:relative;background:radial-gradient(44.6% 929.87% at 22.02% 63.39%,#ae6fff 0,#8d35fd 100%);cursor:pointer;overflow:hidden;transition:.8s}._3vFA8--container .AeJ0I--row{padding:11px;margin:0 auto;width:-webkit-max-content;width:-moz-max-content;width:max-content}._3vFA8--container .AeJ0I--row ._1yCun--logo{position:relative;width:51px;height:39px;float:left;margin-right:104px;background:url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNDEiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNy40MDQgOC43TDEuNDU0IDM2LjMyNWMtLjI1OC40NDctLjM4Ny42Ny0uNDUxLjgzOWEyLjIzNiAyLjIzNiAwIDAwMS43MzMgMy4wMDFjLjE3OC4wMy40MzYuMDMuOTUyLjAzLjEwNiAwIC4xNTggMCAuMjEtLjAwM2EyLjIzNyAyLjIzNyAwIDAwMS4yNTItLjQ1Mmw2Ljg1OS00LjcyMWMuNDczLS4zLjkwOC0uNjU0IDEuMjk2LTEuMDUyLjM1NC4wOC43MjcuMTg1IDEuMTQ1LjMwMSAxLjk1LjU0NCA0Ljg4MyAxLjM2IDExLjUxNiAxLjM2IDcuNjcyIDAgMTAuNjEtLjg3NCAxMi4xNTQtMS40NzEuMzguMzQzLjc5Ni42NDYgMS4yNDQuOTA0bDcuNDg4IDQuODE0Yy4zMjQuMjA4LjcwMi4zMiAxLjA4OC4zMiAxLjU1IDAgMi41MTgtMS42NzggMS43NDMtMy4wMkwzMy4yNDIgOC43Yy0yLjU3LTQuNDUyLTMuODU2LTYuNjc5LTUuNTI1LTcuNDQzYTUuNzUxIDUuNzUxIDAgMDAtNC43ODggMGMtMS42NjkuNzY0LTIuOTU0IDIuOTktNS41MjUgNy40NDN6bTguNTYyIDIyLjUyNGMtNC4yNDYgMC03LjU0OC0uNTk4LTkuOTI1LTEuNTM0bC4wMDEtLjAwMmMtLjU2MS0uMjQtMS40MjItLjc4My0xLjIyOC0xLjI5NS4xOTctLjUyIDEuNDQ0LS41MDcgMi4xOC0uMzRsNS4wNzYtOC43MiAzLjU1LTIuNTQ0LTIuMjUuMzEuMDE0LS4wMjMtMi40NTMuMjdjLS40NC4wNS0uNjU4LjA3My0uNzU0LjAwNGEuMzA0LjMwNCAwIDAxLS4xMjMtLjI3MmMuMDEtLjExNy4xNzItLjI2Ni40OTYtLjU2NCAxLjMwNS0xLjE5OCAzLjM3Mi0zLjA5IDMuNzQ3LTMuMzk4YTEuNDM4IDEuNDM4IDAgMDEyLjIwMy40NzhsNy4zMTcgMTMuNDc4Yy45MjItLjI0NCAyLjMwOC0uMzU2IDIuNDU1LjQ4OC4xMy43NDMtLjYwNyAxLjI1OS0yLjM2NyAyLjAyNC0xLjcyMy44LTQuNjY3IDEuNjQtNy45MzkgMS42NHoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=)}._3vFA8--container .AeJ0I--row ._1yCun--logo ._2GogZ--stars ._1ErQY--star-1,._3vFA8--container .AeJ0I--row ._1yCun--logo ._2GogZ--stars ._2JsUk--star-2,._3vFA8--container .AeJ0I--row ._1yCun--logo ._2GogZ--stars ._181pR--star-3{position:absolute}._3vFA8--container .AeJ0I--row ._1yCun--logo ._2GogZ--stars ._1ErQY--star-1{background:url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjU2IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbHRlcj0idXJsKCNmaWx0ZXIwX2QpIj48cGF0aCBkPSJNNTUuNjU1IDM3LjAyNWMuNDc0LTEuNjMgMi41ODYtMi4wNTUgMy42NTMtLjczNWwzLjU4NSA0LjQzNWMuNDE0LjUxMiAxLjA0My44IDEuNy43OGw1LjctLjE3OGMxLjY5OC0uMDUzIDIuNzU1IDEuODI0IDEuODI5IDMuMjQ4bC0zLjExIDQuNzhhMi4xMDIgMi4xMDIgMCAwMC0uMjE3IDEuODU4bDEuOTMxIDUuMzY2Yy41NzUgMS41OTgtLjg4NCAzLjE4My0yLjUyNCAyLjc0MmwtNS41MDctMS40ODFhMi4xMDIgMi4xMDIgMCAwMC0xLjgzNC4zNjlsLTQuNTA3IDMuNDk0Yy0xLjM0MiAxLjA0LTMuMy4xNDMtMy4zODctMS41NTNsLS4yOTQtNS42OTVhMi4xMDIgMi4xMDIgMCAwMC0uOTE3LTEuNjNsLTQuNzE3LTMuMjA3Yy0xLjQwNC0uOTU1LTEuMTU1LTMuMDk0LjQzLTMuNzAybDUuMzI3LTIuMDM4YTIuMTAyIDIuMTAyIDAgMDAxLjI2Ny0xLjM3N2wxLjU5Mi01LjQ3NnoiIGZpbGw9IiNGRkQ2MDAiLz48L2c+PGRlZnM+PGZpbHRlciBpZD0iZmlsdGVyMF9kIiB4PSIuMTI3IiB5PSItMTEuMDkiIHdpZHRoPSIxMTkuMzI3IiBoZWlnaHQ9IjExOC40NjIiIGZpbHRlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj48ZmVGbG9vZCBmbG9vZC1vcGFjaXR5PSIwIiByZXN1bHQ9IkJhY2tncm91bmRJbWFnZUZpeCIvPjxmZUNvbG9yTWF0cml4IGluPSJTb3VyY2VBbHBoYSIgdmFsdWVzPSIwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAxMjcgMCIvPjxmZU9mZnNldC8+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMjIiLz48ZmVDb2xvck1hdHJpeCB2YWx1ZXM9IjAgMCAwIDAgMSAwIDAgMCAwIDEgMCAwIDAgMCAxIDAgMCAwIDAuNSAwIi8+PGZlQmxlbmQgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0iZWZmZWN0MV9kcm9wU2hhZG93Ii8+PGZlQmxlbmQgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iZWZmZWN0MV9kcm9wU2hhZG93IiByZXN1bHQ9InNoYXBlIi8+PC9maWx0ZXI+PC9kZWZzPjwvc3ZnPg==");width:120px;height:56px;top:-12px;left:-103px;background-size:120px 56px}._3vFA8--container .AeJ0I--row ._1yCun--logo ._2GogZ--stars ._2JsUk--star-2{background:url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTE1IiBoZWlnaHQ9IjU2IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbHRlcj0idXJsKCNmaWx0ZXIwX2QpIj48cGF0aCBkPSJNNTguMzg4LTUuNjljLjg4NS0xLjAyNSAyLjU1Ny0uNjMzIDIuODkzLjY3OUw2Mi40MS0uNjA2Yy4xMy41MDguNDkuOTI2Ljk3NCAxLjEzbDQuMTkzIDEuNzYxYzEuMjQ4LjUyNCAxLjM5MiAyLjIzNi4yNDggMi45NjFsLTMuODQgMi40MzVjLS40NDQuMjgtLjczLjc1My0uNzc0IDEuMjc2bC0uMzggNC41MzFjLS4xMTMgMS4zNS0xLjY5NiAyLjAxNS0yLjc0IDEuMTUxbC0zLjUwMS0yLjlhMS42NzYgMS42NzYgMCAwMC0xLjQ1My0uMzQxbC00LjQyNyAxLjA0Yy0xLjMxOC4zMDktMi40NC0uOTkyLTEuOTQxLTIuMjVsMS42NzYtNC4yMjhhMS42NzYgMS42NzYgMCAwMC0uMTI0LTEuNDg3TDQ3Ljk2NC41ODRjLS43MDItMS4xNTguMTg5LTIuNjI3IDEuNTQtMi41NDFsNC41MzguMjg4YTEuNjc2IDEuNjc2IDAgMDAxLjM3Ni0uNTc4bDIuOTctMy40NDN6IiBmaWxsPSIjRkZENjAwIi8+PC9nPjxkZWZzPjxmaWx0ZXIgaWQ9ImZpbHRlcjBfZCIgeD0iLjk2MiIgeT0iLTUyLjY2OCIgd2lkdGg9IjExMy40NzciIGhlaWdodD0iMTEyLjgyMSIgZmlsdGVyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM9InNSR0IiPjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+PGZlQ29sb3JNYXRyaXggaW49IlNvdXJjZUFscGhhIiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDEyNyAwIi8+PGZlT2Zmc2V0Lz48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIyMiIvPjxmZUNvbG9yTWF0cml4IHZhbHVlcz0iMCAwIDAgMCAxIDAgMCAwIDAgMSAwIDAgMCAwIDEgMCAwIDAgMC41IDAiLz48ZmVCbGVuZCBpbjI9IkJhY2tncm91bmRJbWFnZUZpeCIgcmVzdWx0PSJlZmZlY3QxX2Ryb3BTaGFkb3ciLz48ZmVCbGVuZCBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJlZmZlY3QxX2Ryb3BTaGFkb3ciIHJlc3VsdD0ic2hhcGUiLz48L2ZpbHRlcj48L2RlZnM+PC9zdmc+");width:114px;height:53px;left:9px;top:-12.63px;background-size:120px 62px}._3vFA8--container .AeJ0I--row ._1yCun--logo ._2GogZ--stars ._181pR--star-3{background:url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAzIiBoZWlnaHQ9IjU2IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbHRlcj0idXJsKCNmaWx0ZXIwX2QpIj48cGF0aCBkPSJNNTEuODAyIDM2LjA5OGMxLjA5OS0xLjQ5MSAzLjQyLTEuMTMyIDQuMDE2LjYyMmwyLjAwMSA1Ljg4N2MuMjMxLjY4Ljc2NyAxLjIxMSAxLjQ0OCAxLjQzN2w1LjkgMS45NjFjMS43NTguNTg0IDIuMTMzIDIuOTAzLjY1IDQuMDExbC00Ljk4IDMuNzIzYTIuMjkyIDIuMjkyIDAgMDAtLjkyIDEuODIxbC0uMDQyIDYuMjE4Yy0uMDEyIDEuODUyLTIuMTAxIDIuOTI2LTMuNjE0IDEuODU4bC01LjA4LTMuNTg3YTIuMjkyIDIuMjkyIDAgMDAtMi4wMTYtLjMxMmwtNS45MjYgMS44ODJjLTEuNzY1LjU2LTMuNDMyLTEuMDk1LTIuODgzLTIuODY0bDEuODQtNS45MzlhMi4yOTIgMi4yOTIgMCAwMC0uMzI1LTIuMDE0bC0zLjYyMi01LjA1NWMtMS4wNzgtMS41MDUtLjAxOS0zLjYwMSAxLjgzMy0zLjYyNmw2LjIxOC0uMDg1YTIuMjkyIDIuMjkyIDAgMDAxLjgxNC0uOTMybDMuNjg4LTUuMDA2eiIgZmlsbD0iI0ZGRDYwMCIvPjwvZz48ZGVmcz48ZmlsdGVyIGlkPSJmaWx0ZXIwX2QiIHg9Ii43ODgiIHk9Ii0xLjUzNCIgd2lkdGg9IjEwMi4xMzUiIGhlaWdodD0iMTAxLjEyOSIgZmlsdGVyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM9InNSR0IiPjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+PGZlQ29sb3JNYXRyaXggaW49IlNvdXJjZUFscGhhIiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDEyNyAwIi8+PGZlT2Zmc2V0Lz48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIxNy4yNDYiLz48ZmVDb2xvck1hdHJpeCB2YWx1ZXM9IjAgMCAwIDAgMSAwIDAgMCAwIDEgMCAwIDAgMCAxIDAgMCAwIDAuNSAwIi8+PGZlQmxlbmQgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0iZWZmZWN0MV9kcm9wU2hhZG93Ii8+PGZlQmxlbmQgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iZWZmZWN0MV9kcm9wU2hhZG93IiByZXN1bHQ9InNoYXBlIi8+PC9maWx0ZXI+PC9kZWZzPjwvc3ZnPg==");width:114px;height:75px;left:34px;top:-12.63px;background-size:120px 57px}._3vFA8--container .AeJ0I--row ._2CXkc--title{float:left;width:-webkit-max-content;width:-moz-max-content;width:max-content;height:23px;font-family:Montserrat,sans-serif;font-style:normal;font-weight:400;font-size:18px;line-height:37px;color:#fff;text-shadow:0 0 16px #5600c5;margin-right:20px}._3vFA8--container .AeJ0I--row ._1CujY--btn{float:left;flex-direction:row;padding:6px 22px;width:111px;margin-top:-2px;height:38px;background:#ffd600;box-shadow:0 0 28px hsla(0,0%,100%,.5);border-radius:5px}._3vFA8--container .AeJ0I--row ._1CujY--btn ._2Wo2K--btnText{width:66px;height:14px;font-family:Montserrat,serif;font-style:normal;font-weight:600;font-size:11px;line-height:14px;text-align:center;letter-spacing:-.01em;color:#9645fd;align-self:center;margin:6px 0}</style></head><body>
+<div class="topHdColor">
+<div class="feedBlock">
+<div style="float:right; margin:4px 8px 0 0;">
+</div>
+<ul class="feedburner" style="float:right; ">
+<li> <a href="https://www.concretepage.com/forum/login">| Join Forum </a></li> <li> <a href="https://www.concretepage.com/forum/login"> Sign In</a> </li> <li><a href="https://www.concretepage.com/forum/ask">Ask Question</a></li></ul>
+</div>
+</div>
+<div class="headerBg">
+<div class="headerBlock">
+<div class="logo"><span class="logText fl"><a href="https://www.concretepage.com/" title="Java, Spring, Angular, Hibernate and Android">ConcretePage.com</a></span></div>
+<div class="add728Top">
+<div data-type="ad" data-publisher="concretepage.com" data-format="728x90" data-zone="zoneone"></div>
+</div>
+<div class="mobMenuTab"><a href="https://www.concretepage.com/all-tutorials"><img src="./Angular 2 @Input and @Output Example_files/menuTab.png" id="accordImg"></a></div>
+</div>
+</div>
+<div class="cl"></div>
+<div class="menuBox"><div id="topDropMenu" class="ddsmoothmenu"><ul>
+<li><a href="https://www.concretepage.com/">HOME</a></li><li><a href="https://www.concretepage.com/all-tutorials">ALL TUTORIALS</a></li><li><a href="https://www.concretepage.com/java/java-8/">JAVA 8</a></li><li>
+<a href="https://www.concretepage.com/spring-boot/">SPRING BOOT</a></li><li><a href="https://www.concretepage.com/angular/">ANGULAR</a></li><li><a href="https://www.concretepage.com/android">ANDROID</a></li>
+<li><form id="gsearchform" action="https://www.concretepage.com/search"><input type="hidden" value="003115115016125228104:WMX-1778465153" name="cx">
+<input type="hidden" value="FORID:10" name="cof"> <input type="hidden" value="UTF-8" name="ie">
+<input id="gsearchtext" type="text" class="inputSearch" name="q" size="20px" placeholder="Search Tutorials"><input type="submit" value="Search" class="searchbtn"> </form></li></ul></div></div> <div class="cl"></div>
+<div class="mainBlock">
+<div class="brdCrumb">
+<a href="https://www.concretepage.com/">Home</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<a href="https://www.concretepage.com/angular/">Angular</a>
+</div>
+<div class="bodyPart">
+<div class="leftPart">
+<div class="leftLink">
+</div>
+</div>
+
+<div class="leftMidPart">
+
+<div class="text">
+<h1>Angular 2 @Input and @Output Example</h1>
+<div class="date"> <span class="authorName">By Arvind Rai, </span>
+<span class="createdDate">November 24, 2016</span></div>
+This page will walk through angular 2 @Input and @Output example. @Input is a decorator to mark an input property and @Output is a decorator to mark an output property. <code>@Input</code> is used to define an input property to achieve component property binding. <code>@Output</code> is used to define output property to achieve custom event binding. <code>@Input</code> and <code>@Output</code> can define alias for property names as <code>@Input(alias)</code> and <code>@Output(alias)</code>. Here on this page we will provide a complete example of <code>@Input</code> and <code>@Output</code> decorators. We are creating a parent component and two child components. We will perform component property binding and custom event binding using both the child components. In our example we will use <code>@Input</code> with different data types such as string, number, array and user defined class. <code>@Output</code> will be used with the instance of <code>EventEmitter</code>. Now find the complete example step by step.
+<div class="contentsTbl">
+<h5>Contents</h5>
+<ul>
+<li><a href="https://www.concretepage.com/angular-2/angular-2-input-and-output-example#software">Software Used</a> </li>
+<li><a href="https://www.concretepage.com/angular-2/angular-2-input-and-output-example#input"> @Input </a> </li>
+<li><a href="https://www.concretepage.com/angular-2/angular-2-input-and-output-example#output"> @Output </a> </li>
+<li><a href="https://www.concretepage.com/angular-2/angular-2-input-and-output-example#aliasing"> Aliasing Input and Output properties </a> </li>
+<li><a href="https://www.concretepage.com/angular-2/angular-2-input-and-output-example#property-binding-using-input"> Component Property Binding using @Input </a> </li>
+<li><a href="https://www.concretepage.com/angular-2/angular-2-input-and-output-example#event-binding-using-output-eventemitter">Custom Event Binding using @Output and EventEmitter </a> </li>
+<li><a href="https://www.concretepage.com/angular-2/angular-2-input-and-output-example#complete-example">Complete Example using TypeScript </a> </li>
+<li><a href="https://www.concretepage.com/angular-2/angular-2-input-and-output-example#run"> Run Application </a> </li>
+<li><a href="https://www.concretepage.com/angular-2/angular-2-input-and-output-example#reference"> References </a> </li>
+<li><a href="https://www.concretepage.com/angular-2/angular-2-input-and-output-example#download">Download Source Code </a> </li>
+</ul>
+</div>
+<br> <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="b944c78a8f05ea9f171d6e83-text/javascript"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-7218400395368549" data-ad-slot="8716094511"></ins>
+<script type="b944c78a8f05ea9f171d6e83-text/javascript">
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script> <br><br><h3 id="software">Software Used</h3>
+Find the software used in our demo.
+<br>1. Angular 2.3.0
+<br>2. TypeScript 2.0.10
+<br>3. Node.js 4.6.0
+<br>4. NPM 3.10.8
+<br>5. Firefox 50.1.0
+<h3 id="input"> @Input </h3>
+<code>@Input</code> decorator binds a property within one component (child component) to receive a value from another component (parent component). This is one way communication from parent to child. The component property should be annotated with <code>@Input</code> decorator to act as input property. A component can receive a value from another component using component property binding. Now we will see how to use <b>@Input</b>. It can be annotated at any type of property such as number, string, array or user defined class. To use alias for the binding property name we need to assign an alias name as <code>@Input(alias)</code>.
+<br> Find the use of <code>@Input</code> with string data type.
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">@Input() 
+ctMsg : string;  </pre>
+</div>
+Now find array data type with <code>@Input</code> decorator. Here we are aliasing the property name. In the component property binding, alias name <code>ctArray</code> will be used.
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">@Input('ctArray')
+myctArray : Array&lt;string&gt;  </pre>
+</div>
+Now find <code>@Input</code> decorator with a property of user defined class type.
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">@Input('stdLeader')
+myStdLeader : Student;	 </pre>
+</div>
+<div class="bottomAdd">
+<div data-type="ad" data-publisher="concretepage.com" data-zone="zonefour" data-format="300x250"></div>
+<div class="cl"></div></div> <h3 id="output"> @Output </h3>
+<code>@Output</code> decorator binds a property of a component to send data from one component (child component) to calling component (parent component). This is one way communication from child to parent component. <code>@Output</code> binds a property of the type of angular <code>EventEmitter</code> class. This property name becomes custom event name for calling component. <code>@Output</code> decorator can also alias the property name as <code>@Output(alias)</code> and now this alias name will be used in custom event binding in calling component.
+<br>Find the <code>@Output</code> decorator using aliasing.
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">@Output('addStudentEvent') 
+addStdEvent = new EventEmitter&lt;Student&gt;(); </pre>
+</div>
+In the above code snippet <code>addStudentEvent</code> will become custom event name. Now find <code>@Output</code> decorator without aliasing.
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">@Output() 
+sendMsgEvent = new EventEmitter&lt;string&gt;();	 </pre>
+</div>
+Here <code>sendMsgEvent</code> will be custom event name.
+<h3 id="aliasing"> Aliasing Input and Output properties </h3>
+<code>@Input</code> and <code>@Output</code> decorate input and output properties. <code>@Input</code> can alias input property name and <code>@Output</code> can alias output property name.
+<br><b>1. Aliasing input property using @Input </b><br>
+To alias input property use an alias as <code>@Input(alias)</code>. Find code snippet.
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">&lt;child-two [stdLeader] = "stdLeaderObj"&gt; &lt;/child-two&gt; </pre>
+</div>
+Here we are doing property binding. <code>stdLeaderObj</code> is the property of parent component. <code>stdLeader</code> is the alias of child component property. Now find the below ode snippet.
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">@Input('stdLeader')
+myStdLeader : Student;	 </pre>
+</div>
+What we achieve that <code>stdLeader</code> is the alias of <code>myStdLeader</code> property.
+<br><b>2. Aliasing output property using @Output </b><br>
+To alias output property use alias as <code>@Output(alias)</code>. Find the custom event binding as below.
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">&lt;child-two (addNumberEvent) = "printSum($event)" &gt; &lt;/child-two&gt;  </pre>
+</div>
+Here <code>addNumberEvent</code> is a custom event name. When this event will invoke, <code>printSum()</code> method will be executed. Now find the code snippet.
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">@Output('addNumberEvent') 
+addNumEvent = new EventEmitter&lt;number&gt;();	 </pre>
+</div>
+What we achieve here is that <code>addNumberEvent</code> is the alias of <code>addNumEvent</code>.
+<h3 id="property-binding-using-input"> Component Property Binding using @Input </h3>
+Find the steps for component property binding using <code>@Input</code> decorator step by step.
+<br>1. In the parent component, first create a property. Here we are creating a property of our class <code>Student</code> type.
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">stdLeaderObj = new Student('Narendra', 'Modi');  </pre>
+</div>
+2. Create a custom element in parent component that is a selector of one of our child component. Here we will perform component property binding.
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">&lt;child-two [stdLeader] = "stdLeaderObj"&gt; &lt;/child-two&gt;  </pre>
+</div>
+3. Use <code>@Input</code> decorator to declare child component property as an input property that will receive value from parent using component property binding. Here we are using aliasing for property name.
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">@Input('stdLeader')
+myStdLeader : Student;	 </pre>
+</div>
+4. Now we are ready to fetch values from input component property in our child component.
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">{{myStdLeader.fname +' '+ myStdLeader.lname}}  </pre>
+</div>
+<h3 id="event-binding-using-output-eventemitter">Custom Event Binding using @Output and EventEmitter </h3>
+Here we will discuss custom event binding using <code>@Output</code> decorator step by step.
+<br>1. Create text box using element property binding in child component. <code>input</code> event is fired when there is any change in text box. <code>$event.target.value</code> fetches the current value of text box entered by user.
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">&lt;div&gt;
+   First Number :&lt;input (input)="num1=$event.target.value" /&gt; &lt;br/&gt;
+   Second Number:&lt;input (input)="num2=$event.target.value" /&gt; &lt;br/&gt;
+  &lt;br/&gt; &lt;button (click)="addNumber()"&gt;Add Number&lt;/button&gt;
+&lt;/div&gt;	 </pre>
+</div>
+2. Find the method created in child component that will be fired when <code>click</code> event is invoked on click of button from above (step-1) code snippet. <code> emit()</code> is the method of <code>EventEmitter</code> class that emits event payload.
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">addNumber() {
+    this.addNumEvent.emit(parseInt(this.num1) + parseInt(this.num2));
+}	 </pre>
+</div>
+3. In the child component, create an instance of <code>EventEmitter</code> annotated by <code>@Output</code> decorator. This instance will work as custom event name. Here we are using aliasing for custom event name.
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">@Output('addNumberEvent') 
+addNumEvent = new EventEmitter&lt;number&gt;();  </pre>
+</div>
+4. Now we are performing custom event binding. The custom event <code>addNumberEvent</code> will be invoked in parent component when <code> emit()</code> method is invoked from child component. The event payload is accessed by <code>$event</code> object.
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">&lt;child-two (addNumberEvent) = "printSum($event)" &gt; &lt;/child-two&gt;  </pre>
+</div>
+5. The event <code>addNumberEvent</code> will call <code>printSum()</code> method.
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">printSum(res) {
+    this.sum = res;
+}	 </pre>
+</div>
+<div class="bottomAdd">
+<div class="adsbyvli" data-ad-slot="vi_13203229"></div><script type="b944c78a8f05ea9f171d6e83-text/javascript">(vitag.Init = window.vitag.Init || []).push(function(){viAPItag.display("vi_13203229")})</script>
+<div class="cl"></div></div><h3 id="complete-example">Complete Example using TypeScript </h3>
+We will provide a complete example of <code>@Input</code> and <code>@Output</code> decorator using TypeScript. In our example we will create a parent component and two child component. Both child will use <code>@Input</code> and <code>@Output</code> decorator.
+<br><b>student.ts</b>
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">export class Student {
+   constructor(public fname?: string, public lname?: string) { 
+   }
+} </pre>
+</div>
+In the above code we will observe that we are using question mark <code>?</code> in constructor parameter. By using question mark <code>?</code> in constructor parameter, we achieve that while creating instance of <code>Student</code> class, passing arguments are optional. And it is possible to create instance of our <code>Student</code> class as <code>new Student()</code> without passing any argument. If we do not use question mark <code>?</code> in constructor parameters, <code>new Student()</code> will through error and requires arguments.
+<br><b>parent.component.ts</b>
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">import {Component} from '@angular/core';
+import {Student} from './student';
+@Component({
+    selector: 'input-output',
+    template: `
+			&lt;h1&gt;{{parentTitle}}&lt;/h1&gt;
+			&lt;child-one
+				[ctMsg]="cityMsg" 				
+				[ctArray]="cityArray"	
+				[studentAddMsg]="stdAddMsg" 						
+				(addStudentEvent) = "saveData($event)"
+				(sendMsgEvent) = "printMsg($event)" &gt;
+			&lt;/child-one&gt;
+			&lt;p&gt;Name: {{stdFullName}}&lt;/p&gt;				
+			&lt;p&gt;Message: {{msg}}&lt;/p&gt;	
+			&lt;child-two
+				[studentMsg] = "stdMsg"				
+				[stdLeader] = "stdLeaderObj" 
+				(addNumberEvent) = "printSum($event)" &gt;
+			&lt;/child-two&gt;
+			&lt;p&gt;Sum: {{sum}}&lt;/p&gt;							
+	       `
+})
+export class ParentComponent {
+        parentTitle = 'Parent Component';
+
+	//Property for child component one
+	cityMsg = 'Indian City Names';
+	cityArray = ['Varanasi', 'Delhi', 'Mumbai'];
+        stdAddMsg = 'Add Student';	
+	
+	//Property for child component two
+	stdMsg = 'Student Leader Detail';
+	stdLeaderObj = new Student('Narendra', 'Modi');
+	
+	//Property used in parent
+	stdFullName = '';
+	sum = '';
+	msg = '';
+	
+	saveData(std) {
+	    this.stdFullName = std.fname + ' ' + std.lname ;
+        }		
+	printSum(res) {
+	    this.sum = res;
+        }			
+	printMsg(msg) {
+	    this.msg = msg;
+        }			
+}  </pre>
+</div>
+<b>childone.component.ts</b>
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Student} from './student';
+@Component({
+    selector: 'child-one',
+    template: `
+			&lt;h3&gt;{{childTitle}}&lt;/h3&gt;
+			&lt;b&gt; {{ctMsg}}&lt;/b&gt;
+			&lt;ul&gt;
+			 &lt;li *ngFor = "let cname of myctArray"&gt;
+				{{cname}}
+			 &lt;/li&gt;
+			&lt;/ul&gt;
+			
+			&lt;b&gt;{{addMsg}}&lt;/b&gt;&lt;br/&gt;
+			&lt;div&gt;
+				First Name:&lt;input (input)="student.fname=$event.target.value" /&gt; &lt;br/&gt;
+				Last Name:&lt;input (input)="student.lname=$event.target.value" /&gt;
+				&lt;br/&gt; &lt;button (click)="addStudent()"&gt;Add Student&lt;/button&gt;
+			&lt;/div&gt;
+			
+			&lt;br/&gt;&lt;b&gt;{{message}}&lt;/b&gt;&lt;br/&gt;
+			&lt;div&gt;
+				Message :&lt;input (input)="msg=$event.target.value" /&gt;
+				&lt;br/&gt; &lt;button (click)="sendMsg()"&gt;Send&lt;/button&gt;
+			&lt;/div&gt;		
+	     `
+})
+export class ChildOneComponent {
+
+	@Input() 
+	ctMsg : string; 
+	
+	@Input('ctArray')
+	myctArray : Array&lt;string&gt;
+
+        @Input('studentAddMsg') 
+	addMsg : string; 	
+	
+  	@Output('addStudentEvent') 
+	addStdEvent = new EventEmitter&lt;Student&gt;();
+
+  	@Output() 
+	sendMsgEvent = new EventEmitter&lt;string&gt;();	
+	
+	student = new Student();
+	childTitle = '---Child One---';
+	message = 'Send Message'
+	msg : string;
+	
+	addStudent() {
+	      this.addStdEvent.emit(this.student);
+        }	
+	sendMsg() {
+	      this.sendMsgEvent.emit(this.msg);
+        }		
+} </pre>
+</div>
+<b>childtwo.component.ts</b>
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Student} from './student';
+@Component({
+    selector: 'child-two',
+    template: `
+			&lt;h3&gt;{{childTitle}}&lt;/h3&gt;
+			&lt;p&gt; {{studentMsg}} : {{myStdLeader.fname +' '+ myStdLeader.lname}}  &lt;/p&gt;
+
+			&lt;b&gt;{{addNumMsg}}&lt;/b&gt;&lt;br/&gt;
+			&lt;div&gt;
+				First Number :&lt;input (input)="num1=$event.target.value" /&gt; &lt;br/&gt;
+				Second Number:&lt;input (input)="num2=$event.target.value" /&gt; &lt;br/&gt;
+				&lt;br/&gt; &lt;button (click)="addNumber()"&gt;Add Number&lt;/button&gt;
+			&lt;/div&gt;		
+	      `
+})
+export class ChildTwoComponent {
+        @Input() 
+	studentMsg : string; 
+
+        @Input('stdLeader')
+	myStdLeader : Student;	
+
+	@Output('addNumberEvent') 
+	addNumEvent = new EventEmitter&lt;number&gt;();	
+	
+	childTitle = '---Child Two---';
+	addNumMsg ='Add Number'
+        num1 : '';
+	num2 : '';
+	
+	addNumber() {
+	      this.addNumEvent.emit(parseInt(this.num1) + parseInt(this.num2));
+        }		
+}   </pre>
+</div>
+<b>module.ts</b>
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">import {NgModule}           from '@angular/core';
+import {BrowserModule}      from '@angular/platform-browser';
+import {ParentComponent}    from './parent.component';
+import {ChildOneComponent}  from './childone.component';
+import {ChildTwoComponent}  from './childtwo.component';
+@NgModule({
+  imports:      [BrowserModule],
+  declarations: [ParentComponent, 
+                 ChildOneComponent,
+		 ChildTwoComponent],
+  bootstrap:    [ParentComponent]
+})
+export class AppModule { } </pre>
+</div>
+<b>main.ts</b>
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {AppModule} from './module';
+const platform = platformBrowserDynamic();
+platform.bootstrapModule(AppModule);  </pre>
+</div>
+<b>index.html</b>
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Angular 2 Demo&lt;/title&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;script src="node_modules/core-js/client/shim.min.js"&gt;&lt;/script&gt;
+    &lt;script src="node_modules/zone.js/dist/zone.js"&gt;&lt;/script&gt;
+    &lt;script src="node_modules/reflect-metadata/Reflect.js"&gt;&lt;/script&gt;
+    &lt;script src="node_modules/systemjs/dist/system.src.js"&gt;&lt;/script&gt;
+    &lt;!-- Configure SystemJS --&gt;
+    &lt;script src="systemjs.config.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+      System.import('myApp').catch(function(err){ console.error(err); });
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;input-output&gt;Please Wait...&lt;/input-output&gt;
+  &lt;/body&gt;
+&lt;/html&gt; </pre>
+</div>
+<h3 id="run"> Run Application </h3>
+Find the steps to run the example.
+<br>1. Install Node.js and NPM in the system if not already installed. Make sure that Node.js version must be 4.x.x or higher and NPM version must be 3.x.x or higher.
+<br>2. Download the source code using download link given below in the example.
+<br>3. Go to the root folder of the project using command prompt and run <b>npm install</b> command.
+<br>4. Now run <b>npm start</b> command.
+<br>5. Now run index.html file. Find the print screen of the output.
+<div class="imgcenter">
+<img src="./Angular 2 @Input and @Output Example_files/angular-2-input-and-output-example.jpg" alt="Angular 2 @Input and @Output Example" title="Angular 2 @Input and @Output Example">
+</div>
+<h3 id="reference"> References</h3>
+<a href="https://angular.io/docs/ts/latest/guide/template-syntax.html#!#inputs-outputs" target="_blank" rel="nofollow">ANGULAR 2 TEMPLATE SYNTAX:Input and output properties</a>
+<br><a href="https://angular.io/docs/ts/latest/api/core/index/EventEmitter-class.html" target="_blank" rel="nofollow">ANGULAR 2 EventEmitter</a>
+<h3 id="download">Download Source Code </h3>
+<div class="dwnSrcCode">
+<a href="https://www.concretepage.com/angular-2/download/angular-2-input-and-output-example.zip">angular-2-input-and-output-example.zip</a>
+</div>
+</div>
+<style>.fl{ float:left;}
+.sharebtn{ margin:0 10px 0 0px;}
+.shareButton{margin-top:15px;}
+</style>
+<div class="shareButton">
+<div class="cl"></div>
+</div>
+<div class="add_L_300x250 margin-left-240"><div class="adsbyvli" data-ad-slot="vi_13203229"></div><script type="b944c78a8f05ea9f171d6e83-text/javascript">(vitag.Init = window.vitag.Init || []).push(function(){viAPItag.display("vi_13203229")})</script></div> <div class="dimtext mobileDimtext">POSTED BY</div>
+<div class="profileBox">
+<div class="profileImg"><img src="./Angular 2 @Input and @Output Example_files/arvind-rai-profile.png" alt="ARVIND RAI" title="ARVIND RAI"></div>
+<div class="profileText">
+<div style="display:block; margin-bottom:48px;"><div class="writerName fl">ARVIND RAI </div><div class="fl" style="margin-left:45px;"> <div class="we-are-social"><a href="https://twitter.com/concretepage" target="_blank" rel="nofollow"><img src="./Angular 2 @Input and @Output Example_files/twitter.png" border="0"></a>
+<a href="https://www.facebook.com/concretepage" target="_blank" rel="nofollow"><img src="./Angular 2 @Input and @Output Example_files/facebook.png" border="0"></a>
+<a href="https://feedburner.google.com/fb/a/mailverify?uri=concretepage" target="_blank" rel="nofollow"><img src="./Angular 2 @Input and @Output Example_files/mail.png" border="0"></a> </div> </div></div>
+<div class="writerLink cl">Popular Tutorials: <a href="https://www.concretepage.com/java/java-8/" alt="Java 8" title="Java 8">Java 8</a> | <a href="https://www.concretepage.com/spring-5/" alt="Spring 5" title="Spring 5">Spring 5</a> | <a href="https://www.concretepage.com/angular/" alt="Angular" title="Angular">Angular</a> | <a href="https://www.concretepage.com/struts-2/" alt="Struts 2" title="Struts 2">Struts 2</a> | <a href="https://www.concretepage.com/android/" alt="Android" title="Android">Android</a> </div>
+</div>
+</div>
+<br><br><style>
+ .wp-head .wp-leftrow table{display:none !important;}
+</style>
+<div id="wpac-comment" style="margin-bottom:50px;"></div>
+<script type="b944c78a8f05ea9f171d6e83-text/javascript">
+wpac_init = window.wpac_init || [];
+wpac_init.push({widget: 'Comment', id: 6134});
+(function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = 'https://embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+})();
+</script> 
+</div>
+<div class="rightPartBlock">
+<div class="cl"></div>
+<div class="rightPart">
+<div class="rectanngle" style="text-align:center;"><br><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="b944c78a8f05ea9f171d6e83-text/javascript"></script> 
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7218400395368549" data-ad-slot="7591257714"></ins>
+<script type="b944c78a8f05ea9f171d6e83-text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div><br><div class="rectanngle" style="text-align:center;"><div class="adsbyvli" data-ad-slot="vi_13203229"></div><script type="b944c78a8f05ea9f171d6e83-text/javascript">(vitag.Init = window.vitag.Init || []).push(function(){viAPItag.display("vi_13203229")})</script></div><br><div class="rectanngle" style="text-align:center;"><div data-type="ad" data-publisher="concretepage.com" data-zone="zonetwo" data-format="300x250"></div></div><br>
+<div class="rectanngle" style="text-align:center;"><div class="adsbyvli" data-ad-slot="vi_13203229"></div><script type="b944c78a8f05ea9f171d6e83-text/javascript">(vitag.Init = window.vitag.Init || []).push(function(){viAPItag.display("vi_13203229")})</script></div> <div class="rightLink">
+<ul>
+<span>Top Trends</span>
+</ul>
+<li>
+<a href="https://www.concretepage.com/angular-2/angular-2-radio-button-and-checkbox-example">Angular Radio Button and Checkbox Example</a>
+</li>
+<li>
+<a href="https://www.concretepage.com/angular-2/angular-2-4-pattern-validation-example">Angular Pattern Validation Example</a>
+</li>
+<li>
+<a href="https://www.concretepage.com/angular/angular-select-option-selected">Angular Select Option Set Selected Dynamically</a>
+</li>
+<li>
+<a href="https://www.concretepage.com/angular-2/angular-2-4-minlength-and-maxlength-validation-example">Angular minlength and maxlength Validation Example</a>
+</li>
+<li>
+<a href="https://www.concretepage.com/angular/angular-select-option-reactive-form">Angular Select Option using Reactive Form</a>
+</li>
+</div>
+<div class="rectanngle" style="text-align:center;"><div data-type="ad" data-publisher="concretepage.com" data-zone="zonethree" data-format="300x250"></div></div> <div class="rightLink">
+<ul>
+<span>Popular Post</span>
+</ul>
+<li>
+<a href="https://www.concretepage.com/jackson-api/jackson-jsonproperty-and-jsonalias-example">Jackson @JsonProperty and @JsonAlias Example</a>
+</li>
+<li>
+<a href="https://www.concretepage.com/angular/angular-httpclient-post">Angular HttpClient post</a>
+</li>
+<li>
+<a href="https://www.concretepage.com/angular/angular-formarray-setvalue-patchvalue">Angular FormArray setValue() and patchValue()</a>
+</li>
+<li>
+<a href="https://www.concretepage.com/jackson-api/jackson-jsonignore-jsonignoreproperties-and-jsonignoretype">Jackson @JsonIgnore, @JsonIgnoreProperties and @JsonIgnoreType</a>
+</li>
+<li>
+<a href="https://www.concretepage.com/jackson-api/jackson-ignore-null-and-empty-fields">Jackson Ignore Null and Empty Fields</a>
+</li>
+</div> <div class="cl"></div>
+<div class="rectanngle" style="text-align:center;"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="b944c78a8f05ea9f171d6e83-text/javascript"></script> 
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-7218400395368549" data-ad-slot="9207591713"></ins>
+<script type="b944c78a8f05ea9f171d6e83-text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div> <div class="rightLink">
+<ul>
+<span>Featured Post</span>
+</ul>
+<li>
+<a href="https://www.concretepage.com/angular-material/angular-material-select-change-event">Angular Material Select Change Event</a>
+</li>
+<li>
+<a href="https://www.concretepage.com/angular-material/angular-material-select-getting-setting-value">Angular Material Select : Getting and Setting value</a>
+</li>
+<li>
+<a href="https://www.concretepage.com/angular-material/angular-material-radio-button">Angular Material Radio Button</a>
+</li>
+<li>
+<a href="https://www.concretepage.com/angular/angular-valuechanges-and-statuschanges">Angular valueChanges and statusChanges</a>
+</li>
+<li>
+<a href="https://www.concretepage.com/angular-2/angular-2-http-post-example">Angular 2 Http post() Example</a>
+</li>
+</div>
+<div class="adsbyvli" data-ad-slot="vi_13203231"></div><script type="b944c78a8f05ea9f171d6e83-text/javascript">(vitag.Init = window.vitag.Init || []).push(function(){viAPItag.display("vi_13203231")})</script>
+</div>
+</div>
+</div>
+</div><div class="cl"></div>
+<br><br>
+<div class="backlink">
+<div class="backlinkBlock">
+<ul style="margin:0 100px;">
+<div style="line-height:25px; color:#FFFFFF;"><h5>About Us</h5>
+We are a group of software developers. <br> We enjoy learning and sharing technologies.<br> To improve the site's content, <br>your valuable suggestions <br>are most welcome. <span style="color:#B02B1A; font-style:italic;">Thanks</span><br>
+Email : <b style="color:yellowgreen;">concretepage@gmail.com</b>
+<br><br><div class="we-are-social"><a href="https://twitter.com/concretepage" target="_blank" rel="nofollow"><img src="./Angular 2 @Input and @Output Example_files/twitter.png" border="0"></a>
+<a href="https://www.facebook.com/concretepage" target="_blank" rel="nofollow"><img src="./Angular 2 @Input and @Output Example_files/facebook.png" border="0"></a>
+<a href="https://feedburner.google.com/fb/a/mailverify?uri=concretepage" target="_blank" rel="nofollow"><img src="./Angular 2 @Input and @Output Example_files/mail.png" border="0"></a> </div> </div>
+</ul>
+<ul style="color:#FFFFFF;">
+<h5>Mobile Apps</h5>
+<br>SCJP Quiz<br><br>
+<a href="https://play.google.com/store/apps/details?id=com.concretepage.javaquiz" target="_blank" rel="nofollow"><img alt="Get it on Google Play" src="./Angular 2 @Input and @Output Example_files/google-play.jpg"></a>
+<br><br>ConcretePage.com<br><br>
+<a href="https://play.google.com/store/apps/details?id=com.concretepage.app" target="_blank" rel="nofollow"><img alt="Get it on Google Play" src="./Angular 2 @Input and @Output Example_files/google-play.jpg"></a>
+</ul>
+</div>
+</div>
+<div class="cl"></div>
+<div class="footerBlock">
+<div class="footerArea">
+<p style="padding:8px 5px 0;"><span class="fl">©2020 concretepage.com | </span><span class="fl" style="padding:0 0 0 3px;"><a href="https://www.concretepage.com/privacy-policy">Privacy Policy</a> | </span><span class="fl" style="padding:0 0 0 3px;"><a href="https://www.concretepage.com/contact-us">Contact Us</a></span></p>
+<span class="fr" style="padding:8px 5px 0 0;"></span>
+</div>
+</div>
+<div class="cl"></div>
+<script type="b944c78a8f05ea9f171d6e83-text/javascript">
+function _dmBootstrap(file) { 
+	var _dma = document.createElement('script');  
+	_dma.type = 'text/javascript'; 
+	_dma.async = true;  
+	_dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file; 
+	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined')  _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js');}
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000);})();
+</script> <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="b944c78a8f05ea9f171d6e83-|49" defer=""></script> </body></html>
