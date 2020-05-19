@@ -9,6 +9,7 @@ import com.donatedrop.models.Address;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -34,7 +35,7 @@ public class ProfileBasic implements Serializable {
 
     //    @Size(max = 512)
     @Column(name = "birth_date")
-    private String birthDate;
+    private Date birthDate;
 
     //    @Size(max = 1024)
     @Column(name = "care_of")
@@ -64,14 +65,9 @@ public class ProfileBasic implements Serializable {
     @Column(name = "email")
     private String email;
 
-
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "address_permanent")
-    private Address address_permanent;
-
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "address_present")
-    private Address address_present;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "profile_id")
+    private List<Address> address;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "profile_id")
@@ -126,8 +122,6 @@ public class ProfileBasic implements Serializable {
                 + ", religion='" + religion + '\''
                 + ", email='" + email + '\''
                 + ", available='" + available + '\''
-                + ", \nAddress_permanent=\n" + address_permanent
-                + ", \nAddress_current=\n" + address_present
                 + ", \nPhone_number=\n" + phone_number
                 + ", \nEmergency_contact=\n" + emergency_contact
                 + '}';
@@ -149,11 +143,11 @@ public class ProfileBasic implements Serializable {
         this.name = name;
     }
 
-    public String getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -205,14 +199,6 @@ public class ProfileBasic implements Serializable {
         this.available = available;
     }
 
-    public Address getAddress_permanent() {
-        return address_permanent;
-    }
-
-    public void setAddress_permanent(Address address_permanent) {
-        this.address_permanent = address_permanent;
-    }
-
     public List<PhoneNumber> getPhone_number() {
         return phone_number;
     }
@@ -229,14 +215,6 @@ public class ProfileBasic implements Serializable {
         this.emergency_contact = emergency_contact;
     }
 
-    public Address getAddress_present() {
-        return address_present;
-    }
-
-    public void setAddress_present(Address address_present) {
-        this.address_present = address_present;
-    }
-
     public String getReligion() {
         return religion;
     }
@@ -251,5 +229,13 @@ public class ProfileBasic implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Address> getAddress() {
+        return address;
+    }
+
+    public void setAddress(List<Address> address) {
+        this.address = address;
     }
 }

@@ -18,6 +18,7 @@ import com.donatedrop.geocode.AbstractTest;
 import com.donatedrop.other.DumpDao;
 import com.donatedrop.other.TestUtil;
 import com.donatedrop.util.DateUtil;
+import com.donatedrop.util.GetDate;
 import com.donatedrop.util.StringUtil;
 import org.junit.Before;
 import org.junit.Test;
@@ -74,7 +75,7 @@ public class Test_ControllerAgentAdmin extends AbstractTest {
         System.out.println("userID : " + userID);
         AgentRequest agentRequest = new AgentRequest();
         agentRequest.setUserID(userID.toString());
-        agentRequest.setRequestDate(DateUtil.getDate().toString());
+        agentRequest.setRequestDate(GetDate.getDate().toString());
         agentRequest.setStatus("0");
         agentRequest.setNoteApplicant("Test Note!");
 

@@ -8,7 +8,7 @@ package com.donatedrop.history;
 import com.donatedrop.geocode.AbstractTest;
 import com.donatedrop.other.TestUtil;
 import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
-import com.donatedrop.util.DateUtil;
+import com.donatedrop.util.GetDate;
 import com.donatedrop.util.StringUtil;
 import org.junit.Before;
 import org.junit.Test;
@@ -57,7 +57,7 @@ public class Test_ControllerHistory extends AbstractTest {
         System.out.println("\nHistory Save\n");
         History history = new History();
         history.setUserId(userID);//will be set from service.
-        history.setDate(DateUtil.getDate().toString());
+        history.setDate(GetDate.getDate().toString());
         history.setLocation("Karakom,WestPoint, Dhaka.");
         history.setPatientDescription("Kidney");
         history.setRefferedBy("Mobile");
@@ -92,7 +92,7 @@ public class Test_ControllerHistory extends AbstractTest {
         History history = new History();
         history.setId(new Long(historyID));//will be set from service.
         history.setUserId(userID);//will be set from service.
-        history.setDate(DateUtil.getDate().toString());
+        history.setDate(GetDate.getDate().toString());
         history.setLocation("Karakom, WestPoint, Dhaka.");
         history.setPatientDescription("Kidney Update, Update");
         history.setRefferedBy("Mobile/");

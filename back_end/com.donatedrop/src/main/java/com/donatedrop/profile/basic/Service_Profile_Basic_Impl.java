@@ -17,12 +17,12 @@ public class Service_Profile_Basic_Impl implements Service_Profile_Basic_I {
 
     @Override
     public Map<String, String> save(ProfileBasic profileBasic) {
-        if (profileBasic.getAddress_permanent() == null) {
-            profileBasic.setAddress_permanent(new Address());
-        }
-        if (profileBasic.getAddress_present() == null) {
-            profileBasic.setAddress_present(new Address());
-        }
+//        if (profileBasic.getAddress_permanent() == null) {
+//            profileBasic.setAddress_permanent(new Address());
+//        }
+//        if (profileBasic.getAddress_present() == null) {
+//            profileBasic.setAddress_present(new Address());
+//        }
         return dao_profile_basic_i.save(profileBasic);
     }
 

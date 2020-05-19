@@ -13,7 +13,8 @@ import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.security.models.User;
 import com.donatedrop.security.repo.UserRepository;
-import com.donatedrop.util.DateUtil;
+import com.donatedrop.util.AddressType;
+import com.donatedrop.util.GetDate;
 import com.donatedrop.util.Utils;
 import org.hibernate.annotations.NaturalId;
 import org.junit.jupiter.api.Test;
@@ -53,7 +54,7 @@ public class DumpDataInsertion {
     DumpDao dumpDao;
 
     @Test
-    public void testEntityManager() throws Exception{
+    public void testEntityManager() throws Exception {
         dumpDao.deleteAll_ProfileBasic();
     }
 
@@ -96,8 +97,10 @@ public class DumpDataInsertion {
 
         ProfileBasic profileBasic = new ProfileBasic();
         profileBasic.setName(DumpData.getName());
-        profileBasic.setAddress_present(getAddress());
-        profileBasic.setAddress_permanent(getAddress());
+        List<Address> aList = new ArrayList<>();
+        aList.add(getAddress(AddressType.PRESENT.toString()));
+        aList.add(getAddress(AddressType.PERMANENNT.toString()));
+        
 
         List<EmergencyContact> emergencyContacts = new ArrayList<>();
         for (int x = 0; x < r.nextInt(4); x++) {
@@ -120,7 +123,7 @@ public class DumpDataInsertion {
         profileBasic.setMaritalStatus(DumpData.getMarterialStatus());
         profileBasic.setProfession(DumpData.getProfession());
         profileBasic.setCare_of(DumpData.getName());
-        profileBasic.setBirthDate(DateUtil.getDate().toString());
+//        profileBasic.setBirthDate(GetDate.getDate());
         profileBasic.setReligion(DumpData.getReligion());
         profileBasic.setUserId(userID);
 
@@ -128,9 +131,8 @@ public class DumpDataInsertion {
         return profileBasic;
     }
 
-    public Address getAddress() {
+    public Address getAddress(String type) {
         Random r = new Random();
-        Address address_permanet = new Address();
         String divID = "";
         String divName = "";
         String distID = "";
@@ -139,12 +141,15 @@ public class DumpDataInsertion {
         String upzName = "";
         String unionID = "";
         String unionName = "";
+
+        Address address = new Address();
+        address.setType(type);
         try {
             List<DivisionsEngName> divisionsList = dao_GeoCode_I.getDivisions();
             int divRand = r.nextInt(divisionsList.size() - 1);
             divID = divisionsList.get(divRand).getId().toString();
             divName = divisionsList.get(divRand).getName().toString();
-            address_permanet.setDivision(divName);
+            address.setDivision(divName);
         } catch (Exception e) {
             System.out.println("Exception in Gettting Division!" + divID + "\n");
         }
@@ -153,7 +158,7 @@ public class DumpDataInsertion {
             int distRand = r.nextInt(districtsEngNameList.size() - 1);
             distID = districtsEngNameList.get(distRand).getId().toString();
             distName = districtsEngNameList.get(distRand).getName().toString();
-            address_permanet.setDistrict(distName);
+            address.setDistrict(distName);
         } catch (Exception e) {
             System.out.println("Exception in Gettting District! : " + distID + "\n");
         }
@@ -162,7 +167,7 @@ public class DumpDataInsertion {
             int upzRand = r.nextInt(upzillaEngNameList.size() - 1);
             upzID = upzillaEngNameList.get(upzRand).getId().toString();
             upzName = upzillaEngNameList.get(upzRand).getName().toString();
-            address_permanet.setUpzilla(upzName);
+            address.setUpzilla(upzName);
         } catch (Exception e) {
             System.out.println("Exception in Gettting Upzilla! : " + upzID + "\n");
         }
@@ -171,12 +176,12 @@ public class DumpDataInsertion {
             int unionRand = r.nextInt(unionsEngNameList.size() - 1);
             unionID = unionsEngNameList.get(unionRand).getId().toString();
             unionName = unionsEngNameList.get(unionRand).getName().toString();
-            address_permanet.setUnion_ward(unionName);
+            address.setUnion_ward(unionName);
         } catch (Exception e) {
             System.out.println("Exception in Gettting Unions! : " + unionID + "\n");
         }
-        address_permanet.setStreet_address(DumpData.getStreetAddress());
-        return address_permanet;
+        address.setStreet_address(DumpData.getStreetAddress());
+        return address;
     }
 
 }// class

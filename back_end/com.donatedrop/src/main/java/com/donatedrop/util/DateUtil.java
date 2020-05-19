@@ -9,19 +9,26 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- *
- * @author abedeen
+ * @author Dell-3460
  */
-public class DateUtil
-    {
-        private static Date date;
-        
-        public static Date getDate()
-            {
-                if( date == null )
-                  {
-                    date = new  Date();
-                  }
-                return date;
-            }
+public class DateUtil {
+
+    private static SimpleDateFormat simpleDateFormat;
+
+    public static SimpleDateFormat getSimpleDateFormat() {
+        if (simpleDateFormat == null) {
+            simpleDateFormat = new SimpleDateFormat("dd MMM, YYYY  HH:mm:ss a");
+        }
+        return simpleDateFormat;
     }
+
+//    public static Date getDate() {
+//        SimpleDateFormat dateFormat = getSimpleDateFormat();
+//        Date date = new Date();
+//        return dateFormat.format(date);
+//    }
+
+//    public static void main(String[] args) {
+//        System.out.println(GetDate.getDate());
+//    }
+}

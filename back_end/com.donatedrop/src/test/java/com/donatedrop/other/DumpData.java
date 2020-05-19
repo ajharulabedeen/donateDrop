@@ -1208,4 +1208,6 @@ public class DumpData {
         String[] status = {"Islam", "Jesus", "Hindu", "Doudhp", "Athiest", "None"};
         return status[r.nextInt(status.length - 1)];
     }
+
+
 }

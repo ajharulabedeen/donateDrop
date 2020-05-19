@@ -3,6 +3,12 @@ package com.donatedrop.other;
 import com.donatedrop.agent.admin.model.AgentRequest;
 import com.donatedrop.agent.admin.model.AgentRequestToReview;
 import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
+import com.donatedrop.geocode.Dao_GeoCode_I;
+import com.donatedrop.geocode.models.DistrictsEngName;
+import com.donatedrop.geocode.models.DivisionsEngName;
+import com.donatedrop.geocode.models.UnionsEngName;
+import com.donatedrop.geocode.models.UpzillaEngName;
+import com.donatedrop.models.Address;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.security.models.User;
 import com.donatedrop.security.repo.UserRepository;
@@ -14,12 +20,17 @@ import javax.persistence.PersistenceContext;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Component
 public class DumpDao {
 
     @PersistenceContext
     EntityManager entityManager;
+
+    @Autowired
+    Dao_GeoCode_I dao_GeoCode_I;
+
 
     @Autowired
     UserRepository userRepository;
@@ -32,9 +43,9 @@ public class DumpDao {
         String q = "SELECT * FROM `profilebasic`";
         List<ProfileBasic> basicList
                 = entityManager.createNativeQuery(q, ProfileBasic.class)
-                        .setFirstResult(start)
-                        .setMaxResults(max)
-                        .getResultList();
+                .setFirstResult(start)
+                .setMaxResults(max)
+                .getResultList();
         return basicList;
     }
 
@@ -78,9 +89,9 @@ public class DumpDao {
         String q = "SELECT * FROM `user`";
         List<User> userList
                 = entityManager.createNativeQuery(q, User.class)
-                        .setFirstResult(start)
-                        .setMaxResults(max)
-                        .getResultList();
+                .setFirstResult(start)
+                .setMaxResults(max)
+                .getResultList();
         return userList;
     }
 
@@ -105,7 +116,62 @@ public class DumpDao {
         return entityManager.createNativeQuery(q).getResultList();
     }
 
-//    start : no need :
+
+    public Address getAddress(String type) {
+        Random r = new Random();
+        String divID = "";
+        String divName = "";
+        String distID = "";
+        String distName = "";
+        String upzID = "";
+        String upzName = "";
+        String unionID = "";
+        String unionName = "";
+
+        Address address = new Address();
+        address.setType(type);
+        try {
+            List<DivisionsEngName> divisionsList = dao_GeoCode_I.getDivisions();
+            int divRand = r.nextInt(divisionsList.size() - 1);
+            divID = divisionsList.get(divRand).getId().toString();
+            divName = divisionsList.get(divRand).getName().toString();
+            address.setDivision(divName);
+        } catch (Exception e) {
+            System.out.println("Exception in Gettting Division!" + divID + "\n");
+        }
+        try {
+            List<DistrictsEngName> districtsEngNameList = dao_GeoCode_I.getDistricts(divID);
+            int distRand = r.nextInt(districtsEngNameList.size() - 1);
+            distID = districtsEngNameList.get(distRand).getId().toString();
+            distName = districtsEngNameList.get(distRand).getName().toString();
+            address.setDistrict(distName);
+        } catch (Exception e) {
+            System.out.println("Exception in Gettting District! : " + distID + "\n");
+        }
+        try {
+            List<UpzillaEngName> upzillaEngNameList = dao_GeoCode_I.getUpzillas(distID);
+            int upzRand = r.nextInt(upzillaEngNameList.size() - 1);
+            upzID = upzillaEngNameList.get(upzRand).getId().toString();
+            upzName = upzillaEngNameList.get(upzRand).getName().toString();
+            address.setUpzilla(upzName);
+        } catch (Exception e) {
+            System.out.println("Exception in Gettting Upzilla! : " + upzID + "\n");
+        }
+        try {
+            List<UnionsEngName> unionsEngNameList = dao_GeoCode_I.getUnions(upzID);
+            int unionRand = r.nextInt(unionsEngNameList.size() - 1);
+            unionID = unionsEngNameList.get(unionRand).getId().toString();
+            unionName = unionsEngNameList.get(unionRand).getName().toString();
+            address.setUnion_ward(unionName);
+        } catch (Exception e) {
+            System.out.println("Exception in Gettting Unions! : " + unionID + "\n");
+        }
+        address.setStreet_address(DumpData.getStreetAddress());
+        return address;
+    }
+
+
+    //    start : no need :
     public List<AgentRequestToReview> getAllAgentRequestReviewPhoneNumber(int start, int max, String column, String key) {
 //        String q = "SELECT * FROM `agent_request_review`";
         List<AgentRequestToReview> agentRequestReviews = new ArrayList<>();
@@ -115,9 +181,9 @@ public class DumpDao {
                     + "AND phonenumber.number LIKE '" + key + "'";
             agentRequestReviews
                     = entityManager.createNativeQuery(q, AgentRequestToReview.class)
-                            .setFirstResult(start)
-                            .setMaxResults(max)
-                            .getResultList();
+                    .setFirstResult(start)
+                    .setMaxResults(max)
+                    .getResultList();
             return agentRequestReviews;
         } catch (Exception exception) {
             System.out.println("org.hibernate.exception.SQLGrammarException");
@@ -140,9 +206,9 @@ public class DumpDao {
             String q = "SELECT * FROM `agent_request_review` WHERE `agent_request_review`.`" + column + "` LIKE '" + key + "'";
             agentRequestReviews
                     = entityManager.createNativeQuery(q, AgentRequestToReview.class)
-                            .setFirstResult(start)
-                            .setMaxResults(max)
-                            .getResultList();
+                    .setFirstResult(start)
+                    .setMaxResults(max)
+                    .getResultList();
             return agentRequestReviews;
         } catch (Exception exception) {
             System.out.println("org.hibernate.exception.SQLGrammarException");

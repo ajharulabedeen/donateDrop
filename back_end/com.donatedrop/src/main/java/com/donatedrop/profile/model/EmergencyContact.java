@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
@@ -32,11 +33,15 @@ public class EmergencyContact implements Serializable {
     private String phone;
     @Column
     private String mail;
-//    @Size(max = 1024)
+    //    @Size(max = 1024)
     @Column
     private String address;
     @Column
     private String relation;
+
+    @Column(name = "add_date")
+    Date addDate;
+
 
     @JsonBackReference
     @ManyToOne
@@ -131,6 +136,14 @@ public class EmergencyContact implements Serializable {
         this.relation = relation;
     }
 
+    public Date getAddDate() {
+        return addDate;
+    }
+
+    public void setAddDate(Date addDate) {
+        this.addDate = addDate;
+    }
+
     public ProfileBasic getProfileBasic() {
         return profileBasic;
     }
@@ -138,5 +151,6 @@ public class EmergencyContact implements Serializable {
     public void setProfileBasic(ProfileBasic profileBasic) {
         this.profileBasic = profileBasic;
     }
+
 
 }

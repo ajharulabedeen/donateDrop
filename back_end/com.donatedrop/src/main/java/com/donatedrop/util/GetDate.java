@@ -4,13 +4,12 @@ package com.donatedrop.util;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class GetDate
-    {
+public class GetDate {
 
-    public static String getDate()
-        {
-            SimpleDateFormat dateFormat = SimpleDateFormatUtil.getSimpleDateFormat();
-            Date date = DateUtil.getDate();
-            return dateFormat.format(date);
-        }
+    public static String getDate() {
+        SimpleDateFormat dateFormat = DateUtil.getSimpleDateFormat();
+//            Date date = DateUtil.getDate();
+        Date date = new Date();
+        return dateFormat.format(date);
     }
+}

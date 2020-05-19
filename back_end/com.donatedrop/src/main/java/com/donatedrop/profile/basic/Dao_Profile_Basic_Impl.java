@@ -22,7 +22,6 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
     @PersistenceContext
     private EntityManager entityManager;
 
-
     @Override
     public Map<String, String> save(ProfileBasic profileBasic) {
         String status = "";
@@ -176,46 +175,46 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
     @Override
     public Map<String, String> updatePresentAddress(Address addressPresentNew, String userID) {
         Map<String, String> result = new HashMap<>();
-        ProfileBasic profileBasic = getProfileBasicByUserID(userID);
-        if (profileBasic != null) {
-            Address addressPresentOld = profileBasic.getAddress_present();
-            addressPresentOld.setDivision(addressPresentNew.getDivision());
-            addressPresentOld.setDistrict(addressPresentNew.getDistrict());
-            addressPresentOld.setUpzilla(addressPresentNew.getUpzilla());
-            addressPresentOld.setUnion_ward(addressPresentNew.getUnion_ward());
-            addressPresentOld.setStreet_address(addressPresentNew.getStreet_address());
-            try {
-                entityManager.merge(addressPresentOld);
-                result.put(StringUtil.STATUS, StringUtil.OK);
-            } catch (Exception e) {
-                result.put(StringUtil.STATUS, StringUtil.FAIL);
-            }
-        } else {
-            result.put(StringUtil.STATUS, StringUtil.FAIL);
-        }
+//        ProfileBasic profileBasic = getProfileBasicByUserID(userID);
+//        if (profileBasic != null) {
+//            Address addressPresentOld = profileBasic.getAddress_present();
+//            addressPresentOld.setDivision(addressPresentNew.getDivision());
+//            addressPresentOld.setDistrict(addressPresentNew.getDistrict());
+//            addressPresentOld.setUpzilla(addressPresentNew.getUpzilla());
+//            addressPresentOld.setUnion_ward(addressPresentNew.getUnion_ward());
+//            addressPresentOld.setStreet_address(addressPresentNew.getStreet_address());
+//            try {
+//                entityManager.merge(addressPresentOld);
+//                result.put(StringUtil.STATUS, StringUtil.OK);
+//            } catch (Exception e) {
+//                result.put(StringUtil.STATUS, StringUtil.FAIL);
+//            }
+//        } else {
+//            result.put(StringUtil.STATUS, StringUtil.FAIL);
+//        }
         return result;
     }
 
     @Override
     public Map<String, String> updatePermanentAddress(Address addressPermanentNew, String userID) {
         Map<String, String> result = new HashMap<>();
-        ProfileBasic profileBasic = getProfileBasicByUserID(userID);
-        if (profileBasic != null) {
-            Address addressPermanentOld = profileBasic.getAddress_permanent();
-            addressPermanentOld.setDivision(addressPermanentNew.getDivision());
-            addressPermanentOld.setDistrict(addressPermanentNew.getDistrict());
-            addressPermanentOld.setUpzilla(addressPermanentNew.getUpzilla());
-            addressPermanentOld.setUnion_ward(addressPermanentNew.getUnion_ward());
-            addressPermanentOld.setStreet_address(addressPermanentNew.getStreet_address());
-            try {
-                entityManager.merge(addressPermanentOld);
-                result.put(StringUtil.STATUS, StringUtil.OK);
-            } catch (Exception e) {
-                result.put(StringUtil.STATUS, StringUtil.FAIL);
-            }
-        } else {
-            result.put(StringUtil.STATUS, StringUtil.FAIL);
-        }
+//        ProfileBasic profileBasic = getProfileBasicByUserID(userID);
+//        if (profileBasic != null) {
+//            Address addressPermanentOld = profileBasic.getAddress_permanent();
+//            addressPermanentOld.setDivision(addressPermanentNew.getDivision());
+//            addressPermanentOld.setDistrict(addressPermanentNew.getDistrict());
+//            addressPermanentOld.setUpzilla(addressPermanentNew.getUpzilla());
+//            addressPermanentOld.setUnion_ward(addressPermanentNew.getUnion_ward());
+//            addressPermanentOld.setStreet_address(addressPermanentNew.getStreet_address());
+//            try {
+//                entityManager.merge(addressPermanentOld);
+//                result.put(StringUtil.STATUS, StringUtil.OK);
+//            } catch (Exception e) {
+//                result.put(StringUtil.STATUS, StringUtil.FAIL);
+//            }
+//        } else {
+//            result.put(StringUtil.STATUS, StringUtil.FAIL);
+//        }
         return result;
     }
 
