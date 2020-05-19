@@ -122,8 +122,6 @@ public class Address implements Serializable {
         this.upzilla = upzilla;
     }
 
-
-
     public String getStreet_address() {
         return street_address;
     }

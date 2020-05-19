@@ -5,6 +5,7 @@ import com.donatedrop.geocode.models.DistrictsEngName;
 import com.donatedrop.geocode.models.DivisionsEngName;
 import com.donatedrop.geocode.models.UnionsEngName;
 import com.donatedrop.geocode.models.UpzillaEngName;
+import com.donatedrop.util.AddressType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,6 +19,11 @@ public class TestAny {
 
     @Autowired
     DumpDao daoDump;
+
+    @Test
+    public void testEnum() {
+        System.out.println(AddressType.PERMANENNT);
+    }
 
     @Test
     public void testBCrypt() {
@@ -102,5 +108,6 @@ public class TestAny {
         });
         System.out.println("\nTotal Count : " + daoDump.getNotRequestedDonnerToAgentUsersCount() + "\n");
     }
+
 
 }// class

@@ -1,5 +1,6 @@
 package com.donatedrop.other;
 
+import com.donatedrop.util.AddressType;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -12,7 +13,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class OrderTest {
     @Test
     void test0() {
-        System.out.println("0");
+        System.out.println(AddressType.PERMANENNT);
+        System.out.println(AddressType.PRESENT);
+        System.out.println(AddressType.OTHER);
+        System.out.println(AddressType.values().length);
+        System.out.println("M0");
         assertEquals(2, 1 + 1);
     }
 
