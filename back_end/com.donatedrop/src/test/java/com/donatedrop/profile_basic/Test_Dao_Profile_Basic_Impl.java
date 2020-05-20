@@ -61,7 +61,7 @@ public class Test_Dao_Profile_Basic_Impl {
             ProfileBasic profileBasic = new ProfileBasic();
             String name = DumpData.getName();
             profileBasic.setName(name);
-            profileBasic.setEmail(name + "@gmail.com");
+            profileBasic.setEmail(name.replace(" ", "") + "@gmail.com");
             profileBasic.setReligion(DumpData.getReligion());
 
 //            profileBasic.setAddress(new Arrays.asList());
@@ -75,11 +75,11 @@ public class Test_Dao_Profile_Basic_Impl {
             List<EmergencyContact> emergencyContacts = new ArrayList<>();
             String eName = DumpData.getName();
             EmergencyContact emergencyContact1 =
-                    new EmergencyContact(eName, DumpData.getPhoneNumber(), eName + "@gmail.com",
+                    new EmergencyContact(eName, DumpData.getPhoneNumber(), eName.replace(" ", "") + "@gmail.com",
                             dumpDao.getAddressString(AddressType.EMERGENCY.toString()), DumpData.getRelation());
             eName = DumpData.getName();
             EmergencyContact emergencyContact2
-                    = new EmergencyContact(eName, DumpData.getPhoneNumber(), eName + "@gmail.com",
+                    = new EmergencyContact(eName, DumpData.getPhoneNumber(), eName.replace(" ", "") + "@gmail.com",
                     dumpDao.getAddressString(AddressType.EMERGENCY.toString()), DumpData.getRelation());
             emergencyContacts.add(emergencyContact1);
             emergencyContacts.add(emergencyContact2);
