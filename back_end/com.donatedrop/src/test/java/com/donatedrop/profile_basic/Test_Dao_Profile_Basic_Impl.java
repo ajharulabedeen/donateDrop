@@ -59,7 +59,10 @@ public class Test_Dao_Profile_Basic_Impl {
         try {
             System.out.println("\nProfile Basic Dao Test!\n");
             ProfileBasic profileBasic = new ProfileBasic();
-            profileBasic.setName("Khan Ajharul Abedeen");
+            String name = DumpData.getName();
+            profileBasic.setName(name);
+            profileBasic.setEmail(name + "@gmail.com");
+            profileBasic.setReligion(DumpData.getReligion());
 
 //            profileBasic.setAddress(new Arrays.asList());
             ArrayList<Address> aList = new ArrayList<Address>(
@@ -70,27 +73,34 @@ public class Test_Dao_Profile_Basic_Impl {
             profileBasic.setAddress(aList);
 
             List<EmergencyContact> emergencyContacts = new ArrayList<>();
-            String name = DumpData.getName();
-            EmergencyContact emergencyContact1 = new EmergencyContact(name, DumpData.getPhoneNumber(), name + "@gmail.com", dumpDao.getAddressString(AddressType.EMERGENCY.toString()), "Uncle");
-            EmergencyContact emergencyContact2 = new EmergencyContact("Prof. Altaf", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle");
+            String eName = DumpData.getName();
+            EmergencyContact emergencyContact1 =
+                    new EmergencyContact(eName, DumpData.getPhoneNumber(), eName + "@gmail.com",
+                            dumpDao.getAddressString(AddressType.EMERGENCY.toString()), DumpData.getRelation());
+            eName = DumpData.getName();
+            EmergencyContact emergencyContact2
+                    = new EmergencyContact(eName, DumpData.getPhoneNumber(), eName + "@gmail.com",
+                    dumpDao.getAddressString(AddressType.EMERGENCY.toString()), DumpData.getRelation());
             emergencyContacts.add(emergencyContact1);
             emergencyContacts.add(emergencyContact2);
             profileBasic.setEmergency_contact(emergencyContacts);
 
             List<PhoneNumber> phoneNumbers = Arrays.asList(
-                    new PhoneNumber("01717034420"),
-                    new PhoneNumber("01717034420"),
-                    new PhoneNumber("01712034420")
+                    new PhoneNumber(DumpData.getPhoneNumber()),
+                    new PhoneNumber(DumpData.getPhoneNumber()),
+                    new PhoneNumber(DumpData.getPhoneNumber())
             );
             profileBasic.setPhone_number(phoneNumbers);
-            profileBasic.setGender("Male");
-            profileBasic.setBlood_Group("A+");
+            profileBasic.setGender(DumpData.getGender());
+            profileBasic.setBlood_Group(DumpData.getBloodGroup());
             profileBasic.setAvailable("0");
-            profileBasic.setMaritalStatus("NO");
-            profileBasic.setProfession("Freelance");
-            profileBasic.setCare_of("Khan Atiar Rahman.");
+            profileBasic.setMaritalStatus(DumpData.getMarterialStatus());
+            profileBasic.setProfession(DumpData.getProfession());
+            profileBasic.setCare_of(DumpData.getName());
+            //refactor : have to set automatic userID.
             profileBasic.setUserId(Utils.getLoggedUserID());
             profileBasic.setBirthDate(GetDate.getDate());
+
 
 //        ACT
             status = dao_Profile_Basic_I.save(profileBasic);
@@ -98,6 +108,7 @@ public class Test_Dao_Profile_Basic_Impl {
             id = status.get(StringUtil.ID);
             System.out.println("\nID : " + id);
             storeID(id);
+            storeProfileBasic(profileBasic.toString());
             System.out.println("Count : " + count++);
         } catch (Exception e) {
             storeID(id);
@@ -415,8 +426,20 @@ public class Test_Dao_Profile_Basic_Impl {
      * main goal of the unit test is to keep the test as much as possible
      * independent.
      *
-     * @param id
+     * @param profileBasic
      */
+    public void storeProfileBasic(String profileBasic) {
+        try {
+            FileWriter myWriter = new FileWriter("profileBasic.txt");
+            myWriter.write(profileBasic);
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
     public void storeID(String id) {
         try {
             FileWriter myWriter = new FileWriter("filename.txt");

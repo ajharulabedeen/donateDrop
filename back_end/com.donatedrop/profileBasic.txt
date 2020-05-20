@@ -1,0 +1,5 @@
+ProfileBasic{id=41, userId='16', name='Lion Nur Zayan', birthDate='2020-05-20 09:04:15', care_of='Khatun Akram Zoya', gender='Male', maritalStatus='YES', profession='Plumber', blood_Group='B-', religion='Jesus', email='Lion Nur Zayan@gmail.com', available='0', 
+Phone_number=
+[PhoneNumber{id=46, number=01890-681407}, PhoneNumber{id=47, number=01791-219368}, PhoneNumber{id=48, number=01331-903265}], 
+Emergency_contact=
+[EmergencyContact{id=44, name='BiBi Murabbi Usman', phone='01699-626256', mail='BiBi Murabbi Usman@gmail.com', address='81 rasta, Doulotpur, Comilla, Chattagram', relation='Mama'}, EmergencyContact{id=45, name='MD Qatadah Usman', phone='01783-733166', mail='MD Qatadah Usman@gmail.com', address='52 rasta, Fothepur, Sylhet, Sylhet', relation='Husband'}]}
