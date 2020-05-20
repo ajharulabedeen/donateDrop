@@ -35,7 +35,7 @@ public class ProfileBasic implements Serializable {
 
     //    @Size(max = 512)
     @Column(name = "birth_date")
-    private Date birthDate;
+    private String birthDate;
 
     //    @Size(max = 1024)
     @Column(name = "care_of")
@@ -143,11 +143,11 @@ public class ProfileBasic implements Serializable {
         this.name = name;
     }
 
-    public Date getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 

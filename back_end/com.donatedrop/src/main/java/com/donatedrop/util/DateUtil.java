@@ -17,7 +17,7 @@ public class DateUtil {
 
     public static SimpleDateFormat getSimpleDateFormat() {
         if (simpleDateFormat == null) {
-            simpleDateFormat = new SimpleDateFormat("dd MMM, YYYY  HH:mm:ss a");
+            simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
         }
         return simpleDateFormat;
     }
@@ -28,7 +28,7 @@ public class DateUtil {
 //        return dateFormat.format(date);
 //    }
 
-//    public static void main(String[] args) {
-//        System.out.println(GetDate.getDate());
-//    }
+    public static void main(String[] args) {
+        System.out.println(GetDate.getDate());
+    }
 }

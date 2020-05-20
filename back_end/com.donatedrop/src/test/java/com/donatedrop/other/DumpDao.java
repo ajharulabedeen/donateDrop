@@ -170,6 +170,59 @@ public class DumpDao {
         return address;
     }
 
+    public String getAddressString(String type) {
+        Random r = new Random();
+        String divID = "";
+        String divName = "";
+        String distID = "";
+        String distName = "";
+        String upzID = "";
+        String upzName = "";
+        String unionID = "";
+        String unionName = "";
+
+        Address address = new Address();
+        address.setType(type);
+        try {
+            List<DivisionsEngName> divisionsList = dao_GeoCode_I.getDivisions();
+            int divRand = r.nextInt(divisionsList.size() - 1);
+            divID = divisionsList.get(divRand).getId().toString();
+            divName = divisionsList.get(divRand).getName().toString();
+            address.setDivision(divName);
+        } catch (Exception e) {
+            System.out.println("Exception in Gettting Division!" + divID + "\n");
+        }
+        try {
+            List<DistrictsEngName> districtsEngNameList = dao_GeoCode_I.getDistricts(divID);
+            int distRand = r.nextInt(districtsEngNameList.size() - 1);
+            distID = districtsEngNameList.get(distRand).getId().toString();
+            distName = districtsEngNameList.get(distRand).getName().toString();
+            address.setDistrict(distName);
+        } catch (Exception e) {
+            System.out.println("Exception in Gettting District! : " + distID + "\n");
+        }
+        try {
+            List<UpzillaEngName> upzillaEngNameList = dao_GeoCode_I.getUpzillas(distID);
+            int upzRand = r.nextInt(upzillaEngNameList.size() - 1);
+            upzID = upzillaEngNameList.get(upzRand).getId().toString();
+            upzName = upzillaEngNameList.get(upzRand).getName().toString();
+            address.setUpzilla(upzName);
+        } catch (Exception e) {
+            System.out.println("Exception in Gettting Upzilla! : " + upzID + "\n");
+        }
+        try {
+            List<UnionsEngName> unionsEngNameList = dao_GeoCode_I.getUnions(upzID);
+            int unionRand = r.nextInt(unionsEngNameList.size() - 1);
+            unionID = unionsEngNameList.get(unionRand).getId().toString();
+            unionName = unionsEngNameList.get(unionRand).getName().toString();
+            address.setUnion_ward(unionName);
+        } catch (Exception e) {
+            System.out.println("Exception in Gettting Unions! : " + unionID + "\n");
+        }
+        address.setStreet_address(DumpData.getStreetAddress());
+        return address.getStreet_address() + address.getUnion_ward() + ", " + address.getDistrict() + ", " + address.getDivision();
+    }
+
 
     //    start : no need :
     public List<AgentRequestToReview> getAllAgentRequestReviewPhoneNumber(int start, int max, String column, String key) {

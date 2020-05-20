@@ -21,12 +21,17 @@ public class TestAny {
     DumpDao daoDump;
 
     @Test
+    public void getDumpDaoGetAddressString() {
+        System.out.println(daoDump.getAddressString(AddressType.EMERGENCY.toString()));
+    }
+
+    @Test
     public void testEnum() {
         System.out.println(AddressType.PERMANENNT);
     }
 
     @Test
-    public void testBCrypt() {
+    public void testBCruserCreationypt() {
         System.out.println("Test!");
         int i = 0;
         while (i < 10) {

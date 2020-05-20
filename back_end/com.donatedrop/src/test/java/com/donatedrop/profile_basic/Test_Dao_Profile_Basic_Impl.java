@@ -1,75 +1,57 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.donatedrop.profile_basic;
 
-import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.models.Address;
+import com.donatedrop.other.DumpDao;
+import com.donatedrop.other.DumpData;
 import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
 import com.donatedrop.profile.model.EmergencyContact;
+import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.profile.model.ProfileBasic;
+import com.donatedrop.util.AddressType;
 import com.donatedrop.util.GetDate;
 import com.donatedrop.util.StringUtil;
 import com.donatedrop.util.Utils;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.FileNotFoundException;  // Import this class to handle errors
-import java.util.Scanner; // Import the Scanner class to read text files
-
-import org.junit.*;
-
-import static org.junit.Assert.*;
-
-import org.junit.runner.RunWith;
+import org.junit.Assert;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
-import org.junit.jupiter.api.Order;
 
-/**
- * @author ajharulabedeen@gmail.com
- */
-@RunWith(SpringRunner.class)
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest
-//@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Test_Dao_Profile_Basic_Impl {
+
+    @Autowired
+    DumpDao dumpDao;
 
     @Autowired
     Dao_Profile_Basic_I dao_Profile_Basic_I;
 
+    @Test
+    @Order(-1)
+    public void test0_DaoObject() {
+        System.out.println("\n\n\n---M1---\n\n\n");
+        assert (dao_Profile_Basic_I != null);
+    }
+
     public String id = "";
     int count = 0;
-
-    public Test_Dao_Profile_Basic_Impl() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
 
     /**
      * April 5, 2020
      */
     @Test
-    @Order(value = 1)
+    @Order(1)
     public void test1_save() {
         Map<String, String> status = null;
 
@@ -79,13 +61,17 @@ public class Test_Dao_Profile_Basic_Impl {
             ProfileBasic profileBasic = new ProfileBasic();
             profileBasic.setName("Khan Ajharul Abedeen");
 
-            Address address_present = new Address("Khulna", "Khulna", "Dumuria", "Rudghora", "Mikshimil East");
-//            profileBasic.setAddress_present(address_present);
-            Address address_permanet = new Address("Khulna", "Khulna", "Dumuria", "Rudghora", "Mikshimil East");
-//            profileBasic.setAddress_permanent(address_permanet);
+//            profileBasic.setAddress(new Arrays.asList());
+            ArrayList<Address> aList = new ArrayList<Address>(
+                    Arrays.asList(
+                            dumpDao.getAddress(AddressType.PERMANENNT.toString()),
+                            dumpDao.getAddress(AddressType.PRESENT.toString())
+                    ));
+            profileBasic.setAddress(aList);
 
             List<EmergencyContact> emergencyContacts = new ArrayList<>();
-            EmergencyContact emergencyContact1 = new EmergencyContact("Mahbub", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle");
+            String name = DumpData.getName();
+            EmergencyContact emergencyContact1 = new EmergencyContact(name, DumpData.getPhoneNumber(), name + "@gmail.com", dumpDao.getAddressString(AddressType.EMERGENCY.toString()), "Uncle");
             EmergencyContact emergencyContact2 = new EmergencyContact("Prof. Altaf", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle");
             emergencyContacts.add(emergencyContact1);
             emergencyContacts.add(emergencyContact2);
@@ -104,6 +90,7 @@ public class Test_Dao_Profile_Basic_Impl {
             profileBasic.setProfession("Freelance");
             profileBasic.setCare_of("Khan Atiar Rahman.");
             profileBasic.setUserId(Utils.getLoggedUserID());
+            profileBasic.setBirthDate(GetDate.getDate());
 
 //        ACT
             status = dao_Profile_Basic_I.save(profileBasic);
@@ -116,48 +103,53 @@ public class Test_Dao_Profile_Basic_Impl {
             storeID(id);
         }
 //        Assert
-        assertEquals(StringUtil.OK, status.get(StringUtil.STATUS));
+        Assert.assertEquals(StringUtil.OK, status.get(StringUtil.STATUS));
     }
 
     @Test
+    @Order(2)
     public void test2_basicExist() {
         //test for ProfileBasic not found
         String userID_NotExist = "12";
         Map<String, String> resultNotExist = dao_Profile_Basic_I.basicExist(userID_NotExist);
         System.out.println("\nNot Exist : " + resultNotExist + "\n");
 //        assertEquals(resultNotExist.get("status"), false);
-        assertEquals(StringUtil.FALSE, resultNotExist.get(StringUtil.STATUS));
+        Assert.assertEquals(StringUtil.FALSE, resultNotExist.get(StringUtil.STATUS));
         //test for ProfileBasic found
         String userID_Exist = "13";
         Map<String, String> resultExist = dao_Profile_Basic_I.basicExist(userID_Exist);
         System.out.println("\nExist : " + resultExist + "\n");
 //        assertEquals(resultExist.get("status"), true);
-        assertEquals(StringUtil.FALSE, resultNotExist.get(StringUtil.STATUS));
+        Assert.assertEquals(StringUtil.FALSE, resultNotExist.get(StringUtil.STATUS));
     }
 
     @Test
+    @Order(3)
     public void test3_findOne() {
-        id = getID();
+        String id = getID();
         ProfileBasic profileBasic = dao_Profile_Basic_I.findOne(id);
+        //org.hibernate.LazyInitializationException, print will not work.
 //        System.out.println("\n\n---\n" + profileBasic.toString() + "\n---\n\n");
-        assertEquals(id, profileBasic.getId().toString());
+        Assert.assertEquals(id, profileBasic.getId().toString());
     }
 
     @Test
+    @Order(4)
     public void test4_findOneByUser() {
         String userID = "16";
         ProfileBasic profileBasic = dao_Profile_Basic_I.findOneByUser(userID);
         System.out.println("\nTest : \n" + profileBasic + "\n\n");
-//        System.out.println("\nTest : \n" + profileBasic.getPhone_number().toString() + "\n\n");
+        System.out.println("\nTest : \n" + profileBasic.getPhone_number().toString() + "\n\n");
         if (profileBasic != null) {
-            assertEquals(userID, profileBasic.getUserId());
+            Assert.assertEquals(userID, profileBasic.getUserId());
         } else {
-            assertEquals(StringUtil.NOT_NULL, StringUtil.NULL);
+            Assert.assertEquals(StringUtil.NOT_NULL, StringUtil.NULL);
         }
     }
 
     //    dependency : save profile basic.
     @Test
+    @Order(5)
     public void test5_updateBasic() {
         // Arrange
         Map<String, String> result = new HashMap<>();
@@ -174,29 +166,34 @@ public class Test_Dao_Profile_Basic_Impl {
         profileBasicNew.setMaritalStatus("NO");
         profileBasicNew.setProfession("Freelance/Remote");
         profileBasicNew.setCare_of("Khan Atiar Rahman and Dr Mahbub, Dumuria Khulna.");
+        profileBasicNew.setReligion("Private");
+        profileBasicNew.setEmail("Mail@mail.com");
         // Act
         result = dao_Profile_Basic_I.update(profileBasicNew);
         // Assertion
         System.out.println("\n\n" + result + "\n\n");
-        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
         //have to do more verification. by calling the full app.
         //refactor : stop child loading, need to create new method to get only basics.
         ProfileBasic profileBasicSaved = dao_Profile_Basic_I.findOneByUser(userID);
-        assertEquals(profileBasicNew.getName(), profileBasicSaved.getName());
-        assertEquals(profileBasicNew.getBirthDate(), profileBasicSaved.getBirthDate());
-        assertEquals(profileBasicNew.getCare_of(), profileBasicSaved.getCare_of());
+        Assert.assertEquals(profileBasicNew.getName(), profileBasicSaved.getName());
+        Assert.assertEquals(profileBasicNew.getBirthDate(), profileBasicSaved.getBirthDate());
+        Assert.assertEquals(profileBasicNew.getCare_of(), profileBasicSaved.getCare_of());
 //        assertEquals("DimDim", profileBasicSaved.getCare_of());//for test the test, :P
-        assertEquals(profileBasicNew.getGender(), profileBasicSaved.getGender());
-        assertEquals(profileBasicNew.getMaritalStatus(), profileBasicSaved.getMaritalStatus());
-        assertEquals(profileBasicNew.getProfession(), profileBasicSaved.getProfession());
-        assertEquals(profileBasicNew.getBlood_Group(), profileBasicSaved.getBlood_Group());
-        assertEquals(profileBasicNew.getAvailable(), profileBasicSaved.getAvailable());
+        Assert.assertEquals(profileBasicNew.getGender(), profileBasicSaved.getGender());
+        Assert.assertEquals(profileBasicNew.getMaritalStatus(), profileBasicSaved.getMaritalStatus());
+        Assert.assertEquals(profileBasicNew.getProfession(), profileBasicSaved.getProfession());
+        Assert.assertEquals(profileBasicNew.getBlood_Group(), profileBasicSaved.getBlood_Group());
+        Assert.assertEquals(profileBasicNew.getAvailable(), profileBasicSaved.getAvailable());
+        Assert.assertEquals(profileBasicNew.getReligion(), profileBasicSaved.getReligion());
+        Assert.assertEquals(profileBasicNew.getEmail(), profileBasicSaved.getEmail());
     }
 
     //depedency : findOne By userID.
     @Test
+    @Order(6)
     public void test6_presentAddressUpdate() {
-        String userID = "13";
+        String userID = "16";
         String distNew = "Dhaka";
         String divNew = "Dhaka";
         String streetAddressNew = "Road No 10";
@@ -206,20 +203,21 @@ public class Test_Dao_Profile_Basic_Impl {
         addressPresentNew.setStreet_address(streetAddressNew);
         Map<String, String> result = dao_Profile_Basic_I.updatePresentAddress(addressPresentNew, userID);
         System.out.println("\n\n" + result + "\n\n");
-        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
 
 //        Address addressPresentSaved = dao_Profile_Basic_I.findOneByUser(userID).getAddress_present();
         Address addressPresentSaved = new Address();
         String divSaved = addressPresentSaved.getDistrict();
         String distSaved = addressPresentSaved.getDivision();
-        assertEquals(divSaved, divNew);
-        assertEquals(distSaved, distNew);
+        Assert.assertEquals(divSaved, divNew);
+        Assert.assertEquals(distSaved, distNew);
     }
 
     //depedency : findOne By userID.
     @Test
+    @Order(7)
     public void test7_permanentAddressUpdate() {
-        String userID = "13";
+        String userID = "16";
         String distNew = "Khulna";
         String divNew = "Khulna";
         Address addressPermanentNew = new Address();
@@ -227,40 +225,42 @@ public class Test_Dao_Profile_Basic_Impl {
         addressPermanentNew.setDistrict(distNew);
         Map<String, String> result = dao_Profile_Basic_I.updatePermanentAddress(addressPermanentNew, userID);
         System.out.println("\n\n" + result + "\n\n");
-        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
 
 //        Address addressPermanentSaved = dao_Profile_Basic_I.findOneByUser(userID).getAddress_permanent();
         Address addressPermanentSaved = new Address();
         String divSaved = addressPermanentSaved.getDistrict();
         String distSaved = addressPermanentSaved.getDivision();
-        assertEquals(divSaved, divNew);
-        assertEquals(distSaved, distNew);
+        Assert.assertEquals(divSaved, divNew);
+        Assert.assertEquals(distSaved, distNew);
     }
 
     @Test
+    @Order(8)
     public void test8_addPhoneNumber() {
-        String userID = "13";
-        PhoneNumber phoneNumberNew = new PhoneNumber("01910-364020");
+        String userID = "16";
+        PhoneNumber phoneNumberNew = new PhoneNumber("01910-664020");
         Map<String, String> result = dao_Profile_Basic_I.addPhoneNumber(phoneNumberNew, userID);
         System.out.println("\n\n" + result + "\n\n");
-        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
         PhoneNumber phoneNumberSaved
                 = dao_Profile_Basic_I.findOneByUser(userID)
-                        .getPhone_number()
-                        .stream()
-                        .filter(p -> phoneNumberNew.getNumber().equals(p.getNumber()))
-                        .findAny()
-                        .orElse(null);
+                .getPhone_number()
+                .stream()
+                .filter(p -> phoneNumberNew.getNumber().equals(p.getNumber()))
+                .findAny()
+                .orElse(null);
         System.out.println("\n" + phoneNumberSaved.toString() + "\n");
-        assertEquals(phoneNumberSaved.getNumber(), phoneNumberNew.getNumber());
+        Assert.assertEquals(phoneNumberSaved.getNumber(), phoneNumberNew.getNumber());
 //        assertEquals(phoneNumberSaved.getNumber(), "01919");
     }
 
     //dependency : depend on save profile basic, cause without save it will not found any phone number to delete.
     @Test
+    @Order(9)
     public void test9_deletePhoneNumber() {
         // Arrange
-        String userID = "13";
+        String userID = "16";
         try {
             String phoneNumberID = dao_Profile_Basic_I
                     .findOneByUser(userID)
@@ -273,29 +273,36 @@ public class Test_Dao_Profile_Basic_Impl {
 
             // Assert
             System.out.println("\n\n" + result + "\n\n");
-            assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+            Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
             PhoneNumber phoneNumberSaved
                     = dao_Profile_Basic_I.findOneByUser(userID)
-                            .getPhone_number()
-                            .stream()
-                            .filter(p -> phoneNumberID.equals(p.getId().toString()))
-                            .findAny()
-                            .orElse(null);
+                    .getPhone_number()
+                    .stream()
+                    .filter(p -> phoneNumberID.equals(p.getId().toString()))
+                    .findAny()
+                    .orElse(null);
             if (phoneNumberSaved == null) {
-                assertEquals(null, phoneNumberSaved);
+                Assert.assertEquals(null, phoneNumberSaved);
             } else {
-                assertEquals(StringUtil.OK, StringUtil.FAIL);
+                Assert.assertEquals(StringUtil.OK, StringUtil.FAIL);
             }
         } catch (Exception e) {
             System.out.println("\n\nTest : Error in Getting Phone Number ID!\n\n");
-            assertEquals(StringUtil.OK, StringUtil.FAIL);
+            Assert.assertEquals(StringUtil.OK, StringUtil.FAIL);
         }
     }
 
     //dependency : Basic Profile Save.
     @Test
+    @Order(10)
     public void test10_addEmergencyContact() {
-        String userID = "13";
+        //arrange
+        String profileBasicID = getID();
+        String userID = "";
+        String emergencyContactID = "";
+        ProfileBasic profileBasic = dao_Profile_Basic_I.findOneWithChild(profileBasicID);
+        userID = profileBasic.getUserId();
+
 //String name, String phone, String mail, String address, String relation
         EmergencyContact emergencyContact1 = new EmergencyContact(
                 "Dr Mahbub Gazi.",
@@ -306,16 +313,23 @@ public class Test_Dao_Profile_Basic_Impl {
         );
         Map<String, String> result = dao_Profile_Basic_I.addEmergencyContact(emergencyContact1, userID);
         System.out.println("\n\n>>" + result + "\n\n");
-        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
 
     //dependency : Basic Profile Save.
     @Test
+    @Order(11)
     public void test11_updateEmergencyContact() {
 
-        //        unatherised deletion
-        String userID = "1";
-        String emergencyContactID = "312";
+//        Arrange
+        String profileBasicID = getID();
+        String userID = "";
+        String emergencyContactID = "";
+        ProfileBasic profileBasic = dao_Profile_Basic_I.findOneWithChild(profileBasicID);
+        userID = profileBasic.getUserId();
+        emergencyContactID = profileBasic.getEmergency_contact().get(0).getId().toString();
+
+        //unatherised deletion
         EmergencyContact emergencyContact = new EmergencyContact();
         emergencyContact.setId(Long.parseLong(emergencyContactID));
         emergencyContact.setName("Mahbub Gazi");
@@ -323,43 +337,48 @@ public class Test_Dao_Profile_Basic_Impl {
         emergencyContact.setAddress("Dhaka, Dhaka");
         emergencyContact.setRelation("Mamu");
         emergencyContact.setMail("mail@mail.com");
-        Map<String, String> result = dao_Profile_Basic_I.updateEmergencyContact(emergencyContact, userID);
+        Map<String, String> result = dao_Profile_Basic_I.updateEmergencyContact(emergencyContact, userID + 1);
 
         System.out.println("\n\n>>" + result + "\n\n");
-        assertEquals(StringUtil.FAIL, result.get(StringUtil.STATUS));
-        assertEquals(StringUtil.UNAUTHERIZED, result.get(StringUtil.ERROR));
+        Assert.assertEquals(StringUtil.FAIL, result.get(StringUtil.STATUS));
+        Assert.assertEquals(StringUtil.UNAUTHERIZED, result.get(StringUtil.ERROR));
 
-        //        athurised deletion
-        userID = "13";
-//        emergencyContactID = "312";
+        //athurised deletion
         result = dao_Profile_Basic_I.updateEmergencyContact(emergencyContact, userID);
         System.out.println("\n\n>>" + result + "\n\n");
-        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
 
     //dependency : Basic Profile Save.
     @Test
+    @Order(12)
     public void test12_deleteEmergencyContact() {
 
-        //        unatherised deletion
+        //        Arrange
+        String profileBasicID = getID();
         String userID = "1";
-        String emergencyContactID = "313";
-        Map<String, String> result = dao_Profile_Basic_I.deleteEmergencyContact(emergencyContactID, userID);
+        String emergencyContactID = "4";
+        ProfileBasic profileBasic = dao_Profile_Basic_I.findOneWithChild(profileBasicID);
+        userID = profileBasic.getUserId();
+        emergencyContactID = profileBasic.getEmergency_contact().get(0).getId().toString();
+
+        //        unathorised deletion
+        Map<String, String> result = dao_Profile_Basic_I.deleteEmergencyContact(emergencyContactID, userID + 1);
         System.out.println("\n\n>>" + result + "\n\n");
-        assertEquals(StringUtil.FAIL, result.get(StringUtil.STATUS));
-        assertEquals(StringUtil.NULL, result.get(StringUtil.ERROR));
+        Assert.assertEquals(StringUtil.FAIL, result.get(StringUtil.STATUS));
+        Assert.assertEquals(StringUtil.UNAUTHERIZED, result.get(StringUtil.ERROR));
 
         //        atherised deletion
-        userID = "13";
-        emergencyContactID = "313";
         result = dao_Profile_Basic_I.deleteEmergencyContact(emergencyContactID, userID);
         System.out.println("\n\n>>" + result + "\n\n");
-        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
 
     @Test
+    @Order(13)
     public void test13_delete() {
-        id = getID();
+        System.out.println("\n\n\n---M3---\n\n\n");
+        String id = getID();
         Map<String, String> response = new HashMap<>();
         try {
             response = dao_Profile_Basic_I.delete(id);
@@ -367,10 +386,29 @@ public class Test_Dao_Profile_Basic_Impl {
             System.out.println("Test Delete Fail!");
         }
         System.out.println("\n\n" + "response (test) : " + response.toString() + "\n\n");
-        assertEquals(StringUtil.OK, response.get(StringUtil.STATUS));
+        Assert.assertEquals(StringUtil.OK, response.get(StringUtil.STATUS));
+    }
+
+    /**
+     * to test just save of "ProfileBasic" no address or other fields.
+     */
+    @Test
+    public void testSaveProfileBasic() {
+        ProfileBasic profileBasic = new ProfileBasic();
+        profileBasic.setName("Khan Ajharul Abedeen");
+        profileBasic.setGender("Male");
+        profileBasic.setBlood_Group("A+");
+        profileBasic.setAvailable("0");
+        profileBasic.setMaritalStatus("NO");
+        profileBasic.setProfession("Freelance");
+        profileBasic.setCare_of("Khan Atiar Rahman.");
+        profileBasic.setUserId(Utils.getLoggedUserID());
+        Map<String, String> map = dao_Profile_Basic_I.save(profileBasic);
+        System.out.println(map);
     }
 
 //    Helpers :
+
     /**
      * will store the last save id, that can be used for later for other method.
      * Though there is question does it, right to a result from unit test, as
@@ -409,4 +447,4 @@ public class Test_Dao_Profile_Basic_Impl {
         return id;
     }
 
-}//class
+}
