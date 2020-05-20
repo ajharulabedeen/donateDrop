@@ -3,6 +3,7 @@ package com.donatedrop.profile_basic;
 import com.donatedrop.models.Address;
 import com.donatedrop.other.DumpDao;
 import com.donatedrop.other.DumpData;
+import com.donatedrop.other.TestUtil;
 import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
 import com.donatedrop.profile.model.EmergencyContact;
 import com.donatedrop.profile.model.PhoneNumber;
@@ -127,7 +128,7 @@ public class Test_Dao_Profile_Basic_Impl {
 //        assertEquals(resultNotExist.get("status"), false);
         Assert.assertEquals(StringUtil.FALSE, resultNotExist.get(StringUtil.STATUS));
         //test for ProfileBasic found
-        String userID_Exist = "13";
+        String userID_Exist = TestUtil.userID;
         Map<String, String> resultExist = dao_Profile_Basic_I.basicExist(userID_Exist);
         System.out.println("\nExist : " + resultExist + "\n");
 //        assertEquals(resultExist.get("status"), true);
