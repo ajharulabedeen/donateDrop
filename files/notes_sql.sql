@@ -1,3 +1,8 @@
+
+SELECT * FROM `profilebasic` WHERE (CAST(birth_date AS DATETIME) BETWEEN CAST('2020-05-10' AS DATETIME) AND CAST('2020-05-18' AS DATETIME))
+Here the 
+
+#----------------------------------------------
 SELECT
     donner_to_agent_request_review.*
 FROM

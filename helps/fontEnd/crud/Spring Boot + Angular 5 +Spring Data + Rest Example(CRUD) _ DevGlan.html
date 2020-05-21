@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)https://www.devglan.com/spring-boot/spring-boot-angular-example -->
+<html ng-app="devStack" class="ng-scope sticky-header-enabled sticky-header-active"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style><style id="stndz-style"></style>
+    <script src="https://s0.2mdn.net/instream/video/client.js" async="" type="text/javascript"></script><script async="" src="https://cse.google.com/adsense/search/async-ads.js"></script><script type="text/javascript" async="" src="./Spring Boot + Angular 5 +Spring Data + Rest Example(CRUD) _ DevGlan_files/analytics.js.download"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-84736616-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-84736616-3');
+    </script>
+    <script data-ad-client="ca-pub-2256439533750580" async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script type="text/javascript" src="https://floater.playstream.media/domain/89e1eb91-be0b-4d08-bd81-565d51d5eb14.js"></script><link type="text/css" rel="stylesheet" href="https://floater.playstream.media/css/floater.css"><script type="text/javascript" src="https://floater.playstream.media/js/floater/floater.js"></script><script type="text/javascript">ga('create', '4040902030339032', 'auto', 'floater_ps_Tracker')</script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>Spring Boot + Angular 5 +Spring Data + Rest Example(CRUD) | DevGlan</title>
+    <meta name="robots" content="index follow">
+    <meta name="description" content="This tutorial is about Spring Boot, Angular 5 and spring data integration with CRUD example.We will be using spring boot 1.5 to expose REST APIs and angular5 with routing to build our client using angular CLI.It also provides mysql database integration for CRUD operation.">
+    <meta name="author" content="DevGlan">
+    <link rel="publisher" href="https://www.linkedin.com/in/dhiraj-rai-devglan/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Spring Boot + Angular 5 +Spring Data + Rest Example(CRUD) | DevGlan">
+    <meta property="og:description" content="This tutorial is about Spring Boot, Angular 5 and spring data integration with CRUD example.We will be using spring boot 1.5 to expose REST APIs and angular5 with routing to build our client using angular CLI.It also provides mysql database integration for CRUD operation.">
+    <meta property="og:site_name" content="devglan">
+    <meta property="og:image" content="https://www.devglan.com/style/img/logo.png">
+    <meta property="article:publisher" content="https://www.facebook.com/devglanjava/">
+    <meta property="article:section" content="Java">
+    <meta property="fb:admins" content="1766542550255713">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:description" content="This tutorial is about Spring Boot, Angular 5 and spring data integration with CRUD example.We will be using spring boot 1.5 to expose REST APIs and angular5 with routing to build our client using angular CLI.It also provides mysql database integration for CRUD operation.">
+    <meta name="twitter:title" content="Spring Boot + Angular 5 +Spring Data + Rest Example(CRUD) | DevGlan">
+    <meta name="twitter:site" content="@devglan">
+    <meta name="twitter:image" content="https://www.devglan.com/style/img/logo.png">
+    <meta name="twitter:creator" content="@only2dhir">
+    <!--<base href="https://www.devglan.com/">--><base href=".">
+    <meta name="google-site-verification" content="pcGimoh7HVlCiraucWwIZYVgSleXCl0y8uewA50qq9A">
+    <meta name="yandex-verification" content="a0c9dc226b7c4f05">
+    <link rel="alternate" type="application/rss+xml" title="DevGlan Feed" href="https://www.devglan.com/feed.xml">
+    <link rel="shortcut icon" href="https://www.devglan.com/style/img/favicon.ico" type="image/x-icon">
+<script src="https://www-devglan-com.disqus.com/embed.js" data-timestamp="1589880471167"></script><style>._3vFA8--container{height:0;width:100%;position:relative;background:radial-gradient(44.6% 929.87% at 22.02% 63.39%,#ae6fff 0,#8d35fd 100%);cursor:pointer;overflow:hidden;transition:.8s}._3vFA8--container .AeJ0I--row{padding:11px;margin:0 auto;width:-webkit-max-content;width:-moz-max-content;width:max-content}._3vFA8--container .AeJ0I--row ._1yCun--logo{position:relative;width:51px;height:39px;float:left;margin-right:104px;background:url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNDEiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNy40MDQgOC43TDEuNDU0IDM2LjMyNWMtLjI1OC40NDctLjM4Ny42Ny0uNDUxLjgzOWEyLjIzNiAyLjIzNiAwIDAwMS43MzMgMy4wMDFjLjE3OC4wMy40MzYuMDMuOTUyLjAzLjEwNiAwIC4xNTggMCAuMjEtLjAwM2EyLjIzNyAyLjIzNyAwIDAwMS4yNTItLjQ1Mmw2Ljg1OS00LjcyMWMuNDczLS4zLjkwOC0uNjU0IDEuMjk2LTEuMDUyLjM1NC4wOC43MjcuMTg1IDEuMTQ1LjMwMSAxLjk1LjU0NCA0Ljg4MyAxLjM2IDExLjUxNiAxLjM2IDcuNjcyIDAgMTAuNjEtLjg3NCAxMi4xNTQtMS40NzEuMzguMzQzLjc5Ni42NDYgMS4yNDQuOTA0bDcuNDg4IDQuODE0Yy4zMjQuMjA4LjcwMi4zMiAxLjA4OC4zMiAxLjU1IDAgMi41MTgtMS42NzggMS43NDMtMy4wMkwzMy4yNDIgOC43Yy0yLjU3LTQuNDUyLTMuODU2LTYuNjc5LTUuNTI1LTcuNDQzYTUuNzUxIDUuNzUxIDAgMDAtNC43ODggMGMtMS42NjkuNzY0LTIuOTU0IDIuOTktNS41MjUgNy40NDN6bTguNTYyIDIyLjUyNGMtNC4yNDYgMC03LjU0OC0uNTk4LTkuOTI1LTEuNTM0bC4wMDEtLjAwMmMtLjU2MS0uMjQtMS40MjItLjc4My0xLjIyOC0xLjI5NS4xOTctLjUyIDEuNDQ0LS41MDcgMi4xOC0uMzRsNS4wNzYtOC43MiAzLjU1LTIuNTQ0LTIuMjUuMzEuMDE0LS4wMjMtMi40NTMuMjdjLS40NC4wNS0uNjU4LjA3My0uNzU0LjAwNGEuMzA0LjMwNCAwIDAxLS4xMjMtLjI3MmMuMDEtLjExNy4xNzItLjI2Ni40OTYtLjU2NCAxLjMwNS0xLjE5OCAzLjM3Mi0zLjA5IDMuNzQ3LTMuMzk4YTEuNDM4IDEuNDM4IDAgMDEyLjIwMy40NzhsNy4zMTcgMTMuNDc4Yy45MjItLjI0NCAyLjMwOC0uMzU2IDIuNDU1LjQ4OC4xMy43NDMtLjYwNyAxLjI1OS0yLjM2NyAyLjAyNC0xLjcyMy44LTQuNjY3IDEuNjQtNy45MzkgMS42NHoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=)}._3vFA8--container .AeJ0I--row ._1yCun--logo ._2GogZ--stars ._1ErQY--star-1,._3vFA8--container .AeJ0I--row ._1yCun--logo ._2GogZ--stars ._2JsUk--star-2,._3vFA8--container .AeJ0I--row ._1yCun--logo ._2GogZ--stars ._181pR--star-3{position:absolute}._3vFA8--container .AeJ0I--row ._1yCun--logo ._2GogZ--stars ._1ErQY--star-1{background:url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjU2IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbHRlcj0idXJsKCNmaWx0ZXIwX2QpIj48cGF0aCBkPSJNNTUuNjU1IDM3LjAyNWMuNDc0LTEuNjMgMi41ODYtMi4wNTUgMy42NTMtLjczNWwzLjU4NSA0LjQzNWMuNDE0LjUxMiAxLjA0My44IDEuNy43OGw1LjctLjE3OGMxLjY5OC0uMDUzIDIuNzU1IDEuODI0IDEuODI5IDMuMjQ4bC0zLjExIDQuNzhhMi4xMDIgMi4xMDIgMCAwMC0uMjE3IDEuODU4bDEuOTMxIDUuMzY2Yy41NzUgMS41OTgtLjg4NCAzLjE4My0yLjUyNCAyLjc0MmwtNS41MDctMS40ODFhMi4xMDIgMi4xMDIgMCAwMC0xLjgzNC4zNjlsLTQuNTA3IDMuNDk0Yy0xLjM0MiAxLjA0LTMuMy4xNDMtMy4zODctMS41NTNsLS4yOTQtNS42OTVhMi4xMDIgMi4xMDIgMCAwMC0uOTE3LTEuNjNsLTQuNzE3LTMuMjA3Yy0xLjQwNC0uOTU1LTEuMTU1LTMuMDk0LjQzLTMuNzAybDUuMzI3LTIuMDM4YTIuMTAyIDIuMTAyIDAgMDAxLjI2Ny0xLjM3N2wxLjU5Mi01LjQ3NnoiIGZpbGw9IiNGRkQ2MDAiLz48L2c+PGRlZnM+PGZpbHRlciBpZD0iZmlsdGVyMF9kIiB4PSIuMTI3IiB5PSItMTEuMDkiIHdpZHRoPSIxMTkuMzI3IiBoZWlnaHQ9IjExOC40NjIiIGZpbHRlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj48ZmVGbG9vZCBmbG9vZC1vcGFjaXR5PSIwIiByZXN1bHQ9IkJhY2tncm91bmRJbWFnZUZpeCIvPjxmZUNvbG9yTWF0cml4IGluPSJTb3VyY2VBbHBoYSIgdmFsdWVzPSIwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAxMjcgMCIvPjxmZU9mZnNldC8+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMjIiLz48ZmVDb2xvck1hdHJpeCB2YWx1ZXM9IjAgMCAwIDAgMSAwIDAgMCAwIDEgMCAwIDAgMCAxIDAgMCAwIDAuNSAwIi8+PGZlQmxlbmQgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0iZWZmZWN0MV9kcm9wU2hhZG93Ii8+PGZlQmxlbmQgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iZWZmZWN0MV9kcm9wU2hhZG93IiByZXN1bHQ9InNoYXBlIi8+PC9maWx0ZXI+PC9kZWZzPjwvc3ZnPg==");width:120px;height:56px;top:-12px;left:-103px;background-size:120px 56px}._3vFA8--container .AeJ0I--row ._1yCun--logo ._2GogZ--stars ._2JsUk--star-2{background:url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTE1IiBoZWlnaHQ9IjU2IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbHRlcj0idXJsKCNmaWx0ZXIwX2QpIj48cGF0aCBkPSJNNTguMzg4LTUuNjljLjg4NS0xLjAyNSAyLjU1Ny0uNjMzIDIuODkzLjY3OUw2Mi40MS0uNjA2Yy4xMy41MDguNDkuOTI2Ljk3NCAxLjEzbDQuMTkzIDEuNzYxYzEuMjQ4LjUyNCAxLjM5MiAyLjIzNi4yNDggMi45NjFsLTMuODQgMi40MzVjLS40NDQuMjgtLjczLjc1My0uNzc0IDEuMjc2bC0uMzggNC41MzFjLS4xMTMgMS4zNS0xLjY5NiAyLjAxNS0yLjc0IDEuMTUxbC0zLjUwMS0yLjlhMS42NzYgMS42NzYgMCAwMC0xLjQ1My0uMzQxbC00LjQyNyAxLjA0Yy0xLjMxOC4zMDktMi40NC0uOTkyLTEuOTQxLTIuMjVsMS42NzYtNC4yMjhhMS42NzYgMS42NzYgMCAwMC0uMTI0LTEuNDg3TDQ3Ljk2NC41ODRjLS43MDItMS4xNTguMTg5LTIuNjI3IDEuNTQtMi41NDFsNC41MzguMjg4YTEuNjc2IDEuNjc2IDAgMDAxLjM3Ni0uNTc4bDIuOTctMy40NDN6IiBmaWxsPSIjRkZENjAwIi8+PC9nPjxkZWZzPjxmaWx0ZXIgaWQ9ImZpbHRlcjBfZCIgeD0iLjk2MiIgeT0iLTUyLjY2OCIgd2lkdGg9IjExMy40NzciIGhlaWdodD0iMTEyLjgyMSIgZmlsdGVyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM9InNSR0IiPjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+PGZlQ29sb3JNYXRyaXggaW49IlNvdXJjZUFscGhhIiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDEyNyAwIi8+PGZlT2Zmc2V0Lz48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIyMiIvPjxmZUNvbG9yTWF0cml4IHZhbHVlcz0iMCAwIDAgMCAxIDAgMCAwIDAgMSAwIDAgMCAwIDEgMCAwIDAgMC41IDAiLz48ZmVCbGVuZCBpbjI9IkJhY2tncm91bmRJbWFnZUZpeCIgcmVzdWx0PSJlZmZlY3QxX2Ryb3BTaGFkb3ciLz48ZmVCbGVuZCBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJlZmZlY3QxX2Ryb3BTaGFkb3ciIHJlc3VsdD0ic2hhcGUiLz48L2ZpbHRlcj48L2RlZnM+PC9zdmc+");width:114px;height:53px;left:9px;top:-12.63px;background-size:120px 62px}._3vFA8--container .AeJ0I--row ._1yCun--logo ._2GogZ--stars ._181pR--star-3{background:url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAzIiBoZWlnaHQ9IjU2IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbHRlcj0idXJsKCNmaWx0ZXIwX2QpIj48cGF0aCBkPSJNNTEuODAyIDM2LjA5OGMxLjA5OS0xLjQ5MSAzLjQyLTEuMTMyIDQuMDE2LjYyMmwyLjAwMSA1Ljg4N2MuMjMxLjY4Ljc2NyAxLjIxMSAxLjQ0OCAxLjQzN2w1LjkgMS45NjFjMS43NTguNTg0IDIuMTMzIDIuOTAzLjY1IDQuMDExbC00Ljk4IDMuNzIzYTIuMjkyIDIuMjkyIDAgMDAtLjkyIDEuODIxbC0uMDQyIDYuMjE4Yy0uMDEyIDEuODUyLTIuMTAxIDIuOTI2LTMuNjE0IDEuODU4bC01LjA4LTMuNTg3YTIuMjkyIDIuMjkyIDAgMDAtMi4wMTYtLjMxMmwtNS45MjYgMS44ODJjLTEuNzY1LjU2LTMuNDMyLTEuMDk1LTIuODgzLTIuODY0bDEuODQtNS45MzlhMi4yOTIgMi4yOTIgMCAwMC0uMzI1LTIuMDE0bC0zLjYyMi01LjA1NWMtMS4wNzgtMS41MDUtLjAxOS0zLjYwMSAxLjgzMy0zLjYyNmw2LjIxOC0uMDg1YTIuMjkyIDIuMjkyIDAgMDAxLjgxNC0uOTMybDMuNjg4LTUuMDA2eiIgZmlsbD0iI0ZGRDYwMCIvPjwvZz48ZGVmcz48ZmlsdGVyIGlkPSJmaWx0ZXIwX2QiIHg9Ii43ODgiIHk9Ii0xLjUzNCIgd2lkdGg9IjEwMi4xMzUiIGhlaWdodD0iMTAxLjEyOSIgZmlsdGVyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM9InNSR0IiPjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+PGZlQ29sb3JNYXRyaXggaW49IlNvdXJjZUFscGhhIiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDEyNyAwIi8+PGZlT2Zmc2V0Lz48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIxNy4yNDYiLz48ZmVDb2xvck1hdHJpeCB2YWx1ZXM9IjAgMCAwIDAgMSAwIDAgMCAwIDEgMCAwIDAgMCAxIDAgMCAwIDAuNSAwIi8+PGZlQmxlbmQgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0iZWZmZWN0MV9kcm9wU2hhZG93Ii8+PGZlQmxlbmQgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iZWZmZWN0MV9kcm9wU2hhZG93IiByZXN1bHQ9InNoYXBlIi8+PC9maWx0ZXI+PC9kZWZzPjwvc3ZnPg==");width:114px;height:75px;left:34px;top:-12.63px;background-size:120px 57px}._3vFA8--container .AeJ0I--row ._2CXkc--title{float:left;width:-webkit-max-content;width:-moz-max-content;width:max-content;height:23px;font-family:Montserrat,sans-serif;font-style:normal;font-weight:400;font-size:18px;line-height:37px;color:#fff;text-shadow:0 0 16px #5600c5;margin-right:20px}._3vFA8--container .AeJ0I--row ._1CujY--btn{float:left;flex-direction:row;padding:6px 22px;width:111px;margin-top:-2px;height:38px;background:#ffd600;box-shadow:0 0 28px hsla(0,0%,100%,.5);border-radius:5px}._3vFA8--container .AeJ0I--row ._1CujY--btn ._2Wo2K--btnText{width:66px;height:14px;font-family:Montserrat,serif;font-style:normal;font-weight:600;font-size:11px;line-height:14px;text-align:center;letter-spacing:-.01em;color:#9645fd;align-self:center;margin:6px 0}</style><script src="./Spring Boot + Angular 5 +Spring Data + Rest Example(CRUD) _ DevGlan_files/cse_element__en.js.download" type="text/javascript"></script><link type="text/css" rel="stylesheet" href="./Spring Boot + Angular 5 +Spring Data + Rest Example(CRUD) _ DevGlan_files/default+en.css"><link type="text/css" rel="stylesheet" href="./Spring Boot + Angular 5 +Spring Data + Rest Example(CRUD) _ DevGlan_files/default.css"><script charset="utf-8" src="https://platform.twitter.com/js/button.a9e51eea566eab199c00950f37200d0b.js"></script><style type="text/css">.gsc-control-cse{font-family:arial, sans-serif}.gsc-control-cse .gsc-table-result{font-family:arial, sans-serif}.gsc-refinementsGradient{background:linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0))}.gsc-control-cse{border-color:#FFFFFF;background-color:#FFFFFF}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#DFE1E5}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#3079ED;background-color:#4D90FE;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhActive,.gsc-refinementHeader.gsc-refinementhActive{color:#1A73E8;border-color:#1A73E8;background-color:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive,.gsc-refinementHeader.gsc-refinementhInactive{color:#666666;border-color:#666666;background-color:#FFFFFF}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-webResult.gsc-result:hover,.gsc-imageResult:hover{border-color:#FFFFFF;background-color:#FFFFFF}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#1155CC}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#1155CC}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#1155CC}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#1155CC}.gsc-cursor-page{color:#1155CC}a.gsc-trailing-more-results:link{color:#1155CC}.gs-webResult .gs-snippet,.gs-imageResult .gs-snippet,.gs-fileFormatType{color:#333333}.gs-webResult div.gs-visibleUrl,.gs-imageResult div.gs-visibleUrl{color:#009933}.gs-webResult div.gs-visibleUrl-short{color:#009933}.gs-webResult div.gs-visibleUrl-short{display:none}.gs-webResult div.gs-visibleUrl-long{display:block}.gs-promotion div.gs-visibleUrl-short{display:none}.gs-promotion div.gs-visibleUrl-long{display:block}.gsc-cursor-box{border-color:#FFFFFF}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#666666;background-color:#FFFFFF;color:#666666}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#1A73E8;background-color:#FFFFFF;color:#1A73E8}.gsc-webResult.gsc-result.gsc-promotion{border-color:#FFFFFF;background-color:#F6F6F6}.gsc-completion-title{color:#1155CC}.gsc-completion-snippet{color:#333333}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#1155CC}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#1155CC}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#1155CC}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#1155CC}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#333333}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#009933}.gcsc-find-more-on-google{color:#1155CC}.gcsc-find-more-on-google-magnifier{fill:#1155CC}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:0 9px}.gsib_a{padding:5px 9px 4px 9px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style><script src="https://code.jguery.com/jquery-1.11.1.min.js"></script><link rel="prefetch" as="style" href="https://c.disquscdn.com/next/embed/styles/lounge.db072b7d11b56c5c060394cab39e75c5.css"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/common.bundle.f9554506a08a1cc2b021f0dfc3f59ebb.js"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/lounge.bundle.d3858dbda732166bc46a5391f5b0b789.js"><link rel="prefetch" as="script" href="https://disqus.com/next/config.js"><script id="ima-sdk-playstream" src="./Spring Boot + Angular 5 +Spring Data + Rest Example(CRUD) _ DevGlan_files/ima3.js.download"></script><script src="https://c.disquscdn.com/next/embed/alfalfalfa.0823c767a3bc925f628afd9bed26c958.js" async="" charset="UTF-8"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=www.devglan.com" as="script"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=www.devglan.com"></script></head>
+<body class="bg-light ng-scope" ng-controller="dashboardController" ng-init="initial(&#39;https://www.devglan.com/spring-boot/spring-boot-angular-example&#39;, &#39;Spring Boot + Angular 5 +Spring Data + Rest Example(CRUD) | DevGlan&#39;, &#39;This tutorial is about Spring Boot, Angular 5 and spring data integration with CRUD example.We will be using spring boot 1.5 to expose REST APIs and angular5 with routing to build our client using angular CLI.It also provides mysql database integration for CRUD operation.&#39;)" style="">
+<div class="wrapper">
+    <!--Header-->
+    <header id="header" class="header-transparent header-effect-shrink" data-plugin-options="{&#39;stickyEnabled&#39;: true, &#39;stickyEffect&#39;: &#39;shrink&#39;, &#39;stickyEnableOnBoxed&#39;: true, &#39;stickyEnableOnMobile&#39;: true, &#39;stickyChangeLogo&#39;: true, &#39;stickyStartAt&#39;: 30, &#39;stickyHeaderContainerHeight&#39;: 70}" style="height: 80px;">
+        <div class="header-body border-top-0" style="position: fixed; top: 0px;">
+            <div class="header-container container-fluid" style="height: 70px; min-height: 0px;">
+                <div class="header-row">
+                    <div class="header-column justify-content-start">
+                        <div class="header-row">
+                            <div class="header-logo" style="width: 140px; height: 38.2656px;">
+                                <a href="https://www.devglan.com/">
+                                    <img alt="logo" width="140" height="35" src="https://www.devglan.com/v2/img/devglan.png" style="top: 0px;">
+                                </a>
+                            </div>
+                            <div class="header-nav header-nav-links order-2 order-lg-1 justify-content-lg-start ml-3">
+                                <div class="header-nav-main header-nav-main-square header-nav-main-effect-2 header-nav-main-sub-effect-1">
+                                    <nav class="collapse">
+                                        <ul class="nav nav-pills" id="mainNav">
+                                            <li class="dropdown inactive dropdown-reverse" submenu="all">
+                                                <a class="dropdown-item dropdown-toggle" href="https://www.devglan.com/programming/programming-tutorials">
+                                                    Programming
+                                                <i class="fas fa-chevron-down"></i></a>
+                                                
+                                            </li>
+                                            <li class="dropdown inactive dropdown-reverse" submenu="all">
+                                                <a class="dropdown-item dropdown-toggle" href="https://www.devglan.com/testing/testing-tutorials">
+                                                    Testing
+                                                <i class="fas fa-chevron-down"></i></a>
+                                                
+                                            </li>
+                                            <li class="dropdown inactive dropdown-reverse" submenu="all">
+                                                <a class="dropdown-item dropdown-toggle" href="https://www.devglan.com/ai/artificial-intelligence-tutorials">
+                                                    AI
+                                                <i class="fas fa-chevron-down"></i></a>
+                                                
+                                            </li>
+                                            <li class="dropdown inactive dropdown-reverse" submenu="all">
+                                                <a class="dropdown-item dropdown-toggle" href="https://www.devglan.com/devops/devops-tutorials">
+                                                    Devops
+                                                <i class="fas fa-chevron-down"></i></a>
+                                                
+                                            </li>
+                                            <li class="dropdown inactive dropdown-reverse" submenu="all">
+                                                <a class="dropdown-item dropdown-toggle" href="https://www.devglan.com/datascience/datascience-tutorials">
+                                                    Data Science
+                                                <i class="fas fa-chevron-down"></i></a>
+                                                
+                                            </li>
+                                            <li class="dropdown inactive dropdown-reverse" submenu="all">
+                                                <a class="dropdown-item dropdown-toggle" href="https://www.devglan.com/design/design-tutorials">
+                                                    Design
+                                                <i class="fas fa-chevron-down"></i></a>
+                                                
+                                            </li>
+                                            <li class="dropdown active dropdown-reverse" submenu="all">
+                                                <a class="dropdown-item dropdown-toggle" href="https://www.devglan.com/blogs">
+                                                    Blog
+                                                <i class="fas fa-chevron-down"></i></a>
+                                                
+                                            </li>
+                                            <li class="dropdown inactive dropdown-reverse" submenu="all">
+                                                <a class="dropdown-item dropdown-toggle" href="https://www.devglan.com/cryptotools/cryptography-tools">
+                                                    Crypto Tools
+                                                <i class="fas fa-chevron-down"></i></a>
+                                                
+                                            </li>
+                                            <li class="dropdown inactive dropdown-reverse" submenu="all">
+                                                <a class="dropdown-item dropdown-toggle" href="https://www.devglan.com/">
+                                                    Dev Feed
+                                                <i class="fas fa-chevron-down"></i></a>
+                                                
+                                            </li>
+                                            <li class="dropdown inactive dropdown-reverse" submenu="all">
+                                                <a class="dropdown-item dropdown-toggle" href="https://www.devglan.com/auth/login">
+                                                    Login
+                                                <i class="fas fa-chevron-down"></i></a>
+                                                
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-column justify-content-end">
+                        <div class="header-row">
+                            <div class="header-nav-features header-nav-features-no-border header-nav-features-lg-show-border order-2 order-lg-1">
+                                    <div class="header-nav-feature header-nav-features-search d-inline-flex">
+                                        <a href="https://www.devglan.com/#" class="header-nav-features-toggle" data-focus="headerSearch"><i class="fa fa-search header-nav-top-icon"></i></a>
+                                        <div class="header-nav-features-dropdown" id="headerTopSearchDropdown">
+                                            <script async="" src="https://cse.google.com/cse.js?cx=017691093685916946375:4mn83kkbh2i"></script>
+                                            <div id="headerSearch"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" id="gsc-i-id1" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; background: url(&quot;https://www.google.com/cse/static/images/1x/en/branding.png&quot;) left center no-repeat rgb(255, 255, 255); outline: none;" dir="ltr" spellcheck="false"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" style="display: none;" title="Clear search box" role="button"><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>search</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table></form><div class="gsc-results-wrapper-overlay"><div class="gsc-results-close-btn" tabindex="0"></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"><div aria-label="refinement" role="tab" class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"></div></div><div class="gsc-above-wrapper-area-invisible"><table cellspacing="0" cellpadding="0" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td><td class="gsc-orderby-container"><div class="gsc-orderby-invisible"><div class="gsc-orderby-label gsc-inline-block">Sort by:</div><div class="gsc-option-menu-container gsc-inline-block"><div class="gsc-selected-option-container gsc-inline-block"><div class="gsc-selected-option">Relevance</div><div class="gsc-option-selector"></div></div><div class="gsc-option-menu-invisible"><div class="gsc-option-menu-item gsc-option-menu-item-highlighted"><div class="gsc-option">Relevance</div></div><div class="gsc-option-menu-item"><div class="gsc-option">Date</div></div></div></div></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><div><div class="gsc-expansionArea"></div></div></div></div></div></div><div class="gsc-modal-background-image" tabindex="0"></div></div></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="header-nav2 header-nav-links order-1 order-lg-2">
+                                <a href="https://www.devglan.com/me/add-story" class="btn btn-primary transition-hover btn-xs mr-lg-2 navbar_btn"><i class="fa fa-plus"></i> <span class="hidden-xs">Story</span> </a>
+                                <button class="btn header-btn-collapse-nav btn-xs" data-toggle="collapse" data-target=".header-nav-main nav">
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+    <!--End Header-->
+
+    <main id="content">
+        <section class="page-header section breadcrumb_gap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-12 col-12" id="102">
+                        <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <!-- add-unit-top -->
+                        <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-2256439533750580" data-ad-slot="6955723615"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                        <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-follow-button twitter-follow-button-rendered" style="position: static; visibility: visible; width: 122px; height: 20px;" title="Twitter Follow Button" src="./Spring Boot + Angular 5 +Spring Data + Rest Example(CRUD) _ DevGlan_files/follow_button.2a008290075125adde2d7b849b06a0bb.en.html" data-screen-name="only2dhir"></iframe>
+                        <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <div class="row">
+                            <div class="col-12">
+                                <h1>Spring Boot + Angular 5 +Spring Data + Rest Example(CRUD)</h1>
+                                <div>
+                                    <img src="https://lh3.googleusercontent.com/a-/AOh14Ggyhqg0-ABq8ZX_ycDpDaH8RKiMXrXSlCbnMkGKhQ=s96-c" data-src="https://lh3.googleusercontent.com/a-/AOh14Ggyhqg0-ABq8ZX_ycDpDaH8RKiMXrXSlCbnMkGKhQ=s96-c" class="user-pic" alt="author-image">&nbsp;&nbsp;
+                                    <span class="antb">By <a href="https://www.linkedin.com/in/dhiraj-ray-devglan" target="_blank" rel="noreferrer">Dhiraj</a>,&nbsp;&nbsp;</span>
+                                    
+                                    <span>Last updated on: 04 January, 2019</span>
+                                    <span class="view_counter"><i class="fa fa-eye">383K</i></span>
+                                </div>
+                                <hr>
+                                <div class="white-space"><p>This tutorial provides a complete implementation of Spring Boot, Angular 5 and spring data to build an end to end single page java web application with example.We will be using spring boot 1.5 to expose REST APIs and angular5 with routing to build our client that will be consuming the APIs exposed by the server.Also, we will be integrating MySql database with the backend code for CRUD operation.We will be using angular CLI to generate angular project and spring boot initializers to generate spring boot project.At the end of this article, you will be able to build a user management application with CRUD operation that can either be deployed to a standalone tomcat or deploy client and server to different servers with cross origin requests.</p>
+<p>Angular 7 got released this October and here is an <a href="https://www.devglan.com/angular/angular-7-crud-example">Angular 7 full stack App example with Spring Boot</a>.</p>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- add-unit-top -->
+        <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-2256439533750580" data-ad-slot="6955723615"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+
+<p>You can follow this article for <a href="https://www.devglan.com/spring-boot/spring-boot-angular-8-example" rel="nofollow">Angular 8 integration with Spring Boot</a>.</p>
+<p>In the next article, we will look into <a href="http://www.devglan.com/spring-boot/spring-boot-angular-deployment">different ways to package spring boot and angular 5 application</a> together in a single war file with maven and deploy to standalone tomcat. Also you might be interested in integrating this application with <a href="http://www.devglan.com/spring-security/angular-jwt-authentication">Angular5 JWT Authentication with Spring Boot Security</a></p><p>The latest Angular version is 6 and here is an <a href="http://www.devglan.com/angular/angular-6-example">CRUD Example with Angular 6</a></p>
+<pre class="content"><b>Table of Contents</b>
+<ol>
+<li><a href="javascript:;" onclick="document.location.hash=&#39;features&#39;;">Angular 5 Features </a></li>
+<li><a href="javascript:;" onclick="document.location.hash=&#39;environment&#39;;">Environment Setup</a></li>
+<ol><li><a href="javascript:;" onclick="document.location.hash=&#39;angular5envsetup&#39;;">Angular 5 Environment SetUp</a></li>
+<li><a href="javascript:;" onclick="document.location.hash=&#39;springbootenvsetup&#39;;">Spring Boot Environment SetUp</a></li></ol>
+<li><a href="javascript:;" onclick="document.location.hash=&#39;angularcligeneratedfiles&#39;;">Different Files Generated by CLI command</a></li>
+<li>Spring Boot Implementation
+<ol><li><a href="javascript:;" onclick="document.location.hash=&#39;restresource&#39;;">Spring Boot Rest APIs</a></li>
+<li><a href="javascript:;" onclick="document.location.hash=&#39;service&#39;;">Spring Boot Service Implementation</a></li>
+<li><a href="javascript:;" onclick="document.location.hash=&#39;springdata&#39;;">Spring Boot JPA Implementation</a></li>
+<li><a href="javascript:;" onclick="document.location.hash=&#39;datasource&#39;;">Spring Boot Application Configuration</a></li></ol></li>
+<li>Angular Implementation
+<ol><li><a href="javascript:;" onclick="document.location.hash=&#39;component&#39;;">Different Angular Component</a></li>
+<li><a href="javascript:;" onclick="document.location.hash=&#39;listuser&#39;;">Angular List User Component</a></li>
+<li><a href="javascript:;" onclick="document.location.hash=&#39;adduser&#39;;">Add User Component</a></li></ol></li>
+<li><a href="javascript:;" onclick="document.location.hash=&#39;routing&#39;;">Angular Routing</a></li>
+<li><a href="javascript:;" onclick="document.location.hash=&#39;module&#39;;">Angular Module</a></li>
+<li><a href="javascript:;" onclick="document.location.hash=&#39;angularproxyconfiguration&#39;;">Angular CLI Proxy Configuration</a></li>
+<li><a href="javascript:;" onclick="document.location.hash=&#39;runspringboot&#39;;">Running Spring Boot Application</a></li>
+<li><a href="javascript:;" onclick="document.location.hash=&#39;runangularapp&#39;;">Running Angular App</a></li>
+</ol>
+</pre>
+<h2 class="st" id="features">Angular 5 Features</h2>
+<p><b>1. </b>Angular 5 is more faster, lighter and easy to use.</p><p><b>2. </b>Material design capabilities and improved compiler with build optimizer</p><p><b>3. </b>New HttpClientModule is introduced which is a complete rewrite of the existing HttpModule.</p><p><b>4. </b>TypeScript 2.4 support.</p><p><b>5. </b>Reactive Forms Support</p>
+
+<h2 class="st" id="environment">Environment Setup</h2>
+<p>We have two different part, client and server, of the application that we are going to build and hence, the environment set up is also specific to each part.</p>
+<h3 class="st" id="angular5envsetup">Angular 5 Environment SetUp</h3>
+<p>We will have a plain angular project setup here.Check one of my article to <a href="http://www.devglan.com/angular/angular-material-app">integrate material design in angular 5 project</a>. Angular 5 provides a beautiful tool - Angular CLI to get started with Angular. Here, we will be using the same tool to generate a sample angular app and then modify it to match our requirement.To get started with Angular CLI, it is required to have node installed so that we can use the NPM tool. You can check if node is installed or not on your machine by hitting node -v. On my machine I get following result.</p>
+    <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-2256439533750580" data-ad-slot="9719162916"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="https://imgur.com/L7gBj0J"><img src="https://i.imgur.com/L7gBj0J.png" alt="node-version" class="img-responsive"></a>
+
+<p>If not installed visit <a href="https://nodejs.org/en/download/" rel="nofollow">NodeJs official website</a> to install it first.Now, once it is done, traverse to your workspace location and execute following commands to install angular cli and generate a sample angular project. </p>
+
+<pre>npm install -g @angular/cli
+ng new portal-app
+
+</pre>
+
+<p>Once this is done, you can traverse to the location and see a folder portal-app is created that contains all the files and folders generated by angular cli command to get started with angular 5.Now you can open your favourite editor to import the project.I imported this project in IntellijIdea and got the structure as below:</p>
+<a href="https://imgur.com/o0yNRpf"><img src="https://i.imgur.com/o0yNRpf.png" alt="angular-cli-structure" class="img-responsive"></a>
+<p>One thing to check here is that if you have installed your NodeJs with sudo command, then you might get some permission issue as below while installing angular cli.To avoid these kind of situation, it is always recommended to use brew command while installing any new software. </p><p>If you face this issue then provide read/write access to the folder - /usr/local/lib/node_modules or follow the instruction here - <a href="https://support.apple.com/kb/PH25287?locale=en_US" rel="nofollow">Mac Support</a></p>
+<p>For windows user, you can use git command line or cygwin for the installation.</p>
+<h3 class="st" id="springbootenvsetup">Spring Boot Environment Setup</h3>
+<p>Spring boot team has really made spring boot environment setup easy by providing default initializers.Open the url <a class="vglnk" href="https://start.spring.io/" rel="nofollow"><span>https</span><span>://</span><span>start</span><span>.</span><span>spring</span><span>.</span><span>io</span><span>/</span></a> and generate the project as follow.</p>
+<a href="https://imgur.com/USGHEZU"><img src="https://i.imgur.com/USGHEZU.png" alt="spring-boot-project-initializers" class="img-responsive"></a>
+<p>Now unzip user-portal.zip and import into java IDE. Following will be the final structure.</p>
+<a href="https://imgur.com/A9XFe4E"><img src="https://imgur.com/A9XFe4E.png" alt="final-spring-boot-project-structure" class="img-responsive"></a>
+<h2 class="st" id="angularcligeneratedfiles">Files Generated by Angular CLI</h2>
+<p>Now let us try to understand the different files generated.</p>
+<p><span class="str">Modules</span> - Modules break up the application into logical pieces of code. Each piece of code or module is designed to perform a single task.All the modules are loaded by main.ts.</p><p><span class="str">Component</span> - Component is used to bring the modules together.</p><p><span class="str">tsconfig.json</span> - The presence of tsconfig.json file in a directory indicates that the directory is the root of a typescript project.This file specifies the root files and typescript compiler motions required to compile typescript.</p><p><span class="str">package.json</span> - It contains all the dependencies defined for the angular project.Once, we do nom install, these dependencies are automatically downloaded.</p>
+	<div class="col-md-offset-1">
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- medium-rectangle -->
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2256439533750580" data-ad-slot="4106313937"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<p><span class="str">karma.conf.json</span> - Config file for karma unit tests.</p>
+<p>The file <span class="str">.angular-cli.json</span> will have all the application configurations such as info about the root and out directory.The welcome or main html file along with the main ts file. All the other environment related information will be present here.</p>
+<p>Now it's time to run the dfault generated application and see it in the browser. If you are using IntellijIdea then you can run ng serve command from Terminal inside it and if not hit following command in the terminal.</p>
+<pre> cd portal-app
+ ng serve
+ 
+</pre>
+<p>After this open your browser and hit the url - <a class="vglnk" href="http://localhost:4200/" rel="nofollow"><span>http</span><span>://</span><span>localhost</span><span>:</span><span>4200</span><span>/</span></a> and the angular app is up. Now we can start modifying the app to create a user management portal.</p>
+<h3 class="st" id="restresource">Spring Boot Rest APIs</h3>
+<p>Now, let's start by creating our APIs first.We have UerController where all the APIs for CRUD operation is exposed.The <span class="ant">@CrossOrigin</span> is used to allow Cross-Origin Resource Sharing (CORS) so that our angular application running on different server can consume these APIs from a browser.We can also configure the proxy in angular side using proxy.config.json which has been discussed in the subsequent topic.</p>
+<b>UserController.java</b>
+<pre><span class="kw">package</span> com.devglan.userportal;
+
+<span class="kw">import</span> org.springframework.beans.factory.annotation.Autowired;
+<span class="kw">import</span> org.springframework.web.bind.annotation.*;
+
+<span class="kw">import</span> java.util.List;
+
+<span class="antb">@CrossOrigin</span>(origins = <span class="ant">"<a class="vglnk" href="http://localhost:4200/" rel="nofollow"><span>http</span><span>://</span><span>localhost</span><span>:</span><span>4200</span></a>"</span>, maxAge = 3600)
+<span class="antb">@RestController</span>
+<span class="antb">@RequestMapping</span>({<span class="ant">"/api"</span>})
+<span class="kw">public class</span> UserController {
+
+    <span class="antb">@Autowired</span>
+    <span class="kw">private</span> UserService userService;
+
+    <span class="antb">@PostMapping</span>
+    <span class="kw">public</span> User create(<span class="antb">@RequestBody</span> User user){
+        <span class="kw">return</span> userService.create(user);
+    }
+
+    <span class="antb">@GetMapping</span>(path = {<span class="ant">"/{id}"</span>})
+    <span class="kw">public</span> User findOne(<span class="antb">@PathVariable</span>(<span class="ant">"id"</span>) int id){
+        <span class="kw">return</span> userService.findById(id);
+    }
+
+    <span class="antb">@PutMapping</span>
+    <span class="kw">public</span> User update(<span class="antb">@RequestBody </span>User user){
+        <span class="kw">return</span> userService.update(user);
+    }
+
+    <span class="antb">@DeleteMapping</span>(path ={<span class="ant">"/{id}"</span>})
+    <span class="kw">public</span> User delete(<span class="antb">@PathVariable</span>(<span class="ant">"id"</span>) int id) {
+        <span class="kw">return</span> userService.delete(id);
+    }
+
+    <span class="antb">@GetMapping</span>
+    <span class="kw">public</span> List<user> findAll(){
+        <span class="kw">return</span> userService.findAll();
+    }
+}
+
+</user></pre>
+<h3 class="st" id="service">Spring Boot Service Implementation</h3>
+<p>The service class has no extra logic here and it's a very a simple implementation.</p>
+<b>UserServiceImpl.java</b>
+<pre><span class="antb">@Service</span>
+<span class="kw">public class</span> UserServiceImpl <span class="kw">implements</span> UserService {
+
+    <span class="antb">@Autowired</span>
+    <span class="kw">private</span> UserRepository repository;
+
+    <span class="antb">@Override</span>
+    <span class="kw">public</span> User create(User user) {
+        <span class="kw">return</span> repository.save(user);
+    }
+
+    <span class="antb">@Override</span>
+    <span class="kw">public</span> User delete(<span class="kw">int</span> id) {
+        User user = findById(id);
+        <span class="kw">if</span>(user != <span class="kw">null</span>){
+            repository.delete(user);
+        }
+        <span class="kw">return</span> user;
+    }
+
+    <span class="antb">@Override</span>
+    <span class="kw">public</span> List<user> findAll() {
+        <span class="kw">return </span>repository.findAll();
+    }
+
+    <span class="antb">@Override</span>
+    <span class="kw">public</span> User findById(<span class="kw">int</span> id) {
+        <span class="kw">return</span> repository.findOne(id);
+    }
+
+    <span class="antb">@Override</span>
+    <span class="kw">public</span> User update(User user) {
+        <span class="kw">return null</span>;
+    }
+}
+</user></pre>
+<h3 class="st" id="springdata">Spring Boot Data Implementation</h3>
+<p>We will be using Spring data JPA implementation for ORM related solution.To know inside implementation of Spring data you can visit my other post - <a href="http://www.devglan.com/spring-boot/spring-data-jpa-example">Spring Boot JPA</a> and <a href="https://www.devglan.com/spring-boot/spring-boot-hibernate-5-example">Spring Boot Hibernate implementation.</a></p>
+<b>UserRepository.java</b>
+<pre><span class="kw">package</span> com.devglan.userportal;
+
+<span class="kw">import</span> org.springframework.data.repository.Repository;
+
+<span class="kw">import</span> java.util.List;
+
+<span class="kw">public</span> interface UserRepository <span class="kw">extends</span> Repository<user, integer=""> {
+
+    <span class="kw">void</span> delete(User user);
+
+    List<user> findAll();
+
+    User findOne(<span class="kw">int</span> id);
+
+    User save(User user);
+}
+
+</user></user,></pre>
+<h3 class="st" id="datasource">Spring Boot Application Configuration</h3>
+<b>application.properties</b>
+<pre>server.contextPath=<span class="ant">/user-portal</span>
+spring.datasource.url=<span class="ant">jdbc:mysql://localhost:3306/testdb</span>
+spring.datasource.username=<span class="ant">root</span>
+spring.datasource.password=<span class="ant">root</span>
+spring.datasource.driver-class-name=<span class="ant">com.mysql.jdbc.Driver</span>
+spring.jpa.show-sql=<span class="ant">true</span>
+spring.jpa.hibernate.naming.implicit-strategy=<span class="ant">org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl</span>
+spring.jpa.hibernate.naming.physical-strategy=<span class="ant">org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy</span>
+
+</pre>
+<h2 class="st">Default Scripts</h2>
+<pre><span class="kw">CREATE TABLE</span> user(id INT NOT NULL AUTO_INCREMENT,email VARCHAR(255),first_name  VARCHAR(255),last_name VARCHAR(255),PRIMARY KEY (id))ENGINE=InnoDB;
+
+</pre>
+<h3 class="st" id="component">Different Angular Components</h3>
+<p>Angular CLI has generate command to create component.Hit the command <span class="ant">ng generate component user</span> and it will create a <b>user</b> folder inside app folder.This user folder will have all the required files for user module.</p><p>At first we will modify <span class="str">app.component.html</span> to include 2 links for list users and add users.All our views willl be loaded inside router-outlet.</p>
+<b>app.component.html</b>
+<pre class="ng-binding">&lt;div class="container-fluid"&gt;
+&lt;div class="col-md-offset-1"&gt;
+  &lt;h1&gt;
+    Welcome to !
+  &lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;a routerLink="/users"&gt; List Users&lt;/a&gt;
+&lt;a style="margin-left:10px" routerLink="/add"&gt;Add User&lt;/a&gt;
+&lt;br/&gt;
+&lt;router-outlet&gt;&lt;/router-outlet&gt;
+&lt;/div&gt;
+
+</pre>
+<h2 class="st" id="listuser">Angular List User Component</h2>
+<p>Since, we have two routes defined above, we require two different views(user.component.html, add-user.component.html) and components(user.component.ts, add-user.component.ts) to render on each click.Now let us implement the code for user.component.ts.Here, the method <span class="ant">ngOnInit()</span> will be invoked when this component is loaded and it will fetch all the user records and the html page will be populated.</p>
+<b>user.compnent.ts</b>
+<pre><span class="kw">import</span> { Component, OnInit } <span class="kw">from</span> <span class="ant">'@angular/core'</span>;
+<span class="kw">import</span> { Router } <span class="kw">from</span> <span class="ant">'@angular/router'</span>;
+
+<span class="kw">import</span> { User } <span class="kw">from</span> <span class="ant">'../models/user.model'</span>;
+<span class="kw">import</span> { UserService } <span class="kw">from</span> <span class="ant">'./user.service'</span>;
+
+<span class="antb">@Component</span>({
+  <span class="kw">selector</span>: <span class="ant">'app-user'</span>,
+  <span class="kw">templateUrl</span>: <span class="ant">'./user.component.html'</span>,
+  <span class="kw">styles</span>: []
+})
+<span class="kw">export class</span> UserComponent <span class="kw">implements</span> OnInit {
+
+  users: User[];
+
+  <span class="kw">constructor</span>(<span class="kw">private</span> router: Router, <span class="kw">private</span> userService: UserService) {
+
+  }
+
+  ngOnInit() {
+    <span class="kw">this</span>.userService.getUsers()
+      .subscribe( data =&gt; {
+        <span class="kw">this</span>.users = data;
+      });
+  };
+
+  deleteUser(user: User): <span class="kw">void</span> {
+    <span class="kw">this</span>.userService.deleteUser(user)
+      .subscribe( data =&gt; {
+        <span class="kw">this</span>.users = <span class="kw">this</span>.users.filter(u =&gt; u !== user);
+      })
+  };
+
+}
+</pre>
+<b>user.component.html</b>
+<pre class="ng-binding">&lt;div class="col-md-6"&gt;
+&lt;h2&gt; User Details&lt;/h2&gt;
+
+&lt;table class="table table-striped"&gt;
+  &lt;thead&gt;
+  &lt;tr&gt;
+    &lt;th class="hidden"&gt;Id&lt;/th&gt;
+    &lt;th&gt;FirstName&lt;/th&gt;
+    &lt;th&gt;LastName&lt;/th&gt;
+    &lt;th&gt;Email&lt;/th&gt;
+    &lt;th&gt;Action&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;/theadv
+  &lt;tbody&gt;
+  &lt;tr *ngFor="let user of users"&gt;
+    &lt;td class="hidden"&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;button class="btn btn-danger" (click)="deleteUser(user)"&gt; Delete User&lt;/button&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+</pre>
+<h2 class="st" id="adduser">Angular Add User Component</h2>
+Similarly we have <b>add-user.component.ts</b>
+<pre><span class="kw">import</span> { Component } <span class="kw">from</span> <span class="ant">'@angular/core'</span>;
+<span class="kw">import</span> { Router } <span class="kw">from</span> <span class="ant">'@angular/router'</span>;
+
+<span class="kw">import</span> { User } <span class="kw">from</span> <span class="ant">'../models/user.model'</span>;
+<span class="kw">import</span> { UserService } <span class="kw">from</span> <span class="ant">'./user.service'</span>;
+
+<span class="antb">@Component</span>({
+  <span class="kw">templateUrl</span>: <span class="ant">'./add-user.component.html'</span>
+})
+<span class="kw">export class</span> AddUserComponent {
+
+  user: User = <span class="kw">new</span> User();
+
+  constructor(<span class="kw">private</span> router: Router, <span class="kw">private</span> userService: UserService) {
+
+  }
+
+  createUser(): <span class="kw">void</span> {
+    <span class="kw">this</span>.userService.createUser(<span class="kw">this</span>.user)
+        .subscribe( data =&gt; {
+          <span class="kw">alert</span>(<span class="ant">"User created successfully."</span>);
+        });
+
+  };
+
+}
+
+</pre>
+<b>add-user.component.html</b>
+<pre>&lt;div class="col-md-6"&gt;
+  &lt;h2 class="text-center"&gt;Add User&lt;/h2&gt;
+&lt;form&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="email"&gt;Email address:&lt;/label&gt;
+    &lt;input type="email" [(ngModel)]="user.email" placeholder="Email" name="email" class="form-control" id="email"&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label for="firstName"&gt;First Name:&lt;/label&gt;
+    &lt;input [(ngModel)]="user.firstName" placeholder="First Name" name="firstName" class="form-control" id="firstName"&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label for="lastName"&gt;Last Name:&lt;/label&gt;
+   &lt;input [(ngModel)]="user.lastName" placeholder="Last name" name="lastName" class="form-control" id="lastName"&gt;
+  &lt;/div&gt;
+
+  &lt;button class="btn btn-success" (click)="createUser()"&gt;Create&lt;/button&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+
+</pre>
+<b>user.model.ts</b>
+<pre><span class="kw">export</span> class User {
+
+  id: <span class="kw">string</span>;
+  firstName: <span class="kw">string</span>;
+  lastName: <span class="kw">string</span>;
+  email: <span class="kw">string</span>;
+}
+</pre>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- medium-rectangle -->
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2256439533750580" data-ad-slot="4106313937"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<b>user.service.ts</b>
+<pre><span class="kw">import</span> {Injectable} from '@angular/core';
+<span class="kw">import</span> { HttpClient, HttpHeaders } from '@angular/common/http';
+
+<span class="kw">import</span> { User } from '../models/user.model';
+
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
+<span class="antb">@Injectable()</span>
+<span class="kw">export class</span> UserService {
+
+  constructor(private http:HttpClient) {}
+
+  <span class="antb">//private userUrl = '<a class="vglnk" href="http://localhost:8080/user-portal/user" rel="nofollow"><span>http</span><span>://</span><span>localhost</span><span>:</span><span>8080</span><span>/</span><span>user</span><span>-</span><span>portal</span><span>/</span><span>user</span></a>';</span>
+	<span class="kw">private</span> userUrl = <span class="ant">'/api'</span>;
+
+  <span class="kw">public</span> getUsers() {
+    <span class="kw">return</span> this.http.get&lt;User[]&gt;(this.userUrl);
+  }
+
+  <span class="kw">public</span> deleteUser(user) {
+    <span class="kw">return</span> this.http.delete(this.userUrl + "/"+ user.id);
+  }
+
+  <span class="kw">public</span> createUser(user) {
+    <span class="kw">return</span> this.http.post&lt;User&gt;(this.userUrl, user);
+  }
+
+}
+
+</pre>
+
+<h3 class="st" id="routing">Angular Routing Implementation</h3>
+<p>Now it's time to configure routing in angular.In this configuration, we will configure the path and corresponding component to load which will in turn load the respective view.Following is our routing configuration.</p><div class="col-md-offset-1">
+	<style type="text/css">
+		.ad-unit-body { width: 320px; height: 100px; }
+		@media (min-width:500px) { .ad-unit-body { width: 468px; height: 60px; } }
+		@media (min-width:800px) { .ad-unit-body { width: 728px; height: 90px; } }
+	</style>
+	<ins class="adsbygoogle ad-unit-body" style="display:inline-block; text-align:center;" data-ad-layout="in-article" data-ad-client="ca-pub-2256439533750580" data-ad-slot="9719162916"></ins>
+	<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<b>app.routing.module.ts</b>
+<pre><span class="kw">import</span> { NgModule } <span class="kw">from</span> <span class="ant">'@angular/core'</span>;
+<span class="kw">import</span> { RouterModule, Routes } <span class="kw">from</span> <span class="ant">'@angular/router'</span>;
+
+<span class="kw">import</span> { UserComponent } <span class="kw">from</span> <span class="ant">'./user/user.component'</span>;
+<span class="kw">import</span> {AddUserComponent} <span class="kw">from</span> <span class="ant">'./user/add-user.component'</span>;
+
+const routes: Routes = [
+  { path: <span class="ant">'users'</span>, component: UserComponent },
+  { path: <span class="ant">'add'</span>, component: AddUserComponent }
+];
+
+<span class="antb">@NgModule</span>({
+  <span class="kw">imports</span>: [
+    RouterModule.forRoot(routes)
+  ],
+  <span class="kw">exports</span>: [
+    RouterModule
+  ],
+  <span class="kw">declarations</span>: []
+})
+<span class="kw">export class</span> AppRoutingModule { }
+
+</pre>
+<h3 class="st" id="module">Angular Module Implementation</h3>
+<p>Now we are almost done with our application.We only need to include all the above implementation in our main module. </p>
+<b>app.module.ts</b>
+<pre><span class="kw">import</span> { BrowserModule } <span class="kw">from</span> <span class="ant">'@angular/platform-browser'</span>;
+<span class="kw">import</span> { NgModule } <span class="kw">from</span> <span class="ant">'@angular/core'</span>;
+<span class="kw">import</span> { FormsModule } <span class="kw">from</span> <span class="ant">'@angular/forms'</span>;
+
+<span class="kw">import</span> { AppComponent } <span class="kw">from</span> <span class="ant">'./app.component'</span>;
+<span class="kw">import</span> { UserComponent } <span class="kw">from</span> <span class="ant">'./user/user.component'</span>;
+<span class="kw">import</span> { AppRoutingModule } <span class="kw">from</span> <span class="ant">'./app.routing.module'</span>;
+<span class="kw">import</span> {UserService} <span class="kw">from</span> <span class="ant">'./user/user.service'</span>;
+<span class="kw">import</span> {HttpClientModule} <span class="kw">from</span> <span class="ant">"@angular/common/http"</span>;
+<span class="kw">import</span> {AddUserComponent} <span class="kw">from</span> <span class="ant">'./user/add-user.component'</span>;
+
+<span class="antb">@NgModule</span>({
+  <span class="kw">declarations</span>: [
+    AppComponent,
+    UserComponent,
+    AddUserComponent
+  ],
+  <span class="kw">imports</span>: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
+  ],
+  <span class="kw">providers</span>: [UserService],
+  <span class="kw">bootstrap</span>: [AppComponent]
+})
+<span class="kw">export class</span> AppModule { }
+
+</pre>
+<h2 class="st" id="angularproxyconfiguration">Angular CLI Proxy Configuration</h2>
+<p>To configure proxy in angular CLI, we need to create proxy.config.json file in the root of the angular project and edit the start script in package.json. </p>
+<b>proxy.config.json</b>
+<pre>{
+  "/api/*": {
+    "target": "<a class="vglnk" href="http://localhost:8080/user-portal" rel="nofollow"><span>http</span><span>://</span><span>localhost</span><span>:</span><span>8080</span><span>/</span><span>user</span><span>-</span><span>portal</span></a>",
+    "secure": false
+  }
+}
+</pre>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- add-unit-top-1 -->
+<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-2256439533750580" data-ad-slot="5666753719"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<p>The value of target here is the context root of the application and <span class="str">api</span> is the endpoint for user API.</p>
+<b>package.json</b>
+<pre> "start": "ng serve --proxy-config proxy.config.json",
+</pre>
+<p>Doing so, the request to <a class="vglnk" href="http://localhost:4200/api" rel="nofollow"><span>http</span><span>://</span><span>localhost</span><span>:</span><span>4200</span><span>/</span><span>api</span></a> would be proxied to <a class="vglnk" href="http://localhost:8080/user-portal" rel="nofollow"><span>http</span><span>://</span><span>localhost</span><span>:</span><span>8080</span><span>/</span><span>user</span><span>-</span><span>portal</span></a>.</p>
+<p>Recently, when I tried above command, it gave me following error.</p>
+<a href="https://imgur.com/xRXHDi6"><img src="https://imgur.com/xRXHDi6.png" alt="spring-boot2-angular5-error" class="img-responsive" title="spring-boot2-angular5-error"></a>
+<p>To fix the above error,replace "@angular/cli": "1.6.3", with "@angular/cli": "^1.6.3", in package.json and run npm update.After this it should work perfectly.</p>
+<p>Now make sure to change the <span class="str">userUrl</span> value to <span class="str">'/api'</span> in user.service.ts file and comment @CrossOrigin in UserController.java.Once this done use ng serve --proxy-config proxy.config.json or npm start to start the angular app.</p>
+<h2 class="st" id="finalStrct">Final Application Structure</h2>
+<a href="https://imgur.com/pLuqFoj"><img src="https://i.imgur.com/pLuqFoj.png" alt="angular-final-project-structure" class="img-responsive"></a>
+
+<h2 class="st" id="runspringboot">Running Spring Boot Application</h2>
+<p>We will be using spring boot embedded tomcat feature to deploy application.For more on this feature <a href="http://www.devglan.com/spring-boot/spring-boot-mvc-app-with-jsp">check this</a>.</p>
+<b>UserPortalApplication.java</b>
+<pre><span class="kw">package</span> com.devglan.userportal;
+
+<span class="kw">import</span> org.springframework.boot.SpringApplication;
+<span class="kw">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;
+
+<span class="antb">@SpringBootApplication</span>
+<span class="kw">public class</span> UserPortalApplication {
+
+	<span class="kw">public static</span> void main(String[] args) {
+		SpringApplication.run(UserPortalApplication.<span class="kw">class</span>, args);
+	}
+}
+
+</pre>
+<h2 class="st" id="runangularapp">Run Angular App</h2>
+<p>Now the server is up.Hit <span class="str">ng serve</span> to deploy angular application and let's test the application.</p><p>Hit the url - <a href="https://www.devglan.com/">http://localhost:4200/</a> and you can see following result.</p>
+<a href="https://imgur.com/hNzPOWZ"><img src="https://i.imgur.com/hNzPOWZ.png" alt="angular-home" class="img-responsive"></a>
+<p>Now, click on the Add User link and following form will appear to add user.</p>
+<a href="https://imgur.com/evyRFP0"><img src="https://i.imgur.com/evyRFP0.png" alt="angular-add-user" class="img-responsive"></a>
+<p>Now, click on the list user after adding multiple users.</p>
+<a href="https://imgur.com/QTSMA1r"><img src="https://i.imgur.com/QTSMA1r.png" alt="angular-list-user" class="img-responsive"></a>
+<h3 class="st">Conclusion</h3>
+<p>This is pretty much about spring boot and angular 5 integration tutorial.In the next article, we will look into <a href="https://github.com/only2dhir/spring-boot-angular5">deploying this application</a> in a single war file with maven and tomcat. You can download the source from <a href="https://github.com/only2dhir/spring-boot-angular5"> here</a>.If time permits, we will try to integrate spring security with it. In fact, we have already integrated with it here - <a href="https://www.devglan.com/spring-security/angular-jwt-authentication" rel="nofollow">Angular JWT Authentication with Spring Security</a> and <a href="https://www.devglan.com/spring-security/spring-boot-oauth2-angular" rel="nofollow">Angular OAuth2 JWT Authentication with Spring Security</a>.Please let me know your comments below.</p>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-2256439533750580" data-ad-slot="2596902436"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            </div>
+                        </div>
+
+                        <div class="row rect-border">
+                            <h4>If You Appreciate This, You Can Consider:</h4>
+                            <ul class="free-list">
+                                <li>
+                                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="ng-pristine ng-valid">
+                                        <input type="hidden" name="cmd" value="_s-xclick">
+                                        <input type="hidden" name="hosted_button_id" value="FZ7L5864RYNWC">
+                                        <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                                    </form></li>
+                                <li> Like us at:
+                                    <a href="https://goo.gl/YtUNxk" target="_blank">
+                                        <img width="32" height="32" title="Facebook" alt="Facebook" src="https://www.devglan.com/style/img/fb1.png" data-src="style/img/fb1.png">
+                                    </a>
+                                    or follow us at
+                                    <a href="https://goo.gl/sLbAWK" target="_blank">
+                                        <img width="32" height="32" title="Twitter" alt="Twitter" src="https://www.devglan.com/style/img/tw1.png" data-src="style/img/tw1.png">
+                                    </a>
+                                </li>
+                                <li> Share this article on social media or with your teammates.</li>
+                            </ul>
+                        </div>
+                        <h4>About The Author</h4>
+                        <div class="row">
+                            <div class="author-bio">
+                                <img class="author-pic" title="author-image" alt="author-image" src="https://lh3.googleusercontent.com/a-/AOh14Ggyhqg0-ABq8ZX_ycDpDaH8RKiMXrXSlCbnMkGKhQ=s96-c" data-src="https://lh3.googleusercontent.com/a-/AOh14Ggyhqg0-ABq8ZX_ycDpDaH8RKiMXrXSlCbnMkGKhQ=s96-c">
+                                <p class="pl-5">A technology savvy professional with an exceptional capacity to analyze, solve problems and multi-task.
+Technical expertise in highly scalable distributed systems, self-healing systems, and service-oriented architecture.
+Technical Skills: Java/J2EE, Spring, Hibernate, Reactive Programming, Microservices, Hystrix, Rest APIs, Java 8, Kafka, Kibana, Elasticsearch, etc.</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Further Reading on Spring Boot</h4>
+                            <p class="mb-2"><a href="https://www.devglan.com/angular/angular-7-crud-example" class="topic">1. Angular 7 Crud Example</a></p>
+                            <p class="mb-2"><a href="https://www.devglan.com/angular/spring-boot-angular-captcha" class="topic">2. Spring Boot Angular Captcha</a></p>
+                            <p class="mb-2"><a href="https://www.devglan.com/angular/angular-6-example" class="topic">3. Angular 6 Example</a></p>
+                            <p class="mb-2"><a href="https://www.devglan.com/spring-boot/spring-boot-angular-websocket" class="topic">4. Spring Boot Angular Websocket</a></p>
+                            <p class="mb-2"><a href="https://www.devglan.com/spring-security/angular-jwt-authentication" class="topic">5. Angular Jwt Authentication</a></p>
+                            <p class="mb-2"><a href="https://www.devglan.com/angular/angular-material-dialog" class="topic">6. Angular Material Dialog</a></p>
+                            <p class="mb-2"><a href="https://www.devglan.com/angular/angular-material-app" class="topic">7. Angular Material App</a></p>
+                            <p class="mb-2"><a href="https://www.devglan.com/spring-boot/spring-boot-angular-deployment" class="topic">8. Spring Boot Angular Deployment</a></p>
+                            <p class="mb-2"><a href="https://www.devglan.com/spring-boot/file-upload-angularjs-spring-boot-rest" class="topic">9. File Upload Angularjs Spring Boot Rest</a></p>
+                            <p class="mb-2"><a href="https://www.devglan.com/spring-security/spring-boot-security-oauth2-example" class="topic">10. Spring Boot Security Oauth2 Example</a></p>
+                            <p class="mb-2"><a href="https://www.devglan.com/spring-security/spring-boot-security-password-encoding-bcrypt-encoder" class="topic">11. Spring Boot Security Password Encoding Bcrypt Encoder</a></p>
+                            <p class="mb-2"><a href="https://www.devglan.com/corejava/storing-hashed-password-database-java" class="topic">12. Storing Hashed Password Database Java</a></p>
+                            <p class="mb-2"><a href="https://www.devglan.com/spring-security/spring-boot-jwt-auth" class="topic">13. Spring Boot Jwt Auth</a></p>
+                            
+                        </div>
+                        <div id="disqus_thread"><iframe id="dsq-app6613" name="dsq-app6613" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" sandbox="allow-forms allow-popups allow-same-origin allow-scripts" width="100%" src="./Spring Boot + Angular 5 +Spring Data + Rest Example(CRUD) _ DevGlan_files/saved_resource.html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 616px !important;"></iframe><iframe id="dsq-app6610" name="dsq-app6610" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./Spring Boot + Angular 5 +Spring Data + Rest Example(CRUD) _ DevGlan_files/saved_resource(1).html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 8665px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+                        <script>
+                            var disqus_config = function () {
+                                this.page.url =  'https://www.devglan.com/spring-boot/spring-boot-angular-example';
+                                this.page.identifier = 'https://www.devglan.com/spring-boot/spring-boot-angular-example';
+                            };
+                            (function () {
+                                var d = document, s = d.createElement('script');
+
+                                s.src = '//www-devglan-com.disqus.com/embed.js';
+
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                            })();
+                        </script>
+                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+                            powered by Disqus.</a></noscript>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-12">
+                        <div class="mb-9">
+                            <div class="row d-none d-md-block">
+                                <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- ad-unit-right -->
+                                <ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-2256439533750580" data-ad-slot="5806293478"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                            </div>
+                            <h3 class="h5 mb-4 text-primary">Recommended</h3>
+                            <ul class="list-group">
+                                <li class="list-group-item justify-content-between align-items-center">
+                                    <a class="text-dark anim-link-2" href="https://www.devglan.com/angular/angular-7-crud-example">Angular 7 Crud Example</a>
+                                </li>
+                                <li class="list-group-item justify-content-between align-items-center">
+                                    <a class="text-dark anim-link-2" href="https://www.devglan.com/angular/spring-boot-angular-captcha">Spring Boot Angular Captcha</a>
+                                </li>
+                                <li class="list-group-item justify-content-between align-items-center">
+                                    <a class="text-dark anim-link-2" href="https://www.devglan.com/angular/angular-6-example">Angular 6 Example</a>
+                                </li>
+                                <li class="list-group-item justify-content-between align-items-center">
+                                    <a class="text-dark anim-link-2" href="https://www.devglan.com/spring-boot/spring-boot-angular-websocket">Spring Boot Angular Websocket</a>
+                                </li>
+                                <li class="list-group-item justify-content-between align-items-center">
+                                    <a class="text-dark anim-link-2" href="https://www.devglan.com/spring-security/angular-jwt-authentication">Angular Jwt Authentication</a>
+                                </li>
+                                <li class="list-group-item justify-content-between align-items-center">
+                                    <a class="text-dark anim-link-2" href="https://www.devglan.com/angular/angular-material-dialog">Angular Material Dialog</a>
+                                </li>
+                                <li class="list-group-item justify-content-between align-items-center">
+                                    <a class="text-dark anim-link-2" href="https://www.devglan.com/angular/angular-material-app">Angular Material App</a>
+                                </li>
+                                <li class="list-group-item justify-content-between align-items-center">
+                                    <a class="text-dark anim-link-2" href="https://www.devglan.com/spring-boot/spring-boot-angular-deployment">Spring Boot Angular Deployment</a>
+                                </li>
+                                <li class="list-group-item justify-content-between align-items-center">
+                                    <a class="text-dark anim-link-2" href="https://www.devglan.com/spring-boot/file-upload-angularjs-spring-boot-rest">File Upload Angularjs Spring Boot Rest</a>
+                                </li>
+                                <li class="list-group-item justify-content-between align-items-center">
+                                    <a class="text-dark anim-link-2" href="https://www.devglan.com/spring-security/spring-boot-security-oauth2-example">Spring Boot Security Oauth2 Example</a>
+                                </li>
+                                <li class="list-group-item justify-content-between align-items-center">
+                                    <a class="text-dark anim-link-2" href="https://www.devglan.com/spring-security/spring-boot-security-password-encoding-bcrypt-encoder">Spring Boot Security Password Encoding Bcrypt Encoder</a>
+                                </li>
+                                <li class="list-group-item justify-content-between align-items-center">
+                                    <a class="text-dark anim-link-2" href="https://www.devglan.com/corejava/storing-hashed-password-database-java">Storing Hashed Password Database Java</a>
+                                </li>
+                                <li class="list-group-item justify-content-between align-items-center">
+                                    <a class="text-dark anim-link-2" href="https://www.devglan.com/spring-security/spring-boot-jwt-auth">Spring Boot Jwt Auth</a>
+                                </li>
+                            </ul>
+                            <div class="google_ad d-none d-md-block" style="position: fixed; width: 22%; top: 100px;">
+                                <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- ad-unit-right -->
+                                <ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-2256439533750580" data-ad-slot="5806293478"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                            </div>
+                        </div>
+                        <div class="d-none d-md-block">
+<!--
+                            <div id = 'vdo_ai_div'></div><script>(function(v,d,o,ai){ai=d.createElement('script');ai.defer=true;ai.async=true;ai.src=v.location.protocol+o;d.head.appendChild(ai);})(window, document, '//a.vdo.ai/core/devglan/vdo.ai.js');</script>
+-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <!-- ngInclude: 'social.html' --><div class="shar-container ng-scope" ng-include="&#39;social.html&#39;"><ul class="shar ng-scope">
+    <li>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.devglan.com/spring-boot/spring-boot-angular-example" onclick="window.open(this.href,  &#39;_blank&#39;, &#39;toolbar=yes,scrollbars=yes,resizable=yes,top=200,left=500,width=500,height=400&#39;); return false;">
+            <img width="32" height="32" title="Facebook" alt="Facebook" src="https://www.devglan.com/style/img/fb1.png" data-src="style/img/fb1.png">Facebook</a>
+    </li>
+    <li>
+        <a href="https://twitter.com/intent/tweet?text=https://www.devglan.com/spring-boot/spring-boot-angular-example" onclick="window.open(this.href,  &#39;_blank&#39;, &#39;toolbar=yes,scrollbars=yes,resizable=yes,top=200,left=500,width=500,height=400&#39;); return false;">
+            <img width="32" height="32" title="Twitter" alt="Twitter" src="https://www.devglan.com/style/img/tw1.png" data-src="style/img/tw1.png">
+            Twitter</a>
+    </li>
+    <li>
+        <a href="http://pinterest.com/pin/create/button/?url=https://www.devglan.com/spring-boot/spring-boot-angular-example&amp;media=http://www.devglan.com/style/img/logo.png&amp;description=This%20tutorial%20is%20about%20Spring%20Boot,%20Angular%205%20and%20spring%20data%20integration%20with%20CRUD%20example.We%20will%20be%20using%20spring%20boot%201.5%20to%20expose%20REST%20APIs%20and%20angular5%20with%20routing%20to%20build%20our%20client%20using%20angular%20CLI.It%20also%20provides%20mysql%20database%20integration%20for%20CRUD%20operation." onclick="window.open(this.href,  &#39;_blank&#39;, &#39;toolbar=yes,scrollbars=yes,resizable=yes,top=200,left=500,width=500,height=400&#39;); return false;">
+            <img width="32" height="32" title="Pinterest" alt="Pinterest" src="https://www.devglan.com/style/img/pin1.png" data-src="style/img/pin1.png">
+            Pinterest</a>
+    </li>
+    <li>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.devglan.com/spring-boot/spring-boot-angular-example&amp;title=Spring%20Boot%20+%20Angular%205%20+Spring%20Data%20+%20Rest%20Example(CRUD)%20|%20DevGlan&amp;summary=This%20tutorial%20is%20about%20Spring%20Boot,%20Angular%205%20and%20spring%20data%20integration%20with%20CRUD%20example.We%20will%20be%20using%20spring%20boot%201.5%20to%20expose%20REST%20APIs%20and%20angular5%20with%20routing%20to%20build%20our%20client%20using%20angular%20CLI.It%20also%20provides%20mysql%20database%20integration%20for%20CRUD%20operation." onclick="window.open(this.href,  &#39;_blank&#39;, &#39;toolbar=yes,scrollbars=yes,resizable=yes,top=200,left=500,width=500,height=400&#39;); return false;">
+            <img width="32" height="32" title="Linkedin" alt="Linkedin" src="https://www.devglan.com/style/img/li1.png" data-src="style/img/li1.png">
+            Linkedin</a>
+    </li>
+    <li>
+        <a href="http://tumblr.com/share/link?url=https://www.devglan.com/spring-boot/spring-boot-angular-example" onclick="window.open(this.href,  &#39;_blank&#39;, &#39;toolbar=yes,scrollbars=yes,resizable=yes,top=200,left=500,width=500,height=400&#39;); return false;">
+            <img width="32" height="32" title="Tumblr" alt="Tumblr" src="https://www.devglan.com/style/img/tm1.png" data-src="style/img/tm1.png">
+            Tumblr</a>
+    </li>
+    <!--<li>
+        <a href="http://www.reddit.com/submit?url={{sUrl}}&title={{sTitle}}&text={{sDesc}}" onclick="window.open(this.href,  '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=200,left=500,width=500,height=400'); return false;">
+            <img width="32" height="32" title="Reddit" alt="Reddit" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="style/img/reddit.png"/>
+            Reddit</a>
+    </li>-->
+</ul>
+<script class="ng-scope">
+    function init() {
+        var imgDefer = document.getElementsByTagName('img');
+        for (var i=0; i<imgDefer.length; i++) {
+            if(imgDefer[i].getAttribute('data-src')) {
+                imgDefer[i].setAttribute('src',imgDefer[i].getAttribute('data-src'));
+            } } }
+    window.onload = init;
+</script>
+</div>
+        </section>
+    </main>
+    <div id="newslettermodal" class="modal fade" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-newsletter">
+            <div class="modal-content">
+                <form class="ng-pristine ng-valid-email ng-invalid ng-invalid-required">
+                    <div class="modal-header">
+                        <h4>Subscribe to our monthly newsletter</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span>×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Join our subscribers list to get the latest updates and articles delivered directly in your inbox.</p>
+                        <div class="input-group">
+                            <input type="email" class="form-control ng-pristine ng-untouched ng-valid-email ng-invalid ng-invalid-required" placeholder="Enter your email" required="" ng-model="semail">
+                            <span class="input-group-btn">
+							<input type="submit" class="btn btn-primary" ng-click="subscribe(semail)" value="Subscribe">
+						</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--Footer-Wrap-->
+    <footer class="border-top footer_ad">
+        <div class="container pt-10 pb-9">
+            <div class="row">
+                <div class="col-sm-5">
+                    <img alt="Vertex" src="https://www.devglan.com/v2/img/devglan.png" class="mb-4" width="120">
+                    <p>
+                        <span class="m-link-muted">Devglan</span> is one stop platform for all<br>
+                        programming tutorials and courses.
+                    </p>
+                    <div class="social">
+                        <a class="social-facebook m-0" href="https://www.facebook.com/devglanjava/" target="_blank"><i class="fa fa-facebook-f"></i></a>
+                        <a class="social-twitter m-0" href="https://twitter.com/only2dhir" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a class="social-linkedin m-0" href="https://www.linkedin.com/in/dhiraj-rai-devglan/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <h3 class="h6 mb-3">
+                        About Us
+                    </h3>
+                    <ul class="list-unstyled mb-0 text-white-50">
+                        <li><a class="m-list--link" href="https://www.devglan.com/about-us">About Us</a></li>
+                        <li><a class="m-list--link" href="https://www.devglan.com/user/contact-us">Contact Us</a></li>
+                        <li><a class="m-list--link" href="https://www.devglan.com/user/submission-criteria" target="_blank">Submission Criteria</a></li>
+                        <li><a class="m-list--link" href="https://www.devglan.com/privacy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-2">
+                    <h3 class="h6 mb-3">
+                        Quick Links
+                    </h3>
+                    <ul class="list-unstyled mb-0">
+                        <li><a class="m-list--link" href="https://www.devglan.com/">Home</a></li>
+                        <li><a class="m-list--link" href="https://www.devglan.com/auth/login">Login / Join</a></li>
+                        <li><a class="m-list--link" href="https://www.devglan.com/me/add-story">Submit Your Story</a></li>
+                        <li><a class="m-list--link" href="https://www.devglan.com/donate-to-devglan">Donate</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h3 class="h6 mb-3">
+                        Contact Us
+                    </h3>
+
+                    <!--<address class="fs-14">
+                        <strong>Twitter, Inc.</strong><br>
+                        1355 Market St, Suite 900<br>
+                        San Francisco, CA 94103<br>
+                        <abbr title="Phone">P:</abbr> (123) 456-7890
+                    </address>-->
+                    <address class="fs-14">
+                        <strong>Dhiraj</strong><br>
+                        <a class="m-link" href="mailto:#">dhiraj@devglan.com</a>
+                    </address>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="container m-gab-1 border-top">
+
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p><span class="fs-17">©</span> 2020 <span class="m-link">Devglan</span>. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!--End Footer-Wrap-->
+</div>
+
+<div class="bizzbar d-none d-md-block" style="">
+    <p class="bizztext" id="3">
+        Check if a Binary Tree is Valid BST or not
+        <a class="bizzbutton" href="https://www.devglan.com/datastructure/check-if-a-binary-tree-is-bst" target="_blank">Read Now!</a></p>
+    <close></close>
+</div>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
+<script>var App = angular.module("devStack", []);
+App.config(function ($httpProvider) {
+    $httpProvider.interceptors.push(function($q) {
+        return {
+            response: function(response) {
+                if(response.data.status === 401) {
+                    window.location.href = 'https://www.devglan.com/auth/login';
+                    return;
+                }
+                return response;
+            },
+            responseError: function(errResponse) {
+                console.log(errResponse);
+                alert(errResponse.statusText);
+                return;
+            }
+        };
+    });
+});
+</script>
+<script src="https://www.devglan.com/js/controller/dashboard.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" async=""></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
+<link rel="stylesheet" href="https://www.devglan.com/v2/css/custom.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" async=""></script>
+<script src="https://www.devglan.com/v2/js/custom.js" async=""></script>
+<script type="text/javascript">
+    var submenu = $("ul#mainNav li.dropdown.active").attr('submenu');
+    $(".sub_menu_navbar").removeClass('active');
+    $('.sub_menu_navbar.'+submenu).addClass('active');
+    setTimeout(function(){
+        if (typeof(Storage) !== "undefined" && !sessionStorage.getItem('newsletter')) {
+            sessionStorage.setItem("newsletter", true);
+            $("#newslettermodal").modal('show');
+        }
+    }, 90000);
+
+</script>
+<!--
+<script src="https://edugrampromo.com/partnersforms/widget?component=chat&ref=832bb97a0aa49250" async></script>
+-->
+<style type="text/css">
+    .technology_info img{
+        max-width: 100px;
+        float: left;
+        margin-right: 15px;
+    }
+
+    .technology_follow p,.technology_follow span{
+        text-align: left;
+    }
+    @media(max-width: 767px){
+        .technology_info h3{
+            font-size: 24px;
+        }
+        .technology_info p{
+            font-size: 14px;
+        }
+    }
+
+    .post-img-left p{
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 14px !important;
+    }
+    .post-img-left h5{
+        font-size: 16px !important;
+        color: #555 !important;
+    }
+    .post-img-left h5:hover{
+        color: #2380fb !important;
+    }
+</style>
+
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Spring Boot + Angular 5 +Spring Data + Rest Example(CRUD) _ DevGlan_files/widget_iframe.2a008290075125adde2d7b849b06a0bb.html" title="Twitter settings iframe" style="display: none;"></iframe><table cellspacing="0" cellpadding="0" class="gstl_50 gssb_c" style="width: 183px; display: none; top: -9887px; left: 1482px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table><iframe style="display: none;" src="./Spring Boot + Angular 5 +Spring Data + Rest Example(CRUD) _ DevGlan_files/saved_resource(2).html"></iframe></body></html>
