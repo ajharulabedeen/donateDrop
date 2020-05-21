@@ -116,7 +116,6 @@ public class DumpDao {
         return entityManager.createNativeQuery(q).getResultList();
     }
 
-
     public Address getAddress(String type) {
         Random r = new Random();
         String divID = "";

@@ -170,7 +170,7 @@ public class Test_Dao_Profile_Basic_Impl {
         ProfileBasic profileBasicNew = new ProfileBasic();
         profileBasicNew.setUserId(userID);
 
-        profileBasicNew.setName("Khan Ajharul Abedeen");
+        profileBasicNew.setName(">>>>Khan Ajharul Abedeen");
 //        profileBasicNew.setBirthDate(GetDate.getDate().toString());
         profileBasicNew.setGender("Male");
         profileBasicNew.setBlood_Group("A+");
