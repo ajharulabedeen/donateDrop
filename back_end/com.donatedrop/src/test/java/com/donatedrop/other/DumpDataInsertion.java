@@ -14,7 +14,6 @@ import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.security.models.User;
 import com.donatedrop.security.repo.UserRepository;
 import com.donatedrop.util.AddressType;
-import com.donatedrop.util.GetDate;
 import com.donatedrop.util.Utils;
 import org.hibernate.annotations.NaturalId;
 import org.junit.jupiter.api.Test;
@@ -123,7 +122,7 @@ public class DumpDataInsertion {
         profileBasic.setMaritalStatus(DumpData.getMarterialStatus());
         profileBasic.setProfession(DumpData.getProfession());
         profileBasic.setCare_of(DumpData.getName());
-//        profileBasic.setBirthDate(GetDate.getDate());
+//        profileBasic.setBirthDate(DateUtil.getDate());
         profileBasic.setReligion(DumpData.getReligion());
         profileBasic.setUserId(userID);
 

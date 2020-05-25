@@ -9,7 +9,7 @@ import com.donatedrop.profile.model.EmergencyContact;
 import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.util.AddressType;
-import com.donatedrop.util.GetDate;
+import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
 import com.donatedrop.util.Utils;
 import org.junit.Assert;
@@ -100,7 +100,7 @@ public class Test_Dao_Profile_Basic_Impl {
             profileBasic.setCare_of(DumpData.getName());
             //refactor : have to set automatic userID.
             profileBasic.setUserId(Utils.getLoggedUserID());
-            profileBasic.setBirthDate(GetDate.getDate());
+            profileBasic.setBirthDate(DateUtil.getDate());
 
 
 //        ACT
@@ -171,7 +171,7 @@ public class Test_Dao_Profile_Basic_Impl {
         profileBasicNew.setUserId(userID);
 
         profileBasicNew.setName(">>>>Khan Ajharul Abedeen");
-//        profileBasicNew.setBirthDate(GetDate.getDate().toString());
+//        profileBasicNew.setBirthDate(DateUtil.getDate().toString());
         profileBasicNew.setGender("Male");
         profileBasicNew.setBlood_Group("A+");
         profileBasicNew.setAvailable("0");

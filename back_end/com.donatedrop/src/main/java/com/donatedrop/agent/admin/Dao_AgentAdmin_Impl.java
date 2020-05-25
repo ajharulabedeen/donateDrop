@@ -1,7 +1,6 @@
 package com.donatedrop.agent.admin;
 
 //import com.donatedrop.agent.admin.models.*;
-
 import com.donatedrop.agent.admin.model.AgentRequest;
 import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.agent.admin.model.RequestApplicantNote;
@@ -81,11 +80,11 @@ public class Dao_AgentAdmin_Impl implements Dao_AgentAdmin_I {
         try {
             AgentRequest agentRequest = entityManager.find(AgentRequest.class, new Long(reviewRequest.getRequestID()));
             if (reviewRequest.getValue().equals(StatusType.ACCEPT)) {
-                agentRequest.setAcceptDate(GetDate.getDate());
+                agentRequest.setAcceptDate(DateUtil.getDate());
             } else if (reviewRequest.getValue().equals(StatusType.REJECT)) {
-                agentRequest.setRejectDate(GetDate.getDate());
+                agentRequest.setRejectDate(DateUtil.getDate());
             } else if (reviewRequest.getValue().equals(StatusType.FREEZE)) {
-                agentRequest.setFreezeDate(GetDate.getDate());
+                agentRequest.setFreezeDate(DateUtil.getDate());
             }
 
             agentRequest.setStatus(reviewRequest.getValue());
@@ -142,9 +141,9 @@ public class Dao_AgentAdmin_Impl implements Dao_AgentAdmin_I {
             }
             agentRequestReviews
                     = entityManager.createNativeQuery(q, AgentRequestToReview.class)
-                    .setFirstResult(start)
-                    .setMaxResults(max)
-                    .getResultList();
+                            .setFirstResult(start)
+                            .setMaxResults(max)
+                            .getResultList();
             return agentRequestReviews;
 
         } catch (Exception exception) {

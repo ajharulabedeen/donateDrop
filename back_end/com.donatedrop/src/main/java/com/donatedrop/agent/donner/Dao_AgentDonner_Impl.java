@@ -16,6 +16,7 @@ import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
 import com.donatedrop.agent.models.RequestNote;
 import com.donatedrop.agent.models.RequestReviewRequest;
+import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.GetDate;
 import com.donatedrop.util.StringUtil;
 import org.hibernate.exception.ConstraintViolationException;
@@ -43,7 +44,7 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
     public Map<String, String> saveRequest(DonnerRequestToAgent donnerRequestToAgent) {
         Map<String, String> result = new HashMap<>();
         try {
-            donnerRequestToAgent.setRequestDate(GetDate.getDate());
+            donnerRequestToAgent.setRequestDate(DateUtil.getDate());
             donnerRequestToAgent.setStatus(StatusType.ZERO);
             entityManager.persist(donnerRequestToAgent);
             result.put(StringUtil.STATUS, StringUtil.OK);
@@ -100,11 +101,11 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
             DonnerRequestToAgent donnerRequestToAgent
                     = entityManager.find(DonnerRequestToAgent.class, new Long(reviewRequest.getRequestID()));
             if (reviewRequest.getValue().equals(StatusType.ACCEPT)) {
-                donnerRequestToAgent.setAcceptDate(GetDate.getDate());
+                donnerRequestToAgent.setAcceptDate(DateUtil.getDate());
             } else if (reviewRequest.getValue().equals(StatusType.REJECT)) {
-                donnerRequestToAgent.setRejectDate(GetDate.getDate());
+                donnerRequestToAgent.setRejectDate(DateUtil.getDate());
             } else if (reviewRequest.getValue().equals(StatusType.REMOVE)) {
-                donnerRequestToAgent.setRemoveDate(GetDate.getDate());
+                donnerRequestToAgent.setRemoveDate(DateUtil.getDate());
             }
             donnerRequestToAgent.setStatus(reviewRequest.getValue());
             entityManager.merge(donnerRequestToAgent);

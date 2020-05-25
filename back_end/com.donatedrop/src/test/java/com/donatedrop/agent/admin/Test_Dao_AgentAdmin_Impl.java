@@ -10,7 +10,6 @@ import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.other.DumpDao;
 import com.donatedrop.other.TestUtil;
 import com.donatedrop.util.DateUtil;
-import com.donatedrop.util.GetDate;
 import com.donatedrop.util.StringUtil;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -42,7 +41,7 @@ public class Test_Dao_AgentAdmin_Impl {
     public void testSaveRequest() {
         AgentRequest agentRequest = new AgentRequest();
         agentRequest.setUserID(TestUtil.userID + 3);
-        agentRequest.setRequestDate(GetDate.getDate().toString());
+        agentRequest.setRequestDate(DateUtil.getDate().toString());
         agentRequest.setStatus("0");
         Map<String, String> result = dao_agent_i.saveRequest(agentRequest);
         System.out.println("\nResult : \n" + result);
@@ -171,7 +170,7 @@ public class Test_Dao_AgentAdmin_Impl {
         dumpDao.getUsers(0, 20).forEach(user -> {
             AgentRequest agentRequest = new AgentRequest();
             agentRequest.setUserID(user.getId().toString());
-            agentRequest.setRequestDate(GetDate.getDate().toString());
+            agentRequest.setRequestDate(DateUtil.getDate().toString());
             agentRequest.setStatus("0");
             Map<String, String> result = dao_agent_i.saveRequest(agentRequest);
             System.out.println("\nResult : \n" + result);

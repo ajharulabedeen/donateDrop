@@ -170,7 +170,7 @@ public class Test_Controller_Basic extends AbstractTest {
         ProfileBasic profileBasicNew = new ProfileBasic();
         profileBasicNew.setUserId(userID);
         profileBasicNew.setName("Khan Ajharul Abedeen");
-//        profileBasicNew.setBirthDate(GetDate.getDate().toString());
+//        profileBasicNew.setBirthDate(DateUtil.getDate().toString());
         profileBasicNew.setGender("Male");
         profileBasicNew.setBlood_Group("A+");
         profileBasicNew.setAvailable("1");

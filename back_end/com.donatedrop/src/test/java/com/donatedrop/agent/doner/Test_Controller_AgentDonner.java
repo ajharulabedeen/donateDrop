@@ -12,7 +12,6 @@ import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.geocode.AbstractTest;
 import com.donatedrop.other.DumpDao;
 import com.donatedrop.util.DateUtil;
-import com.donatedrop.util.GetDate;
 import com.donatedrop.util.StringUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.Before;
@@ -65,7 +64,7 @@ public class Test_Controller_AgentDonner extends AbstractTest {
 
         DonnerRequestToAgent donnerRequestToAgent = new DonnerRequestToAgent();
         donnerRequestToAgent.setUserIdDonner(userID.toString());
-        donnerRequestToAgent.setRequestDate(GetDate.getDate().toString());
+        donnerRequestToAgent.setRequestDate(DateUtil.getDate().toString());
         donnerRequestToAgent.setStatus("0");
         donnerRequestToAgent.setNoteDonner("I am from ur university!");
 

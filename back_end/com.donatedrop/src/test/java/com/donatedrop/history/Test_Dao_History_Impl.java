@@ -7,7 +7,7 @@ import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
 import com.donatedrop.profile.model.EmergencyContact;
 import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.profile.model.ProfileBasic;
-import com.donatedrop.util.GetDate;
+import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
 import com.donatedrop.util.Utils;
 import org.junit.Assert;
@@ -65,7 +65,7 @@ public class Test_Dao_History_Impl {
             System.out.println("\nHistory Save\n");
             History history = new History();
             history.setUserId(userID);//will be set from service.
-            history.setDate(GetDate.getDate().toString());
+            history.setDate(DateUtil.getDate().toString());
             history.setLocation("Karakom,WestPoint, Dhaka.");
             history.setPatientDescription("Kidney");
             history.setRefferedBy("Mobile");
@@ -107,7 +107,7 @@ public class Test_Dao_History_Impl {
         History history = new History();
         history.setId(Long.parseLong(historyID));
         history.setUserId(userID);//will be set from service.
-        history.setDate(GetDate.getDate().toString());
+        history.setDate(DateUtil.getDate().toString());
         history.setLocation("Karakoram, Shimla, India!");
         history.setPatientDescription("Kidney/Heart");
         history.setRefferedBy("Mobile call!");
@@ -201,7 +201,7 @@ public class Test_Dao_History_Impl {
 //            System.out.println("\nHistory Save\n");
 //            History history = new History();
 //            history.setUserId(userID);//will be set from service.
-//            history.setDate(GetDate.getDate().toString());
+//            history.setDate(DateUtil.getDate().toString());
 //            history.setLocation(DumpData.getLocation());
 //            history.setPatientDescription(DumpData.getPatientDescription());
 //            history.setRefferedBy(DumpData.getRefferedBy());
@@ -214,7 +214,7 @@ public class Test_Dao_History_Impl {
 //        bug : data are not being save
 //        History history = new History();
 //        history.setUserId(userID);//will be set from service.
-//        history.setDate(GetDate.getDate().toString());
+//        history.setDate(DateUtil.getDate().toString());
 //        history.setLocation(DumpData.getLocation());
 //        history.setPatientDescription(DumpData.getPatientDescription());
 //        history.setRefferedBy(DumpData.getRefferedBy());
@@ -226,7 +226,7 @@ public class Test_Dao_History_Impl {
             System.out.println("\nHistory Save\n");
             History history = new History();
             history.setUserId(userID);//will be set from service.
-            history.setDate(GetDate.getDate().toString());
+            history.setDate(DateUtil.getDate().toString());
             history.setLocation(DumpData.getLocation());
             history.setPatientDescription(DumpData.getPatientDescription());
             history.setRefferedBy(DumpData.getRefferedBy());
