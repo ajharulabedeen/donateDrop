@@ -10,6 +10,7 @@ import com.donatedrop.agent.models.RequestReviewRequest;
 import com.donatedrop.agent.donner.models.RequestSearchReview;
 import com.donatedrop.agent.admin.model.AgentRequestToReview;
 import com.donatedrop.agent.admin.model.RequestPersonalNote;
+import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.GetDate;
 import com.donatedrop.util.StringUtil;
 import org.hibernate.exception.ConstraintViolationException;
@@ -41,7 +42,7 @@ public class Dao_AgentAdmin_Impl implements Dao_AgentAdmin_I {
     public Map<String, String> saveRequest(AgentRequest agentRequest) {
         Map<String, String> result = new HashMap<>();
         try {
-            agentRequest.setRequestDate(GetDate.getDate());
+            agentRequest.setRequestDate(DateUtil.getDate());
             entityManager.persist(agentRequest);
             result.put(StringUtil.STATUS, StringUtil.OK);
             result.put(StringUtil.MESSAGE, StringUtil.SAVE);

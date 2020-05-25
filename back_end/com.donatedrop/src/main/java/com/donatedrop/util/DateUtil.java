@@ -22,13 +22,15 @@ public class DateUtil {
         return simpleDateFormat;
     }
 
-//    public static Date getDate() {
+    public static String getDate() {
+        //wokring
 //        SimpleDateFormat dateFormat = getSimpleDateFormat();
 //        Date date = new Date();
-//        return dateFormat.format(date);
-//    }
-
-    public static void main(String[] args) {
-        System.out.println(GetDate.getDate());
+//        return dateFormat.format(new Date());
+        return getSimpleDateFormat().format(new Date());
     }
+
+//    public static void main(String[] args) {
+//        System.out.println(getDate());
+//    }
 }
