@@ -237,7 +237,7 @@ public class Test_Dao_Profile_Basic_Impl {
                 .filter(address -> AddressType.PRESENT.toString().equals(address.getType()))
                 .findAny()
                 .orElse(null);
-        ;
+
         String divSaved = addressPresentSaved.getDistrict();
         String distSaved = addressPresentSaved.getDivision();
         String upzSaved = addressPresentSaved.getDivision();
@@ -260,8 +260,10 @@ public class Test_Dao_Profile_Basic_Impl {
         System.out.println("\n\n" + result + "\n\n");
         Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
 
-//        Address addressPermanentSaved = dao_Profile_Basic_I.findOneByUser(userID).getAddress_permanent();
-        Address addressPermanentSaved = new Address();
+        Address addressPermanentSaved = dao_Profile_Basic_I.findOneByUser(userID).getAddress().stream()
+                .filter(address -> AddressType.PERMANENNT.toString().equals(address.getType()))
+                .findAny()
+                .orElse(null);
         String divSaved = addressPermanentSaved.getDistrict();
         String distSaved = addressPermanentSaved.getDivision();
         Assert.assertEquals(divSaved, divNew);
