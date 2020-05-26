@@ -4,6 +4,7 @@ import com.donatedrop.models.Address;
 import com.donatedrop.profile.model.EmergencyContact;
 import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.profile.model.ProfileBasic;
+import com.donatedrop.util.AddressType;
 import com.donatedrop.util.StringUtil;
 import org.springframework.stereotype.Component;
 
@@ -177,23 +178,27 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
     @Override
     public Map<String, String> updatePresentAddress(Address addressPresentNew, String userID) {
         Map<String, String> result = new HashMap<>();
-//        ProfileBasic profileBasic = getProfileBasicByUserID(userID);
-//        if (profileBasic != null) {
-//            Address addressPresentOld = profileBasic.getAddress_present();
-//            addressPresentOld.setDivision(addressPresentNew.getDivision());
-//            addressPresentOld.setDistrict(addressPresentNew.getDistrict());
-//            addressPresentOld.setUpzilla(addressPresentNew.getUpzilla());
-//            addressPresentOld.setUnion_ward(addressPresentNew.getUnion_ward());
-//            addressPresentOld.setStreet_address(addressPresentNew.getStreet_address());
-//            try {
-//                entityManager.merge(addressPresentOld);
-//                result.put(StringUtil.STATUS, StringUtil.OK);
-//            } catch (Exception e) {
-//                result.put(StringUtil.STATUS, StringUtil.FAIL);
-//            }
-//        } else {
+        ProfileBasic profileBasic = getProfileBasicByUserID(userID);
+        if (profileBasic != null) {
+            Address addressPresentOld = profileBasic.getAddress().stream()
+                    .filter(address -> AddressType.PRESENT.toString().equals(address.getType()))
+                    .findAny()
+                    .orElse(null);
+            System.out.println(addressPresentOld.toString());
+            addressPresentOld.setDivision(addressPresentNew.getDivision());
+            addressPresentOld.setDistrict(addressPresentNew.getDistrict());
+            addressPresentOld.setUpzilla(addressPresentNew.getUpzilla());
+            addressPresentOld.setUnion_ward(addressPresentNew.getUnion_ward());
+            addressPresentOld.setStreet_address(addressPresentNew.getStreet_address());
+            try {
+                entityManager.merge(addressPresentOld);
+                result.put(StringUtil.STATUS, StringUtil.OK);
+            } catch (Exception e) {
+                result.put(StringUtil.STATUS, StringUtil.FAIL);
+            }
+        } else {
 //            result.put(StringUtil.STATUS, StringUtil.FAIL);
-//        }
+        }
         return result;
     }
 
