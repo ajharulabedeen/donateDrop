@@ -233,12 +233,17 @@ public class Test_Dao_Profile_Basic_Impl {
         System.out.println("\n\n" + result + "\n\n");
         Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
 
-//        Address addressPresentSaved = dao_Profile_Basic_I.findOneByUser(userID).getAddress_present();
-        Address addressPresentSaved = new Address();
+        Address addressPresentSaved = dao_Profile_Basic_I.findOneByUser(userID).getAddress().stream()
+                .filter(address -> AddressType.PRESENT.toString().equals(address.getType()))
+                .findAny()
+                .orElse(null);
+        ;
         String divSaved = addressPresentSaved.getDistrict();
         String distSaved = addressPresentSaved.getDivision();
+        String upzSaved = addressPresentSaved.getDivision();
         Assert.assertEquals(divSaved, divNew);
         Assert.assertEquals(distSaved, distNew);
+        Assert.assertEquals(upzSaved, upzSaved);
     }
 
     //depedency : findOne By userID.

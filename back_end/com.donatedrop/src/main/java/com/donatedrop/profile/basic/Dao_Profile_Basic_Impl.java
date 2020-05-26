@@ -147,6 +147,8 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         if (list.size() >= 1) {
             profileBasic = list.get(0);
             //to avoid lazay init error.
+            profileBasic.getAddress().forEach(c -> {
+            });
             profileBasic.getEmergency_contact().forEach(c -> {
             });
             profileBasic.getPhone_number().forEach(p -> {
