@@ -220,12 +220,14 @@ public class Test_Dao_Profile_Basic_Impl {
     @Order(6)
     public void test6_presentAddressUpdate() {
         String userID = "16";
+        String upzNew = "Gazipur";
         String distNew = "Dhaka";
         String divNew = "Dhaka";
         String streetAddressNew = "Road No 10";
         Address addressPresentNew = new Address();
         addressPresentNew.setDivision(divNew);
         addressPresentNew.setDistrict(distNew);
+        addressPresentNew.setUpzilla(upzNew);
         addressPresentNew.setStreet_address(streetAddressNew);
         Map<String, String> result = dao_Profile_Basic_I.updatePresentAddress(addressPresentNew, userID);
         System.out.println("\n\n" + result + "\n\n");
