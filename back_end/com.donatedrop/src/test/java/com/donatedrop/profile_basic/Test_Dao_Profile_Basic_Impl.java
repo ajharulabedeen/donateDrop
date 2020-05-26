@@ -140,8 +140,10 @@ public class Test_Dao_Profile_Basic_Impl {
     public void test3_findOne() {
         String id = getID();
         ProfileBasic profileBasic = dao_Profile_Basic_I.findOne(id);
+
         //org.hibernate.LazyInitializationException, print will not work.
 //        System.out.println("\n\n---\n" + profileBasic.toString() + "\n---\n\n");
+
         Assert.assertEquals(id, profileBasic.getId().toString());
     }
 
@@ -157,6 +159,18 @@ public class Test_Dao_Profile_Basic_Impl {
         } else {
             Assert.assertEquals(StringUtil.NOT_NULL, StringUtil.NULL);
         }
+    }
+
+    @Test
+    @Order(4)
+    public void test4_findOneWithChild() {
+        String id = getID();
+        ProfileBasic profileBasic = dao_Profile_Basic_I.findOneWithChild(id);
+        System.out.println("\n");
+        System.out.println(profileBasic.toString());
+        System.out.println("\n");
+//        System.out.println(profileBasic.getPhone_number());
+//        System.out.println(profileBasic.getPhone_number());
     }
 
     //    dependency : save profile basic.

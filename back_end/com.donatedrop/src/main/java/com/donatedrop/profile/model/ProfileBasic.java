@@ -107,26 +107,6 @@ public class ProfileBasic implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "ProfileBasic{"
-                + "id=" + id
-                + ", userId='" + userId + '\''
-                + ", name='" + name + '\''
-                + ", birthDate='" + birthDate + '\''
-                + ", care_of='" + care_of + '\''
-                + ", gender='" + gender + '\''
-                + ", maritalStatus='" + maritalStatus + '\''
-                + ", profession='" + profession + '\''
-                + ", blood_Group='" + blood_Group + '\''
-                + ", religion='" + religion + '\''
-                + ", email='" + email + '\''
-                + ", available='" + available + '\''
-                + ", \nPhone_number=\n" + phone_number
-                + ", \nEmergency_contact=\n" + emergency_contact
-                + '}';
-    }
-
     public String getUserId() {
         return userId;
     }
@@ -237,5 +217,26 @@ public class ProfileBasic implements Serializable {
 
     public void setAddress(List<Address> address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "ProfileBasic{" +
+                "id=" + id +
+                ", userId='" + userId + '\'' +
+                ", name='" + name + '\'' +
+                ", birthDate='" + birthDate + '\'' +
+                ", care_of='" + care_of + '\'' +
+                ", gender='" + gender + '\'' +
+                ", maritalStatus='" + maritalStatus + '\'' +
+                ", profession='" + profession + '\'' +
+                ", blood_Group='" + blood_Group + '\'' +
+                ", available='" + available + '\'' +
+                ", religion='" + religion + '\'' +
+                ", email='" + email + '\'' +
+                ", address=" + address +
+                ", phone_number=" + phone_number +
+                ", emergency_contact=" + emergency_contact +
+                '}';
     }
 }

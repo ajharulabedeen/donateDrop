@@ -122,6 +122,8 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         try {
             profileBasic = entityManager.find(ProfileBasic.class, Long.parseLong(id));
             if (profileBasic != null) {
+                profileBasic.getAddress().forEach(c -> {
+                });
                 profileBasic.getEmergency_contact().forEach(c -> {
                 });
                 profileBasic.getPhone_number().forEach(p -> {
