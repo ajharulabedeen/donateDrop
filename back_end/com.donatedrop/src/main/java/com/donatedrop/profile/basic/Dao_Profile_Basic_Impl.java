@@ -210,7 +210,7 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         ProfileBasic profileBasic = getProfileBasicByUserID(userID);
         if (profileBasic != null) {
             Address addressPermanentOld = profileBasic.getAddress().stream()
-                    .filter(address -> AddressType.PERMANENNT.toString().equals(address.getType()))
+                    .filter(address -> AddressType.PERMANENT.toString().equals(address.getType()))
                     .findAny()
                     .orElse(null);
             addressPermanentOld.setDivision(addressPermanentNew.getDivision());

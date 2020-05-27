@@ -27,7 +27,7 @@ public class TestAny {
 
     @Test
     public void testEnum() {
-        System.out.println(AddressType.PERMANENNT);
+        System.out.println(AddressType.PERMANENT);
     }
 
     @Test

@@ -68,7 +68,7 @@ public class Test_Dao_Profile_Basic_Impl {
 //            profileBasic.setAddress(new Arrays.asList());
             ArrayList<Address> aList = new ArrayList<Address>(
                     Arrays.asList(
-                            dumpDao.getAddress(AddressType.PERMANENNT.toString()),
+                            dumpDao.getAddress(AddressType.PERMANENT.toString()),
                             dumpDao.getAddress(AddressType.PRESENT.toString())
                     ));
             profileBasic.setAddress(aList);
@@ -261,7 +261,7 @@ public class Test_Dao_Profile_Basic_Impl {
         Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
 
         Address addressPermanentSaved = dao_Profile_Basic_I.findOneByUser(userID).getAddress().stream()
-                .filter(address -> AddressType.PERMANENNT.toString().equals(address.getType()))
+                .filter(address -> AddressType.PERMANENT.toString().equals(address.getType()))
                 .findAny()
                 .orElse(null);
         String divSaved = addressPermanentSaved.getDistrict();
