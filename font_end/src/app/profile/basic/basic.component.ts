@@ -140,6 +140,14 @@ export class BasicComponent implements OnInit {
           this.present_union = b['address'][key]['union_ward'];
           this.present_street_address = b['address'][key]['street_address'];
         }
+        if (b['address'][key]['type'] === 'PERMANENT') {
+          this.permanent_address_id = b['address'][key]['id'];
+          this.permanent_division = b['address'][key]['division'];
+          this.permanent_district = b['address'][key]['district'];
+          this.permanent_upzilla = b['address'][key]['upzilla'];
+          this.permanent_uinon = b['address'][key]['union_ward'];
+          this.permanent_street_address = b['address'][key]['street_address'];
+        }
       }
 
       // phone numbers
@@ -162,15 +170,6 @@ export class BasicComponent implements OnInit {
         console.log('---emergencyContacts : ' + this.emergencyContacts);
         this.emergencyContacts.push(emergencyContact);
       }
-
-
-      // address : permanent
-      this.permanent_address_id = b['address_permanent']['id'];
-      this.permanent_division = b['address_permanent']['division'];
-      this.permanent_district = b['address_permanent']['district'];
-      this.permanent_upzilla = b['address_permanent']['upzilla'];
-      this.permanent_uinon = b['address_permanent']['union_ward'];
-      this.permanent_street_address = b['address_permanent']['street_address'];
 
 
     });
