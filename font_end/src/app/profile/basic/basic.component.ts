@@ -128,6 +128,20 @@ export class BasicComponent implements OnInit {
       this.available = b['available'];
       this.maritalStatus = b['maritalStatus'];
 
+      console.log('address' + b['address']);
+      for (const key in b['address']) {
+        console.log(b['address'][key]['type']);
+        if (b['address'][key]['type'] === 'PRESENT') {
+          // address : present
+          this.present_address_id = b['address'][key]['id'];
+          this.present_division = b['address'][key]['division'];
+          this.present_district = b['address'][key]['district'];
+          this.present_upzilla = b['address'][key]['upzilla'];
+          this.present_union = b['address'][key]['union_ward'];
+          this.present_street_address = b['address'][key]['street_address'];
+        }
+      }
+
       // phone numbers
       for (const key in b['phone_number']) {
         const phoneNumber = new PhoneNumber();
@@ -149,14 +163,7 @@ export class BasicComponent implements OnInit {
         this.emergencyContacts.push(emergencyContact);
       }
 
-      // address : present
-      console.log('res : ' + b['address_present']['id']);
-      this.present_address_id = b['address_present']['id'];
-      this.present_division = b['address_present']['division'];
-      this.present_district = b['address_present']['district'];
-      this.present_upzilla = b['address_present']['upzilla'];
-      this.present_union = b['address_present']['union_ward'];
-      this.present_street_address = b['address_present']['street_address'];
+
       // address : permanent
       this.permanent_address_id = b['address_permanent']['id'];
       this.permanent_division = b['address_permanent']['division'];
