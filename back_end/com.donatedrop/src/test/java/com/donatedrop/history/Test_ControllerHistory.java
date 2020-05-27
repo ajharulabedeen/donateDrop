@@ -78,9 +78,6 @@ public class Test_ControllerHistory extends AbstractTest {
         }
     }
 
-
-    //    String uri = "/public/user/history/save";
-
     //    String uri = "/public/user/history/update";
     @Test
     @Order(2)
@@ -114,7 +111,8 @@ public class Test_ControllerHistory extends AbstractTest {
     @Test
     @Order(3)
     public void testDelete() throws Exception {
-        String historyID = "121";
+//        String historyID = "121";
+        String historyID = getID();
         String uri = "/public/user/history/delete?historyID=" + historyID;
         MvcResult mvcResult = mvc.perform(
                 MockMvcRequestBuilders.post(uri)
