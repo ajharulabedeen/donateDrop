@@ -39,6 +39,9 @@ public class DumpDao {
         return userRepository.findAll();
     }
 
+//    start : profile
+//    SELECT * FROM user WHERE user.ID NOT IN ( SELECT profilebasic.user_id from profilebasic )
+
     public List<ProfileBasic> getAllProfileBasic(int start, int max) {
         String q = "SELECT * FROM `profilebasic`";
         List<ProfileBasic> basicList
@@ -48,6 +51,27 @@ public class DumpDao {
                 .getResultList();
         return basicList;
     }
+
+    public void insertProfileBasicBatch(List<ProfileBasic> basicList) throws Exception {
+        throw new Exception("Are you to dele all profile! If Sure, please active the method code.");
+        //        for (Iterator<ProfileBasic> iterator = basicList.iterator(); iterator.hasNext(); ) {
+//            ProfileBasic next = iterator.next();
+//            entityManager.persist(next);
+//        }
+    }
+
+    public void deleteAll_ProfileBasic() throws Exception {
+        throw new Exception("Are you to dele all profile! If Sure, please active the method code.");
+//        String q = "SELECT * FROM `profilebasic`";
+//        List<ProfileBasic> basicList = entityManager.createNativeQuery(q, ProfileBasic.class).getResultList();
+//        for (Iterator<ProfileBasic> iterator = basicList.iterator(); iterator.hasNext(); ) {
+//            ProfileBasic next = iterator.next();
+//            entityManager.remove(next);
+//        }
+    }
+
+//    end : profile
+
 
     public List<AgentRequest> getAgentAdminRequests(int start, int max) {
         String q = "SELECT * FROM `agent_request`";
@@ -65,24 +89,6 @@ public class DumpDao {
                 .setFirstResult(start)
                 .setMaxResults(max)
                 .getResultList();
-    }
-
-    public void deleteAll_ProfileBasic() throws Exception {
-        throw new Exception("Are you to dele all profile! If Sure, please active the method code.");
-//        String q = "SELECT * FROM `profilebasic`";
-//        List<ProfileBasic> basicList = entityManager.createNativeQuery(q, ProfileBasic.class).getResultList();
-//        for (Iterator<ProfileBasic> iterator = basicList.iterator(); iterator.hasNext(); ) {
-//            ProfileBasic next = iterator.next();
-//            entityManager.remove(next);
-//        }
-    }
-
-    public void insertProfileBasicBatch(List<ProfileBasic> basicList) throws Exception {
-        throw new Exception("Are you to dele all profile! If Sure, please active the method code.");
-        //        for (Iterator<ProfileBasic> iterator = basicList.iterator(); iterator.hasNext(); ) {
-//            ProfileBasic next = iterator.next();
-//            entityManager.persist(next);
-//        }
     }
 
     public List<User> getUsers(int start, int max) {
@@ -115,6 +121,7 @@ public class DumpDao {
         String q = "SELECT count(*) FROM `user` WHERE `user`.`ID` NOT IN( SELECT `request_donner_to_agent`.`user_id_donner` FROM `request_donner_to_agent` )";
         return entityManager.createNativeQuery(q).getResultList();
     }
+
 
     public Address getAddress(String type) {
         Random r = new Random();
