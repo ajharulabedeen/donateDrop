@@ -119,6 +119,11 @@ public class Test_Dao_Profile_Basic_Impl {
     }
 
     @Test
+    public void test_saveGetUserIdNotInserted() {
+        dumpDao.getUserIDNotInProfileID(10).forEach(s -> System.out.println(s));
+    }
+
+    @Test
     @Order(2)
     public void test2_basicExist() {
         //test for ProfileBasic not found

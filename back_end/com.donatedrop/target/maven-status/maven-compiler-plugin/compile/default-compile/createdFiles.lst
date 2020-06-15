@@ -58,7 +58,6 @@ com\donatedrop\agent\models\RequestReviewRequest.class
 com\donatedrop\geocode\models\DivisionsEngName.class
 com\donatedrop\profile\basic\Dao_Profile_Basic_I.class
 com\donatedrop\profile\basic\Service_Profile_Basic_Impl.class
-com\donatedrop\agent\admin\model\AgentRequestToReviewCopy.class
 com\donatedrop\agent\donner\Dao_AgentDonner_I.class
 com\donatedrop\security\controller\HomeResource.class
 com\donatedrop\security\models\Authority.class

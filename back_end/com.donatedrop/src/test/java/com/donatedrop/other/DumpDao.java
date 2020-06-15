@@ -39,8 +39,14 @@ public class DumpDao {
         return userRepository.findAll();
     }
 
-//    start : profile
+    //    start : profile
 //    SELECT * FROM user WHERE user.ID NOT IN ( SELECT profilebasic.user_id from profilebasic )
+//    SELECT id FROM user WHERE user.ID NOT IN ( SELECT profilebasic.user_id from profilebasic)
+    public List getUserIDNotInProfileID(int max) {
+        String sql = "SELECT id FROM user WHERE user.ID NOT IN ( SELECT profilebasic.user_id from profilebasic)";
+        List list = entityManager.createNativeQuery(sql).setMaxResults(max).getResultList();
+        return list;
+    }
 
     public List<ProfileBasic> getAllProfileBasic(int start, int max) {
         String q = "SELECT * FROM `profilebasic`";
