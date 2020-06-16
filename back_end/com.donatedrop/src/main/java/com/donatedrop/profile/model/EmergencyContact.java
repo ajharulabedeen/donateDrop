@@ -40,7 +40,7 @@ public class EmergencyContact implements Serializable {
     private String relation;
 
     @Column(name = "add_date")
-    Date addDate;
+    String addDate;
 
 
     @JsonBackReference
@@ -48,12 +48,23 @@ public class EmergencyContact implements Serializable {
     @JoinColumn(name = "emergency_contact")
     private ProfileBasic profileBasic;
 
-    public EmergencyContact(String name, String phone, String mail, String address, String relation) {
+    public EmergencyContact(String name, String phone, String mail, String address, String relation, String addDate) {
         this.name = name;
         this.phone = phone;
         this.mail = mail;
         this.address = address;
         this.relation = relation;
+        this.addDate = addDate;
+    }
+
+    public EmergencyContact(String name, String phone, String mail, String address, String relation, String addDate, ProfileBasic profileBasic) {
+        this.name = name;
+        this.phone = phone;
+        this.mail = mail;
+        this.address = address;
+        this.relation = relation;
+        this.addDate = addDate;
+        this.profileBasic = profileBasic;
     }
 
     public Long getId() {
@@ -86,14 +97,16 @@ public class EmergencyContact implements Serializable {
 
     @Override
     public String toString() {
-        return "EmergencyContact{"
-                + "id=" + id
-                + ", name='" + name + '\''
-                + ", phone='" + phone + '\''
-                + ", mail='" + mail + '\''
-                + ", address='" + address + '\''
-                + ", relation='" + relation + '\''
-                + '}';
+        return "EmergencyContact{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", mail='" + mail + '\'' +
+                ", address='" + address + '\'' +
+                ", relation='" + relation + '\'' +
+                ", addDate='" + addDate + '\'' +
+                ", profileBasic=" + profileBasic +
+                '}';
     }
 
     public String getName() {
@@ -136,11 +149,11 @@ public class EmergencyContact implements Serializable {
         this.relation = relation;
     }
 
-    public Date getAddDate() {
+    public String getAddDate() {
         return addDate;
     }
 
-    public void setAddDate(Date addDate) {
+    public void setAddDate(String addDate) {
         this.addDate = addDate;
     }
 
@@ -151,6 +164,5 @@ public class EmergencyContact implements Serializable {
     public void setProfileBasic(ProfileBasic profileBasic) {
         this.profileBasic = profileBasic;
     }
-
 
 }

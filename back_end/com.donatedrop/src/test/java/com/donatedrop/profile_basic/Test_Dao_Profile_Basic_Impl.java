@@ -75,13 +75,13 @@ public class Test_Dao_Profile_Basic_Impl {
 
             List<EmergencyContact> emergencyContacts = new ArrayList<>();
             String eName = DumpData.getName();
-            EmergencyContact emergencyContact1 =
-                    new EmergencyContact(eName, DumpData.getPhoneNumber(), eName.replace(" ", "") + "@gmail.com",
-                            dumpDao.getAddressString(AddressType.EMERGENCY.toString()), DumpData.getRelation());
+            EmergencyContact emergencyContact1
+                    = new EmergencyContact(eName, DumpData.getPhoneNumber(), eName.replace(" ", "") + "@gmail.com",
+                            dumpDao.getAddressString(AddressType.EMERGENCY.toString()), DumpData.getRelation(), DateUtil.getDate());
             eName = DumpData.getName();
             EmergencyContact emergencyContact2
                     = new EmergencyContact(eName, DumpData.getPhoneNumber(), eName.replace(" ", "") + "@gmail.com",
-                    dumpDao.getAddressString(AddressType.EMERGENCY.toString()), DumpData.getRelation());
+                            dumpDao.getAddressString(AddressType.EMERGENCY.toString()), DumpData.getRelation(), DateUtil.getDate());
             emergencyContacts.add(emergencyContact1);
             emergencyContacts.add(emergencyContact2);
             profileBasic.setEmergency_contact(emergencyContacts);
@@ -101,7 +101,6 @@ public class Test_Dao_Profile_Basic_Impl {
             //refactor : have to set automatic userID.
             profileBasic.setUserId(Utils.getLoggedUserID());
             profileBasic.setBirthDate(DateUtil.getDate());
-
 
 //        ACT
             status = dao_Profile_Basic_I.save(profileBasic);
@@ -148,7 +147,6 @@ public class Test_Dao_Profile_Basic_Impl {
 
         //org.hibernate.LazyInitializationException, print will not work.
 //        System.out.println("\n\n---\n" + profileBasic.toString() + "\n---\n\n");
-
         Assert.assertEquals(id, profileBasic.getId().toString());
     }
 
@@ -285,11 +283,11 @@ public class Test_Dao_Profile_Basic_Impl {
         Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
         PhoneNumber phoneNumberSaved
                 = dao_Profile_Basic_I.findOneByUser(userID)
-                .getPhone_number()
-                .stream()
-                .filter(p -> phoneNumberNew.getNumber().equals(p.getNumber()))
-                .findAny()
-                .orElse(null);
+                        .getPhone_number()
+                        .stream()
+                        .filter(p -> phoneNumberNew.getNumber().equals(p.getNumber()))
+                        .findAny()
+                        .orElse(null);
         System.out.println("\n" + phoneNumberSaved.toString() + "\n");
         Assert.assertEquals(phoneNumberSaved.getNumber(), phoneNumberNew.getNumber());
 //        assertEquals(phoneNumberSaved.getNumber(), "01919");
@@ -316,11 +314,11 @@ public class Test_Dao_Profile_Basic_Impl {
             Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
             PhoneNumber phoneNumberSaved
                     = dao_Profile_Basic_I.findOneByUser(userID)
-                    .getPhone_number()
-                    .stream()
-                    .filter(p -> phoneNumberID.equals(p.getId().toString()))
-                    .findAny()
-                    .orElse(null);
+                            .getPhone_number()
+                            .stream()
+                            .filter(p -> phoneNumberID.equals(p.getId().toString()))
+                            .findAny()
+                            .orElse(null);
             if (phoneNumberSaved == null) {
                 Assert.assertEquals(null, phoneNumberSaved);
             } else {
@@ -349,7 +347,8 @@ public class Test_Dao_Profile_Basic_Impl {
                 "01612-174128",
                 "mahbub@mail.com",
                 "Khulna, Bangladsh",
-                "Uncle"
+                "Uncle",
+                DateUtil.getDate()
         );
         Map<String, String> result = dao_Profile_Basic_I.addEmergencyContact(emergencyContact1, userID);
         System.out.println("\n\n>>" + result + "\n\n");
@@ -448,7 +447,6 @@ public class Test_Dao_Profile_Basic_Impl {
     }
 
 //    Helpers :
-
     /**
      * will store the last save id, that can be used for later for other method.
      * Though there is question does it, right to a result from unit test, as

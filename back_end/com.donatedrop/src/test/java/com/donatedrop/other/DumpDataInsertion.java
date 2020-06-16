@@ -14,6 +14,7 @@ import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.security.models.User;
 import com.donatedrop.security.repo.UserRepository;
 import com.donatedrop.util.AddressType;
+import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.Utils;
 import org.hibernate.annotations.NaturalId;
 import org.junit.jupiter.api.Test;
@@ -67,11 +68,11 @@ public class DumpDataInsertion {
 //            ProfileBasic profileBasic = getProfile(user.getId().toString());
 //            basicList.add(profileBasic);
 //        }
-        List<User> idList = dumpDao.getUserIDNotInProfileID(10);
+        List<User> idList = dumpDao.getUserIDNotInProfileID(2);
         List<ProfileBasic> basicList = new ArrayList<>();
         for (Iterator<User> iterator = idList.iterator(); iterator.hasNext(); ) {
             User user = iterator.next();
-            ProfileBasic profileBasic = getProfile(user.getId().toString());
+            ProfileBasic profileBasic = getProfile(user);
             basicList.add(profileBasic);
         }
         dumpDao.insertProfileBasicBatch(basicList);
@@ -97,7 +98,7 @@ public class DumpDataInsertion {
         return user.getId().toString();
     }
 
-    public ProfileBasic getProfile(String userID) {
+    public ProfileBasic getProfile(User user) {
         System.out.println("\nProfile Basic Dao Test!\n");
         Random r = new Random();
 
@@ -110,8 +111,20 @@ public class DumpDataInsertion {
 
         List<EmergencyContact> emergencyContacts = new ArrayList<>();
         for (int x = 0; x < r.nextInt(4); x++) {
+//            String name, String phone, String mail, String address, String relation, String addDate
             EmergencyContact emergencyContact1 = new EmergencyContact(
-                    DumpData.getName(), DumpData.getPhoneNumber(), DumpData.getName() + "@mail.com", DumpData.getAddress(), DumpData.getRelation()
+                    DumpData.getName() + "",        //  String name,
+                    DumpData.getPhoneNumber() + "",// String phone,
+                    DumpData.getName() + "@mail.com",// String mail,
+                    DumpData.getAddress() + "",// String address,
+                    DumpData.getRelation() + "",// String relation,
+                    DateUtil.getDate() + ""// String addDate
+//  DumpData.getName(),//DumpData.getName(),
+//  "",//DumpData.getPhoneNumber(),
+//  "",
+//  DumpData.getName() + "@mail.com",
+//  DumpData.getAddress(),
+//  DumpData.getRelation()
             );
             emergencyContacts.add(emergencyContact1);
         }
@@ -131,7 +144,9 @@ public class DumpDataInsertion {
         profileBasic.setCare_of(DumpData.getName());
 //        profileBasic.setBirthDate(DateUtil.getDate());
         profileBasic.setReligion(DumpData.getReligion());
-        profileBasic.setUserId(userID);
+        profileBasic.setUserId(user.getId().toString());
+        profileBasic.setEmail(user.getUserName());
+        profileBasic.setBirthDate(DateUtil.getDate());
 
 //        dao_profile_basic_i.save(profileBasic);
         return profileBasic;

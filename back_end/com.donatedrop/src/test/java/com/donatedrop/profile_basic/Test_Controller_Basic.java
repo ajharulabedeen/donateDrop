@@ -15,6 +15,7 @@ import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
 import com.donatedrop.profile.model.EmergencyContact;
 import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.profile.model.ProfileBasic;
+import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
 import com.donatedrop.util.Utils;
 import org.apache.logging.log4j.message.StringFormattedMessage;
@@ -101,8 +102,8 @@ public class Test_Controller_Basic extends AbstractTest {
 //        profileBasic.setAddress_permanent(address_permanet);
 
         List<EmergencyContact> emergencyContacts = new ArrayList<>();
-        EmergencyContact emergencyContact1 = new EmergencyContact("Mahbub", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle");
-        EmergencyContact emergencyContact2 = new EmergencyContact("Prof. Altaf", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle");
+        EmergencyContact emergencyContact1 = new EmergencyContact("Mahbub", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle", DateUtil.getDate());
+        EmergencyContact emergencyContact2 = new EmergencyContact("Prof. Altaf", "01717", "mail@mail.com", "Dumuria, Khulna", "Uncle", DateUtil.getDate());
         emergencyContacts.add(emergencyContact1);
         emergencyContacts.add(emergencyContact2);
         profileBasic.setEmergency_contact(emergencyContacts);
@@ -335,7 +336,8 @@ public class Test_Controller_Basic extends AbstractTest {
                 "01612-174128",
                 "mahbub@mail.com",
                 "Khulna, Bangladsh",
-                "Uncle"
+                "Uncle",
+                DateUtil.getDate()
         );
 
         String inputJson = super.mapToJson(emergencyContact1);
@@ -351,7 +353,6 @@ public class Test_Controller_Basic extends AbstractTest {
 
     }
 
-
     @Test
     @Order(12)
     public void test12_deleteEmergencyContact() throws Exception {
@@ -366,7 +367,6 @@ public class Test_Controller_Basic extends AbstractTest {
 //        MvcResult mvcResult = mvc.perform(
 //                MockMvcRequestBuilders.post(uri)
 //                        .contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn();
-
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
@@ -374,7 +374,6 @@ public class Test_Controller_Basic extends AbstractTest {
         System.out.println(content);
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
-
 
     @Test
     @Order(11)
@@ -415,6 +414,5 @@ public class Test_Controller_Basic extends AbstractTest {
         System.out.println(content);
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
-
 
 }
