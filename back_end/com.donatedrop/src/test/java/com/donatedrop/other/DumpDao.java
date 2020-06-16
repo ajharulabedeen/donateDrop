@@ -69,8 +69,9 @@ public class DumpDao {
         }
     }
 
+    @Transactional
     public void deleteAll_ProfileBasic() throws Exception {
-        throw new Exception("Are you to dele all profile! If Sure, please active the method code.");
+        throw new Exception("Are you to delete all profile! If Sure, please active the method code.");
 //        String q = "SELECT * FROM `profilebasic`";
 //        List<ProfileBasic> basicList = entityManager.createNativeQuery(q, ProfileBasic.class).getResultList();
 //        for (Iterator<ProfileBasic> iterator = basicList.iterator(); iterator.hasNext(); ) {

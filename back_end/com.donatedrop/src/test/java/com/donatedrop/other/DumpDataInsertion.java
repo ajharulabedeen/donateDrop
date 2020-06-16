@@ -55,9 +55,9 @@ public class DumpDataInsertion {
 
     @Test
     public void testEntityManager() throws Exception {
-        dumpDao.deleteAll_ProfileBasic();
     }
 
+    //start : profile
     @Test
     public void testUserCreationWithProfile() throws Exception {
 //        Working Code, will insert all.
@@ -77,6 +77,12 @@ public class DumpDataInsertion {
         }
         dumpDao.insertProfileBasicBatch(basicList);
     }
+
+    @Test
+    public void deleteAllProfile() throws Exception {
+//        dumpDao.deleteAll_ProfileBasic();
+    }
+    //end : profile
 
     public void insertData() {
         for (int x = 0; x < 1000; x++) {
