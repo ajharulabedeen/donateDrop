@@ -42,9 +42,9 @@ public class DumpDao {
     //    start : profile
 //    SELECT * FROM user WHERE user.ID NOT IN ( SELECT profilebasic.user_id from profilebasic )
 //    SELECT id FROM user WHERE user.ID NOT IN ( SELECT profilebasic.user_id from profilebasic)
-    public List getUserIDNotInProfileID(int max) {
-        String sql = "SELECT id FROM user WHERE user.ID NOT IN ( SELECT profilebasic.user_id from profilebasic)";
-        List list = entityManager.createNativeQuery(sql).setMaxResults(max).getResultList();
+    public List<User> getUserIDNotInProfileID(int max) {
+        String sql = "SELECT * FROM user WHERE user.ID NOT IN ( SELECT profilebasic.user_id from profilebasic)";
+        List<User> list = entityManager.createNativeQuery(sql, User.class).setMaxResults(max).getResultList();
         return list;
     }
 

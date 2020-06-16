@@ -120,7 +120,7 @@ public class Test_Dao_Profile_Basic_Impl {
 
     @Test
     public void test_saveGetUserIdNotInserted() {
-        dumpDao.getUserIDNotInProfileID(10).forEach(s -> System.out.println(s));
+        dumpDao.getUserIDNotInProfileID(5).forEach(s -> System.out.println(s.getId() + " " + s.getUserName()));
     }
 
     @Test
