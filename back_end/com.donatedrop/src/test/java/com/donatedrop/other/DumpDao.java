@@ -17,8 +17,10 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -58,12 +60,13 @@ public class DumpDao {
         return basicList;
     }
 
+    @Transactional
     public void insertProfileBasicBatch(List<ProfileBasic> basicList) throws Exception {
-        throw new Exception("Are you to dele all profile! If Sure, please active the method code.");
-        //        for (Iterator<ProfileBasic> iterator = basicList.iterator(); iterator.hasNext(); ) {
-//            ProfileBasic next = iterator.next();
-//            entityManager.persist(next);
-//        }
+//        throw new Exception("Are you to dele all profile! If Sure, please active the method code.");
+        for (Iterator<ProfileBasic> iterator = basicList.iterator(); iterator.hasNext(); ) {
+            ProfileBasic next = iterator.next();
+            entityManager.persist(next);
+        }
     }
 
     public void deleteAll_ProfileBasic() throws Exception {

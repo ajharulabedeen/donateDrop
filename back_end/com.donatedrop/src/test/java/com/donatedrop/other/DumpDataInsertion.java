@@ -59,7 +59,6 @@ public class DumpDataInsertion {
 
     @Test
     public void testUserCreationWithProfile() throws Exception {
-
 //        Working Code, will insert all.
         //        List<User> idList = userRepository.findAll();
 //        List<ProfileBasic> basicList = new ArrayList<>();
@@ -68,14 +67,12 @@ public class DumpDataInsertion {
 //            ProfileBasic profileBasic = getProfile(user.getId().toString());
 //            basicList.add(profileBasic);
 //        }
-
-        List idList = dumpDao.getUserIDNotInProfileID(10);
+        List<User> idList = dumpDao.getUserIDNotInProfileID(10);
         List<ProfileBasic> basicList = new ArrayList<>();
         for (Iterator<User> iterator = idList.iterator(); iterator.hasNext(); ) {
-//            User user = iterator.next();
-//            ProfileBasic profileBasic = getProfile(user.getId().toString());
-//            ProfileBasic profileBasic = getProfile(iterator.next().);
-//            basicList.add(profileBasic);
+            User user = iterator.next();
+            ProfileBasic profileBasic = getProfile(user.getId().toString());
+            basicList.add(profileBasic);
         }
         dumpDao.insertProfileBasicBatch(basicList);
     }
@@ -106,10 +103,10 @@ public class DumpDataInsertion {
 
         ProfileBasic profileBasic = new ProfileBasic();
         profileBasic.setName(DumpData.getName());
+
         List<Address> aList = new ArrayList<>();
         aList.add(getAddress(AddressType.PRESENT.toString()));
         aList.add(getAddress(AddressType.PERMANENT.toString()));
-
 
         List<EmergencyContact> emergencyContacts = new ArrayList<>();
         for (int x = 0; x < r.nextInt(4); x++) {
