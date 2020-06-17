@@ -168,8 +168,15 @@ public class Test_Dao_AgentAdmin_Impl {
     //    not part dao layer
     @Test
     public void testInsertAgent() {
+        dumpDao.getUserIDNotAgentRequest(5).forEach(id -> {
+            AgentRequest agentRequest = new AgentRequest();
+            agentRequest.setUserID(id);
+            agentRequest.setRequestDate(DateUtil.getDate().toString());
+            agentRequest.setStatus("0");
+            Map<String, String> result = dao_agent_i.saveRequest(agentRequest);
+            System.out.println("\nResult : \n" + result);
 
-        dumpDao.getUserIDNotAgentRequest(5).forEach(s -> System.out.println(s));
+        });
 
 //        dumpDao.getUsers(0, 50).forEach(user -> {
 //            AgentRequest agentRequest = new AgentRequest();
