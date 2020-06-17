@@ -167,10 +167,9 @@ export class BasicComponent implements OnInit {
         emergencyContact.$address = b['emergency_contact'][key]['address'];
         emergencyContact.$mail = b['emergency_contact'][key]['mail'];
         emergencyContact.$relation = b['emergency_contact'][key]['relation'];
-        console.log('---emergencyContacts : ' + this.emergencyContacts);
+        console.log('emergencyContacts : ' + this.emergencyContacts);
         this.emergencyContacts.push(emergencyContact);
       }
-
 
     });
     // refactor : not in use now.
