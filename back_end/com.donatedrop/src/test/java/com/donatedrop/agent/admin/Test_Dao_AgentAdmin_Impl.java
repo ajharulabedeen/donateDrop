@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Map;
+import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 
@@ -165,16 +166,19 @@ public class Test_Dao_AgentAdmin_Impl {
 
 
     //    not part dao layer
-//    @Test
+    @Test
     public void testInsertAgent() {
-        dumpDao.getUsers(0, 20).forEach(user -> {
-            AgentRequest agentRequest = new AgentRequest();
-            agentRequest.setUserID(user.getId().toString());
-            agentRequest.setRequestDate(DateUtil.getDate().toString());
-            agentRequest.setStatus("0");
-            Map<String, String> result = dao_agent_i.saveRequest(agentRequest);
-            System.out.println("\nResult : \n" + result);
-        });
+
+        dumpDao.getUserIDNotAgentRequest(5).forEach(s -> System.out.println(s));
+
+//        dumpDao.getUsers(0, 50).forEach(user -> {
+//            AgentRequest agentRequest = new AgentRequest();
+//            agentRequest.setUserID(user.getId().toString());
+//            agentRequest.setRequestDate(DateUtil.getDate().toString());
+//            agentRequest.setStatus("0");
+//            Map<String, String> result = dao_agent_i.saveRequest(agentRequest);
+//            System.out.println("\nResult : \n" + result);
+//        });
     }
 
 

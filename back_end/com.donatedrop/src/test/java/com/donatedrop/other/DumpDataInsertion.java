@@ -59,7 +59,7 @@ public class DumpDataInsertion {
 
     //start : profile
     @Test
-    public void testUserCreationWithProfile() throws Exception {
+    public void testBatchProfileBasicInsert() throws Exception {
 //        Working Code, will insert all.
         //        List<User> idList = userRepository.findAll();
 //        List<ProfileBasic> basicList = new ArrayList<>();
@@ -68,7 +68,7 @@ public class DumpDataInsertion {
 //            ProfileBasic profileBasic = getProfile(user.getId().toString());
 //            basicList.add(profileBasic);
 //        }
-        List<User> idList = dumpDao.getUserIDNotInProfileID(10);
+        List<User> idList = dumpDao.getUserIDNotInProfileID(100);
         List<ProfileBasic> basicList = new ArrayList<>();
         for (Iterator<User> iterator = idList.iterator(); iterator.hasNext(); ) {
             User user = iterator.next();

@@ -60,13 +60,22 @@ public class DumpDao {
         return basicList;
     }
 
+    public List<String> getProfileBasicUserID(int max) {
+        String sql = "SELECT user_id FROM profilebasic";
+        return entityManager.createNativeQuery(sql, User.class).setMaxResults(max).getResultList();
+    }
+
     @Transactional
     public void insertProfileBasicBatch(List<ProfileBasic> basicList) throws Exception {
 //        throw new Exception("Are you to dele all profile! If Sure, please active the method code.");
+//Working
         for (Iterator<ProfileBasic> iterator = basicList.iterator(); iterator.hasNext(); ) {
             ProfileBasic next = iterator.next();
             entityManager.persist(next);
         }
+
+        //will not work.
+//        entityManager.persist(basicList);
     }
 
     @Transactional
@@ -79,8 +88,14 @@ public class DumpDao {
 //            entityManager.remove(next);
 //        }
     }
-
 //    end : profile
+
+    //    start : agent-admin
+    public List<String> getUserIDNotAgentRequest(int max) {
+        String sql = "SELECT user_id FROM profilebasic WHERE user_id NOT IN (SELECT user_id from agent_request)";
+        return entityManager.createNativeQuery(sql).setMaxResults(max).getResultList();
+    }
+//    end: agent-admin
 
 
     public List<AgentRequest> getAgentAdminRequests(int start, int max) {

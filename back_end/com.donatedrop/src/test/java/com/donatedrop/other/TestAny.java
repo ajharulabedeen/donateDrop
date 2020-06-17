@@ -88,12 +88,12 @@ public class TestAny {
     @Test
     public void testAgentRequestReview() {
         daoDump.getAllAgentRequestReview(0, 30, "present_div", "%%").forEach(agentRequestReview -> {
-            String addr = agentRequestReview.getPermanentStreet()
-                    + " " + agentRequestReview.getPermanentUnion()
-                    + ", " + agentRequestReview.getPermanentUpz()
-                    + ", " + agentRequestReview.getPermanentDist()
-                    + ", " + agentRequestReview.getPermanentDiv();
-            System.out.println(addr);
+//            String addr = agentRequestReview.getPermanentStreet()
+//                    + " " + agentRequestReview.getPermanentUnion()
+//                    + ", " + agentRequestReview.getPermanentUpz()
+//                    + ", " + agentRequestReview.getPermanentDist()
+//                    + ", " + agentRequestReview.getPermanentDiv();
+//            System.out.println(addr);
             System.out.println(agentRequestReview.getUsername());
             System.out.println("-------------------------------");
         });
