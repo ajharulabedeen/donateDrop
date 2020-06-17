@@ -18,32 +18,32 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
 //    @NamedQuery(name = "AgentRequestToReview.findAll", query = "SELECT a FROM AgentRequestToReview a"),
-     @NamedQuery(name = "AgentRequestToReview.findByProfileId", query = "SELECT a FROM AgentRequestToReview a WHERE a.profileId = :profileId")
-    , @NamedQuery(name = "AgentRequestToReview.findByName", query = "SELECT a FROM AgentRequestToReview a WHERE a.name = :name")
-    , @NamedQuery(name = "AgentRequestToReview.findByGender", query = "SELECT a FROM AgentRequestToReview a WHERE a.gender = :gender")
-    , @NamedQuery(name = "AgentRequestToReview.findByProfession", query = "SELECT a FROM AgentRequestToReview a WHERE a.profession = :profession")
-    , @NamedQuery(name = "AgentRequestToReview.findByUserId", query = "SELECT a FROM AgentRequestToReview a WHERE a.userId = :userId")
-    , @NamedQuery(name = "AgentRequestToReview.findByAddressPermanent", query = "SELECT a FROM AgentRequestToReview a WHERE a.addressPermanent = :addressPermanent")
-    , @NamedQuery(name = "AgentRequestToReview.findByAddressPresent", query = "SELECT a FROM AgentRequestToReview a WHERE a.addressPresent = :addressPresent")
-    , @NamedQuery(name = "AgentRequestToReview.findByRequestId", query = "SELECT a FROM AgentRequestToReview a WHERE a.requestId = :requestId")
-    , @NamedQuery(name = "AgentRequestToReview.findByRequestDate", query = "SELECT a FROM AgentRequestToReview a WHERE a.requestDate = :requestDate")
-    , @NamedQuery(name = "AgentRequestToReview.findByAcceptDate", query = "SELECT a FROM AgentRequestToReview a WHERE a.acceptDate = :acceptDate")
-    , @NamedQuery(name = "AgentRequestToReview.findByRejectDate", query = "SELECT a FROM AgentRequestToReview a WHERE a.rejectDate = :rejectDate")
-    , @NamedQuery(name = "AgentRequestToReview.findByFreezeDate", query = "SELECT a FROM AgentRequestToReview a WHERE a.freezeDate = :freezeDate")
-    , @NamedQuery(name = "AgentRequestToReview.findByStatus", query = "SELECT a FROM AgentRequestToReview a WHERE a.status = :status")
-    , @NamedQuery(name = "AgentRequestToReview.findByPresentId", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentId = :presentId")
-    , @NamedQuery(name = "AgentRequestToReview.findByPresentDiv", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentDiv = :presentDiv")
-    , @NamedQuery(name = "AgentRequestToReview.findByPresentDist", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentDist = :presentDist")
-    , @NamedQuery(name = "AgentRequestToReview.findByPresentUpz", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentUpz = :presentUpz")
-    , @NamedQuery(name = "AgentRequestToReview.findByPresentUnion", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentUnion = :presentUnion")
-    , @NamedQuery(name = "AgentRequestToReview.findByPresentStreet", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentStreet = :presentStreet")
-    , @NamedQuery(name = "AgentRequestToReview.findByUsername", query = "SELECT a FROM AgentRequestToReview a WHERE a.username = :username")
-    , @NamedQuery(name = "AgentRequestToReview.findByPermanentId", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentId = :permanentId")
-    , @NamedQuery(name = "AgentRequestToReview.findByPermanentDiv", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentDiv = :permanentDiv")
-    , @NamedQuery(name = "AgentRequestToReview.findByPermanentDist", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentDist = :permanentDist")
-    , @NamedQuery(name = "AgentRequestToReview.findByPermanentUpz", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentUpz = :permanentUpz")
-    , @NamedQuery(name = "AgentRequestToReview.findByPermanentUnion", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentUnion = :permanentUnion")
-    , @NamedQuery(name = "AgentRequestToReview.findByPermanentStreet", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentStreet = :permanentStreet")})
+        @NamedQuery(name = "AgentRequestToReview.findByProfileId", query = "SELECT a FROM AgentRequestToReview a WHERE a.profileId = :profileId")
+        , @NamedQuery(name = "AgentRequestToReview.findByName", query = "SELECT a FROM AgentRequestToReview a WHERE a.name = :name")
+        , @NamedQuery(name = "AgentRequestToReview.findByGender", query = "SELECT a FROM AgentRequestToReview a WHERE a.gender = :gender")
+        , @NamedQuery(name = "AgentRequestToReview.findByProfession", query = "SELECT a FROM AgentRequestToReview a WHERE a.profession = :profession")
+        , @NamedQuery(name = "AgentRequestToReview.findByUserId", query = "SELECT a FROM AgentRequestToReview a WHERE a.userId = :userId")
+        , @NamedQuery(name = "AgentRequestToReview.findByAddressPermanent", query = "SELECT a FROM AgentRequestToReview a WHERE a.addressPermanent = :addressPermanent")
+        , @NamedQuery(name = "AgentRequestToReview.findByAddressPresent", query = "SELECT a FROM AgentRequestToReview a WHERE a.addressPresent = :addressPresent")
+        , @NamedQuery(name = "AgentRequestToReview.findByRequestId", query = "SELECT a FROM AgentRequestToReview a WHERE a.requestId = :requestId")
+        , @NamedQuery(name = "AgentRequestToReview.findByRequestDate", query = "SELECT a FROM AgentRequestToReview a WHERE a.requestDate = :requestDate")
+        , @NamedQuery(name = "AgentRequestToReview.findByAcceptDate", query = "SELECT a FROM AgentRequestToReview a WHERE a.acceptDate = :acceptDate")
+        , @NamedQuery(name = "AgentRequestToReview.findByRejectDate", query = "SELECT a FROM AgentRequestToReview a WHERE a.rejectDate = :rejectDate")
+        , @NamedQuery(name = "AgentRequestToReview.findByFreezeDate", query = "SELECT a FROM AgentRequestToReview a WHERE a.freezeDate = :freezeDate")
+        , @NamedQuery(name = "AgentRequestToReview.findByStatus", query = "SELECT a FROM AgentRequestToReview a WHERE a.status = :status")
+        , @NamedQuery(name = "AgentRequestToReview.findByPresentId", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentId = :presentId")
+        , @NamedQuery(name = "AgentRequestToReview.findByPresentDiv", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentDiv = :presentDiv")
+        , @NamedQuery(name = "AgentRequestToReview.findByPresentDist", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentDist = :presentDist")
+        , @NamedQuery(name = "AgentRequestToReview.findByPresentUpz", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentUpz = :presentUpz")
+        , @NamedQuery(name = "AgentRequestToReview.findByPresentUnion", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentUnion = :presentUnion")
+        , @NamedQuery(name = "AgentRequestToReview.findByPresentStreet", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentStreet = :presentStreet")
+        , @NamedQuery(name = "AgentRequestToReview.findByUsername", query = "SELECT a FROM AgentRequestToReview a WHERE a.username = :username")
+        , @NamedQuery(name = "AgentRequestToReview.findByPermanentId", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentId = :permanentId")
+        , @NamedQuery(name = "AgentRequestToReview.findByPermanentDiv", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentDiv = :permanentDiv")
+        , @NamedQuery(name = "AgentRequestToReview.findByPermanentDist", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentDist = :permanentDist")
+        , @NamedQuery(name = "AgentRequestToReview.findByPermanentUpz", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentUpz = :permanentUpz")
+        , @NamedQuery(name = "AgentRequestToReview.findByPermanentUnion", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentUnion = :permanentUnion")
+        , @NamedQuery(name = "AgentRequestToReview.findByPermanentStreet", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentStreet = :permanentStreet")})
 public class AgentRequestToReview implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,6 +51,7 @@ public class AgentRequestToReview implements Serializable {
     @Id
     @Column(name = "profile_id")
     private long profileId;
+
     @Column(name = "name")
     private String name;
     @Column(name = "gender")
@@ -64,6 +65,7 @@ public class AgentRequestToReview implements Serializable {
     @Column(name = "address_present")
     private BigInteger addressPresent;
     @Basic(optional = false)
+
     @Column(name = "request_id")
     private long requestId;
     @Column(name = "request_date")
@@ -85,34 +87,37 @@ public class AgentRequestToReview implements Serializable {
     @Lob
     @Column(name = "note_personal")
     private String notePersonal;
-    @Basic(optional = false)
-    @Column(name = "present_id")
-    private long presentId;
-    @Column(name = "present_div")
-    private String presentDiv;
-    @Column(name = "present_dist")
-    private String presentDist;
-    @Column(name = "present_upz")
-    private String presentUpz;
-    @Column(name = "present_union")
-    private String presentUnion;
-    @Column(name = "present_street")
-    private String presentStreet;
+
+//    @Basic(optional = false)
+//    @Column(name = "present_id")
+//    private long presentId;
+//    @Column(name = "present_div")
+//    private String presentDiv;
+//    @Column(name = "present_dist")
+//    private String presentDist;
+//    @Column(name = "present_upz")
+//    private String presentUpz;
+//    @Column(name = "present_union")
+//    private String presentUnion;
+//    @Column(name = "present_street")
+//    private String presentStreet;
+
     @Column(name = "username")
     private String username;
-    @Basic(optional = false)
-    @Column(name = "permanent_id")
-    private long permanentId;
-    @Column(name = "permanent_div")
-    private String permanentDiv;
-    @Column(name = "permanent_dist")
-    private String permanentDist;
-    @Column(name = "permanent_upz")
-    private String permanentUpz;
-    @Column(name = "permanent_union")
-    private String permanentUnion;
-    @Column(name = "permanent_street")
-    private String permanentStreet;
+
+//    @Basic(optional = false)
+//    @Column(name = "permanent_id")
+//    private long permanentId;
+//    @Column(name = "permanent_div")
+//    private String permanentDiv;
+//    @Column(name = "permanent_dist")
+//    private String permanentDist;
+//    @Column(name = "permanent_upz")
+//    private String permanentUpz;
+//    @Column(name = "permanent_union")
+//    private String permanentUnion;
+//    @Column(name = "permanent_street")
+//    private String permanentStreet;
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "profile_id")
@@ -138,24 +143,23 @@ public class AgentRequestToReview implements Serializable {
         this.noteApplicant = noteApplicant;
         this.noteAdmin = noteAdmin;
         this.notePersonal = notePersonal;
-        this.presentId = presentId;
-        this.presentDiv = presentDiv;
-        this.presentDist = presentDist;
-        this.presentUpz = presentUpz;
-        this.presentUnion = presentUnion;
-        this.presentStreet = presentStreet;
+//        this.presentId = presentId;
+//        this.presentDiv = presentDiv;
+//        this.presentDist = presentDist;
+//        this.presentUpz = presentUpz;
+//        this.presentUnion = presentUnion;
+//        this.presentStreet = presentStreet;
         this.username = username;
-        this.permanentId = permanentId;
-        this.permanentDiv = permanentDiv;
-        this.permanentDist = permanentDist;
-        this.permanentUpz = permanentUpz;
-        this.permanentUnion = permanentUnion;
-        this.permanentStreet = permanentStreet;
+//        this.permanentId = permanentId;
+//        this.permanentDiv = permanentDiv;
+//        this.permanentDist = permanentDist;
+//        this.permanentUpz = permanentUpz;
+//        this.permanentUnion = permanentUnion;
+//        this.permanentStreet = permanentStreet;
         this.phone_number = phone_number;
     }
 
-    
-    
+
     public long getProfileId() {
         return profileId;
     }
@@ -284,53 +288,53 @@ public class AgentRequestToReview implements Serializable {
         this.notePersonal = notePersonal;
     }
 
-    public long getPresentId() {
-        return presentId;
-    }
-
-    public void setPresentId(long presentId) {
-        this.presentId = presentId;
-    }
-
-    public String getPresentDiv() {
-        return presentDiv;
-    }
-
-    public void setPresentDiv(String presentDiv) {
-        this.presentDiv = presentDiv;
-    }
-
-    public String getPresentDist() {
-        return presentDist;
-    }
-
-    public void setPresentDist(String presentDist) {
-        this.presentDist = presentDist;
-    }
-
-    public String getPresentUpz() {
-        return presentUpz;
-    }
-
-    public void setPresentUpz(String presentUpz) {
-        this.presentUpz = presentUpz;
-    }
-
-    public String getPresentUnion() {
-        return presentUnion;
-    }
-
-    public void setPresentUnion(String presentUnion) {
-        this.presentUnion = presentUnion;
-    }
-
-    public String getPresentStreet() {
-        return presentStreet;
-    }
-
-    public void setPresentStreet(String presentStreet) {
-        this.presentStreet = presentStreet;
-    }
+//    public long getPresentId() {
+//        return presentId;
+//    }
+//
+//    public void setPresentId(long presentId) {
+//        this.presentId = presentId;
+//    }
+//
+//    public String getPresentDiv() {
+//        return presentDiv;
+//    }
+//
+//    public void setPresentDiv(String presentDiv) {
+//        this.presentDiv = presentDiv;
+//    }
+//
+//    public String getPresentDist() {
+//        return presentDist;
+//    }
+//
+//    public void setPresentDist(String presentDist) {
+//        this.presentDist = presentDist;
+//    }
+//
+//    public String getPresentUpz() {
+//        return presentUpz;
+//    }
+//
+//    public void setPresentUpz(String presentUpz) {
+//        this.presentUpz = presentUpz;
+//    }
+//
+//    public String getPresentUnion() {
+//        return presentUnion;
+//    }
+//
+//    public void setPresentUnion(String presentUnion) {
+//        this.presentUnion = presentUnion;
+//    }
+//
+//    public String getPresentStreet() {
+//        return presentStreet;
+//    }
+//
+//    public void setPresentStreet(String presentStreet) {
+//        this.presentStreet = presentStreet;
+//    }
 
     public String getUsername() {
         return username;
@@ -340,53 +344,53 @@ public class AgentRequestToReview implements Serializable {
         this.username = username;
     }
 
-    public long getPermanentId() {
-        return permanentId;
-    }
-
-    public void setPermanentId(long permanentId) {
-        this.permanentId = permanentId;
-    }
-
-    public String getPermanentDiv() {
-        return permanentDiv;
-    }
-
-    public void setPermanentDiv(String permanentDiv) {
-        this.permanentDiv = permanentDiv;
-    }
-
-    public String getPermanentDist() {
-        return permanentDist;
-    }
-
-    public void setPermanentDist(String permanentDist) {
-        this.permanentDist = permanentDist;
-    }
-
-    public String getPermanentUpz() {
-        return permanentUpz;
-    }
-
-    public void setPermanentUpz(String permanentUpz) {
-        this.permanentUpz = permanentUpz;
-    }
-
-    public String getPermanentUnion() {
-        return permanentUnion;
-    }
-
-    public void setPermanentUnion(String permanentUnion) {
-        this.permanentUnion = permanentUnion;
-    }
-
-    public String getPermanentStreet() {
-        return permanentStreet;
-    }
-
-    public void setPermanentStreet(String permanentStreet) {
-        this.permanentStreet = permanentStreet;
-    }
+//    public long getPermanentId() {
+//        return permanentId;
+//    }
+//
+//    public void setPermanentId(long permanentId) {
+//        this.permanentId = permanentId;
+//    }
+//
+//    public String getPermanentDiv() {
+//        return permanentDiv;
+//    }
+//
+//    public void setPermanentDiv(String permanentDiv) {
+//        this.permanentDiv = permanentDiv;
+//    }
+//
+//    public String getPermanentDist() {
+//        return permanentDist;
+//    }
+//
+//    public void setPermanentDist(String permanentDist) {
+//        this.permanentDist = permanentDist;
+//    }
+//
+//    public String getPermanentUpz() {
+//        return permanentUpz;
+//    }
+//
+//    public void setPermanentUpz(String permanentUpz) {
+//        this.permanentUpz = permanentUpz;
+//    }
+//
+//    public String getPermanentUnion() {
+//        return permanentUnion;
+//    }
+//
+//    public void setPermanentUnion(String permanentUnion) {
+//        this.permanentUnion = permanentUnion;
+//    }
+//
+//    public String getPermanentStreet() {
+//        return permanentStreet;
+//    }
+//
+//    public void setPermanentStreet(String permanentStreet) {
+//        this.permanentStreet = permanentStreet;
+//    }
 
     public List<PhoneNumber> getPhone_number() {
         return phone_number;
@@ -415,19 +419,19 @@ public class AgentRequestToReview implements Serializable {
                 ", noteApplicant='" + noteApplicant + '\'' +
                 ", noteAdmin='" + noteAdmin + '\'' +
                 ", notePersonal='" + notePersonal + '\'' +
-                ", presentId=" + presentId +
-                ", presentDiv='" + presentDiv + '\'' +
-                ", presentDist='" + presentDist + '\'' +
-                ", presentUpz='" + presentUpz + '\'' +
-                ", presentUnion='" + presentUnion + '\'' +
-                ", presentStreet='" + presentStreet + '\'' +
+//                ", presentId=" + presentId +
+//                ", presentDiv='" + presentDiv + '\'' +
+//                ", presentDist='" + presentDist + '\'' +
+//                ", presentUpz='" + presentUpz + '\'' +
+//                ", presentUnion='" + presentUnion + '\'' +
+//                ", presentStreet='" + presentStreet + '\'' +
                 ", username='" + username + '\'' +
-                ", permanentId=" + permanentId +
-                ", permanentDiv='" + permanentDiv + '\'' +
-                ", permanentDist='" + permanentDist + '\'' +
-                ", permanentUpz='" + permanentUpz + '\'' +
-                ", permanentUnion='" + permanentUnion + '\'' +
-                ", permanentStreet='" + permanentStreet + '\'' +
+//                ", permanentId=" + permanentId +
+//                ", permanentDiv='" + permanentDiv + '\'' +
+//                ", permanentDist='" + permanentDist + '\'' +
+//                ", permanentUpz='" + permanentUpz + '\'' +
+//                ", permanentUnion='" + permanentUnion + '\'' +
+//                ", permanentStreet='" + permanentStreet + '\'' +
                 ", phone_number=" + phone_number +
                 '}';
     }
