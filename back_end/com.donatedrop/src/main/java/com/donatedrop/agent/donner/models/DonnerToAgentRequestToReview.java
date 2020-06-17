@@ -62,10 +62,13 @@ public class DonnerToAgentRequestToReview implements Serializable {
     private String profession;
     @Column(name = "user_id")
     private String userId;
+
+
     @Column(name = "address_permanent")
     private BigInteger addressPermanent;
     @Column(name = "address_present")
     private BigInteger addressPresent;
+
     @Basic(optional = false)
     @Column(name = "request_id")
     private long requestId;
@@ -88,6 +91,7 @@ public class DonnerToAgentRequestToReview implements Serializable {
     @Lob
     @Column(name = "note_agent_personal")
     private String noteAgentPersonal;
+
     @Basic(optional = false)
     @Column(name = "present_id")
     private long presentId;
@@ -103,6 +107,7 @@ public class DonnerToAgentRequestToReview implements Serializable {
     private String presentStreet;
     @Column(name = "username")
     private String username;
+
     @Basic(optional = false)
     @Column(name = "permanent_id")
     private long permanentId;
@@ -116,6 +121,7 @@ public class DonnerToAgentRequestToReview implements Serializable {
     private String permanentUnion;
     @Column(name = "permanent_street")
     private String permanentStreet;
+
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "profile_id")

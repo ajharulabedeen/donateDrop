@@ -68,7 +68,7 @@ public class DumpDataInsertion {
 //            ProfileBasic profileBasic = getProfile(user.getId().toString());
 //            basicList.add(profileBasic);
 //        }
-        List<User> idList = dumpDao.getUserIDNotInProfileID(2);
+        List<User> idList = dumpDao.getUserIDNotInProfileID(10);
         List<ProfileBasic> basicList = new ArrayList<>();
         for (Iterator<User> iterator = idList.iterator(); iterator.hasNext(); ) {
             User user = iterator.next();
