@@ -5,7 +5,10 @@
  */
 package com.donatedrop.agent.admin.model;
 
+import com.donatedrop.models.Address;
 import com.donatedrop.profile.model.PhoneNumber;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import java.io.Serializable;
 import java.util.List;
@@ -93,9 +96,17 @@ public class AgentRequestToReview implements Serializable {
     @Column(name = "USERNAME")
     private String username;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany
+    //    @OneToMany(fetch = FetchType.EAGER)
+    @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "profile_id")
     private List<PhoneNumber> phone_number;
+
+    //    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
+//    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name = "profile_id")
+    private List<Address> addressList;
 
 
     public AgentRequestToReview() {
@@ -285,6 +296,14 @@ public class AgentRequestToReview implements Serializable {
         this.phone_number = phone_number;
     }
 
+    public List<Address> getAddressList() {
+        return addressList;
+    }
+
+    public void setAddressList(List<Address> addressList) {
+        this.addressList = addressList;
+    }
+
     @Override
     public String toString() {
         return "AgentRequestToReview{" +
@@ -311,6 +330,7 @@ public class AgentRequestToReview implements Serializable {
                 ", status='" + status + '\'' +
                 ", username='" + username + '\'' +
                 ", phone_number=" + phone_number +
+                ", addressList=" + addressList +
                 '}';
     }
 }
