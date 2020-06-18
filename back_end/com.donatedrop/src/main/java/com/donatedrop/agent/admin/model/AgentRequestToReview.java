@@ -8,157 +8,98 @@ package com.donatedrop.agent.admin.model;
 import com.donatedrop.profile.model.PhoneNumber;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.List;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * @author Dell
+ */
 @Entity
 @Table(name = "agent_request_review")
 @XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "AgentRequestToReview.findAll", query = "SELECT a FROM AgentRequestToReview a"),
-//        @NamedQuery(name = "AgentRequestToReview.findByProfileId", query = "SELECT a FROM AgentRequestToReview a WHERE a.profileId = :profileId")
-//        , @NamedQuery(name = "AgentRequestToReview.findByName", query = "SELECT a FROM AgentRequestToReview a WHERE a.name = :name")
-//        , @NamedQuery(name = "AgentRequestToReview.findByGender", query = "SELECT a FROM AgentRequestToReview a WHERE a.gender = :gender")
-//        , @NamedQuery(name = "AgentRequestToReview.findByProfession", query = "SELECT a FROM AgentRequestToReview a WHERE a.profession = :profession")
-//        , @NamedQuery(name = "AgentRequestToReview.findByUserId", query = "SELECT a FROM AgentRequestToReview a WHERE a.userId = :userId")
-//        , @NamedQuery(name = "AgentRequestToReview.findByAddressPermanent", query = "SELECT a FROM AgentRequestToReview a WHERE a.addressPermanent = :addressPermanent")
-//        , @NamedQuery(name = "AgentRequestToReview.findByAddressPresent", query = "SELECT a FROM AgentRequestToReview a WHERE a.addressPresent = :addressPresent")
-//        , @NamedQuery(name = "AgentRequestToReview.findByRequestId", query = "SELECT a FROM AgentRequestToReview a WHERE a.requestId = :requestId")
-//        , @NamedQuery(name = "AgentRequestToReview.findByRequestDate", query = "SELECT a FROM AgentRequestToReview a WHERE a.requestDate = :requestDate")
-//        , @NamedQuery(name = "AgentRequestToReview.findByAcceptDate", query = "SELECT a FROM AgentRequestToReview a WHERE a.acceptDate = :acceptDate")
-//        , @NamedQuery(name = "AgentRequestToReview.findByRejectDate", query = "SELECT a FROM AgentRequestToReview a WHERE a.rejectDate = :rejectDate")
-//        , @NamedQuery(name = "AgentRequestToReview.findByFreezeDate", query = "SELECT a FROM AgentRequestToReview a WHERE a.freezeDate = :freezeDate")
-//        , @NamedQuery(name = "AgentRequestToReview.findByStatus", query = "SELECT a FROM AgentRequestToReview a WHERE a.status = :status")
-//        , @NamedQuery(name = "AgentRequestToReview.findByPresentId", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentId = :presentId")
-//        , @NamedQuery(name = "AgentRequestToReview.findByPresentDiv", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentDiv = :presentDiv")
-//        , @NamedQuery(name = "AgentRequestToReview.findByPresentDist", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentDist = :presentDist")
-//        , @NamedQuery(name = "AgentRequestToReview.findByPresentUpz", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentUpz = :presentUpz")
-//        , @NamedQuery(name = "AgentRequestToReview.findByPresentUnion", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentUnion = :presentUnion")
-//        , @NamedQuery(name = "AgentRequestToReview.findByPresentStreet", query = "SELECT a FROM AgentRequestToReview a WHERE a.presentStreet = :presentStreet")
-//        , @NamedQuery(name = "AgentRequestToReview.findByUsername", query = "SELECT a FROM AgentRequestToReview a WHERE a.username = :username")
-//        , @NamedQuery(name = "AgentRequestToReview.findByPermanentId", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentId = :permanentId")
-//        , @NamedQuery(name = "AgentRequestToReview.findByPermanentDiv", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentDiv = :permanentDiv")
-//        , @NamedQuery(name = "AgentRequestToReview.findByPermanentDist", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentDist = :permanentDist")
-//        , @NamedQuery(name = "AgentRequestToReview.findByPermanentUpz", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentUpz = :permanentUpz")
-//        , @NamedQuery(name = "AgentRequestToReview.findByPermanentUnion", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentUnion = :permanentUnion")
-//        , @NamedQuery(name = "AgentRequestToReview.findByPermanentStreet", query = "SELECT a FROM AgentRequestToReview a WHERE a.permanentStreet = :permanentStreet")})
+//        @NamedQuery(name = "AgentRequestReview.findAll", query = "SELECT a FROM AgentRequestToReview a")
+//        , @NamedQuery(name = "AgentRequestReview.findByProfileId", query = "SELECT a FROM AgentRequestReview a WHERE a.profileId = :profileId")
+//        , @NamedQuery(name = "AgentRequestReview.findByAvailable", query = "SELECT a FROM AgentRequestReview a WHERE a.available = :available")
+//        , @NamedQuery(name = "AgentRequestReview.findByBirthDate", query = "SELECT a FROM AgentRequestReview a WHERE a.birthDate = :birthDate")
+//        , @NamedQuery(name = "AgentRequestReview.findByBloodGroup", query = "SELECT a FROM AgentRequestReview a WHERE a.bloodGroup = :bloodGroup")
+//        , @NamedQuery(name = "AgentRequestReview.findByCareOf", query = "SELECT a FROM AgentRequestReview a WHERE a.careOf = :careOf")
+//        , @NamedQuery(name = "AgentRequestReview.findByEmail", query = "SELECT a FROM AgentRequestReview a WHERE a.email = :email")
+//        , @NamedQuery(name = "AgentRequestReview.findByGender", query = "SELECT a FROM AgentRequestReview a WHERE a.gender = :gender")
+//        , @NamedQuery(name = "AgentRequestReview.findByMaritalStatus", query = "SELECT a FROM AgentRequestReview a WHERE a.maritalStatus = :maritalStatus")
+//        , @NamedQuery(name = "AgentRequestReview.findByName", query = "SELECT a FROM AgentRequestReview a WHERE a.name = :name")
+//        , @NamedQuery(name = "AgentRequestReview.findByProfession", query = "SELECT a FROM AgentRequestReview a WHERE a.profession = :profession")
+//        , @NamedQuery(name = "AgentRequestReview.findByReligion", query = "SELECT a FROM AgentRequestReview a WHERE a.religion = :religion")
+//        , @NamedQuery(name = "AgentRequestReview.findByUserId", query = "SELECT a FROM AgentRequestReview a WHERE a.userId = :userId")
+//        , @NamedQuery(name = "AgentRequestReview.findById", query = "SELECT a FROM AgentRequestReview a WHERE a.id = :id")
+//        , @NamedQuery(name = "AgentRequestReview.findByAcceptDate", query = "SELECT a FROM AgentRequestReview a WHERE a.acceptDate = :acceptDate")
+//        , @NamedQuery(name = "AgentRequestReview.findByFreezeDate", query = "SELECT a FROM AgentRequestReview a WHERE a.freezeDate = :freezeDate")
+//        , @NamedQuery(name = "AgentRequestReview.findByRejectDate", query = "SELECT a FROM AgentRequestReview a WHERE a.rejectDate = :rejectDate")
+//        , @NamedQuery(name = "AgentRequestReview.findByRequestDate", query = "SELECT a FROM AgentRequestReview a WHERE a.requestDate = :requestDate")
+//        , @NamedQuery(name = "AgentRequestReview.findByStatus", query = "SELECT a FROM AgentRequestReview a WHERE a.status = :status")
+//        , @NamedQuery(name = "AgentRequestReview.findByUsername", query = "SELECT a FROM AgentRequestReview a WHERE a.username = :username")})
 public class AgentRequestToReview implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Basic(optional = false)
     @Id
+    @Basic(optional = false)
     @Column(name = "profile_id")
     private long profileId;
-
-    @Column(name = "name")
-    private String name;
+    @Column(name = "available")
+    private String available;
+    @Column(name = "birth_date")
+    private String birthDate;
+    @Column(name = "blood_Group")
+    private String bloodGroup;
+    @Column(name = "care_of")
+    private String careOf;
+    @Column(name = "email")
+    private String email;
     @Column(name = "gender")
     private String gender;
+    @Column(name = "marital_status")
+    private String maritalStatus;
+    @Column(name = "name")
+    private String name;
     @Column(name = "profession")
     private String profession;
+    @Column(name = "religion")
+    private String religion;
     @Column(name = "user_id")
     private String userId;
-    @Column(name = "address_permanent")
-    private BigInteger addressPermanent;
-    @Column(name = "address_present")
-    private BigInteger addressPresent;
     @Basic(optional = false)
-
-    @Column(name = "request_id")
-    private long requestId;
-    @Column(name = "request_date")
-    private String requestDate;
+    @Column(name = "id")
+    private long id;
     @Column(name = "accept_date")
     private String acceptDate;
-    @Column(name = "reject_date")
-    private String rejectDate;
     @Column(name = "freeze_date")
     private String freezeDate;
-    @Column(name = "status")
-    private String status;
-    @Lob
-    @Column(name = "note_applicant")
-    private String noteApplicant;
     @Lob
     @Column(name = "note_admin")
     private String noteAdmin;
     @Lob
+    @Column(name = "note_applicant")
+    private String noteApplicant;
+    @Lob
     @Column(name = "note_personal")
     private String notePersonal;
-
-//    @Basic(optional = false)
-//    @Column(name = "present_id")
-//    private long presentId;
-//    @Column(name = "present_div")
-//    private String presentDiv;
-//    @Column(name = "present_dist")
-//    private String presentDist;
-//    @Column(name = "present_upz")
-//    private String presentUpz;
-//    @Column(name = "present_union")
-//    private String presentUnion;
-//    @Column(name = "present_street")
-//    private String presentStreet;
-
-    @Column(name = "username")
+    @Column(name = "reject_date")
+    private String rejectDate;
+    @Column(name = "request_date")
+    private String requestDate;
+    @Column(name = "status")
+    private String status;
+    @Column(name = "USERNAME")
     private String username;
-
-//    @Basic(optional = false)
-//    @Column(name = "permanent_id")
-//    private long permanentId;
-//    @Column(name = "permanent_div")
-//    private String permanentDiv;
-//    @Column(name = "permanent_dist")
-//    private String permanentDist;
-//    @Column(name = "permanent_upz")
-//    private String permanentUpz;
-//    @Column(name = "permanent_union")
-//    private String permanentUnion;
-//    @Column(name = "permanent_street")
-//    private String permanentStreet;
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "profile_id")
     private List<PhoneNumber> phone_number;
 
+
     public AgentRequestToReview() {
     }
-
-    public AgentRequestToReview(long profileId, String name, String gender, String profession, String userId, BigInteger addressPermanent, BigInteger addressPresent, long requestId, String requestDate, String acceptDate, String rejectDate, String freezeDate, String status, String noteApplicant, String noteAdmin, String notePersonal, long presentId, String presentDiv, String presentDist, String presentUpz, String presentUnion, String presentStreet, String username, long permanentId, String permanentDiv, String permanentDist, String permanentUpz, String permanentUnion, String permanentStreet, List<PhoneNumber> phone_number) {
-        this.profileId = profileId;
-        this.name = name;
-        this.gender = gender;
-        this.profession = profession;
-        this.userId = userId;
-        this.addressPermanent = addressPermanent;
-        this.addressPresent = addressPresent;
-        this.requestId = requestId;
-        this.requestDate = requestDate;
-        this.acceptDate = acceptDate;
-        this.rejectDate = rejectDate;
-        this.freezeDate = freezeDate;
-        this.status = status;
-        this.noteApplicant = noteApplicant;
-        this.noteAdmin = noteAdmin;
-        this.notePersonal = notePersonal;
-//        this.presentId = presentId;
-//        this.presentDiv = presentDiv;
-//        this.presentDist = presentDist;
-//        this.presentUpz = presentUpz;
-//        this.presentUnion = presentUnion;
-//        this.presentStreet = presentStreet;
-        this.username = username;
-//        this.permanentId = permanentId;
-//        this.permanentDiv = permanentDiv;
-//        this.permanentDist = permanentDist;
-//        this.permanentUpz = permanentUpz;
-//        this.permanentUnion = permanentUnion;
-//        this.permanentStreet = permanentStreet;
-        this.phone_number = phone_number;
-    }
-
 
     public long getProfileId() {
         return profileId;
@@ -168,12 +109,44 @@ public class AgentRequestToReview implements Serializable {
         this.profileId = profileId;
     }
 
-    public String getName() {
-        return name;
+    public String getAvailable() {
+        return available;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAvailable(String available) {
+        this.available = available;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getBloodGroup() {
+        return bloodGroup;
+    }
+
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
+
+    public String getCareOf() {
+        return careOf;
+    }
+
+    public void setCareOf(String careOf) {
+        this.careOf = careOf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getGender() {
@@ -184,12 +157,36 @@ public class AgentRequestToReview implements Serializable {
         this.gender = gender;
     }
 
+    public String getMaritalStatus() {
+        return maritalStatus;
+    }
+
+    public void setMaritalStatus(String maritalStatus) {
+        this.maritalStatus = maritalStatus;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getProfession() {
         return profession;
     }
 
     public void setProfession(String profession) {
         this.profession = profession;
+    }
+
+    public String getReligion() {
+        return religion;
+    }
+
+    public void setReligion(String religion) {
+        this.religion = religion;
     }
 
     public String getUserId() {
@@ -200,36 +197,12 @@ public class AgentRequestToReview implements Serializable {
         this.userId = userId;
     }
 
-    public BigInteger getAddressPermanent() {
-        return addressPermanent;
+    public long getId() {
+        return id;
     }
 
-    public void setAddressPermanent(BigInteger addressPermanent) {
-        this.addressPermanent = addressPermanent;
-    }
-
-    public BigInteger getAddressPresent() {
-        return addressPresent;
-    }
-
-    public void setAddressPresent(BigInteger addressPresent) {
-        this.addressPresent = addressPresent;
-    }
-
-    public long getRequestId() {
-        return requestId;
-    }
-
-    public void setRequestId(long requestId) {
-        this.requestId = requestId;
-    }
-
-    public String getRequestDate() {
-        return requestDate;
-    }
-
-    public void setRequestDate(String requestDate) {
-        this.requestDate = requestDate;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getAcceptDate() {
@@ -240,36 +213,12 @@ public class AgentRequestToReview implements Serializable {
         this.acceptDate = acceptDate;
     }
 
-    public String getRejectDate() {
-        return rejectDate;
-    }
-
-    public void setRejectDate(String rejectDate) {
-        this.rejectDate = rejectDate;
-    }
-
     public String getFreezeDate() {
         return freezeDate;
     }
 
     public void setFreezeDate(String freezeDate) {
         this.freezeDate = freezeDate;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getNoteApplicant() {
-        return noteApplicant;
-    }
-
-    public void setNoteApplicant(String noteApplicant) {
-        this.noteApplicant = noteApplicant;
     }
 
     public String getNoteAdmin() {
@@ -280,6 +229,14 @@ public class AgentRequestToReview implements Serializable {
         this.noteAdmin = noteAdmin;
     }
 
+    public String getNoteApplicant() {
+        return noteApplicant;
+    }
+
+    public void setNoteApplicant(String noteApplicant) {
+        this.noteApplicant = noteApplicant;
+    }
+
     public String getNotePersonal() {
         return notePersonal;
     }
@@ -288,53 +245,29 @@ public class AgentRequestToReview implements Serializable {
         this.notePersonal = notePersonal;
     }
 
-//    public long getPresentId() {
-//        return presentId;
-//    }
-//
-//    public void setPresentId(long presentId) {
-//        this.presentId = presentId;
-//    }
-//
-//    public String getPresentDiv() {
-//        return presentDiv;
-//    }
-//
-//    public void setPresentDiv(String presentDiv) {
-//        this.presentDiv = presentDiv;
-//    }
-//
-//    public String getPresentDist() {
-//        return presentDist;
-//    }
-//
-//    public void setPresentDist(String presentDist) {
-//        this.presentDist = presentDist;
-//    }
-//
-//    public String getPresentUpz() {
-//        return presentUpz;
-//    }
-//
-//    public void setPresentUpz(String presentUpz) {
-//        this.presentUpz = presentUpz;
-//    }
-//
-//    public String getPresentUnion() {
-//        return presentUnion;
-//    }
-//
-//    public void setPresentUnion(String presentUnion) {
-//        this.presentUnion = presentUnion;
-//    }
-//
-//    public String getPresentStreet() {
-//        return presentStreet;
-//    }
-//
-//    public void setPresentStreet(String presentStreet) {
-//        this.presentStreet = presentStreet;
-//    }
+    public String getRejectDate() {
+        return rejectDate;
+    }
+
+    public void setRejectDate(String rejectDate) {
+        this.rejectDate = rejectDate;
+    }
+
+    public String getRequestDate() {
+        return requestDate;
+    }
+
+    public void setRequestDate(String requestDate) {
+        this.requestDate = requestDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getUsername() {
         return username;
@@ -343,54 +276,6 @@ public class AgentRequestToReview implements Serializable {
     public void setUsername(String username) {
         this.username = username;
     }
-
-//    public long getPermanentId() {
-//        return permanentId;
-//    }
-//
-//    public void setPermanentId(long permanentId) {
-//        this.permanentId = permanentId;
-//    }
-//
-//    public String getPermanentDiv() {
-//        return permanentDiv;
-//    }
-//
-//    public void setPermanentDiv(String permanentDiv) {
-//        this.permanentDiv = permanentDiv;
-//    }
-//
-//    public String getPermanentDist() {
-//        return permanentDist;
-//    }
-//
-//    public void setPermanentDist(String permanentDist) {
-//        this.permanentDist = permanentDist;
-//    }
-//
-//    public String getPermanentUpz() {
-//        return permanentUpz;
-//    }
-//
-//    public void setPermanentUpz(String permanentUpz) {
-//        this.permanentUpz = permanentUpz;
-//    }
-//
-//    public String getPermanentUnion() {
-//        return permanentUnion;
-//    }
-//
-//    public void setPermanentUnion(String permanentUnion) {
-//        this.permanentUnion = permanentUnion;
-//    }
-//
-//    public String getPermanentStreet() {
-//        return permanentStreet;
-//    }
-//
-//    public void setPermanentStreet(String permanentStreet) {
-//        this.permanentStreet = permanentStreet;
-//    }
 
     public List<PhoneNumber> getPhone_number() {
         return phone_number;
@@ -404,34 +289,27 @@ public class AgentRequestToReview implements Serializable {
     public String toString() {
         return "AgentRequestToReview{" +
                 "profileId=" + profileId +
-                ", name='" + name + '\'' +
+                ", available='" + available + '\'' +
+                ", birthDate='" + birthDate + '\'' +
+                ", bloodGroup='" + bloodGroup + '\'' +
+                ", careOf='" + careOf + '\'' +
+                ", email='" + email + '\'' +
                 ", gender='" + gender + '\'' +
+                ", maritalStatus='" + maritalStatus + '\'' +
+                ", name='" + name + '\'' +
                 ", profession='" + profession + '\'' +
+                ", religion='" + religion + '\'' +
                 ", userId='" + userId + '\'' +
-                ", addressPermanent=" + addressPermanent +
-                ", addressPresent=" + addressPresent +
-                ", requestId=" + requestId +
-                ", requestDate='" + requestDate + '\'' +
+                ", id=" + id +
                 ", acceptDate='" + acceptDate + '\'' +
-                ", rejectDate='" + rejectDate + '\'' +
                 ", freezeDate='" + freezeDate + '\'' +
-                ", status='" + status + '\'' +
-                ", noteApplicant='" + noteApplicant + '\'' +
                 ", noteAdmin='" + noteAdmin + '\'' +
+                ", noteApplicant='" + noteApplicant + '\'' +
                 ", notePersonal='" + notePersonal + '\'' +
-//                ", presentId=" + presentId +
-//                ", presentDiv='" + presentDiv + '\'' +
-//                ", presentDist='" + presentDist + '\'' +
-//                ", presentUpz='" + presentUpz + '\'' +
-//                ", presentUnion='" + presentUnion + '\'' +
-//                ", presentStreet='" + presentStreet + '\'' +
+                ", rejectDate='" + rejectDate + '\'' +
+                ", requestDate='" + requestDate + '\'' +
+                ", status='" + status + '\'' +
                 ", username='" + username + '\'' +
-//                ", permanentId=" + permanentId +
-//                ", permanentDiv='" + permanentDiv + '\'' +
-//                ", permanentDist='" + permanentDist + '\'' +
-//                ", permanentUpz='" + permanentUpz + '\'' +
-//                ", permanentUnion='" + permanentUnion + '\'' +
-//                ", permanentStreet='" + permanentStreet + '\'' +
                 ", phone_number=" + phone_number +
                 '}';
     }
