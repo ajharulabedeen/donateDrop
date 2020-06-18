@@ -12,6 +12,7 @@ import com.donatedrop.util.AddressType;
 import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
 import com.donatedrop.util.Utils;
+import org.aspectj.weaver.Dump;
 import org.junit.Assert;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -77,11 +78,11 @@ public class Test_Dao_Profile_Basic_Impl {
             String eName = DumpData.getName();
             EmergencyContact emergencyContact1
                     = new EmergencyContact(eName, DumpData.getPhoneNumber(), eName.replace(" ", "") + "@gmail.com",
-                            dumpDao.getAddressString(AddressType.EMERGENCY.toString()), DumpData.getRelation(), DateUtil.getDate());
+                    dumpDao.getAddressString(AddressType.EMERGENCY.toString()), DumpData.getRelation(), DateUtil.getDate());
             eName = DumpData.getName();
             EmergencyContact emergencyContact2
                     = new EmergencyContact(eName, DumpData.getPhoneNumber(), eName.replace(" ", "") + "@gmail.com",
-                            dumpDao.getAddressString(AddressType.EMERGENCY.toString()), DumpData.getRelation(), DateUtil.getDate());
+                    dumpDao.getAddressString(AddressType.EMERGENCY.toString()), DumpData.getRelation(), DateUtil.getDate());
             emergencyContacts.add(emergencyContact1);
             emergencyContacts.add(emergencyContact2);
             profileBasic.setEmergency_contact(emergencyContacts);
@@ -99,7 +100,8 @@ public class Test_Dao_Profile_Basic_Impl {
             profileBasic.setProfession(DumpData.getProfession());
             profileBasic.setCare_of(DumpData.getName());
             //refactor : have to set automatic userID.
-            profileBasic.setUserId(Utils.getLoggedUserID());
+//            profileBasic.setUserId(Utils.getLoggedUserID());
+            profileBasic.setUserId(dumpDao.getUserIDNotInProfileID(1).toString());
             profileBasic.setBirthDate(DateUtil.getDate());
 
 //        ACT
@@ -283,11 +285,11 @@ public class Test_Dao_Profile_Basic_Impl {
         Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
         PhoneNumber phoneNumberSaved
                 = dao_Profile_Basic_I.findOneByUser(userID)
-                        .getPhone_number()
-                        .stream()
-                        .filter(p -> phoneNumberNew.getNumber().equals(p.getNumber()))
-                        .findAny()
-                        .orElse(null);
+                .getPhone_number()
+                .stream()
+                .filter(p -> phoneNumberNew.getNumber().equals(p.getNumber()))
+                .findAny()
+                .orElse(null);
         System.out.println("\n" + phoneNumberSaved.toString() + "\n");
         Assert.assertEquals(phoneNumberSaved.getNumber(), phoneNumberNew.getNumber());
 //        assertEquals(phoneNumberSaved.getNumber(), "01919");
@@ -314,11 +316,11 @@ public class Test_Dao_Profile_Basic_Impl {
             Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
             PhoneNumber phoneNumberSaved
                     = dao_Profile_Basic_I.findOneByUser(userID)
-                            .getPhone_number()
-                            .stream()
-                            .filter(p -> phoneNumberID.equals(p.getId().toString()))
-                            .findAny()
-                            .orElse(null);
+                    .getPhone_number()
+                    .stream()
+                    .filter(p -> phoneNumberID.equals(p.getId().toString()))
+                    .findAny()
+                    .orElse(null);
             if (phoneNumberSaved == null) {
                 Assert.assertEquals(null, phoneNumberSaved);
             } else {
@@ -447,6 +449,7 @@ public class Test_Dao_Profile_Basic_Impl {
     }
 
 //    Helpers :
+
     /**
      * will store the last save id, that can be used for later for other method.
      * Though there is question does it, right to a result from unit test, as
