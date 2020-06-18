@@ -101,7 +101,8 @@ public class Test_Dao_Profile_Basic_Impl {
             profileBasic.setCare_of(DumpData.getName());
             //refactor : have to set automatic userID.
 //            profileBasic.setUserId(Utils.getLoggedUserID());
-            profileBasic.setUserId(dumpDao.getUserIDNotInProfileID(1).toString());
+            String userID = dumpDao.getUserIDNotInProfileID(1).get(0).getId().toString();
+            profileBasic.setUserId(userID);
             profileBasic.setBirthDate(DateUtil.getDate());
 
 //        ACT
@@ -110,6 +111,7 @@ public class Test_Dao_Profile_Basic_Impl {
             id = status.get(StringUtil.ID);
             System.out.println("\nID : " + id);
             storeID(id);
+            storeUserID(userID);
             storeProfileBasic(profileBasic.toString());
             System.out.println("Count : " + count++);
         } catch (Exception e) {
@@ -155,7 +157,8 @@ public class Test_Dao_Profile_Basic_Impl {
     @Test
     @Order(4)
     public void test4_findOneByUser() {
-        String userID = "16";
+//        String userID = "16";
+        String userID = getID();
         ProfileBasic profileBasic = dao_Profile_Basic_I.findOneByUser(userID);
         System.out.println("\nTest : \n" + profileBasic + "\n\n");
         System.out.println("\nTest : \n" + profileBasic.getPhone_number().toString() + "\n\n");
@@ -420,6 +423,7 @@ public class Test_Dao_Profile_Basic_Impl {
     public void test13_delete() {
         System.out.println("\n\n\n---M3---\n\n\n");
         String id = getID();
+//        String id = "744";// to delete one profile, cause delete from PHPAdmin hard, due FK_PK
         Map<String, String> response = new HashMap<>();
         try {
             response = dao_Profile_Basic_I.delete(id);
@@ -468,6 +472,36 @@ public class Test_Dao_Profile_Basic_Impl {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+    }
+
+    public void storeUserID(String userID) {
+        try {
+            FileWriter myWriter = new FileWriter("profileBasic_userID.txt");
+            myWriter.write(userID);
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+    public String getUserID() {
+        String id = "";
+        try {
+            File myObj = new File("profileBasic_userID.txt");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                id = data;
+//                System.out.println(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        return id;
     }
 
     public void storeID(String id) {

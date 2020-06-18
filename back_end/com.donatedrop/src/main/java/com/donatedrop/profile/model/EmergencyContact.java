@@ -105,7 +105,7 @@ public class EmergencyContact implements Serializable {
                 ", address='" + address + '\'' +
                 ", relation='" + relation + '\'' +
                 ", addDate='" + addDate + '\'' +
-                ", profileBasic=" + profileBasic +
+//                ", profileBasic=" + profileBasic +
                 '}';
     }
 
