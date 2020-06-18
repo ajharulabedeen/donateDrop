@@ -105,8 +105,6 @@ public class Test_Dao_AgentAdmin_Impl {
 //        });
 
         dao_agent_i.getAgentRequestsToReview(agentRequestsReview).forEach(s -> System.out.println(s));
-
-
     }
 
     @Test
@@ -173,7 +171,7 @@ public class Test_Dao_AgentAdmin_Impl {
     //    not part dao layer
     @Test
     public void testInsertAgent() {
-        dumpDao.getUserIDNotAgentRequest(5).forEach(id -> {
+        dumpDao.getUserIDNotAgentRequest(100).forEach(id -> {
             AgentRequest agentRequest = new AgentRequest();
             agentRequest.setUserID(id);
             agentRequest.setRequestDate(DateUtil.getDate().toString());

@@ -114,6 +114,7 @@ public class DumpDataInsertion {
         List<Address> aList = new ArrayList<>();
         aList.add(getAddress(AddressType.PRESENT.toString()));
         aList.add(getAddress(AddressType.PERMANENT.toString()));
+        profileBasic.setAddress(aList);
 
         List<EmergencyContact> emergencyContacts = new ArrayList<>();
         for (int x = 0; x < r.nextInt(4); x++) {
