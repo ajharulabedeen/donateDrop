@@ -158,7 +158,7 @@ public class Test_Dao_Profile_Basic_Impl {
     @Order(4)
     public void test4_findOneByUser() {
 //        String userID = "16";
-        String userID = getID();
+        String userID = getUserID();
         ProfileBasic profileBasic = dao_Profile_Basic_I.findOneByUser(userID);
         System.out.println("\nTest : \n" + profileBasic + "\n\n");
         System.out.println("\nTest : \n" + profileBasic.getPhone_number().toString() + "\n\n");
@@ -188,7 +188,8 @@ public class Test_Dao_Profile_Basic_Impl {
         // Arrange
         Map<String, String> result = new HashMap<>();
 //        String userID = "13";
-        String userID = Utils.getLoggedUserID();
+//        String userID = Utils.getLoggedUserID();
+        String userID = getUserID();
         ProfileBasic profileBasicNew = new ProfileBasic();
         profileBasicNew.setUserId(userID);
 
@@ -227,7 +228,8 @@ public class Test_Dao_Profile_Basic_Impl {
     @Test
     @Order(6)
     public void test6_presentAddressUpdate() {
-        String userID = "16";
+//        String userID = "16";
+        String userID = getUserID();
         String upzNew = "Gazipur";
         String distNew = "Dhaka";
         String divNew = "Dhaka";
@@ -258,7 +260,8 @@ public class Test_Dao_Profile_Basic_Impl {
     @Test
     @Order(7)
     public void test7_permanentAddressUpdate() {
-        String userID = "16";
+//        String userID = "16";
+        String userID = getUserID();
         String distNew = "Khulna";
         String divNew = "Khulna";
         Address addressPermanentNew = new Address();
@@ -281,7 +284,8 @@ public class Test_Dao_Profile_Basic_Impl {
     @Test
     @Order(8)
     public void test8_addPhoneNumber() {
-        String userID = "16";
+//        String userID = "16";
+        String userID = getUserID();
         PhoneNumber phoneNumberNew = new PhoneNumber("01910-664020");
         Map<String, String> result = dao_Profile_Basic_I.addPhoneNumber(phoneNumberNew, userID);
         System.out.println("\n\n" + result + "\n\n");
@@ -303,7 +307,8 @@ public class Test_Dao_Profile_Basic_Impl {
     @Order(9)
     public void test9_deletePhoneNumber() {
         // Arrange
-        String userID = "16";
+//        String userID = "16";
+        String userID = getUserID();
         try {
             String phoneNumberID = dao_Profile_Basic_I
                     .findOneByUser(userID)
@@ -341,7 +346,8 @@ public class Test_Dao_Profile_Basic_Impl {
     public void test10_addEmergencyContact() {
         //arrange
         String profileBasicID = getID();
-        String userID = "";
+//        String userID = "";
+        String userID = getUserID();
         String emergencyContactID = "";
         ProfileBasic profileBasic = dao_Profile_Basic_I.findOneWithChild(profileBasicID);
         userID = profileBasic.getUserId();
@@ -367,7 +373,8 @@ public class Test_Dao_Profile_Basic_Impl {
 
 //        Arrange
         String profileBasicID = getID();
-        String userID = "";
+//        String userID = "";
+        String userID = getUserID();
         String emergencyContactID = "";
         ProfileBasic profileBasic = dao_Profile_Basic_I.findOneWithChild(profileBasicID);
         userID = profileBasic.getUserId();
