@@ -125,20 +125,20 @@ public class Dao_AgentAdmin_Impl implements Dao_AgentAdmin_I {
         String column = requestGetAgentRequestsReview.getColumn();
         String key = requestGetAgentRequestsReview.getKey();
         String status = requestGetAgentRequestsReview.getStatusType();
-        String q = "SELECT * FROM `agent_request_review`";
+//        String q = "SELECT * FROM `agent_request_review`";
         List<AgentRequestToReview> agentRequestReviews = new ArrayList<>();
-//        String q = "";
+        String q = "";
         try {
-//            if (column.equals(StringUtil.PHONENUMBER)) {
-//                q = "SELECT agent_request_review.* FROM agent_request_review, phonenumber "
-//                        + "WHERE agent_request_review.profile_id = phonenumber.profile_id "
-//                        + " AND phonenumber.number LIKE '" + key + "'"
-//                        + " AND `agent_request_review`.`status`='" + status + "'";
-//            } else {
-//                q = "SELECT * FROM `agent_request_review` WHERE `agent_request_review`.`"
-//                        + column + "` LIKE '" + key + "'"
-//                        + " AND `agent_request_review`.`status`='" + status + "'";
-//            }
+            if (column.equals(StringUtil.PHONENUMBER)) {
+                q = "SELECT agent_request_review.* FROM agent_request_review, phonenumber "
+                        + "WHERE agent_request_review.profile_id = phonenumber.profile_id "
+                        + " AND phonenumber.number LIKE '" + key + "'"
+                        + " AND `agent_request_review`.`status`='" + status + "'";
+            } else {
+                q = "SELECT * FROM `agent_request_review` WHERE `agent_request_review`.`"
+                        + column + "` LIKE '" + key + "'"
+                        + " AND `agent_request_review`.`status`='" + status + "'";
+            }
             agentRequestReviews
                     = entityManager.createNativeQuery(q, AgentRequestToReview.class)
                     .setFirstResult(start)
