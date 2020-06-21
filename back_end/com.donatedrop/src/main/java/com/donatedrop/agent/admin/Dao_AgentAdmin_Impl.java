@@ -134,6 +134,19 @@ public class Dao_AgentAdmin_Impl implements Dao_AgentAdmin_I {
                         + "WHERE agent_request_review.profile_id = phonenumber.profile_id "
                         + " AND phonenumber.number LIKE '" + key + "'"
                         + " AND `agent_request_review`.`status`='" + status + "'";
+            } else if (column.equals(StringUtil.ADRESS)) {
+                q = "SELECT\n" +
+                        "    *\n" +
+                        "FROM\n" +
+                        "    `address`,\n" +
+                        "    `agent_request_review`\n" +
+                        "WHERE\n" +
+                        "    agent_request_review.profile_id = `address`.`profile_id` \n" +
+                        "    AND\n" +
+                        "    (`address`.`division` LIKE '%" + key + "%' \n" +
+                        "     OR `address`.`district` LIKE '%" + key + "%' \n" +
+                        "     OR `address`.`upzilla` LIKE '%" + key + "%'\n" +
+                        "     OR `address`.`union_ward` LIKE '%" + key + "%')";
             } else {
                 q = "SELECT * FROM `agent_request_review` WHERE `agent_request_review`.`"
                         + column + "` LIKE '" + key + "'"
