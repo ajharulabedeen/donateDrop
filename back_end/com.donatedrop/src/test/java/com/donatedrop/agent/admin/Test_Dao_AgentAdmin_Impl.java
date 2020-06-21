@@ -114,7 +114,7 @@ public class Test_Dao_AgentAdmin_Impl {
     @Test
     @Order(6)
     public void testGetAgentRequestsReviewCount() {
-        Map<String, String> result = dao_agent_i.getAgentRequestsToReviewCount("username", "%%", StatusType.ACCEPT);
+        Map<String, String> result = dao_agent_i.getAgentRequestsToReviewCount("address", "%kh%", StatusType.ZERO);
         System.out.println(result);
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
