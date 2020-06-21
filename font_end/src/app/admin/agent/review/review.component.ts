@@ -45,76 +45,113 @@ export class ReviewComponent implements OnInit {
     console.log(agentSearch);
     this.agentRequestsToReview = [];
     this.agentService.getAgentRequestsToReview(agentSearch).subscribe(res => {
-      console.log('res : ' + res);
-      for (const key in res) {
-        var artr = new AgentRequestToReview();
+        console.log('res : ' + res);
+        for (const key in res) {
+          var artr = new AgentRequestToReview();
 
-        artr.addressPermanent = res[key]['addressPermanent'];
-        artr.addressPresent = res[key]['addressPresent'];
+          // artr.addressPermanent = res[key]['addressPermanent'];
+          // artr.addressPresent = res[key]['addressPresent'];
 
-        artr.gender = res[key]['gender'];
-        artr.name = res[key]['name'];
-        artr.noteApplicant = res[key]['noteApplicant'];
-        artr.noteAdmin = res[key]['noteAdmin'];
-        artr.notePersonal = res[key]['notePersonal'];
-        console.log(res[key]['notePersonal']);
+          artr.gender = res[key]['gender'];
+          artr.name = res[key]['name'];
+          artr.noteApplicant = res[key]['noteApplicant'];
+          artr.noteAdmin = res[key]['noteAdmin'];
+          artr.notePersonal = res[key]['notePersonal'];
+          console.log(res[key]['notePersonal']);
 
-        artr.permanentDist = res[key]['permanentDist'];
-        artr.permanentDiv = res[key]['permanentDiv'];
-        artr.permanentId = res[key]['permanentId'];
-        artr.permanentStreet = res[key]['permanentStreet'];
-        artr.permanentUnion = res[key]['permanentUnion'];
-        artr.permanentUpz = res[key]['permanentUpz'];
 
-        // artr.phone_number = res[key]['phone_number'];
-        artr.phone_number = '';
-        for (const phoneKey in res[key]['phone_number']) {
-          artr.phone_number += res[key]['phone_number'][phoneKey]['number'] + ';\n';
-          console.log(res[key]['phone_number'][phoneKey]['number']);
+          // artr.phone_number = res[key]['phone_number'];
+          artr.phone_number = '';
+          for (const phoneKey in res[key]['phone_number']) {
+            artr.phone_number += res[key]['phone_number'][phoneKey]['number'] + ';\n';
+            console.log(res[key]['phone_number'][phoneKey]['number']);
+          }
+          // console.log(artr.phone_number);
+          // console.log(res[key]['phone_number']);
+          console.log(res[key]['addressList']);
+          console.log(res[key]['addressList']['0']['type']);
+          for (const addrKey in res[key]['addressList']) {
+            if (res[key]['addressList'][addrKey]['type'] === 'PRESENT') {
+              // type = 'PRESENT'
+              artr.presentDist = res[key]['addressList'][addrKey]['district'];
+              artr.presentDiv = res[key]['addressList'][addrKey]['division'];
+              artr.presentId = res[key]['addressList'][addrKey]['addressID'];
+              artr.presentStreet = res[key]['addressList'][addrKey]['street_address'];
+              artr.presentUnion = res[key]['addressList'][addrKey]['union_ward'];
+              artr.presentUpz = res[key]['addressList'][addrKey]['upzilla'];
+            } else {
+              artr.permanentDist = res[key]['addressList'][addrKey]['district'];
+              artr.permanentDiv = res[key]['addressList'][addrKey]['division'];
+              artr.permanentId = res[key]['addressList'][addrKey]['addressID'];
+              artr.permanentStreet = res[key]['addressList'][addrKey]['street_address'];
+              artr.permanentUnion = res[key]['addressList'][addrKey]['union_ward'];
+              artr.permanentUpz = res[key]['addressList'][addrKey]['upzilla'];
+            }
+            // artr.phone_number += res[key]['phone_number'][phoneKey]['number'] + ';\n';
+            // console.log(res[key]['phone_number'][phoneKey]['number']);
+          }
+
+          // artr.presentDist = res[key]['presentDist'];
+          // artr.presentDiv = res[key]['presentDiv'];
+          // artr.presentId = res[key]['presentId'];
+          // artr.presentStreet = res[key]['presentStreet'];
+          // artr.presentUnion = res[key]['presentUnion'];
+          // artr.presentUpz = res[key]['presentUpz'];
+
+          artr.profession = res[key]['profession'];
+          artr.profileId = res[key]['profileId'];
+          artr.requestDate = res[key]['requestDate'];
+          artr.requestId = res[key]['requestId'];
+          artr.status = res[key]['status'];
+          artr.userId = res[key]['userId'];
+          artr.username = res[key]['username'];
+
+          this.agentRequestsToReview.push(artr);
         }
-        // console.log(artr.phone_number);
-        // console.log(res[key]['phone_number']);
-
-        artr.presentDist = res[key]['presentDist'];
-        artr.presentDiv = res[key]['presentDiv'];
-        artr.presentId = res[key]['presentId'];
-        artr.presentStreet = res[key]['presentStreet'];
-        artr.presentUnion = res[key]['presentUnion'];
-        artr.presentUpz = res[key]['presentUpz'];
-
-        artr.profession = res[key]['profession'];
-        artr.profileId = res[key]['profileId'];
-        artr.requestDate = res[key]['requestDate'];
-        artr.requestId = res[key]['requestId'];
-        artr.status = res[key]['status'];
-        artr.userId = res[key]['userId'];
-        artr.username = res[key]['username'];
-
-        this.agentRequestsToReview.push(artr);
       }
-    });
+    );
     // console.log(this.agentRequestsToReview);
-    this.agentService.getAgentRequestsToReviewCount(agentSearch).subscribe(res => {
-      console.log(res);
-      this.total = res['COUNT'];
-    });
+    this
+      .agentService
+      .getAgentRequestsToReviewCount(agentSearch)
+
+      .subscribe(res
+
+          => {
+          console
+            .log(res);
+
+          this
+            .total = res['COUNT'];
+        }
+      )
+    ;
   }
 
-  public nextPage() {
+  public
+
+  nextPage() {
     if (this.startRequests <= this.total) {
       this.startRequests += this.perPage;
       this.getAgentRequestsToReview();
     }
   }
 
-  public previousPage() {
+  public
+
+  previousPage() {
     if (this.startRequests > 0) {
       this.startRequests -= this.perPage;
       this.getAgentRequestsToReview();
     }
   }
 
-  public requestReject(requestIdReject: string) {
+  public
+
+  requestReject(requestIdReject
+                  :
+                  string
+  ) {
     const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestIdReject, this.rivewValue.REJECT);
     this.agentService.requestReview(reviewRequestReject).subscribe(res => {
       console.log(res);
@@ -127,7 +164,14 @@ export class ReviewComponent implements OnInit {
     });
   }
 
-  public requestAccept(requestIdAccept: string, value: string) {
+  public
+
+  requestAccept(requestIdAccept
+                  :
+                  string, value
+                  :
+                  string
+  ) {
     const reviewRequestAccept: RequestReviewRequest = new RequestReviewRequest(requestIdAccept, value);
     // console.log(requestId);
     console.log(reviewRequestAccept);
@@ -143,7 +187,14 @@ export class ReviewComponent implements OnInit {
     });
   }
 
-  public requestHold(requestIdHold: string, HOLD: string) {
+  public
+
+  requestHold(requestIdHold
+                :
+                string, HOLD
+                :
+                string
+  ) {
     const reviewRequestHold: RequestReviewRequest = new RequestReviewRequest(requestIdHold, HOLD);
     this.agentService.requestReview(reviewRequestHold).subscribe(res => {
       console.log(res);
@@ -157,7 +208,9 @@ export class ReviewComponent implements OnInit {
   }
 
 
-  public updateAdminNote() {
+  public
+
+  updateAdminNote() {
     const adminNote = new RequestAdminNote(this.requestID, this.adminNote);
     console.log(adminNote);
     this.agentService.updateAdminNote(adminNote).subscribe(res => {
@@ -168,7 +221,9 @@ export class ReviewComponent implements OnInit {
     });
   }
 
-  public updatePersonalNote() {
+  public
+
+  updatePersonalNote() {
     const personalNoteObj = new RequestPersonalNote(this.requestID, this.personalNote);
     console.log(personalNoteObj);
     this.agentService.updatePersonalNote(personalNoteObj).subscribe(res => {
