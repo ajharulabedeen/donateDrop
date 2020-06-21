@@ -24,6 +24,7 @@ public class AgentRequest implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "agent_request_id")
     private Long id;
 
     @Column(name = "user_id", unique = true)
