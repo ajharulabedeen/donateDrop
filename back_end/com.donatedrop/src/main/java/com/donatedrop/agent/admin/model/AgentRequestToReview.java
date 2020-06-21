@@ -72,7 +72,7 @@ public class AgentRequestToReview implements Serializable {
     @Column(name = "user_id")
     private String userId;
     @Basic(optional = false)
-    @Column(name = "id")
+    @Column(name = "agent_request_id")
     private long id;
     @Column(name = "accept_date")
     private String acceptDate;
