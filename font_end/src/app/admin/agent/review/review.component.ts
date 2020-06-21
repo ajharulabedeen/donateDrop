@@ -57,6 +57,7 @@ export class ReviewComponent implements OnInit {
           artr.noteApplicant = res[key]['noteApplicant'];
           artr.noteAdmin = res[key]['noteAdmin'];
           artr.notePersonal = res[key]['notePersonal'];
+          //clean
           console.log(res[key]['notePersonal']);
 
 
@@ -68,8 +69,8 @@ export class ReviewComponent implements OnInit {
           }
           // console.log(artr.phone_number);
           // console.log(res[key]['phone_number']);
-          console.log(res[key]['addressList']);
-          console.log(res[key]['addressList']['0']['type']);
+          // console.log(res[key]['addressList']);
+          // console.log(res[key]['addressList']['0']['type']);
           for (const addrKey in res[key]['addressList']) {
             if (res[key]['addressList'][addrKey]['type'] === 'PRESENT') {
               // type = 'PRESENT'
@@ -87,16 +88,7 @@ export class ReviewComponent implements OnInit {
               artr.permanentUnion = res[key]['addressList'][addrKey]['union_ward'];
               artr.permanentUpz = res[key]['addressList'][addrKey]['upzilla'];
             }
-            // artr.phone_number += res[key]['phone_number'][phoneKey]['number'] + ';\n';
-            // console.log(res[key]['phone_number'][phoneKey]['number']);
           }
-
-          // artr.presentDist = res[key]['presentDist'];
-          // artr.presentDiv = res[key]['presentDiv'];
-          // artr.presentId = res[key]['presentId'];
-          // artr.presentStreet = res[key]['presentStreet'];
-          // artr.presentUnion = res[key]['presentUnion'];
-          // artr.presentUpz = res[key]['presentUpz'];
 
           artr.profession = res[key]['profession'];
           artr.profileId = res[key]['profileId'];
@@ -111,47 +103,28 @@ export class ReviewComponent implements OnInit {
       }
     );
     // console.log(this.agentRequestsToReview);
-    this
-      .agentService
-      .getAgentRequestsToReviewCount(agentSearch)
-
-      .subscribe(res
-
-          => {
-          console
-            .log(res);
-
-          this
-            .total = res['COUNT'];
+    this.agentService.getAgentRequestsToReviewCount(agentSearch).subscribe(res => {
+          console.log(res);
+          this.total = res['COUNT'];
         }
-      )
-    ;
+      );
   }
 
-  public
-
-  nextPage() {
+  public nextPage() {
     if (this.startRequests <= this.total) {
       this.startRequests += this.perPage;
       this.getAgentRequestsToReview();
     }
   }
 
-  public
-
-  previousPage() {
+  public previousPage() {
     if (this.startRequests > 0) {
       this.startRequests -= this.perPage;
       this.getAgentRequestsToReview();
     }
   }
 
-  public
-
-  requestReject(requestIdReject
-                  :
-                  string
-  ) {
+  public requestReject(requestIdReject : string ) {
     const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestIdReject, this.rivewValue.REJECT);
     this.agentService.requestReview(reviewRequestReject).subscribe(res => {
       console.log(res);
