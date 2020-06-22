@@ -14,6 +14,7 @@ export class ParentComponent {
   cityMsg = 'Indian City Names';
   cityArray = ['Varanasi', 'Delhi', 'Mumbai'];
   stdAddMsg = 'Add Student';
+  stdAddMsg1 = 'Add Student';
   rejectValue = '0';
 
   // Property for child component two
@@ -27,11 +28,19 @@ export class ParentComponent {
 
   // Property used in parent
   stdFullName = '';
+  stdFullName1 = '';
   sum = '';
   msg = '';
 
   saveData(std) {
     this.stdFullName = std.fname + ' ' + std.lname;
+    console.log('stdFullName > ' + this.stdFullName);
+  }
+
+  saveData1(std) {
+    console.log('saveData1');
+    this.stdFullName1 = std.fname + ' ' + std.lname;
+    console.log('stdFullName1' + this.stdFullName1);
   }
 
   printSum(res) {

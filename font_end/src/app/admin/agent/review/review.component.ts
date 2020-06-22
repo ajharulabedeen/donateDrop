@@ -93,7 +93,8 @@ export class ReviewComponent implements OnInit {
           artr.profession = res[key]['profession'];
           artr.profileId = res[key]['profileId'];
           artr.requestDate = res[key]['requestDate'];
-          artr.requestId = res[key]['requestId'];
+          // artr.requestId = res[key]['requestId'];
+          artr.requestId = res[key]['id'];
           artr.status = res[key]['status'];
           artr.userId = res[key]['userId'];
           artr.username = res[key]['username'];
