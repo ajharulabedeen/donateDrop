@@ -36,7 +36,13 @@
 </div>
 <!--End : Rivew Request-->
 <div align="center" id="accepted" class="tabcontent">
-  <app-agent-accepted></app-agent-accepted>
+  <!--<app-agent-accepted></app-agent-accepted>-->
+  <app-agent-review
+    [statusType]="ACCEPTED"
+    [buttonFreeze]="true"
+    [buttonDetials]="true">
+  </app-agent-review>
+
 </div>
 <div align="center" id="rejected" class="tabcontent">
   <!--<app-agent-rejected></app-agent-rejected>-->

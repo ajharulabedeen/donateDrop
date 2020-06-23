@@ -27,6 +27,8 @@ export class ReviewComponent implements OnInit {
   @Input()
   buttonActive = false;
   @Input()
+  buttonFreeze = false;
+  @Input()
   buttonDetials = false;
 
   @Input()
@@ -159,8 +161,6 @@ export class ReviewComponent implements OnInit {
     });
   }
 
-  public
-
   requestAccept(requestIdAccept: string) {
     const reviewRequestAccept: RequestReviewRequest = new RequestReviewRequest(requestIdAccept, 'ACCEPT');
     // console.log(requestId);
@@ -177,13 +177,20 @@ export class ReviewComponent implements OnInit {
     });
   }
 
+  public requestFreeze(requestIdFreeze: string) {
+    const reviewRequestFreeze: RequestReviewRequest = new RequestReviewRequest(requestIdFreeze, 'FREEZE');
+    this.agentService.requestReview(reviewRequestFreeze).subscribe(res => {
+      console.log(res);
+      if (res['STATUS'] === 'OK') {
+        // this.getAgentRequestsToReview();
+        var artr: AgentRequestToReview = this.agentRequestsToReview.find(({requestId}) => requestId === requestIdFreeze);
+        this.agentRequestsToReview = this.agentRequestsToReview.filter(obj => obj !== artr);
+        this.total -= 1;
+      }
+    });
+  }
 
-  requestHold(requestIdHold
-                :
-                string, HOLD
-                :
-                string
-  ) {
+  requestHold(requestIdHold: string, HOLD: string) {
     const reviewRequestHold: RequestReviewRequest = new RequestReviewRequest(requestIdHold, HOLD);
     this.agentService.requestReview(reviewRequestHold).subscribe(res => {
       console.log(res);
@@ -195,7 +202,6 @@ export class ReviewComponent implements OnInit {
       }
     });
   }
-
 
   updateAdminNote() {
     const adminNote = new RequestAdminNote(this.requestID, this.adminNote);
