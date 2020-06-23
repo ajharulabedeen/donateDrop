@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AgentRequestToReview} from '../models/agent-request-to-review.model';
 import {AgentServiceService} from '../agent-service.service';
 import {RequestGetAgentRequests} from '../models/request-get-agent-requests.model';
@@ -14,6 +14,22 @@ import {History} from '../../../donation-history/history.model';
   styleUrls: ['./review.component.scss']
 })
 export class ReviewComponent implements OnInit {
+
+  //start : new
+  @Input()
+  buttonReview = false;
+  @Input()
+  buttonReject = false;
+  @Input()
+  buttonApprove = false;
+  // @Input()
+  // buttonAccept = false;
+  @Input()
+  buttonActive = false;
+  @Input()
+  buttonDetials = false;
+  //end : new
+
 
   searchKey: string;
   searchByColumn = 'username';
@@ -105,10 +121,10 @@ export class ReviewComponent implements OnInit {
     );
     // console.log(this.agentRequestsToReview);
     this.agentService.getAgentRequestsToReviewCount(agentSearch).subscribe(res => {
-          console.log(res);
-          this.total = res['COUNT'];
-        }
-      );
+        console.log(res);
+        this.total = res['COUNT'];
+      }
+    );
   }
 
   public nextPage() {
@@ -125,7 +141,7 @@ export class ReviewComponent implements OnInit {
     }
   }
 
-  public requestReject(requestIdReject : string ) {
+  public requestReject(requestIdReject: string) {
     const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestIdReject, this.rivewValue.REJECT);
     this.agentService.requestReview(reviewRequestReject).subscribe(res => {
       console.log(res);
@@ -161,7 +177,6 @@ export class ReviewComponent implements OnInit {
     });
   }
 
-  public
 
   requestHold(requestIdHold
                 :
@@ -182,8 +197,6 @@ export class ReviewComponent implements OnInit {
   }
 
 
-  public
-
   updateAdminNote() {
     const adminNote = new RequestAdminNote(this.requestID, this.adminNote);
     console.log(adminNote);
@@ -194,8 +207,6 @@ export class ReviewComponent implements OnInit {
       }
     });
   }
-
-  public
 
   updatePersonalNote() {
     const personalNoteObj = new RequestPersonalNote(this.requestID, this.personalNote);

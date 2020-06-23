@@ -14,11 +14,11 @@
 <hr>
 <app-childone
   [ctMsg]="cityMsg"
-  [reject]="true"
   [ctArray]="cityArray"
   [studentAddMsg]="stdAddMsg1"
   (addStudentEvent)="saveData1($event)"
   (sendMsgEvent)="printMsg($event)">
+  <!--[reject]="true"-->
   <!--(sendMsgEvent)="printMsg($event)">-->
 </app-childone>
 

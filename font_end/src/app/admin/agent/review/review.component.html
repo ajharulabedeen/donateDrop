@@ -103,11 +103,12 @@
           <tr *ngFor="let ar of agentRequestsToReview; let i=index">
             <!--Actions-->
             <td>
-              <button class="btn btn-xs btn-warning" (click)="requestReject(ar.requestId)" data-toggle="modal"
+              <button *ngIf="buttonReject" class="btn btn-xs btn-warning" (click)="requestReject(ar.requestId)"
+                      data-toggle="modal"
                       data-target="#donation_delete">Reject
               </button>
               <br>
-              <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modal_work"
+              <button *ngIf="buttonApprove" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modal_work"
                       (click)="requestAccept(ar.requestId, rivewValue.ACCEPT)">Approve
               </button>
             </td>

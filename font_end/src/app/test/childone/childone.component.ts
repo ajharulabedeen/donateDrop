@@ -9,7 +9,8 @@ import {Student} from '../student.model';
 export class ChildoneComponent {
 
   @Input()
-  ctMsg: string;
+    // ctMsg: string;
+  ctMsg = '';
 
   @Input()
   reject: string;

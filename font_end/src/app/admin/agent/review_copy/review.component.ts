@@ -15,6 +15,14 @@ import {History} from '../../../donation-history/history.model';
 })
 export class ReviewComponent implements OnInit {
 
+  //start : new
+  buttonReview = false;
+  buttonReject = false;
+  buttonAccept = false;
+  buttonActive = false;
+  buttonDetials = false;
+  //end : new
+
   searchKey: string;
   searchByColumn = 'username';
   total = 0;
@@ -105,10 +113,10 @@ export class ReviewComponent implements OnInit {
     );
     // console.log(this.agentRequestsToReview);
     this.agentService.getAgentRequestsToReviewCount(agentSearch).subscribe(res => {
-          console.log(res);
-          this.total = res['COUNT'];
-        }
-      );
+        console.log(res);
+        this.total = res['COUNT'];
+      }
+    );
   }
 
   public nextPage() {
@@ -125,7 +133,7 @@ export class ReviewComponent implements OnInit {
     }
   }
 
-  public requestReject(requestIdReject : string ) {
+  public requestReject(requestIdReject: string) {
     const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestIdReject, this.rivewValue.REJECT);
     this.agentService.requestReview(reviewRequestReject).subscribe(res => {
       console.log(res);
