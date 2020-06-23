@@ -28,6 +28,9 @@ export class ReviewComponent implements OnInit {
   buttonActive = false;
   @Input()
   buttonDetials = false;
+
+  @Input()
+  statusType = '';
   //end : new
 
 
@@ -57,7 +60,7 @@ export class ReviewComponent implements OnInit {
   public getAgentRequestsToReview() {
     var finalSearchKey = '%' + this.searchKey + '%';
     const agentSearch: RequestGetAgentRequests = new RequestGetAgentRequests(
-      this.startRequests.toString(), this.perPage.toString(), this.searchByColumn, finalSearchKey, '0');
+      this.startRequests.toString(), this.perPage.toString(), this.searchByColumn, finalSearchKey, this.statusType);
     console.log(agentSearch);
     this.agentRequestsToReview = [];
     this.agentService.getAgentRequestsToReview(agentSearch).subscribe(res => {

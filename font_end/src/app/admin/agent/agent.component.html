@@ -18,6 +18,7 @@
 <!--Start : Rivew Request-->
 <div align="center" id="request_review" class="tabcontent">
   <app-agent-review
+    [statusType]="0"
     [buttonReject]="true"
     [buttonApprove]="true">
   </app-agent-review>
@@ -39,6 +40,7 @@
 </div>
 <div align="center" id="rejected" class="tabcontent">
   <app-agent-review
+    [statusType]="0"
     [buttonApprove]="true">
   </app-agent-review>
 
