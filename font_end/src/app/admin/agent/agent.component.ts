@@ -14,7 +14,9 @@ import {RequestPersonalNote} from './models/request-personal-note.model';
 })
 export class AgentComponent implements OnInit {
 
-  REJECT = 'REJECT';
+  REJECTED = 'REJECT';
+  ACCEPTED = 'ACCEPT';
+  FREEZED = 'FREEZE';
 
   ngOnInit() {
     // this.tabChange(event, 'request_review');
