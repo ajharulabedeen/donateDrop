@@ -107,11 +107,18 @@
                       data-toggle="modal"
                       data-target="#donation_delete">Reject
               </button>
-              <br>
+              <br *ngIf="buttonReject">
               <button *ngIf="buttonApprove" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modal_work"
                       (click)="requestAccept(ar.requestId)">Approve
               </button>
+              <br *ngIf="buttonReject">
+              <button *ngIf="buttonActive" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modal_work"
+                      (click)="requestAccept(ar.requestId)">Active
+              </button>
               <br>
+              <button *ngIf="buttonDetials" class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal_work"
+                      (click)="requestAccept(ar.requestId)">Details
+              </button>
             </td>
             <td>{{i+1}}</td>
             <td>{{ar.requestDate}}</td>
