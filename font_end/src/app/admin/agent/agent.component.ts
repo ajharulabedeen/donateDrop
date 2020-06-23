@@ -3,7 +3,7 @@ import {AgentServiceService} from './agent-service.service';
 import {RequestGetAgentRequests} from './models/request-get-agent-requests.model';
 import {AgentRequestToReview} from './models/agent-request-to-review.model';
 import {RequestReviewRequest} from './models/request-review-request.model';
-import {ReviewValue} from './models/review-value.model';
+// import {ReviewValue} from './models/review-value.model';
 import {RequestAdminNote} from './models/request-admin-note.model';
 import {RequestPersonalNote} from './models/request-personal-note.model';
 
@@ -13,6 +13,8 @@ import {RequestPersonalNote} from './models/request-personal-note.model';
   styleUrls: ['./agent.component.scss']
 })
 export class AgentComponent implements OnInit {
+
+  REJECT = 'REJECT';
 
   ngOnInit() {
     // this.tabChange(event, 'request_review');

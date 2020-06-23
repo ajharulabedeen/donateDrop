@@ -4,7 +4,7 @@ import {AgentDashboardServiceService} from '../agent-dashboard-service.service';
 import {RequestSearchReview} from '../model/request-search-review.model';
 import {RequestReviewRequest} from '../../../admin/agent/models/request-review-request.model';
 import {RequestNote} from '../model/request-note.model';
-import {ReviewValue} from '../../../admin/agent/models/review-value.model';
+// import {ReviewValue} from '../../../admin/agent/models/review-value.model';
 
 @Component({
   selector: 'app-agent-dashboard-accepted',
@@ -26,7 +26,7 @@ export class AgentDashboardAcceptedComponent implements OnInit {
   personalNote: string;
 
   donnerRequestsToReview: DonnerToAgentRequestToReview[] = new Array();
-  rivewValue: ReviewValue = new ReviewValue();
+  // rivewValue: ReviewValue = new ReviewValue();
 
   constructor(private adService: AgentDashboardServiceService) {
   }

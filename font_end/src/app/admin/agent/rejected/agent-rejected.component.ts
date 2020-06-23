@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ReviewValue} from '../models/review-value.model';
+// import {ReviewValue} from '../models/review-value.model';
 import {RequestPersonalNote} from '../models/request-personal-note.model';
 import {RequestReviewRequest} from '../models/request-review-request.model';
 import {RequestAdminNote} from '../models/request-admin-note.model';

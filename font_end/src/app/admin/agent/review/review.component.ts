@@ -3,7 +3,7 @@ import {AgentRequestToReview} from '../models/agent-request-to-review.model';
 import {AgentServiceService} from '../agent-service.service';
 import {RequestGetAgentRequests} from '../models/request-get-agent-requests.model';
 import {RequestReviewRequest} from '../models/request-review-request.model';
-import {ReviewValue} from '../models/review-value.model';
+// import {ReviewValue} from '../models/review-value.model';
 import {RequestAdminNote} from '../models/request-admin-note.model';
 import {RequestPersonalNote} from '../models/request-personal-note.model';
 import {History} from '../../../donation-history/history.model';
@@ -47,7 +47,8 @@ export class ReviewComponent implements OnInit {
   personalNote: string;
 
   agentRequestsToReview: AgentRequestToReview[] = new Array();
-  rivewValue: ReviewValue = new ReviewValue();
+
+  // rivewValue: ReviewValue = new ReviewValue();
 
   constructor(private agentService: AgentServiceService) {
   }
@@ -58,6 +59,7 @@ export class ReviewComponent implements OnInit {
   }
 
   public getAgentRequestsToReview() {
+    console.log('this.statusType : ' + this.statusType);
     var finalSearchKey = '%' + this.searchKey + '%';
     const agentSearch: RequestGetAgentRequests = new RequestGetAgentRequests(
       this.startRequests.toString(), this.perPage.toString(), this.searchByColumn, finalSearchKey, this.statusType);

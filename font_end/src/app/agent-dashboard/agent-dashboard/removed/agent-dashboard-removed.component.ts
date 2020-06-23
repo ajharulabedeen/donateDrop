@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DonnerToAgentRequestToReview} from '../model/donner-to-agent-request-to-review.model';
-import {ReviewValue} from '../../../admin/agent/models/review-value.model';
+// import {ReviewValue} from '../../../admin/agent/models/review-value.model';
 import {AgentDashboardServiceService} from '../agent-dashboard-service.service';
 import {RequestReviewRequest} from '../../../admin/agent/models/request-review-request.model';
 import {RequestSearchReview} from '../model/request-search-review.model';
@@ -26,7 +26,7 @@ export class AgentDashboardRemovedComponent implements OnInit {
   personalNote: string;
 
   donnerRequestsToReview: DonnerToAgentRequestToReview[] = new Array();
-  rivewValue: ReviewValue = new ReviewValue();
+  // rivewValue: ReviewValue = new ReviewValue();
 
   constructor(private adService: AgentDashboardServiceService) {
   }

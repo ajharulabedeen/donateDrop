@@ -1,5 +1,5 @@
-export class ReviewValue {
-  public REJECT = 'REJECT';
-  public ACCEPT = 'ACCEPT';
-  public REMOVE = 'REMOVE';
-}
+// export class ReviewValue {
+//   public REJECT = 'REJECT';
+//   public ACCEPT = 'ACCEPT';
+//   public REMOVE = 'REMOVE';
+// }

@@ -4,7 +4,7 @@ import {AgentServiceService} from '../agent-service.service';
 import {RequestGetAgentRequests} from '../models/request-get-agent-requests.model';
 import {RequestReviewRequest} from '../models/request-review-request.model';
 import {RequestAdminNote} from '../models/request-admin-note.model';
-import {ReviewValue} from '../models/review-value.model';
+// import {ReviewValue} from '../models/review-value.model';
 import {RequestPersonalNote} from '../models/request-personal-note.model';
 
 @Component({
@@ -27,7 +27,7 @@ export class AgentAcceptedComponent implements OnInit {
   personalNote: string;
 
   agentRequestsToReview: AgentRequestToReview[] = new Array();
-  rivewValue: ReviewValue = new ReviewValue();
+  // rivewValue: ReviewValue = new ReviewValue();
 
   constructor(private agentService: AgentServiceService) {
   }

@@ -1,7 +1,7 @@
-import { ReviewValue } from './review-value.model';
+// import { ReviewValue } from './review-value.model';
 
-describe('ReviewValue', () => {
-  it('should create an instance', () => {
-    expect(new ReviewValue()).toBeTruthy();
-  });
-});
+// describe('ReviewValue', () => {
+//   it('should create an instance', () => {
+//     expect(new ReviewValue()).toBeTruthy();
+//   });
+// });
