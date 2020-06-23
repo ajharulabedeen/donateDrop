@@ -147,7 +147,7 @@ export class ReviewComponent implements OnInit {
   }
 
   public requestReject(requestIdReject: string) {
-    const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestIdReject, this.rivewValue.REJECT);
+    const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestIdReject, 'REJECT');
     this.agentService.requestReview(reviewRequestReject).subscribe(res => {
       console.log(res);
       if (res['STATUS'] === 'OK') {
@@ -161,13 +161,8 @@ export class ReviewComponent implements OnInit {
 
   public
 
-  requestAccept(requestIdAccept
-                  :
-                  string, value
-                  :
-                  string
-  ) {
-    const reviewRequestAccept: RequestReviewRequest = new RequestReviewRequest(requestIdAccept, value);
+  requestAccept(requestIdAccept: string) {
+    const reviewRequestAccept: RequestReviewRequest = new RequestReviewRequest(requestIdAccept, 'ACCEPT');
     // console.log(requestId);
     console.log(reviewRequestAccept);
     this.agentService.requestReview(reviewRequestAccept).subscribe(res => {

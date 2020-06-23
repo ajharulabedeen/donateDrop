@@ -27,7 +27,7 @@ export class AgentRejectedComponent implements OnInit {
   personalNote: string;
 
   agentRequestsToReview: AgentRequestToReview[] = new Array();
-  rivewValue: ReviewValue = new ReviewValue();
+  // rivewValue: ReviewValue = new ReviewValue();
 
   constructor(private agentService: AgentServiceService) {
   }
