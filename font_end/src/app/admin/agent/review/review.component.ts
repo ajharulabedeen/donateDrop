@@ -35,6 +35,8 @@ export class ReviewComponent implements OnInit {
 
   @Input()
   statusType = '';
+
+  headerColor = '';
   //end : new
 
 
@@ -58,6 +60,15 @@ export class ReviewComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.statusType == '0') {
+      this.headerColor = 'text-orange';
+    } else if (this.statusType == 'ACCEPT') {
+      this.headerColor = 'text-aqua';
+    } else if (this.statusType == 'REJECT') {
+      this.headerColor = 'text-danger';
+    } else if (this.statusType == 'FREEZE') {
+      this.headerColor = 'text-info';
+    }
     this.searchKey = '';
     this.getAgentRequestsToReview();
   }
