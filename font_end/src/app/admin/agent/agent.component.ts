@@ -18,6 +18,11 @@ export class AgentComponent implements OnInit {
   ACCEPTED = 'ACCEPT';
   FREEZED = 'FREEZE';
 
+  headerAccepted = 'Request Accepted';
+  headerRejected = 'Request Rejected';
+  headerFreeze = 'Request Freezed';
+  headerReview = 'Request to Review';
+
   ngOnInit() {
     // this.tabChange(event, 'request_review');
     // this.tabChange(event, 'accepted');

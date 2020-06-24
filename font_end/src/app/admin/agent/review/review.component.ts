@@ -17,6 +17,8 @@ export class ReviewComponent implements OnInit {
 
   //start : new
   @Input()
+  pageHeader = '';
+  @Input()
   buttonReview = false;
   @Input()
   buttonReject = false;
@@ -112,13 +114,16 @@ export class ReviewComponent implements OnInit {
               artr.permanentUpz = res[key]['addressList'][addrKey]['upzilla'];
             }
           }
-
           artr.profession = res[key]['profession'];
           artr.profileId = res[key]['profileId'];
           if (this.statusType == '0') {
             artr.requestDate = res[key]['requestDate'];
           } else if (this.statusType == 'ACCEPT') {
             artr.requestDate = res[key]['acceptDate'];
+          } else if (this.statusType == 'REJECT') {
+            artr.requestDate = res[key]['rejectDate'];
+          } else if (this.statusType == 'FREEZE') {
+            artr.requestDate = res[key]['freezeDate'];
           }
           // artr.requestId = res[key]['requestId'];
           artr.requestId = res[key]['id'];
