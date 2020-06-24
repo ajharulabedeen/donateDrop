@@ -117,6 +117,8 @@ export class ReviewComponent implements OnInit {
           artr.profileId = res[key]['profileId'];
           if (this.statusType == '0') {
             artr.requestDate = res[key]['requestDate'];
+          } else if (this.statusType == 'ACCEPT') {
+            artr.requestDate = res[key]['acceptDate'];
           }
           // artr.requestId = res[key]['requestId'];
           artr.requestId = res[key]['id'];
