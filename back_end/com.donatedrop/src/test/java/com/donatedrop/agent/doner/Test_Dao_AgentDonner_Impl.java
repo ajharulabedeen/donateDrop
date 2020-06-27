@@ -13,6 +13,8 @@ import com.donatedrop.agent.models.RequestNote;
 import com.donatedrop.agent.models.RequestReviewRequest;
 import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.other.DumpDao;
+import com.donatedrop.other.DumpData;
+import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
 import org.hibernate.event.internal.DefaultPersistOnFlushEventListener;
 import org.junit.jupiter.api.Assertions;
@@ -178,4 +180,19 @@ public class Test_Dao_AgentDonner_Impl {
         assertEquals(requestNoteFormDB, note);
     }
 
-}
+    //    insert
+//    @Test
+    public void testInsertMultipleDonnerToAgentRequest() {
+        String userID = dumpDao.getNotRequestedDonnerToAgentUsers(0, 5).get(0).toString();
+
+        dumpDao.getNotRequestedDonnerToAgentUsers(0, 100).forEach(s -> {
+            DonnerRequestToAgent donnerRequestToAgent = new DonnerRequestToAgent();
+            donnerRequestToAgent.setUserIdDonner(s.toString());
+            donnerRequestToAgent.setNoteDonner(DumpData.getNote());
+            Map<String, String> result = dao_agentDonner_i.saveRequest(donnerRequestToAgent);
+            System.out.println("\n" + result + "\n");
+            assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        });
+
+    }
+}// class

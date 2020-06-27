@@ -36,6 +36,7 @@ public class ControllerAgentAdmin {
 
     @PostMapping("deleteRequest")
     public Map<String, String> deleteRequest(@RequestParam String userID) {
+        System.out.println("Hello!");
         return service_Agent_I.deleteRequest(userID);
     }
 
@@ -46,6 +47,7 @@ public class ControllerAgentAdmin {
 
     @PostMapping("getAgentRequestsToReview")
     public List<AgentRequestToReview> getAgentRequestsToReview(@RequestBody RequestSearchReview requestGetAgentRequestsReview) {
+        System.out.println("Hello! getAgentRequestsToReview >>");
         return service_Agent_I.getAgentRequestsToReview(requestGetAgentRequestsReview);
     }
 
