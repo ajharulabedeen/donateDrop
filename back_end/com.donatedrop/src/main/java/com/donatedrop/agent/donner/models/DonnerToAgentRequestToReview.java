@@ -5,7 +5,10 @@
  */
 package com.donatedrop.agent.donner.models;
 
+import com.donatedrop.models.Address;
 import com.donatedrop.profile.model.PhoneNumber;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import java.io.Serializable;
 import java.math.BigInteger;
@@ -102,6 +105,18 @@ public class DonnerToAgentRequestToReview implements Serializable {
     private String userIdDonner;
     @Column(name = "USERNAME")
     private String username;
+
+    @OneToMany
+    //    @OneToMany(fetch = FetchType.EAGER)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name = "profile_id")
+    private List<PhoneNumber> phone_number;
+
+    //    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
+//    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name = "profile_id")
+    private List<Address> addressList;
 
     public DonnerToAgentRequestToReview() {
     }
@@ -288,5 +303,52 @@ public class DonnerToAgentRequestToReview implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public List<PhoneNumber> getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(List<PhoneNumber> phone_number) {
+        this.phone_number = phone_number;
+    }
+
+    public List<Address> getAddressList() {
+        return addressList;
+    }
+
+    public void setAddressList(List<Address> addressList) {
+        this.addressList = addressList;
+    }
+
+    @Override
+    public String toString() {
+        return "DonnerToAgentRequestToReview{" +
+                "profileId=" + profileId +
+                ", available='" + available + '\'' +
+                ", birthDate='" + birthDate + '\'' +
+                ", bloodGroup='" + bloodGroup + '\'' +
+                ", careOf='" + careOf + '\'' +
+                ", email='" + email + '\'' +
+                ", gender='" + gender + '\'' +
+                ", maritalStatus='" + maritalStatus + '\'' +
+                ", name='" + name + '\'' +
+                ", profession='" + profession + '\'' +
+                ", religion='" + religion + '\'' +
+                ", userId='" + userId + '\'' +
+                ", requestDonnerToAgentId=" + requestDonnerToAgentId +
+                ", acceptDate='" + acceptDate + '\'' +
+                ", noteAgent='" + noteAgent + '\'' +
+                ", noteAgentPersonal='" + noteAgentPersonal + '\'' +
+                ", noteDonner='" + noteDonner + '\'' +
+                ", rejectDate='" + rejectDate + '\'' +
+                ", removeDate='" + removeDate + '\'' +
+                ", requestDate='" + requestDate + '\'' +
+                ", status='" + status + '\'' +
+                ", userIdDonner='" + userIdDonner + '\'' +
+                ", username='" + username + '\'' +
+                ", phone_number=" + phone_number +
+                ", addressList=" + addressList +
+                '}';
     }
 }
