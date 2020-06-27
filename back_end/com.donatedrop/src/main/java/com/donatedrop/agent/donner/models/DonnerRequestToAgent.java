@@ -24,6 +24,7 @@ public class DonnerRequestToAgent implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "request_donner_to_agent_id")
     private Long id;
 
     @Column(name = "user_id_donner", unique = true)
