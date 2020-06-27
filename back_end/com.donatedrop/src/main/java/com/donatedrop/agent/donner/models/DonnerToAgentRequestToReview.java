@@ -54,78 +54,54 @@ public class DonnerToAgentRequestToReview implements Serializable {
     @Basic(optional = false)
     @Column(name = "profile_id")
     private long profileId;
-    @Column(name = "name")
-    private String name;
+    @Column(name = "available")
+    private String available;
+    @Column(name = "birth_date")
+    private String birthDate;
+    @Column(name = "blood_Group")
+    private String bloodGroup;
+    @Column(name = "care_of")
+    private String careOf;
+    @Column(name = "email")
+    private String email;
     @Column(name = "gender")
     private String gender;
+    @Column(name = "marital_status")
+    private String maritalStatus;
+    @Column(name = "name")
+    private String name;
     @Column(name = "profession")
     private String profession;
+    @Column(name = "religion")
+    private String religion;
     @Column(name = "user_id")
     private String userId;
-
-
-    @Column(name = "address_permanent")
-    private BigInteger addressPermanent;
-    @Column(name = "address_present")
-    private BigInteger addressPresent;
-
     @Basic(optional = false)
-    @Column(name = "request_id")
-    private long requestId;
-    @Column(name = "request_date")
-    private String requestDate;
+    @Column(name = "request_donner_to_agent_id")
+    private long requestDonnerToAgentId;
     @Column(name = "accept_date")
     private String acceptDate;
-    @Column(name = "reject_date")
-    private String rejectDate;
-    @Column(name = "remove_date")
-    private String removeDate;
-    @Column(name = "status")
-    private String status;
-    @Lob
-    @Column(name = "note_donner")
-    private String noteDonner;
     @Lob
     @Column(name = "note_agent")
     private String noteAgent;
     @Lob
     @Column(name = "note_agent_personal")
     private String noteAgentPersonal;
-
-    @Basic(optional = false)
-    @Column(name = "present_id")
-    private long presentId;
-    @Column(name = "present_div")
-    private String presentDiv;
-    @Column(name = "present_dist")
-    private String presentDist;
-    @Column(name = "present_upz")
-    private String presentUpz;
-    @Column(name = "present_union")
-    private String presentUnion;
-    @Column(name = "present_street")
-    private String presentStreet;
-    @Column(name = "username")
+    @Lob
+    @Column(name = "note_donner")
+    private String noteDonner;
+    @Column(name = "reject_date")
+    private String rejectDate;
+    @Column(name = "remove_date")
+    private String removeDate;
+    @Column(name = "request_date")
+    private String requestDate;
+    @Column(name = "status")
+    private String status;
+    @Column(name = "user_id_donner")
+    private String userIdDonner;
+    @Column(name = "USERNAME")
     private String username;
-
-    @Basic(optional = false)
-    @Column(name = "permanent_id")
-    private long permanentId;
-    @Column(name = "permanent_div")
-    private String permanentDiv;
-    @Column(name = "permanent_dist")
-    private String permanentDist;
-    @Column(name = "permanent_upz")
-    private String permanentUpz;
-    @Column(name = "permanent_union")
-    private String permanentUnion;
-    @Column(name = "permanent_street")
-    private String permanentStreet;
-
-
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "profile_id")
-    private List<PhoneNumber> phone_number;
 
     public DonnerToAgentRequestToReview() {
     }
@@ -138,12 +114,44 @@ public class DonnerToAgentRequestToReview implements Serializable {
         this.profileId = profileId;
     }
 
-    public String getName() {
-        return name;
+    public String getAvailable() {
+        return available;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAvailable(String available) {
+        this.available = available;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getBloodGroup() {
+        return bloodGroup;
+    }
+
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
+
+    public String getCareOf() {
+        return careOf;
+    }
+
+    public void setCareOf(String careOf) {
+        this.careOf = careOf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getGender() {
@@ -154,12 +162,36 @@ public class DonnerToAgentRequestToReview implements Serializable {
         this.gender = gender;
     }
 
+    public String getMaritalStatus() {
+        return maritalStatus;
+    }
+
+    public void setMaritalStatus(String maritalStatus) {
+        this.maritalStatus = maritalStatus;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getProfession() {
         return profession;
     }
 
     public void setProfession(String profession) {
         this.profession = profession;
+    }
+
+    public String getReligion() {
+        return religion;
+    }
+
+    public void setReligion(String religion) {
+        this.religion = religion;
     }
 
     public String getUserId() {
@@ -170,36 +202,12 @@ public class DonnerToAgentRequestToReview implements Serializable {
         this.userId = userId;
     }
 
-    public BigInteger getAddressPermanent() {
-        return addressPermanent;
+    public long getRequestDonnerToAgentId() {
+        return requestDonnerToAgentId;
     }
 
-    public void setAddressPermanent(BigInteger addressPermanent) {
-        this.addressPermanent = addressPermanent;
-    }
-
-    public BigInteger getAddressPresent() {
-        return addressPresent;
-    }
-
-    public void setAddressPresent(BigInteger addressPresent) {
-        this.addressPresent = addressPresent;
-    }
-
-    public long getRequestId() {
-        return requestId;
-    }
-
-    public void setRequestId(long requestId) {
-        this.requestId = requestId;
-    }
-
-    public String getRequestDate() {
-        return requestDate;
-    }
-
-    public void setRequestDate(String requestDate) {
-        this.requestDate = requestDate;
+    public void setRequestDonnerToAgentId(long requestDonnerToAgentId) {
+        this.requestDonnerToAgentId = requestDonnerToAgentId;
     }
 
     public String getAcceptDate() {
@@ -208,38 +216,6 @@ public class DonnerToAgentRequestToReview implements Serializable {
 
     public void setAcceptDate(String acceptDate) {
         this.acceptDate = acceptDate;
-    }
-
-    public String getRejectDate() {
-        return rejectDate;
-    }
-
-    public void setRejectDate(String rejectDate) {
-        this.rejectDate = rejectDate;
-    }
-
-    public String getRemoveDate() {
-        return removeDate;
-    }
-
-    public void setRemoveDate(String removeDate) {
-        this.removeDate = removeDate;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getNoteDonner() {
-        return noteDonner;
-    }
-
-    public void setNoteDonner(String noteDonner) {
-        this.noteDonner = noteDonner;
     }
 
     public String getNoteAgent() {
@@ -258,52 +234,52 @@ public class DonnerToAgentRequestToReview implements Serializable {
         this.noteAgentPersonal = noteAgentPersonal;
     }
 
-    public long getPresentId() {
-        return presentId;
+    public String getNoteDonner() {
+        return noteDonner;
     }
 
-    public void setPresentId(long presentId) {
-        this.presentId = presentId;
+    public void setNoteDonner(String noteDonner) {
+        this.noteDonner = noteDonner;
     }
 
-    public String getPresentDiv() {
-        return presentDiv;
+    public String getRejectDate() {
+        return rejectDate;
     }
 
-    public void setPresentDiv(String presentDiv) {
-        this.presentDiv = presentDiv;
+    public void setRejectDate(String rejectDate) {
+        this.rejectDate = rejectDate;
     }
 
-    public String getPresentDist() {
-        return presentDist;
+    public String getRemoveDate() {
+        return removeDate;
     }
 
-    public void setPresentDist(String presentDist) {
-        this.presentDist = presentDist;
+    public void setRemoveDate(String removeDate) {
+        this.removeDate = removeDate;
     }
 
-    public String getPresentUpz() {
-        return presentUpz;
+    public String getRequestDate() {
+        return requestDate;
     }
 
-    public void setPresentUpz(String presentUpz) {
-        this.presentUpz = presentUpz;
+    public void setRequestDate(String requestDate) {
+        this.requestDate = requestDate;
     }
 
-    public String getPresentUnion() {
-        return presentUnion;
+    public String getStatus() {
+        return status;
     }
 
-    public void setPresentUnion(String presentUnion) {
-        this.presentUnion = presentUnion;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public String getPresentStreet() {
-        return presentStreet;
+    public String getUserIdDonner() {
+        return userIdDonner;
     }
 
-    public void setPresentStreet(String presentStreet) {
-        this.presentStreet = presentStreet;
+    public void setUserIdDonner(String userIdDonner) {
+        this.userIdDonner = userIdDonner;
     }
 
     public String getUsername() {
@@ -312,97 +288,5 @@ public class DonnerToAgentRequestToReview implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public long getPermanentId() {
-        return permanentId;
-    }
-
-    public void setPermanentId(long permanentId) {
-        this.permanentId = permanentId;
-    }
-
-    public String getPermanentDiv() {
-        return permanentDiv;
-    }
-
-    public void setPermanentDiv(String permanentDiv) {
-        this.permanentDiv = permanentDiv;
-    }
-
-    public String getPermanentDist() {
-        return permanentDist;
-    }
-
-    public void setPermanentDist(String permanentDist) {
-        this.permanentDist = permanentDist;
-    }
-
-    public String getPermanentUpz() {
-        return permanentUpz;
-    }
-
-    public void setPermanentUpz(String permanentUpz) {
-        this.permanentUpz = permanentUpz;
-    }
-
-    public String getPermanentUnion() {
-        return permanentUnion;
-    }
-
-    public void setPermanentUnion(String permanentUnion) {
-        this.permanentUnion = permanentUnion;
-    }
-
-    public String getPermanentStreet() {
-        return permanentStreet;
-    }
-
-    public void setPermanentStreet(String permanentStreet) {
-        this.permanentStreet = permanentStreet;
-    }
-
-    public List<PhoneNumber> getPhone_number() {
-        return phone_number;
-    }
-
-    public void setPhone_number(List<PhoneNumber> phone_number) {
-        this.phone_number = phone_number;
-    }
-
-    @Override
-    public String toString() {
-        return "DonnerToAgentRequestToReview{" +
-                "profileId=" + profileId +
-                ", name='" + name + '\'' +
-                ", gender='" + gender + '\'' +
-                ", profession='" + profession + '\'' +
-                ", userId='" + userId + '\'' +
-                ", addressPermanent=" + addressPermanent +
-                ", addressPresent=" + addressPresent +
-                ", requestId=" + requestId +
-                ", requestDate='" + requestDate + '\'' +
-                ", acceptDate='" + acceptDate + '\'' +
-                ", rejectDate='" + rejectDate + '\'' +
-                ", removeDate='" + removeDate + '\'' +
-                ", status='" + status + '\'' +
-                ", noteDonner='" + noteDonner + '\'' +
-                ", noteAgent='" + noteAgent + '\'' +
-                ", noteAgentPersonal='" + noteAgentPersonal + '\'' +
-                ", presentId=" + presentId +
-                ", presentDiv='" + presentDiv + '\'' +
-                ", presentDist='" + presentDist + '\'' +
-                ", presentUpz='" + presentUpz + '\'' +
-                ", presentUnion='" + presentUnion + '\'' +
-                ", presentStreet='" + presentStreet + '\'' +
-                ", username='" + username + '\'' +
-                ", permanentId=" + permanentId +
-                ", permanentDiv='" + permanentDiv + '\'' +
-                ", permanentDist='" + permanentDist + '\'' +
-                ", permanentUpz='" + permanentUpz + '\'' +
-                ", permanentUnion='" + permanentUnion + '\'' +
-                ", permanentStreet='" + permanentStreet + '\'' +
-                ", phone_number=" + phone_number +
-                '}';
     }
 }
