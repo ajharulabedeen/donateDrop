@@ -176,7 +176,7 @@ public class Dao_AgentAdmin_Impl implements Dao_AgentAdmin_I {
                 q = "SELECT count(*) FROM agent_request_review, phonenumber "
                         + "WHERE agent_request_review.profile_id = phonenumber.profile_id "
                         + " AND phonenumber.number LIKE '" + key + "'"
-                        + "`agent_request_review`.`status`='" + statusType + "'";
+                        + " AND `agent_request_review`.`status`='" + statusType + "'";
             } else if (column.equals(StringUtil.ADRESS)) {
                 q = "SELECT count(*)\n" +
                         "FROM\n" +
