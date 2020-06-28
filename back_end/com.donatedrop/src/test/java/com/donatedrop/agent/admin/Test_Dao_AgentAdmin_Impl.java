@@ -116,7 +116,7 @@ public class Test_Dao_AgentAdmin_Impl {
     public void testGetAgentRequestsReviewCount() {
         Map<String, String> result =
 //                dao_agent_i.getAgentRequestsToReviewCount("address", "%kh%", StatusType.ZERO);
-                dao_agent_i.getAgentRequestsToReviewCount("phonenumber", "%013%", StatusType.ZERO);
+                dao_agent_i.getAgentRequestsToReviewCount("phonenumber", "%1%", StatusType.FREEZE);
         System.out.println(result);
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
