@@ -130,7 +130,7 @@ public class Dao_AgentAdmin_Impl implements Dao_AgentAdmin_I {
         String q = "";
         try {
             if (column.equals(StringUtil.PHONENUMBER)) {
-                q = "SELECT agent_request_review.* FROM agent_request_review, phonenumber "
+                q = "SELECT DISTINCT agent_request_review.* FROM agent_request_review, phonenumber "
                         + "WHERE agent_request_review.profile_id = phonenumber.profile_id "
                         + " AND phonenumber.number LIKE '" + key + "'"
                         + " AND `agent_request_review`.`status`='" + status + "'";
