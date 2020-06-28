@@ -114,7 +114,9 @@ public class Test_Dao_AgentAdmin_Impl {
     @Test
     @Order(6)
     public void testGetAgentRequestsReviewCount() {
-        Map<String, String> result = dao_agent_i.getAgentRequestsToReviewCount("address", "%kh%", StatusType.ZERO);
+        Map<String, String> result =
+//                dao_agent_i.getAgentRequestsToReviewCount("address", "%kh%", StatusType.ZERO);
+                dao_agent_i.getAgentRequestsToReviewCount("phonenumber", "%013%", StatusType.ZERO);
         System.out.println(result);
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
     }
@@ -173,7 +175,7 @@ public class Test_Dao_AgentAdmin_Impl {
 
 
     //    not part dao layer
-    @Test
+//    @Test
     public void testInsertAgent() {
         dumpDao.getUserIDNotAgentRequest(100).forEach(id -> {
             AgentRequest agentRequest = new AgentRequest();
