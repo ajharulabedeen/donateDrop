@@ -90,20 +90,6 @@ export class AgentDashboardReviewComponent implements OnInit {
           }
         }
 
-        // artr.permanentDist = res[key]['permanentDist'];
-        // artr.permanentDiv = res[key]['permanentDiv'];
-        // artr.permanentId = res[key]['permanentId'];
-        // artr.permanentStreet = res[key]['permanentStreet'];
-        // artr.permanentUnion = res[key]['permanentUnion'];
-        // artr.permanentUpz = res[key]['permanentUpz'];
-        //
-        // artr.presentDist = res[key]['presentDist'];
-        // artr.presentDiv = res[key]['presentDiv'];
-        // artr.presentId = res[key]['presentId'];
-        // artr.presentStreet = res[key]['presentStreet'];
-        // artr.presentUnion = res[key]['presentUnion'];
-        // artr.presentUpz = res[key]['presentUpz'];
-
         artr.profession = res[key]['profession'];
         artr.profileId = res[key]['profileId'];
         artr.requestDate = res[key]['requestDate'];
