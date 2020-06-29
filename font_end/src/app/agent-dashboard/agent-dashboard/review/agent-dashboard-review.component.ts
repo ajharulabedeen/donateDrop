@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {RequestPersonalNote} from '../../../admin/agent/models/request-personal-note.model';
 // import {ReviewValue} from '../../../admin/agent/models/review-value.model';
 import {RequestGetAgentRequests} from '../../../admin/agent/models/request-get-agent-requests.model';
@@ -17,6 +17,28 @@ import {RequestNote} from '../model/request-note.model';
   styleUrls: ['./agent-dashboard-review.component.scss']
 })
 export class AgentDashboardReviewComponent implements OnInit {
+
+  //start : new
+  @Input()
+  pageHeader = '';
+  @Input()
+  buttonReview = false;
+  @Input()
+  buttonReject = false;
+  @Input()
+  buttonApprove = false;
+  @Input()
+  buttonRemove = false;
+  @Input()
+  buttonDetials = false;
+
+  @Input()
+  statusType = '';
+
+  headerColor = '';
+  //end : new
+
+
   searchKey: string;
   searchByColumn = 'username';
   total = 0;
@@ -37,6 +59,16 @@ export class AgentDashboardReviewComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.statusType == '0') {
+      this.headerColor = 'text-orange';
+    } else if (this.statusType == 'ACCEPT') {
+      this.headerColor = 'text-aqua';
+    } else if (this.statusType == 'REJECT') {
+      this.headerColor = 'text-danger';
+    } else if (this.statusType == 'REMOVE') {
+      this.headerColor = 'text-info';
+    }
+
     this.searchKey = '';
     this.getDonnerRequestsToReview();
   }
