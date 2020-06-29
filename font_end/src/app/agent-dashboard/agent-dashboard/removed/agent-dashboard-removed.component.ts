@@ -39,7 +39,7 @@ export class AgentDashboardRemovedComponent implements OnInit {
   public getDonnerRequestsToReview() {
     var finalSearchKey = '%' + this.searchKey + '%';
     const search: RequestSearchReview = new RequestSearchReview(
-      this.startRequests.toString(), this.perPage.toString(), this.searchByColumn, finalSearchKey, this.rivewValue.REMOVE);
+      this.startRequests.toString(), this.perPage.toString(), this.searchByColumn, finalSearchKey, 'REMOVE');
     console.log(search);
     this.donnerRequestsToReview = [];
     this.adService.getDonnerToAgentRequestToReview(search).subscribe(res => {

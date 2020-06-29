@@ -30,6 +30,7 @@ export class AgentDashboardReviewComponent implements OnInit {
   personalNote: string;
 
   donnerRequestsToReview: DonnerToAgentRequestToReview[] = new Array();
+
   // rivewValue: ReviewValue = new ReviewValue();
 
   constructor(private adService: AgentDashboardServiceService) {
@@ -87,7 +88,8 @@ export class AgentDashboardReviewComponent implements OnInit {
         artr.profession = res[key]['profession'];
         artr.profileId = res[key]['profileId'];
         artr.requestDate = res[key]['requestDate'];
-        artr.requestId = res[key]['requestId'];
+        // artr.requestId = res[key]['requestId'];
+        artr.requestId = res[key]['requestDonnerToAgentId'];
         artr.status = res[key]['status'];
         artr.userId = res[key]['userId'];
         artr.username = res[key]['username'];
@@ -119,7 +121,7 @@ export class AgentDashboardReviewComponent implements OnInit {
   }
 
   public requestReject(requestIdReject: string) {
-    const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestIdReject, this.rivewValue.REJECT);
+    const reviewRequestReject: RequestReviewRequest = new RequestReviewRequest(requestIdReject, 'REJECT');
     this.adService.donnerRequestReview(reviewRequestReject).subscribe(res => {
       console.log(res);
       if (res['STATUS'] === 'OK') {

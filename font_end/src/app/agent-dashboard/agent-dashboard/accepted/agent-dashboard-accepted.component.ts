@@ -39,7 +39,7 @@ export class AgentDashboardAcceptedComponent implements OnInit {
   public getDonnerRequestsToReview() {
     var finalSearchKey = '%' + this.searchKey + '%';
     const search: RequestSearchReview = new RequestSearchReview(
-      this.startRequests.toString(), this.perPage.toString(), this.searchByColumn, finalSearchKey, this.rivewValue.ACCEPT);
+      this.startRequests.toString(), this.perPage.toString(), this.searchByColumn, finalSearchKey, 'ACCEPT');
     console.log(search);
     this.donnerRequestsToReview = [];
     this.adService.getDonnerToAgentRequestToReview(search).subscribe(res => {
