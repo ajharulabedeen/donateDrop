@@ -13,7 +13,20 @@
 </div>
 
 <div align="center" id="request_review" class="tabcontent">
-  <app-agent-dashboard-review></app-agent-dashboard-review>
+  <app-agent-dashboard-review
+    [pageHeader]="headerReview"
+    [statusType]="0"
+    [buttonReject]="true"
+    [buttonApprove]="true"
+  >
+
+  </app-agent-dashboard-review>
+  <!--<app-agent-review-->
+  <!--[pageHeader]="headerReview"-->
+  <!--[statusType]="0"-->
+  <!--[buttonReject]="true"-->
+  <!--[buttonApprove]="true">-->
+  <!--</app-agent-review>-->
 </div>
 <div align="center" id="accepted" class="tabcontent">
   <!--<app-agent-dashboard-accepted></app-agent-dashboard-accepted>-->
