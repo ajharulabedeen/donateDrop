@@ -139,7 +139,7 @@
             <td>
               <button class="btn btn-xs btn-danger" (click)="personalNote=ar.noteAgentPersonal; requestID=ar.requestId"
                       data-toggle="modal"
-                      data-target="#modal_personalNote">Edit
+                      [attr.data-target]="'#' + modalIDDonner">Edit
               </button>
               <br>
               {{ar.noteAgentPersonal}}
@@ -193,7 +193,7 @@
 </div>
 
 <!-- Modal  : Update note Personal-->
-<div class="modal fade" id="modal_personalNote" tabindex="-1" role="dialog" aria-labelledby="modal_workLabel"
+<div class="modal fade" id="{{modalIDDonner}}" tabindex="-1" role="dialog" aria-labelledby="modal_workLabel"
      aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

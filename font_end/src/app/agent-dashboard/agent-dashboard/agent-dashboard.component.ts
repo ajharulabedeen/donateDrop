@@ -12,6 +12,12 @@ export class AgentDashboardComponent implements OnInit {
   ACCEPTED = 'ACCEPT';
   REMOVE = 'REMOVE';
 
+  //modal id : note for the donner.
+  REJECTED_ID = 'REJECT_MODAL';
+  ACCEPTED_ID = 'ACCEPT_MODAL';
+  REMOVE_ID = 'REMOVE_MODAL';
+
+
   headerAccepted = 'Request Accepted';
   headerRejected = 'Request Rejected';
   headerRemove = 'Request Remove';
