@@ -62,13 +62,6 @@ export class AgentDashboardReviewComponent implements OnInit {
         artr.noteAgentPersonal = res[key]['noteAgentPersonal'];
         // console.log(res[key]['notePersonal']);
 
-        artr.permanentDist = res[key]['permanentDist'];
-        artr.permanentDiv = res[key]['permanentDiv'];
-        artr.permanentId = res[key]['permanentId'];
-        artr.permanentStreet = res[key]['permanentStreet'];
-        artr.permanentUnion = res[key]['permanentUnion'];
-        artr.permanentUpz = res[key]['permanentUpz'];
-
         // artr.phone_number = res[key]['phone_number'];
         artr.phone_number = '';
         for (const phoneKey in res[key]['phone_number']) {
@@ -78,12 +71,38 @@ export class AgentDashboardReviewComponent implements OnInit {
         // console.log(artr.phone_number);
         // console.log(res[key]['phone_number']);
 
-        artr.presentDist = res[key]['presentDist'];
-        artr.presentDiv = res[key]['presentDiv'];
-        artr.presentId = res[key]['presentId'];
-        artr.presentStreet = res[key]['presentStreet'];
-        artr.presentUnion = res[key]['presentUnion'];
-        artr.presentUpz = res[key]['presentUpz'];
+        for (const addrKey in res[key]['addressList']) {
+          if (res[key]['addressList'][addrKey]['type'] === 'PRESENT') {
+            // type = 'PRESENT'
+            artr.presentDist = res[key]['addressList'][addrKey]['district'];
+            artr.presentDiv = res[key]['addressList'][addrKey]['division'];
+            artr.presentId = res[key]['addressList'][addrKey]['addressID'];
+            artr.presentStreet = res[key]['addressList'][addrKey]['street_address'];
+            artr.presentUnion = res[key]['addressList'][addrKey]['union_ward'];
+            artr.presentUpz = res[key]['addressList'][addrKey]['upzilla'];
+          } else {
+            artr.permanentDist = res[key]['addressList'][addrKey]['district'];
+            artr.permanentDiv = res[key]['addressList'][addrKey]['division'];
+            artr.permanentId = res[key]['addressList'][addrKey]['addressID'];
+            artr.permanentStreet = res[key]['addressList'][addrKey]['street_address'];
+            artr.permanentUnion = res[key]['addressList'][addrKey]['union_ward'];
+            artr.permanentUpz = res[key]['addressList'][addrKey]['upzilla'];
+          }
+        }
+
+        // artr.permanentDist = res[key]['permanentDist'];
+        // artr.permanentDiv = res[key]['permanentDiv'];
+        // artr.permanentId = res[key]['permanentId'];
+        // artr.permanentStreet = res[key]['permanentStreet'];
+        // artr.permanentUnion = res[key]['permanentUnion'];
+        // artr.permanentUpz = res[key]['permanentUpz'];
+        //
+        // artr.presentDist = res[key]['presentDist'];
+        // artr.presentDiv = res[key]['presentDiv'];
+        // artr.presentId = res[key]['presentId'];
+        // artr.presentStreet = res[key]['presentStreet'];
+        // artr.presentUnion = res[key]['presentUnion'];
+        // artr.presentUpz = res[key]['presentUpz'];
 
         artr.profession = res[key]['profession'];
         artr.profileId = res[key]['profileId'];
