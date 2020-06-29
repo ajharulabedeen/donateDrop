@@ -35,7 +35,7 @@ export class AgentDashboardReviewComponent implements OnInit {
   statusType = '';
 
   @Input()
-  modalID = '';
+  modalIDAgent = '';
   headerColor = '';
   //end : new
 

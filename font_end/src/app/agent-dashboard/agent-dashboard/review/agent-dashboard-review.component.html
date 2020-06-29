@@ -129,7 +129,7 @@
             <td>{{ar.noteDonner}}</td>
             <td>
               <button class="btn btn-xs btn-info" (click)="agentNote=ar.noteAgent; requestID=ar.requestId"
-                      [attr.data-target]="'#' + modalID" data-toggle="modal">Edit
+                      [attr.data-target]="'#' + modalIDAgent" data-toggle="modal">Edit
                 <!--data-target="'#'{{pageHeader}}">Edit-->
                 <!--data-target="'#'{{pageHeader}}">Edit-->
               </button>
@@ -162,7 +162,7 @@
 
 <!-- Modal  : Update Agent Admin-->
 <!--<div class="modal fade" id="modal_agent_dashboard_review_agentNote" tabindex="-1" role="dialog"-->
-<div class="modal fade" id="{{modalID}}" tabindex="-1" role="dialog"
+<div class="modal fade" id="{{modalIDAgent}}" tabindex="-1" role="dialog"
      aria-labelledby="modal_workLabel"
      aria-hidden="true">
   <div class="modal-dialog" role="document">
