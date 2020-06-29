@@ -33,6 +33,9 @@ export class AgentDashboardReviewComponent implements OnInit {
   buttonDetials = false;
   @Input()
   statusType = '';
+
+  @Input()
+  modalID = '';
   headerColor = '';
   //end : new
 
