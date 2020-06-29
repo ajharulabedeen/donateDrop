@@ -19,7 +19,6 @@
     [buttonReject]="true"
     [buttonApprove]="true"
   >
-
   </app-agent-dashboard-review>
   <!--<app-agent-review-->
   <!--[pageHeader]="headerReview"-->
@@ -30,6 +29,12 @@
 </div>
 <div align="center" id="accepted" class="tabcontent">
   <!--<app-agent-dashboard-accepted></app-agent-dashboard-accepted>-->
+  <app-agent-dashboard-review
+    [pageHeader]="headerAccepted"
+    [statusType]="ACCEPTED"
+    [buttonRemove]="true"
+  >
+  </app-agent-dashboard-review>
 </div>
 <div align="center" id="rejected" class="tabcontent">
   <!--<app-agent-dashboard-rejected></app-agent-dashboard-rejected>-->
