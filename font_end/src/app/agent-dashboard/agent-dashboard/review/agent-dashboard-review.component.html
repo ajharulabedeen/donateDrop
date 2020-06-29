@@ -85,8 +85,8 @@
           <tbody>
           <tr>
             <th *ngIf="buttonRemove">Remove</th>
-            <th>Reject</th>
-            <th>Approve</th>
+            <th *ngIf="buttonReject">Reject</th>
+            <th *ngIf="buttonApprove">Approve</th>
             <!--<th>Hold</th>-->
             <th>Index</th>
             <th>Request Date</th>
@@ -109,13 +109,13 @@
               </button>
             </td>
             <!--Reject-->
-            <td>
+            <td *ngIf="buttonReject">
               <button class="btn btn-xs btn-warning" (click)="requestReject(ar.requestId)" data-toggle="modal"
                       data-target="#donation_delete">Reject
               </button>
             </td>
-            <!--edit-->
-            <td>
+            <!--approve-->
+            <td *ngIf="buttonApprove">
               <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modal_work"
                       (click)="requestAccept(ar.requestId, 'ACCEPT')">Approve
               </button>
