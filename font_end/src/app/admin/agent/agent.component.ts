@@ -13,7 +13,7 @@ import {RequestPersonalNote} from './models/request-personal-note.model';
   styleUrls: ['./agent.component.scss']
 })
 export class AgentComponent implements OnInit {
-
+  // start-new : reusable component
   REJECTED = 'REJECT';
   ACCEPTED = 'ACCEPT';
   FREEZED = 'FREEZE';
@@ -22,6 +22,8 @@ export class AgentComponent implements OnInit {
   headerRejected = 'Request Rejected';
   headerFreeze = 'Request Freezed';
   headerReview = 'Request to Review';
+
+// end-new : reusable component
 
   ngOnInit() {
     // this.tabChange(event, 'request_review');

@@ -7,6 +7,19 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AgentDashboardComponent implements OnInit {
 
+  // start-new : reusable component
+  REJECTED = 'REJECT';
+  ACCEPTED = 'ACCEPT';
+  REMOVE = 'REMOVE';
+
+  headerAccepted = 'Request Accepted';
+  headerRejected = 'Request Rejected';
+  headerFreeze = 'Request Freezed';
+  headerReview = 'Request to Review';
+
+// end-new : reusable component
+
+
   constructor() {
   }
 
