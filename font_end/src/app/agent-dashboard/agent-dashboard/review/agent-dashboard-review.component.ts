@@ -31,13 +31,10 @@ export class AgentDashboardReviewComponent implements OnInit {
   buttonRemove = false;
   @Input()
   buttonDetials = false;
-
   @Input()
   statusType = '';
-
   headerColor = '';
   //end : new
-
 
   searchKey: string;
   searchByColumn = 'username';
@@ -68,7 +65,6 @@ export class AgentDashboardReviewComponent implements OnInit {
     } else if (this.statusType == 'REMOVE') {
       this.headerColor = 'text-info';
     }
-
     this.searchKey = '';
     this.getDonnerRequestsToReview();
   }

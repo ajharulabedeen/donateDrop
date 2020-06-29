@@ -14,7 +14,7 @@ export class AgentDashboardComponent implements OnInit {
 
   headerAccepted = 'Request Accepted';
   headerRejected = 'Request Rejected';
-  headerFreeze = 'Request Freezed';
+  headerRemove = 'Request Remove';
   headerReview = 'Request to Review';
 
 // end-new : reusable component
