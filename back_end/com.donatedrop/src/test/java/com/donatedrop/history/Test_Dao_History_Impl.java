@@ -7,6 +7,7 @@ import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
 import com.donatedrop.profile.model.EmergencyContact;
 import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.profile.model.ProfileBasic;
+import com.donatedrop.security.models.User;
 import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
 import com.donatedrop.util.Utils;
@@ -191,11 +192,31 @@ public class Test_Dao_History_Impl {
 
 
     //    Helpers :
-//    @Test
+    @Test
 //    @Transactional
     public void saveManyHistory() {
         Map<String, String> status = new HashMap<>();
         String userID = "15";
+        List<User> allUsers = dumpDao.getAllUsers();
+        Random random = new Random();
+        for (int x = 0; x < 1000; x++) {
+            System.out.println("Loop Counter : " + x);
+            userID = allUsers.get(random.nextInt(allUsers.size() - 1)).getId().toString();
+            int numberOfHistory = random.nextInt(20);
+            for (int y = 0; y < numberOfHistory + 1; y++) {
+                System.out.println("\nHistory Save\n");
+                History history = new History();
+                history.setUserId(userID);//will be set from service.
+                history.setDate(DateUtil.getDate().toString());
+                history.setLocation(DumpData.getLocation());
+                history.setPatientDescription(DumpData.getPatientDescription());
+                history.setRefferedBy(DumpData.getRefferedBy());
+                history.setNote(DumpData.getNote());
+                history.setUserId(userID);
+                dao_history_i.save(history);
+                System.out.println(history.getId());
+            }//for
+        }
 //        bug : data are not being save
 //        for (int x = 0; x < 100; x++) {
 //            System.out.println("\nHistory Save\n");
@@ -222,19 +243,20 @@ public class Test_Dao_History_Impl {
 //        history.setUserId(userID);
 //        entityManager.persist(history);
 //        System.out.println(history.getId());
-        for (int x = 0; x < 10; x++) {
-            System.out.println("\nHistory Save\n");
-            History history = new History();
-            history.setUserId(userID);//will be set from service.
-            history.setDate(DateUtil.getDate().toString());
-            history.setLocation(DumpData.getLocation());
-            history.setPatientDescription(DumpData.getPatientDescription());
-            history.setRefferedBy(DumpData.getRefferedBy());
-            history.setNote(DumpData.getNote());
-            history.setUserId(userID);
-            dao_history_i.save(history);
-            System.out.println(history.getId());
-        }
+        //working, insertion of history, just for one.
+//        for (int x = 0; x < 10; x++) {
+//            System.out.println("\nHistory Save\n");
+//            History history = new History();
+//            history.setUserId(userID);//will be set from service.
+//            history.setDate(DateUtil.getDate().toString());
+//            history.setLocation(DumpData.getLocation());
+//            history.setPatientDescription(DumpData.getPatientDescription());
+//            history.setRefferedBy(DumpData.getRefferedBy());
+//            history.setNote(DumpData.getNote());
+//            history.setUserId(userID);
+//            dao_history_i.save(history);
+//            System.out.println(history.getId());
+//        }//for
     }
 
 

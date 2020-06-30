@@ -24,6 +24,7 @@ public class Dao_History_Impl implements Dao_History_I {
     Dao_Profile_Basic_I dao_profile_basic_i;
 
     @Override
+    @Transactional
     public Map<String, String> save(History history) {
         Map<String, String> status = new HashMap<>();
         try {

@@ -128,10 +128,10 @@ public class Test_ControllerHistory extends AbstractTest {
     //    String uri = "/public/user/history/search";
     @Test
     @Order(4)
-    public void testSearh() throws Exception {
+    public void testSearch() throws Exception {
         String uri = "/public/user/history/search";
 //        "15", "note", "khulna", 0, 10
-        RequestSearch requestSearch = new RequestSearch("16", "patient_description", "", 0, 10);
+        RequestSearch requestSearch = new RequestSearch("15", "patient_description", "", 0, 10);
 
         String inputJson = super.mapToJson(requestSearch);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
