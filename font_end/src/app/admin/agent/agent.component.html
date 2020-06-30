@@ -34,7 +34,10 @@
     [pageHeader]="headerAccepted"
     [statusType]="ACCEPTED"
     [buttonFreeze]="true"
-    [buttonDetials]="true">
+    [buttonDetials]="true"
+    [modalIDAdmin]="ACCEPTED_ID"
+    [modalIDAgent]="ACCEPTED_ID"
+  >
   </app-agent-review>
 
 </div>
@@ -43,7 +46,10 @@
   <app-agent-review
     [pageHeader]="headerRejected"
     [statusType]="REJECTED"
-    [buttonApprove]="true">
+    [buttonApprove]="true"
+    [modalIDAdmin]="REJECTED_ID"
+    [modalIDAgent]="REJECTED_ID"
+  >
   </app-agent-review>
 
 </div>
@@ -57,7 +63,10 @@
     [pageHeader]="headerFreeze"
     [statusType]="FREEZED"
     [buttonActive]="true"
-    [buttonDetials]="true">
+    [buttonDetials]="true"
+    [modalIDAdmin]="FREEZE_ID"
+    [modalIDAgent]="FREEZE_ID"
+  >
   </app-agent-review>
 </div>
 

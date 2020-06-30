@@ -25,7 +25,8 @@ export class AgentComponent implements OnInit {
 
   REJECTED_ID = 'REJECT_MODAL';
   ACCEPTED_ID = 'ACCEPT_MODAL';
-  REMOVE_ID   = 'REMOVE_MODAL';
+  REMOVE_ID = 'REMOVE_MODAL';
+  FREEZE_ID = 'FREEZE_MODAL';
 
 
 // end-new : reusable component
