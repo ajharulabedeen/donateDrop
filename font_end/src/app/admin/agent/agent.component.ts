@@ -23,6 +23,11 @@ export class AgentComponent implements OnInit {
   headerFreeze = 'Request Freezed';
   headerReview = 'Request to Review';
 
+  REJECTED_ID = 'REJECT_MODAL';
+  ACCEPTED_ID = 'ACCEPT_MODAL';
+  REMOVE_ID   = 'REMOVE_MODAL';
+
+
 // end-new : reusable component
 
   ngOnInit() {

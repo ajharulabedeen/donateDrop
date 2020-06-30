@@ -8,20 +8,20 @@ import {Component, OnInit} from '@angular/core';
 export class AgentDashboardComponent implements OnInit {
 
   // start-new : reusable component
-  REJECTED = 'REJECT';
-  ACCEPTED = 'ACCEPT';
-  REMOVE = 'REMOVE';
+  REJECTED  = 'REJECT';
+  ACCEPTED  = 'ACCEPT';
+  REMOVE    = 'REMOVE';
 
   //modal id : note for the donner.
   REJECTED_ID = 'REJECT_MODAL';
   ACCEPTED_ID = 'ACCEPT_MODAL';
-  REMOVE_ID = 'REMOVE_MODAL';
+  REMOVE_ID   = 'REMOVE_MODAL';
 
 
-  headerAccepted = 'Request Accepted';
-  headerRejected = 'Request Rejected';
-  headerRemove = 'Request Remove';
-  headerReview = 'Request to Review';
+  headerAccepted  = 'Request Accepted';
+  headerRejected  = 'Request Rejected';
+  headerRemove    = 'Request Remove';
+  headerReview    = 'Request to Review';
 
 // end-new : reusable component
 

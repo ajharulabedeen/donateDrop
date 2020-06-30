@@ -32,9 +32,14 @@ export class ReviewComponent implements OnInit {
   buttonFreeze = false;
   @Input()
   buttonDetials = false;
-
   @Input()
   statusType = '';
+
+  @Input()
+  modalIDAdmin = '';
+  @Input()
+  modalIDAgent = '';
+
 
   headerColor = '';
   //end : new
