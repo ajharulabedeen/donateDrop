@@ -5,13 +5,18 @@
  */
 package com.donatedrop.post;
 
+import com.donatedrop.profile.model.PhoneNumber;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -28,69 +33,74 @@ public class Post implements Serializable {
 
     @Column(name = "post_user_id")
     private String postUserID;
-    
+
     @Column(name = "blood_type")
     private String bloodType;
-    
+
     @Lob
     @Column(name = "location")
     private String location;
-    
+
     @Lob
     @Column(name = "hospital_name")
     private String hospitalName;
-    
+
     @Lob
     @Column(name = "hospital_address")
     private String hospitalAddress;
-    
+
     @Column(name = "patient_gender")
     private String patientGender;
-    
+
     @Lob
     @Column(name = "patient_description")
     private String patientDescription;
-    
+
     @Column(name = "post_date")
     private String postDate;
-    
+
     @Column(name = "need_date")
     private String needDate;
-    
+
     @Column(name = "quantity")
     private String quantity;
-    
+
     @Lob
     @Column(name = "contact_info")
     private String contactInfo;
-    
+
     @Column(name = "status")
     private String status;
-    
+
     @Lob
     @Column(name = "remarks")
     private String remarks;
-    
+
     @Column(name = "donner_found")
     private String donnerFound;
-    
+
     @Column(name = "relation")
     private String relation;
-    
+
     @Lob
     @Column(name = "notes")
     private String notes;
-    
+
     @Lob
     @Column(name = "report")
     private String report;
-    
+
     @Lob
     @Column(name = "post_id")
     private String Comments;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "post_id")
+    private List<PostComment> postComments;
+
     public Post() {
     }
+
     public Long getPostID() {
         return postID;
     }
@@ -242,7 +252,15 @@ public class Post implements Serializable {
     public void setComments(String Comments) {
         this.Comments = Comments;
     }
-    
+
+    public List<PostComment> getPostComments() {
+        return postComments;
+    }
+
+    public void setPostComments(List<PostComment> postComments) {
+        this.postComments = postComments;
+    }
+
     
     
 }
