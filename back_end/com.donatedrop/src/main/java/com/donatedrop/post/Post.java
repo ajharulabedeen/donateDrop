@@ -6,6 +6,7 @@
 package com.donatedrop.post;
 
 import com.donatedrop.profile.model.PhoneNumber;
+
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -19,7 +20,6 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 /**
- *
  * @author Dell
  */
 @Entity
@@ -91,7 +91,7 @@ public class Post implements Serializable {
     private String report;
 
     @Lob
-    @Column(name = "post_id")
+    @Column(name = "post_comment")
     private String Comments;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
@@ -261,6 +261,5 @@ public class Post implements Serializable {
         this.postComments = postComments;
     }
 
-    
-    
+
 }
