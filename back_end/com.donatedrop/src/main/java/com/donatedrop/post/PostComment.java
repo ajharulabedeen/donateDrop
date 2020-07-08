@@ -39,8 +39,7 @@ public class PostComment implements Serializable {
     public PostComment() {
     }
 
-    public PostComment(Long commentID, String date, String commentDetails, String userID) {
-        this.commentID = commentID;
+    public PostComment( String date, String commentDetails, String userID) {
         this.date = date;
         this.commentDetails = commentDetails;
         this.userID = userID;
