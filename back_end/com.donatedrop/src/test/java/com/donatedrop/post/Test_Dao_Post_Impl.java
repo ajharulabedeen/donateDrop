@@ -12,6 +12,7 @@ public class Test_Dao_Post_Impl {
     @Autowired
     DumpDao dumpDao;
 
-
+    @Autowired
+    Dao_Post_I dao_post_i;
 
 }

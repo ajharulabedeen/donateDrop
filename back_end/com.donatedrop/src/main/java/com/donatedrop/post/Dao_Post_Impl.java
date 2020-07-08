@@ -4,10 +4,12 @@ import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
 import org.hibernate.exception.ConstraintViolationException;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class Dao_Post_Impl implements Dao_Post_I {
 
     public Map<String, String> savePost(Post post) {
