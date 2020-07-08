@@ -17,6 +17,11 @@ public class DumpData {
     public static Random r = new Random();
     public static int hostpitalNameIndex = 0;
 
+    public static String getQuantity() {
+        Random random = new Random();
+        return Integer.toString(random.nextInt(10));
+    }
+
     public static String getDate() {
         Random random = new Random();
         int month = random.nextInt(8) + 1;

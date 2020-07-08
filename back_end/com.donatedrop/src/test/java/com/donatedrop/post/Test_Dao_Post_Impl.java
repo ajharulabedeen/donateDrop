@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest
@@ -30,33 +31,34 @@ public class Test_Dao_Post_Impl {
     @Order(1)
     public void test_savePost() {
         Map<String, String> status = null;
-
+        List<User> userList = dumpDao.getUsers(0, 10);
+        Random random = new Random();
         List<PostComment> comments = new ArrayList<>();
-        PostComment postComment1 = new PostComment("2020-07-05", "Please call me at this number", "17");
-        PostComment postComment2 = new PostComment("2020-07-05", "Please call me at this number", "18");
-        PostComment postComment3 = new PostComment("2020-07-05", "Please call me at this number", "19");
-        comments.add(postComment1);
-        comments.add(postComment2);
-        comments.add(postComment3);
+        for (int y = 0; y <= random.nextInt(5); y++) {
+            String useID = userList.get(random.nextInt(userList.size() - 1)).getId().toString();
+            PostComment postComment = new PostComment(DumpData.getDate(), DumpData.getNote(), useID);
+            comments.add(postComment);
+        }
+
         Post post = new Post(
-                "16",
-                "A+",
-                "Dhaka",
-                "Dhaka Sishu hospital!",
-                "Shamoli Dhaka",
-                "Male",
+                userList.get(random.nextInt(userList.size() - 1)).getId().toString(),
+                DumpData.getBloodGroup(),
+                dumpDao.getAddressString("PRESENT"),
+                DumpData.getHospitalName(),
+                DumpData.getHospitalAddress(),
+                DumpData.getGender(),
                 DumpData.getPatientDescription(),
                 "20-10-10",
-                "2020-07-15",
-                "3",
-                "01713815267",
+                DumpData.getDate(),
+                DumpData.getQuantity(),
+                DumpData.getPhoneNumber(),
                 "0",
-                "from GUB",
+                DumpData.getNote(),
                 "NO",
                 "SON",
-                "Please Come in time.",
+                DumpData.getNote(),
                 "NA",
-                "Old Women!",
+                DumpData.getNote(),
                 comments);
 
         status = dao_post_i.savePost(post);
@@ -66,15 +68,16 @@ public class Test_Dao_Post_Impl {
 
     @Test
     public void testAddManyPosts() {
-        List<User> userList = dumpDao.getUsers(0, 100);
+        List<User> userList = dumpDao.getUsers(10, 200);
+        Random random = new Random();
         for (int x = 0; x < userList.size(); x++) {
             List<PostComment> comments = new ArrayList<>();
-            PostComment postComment1 = new PostComment("2020-07-05", "Please call me at this number", "17");
-            PostComment postComment2 = new PostComment("2020-07-05", "Please call me at this number", "18");
-            PostComment postComment3 = new PostComment("2020-07-05", "Please call me at this number", "19");
-            comments.add(postComment1);
-            comments.add(postComment2);
-            comments.add(postComment3);
+            for (int y = 0; y <= random.nextInt(5); y++) {
+                String useID = userList.get(random.nextInt(userList.size() - 1)).getId().toString();
+                PostComment postComment = new PostComment(DumpData.getDate(), DumpData.getNote(), useID);
+                comments.add(postComment);
+            }
+
             Post post = new Post(
                     userList.get(x).getId().toString(),
                     DumpData.getBloodGroup(),
@@ -84,16 +87,16 @@ public class Test_Dao_Post_Impl {
                     DumpData.getGender(),
                     DumpData.getPatientDescription(),
                     "20-10-10",
-                    "2020-07-15",
-                    "3",
-                    "01713815267",
+                    DumpData.getDate(),
+                    DumpData.getQuantity(),
+                    DumpData.getPhoneNumber(),
                     "0",
                     DumpData.getNote(),
                     "NO",
                     "SON",
                     DumpData.getNote(),
                     "NA",
-                    "Old Women!",
+                    DumpData.getNote(),
                     comments);
 
             dao_post_i.savePost(post);
