@@ -17,6 +17,14 @@ public class DumpData {
     public static Random r = new Random();
     public static int hostpitalNameIndex = 0;
 
+    public static String getDate() {
+        Random random = new Random();
+        int month = random.nextInt(8) + 1;
+        int date = random.nextInt(29) + 1;
+        String dateString = "2020-0" + Integer.toString(month) + "-" + Integer.toString(date);
+        return dateString;
+    }
+
     public static String getHospitalName() {
         String[] hospital = {
                 "Abedin General Hospital and Consultation Center",

@@ -21,6 +21,11 @@ public class TestAny {
     DumpDao daoDump;
 
     @Test
+    public void getDumpDate(){
+        System.out.println(DumpData.getDate());
+    }
+
+    @Test
     public void getDumpDaoGetAddressString() {
         System.out.println(daoDump.getAddressString(AddressType.EMERGENCY.toString()));
     }
