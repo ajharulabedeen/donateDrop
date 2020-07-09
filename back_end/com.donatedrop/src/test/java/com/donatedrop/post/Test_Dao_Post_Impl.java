@@ -67,6 +67,17 @@ public class Test_Dao_Post_Impl {
     }
 
     @Test
+    public void test_findPostByUserIDNoComment() {
+//        `post_id`=20618 `post_user_id`=12417
+        Post p = dao_post_i.findPostByUserIDNoComment("12417", "20619");
+//        System.out.println(p.getHospitalAddress());
+//        Assert.assertNotEquals(p, null);
+//        Assert.assertNotNull(p);
+        Assert.assertNull(p);
+    }
+
+    //    Data insertion :
+//    @Test
     public void testAddManyPostsSequential() {
         List<User> userList = dumpDao.getUsers(10, 200);
         Random random = new Random();
@@ -103,7 +114,7 @@ public class Test_Dao_Post_Impl {
         }
     }
 
-    @Test
+    //    @Test
     public void testAddManyPostsRandom() {
         List<User> userList = dumpDao.getUsers(10, 200);
         Random random = new Random();

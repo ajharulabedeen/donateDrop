@@ -284,4 +284,29 @@ public class Post implements Serializable {
     }
 
 
+    @Override
+    public String toString() {
+        return "Post{" +
+                "postID=" + postID +
+                ", postUserID='" + postUserID + '\'' +
+                ", bloodType='" + bloodType + '\'' +
+                ", location='" + location + '\'' +
+                ", hospitalName='" + hospitalName + '\'' +
+                ", hospitalAddress='" + hospitalAddress + '\'' +
+                ", patientGender='" + patientGender + '\'' +
+                ", patientDescription='" + patientDescription + '\'' +
+                ", postDate='" + postDate + '\'' +
+                ", needDate='" + needDate + '\'' +
+                ", quantity='" + quantity + '\'' +
+                ", contactInfo='" + contactInfo + '\'' +
+                ", status='" + status + '\'' +
+                ", remarks='" + remarks + '\'' +
+                ", donnerFound='" + donnerFound + '\'' +
+                ", relation='" + relation + '\'' +
+                ", notes='" + notes + '\'' +
+                ", report='" + report + '\'' +
+                ", Comments='" + Comments + '\'' +
+                ", postComments=" + postComments +
+                '}';
+    }
 }
