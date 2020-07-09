@@ -80,7 +80,8 @@ public class Test_Dao_Post_Impl {
     @Test
     public void testFindOneByID() {
 //        `post_id`=20618;
-        Post p = dao_post_i.findOnePostByID("20618");
+        Post p = dao_post_i.findOnePostByID(getID());
+        System.out.println(p.getPostID());
         Assert.assertNotNull(p);
     }
 
