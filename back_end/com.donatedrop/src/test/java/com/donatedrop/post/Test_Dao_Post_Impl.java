@@ -67,7 +67,7 @@ public class Test_Dao_Post_Impl {
     }
 
     @Test
-    public void testAddManyPosts() {
+    public void testAddManyPostsSequential() {
         List<User> userList = dumpDao.getUsers(10, 200);
         Random random = new Random();
         for (int x = 0; x < userList.size(); x++) {
@@ -102,5 +102,44 @@ public class Test_Dao_Post_Impl {
             dao_post_i.savePost(post);
         }
     }
+
+    @Test
+    public void testAddManyPostsRandom() {
+        List<User> userList = dumpDao.getUsers(10, 200);
+        Random random = new Random();
+        for (int x = 0; x < 200; x++) {
+            List<PostComment> comments = new ArrayList<>();
+            for (int y = 0; y <= random.nextInt(5); y++) {
+                String useID = userList.get(random.nextInt(userList.size() - 1)).getId().toString();
+                PostComment postComment = new PostComment(DumpData.getDate(), DumpData.getNote(), useID);
+                comments.add(postComment);
+            }
+
+            String useID = userList.get(random.nextInt(userList.size() - 1)).getId().toString();
+            Post post = new Post(
+                    useID,
+                    DumpData.getBloodGroup(),
+                    dumpDao.getAddressString("PRESENT"),
+                    DumpData.getHospitalName(),
+                    DumpData.getHospitalAddress(),
+                    DumpData.getGender(),
+                    DumpData.getPatientDescription(),
+                    "20-10-10",
+                    DumpData.getDate(),
+                    DumpData.getQuantity(),
+                    DumpData.getPhoneNumber(),
+                    "0",
+                    DumpData.getNote(),
+                    "NO",
+                    "SON",
+                    DumpData.getNote(),
+                    "NA",
+                    DumpData.getNote(),
+                    comments);
+
+            dao_post_i.savePost(post);
+        }
+    }
+
 
 }// class

@@ -41,4 +41,9 @@ public class Dao_Post_Impl implements Dao_Post_I {
         }
         return result;
     }
+
+    @Override
+    public Map<String, String> editPost(Post post) {
+        return null;
+    }
 }
