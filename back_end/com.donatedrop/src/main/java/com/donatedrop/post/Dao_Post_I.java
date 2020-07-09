@@ -10,4 +10,6 @@ public interface Dao_Post_I {
     public Post findPostByUserIDNoComment(String userID, String postID);
 
     public Post findOnePostByID(String id);
+
+    public Map<String,String> deletePost(String id);
 }

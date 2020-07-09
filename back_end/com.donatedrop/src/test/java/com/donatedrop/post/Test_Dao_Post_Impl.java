@@ -82,8 +82,8 @@ public class Test_Dao_Post_Impl {
     public void testFindOneByID() {
 //        `post_id`=20618;
         Post p = dao_post_i.findOnePostByID(getID());
-        System.out.println(p.getPostID());
-        Assert.assertNotNull(p);
+//        System.out.println(p.getPostID());
+        Assert.assertNull(p);
     }
 
     @Test
@@ -102,6 +102,21 @@ public class Test_Dao_Post_Impl {
         Assert.assertEquals(updateNote, updatedP.getNotes());
         System.out.println("\n>>>" + updatedP.getNotes() + "\n");
     }
+
+
+    @Test
+    public void testDeletePost() {
+        String userID = getUserID();
+        String postID = getID();
+        Map<String, String> status = null;
+        Post p = dao_post_i.findOnePostByID(postID);
+//        System.out.println("\n>>>" + p.getNotes() + "\n");
+        status = dao_post_i.deletePost(postID);
+        Post updatedP = dao_post_i.findOnePostByID(postID);
+        Assert.assertEquals(StringUtil.OK, status.get(StringUtil.STATUS));
+        Assert.assertNull(updatedP);
+    }
+
 
     //    Data insertion :
 //    @Test

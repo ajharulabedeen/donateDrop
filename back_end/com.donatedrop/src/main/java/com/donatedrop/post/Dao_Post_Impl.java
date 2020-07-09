@@ -1,9 +1,11 @@
 package com.donatedrop.post;
 
 import com.donatedrop.agent.models.StatusType;
+import com.donatedrop.history.History;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
+import javafx.geometry.Pos;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Component;
 
@@ -105,5 +107,20 @@ public class Dao_Post_Impl implements Dao_Post_I {
             e.printStackTrace();
         }
         return post;
+    }
+
+    @Override
+    public Map<String, String> deletePost(String id) {
+        Map<String, String> result = new HashMap<>();
+        try {
+            Post postDelete = entityManager.find(Post.class,
+                    Long.parseLong(id));
+            //to protect one user delete, another users information. will be checked in Service
+            entityManager.remove(postDelete);
+            result.put(StringUtil.STATUS, StringUtil.OK);
+        } catch (Exception e) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+        }
+        return result;
     }
 }
