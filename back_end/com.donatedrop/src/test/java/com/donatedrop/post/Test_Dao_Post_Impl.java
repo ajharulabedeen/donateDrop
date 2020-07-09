@@ -35,8 +35,8 @@ public class Test_Dao_Post_Impl {
         List<User> userList = dumpDao.getUsers(0, 10);
         Random random = new Random();
         List<PostComment> comments = new ArrayList<>();
+        String useID = userList.get(random.nextInt(userList.size() - 1)).getId().toString();
         for (int y = 0; y <= random.nextInt(5); y++) {
-            String useID = userList.get(random.nextInt(userList.size() - 1)).getId().toString();
             PostComment postComment = new PostComment(DumpData.getDate(), DumpData.getNote(), useID);
             comments.add(postComment);
         }
@@ -64,6 +64,7 @@ public class Test_Dao_Post_Impl {
 
         status = dao_post_i.savePost(post);
         storeID(status.get(StringUtil.ID));
+        storeUserID(useID);
         Assert.assertEquals(StringUtil.OK, status.get(StringUtil.STATUS));
     }
 
