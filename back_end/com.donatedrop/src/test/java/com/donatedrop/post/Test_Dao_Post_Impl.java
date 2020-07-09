@@ -86,6 +86,22 @@ public class Test_Dao_Post_Impl {
         Assert.assertNotNull(p);
     }
 
+    @Test
+    public void testUpdatePost() {
+        String userID = getUserID();
+        String postID = getID();
+        Map<String, String> status = null;
+        Post p = dao_post_i.findOnePostByID(postID);
+        System.out.println("\n>>>" + p.getNotes() + "\n");
+//        String updateNote = "NotaUpdated! No Blood Need!";
+        String updateNote = "Stupid People, haveing money by no means.";
+        p.setNotes(updateNote);
+        status = dao_post_i.updatePost(p);
+        Post updatedP = dao_post_i.findOnePostByID(postID);
+        Assert.assertEquals(StringUtil.OK, status.get(StringUtil.STATUS));
+        Assert.assertEquals(updateNote, updatedP.getNotes());
+        System.out.println("\n>>>" + updatedP.getNotes() + "\n");
+    }
 
     //    Data insertion :
 //    @Test
