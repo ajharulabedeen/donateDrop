@@ -80,6 +80,7 @@ public class Dao_Post_Impl implements Dao_Post_I {
         return result;
     }
 
+
     @Override
     public Post findPostByUserIDNoComment(String userID, String postID) {
         String sql = "SELECT * FROM `post` WHERE `post_id`=" + postID + " AND `post_user_id`=" + userID;
@@ -89,6 +90,18 @@ public class Dao_Post_Impl implements Dao_Post_I {
                 .getResultList();
         if (list.size() >= 1) {
             post = list.get(0);
+        }
+        return post;
+    }
+
+    @Override
+    public Post findOnePostByID(String id) {
+        Post post = null;
+        try {
+            post = entityManager.find(Post.class, Long.parseLong(id));
+        } catch (Exception e) {
+            System.out.println("Not Found!");
+            e.printStackTrace();
         }
         return post;
     }

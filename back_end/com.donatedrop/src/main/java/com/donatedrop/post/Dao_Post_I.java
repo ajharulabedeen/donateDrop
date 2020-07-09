@@ -8,4 +8,6 @@ public interface Dao_Post_I {
     public Map<String, String> updatePost(Post post);
 
     public Post findPostByUserIDNoComment(String userID, String postID);
+
+    public Post findOnePostByID(String id);
 }

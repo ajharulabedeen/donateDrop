@@ -76,6 +76,14 @@ public class Test_Dao_Post_Impl {
         Assert.assertNull(p);
     }
 
+    @Test
+    public void testFindOneByID() {
+//        `post_id`=20618;
+        Post p = dao_post_i.findOnePostByID("20618");
+        Assert.assertNotNull(p);
+    }
+
+
     //    Data insertion :
 //    @Test
     public void testAddManyPostsSequential() {
