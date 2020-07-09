@@ -45,8 +45,39 @@ public class Dao_Post_Impl implements Dao_Post_I {
     }
 
     @Override
-    public Map<String, String> editPost(Post post) {
-        return null;
+    public Map<String, String> updatePost(Post postNew) {
+        Map<String, String> result = new HashMap<>();
+        Post postOld = findPostByUserIDNoComment(postNew.getPostUserID(), postNew.getPostID().toString());
+        if (postOld != null) {
+            //refactor : follow emegency contact update
+            postOld.setBloodType(postNew.getBloodType());
+            postOld.setContactInfo(postNew.getContactInfo());
+            postOld.setDonnerFound(postNew.getDonnerFound());
+            postOld.setHospitalAddress(postNew.getHospitalAddress());
+            postOld.setHospitalName(postNew.getHospitalName());
+            postOld.setLocation(postNew.getLocation());
+            postOld.setNeedDate(postNew.getNeedDate());
+            postOld.setNotes(postNew.getNotes());
+            postOld.setPatientDescription(postNew.getPatientDescription());
+            postOld.setPatientGender(postNew.getPatientGender());
+            postOld.setPostDate(postNew.getPostDate());
+            postOld.setQuantity(postNew.getQuantity());
+            postOld.setRelation(postNew.getRelation());
+            postOld.setRemarks(postNew.getRemarks());
+            postOld.setReport(postNew.getReport());
+            postOld.setStatus(postNew.getStatus());
+            try {
+                entityManager.merge(postOld);
+                result.put(StringUtil.STATUS, StringUtil.OK);
+            } catch (Exception e) {
+                System.out.println("Blood Post Update Failed!");
+                result.put(StringUtil.STATUS, StringUtil.FAIL);
+            }
+        } else {
+            System.out.println("Blood Post Not Found!");
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+        }
+        return result;
     }
 
     @Override
