@@ -6,6 +6,7 @@ import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
 import javafx.geometry.Pos;
+import lombok.Builder;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +23,6 @@ public class Dao_Post_Impl implements Dao_Post_I {
 
     @PersistenceContext
     EntityManager entityManager;
-
 
     @Override
     public Map<String, String> savePost(Post post) {
@@ -83,7 +83,6 @@ public class Dao_Post_Impl implements Dao_Post_I {
         return result;
     }
 
-
     @Override
     public Post findPostByUserIDNoComment(String userID, String postID) {
         String sql = "SELECT * FROM `post` WHERE `post_id`=" + postID + " AND `post_user_id`=" + userID;
@@ -122,5 +121,18 @@ public class Dao_Post_Impl implements Dao_Post_I {
             result.put(StringUtil.STATUS, StringUtil.FAIL);
         }
         return result;
+    }
+
+    @Override
+    public Post findPostWithComments(String postID) {
+        Post post = findOnePostByID(postID);
+        if (post != null) {
+            post.getPostComments().forEach(s -> {
+            });
+            return post;
+        } else {
+            post = null;
+        }
+        return post;
     }
 }

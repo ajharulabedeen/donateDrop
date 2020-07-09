@@ -117,6 +117,13 @@ public class Test_Dao_Post_Impl {
         Assert.assertNull(updatedP);
     }
 
+    @Test
+    public void testGetPostWithComments() {
+        Post p = dao_post_i.findPostWithComments(getID());
+        if (p != null) {
+            System.out.println(p.toString());
+        }
+    }
 
     //    Data insertion :
 //    @Test
