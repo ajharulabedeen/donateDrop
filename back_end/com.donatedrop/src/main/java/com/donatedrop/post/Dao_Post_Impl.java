@@ -31,6 +31,7 @@ public class Dao_Post_Impl implements Dao_Post_I {
             entityManager.persist(post);
             result.put(StringUtil.STATUS, StringUtil.OK);
             result.put(StringUtil.MESSAGE, StringUtil.SAVE);
+            result.put(StringUtil.ID, post.getPostID().toString());
         } catch (org.springframework.dao.DataIntegrityViolationException e) {
             result.put(StringUtil.STATUS, StringUtil.FAIL);
             result.put(StringUtil.MESSAGE, StringUtil.DUPLICATE);

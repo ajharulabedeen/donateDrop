@@ -13,10 +13,11 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest
@@ -62,8 +63,8 @@ public class Test_Dao_Post_Impl {
                 comments);
 
         status = dao_post_i.savePost(post);
+        storeID(status.get(StringUtil.ID));
         Assert.assertEquals(StringUtil.OK, status.get(StringUtil.STATUS));
-
     }
 
     @Test
@@ -158,6 +159,67 @@ public class Test_Dao_Post_Impl {
 
             dao_post_i.savePost(post);
         }
+    }
+
+
+    public void storeUserID(String userID) {
+        try {
+            FileWriter myWriter = new FileWriter("post_userID.txt");
+            myWriter.write(userID);
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+    public String getUserID() {
+        String id = "";
+        try {
+            File myObj = new File("post_userID.txt");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                id = data;
+//                System.out.println(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        return id;
+    }
+
+    public void storeID(String id) {
+        try {
+            FileWriter myWriter = new FileWriter("post_ID.txt");
+            myWriter.write(id);
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+    public String getID() {
+        String id = "";
+        try {
+            File myObj = new File("post_ID.txt");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                id = data;
+//                System.out.println(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        return id;
     }
 
 
