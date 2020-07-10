@@ -1,5 +1,6 @@
 package com.donatedrop.post;
 
+import javax.xml.stream.events.Comment;
 import java.util.Map;
 
 public interface Dao_Post_I {
@@ -14,4 +15,6 @@ public interface Dao_Post_I {
     public Map<String, String> deletePost(String id);
 
     public Post findPostWithComments(String postID);
+
+    public Map<String, String> saveComment(PostComment postComment, String postID);
 }

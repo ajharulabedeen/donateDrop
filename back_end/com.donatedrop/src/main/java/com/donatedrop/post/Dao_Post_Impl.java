@@ -135,4 +135,32 @@ public class Dao_Post_Impl implements Dao_Post_I {
         }
         return post;
     }
+
+    @Override
+    public Map<String, String> saveComment(PostComment postComment, String postID) {
+        Map<String, String> result = new HashMap<>();
+        Post post = findOnePostByID(postID);
+        if (post != null) {
+            try {
+                post.getPostComments().add(postComment);
+                entityManager.merge(post);
+                result.put(StringUtil.STATUS, StringUtil.OK);
+                result.put(StringUtil.MESSAGE, StringUtil.SAVE);
+                result.put(StringUtil.ID, postComment.getCommentID().toString());
+            } catch (org.springframework.dao.DataIntegrityViolationException e) {
+                result.put(StringUtil.STATUS, StringUtil.FAIL);
+                result.put(StringUtil.MESSAGE, StringUtil.DUPLICATE);
+            } catch (ConstraintViolationException constraintViolationException) {
+                result.put(StringUtil.STATUS, StringUtil.FAIL);
+                result.put(StringUtil.MESSAGE, StringUtil.DUPLICATE);
+            } catch (Exception e) {
+                result.put(StringUtil.STATUS, StringUtil.FAIL);
+                result.put(StringUtil.MESSAGE, StringUtil.UNKNOWN);
+            }
+        } else {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+            result.put(StringUtil.MESSAGE, StringUtil.NULL);
+        }
+        return result;
+    }
 }

@@ -103,6 +103,28 @@ public class Test_Dao_Post_Impl {
         System.out.println("\n>>>" + updatedP.getNotes() + "\n");
     }
 
+    @Test
+    public void testGetPostWithComments() {
+        Post p = dao_post_i.findPostWithComments(getID());
+        if (p != null) {
+            System.out.println(p.toString());
+            Assert.assertNotNull("");
+        }
+    }
+
+    @Test
+    public void testAddCommentToPost() {
+        Random r = new Random();
+        int start = r.nextInt(500);
+        String userID = dumpDao.getUsers(start, 1).get(0).getId().toString();
+        PostComment postComment = new PostComment(DumpData.getDate(), "Updated Comment!", userID);
+        Map<String, String> status = null;
+        System.out.println("\n\n" + dao_post_i.findPostWithComments(getID()).getPostComments().size());
+        status = dao_post_i.saveComment(postComment, getID());
+        System.out.println("\n\n" + status);
+        System.out.println("\n\n" + dao_post_i.findPostWithComments(getID()).getPostComments().size());
+
+    }
 
     @Test
     public void testDeletePost() {
@@ -117,13 +139,6 @@ public class Test_Dao_Post_Impl {
         Assert.assertNull(updatedP);
     }
 
-    @Test
-    public void testGetPostWithComments() {
-        Post p = dao_post_i.findPostWithComments(getID());
-        if (p != null) {
-            System.out.println(p.toString());
-        }
-    }
 
     //    Data insertion :
 //    @Test
@@ -200,7 +215,6 @@ public class Test_Dao_Post_Impl {
             dao_post_i.savePost(post);
         }
     }
-
 
     public void storeUserID(String userID) {
         try {
