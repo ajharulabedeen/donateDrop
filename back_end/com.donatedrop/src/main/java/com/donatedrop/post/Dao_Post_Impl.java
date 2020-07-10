@@ -142,10 +142,13 @@ public class Dao_Post_Impl implements Dao_Post_I {
         Post post = findOnePostByID(postID);
         if (post != null) {
             try {
+                entityManager.persist(postComment);
                 post.getPostComments().add(postComment);
                 entityManager.merge(post);
                 result.put(StringUtil.STATUS, StringUtil.OK);
                 result.put(StringUtil.MESSAGE, StringUtil.SAVE);
+                System.out.println("\n---------------------" + result + "------------\n");
+                System.out.println("\n---------------------" + postComment + "------------\n");
                 result.put(StringUtil.ID, postComment.getCommentID().toString());
             } catch (org.springframework.dao.DataIntegrityViolationException e) {
                 result.put(StringUtil.STATUS, StringUtil.FAIL);
@@ -153,10 +156,12 @@ public class Dao_Post_Impl implements Dao_Post_I {
             } catch (ConstraintViolationException constraintViolationException) {
                 result.put(StringUtil.STATUS, StringUtil.FAIL);
                 result.put(StringUtil.MESSAGE, StringUtil.DUPLICATE);
-            } catch (Exception e) {
-                result.put(StringUtil.STATUS, StringUtil.FAIL);
-                result.put(StringUtil.MESSAGE, StringUtil.UNKNOWN);
             }
+//            catch (Exception e) {
+//                result.put(StringUtil.STATUS, StringUtil.FAIL);
+//                result.put(StringUtil.MESSAGE, StringUtil.UNKNOWN);
+//                System.out.println(e);
+//            }
         } else {
             result.put(StringUtil.STATUS, StringUtil.FAIL);
             result.put(StringUtil.MESSAGE, StringUtil.NULL);

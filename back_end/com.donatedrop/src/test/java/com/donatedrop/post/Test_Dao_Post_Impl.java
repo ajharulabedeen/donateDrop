@@ -123,7 +123,6 @@ public class Test_Dao_Post_Impl {
         status = dao_post_i.saveComment(postComment, getID());
         System.out.println("\n\n" + status);
         System.out.println("\n\n" + dao_post_i.findPostWithComments(getID()).getPostComments().size());
-
     }
 
     @Test
