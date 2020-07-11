@@ -119,11 +119,20 @@ public class Test_Dao_Post_Impl {
         String userID = dumpDao.getUsers(start, 1).get(0).getId().toString();
         PostComment postComment = new PostComment(DumpData.getDate(), "Updated Comment!", userID);
         Map<String, String> status = null;
-        System.out.println("\n\n" + dao_post_i.findPostWithComments(getID()).getPostComments().size());
+//        System.out.println("\n\n" + dao_post_i.findPostWithComments(getID()).getPostComments().size());
         status = dao_post_i.saveComment(postComment, getID());
+        storeCommentID(status.get(StringUtil.ID));
         System.out.println("\n\n" + status);
-        System.out.println("\n\n" + dao_post_i.findPostWithComments(getID()).getPostComments().size());
+//        System.out.println("\n\n" + dao_post_i.findPostWithComments(getID()).getPostComments().size());
     }
+
+    @Test
+    public void testReadOneComment() {
+        String postID = getID();
+        String userID = getUserID();
+        String commentID = "";
+    }
+
 
     @Test
     public void testDeletePost() {
@@ -275,5 +284,34 @@ public class Test_Dao_Post_Impl {
         return id;
     }
 
+    public void storeCommentID(String id) {
+        try {
+            FileWriter myWriter = new FileWriter("post_comment_ID.txt");
+            myWriter.write(id);
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+    public String getCommentID() {
+        String id = "";
+        try {
+            File myObj = new File("post_comment_ID.txt");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                id = data;
+//                System.out.println(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        return id;
+    }
 
 }// class
