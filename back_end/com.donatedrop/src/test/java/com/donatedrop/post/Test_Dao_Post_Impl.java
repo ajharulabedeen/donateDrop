@@ -142,6 +142,25 @@ public class Test_Dao_Post_Impl {
         Assert.assertNull(postComment);
     }
 
+    @Test
+    public void testUpdateComment() {
+        Map<String, String> status = null;
+        // right value test
+        String postID = getID();
+        String userID = getCommentUserID();
+        String commentID = getCommentID();
+        PostComment postCommentOld = dao_post_i.findPostComment(postID, userID, commentID);
+        System.out.println(postCommentOld);
+        Assert.assertNotNull(postCommentOld);
+
+        String sOld = "Comment Detials Updated DIM DIM!";
+        postCommentOld.setCommentDetails(sOld);
+        status = dao_post_i.updatePostComment(postCommentOld);
+        String sNew = dao_post_i.findPostComment(postID, userID, commentID).getCommentDetails();
+
+        Assert.assertEquals(sOld, sNew);
+    }
+
 
     @Test
     public void testDeletePost() {

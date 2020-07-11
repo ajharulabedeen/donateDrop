@@ -181,4 +181,20 @@ public class Dao_Post_Impl implements Dao_Post_I {
         }
         return postComment;
     }
+
+    @Override
+    public Map<String, String> updatePostComment(PostComment postComment) {
+        Map<String, String> result = new HashMap<>();
+        try {
+            PostComment postCommentOld = entityManager.find(PostComment.class, postComment.getCommentID());
+            postCommentOld.setCommentDetails(postComment.getCommentDetails());
+            postCommentOld.setDate(DateUtil.getDate());
+            entityManager.merge(postCommentOld);
+            result.put(StringUtil.STATUS, StringUtil.OK);
+        } catch (Exception e) {
+            System.out.println("Blood Post Update Failed!");
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+        }
+        return result;
+    }
 }

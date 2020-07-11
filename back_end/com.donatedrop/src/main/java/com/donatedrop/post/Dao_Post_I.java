@@ -19,4 +19,6 @@ public interface Dao_Post_I {
     public Map<String, String> saveComment(PostComment postComment, String postID);
 
     public PostComment findPostComment(String postID, String userID, String commentID);
+
+    Map<String,String> updatePostComment(PostComment postComment);
 }
