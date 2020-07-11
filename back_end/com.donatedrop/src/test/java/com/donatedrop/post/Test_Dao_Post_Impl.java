@@ -130,8 +130,10 @@ public class Test_Dao_Post_Impl {
     @Test
     public void testReadOneComment() {
         String postID = getID();
-        String userID = getUserID();
-        String commentID = "";
+        String userID = getCommentUserID();
+        String commentID = getCommentID();
+        PostComment postComment = dao_post_i.findPostComment(postID, userID, commentID);
+        System.out.println(postComment);
     }
 
 
