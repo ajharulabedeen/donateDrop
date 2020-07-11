@@ -122,6 +122,7 @@ public class Test_Dao_Post_Impl {
 //        System.out.println("\n\n" + dao_post_i.findPostWithComments(getID()).getPostComments().size());
         status = dao_post_i.saveComment(postComment, getID());
         storeCommentID(status.get(StringUtil.ID));
+        storeCommentUserID(userID);
         System.out.println("\n\n" + status);
 //        System.out.println("\n\n" + dao_post_i.findPostWithComments(getID()).getPostComments().size());
     }
@@ -300,6 +301,36 @@ public class Test_Dao_Post_Impl {
         String id = "";
         try {
             File myObj = new File("post_comment_ID.txt");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                id = data;
+//                System.out.println(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        return id;
+    }
+
+    public void storeCommentUserID(String id) {
+        try {
+            FileWriter myWriter = new FileWriter("post_comment_user_ID.txt");
+            myWriter.write(id);
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+    public String getCommentUserID() {
+        String id = "";
+        try {
+            File myObj = new File("post_comment_user_ID.txt");
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
