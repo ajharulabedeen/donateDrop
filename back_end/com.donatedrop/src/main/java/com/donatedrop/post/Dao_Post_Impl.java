@@ -197,4 +197,18 @@ public class Dao_Post_Impl implements Dao_Post_I {
         }
         return result;
     }
+
+    @Override
+    public Map<String, String> deletePostComment(PostComment postComment) {
+        Map<String, String> result = new HashMap<>();
+        try {
+            PostComment postCommentOld = entityManager.find(PostComment.class, postComment.getCommentID());
+            entityManager.remove(postCommentOld);
+            result.put(StringUtil.STATUS, StringUtil.OK);
+        } catch (Exception e) {
+            System.out.println("Post Comment delete Failed!");
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+        }
+        return result;
+    }
 }

@@ -21,4 +21,6 @@ public interface Dao_Post_I {
     public PostComment findPostComment(String postID, String userID, String commentID);
 
     Map<String,String> updatePostComment(PostComment postComment);
+
+    Map<String,String> deletePostComment(PostComment postCommentOld);
 }

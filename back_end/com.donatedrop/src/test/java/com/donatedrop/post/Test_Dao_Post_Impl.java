@@ -159,6 +159,23 @@ public class Test_Dao_Post_Impl {
         String sNew = dao_post_i.findPostComment(postID, userID, commentID).getCommentDetails();
 
         Assert.assertEquals(sOld, sNew);
+        Assert.assertEquals(StringUtil.OK, status.get(StringUtil.STATUS));
+    }
+
+    @Test
+    public void testDeleteComment() {
+        Map<String, String> status = null;
+        // right value test
+        String postID = getID();
+        String userID = getCommentUserID();
+        String commentID = getCommentID();
+        PostComment postCommentOld = dao_post_i.findPostComment(postID, userID, commentID);
+        System.out.println(postCommentOld);
+        Assert.assertNotNull(postCommentOld);
+
+        status = dao_post_i.deletePostComment(postCommentOld);
+        PostComment postCommentDeleted = dao_post_i.findPostComment(postID, userID, commentID);
+        Assert.assertNull(postCommentDeleted);
     }
 
 
