@@ -104,6 +104,12 @@ public class Test_Dao_Post_Impl {
     }
 
     @Test
+    public void testPostByAuser(){
+        
+    }
+
+    //    start : comment
+    @Test
     public void testGetPostWithComments() {
         Post p = dao_post_i.findPostWithComments(getID());
         if (p != null) {
@@ -178,8 +184,9 @@ public class Test_Dao_Post_Impl {
         Assert.assertNull(postCommentDeleted);
     }
 
+//    end : comment
 
-    @Test
+    //    @Test
     public void testDeletePost() {
         String userID = getUserID();
         String postID = getID();
