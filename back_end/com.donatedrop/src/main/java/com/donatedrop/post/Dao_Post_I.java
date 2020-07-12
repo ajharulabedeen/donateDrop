@@ -1,6 +1,7 @@
 package com.donatedrop.post;
 
 import javax.xml.stream.events.Comment;
+import java.util.List;
 import java.util.Map;
 
 public interface Dao_Post_I {
@@ -20,7 +21,9 @@ public interface Dao_Post_I {
 
     public PostComment findPostComment(String postID, String userID, String commentID);
 
-    Map<String,String> updatePostComment(PostComment postComment);
+    Map<String, String> updatePostComment(PostComment postComment);
 
-    Map<String,String> deletePostComment(PostComment postCommentOld);
+    Map<String, String> deletePostComment(PostComment postCommentOld);
+
+    List<Post> getAllPostsByUser(String userID, int start, int max);
 }

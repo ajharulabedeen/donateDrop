@@ -104,11 +104,13 @@ public class Test_Dao_Post_Impl {
     }
 
     @Test
-    public void testPostByAuser(){
-        
+    public void testPostByAuser() {
+        String userID = "12417";
+        dao_post_i.getAllPostsByUser(userID, 0, 10).forEach(p -> {
+            System.out.println(p.getHospitalAddress());
+        });
     }
 
-    //    start : comment
     @Test
     public void testGetPostWithComments() {
         Post p = dao_post_i.findPostWithComments(getID());
@@ -117,6 +119,9 @@ public class Test_Dao_Post_Impl {
             Assert.assertNotNull("");
         }
     }
+
+
+    //    start : comment
 
     @Test
     public void testAddCommentToPost() {
