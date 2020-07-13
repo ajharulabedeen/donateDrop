@@ -25,5 +25,7 @@ public interface Dao_Post_I {
 
     Map<String, String> deletePostComment(PostComment postCommentOld);
 
-    List<Post> getAllPostsByUser(PostSearch postSearch);
+    List<Post> getAllPostsByAnUser(PostSearch postSearch);
+
+    String countAllPostsByAnUser(PostSearch postSearch);
 }

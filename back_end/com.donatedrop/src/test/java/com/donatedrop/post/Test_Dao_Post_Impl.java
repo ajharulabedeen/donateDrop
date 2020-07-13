@@ -104,7 +104,7 @@ public class Test_Dao_Post_Impl {
     }
 
     @Test
-    public void testPostByAuser() {
+    public void testPostByAnUser() {
         String userID = "12417";
 //                              start, max, key, column, orderBy, orderType, userID
 //       startDate, endDate :   start, max, key, column, orderBy, orderType, userID
@@ -116,12 +116,32 @@ public class Test_Dao_Post_Impl {
         postSearch.setOrderBy("need_date");
         postSearch.setOrderType("DESC");
 
-        dao_post_i.getAllPostsByUser(postSearch).forEach(p -> {
+        dao_post_i.getAllPostsByAnUser(postSearch).forEach(p -> {
             System.out.println(p.getHospitalAddress());
         });
 
 
     }
+
+
+    @Test
+    public void testCountPostsByAnUser() {
+        String userID = "12417";
+//                              start, max, key, column, orderBy, orderType, userID
+//       startDate, endDate :   start, max, key, column, orderBy, orderType, userID
+//        SELECT * FROM `post` WHERE contact_info LIKE "%%" AND post_user_id = 12417 ORDER BY need_date DESC
+        PostSearch postSearch = new PostSearch();
+        postSearch.setColumn("contact_info");
+        postSearch.setKey("'%014%'");
+        postSearch.setUserID("12417");
+        postSearch.setOrderBy("need_date");
+        postSearch.setOrderType("DESC");
+
+        String count = dao_post_i.countAllPostsByAnUser(postSearch);
+
+        System.out.println(count);
+    }
+
 
     @Test
     public void testGetPostWithComments() {
