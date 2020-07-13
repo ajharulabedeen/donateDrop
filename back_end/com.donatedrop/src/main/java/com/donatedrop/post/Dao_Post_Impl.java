@@ -213,9 +213,16 @@ public class Dao_Post_Impl implements Dao_Post_I {
     }
 
     @Override
-    public List<Post> getAllPostsByUser(String userID, int start, int max) {
-        String sql = "SELECT * FROM `post` WHERE post_user_id= " + userID;
-        return entityManager.createNativeQuery(sql, Post.class).setFirstResult(start).setMaxResults(max).getResultList();
+    public List<Post> getAllPostsByUser(PostSearch postSearch) {
+        String sql = "SELECT * FROM `post` WHERE " + postSearch.column + " LIKE " + postSearch.key
+                + " AND post_user_id = " + postSearch.userID
+                + " ORDER BY " + postSearch.orderBy
+                + " " + postSearch.orderType; //ASC/DESC
+
+        return entityManager.createNativeQuery(sql, Post.class)
+                .setFirstResult(postSearch.start)
+                .setMaxResults(postSearch.max)
+                .getResultList();
     }
 
 

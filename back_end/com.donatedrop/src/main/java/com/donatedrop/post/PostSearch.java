@@ -12,6 +12,22 @@ public class PostSearch {
     String orderBy;
     String orderType;
 
+    public PostSearch() {
+    }
+
+    public PostSearch(String dateType, String startDate, String endDate, int start, int max, String key, String column, String userID, String orderBy, String orderType) {
+        this.dateType = dateType;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.start = start;
+        this.max = max;
+        this.key = key;
+        this.column = column;
+        this.userID = userID;
+        this.orderBy = orderBy;
+        this.orderType = orderType;
+    }
+
     public String getDateType() {
         return dateType;
     }
@@ -95,8 +111,8 @@ public class PostSearch {
     @Override
     public String toString() {
         return "PostSearch{" +
-                "dateType='" + dateType + '\'' +
-                ", startDate='" + startDate + '\'' +
+                "dateType='" + dateType + ", startDate='" +
+                '\'' + startDate + '\'' +
                 ", endDate='" + endDate + '\'' +
                 ", start=" + start +
                 ", max=" + max +

@@ -106,11 +106,19 @@ public class Test_Dao_Post_Impl {
     @Test
     public void testPostByAuser() {
         String userID = "12417";
-        dao_post_i.getAllPostsByUser(userID, 0, 10).forEach(p -> {
-            System.out.println(p.getHospitalAddress());
-        });
 //                              start, max, key, column, orderBy, orderType, userID
 //       startDate, endDate :   start, max, key, column, orderBy, orderType, userID
+//        SELECT * FROM `post` WHERE contact_info LIKE "%%" AND post_user_id = 12417 ORDER BY need_date DESC
+        PostSearch postSearch = new PostSearch();
+        postSearch.setColumn("contact_info");
+        postSearch.setKey("'%%'");
+        postSearch.setUserID("12417");
+        postSearch.setOrderBy("need_date");
+        postSearch.setOrderType("DESC");
+
+        dao_post_i.getAllPostsByUser(postSearch).forEach(p -> {
+            System.out.println(p.getHospitalAddress());
+        });
 
 
     }
