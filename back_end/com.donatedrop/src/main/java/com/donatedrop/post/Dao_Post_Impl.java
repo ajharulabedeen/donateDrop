@@ -225,7 +225,6 @@ public class Dao_Post_Impl implements Dao_Post_I {
                 .getResultList();
     }
 
-
     @Override
     public String countAllPostsByAnUser(PostSearch postSearch) {
         String sql = "SELECT count(*) FROM `post` WHERE " + postSearch.column + " LIKE " + postSearch.key
@@ -233,6 +232,22 @@ public class Dao_Post_Impl implements Dao_Post_I {
                 + " ORDER BY " + postSearch.orderBy
                 + " " + postSearch.orderType; //ASC/DESC
         return entityManager.createNativeQuery(sql).getResultList().get(0).toString();
+    }
+
+
+    @Override
+    public List<Post> getAllPostsByAnUserWithinDate(PostSearch postSearch) {
+        String sql = "SELECT * FROM `post` WHERE " + postSearch.column
+                + " LIKE " + postSearch.key
+                + " AND post_user_id = " + postSearch.userID
+                + " AND ( " + postSearch.dateType + " BETWEEN '" + postSearch.startDate + "' AND '" + postSearch.endDate + "' ) "
+                + " ORDER BY " + postSearch.orderBy
+                + "  " + postSearch.orderType;
+
+        return entityManager.createNativeQuery(sql, Post.class)
+                .setFirstResult(postSearch.start)
+                .setMaxResults(postSearch.max)
+                .getResultList();
     }
 
 }

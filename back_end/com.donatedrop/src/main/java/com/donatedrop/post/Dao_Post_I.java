@@ -21,11 +21,13 @@ public interface Dao_Post_I {
 
     public PostComment findPostComment(String postID, String userID, String commentID);
 
-    Map<String, String> updatePostComment(PostComment postComment);
+    public Map<String, String> updatePostComment(PostComment postComment);
 
-    Map<String, String> deletePostComment(PostComment postCommentOld);
+    public Map<String, String> deletePostComment(PostComment postCommentOld);
 
-    List<Post> getAllPostsByAnUser(PostSearch postSearch);
+    public List<Post> getAllPostsByAnUser(PostSearch postSearch);
 
-    String countAllPostsByAnUser(PostSearch postSearch);
+    public String countAllPostsByAnUser(PostSearch postSearch);
+
+    public List<Post> getAllPostsByAnUserWithinDate(PostSearch postSearch);
 }

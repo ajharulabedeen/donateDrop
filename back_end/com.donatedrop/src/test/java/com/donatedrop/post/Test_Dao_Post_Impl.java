@@ -104,7 +104,7 @@ public class Test_Dao_Post_Impl {
     }
 
     @Test
-    public void testPostByAnUser() {
+    public void testPostByAnUserWithSearch() {
         String userID = "12417";
 //                              start, max, key, column, orderBy, orderType, userID
 //       startDate, endDate :   start, max, key, column, orderBy, orderType, userID
@@ -119,10 +119,7 @@ public class Test_Dao_Post_Impl {
         dao_post_i.getAllPostsByAnUser(postSearch).forEach(p -> {
             System.out.println(p.getHospitalAddress());
         });
-
-
     }
-
 
     @Test
     public void testCountPostsByAnUser() {
@@ -142,6 +139,29 @@ public class Test_Dao_Post_Impl {
         System.out.println(count);
     }
 
+
+    @Test
+    public void testPostByAnUserBetweenDateWithSearch() {
+        String userID = "12417";
+//                              start, max, key, column, orderBy, orderType, userID
+//       startDate, endDate :   start, max, key, column, orderBy, orderType, userID
+//        SELECT * FROM `post` WHERE contact_info LIKE "%%" AND post_user_id = 12417 ORDER BY need_date DESC
+//        SELECT * FROM `post` WHERE hospital_address LIKE "%k%" AND post_user_id = 12417 AND ( need_date BETWEEN '2020-01-1' AND '2020-05-18' ) ORDER BY quantity DESC
+
+        PostSearch postSearch = new PostSearch();
+        postSearch.setDateType("need_date");
+        postSearch.setStartDate("2020-01-1");
+        postSearch.setEndDate("2020-05-18");
+        postSearch.setColumn("hospital_address");
+        postSearch.setKey("'%k%'");
+        postSearch.setUserID("12417");
+        postSearch.setOrderBy("need_date");
+        postSearch.setOrderType("DESC");
+
+        dao_post_i.getAllPostsByAnUserWithinDate(postSearch).forEach(p -> {
+            System.out.println(p.getPostID() + "---" + p.getHospitalAddress());
+        });
+    }
 
     @Test
     public void testGetPostWithComments() {
