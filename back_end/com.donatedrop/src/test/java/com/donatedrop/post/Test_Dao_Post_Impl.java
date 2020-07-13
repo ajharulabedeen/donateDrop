@@ -109,6 +109,10 @@ public class Test_Dao_Post_Impl {
         dao_post_i.getAllPostsByUser(userID, 0, 10).forEach(p -> {
             System.out.println(p.getHospitalAddress());
         });
+//                              start, max, key, column, orderBy, orderType, userID
+//       startDate, endDate :   start, max, key, column, orderBy, orderType, userID
+
+
     }
 
     @Test
@@ -189,6 +193,7 @@ public class Test_Dao_Post_Impl {
         Assert.assertNull(postCommentDeleted);
     }
 
+//    @Tes
 //    end : comment
 
     //    @Test
