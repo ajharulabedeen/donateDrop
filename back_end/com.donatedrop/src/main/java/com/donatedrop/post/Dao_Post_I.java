@@ -1,5 +1,7 @@
 package com.donatedrop.post;
 
+import net.bytebuddy.implementation.bytecode.collection.ArrayAccess;
+
 import javax.xml.stream.events.Comment;
 import java.util.List;
 import java.util.Map;
@@ -30,4 +32,6 @@ public interface Dao_Post_I {
     public String countAllPostsByAnUser(PostSearch postSearch);
 
     public List<Post> getAllPostsByAnUserWithinDate(PostSearch postSearch);
+
+    String countAllPostsByAnUserWithinDate(PostSearch postSearch);
 }

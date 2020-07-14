@@ -250,4 +250,15 @@ public class Dao_Post_Impl implements Dao_Post_I {
                 .getResultList();
     }
 
+    @Override
+    public String countAllPostsByAnUserWithinDate(PostSearch postSearch) {
+        String sql = "SELECT count(*) FROM `post` WHERE " + postSearch.column
+                + " LIKE " + postSearch.key
+                + " AND post_user_id = " + postSearch.userID
+                + " AND ( " + postSearch.dateType + " BETWEEN '" + postSearch.startDate + "' AND '" + postSearch.endDate + "' ) "
+                + " ORDER BY " + postSearch.orderBy
+                + "  " + postSearch.orderType;
+        return entityManager.createNativeQuery(sql).getResultList().get(0).toString();
+    }
+
 }
