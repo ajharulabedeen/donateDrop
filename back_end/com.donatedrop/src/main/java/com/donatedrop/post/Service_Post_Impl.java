@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.xml.stream.events.Comment;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +24,7 @@ public class Service_Post_Impl implements Service_Post_I {
     @Override
     public Map<String, String> updatePost(Post post) {
         Post p = dao_post_i.findPostByUserIDNoComment(post.getPostUserID(), post.getPostID().toString());
-        Map<String, String> status = null;
+        Map<String, String> status = new HashMap<>();
         if (p != null) {
             return dao_post_i.updatePost(post);
         } else {
@@ -40,7 +41,7 @@ public class Service_Post_Impl implements Service_Post_I {
 
     @Override
     public Post findOnePostByID(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao_post_i.findOnePostByID(id);
     }
 
     @Override

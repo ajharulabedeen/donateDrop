@@ -269,10 +269,6 @@ public class Test_Dao_Post_Impl {
         Assert.assertNull(postCommentDeleted);
     }
 
-    @Test
-    public void testGetCommetsWithUserInformation() {
-        String postID = getID();
-    }
 
     @Test
     public void testGetCommentWithUserInfo() {
