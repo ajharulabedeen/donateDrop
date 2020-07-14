@@ -1,21 +1,36 @@
 package com.donatedrop.post;
 
+import com.donatedrop.util.StringUtil;
 import net.bytebuddy.implementation.bytecode.collection.ArrayAccess;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.xml.stream.events.Comment;
 import java.util.List;
 import java.util.Map;
 
-public class Service_Post_Impl implements Service_Post_I{
+@Component
+public class Service_Post_Impl implements Service_Post_I {
+
+    @Autowired
+    Dao_Post_I dao_post_i;
 
     @Override
     public Map<String, String> savePost(Post post) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao_post_i.savePost(post);
     }
 
     @Override
     public Map<String, String> updatePost(Post post) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Post p = dao_post_i.findPostByUserIDNoComment(post.getPostUserID(), post.getPostID().toString());
+        Map<String, String> status = null;
+        if (p != null) {
+            return dao_post_i.updatePost(post);
+        } else {
+            status.put(StringUtil.STATUS, StringUtil.FAIL);
+            status.put(StringUtil.MESSAGE, StringUtil.UNAUTHERIZED);
+        }
+        return status;
     }
 
     @Override
@@ -87,5 +102,5 @@ public class Service_Post_Impl implements Service_Post_I{
     public List<CommentWithUserInfo> getCommentWithUserInfo(String postID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
