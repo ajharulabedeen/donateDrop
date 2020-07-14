@@ -233,7 +233,6 @@ public class Test_Dao_Post_Impl {
         Assert.assertNull(postComment);
     }
 
-
     @Test
     public void testUpdateComment() {
         Map<String, String> status = null;
@@ -270,6 +269,10 @@ public class Test_Dao_Post_Impl {
         Assert.assertNull(postCommentDeleted);
     }
 
+    @Test
+    public void testGetCommetsWithUserInformation() {
+        String postID = getID();
+    }
 
 //    @Tes
 //    end : comment
