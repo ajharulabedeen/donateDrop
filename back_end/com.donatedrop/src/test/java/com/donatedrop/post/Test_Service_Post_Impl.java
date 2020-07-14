@@ -84,6 +84,8 @@ public class Test_Service_Post_Impl {
 ////        System.out.println(p.getPostID());
 //        Assert.assertNull(p);
 //    }
+
+    //   done-passed
     @Test
     public void testUpdatePost() {
         String userID = getUserID();
@@ -241,14 +243,20 @@ public class Test_Service_Post_Impl {
         PostComment postCommentOld = service_post_i.findOneComment(postID, userID, commentID);
         System.out.println(postCommentOld);
         Assert.assertNotNull(postCommentOld);
-
-        String sOld = "Comment Detials Updated DIM DIM!";
+//----------
+        String sOld = "----Comment Detials Updated DIM DIM!";
         postCommentOld.setCommentDetails(sOld);
-        status = service_post_i.updatePostComment(postCommentOld);
+        status = service_post_i.updatePostComment(postCommentOld, postID);
         String sNew = service_post_i.findOneComment(postID, userID, commentID).getCommentDetails();
-
+//----------
         Assert.assertEquals(sOld, sNew);
         Assert.assertEquals(StringUtil.OK, status.get(StringUtil.STATUS));
+
+//        failTest
+        status = service_post_i.updatePostComment(postCommentOld, postID + 1);
+        Assert.assertEquals(StringUtil.FAIL, status.get(StringUtil.STATUS));
+        Assert.assertEquals(StringUtil.UNAUTHERIZED, status.get(StringUtil.MESSAGE));
+        System.out.println(status);
     }
 
     @Test

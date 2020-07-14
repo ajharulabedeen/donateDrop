@@ -61,12 +61,20 @@ public class Service_Post_Impl implements Service_Post_I {
 
     @Override
     public PostComment findOneComment(String postID, String userID, String commentID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao_post_i.findOneComment(postID, userID, commentID);
     }
 
     @Override
-    public Map<String, String> updatePostComment(PostComment postComment) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Map<String, String> updatePostComment(PostComment postComment, String postID) {
+        Map<String, String> status = new HashMap<>();
+        PostComment pc = dao_post_i.findOneComment(postID, postComment.getUserID(), postComment.getCommentID().toString());
+        if (pc != null) {
+            return dao_post_i.updatePostComment(postComment);
+        } else {
+            status.put(StringUtil.STATUS, StringUtil.FAIL);
+            status.put(StringUtil.MESSAGE, StringUtil.UNAUTHERIZED);
+        }
+        return status;
     }
 
     @Override

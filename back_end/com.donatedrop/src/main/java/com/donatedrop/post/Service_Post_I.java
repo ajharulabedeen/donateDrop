@@ -23,7 +23,7 @@ public interface Service_Post_I {
 
     public PostComment findOneComment(String postID, String userID, String commentID);
 
-    public Map<String, String> updatePostComment(PostComment postComment);
+    public Map<String, String> updatePostComment(PostComment postComment, String postID);
 
     public Map<String, String> deletePostComment(PostComment postCommentOld);
 
