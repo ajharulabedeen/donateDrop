@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.mycompany.mavenproject1;
+package com.donatedrop.post;
 
 import java.io.Serializable;
 import java.math.BigInteger;
@@ -17,22 +12,21 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
  * @author Dell
  */
 @Entity
 @Table(name = "comment_with_user_info")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "CommentWithUserInfo.findAll", query = "SELECT c FROM CommentWithUserInfo c")
-    , @NamedQuery(name = "CommentWithUserInfo.findByCommentId", query = "SELECT c FROM CommentWithUserInfo c WHERE c.commentId = :commentId")
-    , @NamedQuery(name = "CommentWithUserInfo.findByCommentDate", query = "SELECT c FROM CommentWithUserInfo c WHERE c.commentDate = :commentDate")
-    , @NamedQuery(name = "CommentWithUserInfo.findByCommentUserId", query = "SELECT c FROM CommentWithUserInfo c WHERE c.commentUserId = :commentUserId")
-    , @NamedQuery(name = "CommentWithUserInfo.findByPostId", query = "SELECT c FROM CommentWithUserInfo c WHERE c.postId = :postId")
-    , @NamedQuery(name = "CommentWithUserInfo.findByName", query = "SELECT c FROM CommentWithUserInfo c WHERE c.name = :name")
-    , @NamedQuery(name = "CommentWithUserInfo.findByEmail", query = "SELECT c FROM CommentWithUserInfo c WHERE c.email = :email")
-    , @NamedQuery(name = "CommentWithUserInfo.findByGender", query = "SELECT c FROM CommentWithUserInfo c WHERE c.gender = :gender")
-    , @NamedQuery(name = "CommentWithUserInfo.findByProfession", query = "SELECT c FROM CommentWithUserInfo c WHERE c.profession = :profession")})
+        @NamedQuery(name = "CommentWithUserInfo.findAll", query = "SELECT c FROM CommentWithUserInfo c")
+        , @NamedQuery(name = "CommentWithUserInfo.findByCommentId", query = "SELECT c FROM CommentWithUserInfo c WHERE c.commentId = :commentId")
+        , @NamedQuery(name = "CommentWithUserInfo.findByCommentDate", query = "SELECT c FROM CommentWithUserInfo c WHERE c.commentDate = :commentDate")
+        , @NamedQuery(name = "CommentWithUserInfo.findByCommentUserId", query = "SELECT c FROM CommentWithUserInfo c WHERE c.commentUserId = :commentUserId")
+        , @NamedQuery(name = "CommentWithUserInfo.findByPostId", query = "SELECT c FROM CommentWithUserInfo c WHERE c.postId = :postId")
+        , @NamedQuery(name = "CommentWithUserInfo.findByName", query = "SELECT c FROM CommentWithUserInfo c WHERE c.name = :name")
+        , @NamedQuery(name = "CommentWithUserInfo.findByEmail", query = "SELECT c FROM CommentWithUserInfo c WHERE c.email = :email")
+        , @NamedQuery(name = "CommentWithUserInfo.findByGender", query = "SELECT c FROM CommentWithUserInfo c WHERE c.gender = :gender")
+        , @NamedQuery(name = "CommentWithUserInfo.findByProfession", query = "SELECT c FROM CommentWithUserInfo c WHERE c.profession = :profession")})
 public class CommentWithUserInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -131,5 +125,19 @@ public class CommentWithUserInfo implements Serializable {
     public void setProfession(String profession) {
         this.profession = profession;
     }
-    
+
+    @Override
+    public String toString() {
+        return "CommentWithUserInfo{" +
+                "commentId=" + commentId +
+                ", commentDetails='" + commentDetails + '\'' +
+                ", commentDate='" + commentDate + '\'' +
+                ", commentUserId='" + commentUserId + '\'' +
+                ", postId=" + postId +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", gender='" + gender + '\'' +
+                ", profession='" + profession + '\'' +
+                '}';
+    }
 }

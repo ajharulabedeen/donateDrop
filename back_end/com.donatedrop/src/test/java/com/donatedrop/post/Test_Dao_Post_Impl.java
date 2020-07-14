@@ -274,7 +274,16 @@ public class Test_Dao_Post_Impl {
         String postID = getID();
     }
 
-//    @Tes
+    @Test
+    public void testGetCommentWithUserInfo() {
+        String postID = getID();
+//        List<CommentWithUserInfo> commentWithUserInfoList =
+//                dao_post_i.getCommentWithUserInfo(postID);
+//        commentWithUserInfoList.forEach(c -> {
+//
+//        });
+    }
+
 //    end : comment
 
     //    @Test
