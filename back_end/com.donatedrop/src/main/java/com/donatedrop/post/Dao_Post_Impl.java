@@ -261,4 +261,11 @@ public class Dao_Post_Impl implements Dao_Post_I {
         return entityManager.createNativeQuery(sql).getResultList().get(0).toString();
     }
 
+    @Override
+    public String countCommentsOfAPost(String postID) {
+        String sql = "SELECT COUNT(*) FROM `postcomment` WHERE post_id=" + postID;
+        return entityManager.createNativeQuery(sql).getResultList().get(0).toString();
+    }
+
+
 }

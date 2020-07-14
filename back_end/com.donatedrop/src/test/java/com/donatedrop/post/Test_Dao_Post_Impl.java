@@ -195,7 +195,6 @@ public class Test_Dao_Post_Impl {
 
 
     //    start : comment
-
     @Test
     public void testAddCommentToPost() {
         Random r = new Random();
@@ -212,6 +211,14 @@ public class Test_Dao_Post_Impl {
     }
 
     @Test
+    public void testCountCommentsAPost() {
+        // right value test
+        String postID = getID();
+        String totalCommet = dao_post_i.countCommentsOfAPost(postID);
+        System.out.println(totalCommet);
+    }
+
+    @Test
     public void testReadOneComment() {
         // right value test
         String postID = getID();
@@ -225,6 +232,7 @@ public class Test_Dao_Post_Impl {
         postComment = dao_post_i.findOneComment(postID, userID + 1, commentID);
         Assert.assertNull(postComment);
     }
+
 
     @Test
     public void testUpdateComment() {
@@ -261,6 +269,7 @@ public class Test_Dao_Post_Impl {
         PostComment postCommentDeleted = dao_post_i.findOneComment(postID, userID, commentID);
         Assert.assertNull(postCommentDeleted);
     }
+
 
 //    @Tes
 //    end : comment
