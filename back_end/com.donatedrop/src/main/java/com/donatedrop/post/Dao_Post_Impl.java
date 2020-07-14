@@ -267,5 +267,10 @@ public class Dao_Post_Impl implements Dao_Post_I {
         return entityManager.createNativeQuery(sql).getResultList().get(0).toString();
     }
 
+    @Override
+    public List<CommentWithUserInfo> getCommentWithUserInfo(String postID) {
+        String sql = "SELECT * FROM `comment_with_user_info` WHERE comment_with_user_info.post_id=" + postID;
+        return entityManager.createNativeQuery(sql, CommentWithUserInfo.class).getResultList();
+    }
 
 }

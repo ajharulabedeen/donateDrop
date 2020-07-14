@@ -34,7 +34,9 @@ public interface Dao_Post_I {
 
     public List<Post> getAllPostsByAnUserWithinDate(PostSearch postSearch);
 
-    String countAllPostsByAnUserWithinDate(PostSearch postSearch);
+    public String countAllPostsByAnUserWithinDate(PostSearch postSearch);
 
-    String countCommentsOfAPost(String postID);
+    public String countCommentsOfAPost(String postID);
+
+    public List<CommentWithUserInfo> getCommentWithUserInfo(String postID);
 }
