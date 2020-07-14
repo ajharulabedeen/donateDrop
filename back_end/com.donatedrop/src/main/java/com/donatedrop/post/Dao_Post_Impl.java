@@ -170,7 +170,7 @@ public class Dao_Post_Impl implements Dao_Post_I {
     }
 
     @Override
-    public PostComment findPostComment(String postID, String userID, String commentID) {
+    public PostComment findOneComment(String postID, String userID, String commentID) {
         String sql = "SELECT * FROM postcomment WHERE comment_id = " + commentID
                 + " AND postcomment.`comment_user_id` = " + userID
                 + " AND `post_id` = " + postID;

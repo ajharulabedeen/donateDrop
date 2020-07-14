@@ -139,7 +139,6 @@ public class Test_Dao_Post_Impl {
         System.out.println(count);
     }
 
-
     @Test
     public void testPostByAnUserBetweenDateWithSearch() {
         String userID = "12417";
@@ -218,12 +217,12 @@ public class Test_Dao_Post_Impl {
         String postID = getID();
         String userID = getCommentUserID();
         String commentID = getCommentID();
-        PostComment postComment = dao_post_i.findPostComment(postID, userID, commentID);
+        PostComment postComment = dao_post_i.findOneComment(postID, userID, commentID);
         System.out.println(postComment);
         Assert.assertNotNull(postComment);
 
         // wrog value test . one user tring to access another comment
-        postComment = dao_post_i.findPostComment(postID, userID + 1, commentID);
+        postComment = dao_post_i.findOneComment(postID, userID + 1, commentID);
         Assert.assertNull(postComment);
     }
 
@@ -234,14 +233,14 @@ public class Test_Dao_Post_Impl {
         String postID = getID();
         String userID = getCommentUserID();
         String commentID = getCommentID();
-        PostComment postCommentOld = dao_post_i.findPostComment(postID, userID, commentID);
+        PostComment postCommentOld = dao_post_i.findOneComment(postID, userID, commentID);
         System.out.println(postCommentOld);
         Assert.assertNotNull(postCommentOld);
 
         String sOld = "Comment Detials Updated DIM DIM!";
         postCommentOld.setCommentDetails(sOld);
         status = dao_post_i.updatePostComment(postCommentOld);
-        String sNew = dao_post_i.findPostComment(postID, userID, commentID).getCommentDetails();
+        String sNew = dao_post_i.findOneComment(postID, userID, commentID).getCommentDetails();
 
         Assert.assertEquals(sOld, sNew);
         Assert.assertEquals(StringUtil.OK, status.get(StringUtil.STATUS));
@@ -254,12 +253,12 @@ public class Test_Dao_Post_Impl {
         String postID = getID();
         String userID = getCommentUserID();
         String commentID = getCommentID();
-        PostComment postCommentOld = dao_post_i.findPostComment(postID, userID, commentID);
+        PostComment postCommentOld = dao_post_i.findOneComment(postID, userID, commentID);
         System.out.println(postCommentOld);
         Assert.assertNotNull(postCommentOld);
 
         status = dao_post_i.deletePostComment(postCommentOld);
-        PostComment postCommentDeleted = dao_post_i.findPostComment(postID, userID, commentID);
+        PostComment postCommentDeleted = dao_post_i.findOneComment(postID, userID, commentID);
         Assert.assertNull(postCommentDeleted);
     }
 
