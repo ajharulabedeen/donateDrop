@@ -25,7 +25,7 @@ public interface Service_Post_I {
 
     public Map<String, String> updatePostComment(PostComment postComment, String postID);
 
-    public Map<String, String> deletePostComment(PostComment postCommentOld);
+    public Map<String, String> deletePostComment(String postID, PostComment postCommentOld);
 
     //-----Search and all posts by an user.
     public List<Post> getAllPostsByAnUser(PostSearch postSearch);

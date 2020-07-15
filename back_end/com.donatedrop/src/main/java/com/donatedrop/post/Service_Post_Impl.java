@@ -86,8 +86,16 @@ public class Service_Post_Impl implements Service_Post_I {
     }
 
     @Override
-    public Map<String, String> deletePostComment(PostComment postCommentOld) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Map<String, String> deletePostComment(String postID, PostComment postCommentOld) {
+        PostComment postComment = dao_post_i.findOneComment(postID, postCommentOld.getUserID(), postCommentOld.getCommentID().toString());
+        Map<String, String> status = new HashMap<>();
+        if (postComment != null) {
+            return dao_post_i.deletePostComment(postCommentOld);
+        } else {
+            status.put(StringUtil.STATUS, StringUtil.FAIL);
+            status.put(StringUtil.MESSAGE, StringUtil.UNAUTHERIZED);
+        }
+        return status;
     }
 
     @Override

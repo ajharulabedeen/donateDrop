@@ -233,6 +233,8 @@ public class Test_Service_Post_Impl {
 //        postComment = dao_post_i.findOneComment(postID, userID + 1, commentID);
 //        Assert.assertNull(postComment);
 //    }
+
+    //    done
     @Test
     public void testUpdateComment() {
         Map<String, String> status = null;
@@ -259,6 +261,7 @@ public class Test_Service_Post_Impl {
         System.out.println(status);
     }
 
+    //done
     @Test
     public void testDeleteComment() {
         Map<String, String> status = null;
@@ -270,9 +273,16 @@ public class Test_Service_Post_Impl {
         System.out.println(postCommentOld);
         Assert.assertNotNull(postCommentOld);
 
-        status = service_post_i.deletePostComment(postCommentOld);
+        status = service_post_i.deletePostComment(postID, postCommentOld);
+        Assert.assertEquals(StringUtil.OK, status.get(StringUtil.STATUS));
         PostComment postCommentDeleted = service_post_i.findOneComment(postID, userID, commentID);
         Assert.assertNull(postCommentDeleted);
+
+//        fail delete
+        status = service_post_i.deletePostComment(postID + 1, postCommentOld);
+        Assert.assertEquals(StringUtil.FAIL, status.get(StringUtil.STATUS));
+
+
     }
 
     //    @Test
@@ -285,6 +295,8 @@ public class Test_Service_Post_Impl {
 //        });
 //    }
 //    end : comment
+
+    //done.
     @Test
     public void testDeletePost() {
         String userID = getUserID();
