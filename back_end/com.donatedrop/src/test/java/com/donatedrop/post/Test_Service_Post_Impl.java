@@ -298,7 +298,7 @@ public class Test_Service_Post_Impl {
 
 //        delete fail :
         status = service_post_i.deletePost(userID + 1, postID);
-        Assert.assertEquals(StringUtil.OK, status.get(StringUtil.STATUS));
+        Assert.assertEquals(StringUtil.FAIL, status.get(StringUtil.STATUS));
     }
 
     //    Data insertion :

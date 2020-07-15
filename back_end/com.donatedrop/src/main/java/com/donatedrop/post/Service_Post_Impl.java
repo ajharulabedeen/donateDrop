@@ -49,7 +49,7 @@ public class Service_Post_Impl implements Service_Post_I {
         Post p = dao_post_i.findPostByUserIDNoComment(userID, postID);
         Map<String, String> status = new HashMap<>();
         if (p != null) {
-            status.put(StringUtil.STATUS, StringUtil.OK);
+            return dao_post_i.deletePost(postID);
         } else {
             status.put(StringUtil.STATUS, StringUtil.FAIL);
             status.put(StringUtil.MESSAGE, StringUtil.UNAUTHERIZED);
