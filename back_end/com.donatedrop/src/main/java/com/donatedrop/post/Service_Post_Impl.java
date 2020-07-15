@@ -36,7 +36,7 @@ public class Service_Post_Impl implements Service_Post_I {
 
     @Override
     public Post findPostByUserIDNoComment(String userID, String postID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao_post_i.findPostByUserIDNoComment(userID, postID);
     }
 
     @Override
@@ -59,12 +59,12 @@ public class Service_Post_Impl implements Service_Post_I {
 
     @Override
     public Post findPostWithComments(String postID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao_post_i.findPostWithComments(postID);
     }
 
     @Override
     public Map<String, String> saveComment(PostComment postComment, String postID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao_post_i.saveComment(postComment, postID);
     }
 
     @Override
@@ -100,32 +100,32 @@ public class Service_Post_Impl implements Service_Post_I {
 
     @Override
     public List<Post> getAllPostsByAnUser(PostSearch postSearch) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao_post_i.getAllPostsByAnUser(postSearch);
     }
 
     @Override
     public String countAllPostsByAnUser(PostSearch postSearch) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao_post_i.countAllPostsByAnUser(postSearch);
     }
 
     @Override
     public List<Post> getAllPostsByAnUserWithinDate(PostSearch postSearch) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao_post_i.getAllPostsByAnUserWithinDate(postSearch);
     }
 
     @Override
     public String countAllPostsByAnUserWithinDate(PostSearch postSearch) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao_post_i.countAllPostsByAnUserWithinDate(postSearch);
     }
 
     @Override
     public String countCommentsOfAPost(String postID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao_post_i.countCommentsOfAPost(postID);
     }
 
     @Override
     public List<CommentWithUserInfo> getCommentWithUserInfo(String postID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao_post_i.getCommentWithUserInfo(postID);
     }
 
 }
