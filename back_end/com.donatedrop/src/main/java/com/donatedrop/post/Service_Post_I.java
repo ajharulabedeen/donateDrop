@@ -15,7 +15,7 @@ public interface Service_Post_I {
 
     public Post findOnePostByID(String id);
 
-    public Map<String, String> deletePost(String id);
+    public Map<String, String> deletePost(String userID, String postID);
 
     public Post findPostWithComments(String postID);
 

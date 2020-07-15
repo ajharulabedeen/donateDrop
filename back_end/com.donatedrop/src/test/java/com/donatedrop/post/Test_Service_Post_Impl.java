@@ -285,17 +285,20 @@ public class Test_Service_Post_Impl {
 //        });
 //    }
 //    end : comment
-    //    @Test
+    @Test
     public void testDeletePost() {
         String userID = getUserID();
         String postID = getID();
         Map<String, String> status = null;
-        Post p = service_post_i.findOnePostByID(postID);
+//        Post p = service_post_i.findOnePostByID(postID);
 //        System.out.println("\n>>>" + p.getNotes() + "\n");
-        status = service_post_i.deletePost(postID);
-        Post updatedP = service_post_i.findOnePostByID(postID);
+        status = service_post_i.deletePost(userID, postID);
+//        Post updatedP = service_post_i.findOnePostByID(postID);
         Assert.assertEquals(StringUtil.OK, status.get(StringUtil.STATUS));
-        Assert.assertNull(updatedP);
+
+//        delete fail :
+        status = service_post_i.deletePost(userID + 1, postID);
+        Assert.assertEquals(StringUtil.OK, status.get(StringUtil.STATUS));
     }
 
     //    Data insertion :
