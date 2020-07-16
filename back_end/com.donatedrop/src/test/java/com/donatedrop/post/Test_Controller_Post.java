@@ -26,6 +26,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
@@ -95,6 +97,9 @@ public class Test_Controller_Post extends AbstractTest {
         System.out.println(content);
         Map<String, String> map = super.mapFromJson(content, Map.class);
         assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
+        if (StringUtil.OK.equals(map.get(StringUtil.STATUS))) {
+            storePostID(map.get(StringUtil.ID));
+        }
     }
 
 //    //    String uri = "/public/profile/basic/save";
@@ -427,5 +432,17 @@ public class Test_Controller_Post extends AbstractTest {
 //        System.out.println(content);
 //        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
 //    }
+
+    public void storePostID(String id) {
+        try {
+            FileWriter myWriter = new FileWriter("controller_post_ID.txt");
+            myWriter.write(id);
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
 
 }
