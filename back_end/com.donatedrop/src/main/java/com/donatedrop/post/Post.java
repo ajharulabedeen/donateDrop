@@ -101,6 +101,29 @@ public class Post implements Serializable {
     public Post() {
     }
 
+
+    public Post(String postUserID, String bloodType, String location, String hospitalName, String hospitalAddress, String patientGender, String patientDescription, String postDate, String needDate, String quantity, String contactInfo, String status, String remarks, String donnerFound, String relation, String notes, String report, String comments) {
+        this.postUserID = postUserID;
+        this.bloodType = bloodType;
+        this.location = location;
+        this.hospitalName = hospitalName;
+        this.hospitalAddress = hospitalAddress;
+        this.patientGender = patientGender;
+        this.patientDescription = patientDescription;
+        this.postDate = postDate;
+        this.needDate = needDate;
+        this.quantity = quantity;
+        this.contactInfo = contactInfo;
+        this.status = status;
+        this.remarks = remarks;
+        this.donnerFound = donnerFound;
+        this.relation = relation;
+        this.notes = notes;
+        this.report = report;
+        Comments = comments;
+    }
+
+
     public Post(String postUserID, String bloodType, String location, String hospitalName, String hospitalAddress, String patientGender, String patientDescription, String postDate, String needDate, String quantity, String contactInfo, String status, String remarks, String donnerFound, String relation, String notes, String report, String comments, List<PostComment> postComments) {
         this.postUserID = postUserID;
         this.bloodType = bloodType;
