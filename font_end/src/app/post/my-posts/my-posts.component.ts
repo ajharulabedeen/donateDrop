@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {BasicService} from '../../profile/basic/basic.service';
 
 @Component({
   selector: 'app-my-posts',
@@ -7,12 +8,19 @@ import {Component, OnInit} from '@angular/core';
 })
 export class MyPostsComponent implements OnInit {
 
-  constructor() {
+  bloods = new Array();
+  blood_Group: string;
+
+
+  constructor(private basicService: BasicService) {
   }
 
   ngOnInit() {
     window.dispatchEvent(new Event('resize'));
     document.body.className = 'hold-transition skin-blue sidebar-mini';
+
+    this.bloods = this.basicService.getBloodGroup();
+    console.log(this.bloods);
   }
 
 }

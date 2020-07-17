@@ -162,6 +162,20 @@
             </div>
           </div>
           <!--blood_type-->
+          <div class="col-md-12">
+            <label>Blood Group</label>
+            <!--<input [(ngModel)]="blood_group" [disabled]='!profileEdit' type="text" class="form-control pull-right">-->
+            <div class="form-group">
+              <div class="form-group" data-select2-id="27">
+                <select [(ngModel)]="blood_Group"
+                        class="form-control select2 select2-hidden-accessible"
+                        style="width: 100%;" tabindex="-1" aria-hidden="true"
+                >
+                  <option *ngFor="let b of bloods">{{b}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
           <!--quantity-->
           <!--patient_gender-->
           <!--relation-->
