@@ -184,11 +184,9 @@
           <!--patient_gender-->
           <div class="col-md-4">
             <label>Gender</label>
-            <!--<input [(ngModel)]="gender" [disabled]='!profileEdit' type="text" class="form-control pull-right">-->
-            <!-- not now due to complexity to set data after read. -->
             <div class="form-group">
               <div class="form-group" data-select2-id="27">
-                <select [(ngModel)]="gender"
+                <select [(ngModel)]="patientGender"
                         class="form-control select2 select2-hidden-accessible"
                         style="width: 100%;" tabindex="-1" aria-hidden="true"
                 >
@@ -199,8 +197,14 @@
               </div>
             </div>
           </div>
-
           <!--relation-->
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Relation</label>
+              <input [(ngModel)]="relationWithPatient" type="text" class="form-control"
+                     placeholder="Enter Relation with the patient...">
+            </div>
+          </div>
           <!--hospital_name-->
           <!--hospital_address-->
           <!--contact_info-->
