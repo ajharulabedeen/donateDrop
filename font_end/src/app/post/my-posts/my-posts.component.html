@@ -2,7 +2,7 @@
   <app-topnavbar></app-topnavbar>
   <app-asidenavbar></app-asidenavbar>
   <div class="content-wrapper">
-    <h1 align="center">History</h1>
+    <h1 align="center">My Posts</h1>
     <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#modal_work">
       Add New
     </button>
@@ -130,7 +130,7 @@
 
   </div>
 
-  <!-- Modal  : New History-->
+  <!-- Modal  : New Posts-->
   <div class="modal fade" id="modal_work" tabindex="-1" role="dialog" aria-labelledby="modal_workLabel"
        aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -144,10 +144,10 @@
 
         <div class="modal-body">
 
-          <!--Date-->
+          <!--Need Date-->
           <div class="col-md-6">
             <div class="form-group">
-              <label>Birth Date:</label>
+              <label>Need Date:</label>
               <div class="input-group date">
                 <input [(ngModel)]="donationDate" type="text" class="form-control pull-right">
               </div>
@@ -161,6 +161,18 @@
               </div>
             </div>
           </div>
+          <!--blood_type-->
+          <!--quantity-->
+          <!--patient_gender-->
+          <!--relation-->
+          <!--hospital_name-->
+          <!--hospital_address-->
+          <!--contact_info-->
+          <!--location-->
+          <!--patient_description`,-->
+          <!--remarks-->
+          <!--notes-->
+
           <div class="form-group">
             <label>Location</label>
             <input [(ngModel)]="donationLocation" type="text" class="form-control"
