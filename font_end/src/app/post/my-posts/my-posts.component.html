@@ -220,40 +220,27 @@
           <!--location-->
           <div class="form-group">
             <label>Location</label>
-            <input [(ngModel)]="donationLocation" type="text" class="form-control"
-                   placeholder="Enter ...">
+            <textarea class="col-md-12" [(ngModel)]="donationLocation"></textarea>
           </div>
           <!--contact_info-->
           <div class="form-group">
             <label>Contact Info</label>
-            <input [(ngModel)]="contactInfo" type="text" class="form-control"
-                   placeholder="Enter ...">
+            <textarea class="col-md-12" [(ngModel)]="contactInfo"></textarea>
           </div>
           <!--patient_description`,-->
           <div class="form-group">
             <label>Patient Type/Description</label>
-            <input [(ngModel)]="patientDescription" type="text" class="form-control" placeholder="Enter ...">
+            <textarea class="col-md-12" [(ngModel)]="patientDescription"></textarea>
           </div>
           <!--remarks-->
           <div class="form-group">
             <label>Patient Remarks</label>
-            <input [(ngModel)]="patientRemarks" type="text" class="form-control" placeholder="Enter ...">
+            <textarea class="col-md-12" [(ngModel)]="patientRemarks"></textarea>
           </div>
           <!--notes-->
           <div class="form-group">
             <label>Any Notes</label>
-            <input [(ngModel)]="anyNotes" type="text" class="form-control" placeholder="Enter ...">
-          </div>
-
-          <div class="form-group">
-            <label>Reffered By</label>
-            <input [(ngModel)]="refferedBy" type="text" class="form-control" placeholder="Enter ...">
-          </div>
-          <div class="form-group">
-            <label>Note</label>
-            <textarea class="col-md-12" [(ngModel)]="donationNote">
-
-            </textarea>
+            <textarea class="col-md-12" [(ngModel)]="anyNotes"></textarea>
           </div>
         </div>
         <div class="modal-footer">
