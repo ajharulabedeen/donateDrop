@@ -22,7 +22,6 @@ export class MyPostsComponent implements OnInit {
   patientRemarks: string;
   anyNotes: string;
 
-
   constructor(private basicService: BasicService) {
   }
 
@@ -33,5 +32,8 @@ export class MyPostsComponent implements OnInit {
     this.bloods = this.basicService.getBloodGroup();
     console.log(this.bloods);
   }
+
+
+
 
 }
