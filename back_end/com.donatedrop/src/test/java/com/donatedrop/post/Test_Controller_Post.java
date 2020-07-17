@@ -26,6 +26,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
@@ -38,8 +40,8 @@ import static org.junit.Assert.assertEquals;
 @SpringBootTest
 public class Test_Controller_Post extends AbstractTest {
 
-//    @Autowired
-//    Dao_Profile_Basic_I dao_Profile_Basic_I;
+    @Autowired
+    Dao_Post_I dao_post_i;
 
     @Autowired
     DumpDao dumpDao;
@@ -100,6 +102,7 @@ public class Test_Controller_Post extends AbstractTest {
         assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
         if (StringUtil.OK.equals(map.get(StringUtil.STATUS))) {
             storePostID(map.get(StringUtil.ID));
+            System.out.println(dao_post_i.findPostWithComments(getPostID()));
         }
     }
 
@@ -444,6 +447,24 @@ public class Test_Controller_Post extends AbstractTest {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+    }
+
+    public String getPostID() {
+        String id = "";
+        try {
+            File myObj = new File("controller_post_ID.txt");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                id = data;
+//                System.out.println(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        return id;
     }
 
 }
