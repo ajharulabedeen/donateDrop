@@ -16,6 +16,11 @@ export class MyPostsComponent implements OnInit {
   relationWithPatient: string;
   hospitalName: string;
   hospitalAddress: string;
+  donationLocation: string;
+  contactInfo: string;
+  patientDescription: string;
+  patientRemarks: string;
+  anyNotes: string;
 
 
   constructor(private basicService: BasicService) {

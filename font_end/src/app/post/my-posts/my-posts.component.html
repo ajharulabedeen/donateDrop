@@ -217,21 +217,34 @@
             <input [(ngModel)]="hospitalAddress" type="text" class="form-control"
                    placeholder="Enter Hospital Name...">
           </div>
-          <!--contact_info-->
           <!--location-->
-          <!--patient_description`,-->
-          <!--remarks-->
-          <!--notes-->
-
           <div class="form-group">
             <label>Location</label>
             <input [(ngModel)]="donationLocation" type="text" class="form-control"
                    placeholder="Enter ...">
           </div>
+          <!--contact_info-->
+          <div class="form-group">
+            <label>Contact Info</label>
+            <input [(ngModel)]="contactInfo" type="text" class="form-control"
+                   placeholder="Enter ...">
+          </div>
+          <!--patient_description`,-->
           <div class="form-group">
             <label>Patient Type/Description</label>
-            <input [(ngModel)]="patientType" type="text" class="form-control" placeholder="Enter ...">
+            <input [(ngModel)]="patientDescription" type="text" class="form-control" placeholder="Enter ...">
           </div>
+          <!--remarks-->
+          <div class="form-group">
+            <label>Patient Remarks</label>
+            <input [(ngModel)]="patientRemarks" type="text" class="form-control" placeholder="Enter ...">
+          </div>
+          <!--notes-->
+          <div class="form-group">
+            <label>Any Notes</label>
+            <input [(ngModel)]="anyNotes" type="text" class="form-control" placeholder="Enter ...">
+          </div>
+
           <div class="form-group">
             <label>Reffered By</label>
             <input [(ngModel)]="refferedBy" type="text" class="form-control" placeholder="Enter ...">
