@@ -149,7 +149,7 @@
             <div class="form-group">
               <label>Need Date:</label>
               <div class="input-group date">
-                <input [(ngModel)]="donationDate" type="text" class="form-control pull-right">
+                <input [(ngModel)]="bloodNeedDate" type="text" class="form-control pull-right">
               </div>
             </div>
           </div>
@@ -157,7 +157,7 @@
             <div class="form-group">
               <label>Select Date:</label>
               <div class="input-group date">
-                <input [(ngModel)]="donationDate" type="date" class="form-control pull-right">
+                <input [(ngModel)]="bloodNeedDate" type="date" class="form-control pull-right">
               </div>
             </div>
           </div>
@@ -177,6 +177,11 @@
             </div>
           </div>
           <!--quantity-->
+          <div class="form-group">
+            <label>Qauntity</label>
+            <input [(ngModel)]="quantity" type="text" class="form-control"
+                   placeholder="Enter ...">
+          </div>
           <!--patient_gender-->
           <!--relation-->
           <!--hospital_name-->

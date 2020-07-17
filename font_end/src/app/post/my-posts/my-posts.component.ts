@@ -10,6 +10,8 @@ export class MyPostsComponent implements OnInit {
 
   bloods = new Array();
   blood_Group: string;
+  quantity: string;
+  bloodNeedDate: string;
 
 
   constructor(private basicService: BasicService) {
