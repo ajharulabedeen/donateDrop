@@ -180,9 +180,27 @@
           <div class="form-group">
             <label>Qauntity</label>
             <input [(ngModel)]="quantity" type="text" class="form-control"
-                   placeholder="Enter ...">
+                   placeholder="Enter Quantity...">
           </div>
           <!--patient_gender-->
+          <div class="col-md-2">
+            <label>Gender</label>
+            <!--<input [(ngModel)]="gender" [disabled]='!profileEdit' type="text" class="form-control pull-right">-->
+            <!-- not now due to complexity to set data after read. -->
+            <div class="form-group">
+              <div class="form-group" data-select2-id="27">
+                <select [disabled]='!profileEdit' [(ngModel)]="gender"
+                        class="form-control select2 select2-hidden-accessible"
+                        style="width: 100%;" tabindex="-1" aria-hidden="true"
+                >
+                  <option value="other">Other</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
           <!--relation-->
           <!--hospital_name-->
           <!--hospital_address-->
