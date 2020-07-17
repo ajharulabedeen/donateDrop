@@ -14,6 +14,8 @@ export class MyPostsComponent implements OnInit {
   bloodNeedDate: string;
   patientGender: string;
   relationWithPatient: string;
+  hospitalName: string;
+  hospitalAddress: string;
 
 
   constructor(private basicService: BasicService) {
