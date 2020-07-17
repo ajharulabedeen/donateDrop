@@ -86,8 +86,9 @@ public class Test_Controller_Post extends AbstractTest {
                 "NA",
                 DumpData.getNote()
         );
-
+        System.out.println(post);
         String inputJson = super.mapToJson(post);
+        System.out.println(inputJson);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
                 .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
 

@@ -10,6 +10,7 @@ import java.util.Map;
 import com.donatedrop.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -24,7 +25,7 @@ public class ControllerPost {
     Service_Post_I service_post_i;
 
     @PostMapping("save")
-    public Map<String, String> savePost(Post post) {
+    public Map<String, String> savePost(@RequestBody Post post) {
         post.setPostUserID(Utils.getLoggedUserID());
         return service_post_i.savePost(post);
     }
