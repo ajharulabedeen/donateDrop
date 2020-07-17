@@ -162,34 +162,33 @@
             </div>
           </div>
           <!--blood_type-->
-          <div class="col-md-12">
+          <div class="col-md-4">
             <label>Blood Group</label>
-            <!--<input [(ngModel)]="blood_group" [disabled]='!profileEdit' type="text" class="form-control pull-right">-->
             <div class="form-group">
-              <div class="form-group" data-select2-id="27">
-                <select [(ngModel)]="blood_Group"
-                        class="form-control select2 select2-hidden-accessible"
-                        style="width: 100%;" tabindex="-1" aria-hidden="true"
-                >
-                  <option *ngFor="let b of bloods">{{b}}</option>
-                </select>
-              </div>
+              <select [(ngModel)]="blood_Group"
+                      class="form-control select2 select2-hidden-accessible"
+                      style="width: 100%;" tabindex="-1" aria-hidden="true"
+              >
+                <option *ngFor="let b of bloods">{{b}}</option>
+              </select>
             </div>
           </div>
           <!--quantity-->
-          <div class="form-group">
-            <label>Qauntity</label>
-            <input [(ngModel)]="quantity" type="text" class="form-control"
-                   placeholder="Enter Quantity...">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Qauntity</label>
+              <input [(ngModel)]="quantity" type="text" class="form-control"
+                     placeholder="Enter Quantity...">
+            </div>
           </div>
           <!--patient_gender-->
-          <div class="col-md-2">
+          <div class="col-md-4">
             <label>Gender</label>
             <!--<input [(ngModel)]="gender" [disabled]='!profileEdit' type="text" class="form-control pull-right">-->
             <!-- not now due to complexity to set data after read. -->
             <div class="form-group">
               <div class="form-group" data-select2-id="27">
-                <select [disabled]='!profileEdit' [(ngModel)]="gender"
+                <select [(ngModel)]="gender"
                         class="form-control select2 select2-hidden-accessible"
                         style="width: 100%;" tabindex="-1" aria-hidden="true"
                 >
