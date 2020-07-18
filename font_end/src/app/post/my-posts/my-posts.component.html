@@ -21,7 +21,10 @@
           <input [(ngModel)]="searchKey" type="text" class="form-control">
         </div>
       </div>
-      <div class="col-md-12 offset-md-12">
+
+
+      <!--Search By-->
+      <div class="col-md-6 offset-md-6">
         <div class="form-group">
           <h4>Search By :</h4>
           <select [(ngModel)]="searchBy">
@@ -43,6 +46,31 @@
           </select>
         </div>
       </div>
+      <!--Sort By :-->
+      <div class="col-md-6 offset-md-6">
+        <div class="form-group">
+          <h4>Sort By :</h4>
+          <select [(ngModel)]="searchBy">
+            <option value="post_id">Post ID</option>
+            <option value="need_date">Need Date</option>
+            <option value="post_date">Post Date</option>
+            <option value="blood_type">Blood Type</option>
+            <option value="contact_info">Contact Info</option>
+            <option value="hospital_name">Hospital Name</option>
+            <option value="hospital_address">Hospital Address</option>
+            <option value="location">Location</option>
+            <option value="patient_description">Patient Description</option>
+            <option value="patient_gender">Gender</option>
+            <option value="quantity">Quantity</option>
+            <option value="relation">Relation</option>
+            <option value="notes">Notes</option>
+            <option value="post_comment">Any Comment</option>
+            <option value="remarks">Remarks</option>
+          </select>
+        </div>
+      </div>
+
+
       <!-- end : search fields selection and search key or search value-->
 
       <!--      total-->
