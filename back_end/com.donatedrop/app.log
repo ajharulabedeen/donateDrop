@@ -1,18 +1,11 @@
- postOld.setBloodType(postNew.get bloodType);
- postOld.setContactInfo(postNew.get contactInfo);
- postOld.setDonnerFound(postNew.get donnerFound);
- postOld.setHospitalAddress(postNew.get hospitalAddress);
- postOld.setHospitalName(postNew.get hospitalName);
- postOld.setLocation(postNew.get location);
- postOld.setNeedDate(postNew.get needDate);
- postOld.setNotes(postNew.get notes);
- postOld.setPatientDescription(postNew.get patientDescription);
- postOld.setPatientGender(postNew.get patientGender);
- postOld.setpostOldDate(postNew.get postOldDate);
- postOld.setpostOldID(Long postOldID);
- postOld.setpostOldUserID(postNew.get postOldUserID);
- postOld.setQuantity(postNew.get quantity);
- postOld.setRelation(postNew.get relation);
- postOld.setRemarks(postNew.get remarks);
- postOld.setReport(postNew.get report);
- postOld.setStatus(postNew.get status);
+"dateType ="demoData",
+"startDate ="demoData",
+"endDate ="demoData",
+"start =1,
+"max =10,
+"key ="'%%'",
+"column ="location",
+"userID ="14294",
+"orderBy ="location",
+"orderType ="ASC"
+        

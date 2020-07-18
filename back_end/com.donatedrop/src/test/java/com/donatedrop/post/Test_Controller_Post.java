@@ -5,6 +5,9 @@
  */
 package com.donatedrop.post;
 
+import com.donatedrop.agent.admin.model.AgentRequestToReview;
+import com.donatedrop.agent.donner.models.RequestSearchReview;
+import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.geocode.AbstractTest;
 import com.donatedrop.models.Address;
 import com.donatedrop.other.DumpDao;
@@ -16,6 +19,7 @@ import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
 import com.donatedrop.util.Utils;
+import javafx.geometry.Pos;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -106,13 +110,46 @@ public class Test_Controller_Post extends AbstractTest {
         }
     }
 
+
+    @Test
+    @Order(3)
+    public void testGetAllPostsByAnUser() throws Exception {
+//     arrange
+        String uri = "/public/user/post/getAllPostsByAnUser";
+        PostSearch postSearch = new PostSearch();
+        postSearch.setDateType("demoData");
+        postSearch.setStartDate("demoData");
+        postSearch.setEndDate("demoData");
+        postSearch.setStart(1);
+        postSearch.setMax(10);
+        postSearch.setKey("'%%'");
+        postSearch.setColumn("location");
+        postSearch.setUserID("14294");
+        postSearch.setOrderBy("location");
+        postSearch.setOrderType("ASC");
+
+//      act
+        String inputJson = super.mapToJson(postSearch);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+//assert
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+//        System.out.println("\n" + content + "\n");
+        List<Post> postList = Arrays.asList(super.mapFromJson(content, Post[].class));
+        postList.forEach(post -> System.out.println(post.getPostID()));
+
+//        further verification can be done by reading the agent request.
+    }
+
+
 //    //    String uri = "/public/profile/basic/save";
 //    @Test
 //    @Order(2)
 //    public void testfullSave() throws Exception {
 //
 //        String uri = "/public/profile/basic/save";
-//
 //        // Arrange
 //        System.out.println("\nProfile Basic Dao Test!\n");
 //        ProfileBasic profileBasic = new ProfileBasic();
@@ -155,7 +192,8 @@ public class Test_Controller_Post extends AbstractTest {
 //        Map<String, String> map = super.mapFromJson(content, Map.class);
 //        assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
 //    }
-//
+
+
 //    //    String uri = "/public/profile/basic/findOneByUser";
 //    @Test
 //    public void testfindOneByUser() throws Exception {
@@ -167,7 +205,8 @@ public class Test_Controller_Post extends AbstractTest {
 //        String content = mvcResult.getResponse().getContentAsString();
 //        System.out.println(content);
 //    }
-//
+
+
 //    //    String uri = "/public/profile/basic/exist";
 //    @Test
 //    public void testBasicExist() throws Exception {
@@ -181,7 +220,8 @@ public class Test_Controller_Post extends AbstractTest {
 //        System.out.println(content);
 //        assertEquals(StringUtil.TRUE, result.get(StringUtil.STATUS));
 //    }
-//
+
+
 //    //    String uri = "/public/profile/basic/update";
 //    @Test
 //    public void testUpdate() throws Exception {
@@ -228,7 +268,8 @@ public class Test_Controller_Post extends AbstractTest {
 //        Assert.assertEquals(profileBasicNew.getReligion(), profileBasicSaved.getReligion());
 //        Assert.assertEquals(profileBasicNew.getEmail(), profileBasicSaved.getEmail());
 //    }
-//
+
+
 //    //    String uri = "/public/profile/basic/addPhoneNumber";
 //    @Test
 //    public void testAddPhoneNumber() throws Exception {
@@ -246,7 +287,8 @@ public class Test_Controller_Post extends AbstractTest {
 //        System.out.println(content);
 //        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
 //    }
-//
+
+
 //    //    String uri = "/public/profile/basic/deletePhoneNumber";
 //    @Test
 //    public void testDeletePhoneNumber() throws Exception {
@@ -265,7 +307,8 @@ public class Test_Controller_Post extends AbstractTest {
 //        System.out.println(content);
 //        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
 //    }
-//
+
+
 //    @Test
 ////    @Order(6)
 //    public void test6_presentAddressUpdate() throws Exception {
@@ -305,7 +348,8 @@ public class Test_Controller_Post extends AbstractTest {
 ////        Assert.assertEquals(divSaved, divNew);
 ////        Assert.assertEquals(distSaved, distNew);
 //    }
-//
+
+
 //    @Test
 ////    @Order(6)
 //    public void test7_updatePermanentAddress() throws Exception {
@@ -347,7 +391,8 @@ public class Test_Controller_Post extends AbstractTest {
 //        Assert.assertEquals(divSaved, divNew);
 //        Assert.assertEquals(distSaved, distNew);
 //    }
-//
+
+
 //    @Test
 ////    @Order(10)
 //    public void test10_addEmergencyContact() throws Exception {
@@ -374,7 +419,8 @@ public class Test_Controller_Post extends AbstractTest {
 //        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
 //
 //    }
-//
+
+
 //    @Test
 //    @Order(12)
 //    public void test12_deleteEmergencyContact() throws Exception {
@@ -396,7 +442,8 @@ public class Test_Controller_Post extends AbstractTest {
 //        System.out.println(content);
 //        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
 //    }
-//
+
+
 //    @Test
 //    @Order(11)
 //    public void test11_updateEmergencyContact() throws Exception {
@@ -436,6 +483,7 @@ public class Test_Controller_Post extends AbstractTest {
 //        System.out.println(content);
 //        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
 //    }
+
 
     public void storePostID(String id) {
         try {

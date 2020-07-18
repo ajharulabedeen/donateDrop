@@ -5,6 +5,7 @@
  */
 package com.donatedrop.post;
 
+import java.util.List;
 import java.util.Map;
 
 import com.donatedrop.util.Utils;
@@ -28,6 +29,12 @@ public class ControllerPost {
     public Map<String, String> savePost(@RequestBody Post post) {
         post.setPostUserID(Utils.getLoggedUserID());
         return service_post_i.savePost(post);
+    }
+
+    @PostMapping("getAllPostsByAnUser")
+    public List<Post> getAllPostsByAnUser(@RequestBody PostSearch postSearch) {
+        postSearch.setUserID(Utils.getLoggedUserID());
+        return service_post_i.getAllPostsByAnUser(postSearch);
     }
 
 
