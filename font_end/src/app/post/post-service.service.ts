@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {AuthService} from '../auth/auth.service';
 import {Basic} from '../profile/basic/basic.model';
 import {Post} from './post.model';
+import {PostSearch} from './post-search.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +26,9 @@ export class PostServiceService {
     // });
   } // create
 
-  public getMyPosts() {
-
+  public getAllPostsByAnUser(postSearch: PostSearch) {
+    return this.http.post(
+      'http://localhost:8080/public/user/post/getAllPostsByAnUser', postSearch, this.authService.getHeader()
+    );
   }
-
 }
