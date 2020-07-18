@@ -117,14 +117,6 @@
                  value="{{pageNumber}}">
         </div>
       </div>
-      <!--       sort by ASC or DESC -->
-      <div class="col-md-3 offset-md-3">
-        <div class="form-group" style="text-align: center">
-          <h4>Sort Order</h4>
-          <input type="radio" name="m_pay" [(ngModel)]="sortBy" value="ASC" checked="checked">Ascending<br>
-          <input type="radio" name="m_pay" [(ngModel)]="sortBy" value="DESC">Descending<br>
-        </div>
-      </div>
     </div>
     <!--END : Search-->
 
@@ -135,14 +127,19 @@
           <table class="table table-hover">
             <tbody>
             <tr>
-              <th>Delete</th>
-              <th>Edit</th>
+              <th>Operations</th>
               <th>Index</th>
-              <th>Date</th>
+              <th>Comments</th>
+              <th>Need Date</th>
+              <th>Quantity</th>
+              <th>Patient Gender</th>
+              <th>Relation</th>
+              <th>Hospital Name</th>
+              <th>Hospital Address</th>
               <th>Location</th>
-              <th>Patient Type</th>
-              <th>Note</th>
-              <th>Reffered By</th>
+              <th>Contact_info</th>
+              <th>Patient Description</th>
+              <th>Notes Personal</th>
             </tr>
             <tr *ngFor="let h of historyDonation; let i=index">
               <!--delete-->
@@ -277,16 +274,16 @@
             <label>Patient Type/Description</label>
             <textarea class="col-md-12" [(ngModel)]="patientDescription"></textarea>
           </div>
-          <!--remarks-->
+          <!--notes : thought no need, will be used as note personal-->
           <div class="form-group">
-            <label>Patient Remarks</label>
-            <textarea class="col-md-12" [(ngModel)]="patientRemarks"></textarea>
-          </div>
-          <!--notes-->
-          <div class="form-group">
-            <label>Any Notes</label>
+            <label>Note Persoanl(Private)</label>
             <textarea class="col-md-12" [(ngModel)]="anyNotes"></textarea>
           </div>
+          <!--remarks : thought no need, same kind of fiekd tree -->
+          <!--<div class="form-group">-->
+          <!--<label>Patient Remarks</label>-->
+          <!--<textarea class="col-md-12" [(ngModel)]="patientRemarks"></textarea>-->
+          <!--</div>-->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
