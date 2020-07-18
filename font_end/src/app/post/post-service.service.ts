@@ -16,15 +16,15 @@ export class PostServiceService {
   loading: boolean;
 
   save(post: Post) {
-    this.http.post(
+    return this.http.post(
       'http://127.0.0.1:8080/public/user/post/save', post, this.authService.getHeader()
-    ).subscribe((res: Response) => {
-      console.log(res);
-      this.loading = false;
-    });
+    );
+    //   .subscribe((res: Response) => {
+    //   console.log(res);
+    //   this.loading = false;
+    // });
+
   } // create
-
-
 
 
 }
