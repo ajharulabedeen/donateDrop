@@ -37,11 +37,17 @@ export class MyPostsComponent implements OnInit {
 
   public save() {
     this.postService.save(this.getPost()).subscribe((res: Response) => {
-        console.log(res);
-        this.loading = false;
-      });
-
+      console.log(res);
+    });
   }
+
+  public getAllPostsByAnUser() {
+    // var
+    // this.postService.getAllPostsByAnUser(this.getPost()).subscribe((res: Response) => {
+      //   console.log(res);
+      // });
+  }
+
 
   public getPost() {
     var p = new Post();

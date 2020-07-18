@@ -23,8 +23,10 @@ export class PostServiceService {
     //   console.log(res);
     //   this.loading = false;
     // });
-
   } // create
 
+  public getMyPosts() {
+
+  }
 
 }
