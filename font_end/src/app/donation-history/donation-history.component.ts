@@ -27,7 +27,6 @@ export class DonationHistoryComponent implements OnInit {
   deleteId: string;
   startHistory: number;
 
-
   // historyDonation = new Array();
 
   constructor(private serviceHistory: DonationHistoryService) {

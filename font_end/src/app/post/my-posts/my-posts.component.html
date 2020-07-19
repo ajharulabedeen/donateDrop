@@ -36,13 +36,14 @@
         </div>
         <!--(click)="searchWithinDate=!searchWithinDate;"-->
         <br>
+        <!--start/end : date-->
         <div *ngIf="searchWithinDate">
           <!--start Date-->
           <div class="col-md-2">
             <div class="form-group">
               <label>Start Date:</label>
               <div class="input-group date">
-                <input [(ngModel)]="bloodNeedDate" type="text" class="form-control pull-right">
+                <input [(ngModel)]="startDate" type="text" class="form-control pull-right">
               </div>
             </div>
           </div>
@@ -50,7 +51,7 @@
             <div class="form-group">
               <label>Select Date:</label>
               <div class="input-group date">
-                <input [(ngModel)]="bloodNeedDate" type="date" class="form-control pull-right">
+                <input [(ngModel)]="startDate" type="date" class="form-control pull-right">
               </div>
             </div>
           </div>
@@ -59,7 +60,7 @@
             <div class="form-group">
               <label>End Date:</label>
               <div class="input-group date">
-                <input [(ngModel)]="bloodNeedDate" type="text" class="form-control pull-right">
+                <input [(ngModel)]="endDate" type="text" class="form-control pull-right">
               </div>
             </div>
           </div>
@@ -67,7 +68,7 @@
             <div class="form-group">
               <label>Select Date:</label>
               <div class="input-group date">
-                <input [(ngModel)]="bloodNeedDate" type="date" class="form-control pull-right">
+                <input [(ngModel)]="endDate" type="date" class="form-control pull-right">
               </div>
             </div>
           </div>

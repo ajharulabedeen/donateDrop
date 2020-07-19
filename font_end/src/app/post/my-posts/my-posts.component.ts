@@ -12,11 +12,16 @@ import {DonnerToAgentRequestToReview} from '../../agent-dashboard/agent-dashboar
 })
 export class MyPostsComponent implements OnInit {
 
+  dateType: string;
+  startDate: string;
+  endDate: string;
+
   searchBy: string;
   sortBy: string;
   orderType: string;
   searchKey: string;
   total: string;
+
   pageNumber: number;
   startPost: number;
   perPage: number;
@@ -37,8 +42,6 @@ export class MyPostsComponent implements OnInit {
   patientRemarks: string;
   anyNotes: string;
   searchWithinDate: boolean;
-  dateType: string;
-
 
 
   constructor(private basicService: BasicService, private postService: PostServiceService) {
@@ -48,9 +51,14 @@ export class MyPostsComponent implements OnInit {
     window.dispatchEvent(new Event('resize'));
     document.body.className = 'hold-transition skin-blue sidebar-mini';
 
+    this.perPage = 5;
+    this.startPost= 0;
+
     this.getAllPostsByAnUser();
     this.bloods = this.basicService.getBloodGroup();
     this.searchWithinDate = false;
+
+
   }
 
   public save() {
@@ -61,43 +69,49 @@ export class MyPostsComponent implements OnInit {
 
   public getAllPostsByAnUser() {
 
-    console.log('searchWithinDate: ' + this.searchWithinDate);
+    console.log(' searchWithinDate: ' + this.searchWithinDate);
 
     var postSearch = new PostSearch();
-    postSearch.dateType = 'demoData';
-    postSearch.startDate = 'demoData';
-    postSearch.endDate = 'demoData';
-    postSearch.start = '1';
-    postSearch.max = '10';
-    postSearch.key = '\'%%\'';
-    postSearch.column = 'location';
-    postSearch.userID = '14294';
-    postSearch.orderBy = 'location';
-    postSearch.orderType = 'ASC';
+    postSearch.dateType = this.dateType;
+    postSearch.startDate = this.startDate;
+    postSearch.endDate = this.endDate;
+    postSearch.start = this.startPost.toString();
+    postSearch.max = this.perPage.toString();
+    postSearch.key = this.searchKey;
+    postSearch.column = this.searchBy;
+    postSearch.orderBy = this.sortBy;
+    postSearch.orderType = this.orderType;
+
+    console.log(postSearch);
+
+    if (this.searchWithinDate === true) {
+
+    } else {
+      this.postService.getAllPostsByAnUser(postSearch).subscribe((res: Response) => {
+        console.log(res);
+        this.bloodPosts = [];
+        for (const key in res) {
+          var post = new Post();
+          post.postID = res[key]['postID'];
+          post.bloodType = res[key]['bloodType'];
+          post.quantity = res[key]['quantity'];
+          post.needDate = res[key]['needDate'];
+          post.patientGender = res[key]['patientGender'];
+          post.relation = res[key]['relation'];
+          post.hospitalName = res[key]['hospitalName'];
+          post.hospitalAddress = res[key]['hospitalAddress'];
+          post.location = res[key]['location'];
+          post.contactInfo = res[key]['contactInfo'];
+          post.patientDescription = res[key]['patientDescription'];
+          post.remarks = res[key]['remarks'];
+          post.notes = res[key]['notes'];
+          this.bloodPosts.push(post);
+        }
+        console.log(this.bloodPosts);
+      });
+    }
 
 
-    this.postService.getAllPostsByAnUser(postSearch).subscribe((res: Response) => {
-      console.log(res);
-      this.bloodPosts = [];
-      for (const key in res) {
-        var post = new Post();
-        post.postID = res[key]['postID'];
-        post.bloodType = res[key]['bloodType'];
-        post.quantity = res[key]['quantity'];
-        post.needDate = res[key]['needDate'];
-        post.patientGender = res[key]['patientGender'];
-        post.relation = res[key]['relation'];
-        post.hospitalName = res[key]['hospitalName'];
-        post.hospitalAddress = res[key]['hospitalAddress'];
-        post.location = res[key]['location'];
-        post.contactInfo = res[key]['contactInfo'];
-        post.patientDescription = res[key]['patientDescription'];
-        post.remarks = res[key]['remarks'];
-        post.notes = res[key]['notes'];
-        this.bloodPosts.push(post);
-      }
-      console.log(this.bloodPosts);
-    });
   }
 
 
