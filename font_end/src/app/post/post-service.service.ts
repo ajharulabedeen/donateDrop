@@ -44,4 +44,10 @@ export class PostServiceService {
       'http://localhost:8080/public/user/post/getAllPostsByAnUserWithinDate', postSearch, this.authService.getHeader()
     );
   }
+
+  countAllPostsByAnUserWithinDate(postSearch: PostSearch) {
+    return this.http.post(
+      'http://localhost:8080/public/user/post/countAllPostsByAnUserWithinDate', postSearch, this.authService.getHeader()
+    );
+  }
 }

@@ -90,7 +90,12 @@ export class MyPostsComponent implements OnInit {
     console.log(postSearch);
 
     if (this.searchWithinDate === true) {
-      console.log('===================');
+
+      this.postService.countAllPostsByAnUserWithinDate(postSearch).subscribe((res: Response) => {
+        console.log(res);
+        this.total = res;
+      });
+
       this.postService.getAllPostsByAnUserWithinDate(postSearch).subscribe((res: Response) => {
         console.log(res);
         this.bloodPosts = [];
