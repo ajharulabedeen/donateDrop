@@ -90,12 +90,35 @@ export class MyPostsComponent implements OnInit {
     console.log(postSearch);
 
     if (this.searchWithinDate === true) {
+      console.log('===================');
+      this.postService.getAllPostsByAnUserWithinDate(postSearch).subscribe((res: Response) => {
+        console.log(res);
+        this.bloodPosts = [];
+        for (const key in res) {
+          var post = new Post();
+          post.postID = res[key]['postID'];
+          post.bloodType = res[key]['bloodType'];
+          post.quantity = res[key]['quantity'];
+          post.needDate = res[key]['needDate'];
+          post.patientGender = res[key]['patientGender'];
+          post.relation = res[key]['relation'];
+          post.hospitalName = res[key]['hospitalName'];
+          post.hospitalAddress = res[key]['hospitalAddress'];
+          post.location = res[key]['location'];
+          post.contactInfo = res[key]['contactInfo'];
+          post.patientDescription = res[key]['patientDescription'];
+          post.remarks = res[key]['remarks'];
+          post.notes = res[key]['notes'];
+          this.bloodPosts.push(post);
+        }
+        console.log(this.bloodPosts);
+      });
 
     } else {
 
       this.postService.countAllPostsByAnUser(postSearch).subscribe((res: Response) => {
         console.log(res);
-        this.total = res[0];
+        this.total = res;
       });
 
       this.postService.getAllPostsByAnUser(postSearch).subscribe((res: Response) => {
