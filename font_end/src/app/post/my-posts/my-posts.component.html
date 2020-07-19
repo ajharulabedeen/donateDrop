@@ -129,7 +129,6 @@
             <tr>
               <th>Operations</th>
               <th>Index</th>
-              <th>Comments</th>
               <th>Need Date</th>
               <th>Quantity</th>
               <th>Patient Gender</th>
@@ -141,26 +140,24 @@
               <th>Patient Description</th>
               <th>Notes Personal</th>
             </tr>
-            <tr *ngFor="let h of historyDonation; let i=index">
+            <tr *ngFor="let p of bloodPosts; let i=index">
               <!--delete-->
               <td>
-                donation_delete
                 <button class="btn btn-xs btn-warning" (click)=" deleteId = h.$id" data-toggle="modal"
                         data-target="#donation_delete">Delete
                 </button>
               </td>
-              <!--edit-->
-              <td>
-                <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modal_work"
-                        (click)="update(j)">Edit
-                </button>
-              </td>
               <td>{{i+1}}</td>
-              <td>{{h.date}}</td>
-              <td>{{h.location}}</td>
-              <td>{{h.$patientDescription}}</td>
-              <td>{{h.note}}</td>
-              <td>{{h.$refferedBy}}</td>
+              <td>{{p.needDate}}</td>
+              <td>{{p.quantity}}</td>
+              <td>{{p.patientGender}}</td>
+              <td>{{p.relation}}</td>
+              <td>{{p.hospitalName}}</td>
+              <td>{{p.hospitalAddress}}</td>
+              <td>{{p.location}}</td>
+              <td>{{p.contactInfo}}</td>
+              <td>{{p.patientDescription}}</td>
+              <td>{{p.notes}}</td>
             </tr>
             </tbody>
           </table>

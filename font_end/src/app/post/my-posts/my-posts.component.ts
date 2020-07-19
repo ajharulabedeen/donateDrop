@@ -3,6 +3,7 @@ import {BasicService} from '../../profile/basic/basic.service';
 import {PostServiceService} from '../post-service.service';
 import {Post} from '../post.model';
 import {PostSearch} from '../post-search.model';
+import {DonnerToAgentRequestToReview} from '../../agent-dashboard/agent-dashboard/model/donner-to-agent-request-to-review.model';
 
 @Component({
   selector: 'app-my-posts',
@@ -10,6 +11,8 @@ import {PostSearch} from '../post-search.model';
   styleUrls: ['./my-posts.component.scss']
 })
 export class MyPostsComponent implements OnInit {
+
+  bloodPosts = new Array();
 
   bloods = new Array();
   blood_Group: string;
@@ -55,8 +58,29 @@ export class MyPostsComponent implements OnInit {
     postSearch.userID = '14294';
     postSearch.orderBy = 'location';
     postSearch.orderType = 'ASC';
+
+
     this.postService.getAllPostsByAnUser(postSearch).subscribe((res: Response) => {
       console.log(res);
+      this.bloodPosts = [];
+      for (const key in res) {
+        var post = new Post();
+        post.postID = res[key]['postID'];
+        post.bloodType = res[key]['bloodType'];
+        post.quantity = res[key]['quantity'];
+        post.needDate = res[key]['needDate'];
+        post.patientGender = res[key]['patientGender'];
+        post.relation = res[key]['relation'];
+        post.hospitalName = res[key]['hospitalName'];
+        post.hospitalAddress = res[key]['hospitalAddress'];
+        post.location = res[key]['location'];
+        post.contactInfo = res[key]['contactInfo'];
+        post.patientDescription = res[key]['patientDescription'];
+        post.remarks = res[key]['remarks'];
+        post.notes = res[key]['notes'];
+        this.bloodPosts.push(post);
+      }
+      console.log(this.bloodPosts);
     });
   }
 
