@@ -25,40 +25,43 @@
       <div class="col-md-12 offset-md-12">
         <div class="col-md-2">
           <h4>Search Between Date</h4>
-          <input type="checkbox">
+          <input [(ngModel)]="searchWithinDate" type="checkbox">
         </div>
+        <!--(click)="searchWithinDate=!searchWithinDate;"-->
         <br>
-        <!--start Date-->
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Start Date:</label>
-            <div class="input-group date">
-              <input [(ngModel)]="bloodNeedDate" type="text" class="form-control pull-right">
+        <div *ngIf="searchWithinDate">
+          <!--start Date-->
+          <div class="col-md-2">
+            <div class="form-group">
+              <label>Start Date:</label>
+              <div class="input-group date">
+                <input [(ngModel)]="bloodNeedDate" type="text" class="form-control pull-right">
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <label>Select Date:</label>
-            <div class="input-group date">
-              <input [(ngModel)]="bloodNeedDate" type="date" class="form-control pull-right">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Select Date:</label>
+              <div class="input-group date">
+                <input [(ngModel)]="bloodNeedDate" type="date" class="form-control pull-right">
+              </div>
             </div>
           </div>
-        </div>
-        <!--end s Date-->
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>End Date:</label>
-            <div class="input-group date">
-              <input [(ngModel)]="bloodNeedDate" type="text" class="form-control pull-right">
+          <!--end s Date-->
+          <div class="col-md-2">
+            <div class="form-group">
+              <label>End Date:</label>
+              <div class="input-group date">
+                <input [(ngModel)]="bloodNeedDate" type="text" class="form-control pull-right">
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <label>Select Date:</label>
-            <div class="input-group date">
-              <input [(ngModel)]="bloodNeedDate" type="date" class="form-control pull-right">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Select Date:</label>
+              <div class="input-group date">
+                <input [(ngModel)]="bloodNeedDate" type="date" class="form-control pull-right">
+              </div>
             </div>
           </div>
         </div>

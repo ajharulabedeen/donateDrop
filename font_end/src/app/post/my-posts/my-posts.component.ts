@@ -27,6 +27,7 @@ export class MyPostsComponent implements OnInit {
   patientDescription: string;
   patientRemarks: string;
   anyNotes: string;
+  searchWithinDate: boolean;
 
   constructor(private basicService: BasicService, private postService: PostServiceService) {
   }
@@ -37,7 +38,7 @@ export class MyPostsComponent implements OnInit {
 
     this.getAllPostsByAnUser();
     this.bloods = this.basicService.getBloodGroup();
-    console.log(this.bloods);
+    this.searchWithinDate = false;
   }
 
   public save() {
@@ -47,6 +48,9 @@ export class MyPostsComponent implements OnInit {
   }
 
   public getAllPostsByAnUser() {
+
+    console.log('searchWithinDate: ' + this.searchWithinDate);
+
     var postSearch = new PostSearch();
     postSearch.dateType = 'demoData';
     postSearch.startDate = 'demoData';
