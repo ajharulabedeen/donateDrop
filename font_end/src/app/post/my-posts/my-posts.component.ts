@@ -12,6 +12,15 @@ import {DonnerToAgentRequestToReview} from '../../agent-dashboard/agent-dashboar
 })
 export class MyPostsComponent implements OnInit {
 
+  searchBy: string;
+  sortBy: string;
+  orderType: string;
+  searchKey: string;
+  total: string;
+  pageNumber: number;
+  startPost: number;
+  perPage: number;
+
   bloodPosts = new Array();
 
   bloods = new Array();
@@ -29,6 +38,7 @@ export class MyPostsComponent implements OnInit {
   anyNotes: string;
   searchWithinDate: boolean;
   dateType: string;
+
 
 
   constructor(private basicService: BasicService, private postService: PostServiceService) {

@@ -29,9 +29,9 @@
           <div *ngIf="searchWithinDate">
             <br>
             <h4>Select Date Type</h4>
-            <input type="radio" name="dateType_search" [(ngModel)]="dateType" value="ASC" checked="checked">Need
+            <input type="radio" name="dateType_search" [(ngModel)]="dateType" value="need_date" checked="checked">Need
             Date<br>
-            <input type="radio" name="dateType_search" [(ngModel)]="dateType" value="DESC">Post Date
+            <input type="radio" name="dateType_search" [(ngModel)]="dateType" value="post_date">Post Date
           </div>
         </div>
         <!--(click)="searchWithinDate=!searchWithinDate;"-->
@@ -73,7 +73,7 @@
           </div>
         </div>
       </div>
-      <!--Search By-->
+      <!--Search By : column name-->
       <div class="col-md-4 offset-md-4">
         <div class="form-group">
           <h4>Search By :</h4>
@@ -96,11 +96,11 @@
           </select>
         </div>
       </div>
-      <!--Sort By :-->
+      <!--Sort By : column name-->
       <div class="col-md-4 offset-md-4">
         <div class="form-group">
           <h4>Sort By :</h4>
-          <select [(ngModel)]="searchBy">
+          <select [(ngModel)]="sortBy">
             <option value="post_id">Post ID</option>
             <option value="need_date">Need Date</option>
             <option value="post_date">Post Date</option>
@@ -119,15 +119,14 @@
           </select>
         </div>
       </div>
-      <!--       sort by ASC or DESC -->
+      <!--       sort type : ASC or DESC -->
       <div class="col-md-4 offset-md-4">
         <div class="form-group" style="text-align: center">
           <h4>Sort Order</h4>
-          <input type="radio" name="m_pay" [(ngModel)]="sortBy" value="ASC" checked="checked">Ascending<br>
-          <input type="radio" name="m_pay" [(ngModel)]="sortBy" value="DESC">Descending<br>
+          <input type="radio" name="orderType" [(ngModel)]="orderType" value="ASC" checked="checked">Ascending<br>
+          <input type="radio" name="orderType" [(ngModel)]="orderType" value="DESC">Descending<br>
         </div>
       </div>
-
       <!-- end : search fields selection and search key or search value-->
 
       <!--      total-->
@@ -143,8 +142,8 @@
       <div class="col-md-2 offset-md-2">
         <div style="text-align: center" class="form-group">
           <label>Start</label>
-          <input style="text-align: center" [(ngModel)]="startHistory" type="number" class="form-control"
-                 value="{{startHistory}}" (ngModelChange)="getAll()">
+          <input style="text-align: center" [(ngModel)]="startPost" type="number" class="form-control"
+                 value="{{startPost}}" (ngModelChange)="getAllPostsByAnUser()">
         </div>
       </div>
 
@@ -153,7 +152,7 @@
         <div style="text-align: center" class="form-group">
           <label>Per Page</label>
           <input style="text-align: center" [(ngModel)]="perPage" type="number" class="form-control"
-                 value="{{perPage}}" (ngModelChange)="getAll()">
+                 value="{{perPage}}" (ngModelChange)="getAllPostsByAnUser()">
         </div>
       </div>
 
