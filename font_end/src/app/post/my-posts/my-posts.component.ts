@@ -52,7 +52,12 @@ export class MyPostsComponent implements OnInit {
     document.body.className = 'hold-transition skin-blue sidebar-mini';
 
     this.perPage = 5;
-    this.startPost= 0;
+    this.startPost = 0;
+
+    this.searchKey = '\'%%\'';
+    this.searchBy = 'need_date';
+    this.sortBy = 'need_date';
+    this.orderType = 'DESC';
 
     this.getAllPostsByAnUser();
     this.bloods = this.basicService.getBloodGroup();
@@ -87,6 +92,12 @@ export class MyPostsComponent implements OnInit {
     if (this.searchWithinDate === true) {
 
     } else {
+
+      this.postService.countAllPostsByAnUser(postSearch).subscribe((res: Response) => {
+        console.log(res);
+        this.total = res[0];
+      });
+
       this.postService.getAllPostsByAnUser(postSearch).subscribe((res: Response) => {
         console.log(res);
         this.bloodPosts = [];
@@ -110,7 +121,6 @@ export class MyPostsComponent implements OnInit {
         console.log(this.bloodPosts);
       });
     }
-
 
   }
 
