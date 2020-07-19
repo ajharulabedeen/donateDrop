@@ -39,7 +39,14 @@ public class ControllerPost {
 
     @PostMapping("countAllPostsByAnUser")
     public String countAllPostsByAnUser(@RequestBody PostSearch postSearch) {
+        postSearch.setUserID(Utils.getLoggedUserID());
         return service_post_i.countAllPostsByAnUser(postSearch);
+    }
+
+    @PostMapping("getAllPostsByAnUserWithinDate")
+    public List<Post> getAllPostsByAnUserWithinDate(@RequestBody PostSearch postSearch) {
+        postSearch.setUserID(Utils.getLoggedUserID());
+        return service_post_i.getAllPostsByAnUser(postSearch);
     }
 
 }

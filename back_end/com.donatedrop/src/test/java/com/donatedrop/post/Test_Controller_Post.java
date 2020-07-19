@@ -124,7 +124,39 @@ public class Test_Controller_Post extends AbstractTest {
         postSearch.setMax(10);
         postSearch.setKey("'%%'");
         postSearch.setColumn("location");
-        postSearch.setUserID("14294");
+//        postSearch.setUserID("14294");
+        postSearch.setOrderBy("location");
+        postSearch.setOrderType("ASC");
+
+//      act
+        String inputJson = super.mapToJson(postSearch);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+//assert
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+//        System.out.println("\n" + content + "\n");
+        List<Post> postList = Arrays.asList(super.mapFromJson(content, Post[].class));
+        postList.forEach(post -> System.out.println(post.getPostID()));
+
+//        further verification can be done by reading the agent request.
+    }
+
+    @Test
+    @Order(3)
+    public void testGetAllPostsByAnUserWithinDate() throws Exception {
+//     arrange
+        String uri = "/public/user/post/getAllPostsByAnUserWithinDate";
+        PostSearch postSearch = new PostSearch();
+        postSearch.setDateType("need_date");
+        postSearch.setStartDate("2020-01-1");
+        postSearch.setEndDate("2020-05-18");
+        postSearch.setStart(1);
+        postSearch.setMax(10);
+        postSearch.setKey("'%%'");
+        postSearch.setColumn("location");
+//        postSearch.setUserID("14294");
         postSearch.setOrderBy("location");
         postSearch.setOrderType("ASC");
 
@@ -155,7 +187,7 @@ public class Test_Controller_Post extends AbstractTest {
         postSearch.setMax(10);
         postSearch.setKey("'%%'");
         postSearch.setColumn("location");
-        postSearch.setUserID("14294");
+//        postSearch.setUserID("14294");
         postSearch.setOrderBy("location");
         postSearch.setOrderType("ASC");
 
