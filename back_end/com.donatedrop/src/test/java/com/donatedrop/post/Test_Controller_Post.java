@@ -143,6 +143,33 @@ public class Test_Controller_Post extends AbstractTest {
 //        further verification can be done by reading the agent request.
     }
 
+    @Test
+    public void testCountAllPostsByAnUser() throws Exception {
+        //     arrange
+        String uri = "/public/user/post/countAllPostsByAnUser";
+        PostSearch postSearch = new PostSearch();
+        postSearch.setDateType("demoData");
+        postSearch.setStartDate("demoData");
+        postSearch.setEndDate("demoData");
+        postSearch.setStart(1);
+        postSearch.setMax(10);
+        postSearch.setKey("'%%'");
+        postSearch.setColumn("location");
+        postSearch.setUserID("14294");
+        postSearch.setOrderBy("location");
+        postSearch.setOrderType("ASC");
+
+//      act
+        String inputJson = super.mapToJson(postSearch);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+//assert
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        System.out.println("\n" + content + "\n");
+
+    }
 
 //    //    String uri = "/public/profile/basic/save";
 //    @Test

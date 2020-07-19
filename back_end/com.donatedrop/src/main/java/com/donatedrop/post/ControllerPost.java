@@ -37,5 +37,9 @@ public class ControllerPost {
         return service_post_i.getAllPostsByAnUser(postSearch);
     }
 
+    @PostMapping("countAllPostsByAnUser")
+    public String countAllPostsByAnUser(@RequestBody PostSearch postSearch) {
+        return service_post_i.countAllPostsByAnUser(postSearch);
+    }
 
 }

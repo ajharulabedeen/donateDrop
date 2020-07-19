@@ -1,11 +1,27 @@
-"dateType ="demoData",
-"startDate ="demoData",
-"endDate ="demoData",
-"start =1,
-"max =10,
-"key ="'%%'",
-"column ="location",
-"userID ="14294",
-"orderBy ="location",
-"orderType ="ASC"
-        
+bloodType
+quantity
+needDate
+patientGender
+
+comments
+contactInfo
+donnerFound
+hospitalAddress
+hospitalName
+location
+notes
+patientDescription
+postComments
+postDate
+postID
+postUserID
+relation
+remarks
+report
+status
+
+
+
+
+
+
