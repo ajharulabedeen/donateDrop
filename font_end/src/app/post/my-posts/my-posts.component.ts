@@ -118,4 +118,20 @@ export class MyPostsComponent implements OnInit {
     return p;
   }
 
+
+  public nextPage() {
+    if (this.startPost.toString() <= this.total) {
+      this.startPost += this.perPage;
+      this.getAllPostsByAnUser();
+    }
+  }
+
+  public previousPage() {
+    if (this.startPost > 0) {
+      this.startPost -= this.perPage;
+      this.getAllPostsByAnUser();
+    }
+  }
+
+
 }
