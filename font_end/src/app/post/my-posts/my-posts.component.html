@@ -26,6 +26,13 @@
         <div class="col-md-2">
           <h4>Search Between Date</h4>
           <input [(ngModel)]="searchWithinDate" type="checkbox">
+          <div *ngIf="searchWithinDate">
+            <br>
+            <h4>Select Date Type</h4>
+            <input type="radio" name="dateType_search" [(ngModel)]="dateType" value="ASC" checked="checked">Need
+            Date<br>
+            <input type="radio" name="dateType_search" [(ngModel)]="dateType" value="DESC">Post Date
+          </div>
         </div>
         <!--(click)="searchWithinDate=!searchWithinDate;"-->
         <br>

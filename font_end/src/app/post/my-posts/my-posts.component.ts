@@ -28,6 +28,8 @@ export class MyPostsComponent implements OnInit {
   patientRemarks: string;
   anyNotes: string;
   searchWithinDate: boolean;
+  dateType: string;
+
 
   constructor(private basicService: BasicService, private postService: PostServiceService) {
   }
