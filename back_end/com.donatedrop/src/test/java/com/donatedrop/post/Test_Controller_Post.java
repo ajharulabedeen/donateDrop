@@ -144,6 +144,34 @@ public class Test_Controller_Post extends AbstractTest {
     }
 
     @Test
+    public void testCountAllPostsByAnUser() throws Exception {
+        //     arrange
+        String uri = "/public/user/post/countAllPostsByAnUser";
+        PostSearch postSearch = new PostSearch();
+        postSearch.setDateType("demoData");
+        postSearch.setStartDate("demoData");
+        postSearch.setEndDate("demoData");
+        postSearch.setStart(1);
+        postSearch.setMax(10);
+        postSearch.setKey("'%%'");
+        postSearch.setColumn("location");
+//        postSearch.setUserID("14294");
+        postSearch.setOrderBy("location");
+        postSearch.setOrderType("ASC");
+
+//      act
+        String inputJson = super.mapToJson(postSearch);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+//assert
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        System.out.println("\n" + content + "\n");
+
+    }
+
+    @Test
     @Order(3)
     public void testGetAllPostsByAnUserWithinDate() throws Exception {
 //     arrange
@@ -176,13 +204,14 @@ public class Test_Controller_Post extends AbstractTest {
     }
 
     @Test
-    public void testCountAllPostsByAnUser() throws Exception {
-        //     arrange
-        String uri = "/public/user/post/countAllPostsByAnUser";
+    @Order(3)
+    public void testCountAllPostsByAnUserWithinDate() throws Exception {
+//     arrange
+        String uri = "/public/user/post/countAllPostsByAnUserWithinDate";
         PostSearch postSearch = new PostSearch();
-        postSearch.setDateType("demoData");
-        postSearch.setStartDate("demoData");
-        postSearch.setEndDate("demoData");
+        postSearch.setDateType("need_date");
+        postSearch.setStartDate("2020-01-1");
+        postSearch.setEndDate("2020-02-18");
         postSearch.setStart(1);
         postSearch.setMax(10);
         postSearch.setKey("'%%'");
@@ -201,7 +230,9 @@ public class Test_Controller_Post extends AbstractTest {
         String content = mvcResult.getResponse().getContentAsString();
         System.out.println("\n" + content + "\n");
 
+//        further verification can be done by reading the agent request.
     }
+
 
 //    //    String uri = "/public/profile/basic/save";
 //    @Test
