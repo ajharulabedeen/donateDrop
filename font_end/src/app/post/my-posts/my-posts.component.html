@@ -193,9 +193,23 @@
             <tr *ngFor="let p of bloodPosts; let i=index">
               <!--delete-->
               <td>
-                <button class="btn btn-xs btn-warning" (click)=" deleteId = h.$id" data-toggle="modal"
+                <button class="btn btn-xs btn-warning" (click)="requestReject(ar.requestId)"
+                        data-toggle="modal"
+                        data-target="#donation_delete">Edit
+                </button>
+                <button class="btn btn-xs btn-danger" (click)=" deleteId = h.$id" data-toggle="modal"
                         data-target="#donation_delete">Delete
                 </button>
+                <br>
+                <button class="btn btn-xs btn-primary" data-toggle="modal"
+                        data-target="#modal_work"
+                        (click)="requestAccept(ar.requestId)">Managed
+                </button>
+                <br>
+                <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal_work"
+                        (click)="requestAccept(ar.requestId)">Details
+                </button>
+
               </td>
               <td>{{i+1}}</td>
               <td>{{p.needDate}}</td>
