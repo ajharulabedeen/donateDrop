@@ -54,7 +54,7 @@ export class MyPostsComponent implements OnInit {
     this.perPage = 5;
     this.startPost = 0;
 
-    this.searchKey = '\'%%\'';
+    this.searchKey = '';
     this.searchBy = 'need_date';
     this.sortBy = 'need_date';
     this.orderType = 'DESC';
@@ -82,7 +82,7 @@ export class MyPostsComponent implements OnInit {
     postSearch.endDate = this.endDate;
     postSearch.start = this.startPost.toString();
     postSearch.max = this.perPage.toString();
-    postSearch.key = this.searchKey;
+    postSearch.key = '\'%' + this.searchKey + '%\'';
     postSearch.column = this.searchBy;
     postSearch.orderBy = this.sortBy;
     postSearch.orderType = this.orderType;
@@ -128,28 +128,51 @@ export class MyPostsComponent implements OnInit {
 
       this.postService.getAllPostsByAnUser(postSearch).subscribe((res: Response) => {
         console.log(res);
-        this.bloodPosts = [];
-        for (const key in res) {
-          var post = new Post();
-          post.postID = res[key]['postID'];
-          post.bloodType = res[key]['bloodType'];
-          post.quantity = res[key]['quantity'];
-          post.needDate = res[key]['needDate'];
-          post.patientGender = res[key]['patientGender'];
-          post.relation = res[key]['relation'];
-          post.hospitalName = res[key]['hospitalName'];
-          post.hospitalAddress = res[key]['hospitalAddress'];
-          post.location = res[key]['location'];
-          post.contactInfo = res[key]['contactInfo'];
-          post.patientDescription = res[key]['patientDescription'];
-          post.remarks = res[key]['remarks'];
-          post.notes = res[key]['notes'];
-          this.bloodPosts.push(post);
-        }
-        console.log(this.bloodPosts);
+        // this.bloodPosts = [];
+        // for (const key in res) {
+        //   var post = new Post();
+        //   post.postID = res[key]['postID'];
+        //   post.bloodType = res[key]['bloodType'];
+        //   post.quantity = res[key]['quantity'];
+        //   post.needDate = res[key]['needDate'];
+        //   post.patientGender = res[key]['patientGender'];
+        //   post.relation = res[key]['relation'];
+        //   post.hospitalName = res[key]['hospitalName'];
+        //   post.hospitalAddress = res[key]['hospitalAddress'];
+        //   post.location = res[key]['location'];
+        //   post.contactInfo = res[key]['contactInfo'];
+        //   post.patientDescription = res[key]['patientDescription'];
+        //   post.remarks = res[key]['remarks'];
+        //   post.notes = res[key]['notes'];
+        //   this.bloodPosts.push(post);
+        // }
+        // console.log(this.bloodPosts);
+        this.setMyPostsFromResponse(res);
       });
     }
 
+  }
+
+  public setMyPostsFromResponse(res: Response) {
+    this.bloodPosts = [];
+    for (const key in res) {
+      var post = new Post();
+      post.postID = res[key]['postID'];
+      post.bloodType = res[key]['bloodType'];
+      post.quantity = res[key]['quantity'];
+      post.needDate = res[key]['needDate'];
+      post.patientGender = res[key]['patientGender'];
+      post.relation = res[key]['relation'];
+      post.hospitalName = res[key]['hospitalName'];
+      post.hospitalAddress = res[key]['hospitalAddress'];
+      post.location = res[key]['location'];
+      post.contactInfo = res[key]['contactInfo'];
+      post.patientDescription = res[key]['patientDescription'];
+      post.remarks = res[key]['remarks'];
+      post.notes = res[key]['notes'];
+      this.bloodPosts.push(post);
+    }
+    console.log(this.bloodPosts);
   }
 
 
