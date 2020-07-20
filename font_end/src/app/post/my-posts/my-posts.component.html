@@ -193,9 +193,9 @@
             <tr *ngFor="let p of bloodPosts; let i=index">
               <!--delete-->
               <td>
-                <button class="btn btn-xs btn-warning" (click)="requestReject(ar.requestId)"
+                <button class="btn btn-xs btn-warning" (click)="setPostsForEdit(p)"
                         data-toggle="modal"
-                        data-target="#donation_delete">Edit
+                        data-target="#edit_post">Edit
                 </button>
                 <button class="btn btn-xs btn-danger" (click)=" deleteId = h.$id" data-toggle="modal"
                         data-target="#donation_delete">Delete
@@ -355,6 +355,131 @@
     <!-- <app-settingsnavbar></app-settingsnavbar> -->
   </div>
   <!-- Modal-end : New Posts-->
+
+
+  <!-- Modal-start  : Edit Posts-->
+  <div class="modal fade" id="edit_post" tabindex="-1" role="dialog" aria-labelledby="new_postLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div align="center" class="modal-header">
+          <h3 class="modal-title" id="new_postLabel">New Work History</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+
+          <!--Need Date-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Need Date:</label>
+              <div class="input-group date">
+                <input [(ngModel)]="bloodNeedDate" type="text" class="form-control pull-right">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Select Date:</label>
+              <div class="input-group date">
+                <input [(ngModel)]="bloodNeedDate" type="date" class="form-control pull-right">
+              </div>
+            </div>
+          </div>
+          <!--blood_type-->
+          <div class="col-md-4">
+            <label>Blood Group</label>
+            <div class="form-group">
+              <select [(ngModel)]="blood_Group"
+                      class="form-control select2 select2-hidden-accessible"
+                      style="width: 100%;" tabindex="-1" aria-hidden="true"
+              >
+                <option *ngFor="let b of bloods">{{b}}</option>
+              </select>
+            </div>
+          </div>
+          <!--quantity-->
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Qauntity</label>
+              <input [(ngModel)]="quantity" type="text" class="form-control"
+                     placeholder="Enter Quantity...">
+            </div>
+          </div>
+          <!--patient_gender-->
+          <div class="col-md-4">
+            <label>Gender</label>
+            <div class="form-group">
+              <div class="form-group" data-select2-id="27">
+                <select [(ngModel)]="patientGender"
+                        class="form-control select2 select2-hidden-accessible"
+                        style="width: 100%;" tabindex="-1" aria-hidden="true"
+                >
+                  <option value="Other">Other</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!--relation-->
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Relation</label>
+              <input [(ngModel)]="relationWithPatient" type="text" class="form-control"
+                     placeholder="Enter Relation with the patient...">
+            </div>
+          </div>
+          <!--hospital_name-->
+          <div class="form-group">
+            <label>Hospital Name</label>
+            <input [(ngModel)]="hospitalName" type="text" class="form-control"
+                   placeholder="Enter Hospital Name...">
+          </div>
+          <!--hospital_address-->
+          <div class="form-group">
+            <label>Hospital Address</label>
+            <input [(ngModel)]="hospitalAddress" type="text" class="form-control"
+                   placeholder="Enter Hospital Name...">
+          </div>
+          <!--location-->
+          <div class="form-group">
+            <label>Location</label>
+            <textarea class="col-md-12" [(ngModel)]="donationLocation"></textarea>
+          </div>
+          <!--contact_info-->
+          <div class="form-group">
+            <label>Contact Info</label>
+            <textarea class="col-md-12" [(ngModel)]="contactInfo"></textarea>
+          </div>
+          <!--patient_description`,-->
+          <div class="form-group">
+            <label>Patient Type/Description</label>
+            <textarea class="col-md-12" [(ngModel)]="patientDescription"></textarea>
+          </div>
+          <!--notes : thought no need, will be used as note personal-->
+          <div class="form-group">
+            <label>Note Persoanl(Private)</label>
+            <textarea class="col-md-12" [(ngModel)]="anyNotes"></textarea>
+          </div>
+          <!--remarks : thought no need, same kind of fiekd tree -->
+          <!--<div class="form-group">-->
+          <!--<label>Patient Remarks</label>-->
+          <!--<textarea class="col-md-12" [(ngModel)]="patientRemarks"></textarea>-->
+          <!--</div>-->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="save()">Save</button>
+        </div>
+      </div>
+    </div>
+    <!-- <app-footernavbar></app-footernavbar> -->
+    <!-- <app-settingsnavbar></app-settingsnavbar> -->
+  </div>
+  <!-- Modal-end : Edit Posts-->
 
 
   <!--refacotor : Have to make util component delete, by @input value will send, by @output click value will be got-->
