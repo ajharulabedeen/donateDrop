@@ -43,6 +43,9 @@ export class MyPostsComponent implements OnInit {
   anyNotes: string;
   searchWithinDate: boolean;
 
+  delete_post_id: string;
+
+  edit_post_id: string;
   edit_quantity: string;
   edit_bloodNeedDate: string;
   edit_patientGender: string;
@@ -55,6 +58,7 @@ export class MyPostsComponent implements OnInit {
   edit_patientRemarks: string;
   edit_anyNotes: string;
 
+  postTosave: Post;
 
   constructor(private basicService: BasicService, private postService: PostServiceService) {
   }
@@ -63,7 +67,7 @@ export class MyPostsComponent implements OnInit {
     window.dispatchEvent(new Event('resize'));
     document.body.className = 'hold-transition skin-blue sidebar-mini';
 
-    this.perPage = 5;
+    this.perPage = 10;
     this.startPost = 0;
     this.dateType = 'need_date';
     this.searchKey = '';
@@ -74,20 +78,18 @@ export class MyPostsComponent implements OnInit {
     this.getAllPostsByAnUser();
     this.bloods = this.basicService.getBloodGroup();
     this.searchWithinDate = false;
-
-
   }
 
-  public save() {
+  public save():void {
     this.postService.save(this.getPost()).subscribe((res: Response) => {
       console.log(res);
+      if (res['STATUS'] === 'OK') {
+        this.bloodPosts.push(this.postTosave);
+      }
     });
   }
 
-  public getAllPostsByAnUser() {
-
-    console.log(' searchWithinDate: ' + this.searchWithinDate);
-
+  public getAllPostsByAnUser() : void{
     var postSearch = new PostSearch();
     postSearch.dateType = this.dateType;
     postSearch.startDate = this.startDate;
@@ -99,37 +101,32 @@ export class MyPostsComponent implements OnInit {
     postSearch.orderBy = this.sortBy;
     postSearch.orderType = this.orderType;
 
+    //delete
     console.log(postSearch);
 
     if (this.searchWithinDate === true) {
-
       this.postService.countAllPostsByAnUserWithinDate(postSearch).subscribe((res: Response) => {
         console.log(res);
         this.total = res;
       });
-
       this.postService.getAllPostsByAnUserWithinDate(postSearch).subscribe((res: Response) => {
         console.log(res);
         this.bloodPosts = [];
         this.setMyPostsFromResponse(res);
       });
-
     } else {
-
       this.postService.countAllPostsByAnUser(postSearch).subscribe((res: Response) => {
         console.log(res);
         this.total = res;
       });
-
       this.postService.getAllPostsByAnUser(postSearch).subscribe((res: Response) => {
         console.log(res);
         this.setMyPostsFromResponse(res);
       });
     }
-
   }
 
-  public setMyPostsFromResponse(res: Response) {
+  public setMyPostsFromResponse(res: Response) : void{
     this.bloodPosts = [];
     for (const key in res) {
       var post = new Post();
@@ -151,8 +148,7 @@ export class MyPostsComponent implements OnInit {
     console.log(this.bloodPosts);
   }
 
-
-  public getPost() {
+  public getPost() : Post {
     var p = new Post();
     p.bloodType = this.blood_Group;
     p.quantity = this.quantity;
@@ -166,25 +162,26 @@ export class MyPostsComponent implements OnInit {
     p.patientDescription = this.patientDescription;
     p.remarks = this.patientRemarks;
     p.notes = this.anyNotes;
+    this.postTosave = p;
     return p;
   }
 
-
-  public nextPage() {
+  public nextPage() : void {
     if (this.startPost.toString() <= this.total) {
       this.startPost += this.perPage;
       this.getAllPostsByAnUser();
     }
   }
 
-  public previousPage() {
+  public previousPage() : void {
     if (this.startPost > 0) {
       this.startPost -= this.perPage;
       this.getAllPostsByAnUser();
     }
   }
 
-  public setPostsForEdit(p: Post) {
+  public setPostsForEdit(p: Post) : void {
+    this.edit_post_id = p.postID;
     this.edit_blood_Group = p.bloodType;
     this.edit_quantity = p.quantity;
     this.edit_bloodNeedDate = p.needDate;
@@ -197,7 +194,9 @@ export class MyPostsComponent implements OnInit {
     this.edit_patientDescription = p.patientDescription;
     this.edit_patientRemarks = p.remarks;
     this.edit_anyNotes = p.notes;
-
   }
 
+  public saveEditPost() {
+
+  }
 }
