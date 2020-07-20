@@ -238,7 +238,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div align="center" class="modal-header">
-          <h3 class="modal-title" id="new_postLabel">New Work History</h3>
+          <h3 class="modal-title" id="new_postLabel">New Blood Post</h3>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -363,7 +363,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div align="center" class="modal-header">
-          <h3 class="modal-title" id="new_postLabel">New Work History</h3>
+          <h3 class="modal-title">Edit Post</h3>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -376,7 +376,7 @@
             <div class="form-group">
               <label>Need Date:</label>
               <div class="input-group date">
-                <input [(ngModel)]="bloodNeedDate" type="text" class="form-control pull-right">
+                <input [(ngModel)]="edit_bloodNeedDate" type="text" class="form-control pull-right">
               </div>
             </div>
           </div>
@@ -384,7 +384,7 @@
             <div class="form-group">
               <label>Select Date:</label>
               <div class="input-group date">
-                <input [(ngModel)]="bloodNeedDate" type="date" class="form-control pull-right">
+                <input [(ngModel)]="edit_bloodNeedDate" type="date" class="form-control pull-right">
               </div>
             </div>
           </div>
@@ -392,7 +392,7 @@
           <div class="col-md-4">
             <label>Blood Group</label>
             <div class="form-group">
-              <select [(ngModel)]="blood_Group"
+              <select [(ngModel)]="edit_blood_Group"
                       class="form-control select2 select2-hidden-accessible"
                       style="width: 100%;" tabindex="-1" aria-hidden="true"
               >
@@ -404,7 +404,7 @@
           <div class="col-md-4">
             <div class="form-group">
               <label>Qauntity</label>
-              <input [(ngModel)]="quantity" type="text" class="form-control"
+              <input [(ngModel)]="edit_quantity" type="text" class="form-control"
                      placeholder="Enter Quantity...">
             </div>
           </div>
@@ -413,7 +413,7 @@
             <label>Gender</label>
             <div class="form-group">
               <div class="form-group" data-select2-id="27">
-                <select [(ngModel)]="patientGender"
+                <select [(ngModel)]="edit_patientGender"
                         class="form-control select2 select2-hidden-accessible"
                         style="width: 100%;" tabindex="-1" aria-hidden="true"
                 >
@@ -428,41 +428,41 @@
           <div class="col-md-12">
             <div class="form-group">
               <label>Relation</label>
-              <input [(ngModel)]="relationWithPatient" type="text" class="form-control"
+              <input [(ngModel)]="edit_relationWithPatient" type="text" class="form-control"
                      placeholder="Enter Relation with the patient...">
             </div>
           </div>
           <!--hospital_name-->
           <div class="form-group">
             <label>Hospital Name</label>
-            <input [(ngModel)]="hospitalName" type="text" class="form-control"
+            <input [(ngModel)]="edit_hospitalName" type="text" class="form-control"
                    placeholder="Enter Hospital Name...">
           </div>
           <!--hospital_address-->
           <div class="form-group">
             <label>Hospital Address</label>
-            <input [(ngModel)]="hospitalAddress" type="text" class="form-control"
+            <input [(ngModel)]="edit_hospitalAddress" type="text" class="form-control"
                    placeholder="Enter Hospital Name...">
           </div>
           <!--location-->
           <div class="form-group">
             <label>Location</label>
-            <textarea class="col-md-12" [(ngModel)]="donationLocation"></textarea>
+            <textarea class="col-md-12" [(ngModel)]="edit_donationLocation"></textarea>
           </div>
           <!--contact_info-->
           <div class="form-group">
             <label>Contact Info</label>
-            <textarea class="col-md-12" [(ngModel)]="contactInfo"></textarea>
+            <textarea class="col-md-12" [(ngModel)]="edit_contactInfo"></textarea>
           </div>
           <!--patient_description`,-->
           <div class="form-group">
             <label>Patient Type/Description</label>
-            <textarea class="col-md-12" [(ngModel)]="patientDescription"></textarea>
+            <textarea class="col-md-12" [(ngModel)]="edit_patientDescription"></textarea>
           </div>
           <!--notes : thought no need, will be used as note personal-->
           <div class="form-group">
             <label>Note Persoanl(Private)</label>
-            <textarea class="col-md-12" [(ngModel)]="anyNotes"></textarea>
+            <textarea class="col-md-12" [(ngModel)]="edit_anyNotes"></textarea>
           </div>
           <!--remarks : thought no need, same kind of fiekd tree -->
           <!--<div class="form-group">-->

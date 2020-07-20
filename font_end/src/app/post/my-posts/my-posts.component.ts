@@ -43,6 +43,18 @@ export class MyPostsComponent implements OnInit {
   anyNotes: string;
   searchWithinDate: boolean;
 
+  edit_quantity: string;
+  edit_bloodNeedDate: string;
+  edit_patientGender: string;
+  edit_relationWithPatient: string;
+  edit_hospitalName: string;
+  edit_hospitalAddress: string;
+  edit_donationLocation: string;
+  edit_contactInfo: string;
+  edit_patientDescription: string;
+  edit_patientRemarks: string;
+  edit_anyNotes: string;
+
 
   constructor(private basicService: BasicService, private postService: PostServiceService) {
   }
@@ -172,20 +184,20 @@ export class MyPostsComponent implements OnInit {
     }
   }
 
-
   public setPostsForEdit(p: Post) {
-    this.blood_Group = p.bloodType;
-    this.quantity = p.quantity;
-    this.bloodNeedDate = p.needDate;
-    this.patientGender = p.patientGender;
-    this.relationWithPatient = p.relation;
-    this.hospitalName = p.hospitalName;
-    this.hospitalAddress = p.hospitalAddress;
-    this.donationLocation = p.location;
-    this.contactInfo = p.contactInfo;
-    this.patientDescription = p.patientDescription;
-    this.patientRemarks = p.remarks;
-    this.anyNotes = p.notes;
+    this.edit_blood_Group = p.bloodType;
+    this.edit_quantity = p.quantity;
+    this.edit_bloodNeedDate = p.needDate;
+    this.edit_patientGender = p.patientGender;
+    this.edit_relationWithPatient = p.relation;
+    this.edit_hospitalName = p.hospitalName;
+    this.edit_hospitalAddress = p.hospitalAddress;
+    this.edit_donationLocation = p.location;
+    this.edit_contactInfo = p.contactInfo;
+    this.edit_patientDescription = p.patientDescription;
+    this.edit_patientRemarks = p.remarks;
+    this.edit_anyNotes = p.notes;
 
   }
+
 }
