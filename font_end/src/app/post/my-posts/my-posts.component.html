@@ -3,7 +3,7 @@
   <app-asidenavbar></app-asidenavbar>
   <div class="content-wrapper">
     <h1 align="center">My Posts</h1>
-    <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#modal_work">
+    <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#new_post">
       Add New
     </button>
 
@@ -202,14 +202,13 @@
                 </button>
                 <br>
                 <button class="btn btn-xs btn-primary" data-toggle="modal"
-                        data-target="#modal_work"
+                        data-target="#new_post"
                         (click)="requestAccept(ar.requestId)">Managed
                 </button>
                 <br>
-                <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal_work"
+                <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#new_post"
                         (click)="requestAccept(ar.requestId)">Details
                 </button>
-
               </td>
               <td>{{i+1}}</td>
               <td>{{p.needDate}}</td>
@@ -234,12 +233,12 @@
   </div>
 
   <!-- Modal-start  : New Posts-->
-  <div class="modal fade" id="modal_work" tabindex="-1" role="dialog" aria-labelledby="modal_workLabel"
+  <div class="modal fade" id="new_post" tabindex="-1" role="dialog" aria-labelledby="new_postLabel"
        aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div align="center" class="modal-header">
-          <h3 class="modal-title" id="modal_workLabel">New Work History</h3>
+          <h3 class="modal-title" id="new_postLabel">New Work History</h3>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
