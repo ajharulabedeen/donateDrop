@@ -80,16 +80,18 @@ export class MyPostsComponent implements OnInit {
     this.searchWithinDate = false;
   }
 
-  public save():void {
+  public save(): void {
     this.postService.save(this.getPost()).subscribe((res: Response) => {
       console.log(res);
       if (res['STATUS'] === 'OK') {
+        console.log('OK STATUS!');
         this.bloodPosts.push(this.postTosave);
+        console.log(this.bloodPosts);
       }
     });
   }
 
-  public getAllPostsByAnUser() : void{
+  public getAllPostsByAnUser(): void {
     var postSearch = new PostSearch();
     postSearch.dateType = this.dateType;
     postSearch.startDate = this.startDate;
@@ -126,7 +128,7 @@ export class MyPostsComponent implements OnInit {
     }
   }
 
-  public setMyPostsFromResponse(res: Response) : void{
+  public setMyPostsFromResponse(res: Response): void {
     this.bloodPosts = [];
     for (const key in res) {
       var post = new Post();
@@ -148,7 +150,7 @@ export class MyPostsComponent implements OnInit {
     console.log(this.bloodPosts);
   }
 
-  public getPost() : Post {
+  public getPost(): Post {
     var p = new Post();
     p.bloodType = this.blood_Group;
     p.quantity = this.quantity;
@@ -166,21 +168,21 @@ export class MyPostsComponent implements OnInit {
     return p;
   }
 
-  public nextPage() : void {
+  public nextPage(): void {
     if (this.startPost.toString() <= this.total) {
       this.startPost += this.perPage;
       this.getAllPostsByAnUser();
     }
   }
 
-  public previousPage() : void {
+  public previousPage(): void {
     if (this.startPost > 0) {
       this.startPost -= this.perPage;
       this.getAllPostsByAnUser();
     }
   }
 
-  public setPostsForEdit(p: Post) : void {
+  public setPostsForEdit(p: Post): void {
     this.edit_post_id = p.postID;
     this.edit_blood_Group = p.bloodType;
     this.edit_quantity = p.quantity;
