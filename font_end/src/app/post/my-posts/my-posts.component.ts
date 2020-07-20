@@ -53,7 +53,7 @@ export class MyPostsComponent implements OnInit {
 
     this.perPage = 5;
     this.startPost = 0;
-
+    this.dateType = 'need_date';
     this.searchKey = '';
     this.searchBy = 'need_date';
     this.sortBy = 'need_date';
