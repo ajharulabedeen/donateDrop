@@ -29,34 +29,35 @@ export class MyPostsComponent implements OnInit {
   bloodPosts = new Array();
 
   bloods = new Array();
-  blood_Group: string;
   quantity: string;
+  anyNotes: string;
+  contactInfo: string;
+  blood_Group: string;
+  hospitalName: string;
   bloodNeedDate: string;
   patientGender: string;
-  relationWithPatient: string;
-  hospitalName: string;
-  hospitalAddress: string;
-  donationLocation: string;
-  contactInfo: string;
-  patientDescription: string;
   patientRemarks: string;
-  anyNotes: string;
+  hospitalAddress: string;
   searchWithinDate: boolean;
+  donationLocation: string;
+  patientDescription: string;
+  relationWithPatient: string;
 
   delete_post_id: string;
 
   edit_post_id: string;
+  edit_anyNotes: string;
   edit_quantity: string;
+  edit_contactInfo: string;
+  edit_blood_Group: string;
+  edit_hospitalName: string;
   edit_bloodNeedDate: string;
   edit_patientGender: string;
-  edit_relationWithPatient: string;
-  edit_hospitalName: string;
+  edit_patientRemarks: string;
   edit_hospitalAddress: string;
   edit_donationLocation: string;
-  edit_contactInfo: string;
   edit_patientDescription: string;
-  edit_patientRemarks: string;
-  edit_anyNotes: string;
+  edit_relationWithPatient: string;
 
   postTosave: Post;
 

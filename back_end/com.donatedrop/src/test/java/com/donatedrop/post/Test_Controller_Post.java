@@ -209,9 +209,10 @@ public class Test_Controller_Post extends AbstractTest {
 //     arrange
         String uri = "/public/user/post/countAllPostsByAnUserWithinDate";
         PostSearch postSearch = new PostSearch();
-        postSearch.setDateType("need_date");
+//        postSearch.setDateType("need_date");
+        postSearch.setDateType("post_date");
         postSearch.setStartDate("2020-01-1");
-        postSearch.setEndDate("2020-02-18");
+        postSearch.setEndDate("2020-0-18");
         postSearch.setStart(1);
         postSearch.setMax(10);
         postSearch.setKey("'%%'");
