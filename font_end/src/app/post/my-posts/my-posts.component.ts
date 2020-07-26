@@ -97,8 +97,10 @@ export class MyPostsComponent implements OnInit {
       console.log(res);
       if (res['STATUS'] === 'OK') {
         console.log('OK STATUS!');
-        this.bloodPosts.push(this.postTosave);
-        console.log(this.bloodPosts);
+        this.getAllPostsByAnUser();
+        // this.bloodPosts.push(this.postTosave);
+        // console.log(this.bloodPosts);
+
       }
     });
   }
@@ -184,10 +186,10 @@ export class MyPostsComponent implements OnInit {
     var p = new Post();
     p.postID = this.edit_post_id;
     p.bloodType = this.edit_blood_Group;
-    p.quantity  = this.edit_quantity;
-    p.needDate  = this.edit_bloodNeedDate;
+    p.quantity = this.edit_quantity;
+    p.needDate = this.edit_bloodNeedDate;
     p.patientGender = this.edit_patientGender;
-    p.relation  = this.edit_relationWithPatient;
+    p.relation = this.edit_relationWithPatient;
     p.hospitalName = this.edit_hospitalName;
     p.hospitalAddress = this.edit_hospitalAddress;
     p.location = this.edit_donationLocation;
@@ -198,8 +200,6 @@ export class MyPostsComponent implements OnInit {
     this.postTosave = p;
     return p;
   }
-
-
 
   public nextPage(): void {
     if (this.startPost.toString() <= this.total) {
