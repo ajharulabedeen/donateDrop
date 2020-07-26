@@ -31,6 +31,12 @@ public class ControllerPost {
         return service_post_i.savePost(post);
     }
 
+    @PostMapping("updatePost")
+    public Map<String, String> updatePost(@RequestBody Post post) {
+        post.setPostUserID(Utils.getLoggedUserID());
+        return service_post_i.updatePost(post);
+    }
+
     @PostMapping("getAllPostsByAnUser")
     public List<Post> getAllPostsByAnUser(@RequestBody PostSearch postSearch) {
         postSearch.setUserID(Utils.getLoggedUserID());
@@ -54,6 +60,5 @@ public class ControllerPost {
         postSearch.setUserID(Utils.getLoggedUserID());
         return service_post_i.countAllPostsByAnUserWithinDate(postSearch);
     }
-
 
 }

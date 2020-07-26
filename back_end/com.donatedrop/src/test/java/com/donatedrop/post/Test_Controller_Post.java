@@ -112,6 +112,53 @@ public class Test_Controller_Post extends AbstractTest {
 
 
     @Test
+    @Order(1)
+    public void testUpdate() throws Exception {
+        String uri = "/public/user/post/updatePost";
+
+        Random random = new Random();
+
+        Post post = new Post(
+                "",
+                DumpData.getBloodGroup(),
+                dumpDao.getAddressString("PRESENT"),
+                DumpData.getHospitalName(),
+                DumpData.getHospitalAddress(),
+                DumpData.getGender(),
+                DumpData.getPatientDescription(),
+                "20-10-10",
+                DumpData.getDate(),
+                DumpData.getQuantity(),
+                DumpData.getPhoneNumber(),
+                "0",
+                DumpData.getNote(),
+                "NO",
+                "Daughter",
+                DumpData.getNote(),
+                "NA",
+                DumpData.getNote()
+        );
+        post.setPostID(new Long("20618"));
+        System.out.println(post);
+        String inputJson = super.mapToJson(post);
+        System.out.println(inputJson);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        System.out.println(content);
+        Map<String, String> map = super.mapFromJson(content, Map.class);
+        assertEquals(StringUtil.OK, map.get(StringUtil.STATUS));
+//        if (StringUtil.OK.equals(map.get(StringUtil.STATUS))) {
+//            storePostID(map.get(StringUtil.ID));
+//            System.out.println(dao_post_i.findPostWithComments(getPostID()));
+//        }
+    }
+
+
+    @Test
     @Order(3)
     public void testGetAllPostsByAnUser() throws Exception {
 //     arrange
