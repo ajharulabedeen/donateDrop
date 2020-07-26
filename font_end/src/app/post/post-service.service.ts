@@ -26,12 +26,17 @@ export class PostServiceService {
     // });
   } // create
 
+  update(post: Post) {
+    return this.http.post(
+      'http://127.0.0.1:8080/public/user/post/updatePost', post, this.authService.getHeader()
+    );
+  }
+
   public getAllPostsByAnUser(postSearch: PostSearch) {
     return this.http.post(
       'http://localhost:8080/public/user/post/getAllPostsByAnUser', postSearch, this.authService.getHeader()
     );
   }
-
 
   countAllPostsByAnUser(postSearch: PostSearch) {
     return this.http.post(
@@ -50,4 +55,7 @@ export class PostServiceService {
       'http://localhost:8080/public/user/post/countAllPostsByAnUserWithinDate', postSearch, this.authService.getHeader()
     );
   }
+
+
+
 }

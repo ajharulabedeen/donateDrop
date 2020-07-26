@@ -92,6 +92,17 @@ export class MyPostsComponent implements OnInit {
     });
   }
 
+  public saveEditPost(): void {
+    this.postService.update(this.getEditPost()).subscribe((res: Response) => {
+      console.log(res);
+      if (res['STATUS'] === 'OK') {
+        console.log('OK STATUS!');
+        this.bloodPosts.push(this.postTosave);
+        console.log(this.bloodPosts);
+      }
+    });
+  }
+
   public getAllPostsByAnUser(): void {
     var postSearch = new PostSearch();
     postSearch.dateType = this.dateType;
@@ -169,6 +180,27 @@ export class MyPostsComponent implements OnInit {
     return p;
   }
 
+  public getEditPost(): Post {
+    var p = new Post();
+    p.postID = this.edit_post_id;
+    p.bloodType = this.edit_blood_Group;
+    p.quantity  = this.edit_quantity;
+    p.needDate  = this.edit_bloodNeedDate;
+    p.patientGender = this.edit_patientGender;
+    p.relation  = this.edit_relationWithPatient;
+    p.hospitalName = this.edit_hospitalName;
+    p.hospitalAddress = this.edit_hospitalAddress;
+    p.location = this.edit_donationLocation;
+    p.contactInfo = this.edit_contactInfo;
+    p.patientDescription = this.edit_patientDescription;
+    p.remarks = this.edit_patientRemarks;
+    p.notes = this.edit_anyNotes;
+    this.postTosave = p;
+    return p;
+  }
+
+
+
   public nextPage(): void {
     if (this.startPost.toString() <= this.total) {
       this.startPost += this.perPage;
@@ -197,9 +229,5 @@ export class MyPostsComponent implements OnInit {
     this.edit_patientDescription = p.patientDescription;
     this.edit_patientRemarks = p.remarks;
     this.edit_anyNotes = p.notes;
-  }
-
-  public saveEditPost() {
-
   }
 }
