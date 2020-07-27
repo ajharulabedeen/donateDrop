@@ -20,9 +20,18 @@ remarks
 report
 status
 
-365622,365749,365751,365752,365755,365756,365925,365926,
-365927,365928,366276,366277,366278,366279,366280,366281,
-366282,366283,366284,366285,366286,366422,366423,366522,
-366523,366821,366822,368058,368059,368060,368061,368062,
-368063,368064,368065,368066,368067,368068,368069,368070,
-368071,368072
+var p = new Post();
+p.bloodType = this.edit_edit_blood_Group;
+p.quantity = this.edit_quantity;
+p.needDate = this.edit_bloodNeedDate;
+p.patientGender = this.edit_patientGender;
+p.relation = this.edit_relationWithPatient;
+p.hospitalName = this.edit_hospitalName;
+p.hospitalAddress = this.edit_hospitalAddress;
+p.location = this.edit_donationLocation;
+p.contactInfo = this.edit_contactInfo;
+p.patientDescription = this.edit_patientDescription;
+p.remarks = this.edit_patientRemarks;
+p.notes = this.edit_anyNotes;
+this.edit_postTosave = p;
+return p;

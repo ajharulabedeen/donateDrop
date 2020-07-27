@@ -10,10 +10,7 @@ import java.util.Map;
 
 import com.donatedrop.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author Dell
@@ -35,6 +32,12 @@ public class ControllerPost {
     public Map<String, String> updatePost(@RequestBody Post post) {
         post.setPostUserID(Utils.getLoggedUserID());
         return service_post_i.updatePost(post);
+    }
+
+    @PostMapping("deletePost")
+    public Map<String, String> deletePost(@RequestParam String postID) {
+        String userID = Utils.getLoggedUserID();
+        return service_post_i.deletePost(userID, postID);
     }
 
     @PostMapping("getAllPostsByAnUser")

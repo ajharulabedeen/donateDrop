@@ -159,6 +159,20 @@ public class Test_Controller_Post extends AbstractTest {
 
 
     @Test
+    @Order(1)
+    public void testDelete() throws Exception {
+        String uri = "/public/user/post/deletePost?postID=" + "20618";
+        MvcResult mvcResult = mvc.perform(
+                MockMvcRequestBuilders.post(uri)
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        System.out.println(content);
+    }
+
+
+    @Test
     @Order(3)
     public void testGetAllPostsByAnUser() throws Exception {
 //     arrange
