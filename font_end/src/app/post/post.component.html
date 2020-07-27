@@ -8,13 +8,6 @@
       <span class="logo text-teal">My Posts</span>
     </h5>
 
-
-    <!--<h5 align="center" style="font-size: 50px;">-->
-    <!--<span class="text-danger"><b style="color: limegreen">Donate</b>DROP</span>-->
-    <!--<span>|</span>-->
-    <!--<span class="logo text-teal">Agent Dashboard</span>-->
-    <!--</h5>-->
-
     <div align="center" class="tab">
       <button class="tablinks" (click)="tabChange(event, 'request_review')">Active</button>
       <button class="tablinks" (click)="tabChange(event, 'accepted')">Expired</button>
@@ -23,6 +16,7 @@
     </div>
 
     <div align="center" id="request_review" class="tabcontent">
+      <app-my-posts></app-my-posts>
       <!--<app-agent-dashboard-review-->
       <!--[pageHeader]="headerReview"-->
       <!--[statusType]="0"-->
@@ -34,6 +28,7 @@
       <!--</app-agent-dashboard-review>-->
     </div>
     <div align="center" id="accepted" class="tabcontent">
+      <app-my-posts></app-my-posts>
       <!--<app-agent-dashboard-review-->
       <!--[pageHeader]="headerAccepted"-->
       <!--[statusType]="ACCEPTED"-->
@@ -44,6 +39,7 @@
       <!--</app-agent-dashboard-review>-->
     </div>
     <div align="center" id="rejected" class="tabcontent">
+      <app-my-posts></app-my-posts>
       <!--<app-agent-dashboard-review-->
       <!--[pageHeader]="headerRejected"-->
       <!--[statusType]="REJECTED"-->
@@ -54,6 +50,7 @@
       <!--</app-agent-dashboard-review>-->
     </div>
     <div align="center" id="removed" class="tabcontent">
+      <app-my-posts></app-my-posts>
       <!--<app-agent-dashboard-review-->
       <!--[pageHeader]="headerRemove"-->
       <!--[statusType]="REMOVE"-->

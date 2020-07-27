@@ -13,9 +13,12 @@ export class PostComponent implements OnInit {
   REMOVE = 'REMOVE';
 
   //modal id : note for the donner.
-  REJECTED_ID = 'REJECT_MODAL';
-  ACCEPTED_ID = 'ACCEPT_MODAL';
-  REMOVE_ID = 'REMOVE_MODAL';
+  ACTIVE_NEW_ID = 'ACTIVE_NEW_ID';
+  ACTIVE_EDIT_ID = 'ACTIVE_ADD_ID';
+  MANAGE_NEW_ID = 'MANAGED_NEW_ID';
+  MANAGE_EDIT_ID = 'MANAGED_EDIT_ID';
+  EXPIRED_NEW_ID = 'EXPIRED_NEW_ID';
+  EXPIRED_EDIT_ID = 'EXPIRED_EDIT_ID';
 
 
   headerAccepted = 'Request Accepted';

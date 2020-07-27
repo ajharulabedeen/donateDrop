@@ -28,10 +28,11 @@ export class MyPostsComponent implements OnInit {
   statusType = '';
 
   @Input()
-  modalIDAgent = '';
+  modalNew = '';
   @Input()
-  modalIDDonner = '';
-
+  modalEdit = '';
+  @Input()
+  modalDelete = '';
 
   dateType: string;
   startDate: string;
