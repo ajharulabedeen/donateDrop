@@ -21,10 +21,9 @@ export class PostComponent implements OnInit {
   EXPIRED_EDIT_ID = 'EXPIRED_EDIT_ID';
 
 
-  headerAccepted = 'Request Accepted';
-  headerRejected = 'Request Rejected';
-  headerRemove = 'Request Remove';
-  headerReview = 'Request to Review';
+  headerActive = 'Active';
+  headerManaged = 'Managed';
+  headerExpired = 'Expired';
 
 // end-new : reusable component
 
@@ -38,7 +37,7 @@ export class PostComponent implements OnInit {
     // this.tabChange(event, 'request_review');
     // this.tabChange(event, 'accepted');
     // this.tabChange(event, 'rejected');
-    this.tabChange(event, 'removed');
+    this.tabChange(event, 'post_active');
   }
 
 

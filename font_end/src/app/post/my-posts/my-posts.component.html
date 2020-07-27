@@ -1,233 +1,229 @@
-<!--<div class="wrapper">-->
-<!--<app-topnavbar></app-topnavbar>-->
-<!--<app-asidenavbar></app-asidenavbar>-->
-<!--<div class="content-wrapper">-->
 
-  <!--old code working -->
+<h2>{{pageHeader}}</h2>
 
-  <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#new_post">
-    Add New
-  </button>
+<button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#new_post">
+  Add New
+</button>
 
-  <!--START : Search-->
-  <div>
-    <h4>
-      <button class="btn btn-info" (click)="getAllPostsByAnUser()">Search</button>
-      <!--<button class="btn btn-xs btn-primary" (click)="searchCount()">Refresh</button>-->
-    </h4>
-    <!-- sort by column name -->
-    <!--start : search fields and search key or search value -->
-    <div class="col-md-12 offset-md-12">
-      <div class="form-group">
-        <label>Value : </label>
-        <input [(ngModel)]="searchKey" type="text" class="form-control">
-      </div>
+<!--START : Search-->
+<div>
+  <h4>
+    <button class="btn btn-info" (click)="getAllPostsByAnUser()">Search</button>
+    <!--<button class="btn btn-xs btn-primary" (click)="searchCount()">Refresh</button>-->
+  </h4>
+  <!-- sort by column name -->
+  <!--start : search fields and search key or search value -->
+  <div class="col-md-12 offset-md-12">
+    <div class="form-group">
+      <label>Value : </label>
+      <input [(ngModel)]="searchKey" type="text" class="form-control">
     </div>
+  </div>
 
-    <div class="col-md-12 offset-md-12">
-      <div class="col-md-2">
-        <h4>Search Between Date</h4>
-        <input [(ngModel)]="searchWithinDate" type="checkbox">
-        <div *ngIf="searchWithinDate">
-          <br>
-          <h4>Select Date Type</h4>
-          <input type="radio" name="dateType_search" [(ngModel)]="dateType" value="need_date" checked="checked">Need
-          Date<br>
-          <input type="radio" name="dateType_search" [(ngModel)]="dateType" value="post_date">Post Date
-        </div>
-      </div>
-      <!--(click)="searchWithinDate=!searchWithinDate;"-->
-      <br>
-      <!--start/end : date-->
+  <div class="col-md-12 offset-md-12">
+    <div class="col-md-2">
+      <h4>Search Between Date</h4>
+      <input [(ngModel)]="searchWithinDate" type="checkbox">
       <div *ngIf="searchWithinDate">
-        <!--start Date-->
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Start Date:</label>
-            <div class="input-group date">
-              <input [(ngModel)]="startDate" type="text" class="form-control pull-right">
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <label>Select Date:</label>
-            <div class="input-group date">
-              <input [(ngModel)]="startDate" type="date" class="form-control pull-right">
-            </div>
-          </div>
-        </div>
-        <!--end s Date-->
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>End Date:</label>
-            <div class="input-group date">
-              <input [(ngModel)]="endDate" type="text" class="form-control pull-right">
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <label>Select Date:</label>
-            <div class="input-group date">
-              <input [(ngModel)]="endDate" type="date" class="form-control pull-right">
-            </div>
+        <br>
+        <h4>Select Date Type</h4>
+        <input type="radio" name="dateType_search" [(ngModel)]="dateType" value="need_date" checked="checked">Need
+        Date<br>
+        <input type="radio" name="dateType_search" [(ngModel)]="dateType" value="post_date">Post Date
+      </div>
+    </div>
+    <!--(click)="searchWithinDate=!searchWithinDate;"-->
+    <br>
+    <!--start/end : date-->
+    <div *ngIf="searchWithinDate">
+      <!--start Date-->
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Start Date:</label>
+          <div class="input-group date">
+            <input [(ngModel)]="startDate" type="text" class="form-control pull-right">
           </div>
         </div>
       </div>
-    </div>
-    <!--Search By : column name-->
-    <div class="col-md-4 offset-md-4">
-      <div class="form-group">
-        <h4>Search By :</h4>
-        <select [(ngModel)]="searchBy">
-          <option value="post_id">Post ID</option>
-          <option value="need_date">Need Date</option>
-          <option value="post_date">Post Date</option>
-          <option value="blood_type">Blood Type</option>
-          <option value="contact_info">Contact Info</option>
-          <option value="hospital_name">Hospital Name</option>
-          <option value="hospital_address">Hospital Address</option>
-          <option value="location">Location</option>
-          <option value="patient_description">Patient Description</option>
-          <option value="patient_gender">Gender</option>
-          <option value="quantity">Quantity</option>
-          <option value="relation">Relation</option>
-          <option value="notes">Notes</option>
-          <option value="post_comment">Any Comment</option>
-          <option value="remarks">Remarks</option>
-        </select>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Select Date:</label>
+          <div class="input-group date">
+            <input [(ngModel)]="startDate" type="date" class="form-control pull-right">
+          </div>
+        </div>
       </div>
-    </div>
-    <!--Sort By : column name-->
-    <div class="col-md-4 offset-md-4">
-      <div class="form-group">
-        <h4>Sort By :</h4>
-        <select [(ngModel)]="sortBy">
-          <option value="post_id">Post ID</option>
-          <option value="need_date">Need Date</option>
-          <option value="post_date">Post Date</option>
-          <option value="blood_type">Blood Type</option>
-          <option value="contact_info">Contact Info</option>
-          <option value="hospital_name">Hospital Name</option>
-          <option value="hospital_address">Hospital Address</option>
-          <option value="location">Location</option>
-          <option value="patient_description">Patient Description</option>
-          <option value="patient_gender">Gender</option>
-          <option value="quantity">Quantity</option>
-          <option value="relation">Relation</option>
-          <option value="notes">Notes</option>
-          <option value="post_comment">Any Comment</option>
-          <option value="remarks">Remarks</option>
-        </select>
+      <!--end s Date-->
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>End Date:</label>
+          <div class="input-group date">
+            <input [(ngModel)]="endDate" type="text" class="form-control pull-right">
+          </div>
+        </div>
       </div>
-    </div>
-    <!--       sort type : ASC or DESC -->
-    <div class="col-md-4 offset-md-4">
-      <div class="form-group" style="text-align: center">
-        <h4>Sort Order</h4>
-        <input type="radio" name="orderType" [(ngModel)]="orderType" value="ASC" checked="checked">Ascending<br>
-        <input type="radio" name="orderType" [(ngModel)]="orderType" value="DESC">Descending<br>
-      </div>
-    </div>
-    <!-- end : search fields selection and search key or search value-->
-
-    <!--      total-->
-    <div class="col-md-2 offset-md-2">
-      <div style="text-align: center" class="form-group">
-        <label>Total </label>
-        <input style="text-align: center" disabled="true" [(ngModel)]="total" type="number"
-               class="form-control" value="{{total}}">
-      </div>
-    </div>
-    <!--      start -->
-    <div class="col-md-2 offset-md-2">
-      <div style="text-align: center" class="form-group">
-        <label>Start</label>
-        <input style="text-align: center" [(ngModel)]="startPost" type="number" class="form-control"
-               value="{{startPost}}" (ngModelChange)="getAllPostsByAnUser()">
-      </div>
-    </div>
-    <!--      perPage-->
-    <div class="col-md-2 offset-md-2">
-      <div style="text-align: center" class="form-group">
-        <label>Per Page</label>
-        <input style="text-align: center" [(ngModel)]="perPage" type="number" class="form-control"
-               value="{{perPage}}" (ngModelChange)="getAllPostsByAnUser()">
-      </div>
-    </div>
-    <!--      prePage/nextPage-->
-    <div class="col-md-3 offset-md-3">
-      <div class="form-group" style="text-align: center">
-        <button class="btn btn-primary btn-xs" (click)="previousPage()">Previous</button>
-        <label class="btn btn-danger btn-xs ">Page Number</label>
-        <button class="btn btn-primary btn-xs" (click)="nextPage()">Next</button>
-        <input style="text-align: center" [(ngModel)]="pageNumber" type="number" class="form-control"
-               value="{{pageNumber}}">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Select Date:</label>
+          <div class="input-group date">
+            <input [(ngModel)]="endDate" type="date" class="form-control pull-right">
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <!--END : Search-->
-
-  <!--start : table-->
-  <div class="col-xs-12">
-    <div class="box">
-      <div class="box-body table-responsive no-padding">
-        <table class="table table-hover">
-          <tbody>
-          <tr>
-            <th>Operations</th>
-            <th>Index</th>
-            <th>Need Date</th>
-            <th>Quantity</th>
-            <th>Patient Gender</th>
-            <th>Relation</th>
-            <th>Hospital Name</th>
-            <th>Hospital Address</th>
-            <th>Location</th>
-            <th>Contact_info</th>
-            <th>Patient Description</th>
-            <th>Notes Personal</th>
-          </tr>
-          <tr *ngFor="let p of bloodPosts; let i=index">
-            <!--delete-->
-            <td>
-              <button class="btn btn-xs btn-warning" (click)="setPostsForEdit(p)"
-                      data-toggle="modal"
-                      data-target="#edit_post">Edit
-              </button>
-              <button class="btn btn-xs btn-danger" (click)=" delete_post_id = p.postID" data-toggle="modal"
-                      data-target="#donation_delete">Delete
-              </button>
-              <br>
-              <button class="btn btn-xs btn-primary" data-toggle="modal"
-                      data-target="#new_post"
-                      (click)="requestAccept(ar.requestId)">Managed
-              </button>
-              <br>
-              <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#new_post"
-                      (click)="requestAccept(ar.requestId)">Details
-              </button>
-            </td>
-            <td>{{i+1}}</td>
-            <td>{{p.needDate}}</td>
-            <td>{{p.quantity}}</td>
-            <td>{{p.patientGender}}</td>
-            <td>{{p.relation}}</td>
-            <td>{{p.hospitalName}}</td>
-            <td>{{p.hospitalAddress}}</td>
-            <td>{{p.location}}</td>
-            <td>{{p.contactInfo}}</td>
-            <td>{{p.patientDescription}}</td>
-            <td>{{p.notes}}</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+  <!--Search By : column name-->
+  <div class="col-md-4 offset-md-4">
+    <div class="form-group">
+      <h4>Search By :</h4>
+      <select [(ngModel)]="searchBy">
+        <option value="post_id">Post ID</option>
+        <option value="need_date">Need Date</option>
+        <option value="post_date">Post Date</option>
+        <option value="blood_type">Blood Type</option>
+        <option value="contact_info">Contact Info</option>
+        <option value="hospital_name">Hospital Name</option>
+        <option value="hospital_address">Hospital Address</option>
+        <option value="location">Location</option>
+        <option value="patient_description">Patient Description</option>
+        <option value="patient_gender">Gender</option>
+        <option value="quantity">Quantity</option>
+        <option value="relation">Relation</option>
+        <option value="notes">Notes</option>
+        <option value="post_comment">Any Comment</option>
+        <option value="remarks">Remarks</option>
+      </select>
     </div>
-    <div class="panel-footer">Donation History</div>
   </div>
-  <!--end : table-->
+  <!--Sort By : column name-->
+  <div class="col-md-4 offset-md-4">
+    <div class="form-group">
+      <h4>Sort By :</h4>
+      <select [(ngModel)]="sortBy">
+        <option value="post_id">Post ID</option>
+        <option value="need_date">Need Date</option>
+        <option value="post_date">Post Date</option>
+        <option value="blood_type">Blood Type</option>
+        <option value="contact_info">Contact Info</option>
+        <option value="hospital_name">Hospital Name</option>
+        <option value="hospital_address">Hospital Address</option>
+        <option value="location">Location</option>
+        <option value="patient_description">Patient Description</option>
+        <option value="patient_gender">Gender</option>
+        <option value="quantity">Quantity</option>
+        <option value="relation">Relation</option>
+        <option value="notes">Notes</option>
+        <option value="post_comment">Any Comment</option>
+        <option value="remarks">Remarks</option>
+      </select>
+    </div>
+  </div>
+  <!--       sort type : ASC or DESC -->
+  <div class="col-md-4 offset-md-4">
+    <div class="form-group" style="text-align: center">
+      <h4>Sort Order</h4>
+      <input type="radio" name="orderType" [(ngModel)]="orderType" value="ASC" checked="checked">Ascending<br>
+      <input type="radio" name="orderType" [(ngModel)]="orderType" value="DESC">Descending<br>
+    </div>
+  </div>
+  <!-- end : search fields selection and search key or search value-->
+
+  <!--      total-->
+  <div class="col-md-2 offset-md-2">
+    <div style="text-align: center" class="form-group">
+      <label>Total </label>
+      <input style="text-align: center" disabled="true" [(ngModel)]="total" type="number"
+             class="form-control" value="{{total}}">
+    </div>
+  </div>
+  <!--      start -->
+  <div class="col-md-2 offset-md-2">
+    <div style="text-align: center" class="form-group">
+      <label>Start</label>
+      <input style="text-align: center" [(ngModel)]="startPost" type="number" class="form-control"
+             value="{{startPost}}" (ngModelChange)="getAllPostsByAnUser()">
+    </div>
+  </div>
+  <!--      perPage-->
+  <div class="col-md-2 offset-md-2">
+    <div style="text-align: center" class="form-group">
+      <label>Per Page</label>
+      <input style="text-align: center" [(ngModel)]="perPage" type="number" class="form-control"
+             value="{{perPage}}" (ngModelChange)="getAllPostsByAnUser()">
+    </div>
+  </div>
+  <!--      prePage/nextPage-->
+  <div class="col-md-3 offset-md-3">
+    <div class="form-group" style="text-align: center">
+      <button class="btn btn-primary btn-xs" (click)="previousPage()">Previous</button>
+      <label class="btn btn-danger btn-xs ">Page Number</label>
+      <button class="btn btn-primary btn-xs" (click)="nextPage()">Next</button>
+      <input style="text-align: center" [(ngModel)]="pageNumber" type="number" class="form-control"
+             value="{{pageNumber}}">
+    </div>
+  </div>
+</div>
+<!--END : Search-->
+
+<!--start : table-->
+<div class="col-xs-12">
+  <div class="box">
+    <div class="box-body table-responsive no-padding">
+      <table class="table table-hover">
+        <tbody>
+        <tr>
+          <th>Operations</th>
+          <th>Index</th>
+          <th>Need Date</th>
+          <th>Quantity</th>
+          <th>Patient Gender</th>
+          <th>Relation</th>
+          <th>Hospital Name</th>
+          <th>Hospital Address</th>
+          <th>Location</th>
+          <th>Contact_info</th>
+          <th>Patient Description</th>
+          <th>Notes Personal</th>
+        </tr>
+        <tr *ngFor="let p of bloodPosts; let i=index">
+          <!--delete-->
+          <td>
+            <button class="btn btn-xs btn-warning" (click)="setPostsForEdit(p)"
+                    data-toggle="modal"
+                    data-target="#edit_post">Edit
+            </button>
+            <button class="btn btn-xs btn-danger" (click)=" delete_post_id = p.postID" data-toggle="modal"
+                    data-target="#donation_delete">Delete
+            </button>
+            <br>
+            <button class="btn btn-xs btn-primary" data-toggle="modal"
+                    data-target="#new_post"
+                    (click)="requestAccept(ar.requestId)">Managed
+            </button>
+            <br>
+            <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#new_post"
+                    (click)="requestAccept(ar.requestId)">Details
+            </button>
+          </td>
+          <td>{{i+1}}</td>
+          <td>{{p.needDate}}</td>
+          <td>{{p.quantity}}</td>
+          <td>{{p.patientGender}}</td>
+          <td>{{p.relation}}</td>
+          <td>{{p.hospitalName}}</td>
+          <td>{{p.hospitalAddress}}</td>
+          <td>{{p.location}}</td>
+          <td>{{p.contactInfo}}</td>
+          <td>{{p.patientDescription}}</td>
+          <td>{{p.notes}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="panel-footer">Donation History</div>
+</div>
+<!--end : table-->
 
 <!--</div>-->
 
@@ -506,7 +502,3 @@
   </div>
 </div>
 <!-- end-Modal :  Delete Confirmation -->
-
-<!-- content-wrapper -->
-<!--</div>-->
-<!--wrapper-->
