@@ -19,6 +19,7 @@ import {AgentComponent} from './admin/agent/agent.component';
 import {AgentDashboardComponent} from './agent-dashboard/agent-dashboard/agent-dashboard.component';
 import {ParentComponent} from './test/parent/parent.component';
 import {MyPostsComponent} from './post/my-posts/my-posts.component';
+import {PostComponent} from './post/post.component';
 
 
 const routes: Routes = [
@@ -40,7 +41,7 @@ const routes: Routes = [
   {path: 'rec', component: RecordClearComponent},
   {path: 'user/profile', component: ProfileComponent},
   {path: 'user/donation_history', component: DonationHistoryComponent},
-  {path: 'user/my_posts', component: MyPostsComponent},
+  {path: 'user/my_posts', component: PostComponent},
   {path: 'user/personal_info', component: PersonalInfoComponent},
   {path: 'user/agent', component: AgentComponent},
   {path: 'user/agent/dashboard', component: AgentDashboardComponent},

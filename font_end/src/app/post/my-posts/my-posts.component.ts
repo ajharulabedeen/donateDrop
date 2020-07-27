@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {BasicService} from '../../profile/basic/basic.service';
 import {PostServiceService} from '../post-service.service';
 import {Post} from '../post.model';
@@ -11,6 +11,27 @@ import {DonnerToAgentRequestToReview} from '../../agent-dashboard/agent-dashboar
   styleUrls: ['./my-posts.component.scss']
 })
 export class MyPostsComponent implements OnInit {
+
+  @Input()
+  pageHeader = '';
+  @Input()
+  buttonReview = false;
+  @Input()
+  buttonReject = false;
+  @Input()
+  buttonApprove = false;
+  @Input()
+  buttonRemove = false;
+  @Input()
+  buttonDetials = false;
+  @Input()
+  statusType = '';
+
+  @Input()
+  modalIDAgent = '';
+  @Input()
+  modalIDDonner = '';
+
 
   dateType: string;
   startDate: string;

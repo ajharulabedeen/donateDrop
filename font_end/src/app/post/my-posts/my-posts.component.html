@@ -3,64 +3,8 @@
   <app-asidenavbar></app-asidenavbar>
   <div class="content-wrapper">
 
-    <!--<h5 align="center" style="font-size: 50px;">-->
-    <!--<span class="text-danger"><b style="color: limegreen">Donate</b>DROP</span>-->
-    <!--<span>|</span>-->
-    <!--<span class="logo text-teal">Agent Dashboard</span>-->
-    <!--</h5>-->
-
-    <div align="center" class="tab">
-      <button class="tablinks" (click)="tabChange(event, 'request_review')">Active</button>
-      <button class="tablinks" (click)="tabChange(event, 'accepted')">Expired</button>
-      <button class="tablinks" (click)="tabChange(event, 'rejected')">Managed</button>
-      <!--<button class="tablinks" (click)="tabChange(event, 'removed')">Removed</button>-->
-    </div>
-
-    <div align="center" id="request_review" class="tabcontent">
-      <!--<app-agent-dashboard-review-->
-      <!--[pageHeader]="headerReview"-->
-      <!--[statusType]="0"-->
-      <!--[buttonReject]="true"-->
-      <!--[buttonApprove]="true"-->
-      <!--[modalIDAgent]="0"-->
-      <!--[modalIDDonner]="01"-->
-      <!--&gt;-->
-      <!--</app-agent-dashboard-review>-->
-    </div>
-    <div align="center" id="accepted" class="tabcontent">
-      <!--<app-agent-dashboard-review-->
-      <!--[pageHeader]="headerAccepted"-->
-      <!--[statusType]="ACCEPTED"-->
-      <!--[buttonRemove]="true"-->
-      <!--[modalIDAgent]="ACCEPTED"-->
-      <!--[modalIDDonner]="ACCEPTED_ID"-->
-      <!--&gt;-->
-      <!--</app-agent-dashboard-review>-->
-    </div>
-    <div align="center" id="rejected" class="tabcontent">
-      <!--<app-agent-dashboard-review-->
-      <!--[pageHeader]="headerRejected"-->
-      <!--[statusType]="REJECTED"-->
-      <!--[buttonApprove]="true"-->
-      <!--[modalIDAgent]="REJECTED"-->
-      <!--[modalIDDonner]="REJECTED_ID"-->
-      <!--&gt;-->
-      <!--</app-agent-dashboard-review>-->
-    </div>
-    <div align="center" id="removed" class="tabcontent">
-      <!--<app-agent-dashboard-review-->
-      <!--[pageHeader]="headerRemove"-->
-      <!--[statusType]="REMOVE"-->
-      <!--[buttonApprove]="true"-->
-      <!--[modalIDAgent]="REMOVE"-->
-      <!--[modalIDDonner]="REMOVE_ID"-->
-      <!--&gt;-->
-      <!--</app-agent-dashboard-review>-->
-    </div>
-
-
     <!--old code working -->
-    <h1 align="center">My Posts</h1>
+
     <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#new_post">
       Add New
     </button>
