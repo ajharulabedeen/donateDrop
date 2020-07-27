@@ -54,7 +54,6 @@ export class AgentDashboardComponent implements OnInit {
     // console.log(evt.currentTarget.className);
     // evt.currentTarget.style.backgroundColor = 'pink';
   }
-
   // end : for tab in font end.
 
 
