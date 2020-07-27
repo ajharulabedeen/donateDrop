@@ -15,10 +15,15 @@ export class PostComponent implements OnInit {
   //modal id : note for the donner.
   ACTIVE_NEW_ID = 'ACTIVE_NEW_ID';
   ACTIVE_EDIT_ID = 'ACTIVE_ADD_ID';
+  ACTIVE_DELETE_ID = 'ACTIVE_DELETE_ID';
+
   MANAGE_NEW_ID = 'MANAGED_NEW_ID';
   MANAGE_EDIT_ID = 'MANAGED_EDIT_ID';
+  MANAGE_DELETE_ID = 'MANAGED_DELETE_ID';
+
   EXPIRED_NEW_ID = 'EXPIRED_NEW_ID';
   EXPIRED_EDIT_ID = 'EXPIRED_EDIT_ID';
+  EXPIRED_DELETE_ID = 'EXPIRED_DELETE_ID';
 
 
   headerActive = 'Active';

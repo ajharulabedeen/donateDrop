@@ -17,7 +17,11 @@
 
     <div align="center" id="post_active" class="tabcontent">
       <app-my-posts
-        [pageHeader]="headerActive">
+        [pageHeader]="headerActive"
+        [modalNew]="ACTIVE_NEW_ID"
+        [modalEdit]="ACTIVE_EDIT_ID"
+        [modalDelete]="ACTIVE_DELETE_ID"
+      >
 
       </app-my-posts>
       <!--<app-agent-dashboard-review-->
@@ -32,7 +36,11 @@
     </div>
     <div align="center" id="post_expired" class="tabcontent">
       <app-my-posts
-        [pageHeader]="headerExpired">
+        [pageHeader]="headerExpired"
+        [modalNew]="EXPIRED_NEW_ID"
+        [modalEdit]="EXPIRED_EDIT_ID"
+        [modalDelete]="EXPIRED_DELETE_ID"
+      >
       </app-my-posts>
       <!--<app-agent-dashboard-review-->
       <!--[pageHeader]="headerAccepted"-->
@@ -45,7 +53,11 @@
     </div>
     <div align="center" id="post_managed" class="tabcontent">
       <app-my-posts
-        [pageHeader]="headerManaged">
+        [pageHeader]="headerManaged"
+        [modalNew]="MANAGE_NEW_ID"
+        [modalEdit]="MANAGE_EDIT_ID"
+        [modalDelete]="MANAGE_DELETE_ID"
+      >
       </app-my-posts>
       <!--<app-agent-dashboard-review-->
       <!--[pageHeader]="headerRejected"-->

@@ -1,7 +1,6 @@
-
 <h2>{{pageHeader}}</h2>
 
-<button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#new_post">
+<button type="button" class="btn btn-md btn-primary" data-toggle="modal" [attr.data-target]="'#' + modalNew">
   Add New
 </button>
 
@@ -190,10 +189,10 @@
           <td>
             <button class="btn btn-xs btn-warning" (click)="setPostsForEdit(p)"
                     data-toggle="modal"
-                    data-target="#edit_post">Edit
+                    [attr.data-target]="'#'+modalEdit">Edit
             </button>
             <button class="btn btn-xs btn-danger" (click)=" delete_post_id = p.postID" data-toggle="modal"
-                    data-target="#donation_delete">Delete
+                    [attr.data-target]="'#'+modalDelete">Delete
             </button>
             <br>
             <button class="btn btn-xs btn-primary" data-toggle="modal"
@@ -221,14 +220,14 @@
       </table>
     </div>
   </div>
-  <div class="panel-footer">Donation History</div>
+  <div class="panel-footer">My Posts</div>
 </div>
 <!--end : table-->
 
 <!--</div>-->
 
 <!-- Modal-start  : New Posts-->
-<div class="modal fade" id="new_post" tabindex="-1" role="dialog" aria-labelledby="new_postLabel"
+<div class="modal fade" id="{{modalNew}}" tabindex="-1" role="dialog" aria-labelledby="new_postLabel"
      aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -352,7 +351,7 @@
 <!-- Modal-end : New Posts-->
 
 <!-- Modal-start  : Edit Posts-->
-<div class="modal fade" id="edit_post" tabindex="-1" role="dialog" aria-labelledby="new_postLabel"
+<div class="modal fade" id="{{modalEdit}}" tabindex="-1" role="dialog" aria-labelledby="new_postLabel"
      aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -477,7 +476,7 @@
 
 <!--refacotor : Have to make util component delete, by @input value will send, by @output click value will be got-->
 <!-- start-Modal :  Delete Confirmation -->
-<div class="modal fade" id="donation_delete" tabindex="-1" role="dialog"
+<div class="modal fade" id="{{modalDelete}}" tabindex="-1" role="dialog"
      aria-labelledby="exampleModalLabel"
      aria-hidden="true">
   <div class="modal-dialog" role="document">
