@@ -105,6 +105,19 @@ export class MyPostsComponent implements OnInit {
     });
   }
 
+  public deletePost(): void {
+    this.postService.delete(this.delete_post_id).subscribe((res: Response) => {
+      console.log(res);
+      if (res['STATUS'] === 'OK') {
+        console.log('OK STATUS!');
+        this.getAllPostsByAnUser();
+        // this.bloodPosts.push(this.postTosave);
+        // console.log(this.bloodPosts);
+
+      }
+    });
+  }
+
   public getAllPostsByAnUser(): void {
     var postSearch = new PostSearch();
     postSearch.dateType = this.dateType;

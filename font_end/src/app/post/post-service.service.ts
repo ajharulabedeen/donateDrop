@@ -10,13 +10,13 @@ import {PostSearch} from './post-search.model';
 })
 export class PostServiceService {
 
+  loading: boolean;
+
   constructor(private http: HttpClient,
               private authService: AuthService) {
   }
 
-  loading: boolean;
-
-  save(post: Post) {
+  public save(post: Post) {
     return this.http.post(
       'http://127.0.0.1:8080/public/user/post/save', post, this.authService.getHeader()
     );
@@ -26,9 +26,15 @@ export class PostServiceService {
     // });
   } // create
 
-  update(post: Post) {
+  public update(post: Post) {
     return this.http.post(
       'http://127.0.0.1:8080/public/user/post/updatePost', post, this.authService.getHeader()
+    );
+  }
+
+  public delete(delete_post_id: string) {
+    return this.http.post(
+      'http://localhost:8080/public/user/post/deletePost?postID=', delete_post_id, this.authService.getHeader()
     );
   }
 
@@ -55,7 +61,6 @@ export class PostServiceService {
       'http://localhost:8080/public/user/post/countAllPostsByAnUserWithinDate', postSearch, this.authService.getHeader()
     );
   }
-
 
 
 }
