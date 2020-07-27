@@ -34,7 +34,7 @@ export class PostServiceService {
 
   public delete(delete_post_id: string) {
     return this.http.post(
-      'http://localhost:8080/public/user/post/deletePost?postID=', delete_post_id, this.authService.getHeader()
+      'http://localhost:8080/public/user/post/deletePost?postID=' + delete_post_id, this.authService.getHeader()
     );
   }
 
