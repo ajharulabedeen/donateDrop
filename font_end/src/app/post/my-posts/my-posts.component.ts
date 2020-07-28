@@ -34,6 +34,10 @@ export class MyPostsComponent implements OnInit {
   @Input()
   modalDelete = '';
 
+  @Input()
+  postType = '';
+
+
   dateType: string;
   startDate: string;
   endDate: string;
@@ -173,7 +177,7 @@ export class MyPostsComponent implements OnInit {
     postSearch.column = this.searchBy;
     postSearch.orderBy = this.sortBy;
     postSearch.orderType = this.orderType;
-    postSearch.postType = '\'ACTIVE\'';
+    postSearch.postType = '\'' + this.postType + '\'';
 
     //delete
     console.log(postSearch);

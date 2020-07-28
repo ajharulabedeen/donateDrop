@@ -8,9 +8,9 @@ import {Component, OnInit} from '@angular/core';
 export class PostComponent implements OnInit {
 
   // start-new : reusable component
-  REJECTED = 'REJECT';
-  ACCEPTED = 'ACCEPT';
-  REMOVE = 'REMOVE';
+  ACTIVE = 'ACTIVE';
+  MANAGED = 'MANAGED';
+  EXPIRED = 'EXPIRED';
 
   //modal id : note for the donner.
   ACTIVE_NEW_ID = 'ACTIVE_NEW_ID';

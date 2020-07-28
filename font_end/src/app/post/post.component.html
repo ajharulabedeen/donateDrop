@@ -18,6 +18,7 @@
     <div align="center" id="post_active" class="tabcontent">
       <app-my-posts
         [pageHeader]="headerActive"
+        [postType]="ACTIVE"
         [modalNew]="ACTIVE_NEW_ID"
         [modalEdit]="ACTIVE_EDIT_ID"
         [modalDelete]="ACTIVE_DELETE_ID"
@@ -37,6 +38,7 @@
     <div align="center" id="post_expired" class="tabcontent">
       <app-my-posts
         [pageHeader]="headerExpired"
+        [postType]="EXPIRED"
         [modalNew]="EXPIRED_NEW_ID"
         [modalEdit]="EXPIRED_EDIT_ID"
         [modalDelete]="EXPIRED_DELETE_ID"
@@ -54,6 +56,7 @@
     <div align="center" id="post_managed" class="tabcontent">
       <app-my-posts
         [pageHeader]="headerManaged"
+        [postType]="MANAGED"
         [modalNew]="MANAGE_NEW_ID"
         [modalEdit]="MANAGE_EDIT_ID"
         [modalDelete]="MANAGE_DELETE_ID"
