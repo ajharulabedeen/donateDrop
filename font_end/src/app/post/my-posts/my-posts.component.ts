@@ -68,6 +68,7 @@ export class MyPostsComponent implements OnInit {
   delete_post_id: string;
 
   edit_post_id: string;
+  edit_status: string;
   edit_anyNotes: string;
   edit_quantity: string;
   edit_contactInfo: string;
@@ -172,6 +173,7 @@ export class MyPostsComponent implements OnInit {
     postSearch.column = this.searchBy;
     postSearch.orderBy = this.sortBy;
     postSearch.orderType = this.orderType;
+    postSearch.postType = '\'ACTIVE\'';
 
     //delete
     console.log(postSearch);
@@ -215,6 +217,7 @@ export class MyPostsComponent implements OnInit {
       post.patientDescription = res[key]['patientDescription'];
       post.remarks = res[key]['remarks'];
       post.notes = res[key]['notes'];
+      post.status = res[key]['status'];
       this.bloodPosts.push(post);
     }
     console.log(this.bloodPosts);
@@ -241,6 +244,7 @@ export class MyPostsComponent implements OnInit {
   public getEditPost(): Post {
     var p = new Post();
     p.postID = this.edit_post_id;
+    p.status = this.edit_status;
     p.bloodType = this.edit_blood_Group;
     p.quantity = this.edit_quantity;
     p.needDate = this.edit_bloodNeedDate;
@@ -257,6 +261,23 @@ export class MyPostsComponent implements OnInit {
     return p;
   }
 
+  public setPostsForEdit(p: Post): void {
+    this.edit_post_id = p.postID;
+    this.edit_status = p.status;
+    this.edit_blood_Group = p.bloodType;
+    this.edit_quantity = p.quantity;
+    this.edit_bloodNeedDate = p.needDate;
+    this.edit_patientGender = p.patientGender;
+    this.edit_relationWithPatient = p.relation;
+    this.edit_hospitalName = p.hospitalName;
+    this.edit_hospitalAddress = p.hospitalAddress;
+    this.edit_donationLocation = p.location;
+    this.edit_contactInfo = p.contactInfo;
+    this.edit_patientDescription = p.patientDescription;
+    this.edit_patientRemarks = p.remarks;
+    this.edit_anyNotes = p.notes;
+  }
+
   public nextPage(): void {
     if (this.startPost.toString() <= this.total) {
       this.startPost += this.perPage;
@@ -271,19 +292,5 @@ export class MyPostsComponent implements OnInit {
     }
   }
 
-  public setPostsForEdit(p: Post): void {
-    this.edit_post_id = p.postID;
-    this.edit_blood_Group = p.bloodType;
-    this.edit_quantity = p.quantity;
-    this.edit_bloodNeedDate = p.needDate;
-    this.edit_patientGender = p.patientGender;
-    this.edit_relationWithPatient = p.relation;
-    this.edit_hospitalName = p.hospitalName;
-    this.edit_hospitalAddress = p.hospitalAddress;
-    this.edit_donationLocation = p.location;
-    this.edit_contactInfo = p.contactInfo;
-    this.edit_patientDescription = p.patientDescription;
-    this.edit_patientRemarks = p.remarks;
-    this.edit_anyNotes = p.notes;
-  }
+
 }

@@ -9,4 +9,5 @@ export class PostSearch {
   public userID: string;
   public orderBy: string;
   public orderType: string;
+  public postType: string;
 }
