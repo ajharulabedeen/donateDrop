@@ -16,7 +16,7 @@ public class MyPostSearch {
     public MyPostSearch() {
     }
 
-    public MyPostSearch(String dateType, String startDate, String endDate, int start, int max, String key, String column, String userID, String orderBy, String orderType) {
+    public MyPostSearch(String dateType, String startDate, String endDate, int start, int max, String key, String column, String userID, String orderBy, String orderType, String postType) {
         this.dateType = dateType;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -27,6 +27,7 @@ public class MyPostSearch {
         this.userID = userID;
         this.orderBy = orderBy;
         this.orderType = orderType;
+        this.postType = postType;
     }
 
     public String getDateType() {
