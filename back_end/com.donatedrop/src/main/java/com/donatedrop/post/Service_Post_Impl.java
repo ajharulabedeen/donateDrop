@@ -99,22 +99,22 @@ public class Service_Post_Impl implements Service_Post_I {
     }
 
     @Override
-    public List<Post> getAllPostsByAnUser(PostSearch postSearch) {
+    public List<Post> getAllPostsByAnUser(MyPostSearch postSearch) {
         return dao_post_i.getAllPostsByAnUser(postSearch);
     }
 
     @Override
-    public String countAllPostsByAnUser(PostSearch postSearch) {
+    public String countAllPostsByAnUser(MyPostSearch postSearch) {
         return dao_post_i.countAllPostsByAnUser(postSearch);
     }
 
     @Override
-    public List<Post> getAllPostsByAnUserWithinDate(PostSearch postSearch) {
+    public List<Post> getAllPostsByAnUserWithinDate(MyPostSearch postSearch) {
         return dao_post_i.getAllPostsByAnUserWithinDate(postSearch);
     }
 
     @Override
-    public String countAllPostsByAnUserWithinDate(PostSearch postSearch) {
+    public String countAllPostsByAnUserWithinDate(MyPostSearch postSearch) {
         return dao_post_i.countAllPostsByAnUserWithinDate(postSearch);
     }
 

@@ -213,11 +213,12 @@ public class Dao_Post_Impl implements Dao_Post_I {
     }
 
     @Override
-    public List<Post> getAllPostsByAnUser(PostSearch postSearch) {
+    public List<Post> getAllPostsByAnUser(MyPostSearch postSearch) {
         String sql = "SELECT * FROM `post` WHERE " + postSearch.column + " LIKE " + postSearch.key
                 + " AND post_user_id = " + postSearch.userID
+                + " AND status = " + postSearch.postType
                 + " ORDER BY " + postSearch.orderBy
-                + " " + postSearch.orderType; //ASC/DESC
+                + " " + postSearch.orderType; //ASC-DESC
 
         return entityManager.createNativeQuery(sql, Post.class)
                 .setFirstResult(postSearch.start)
@@ -226,21 +227,23 @@ public class Dao_Post_Impl implements Dao_Post_I {
     }
 
     @Override
-    public String countAllPostsByAnUser(PostSearch postSearch) {
+    public String countAllPostsByAnUser(MyPostSearch postSearch) {
         String sql = "SELECT count(*) FROM `post` WHERE " + postSearch.column + " LIKE " + postSearch.key
                 + " AND post_user_id = " + postSearch.userID
+                + " AND status = " + postSearch.postType
                 + " ORDER BY " + postSearch.orderBy
-                + " " + postSearch.orderType; //ASC/DESC
+                + " " + postSearch.orderType; //ASC-DESC
         return entityManager.createNativeQuery(sql).getResultList().get(0).toString();
     }
 
 
     @Override
-    public List<Post> getAllPostsByAnUserWithinDate(PostSearch postSearch) {
+    public List<Post> getAllPostsByAnUserWithinDate(MyPostSearch postSearch) {
         String sql = "SELECT * FROM `post` WHERE " + postSearch.column
                 + " LIKE " + postSearch.key
                 + " AND post_user_id = " + postSearch.userID
                 + " AND ( " + postSearch.dateType + " BETWEEN '" + postSearch.startDate + "' AND '" + postSearch.endDate + "' ) "
+                + " AND status = " + postSearch.postType
                 + " ORDER BY " + postSearch.orderBy
                 + "  " + postSearch.orderType;
 
@@ -251,11 +254,12 @@ public class Dao_Post_Impl implements Dao_Post_I {
     }
 
     @Override
-    public String countAllPostsByAnUserWithinDate(PostSearch postSearch) {
+    public String countAllPostsByAnUserWithinDate(MyPostSearch postSearch) {
         String sql = "SELECT count(*) FROM `post` WHERE " + postSearch.column
                 + " LIKE " + postSearch.key
                 + " AND post_user_id = " + postSearch.userID
                 + " AND ( " + postSearch.dateType + " BETWEEN '" + postSearch.startDate + "' AND '" + postSearch.endDate + "' ) "
+                + " AND status = " + postSearch.postType
                 + " ORDER BY " + postSearch.orderBy
                 + "  " + postSearch.orderType;
         return entityManager.createNativeQuery(sql).getResultList().get(0).toString();

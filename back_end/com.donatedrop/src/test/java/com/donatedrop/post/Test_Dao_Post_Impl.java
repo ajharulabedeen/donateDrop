@@ -3,6 +3,7 @@ package com.donatedrop.post;
 import com.donatedrop.other.DumpDao;
 import com.donatedrop.other.DumpData;
 import com.donatedrop.security.models.User;
+import com.donatedrop.util.PostType;
 import com.donatedrop.util.StringUtil;
 import javafx.geometry.Pos;
 import org.junit.Assert;
@@ -109,12 +110,15 @@ public class Test_Dao_Post_Impl {
 //                              start, max, key, column, orderBy, orderType, userID
 //       startDate, endDate :   start, max, key, column, orderBy, orderType, userID
 //        SELECT * FROM `post` WHERE contact_info LIKE "%%" AND post_user_id = 12417 ORDER BY need_date DESC
-        PostSearch postSearch = new PostSearch();
+        MyPostSearch postSearch = new MyPostSearch();
         postSearch.setColumn("contact_info");
         postSearch.setKey("'%%'");
         postSearch.setUserID("12417");
         postSearch.setOrderBy("need_date");
         postSearch.setOrderType("DESC");
+//        postSearch.setPostType(PostType.ACTIVE.toString());
+//        postSearch.setPostType("'ACTIVE'");
+        postSearch.setPostType("'MANAGED'");
 
         dao_post_i.getAllPostsByAnUser(postSearch).forEach(p -> {
             System.out.println(p.getHospitalAddress());
@@ -127,12 +131,16 @@ public class Test_Dao_Post_Impl {
 //                              start, max, key, column, orderBy, orderType, userID
 //       startDate, endDate :   start, max, key, column, orderBy, orderType, userID
 //        SELECT * FROM `post` WHERE contact_info LIKE "%%" AND post_user_id = 12417 ORDER BY need_date DESC
-        PostSearch postSearch = new PostSearch();
+        MyPostSearch postSearch = new MyPostSearch();
         postSearch.setColumn("contact_info");
-        postSearch.setKey("'%014%'");
+//        postSearch.setKey("'%014%'");
+        postSearch.setKey("'%%'");
         postSearch.setUserID("12417");
         postSearch.setOrderBy("need_date");
         postSearch.setOrderType("DESC");
+        postSearch.setPostType("'ACTIVE'");
+//        postSearch.setPostType("'MANAGED'");
+
 
         String count = dao_post_i.countAllPostsByAnUser(postSearch);
 
@@ -147,7 +155,7 @@ public class Test_Dao_Post_Impl {
 //        SELECT * FROM `post` WHERE contact_info LIKE "%%" AND post_user_id = 12417 ORDER BY need_date DESC
 //        SELECT * FROM `post` WHERE hospital_address LIKE "%k%" AND post_user_id = 12417 AND ( need_date BETWEEN '2020-01-1' AND '2020-05-18' ) ORDER BY quantity DESC
 
-        PostSearch postSearch = new PostSearch();
+        MyPostSearch postSearch = new MyPostSearch();
         postSearch.setDateType("need_date");
         postSearch.setStartDate("2020-01-1");
         postSearch.setEndDate("2020-05-18");
@@ -170,7 +178,7 @@ public class Test_Dao_Post_Impl {
 //        SELECT * FROM `post` WHERE contact_info LIKE "%%" AND post_user_id = 12417 ORDER BY need_date DESC
 //        SELECT * FROM `post` WHERE hospital_address LIKE "%k%" AND post_user_id = 12417 AND ( need_date BETWEEN '2020-01-1' AND '2020-05-18' ) ORDER BY quantity DESC
 
-        PostSearch postSearch = new PostSearch();
+        MyPostSearch postSearch = new MyPostSearch();
         postSearch.setDateType("need_date");
         postSearch.setStartDate("2020-01-1");
         postSearch.setEndDate("2020-05-18");

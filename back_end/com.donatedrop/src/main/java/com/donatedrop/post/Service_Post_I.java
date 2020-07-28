@@ -28,13 +28,13 @@ public interface Service_Post_I {
     public Map<String, String> deletePostComment(String postID, PostComment postCommentOld);
 
     //-----Search and all posts by an user.
-    public List<Post> getAllPostsByAnUser(PostSearch postSearch);
+    public List<Post> getAllPostsByAnUser(MyPostSearch postSearch);
 
-    public String countAllPostsByAnUser(PostSearch postSearch);
+    public String countAllPostsByAnUser(MyPostSearch postSearch);
 
-    public List<Post> getAllPostsByAnUserWithinDate(PostSearch postSearch);
+    public List<Post> getAllPostsByAnUserWithinDate(MyPostSearch postSearch);
 
-    public String countAllPostsByAnUserWithinDate(PostSearch postSearch);
+    public String countAllPostsByAnUserWithinDate(MyPostSearch postSearch);
 
     public String countCommentsOfAPost(String postID);
 

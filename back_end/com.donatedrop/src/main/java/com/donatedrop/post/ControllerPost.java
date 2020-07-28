@@ -41,25 +41,25 @@ public class ControllerPost {
     }
 
     @PostMapping("getAllPostsByAnUser")
-    public List<Post> getAllPostsByAnUser(@RequestBody PostSearch postSearch) {
+    public List<Post> getAllPostsByAnUser(@RequestBody MyPostSearch postSearch) {
         postSearch.setUserID(Utils.getLoggedUserID());
         return service_post_i.getAllPostsByAnUser(postSearch);
     }
 
     @PostMapping("countAllPostsByAnUser")
-    public String countAllPostsByAnUser(@RequestBody PostSearch postSearch) {
+    public String countAllPostsByAnUser(@RequestBody MyPostSearch postSearch) {
         postSearch.setUserID(Utils.getLoggedUserID());
         return service_post_i.countAllPostsByAnUser(postSearch);
     }
 
     @PostMapping("getAllPostsByAnUserWithinDate")
-    public List<Post> getAllPostsByAnUserWithinDate(@RequestBody PostSearch postSearch) {
+    public List<Post> getAllPostsByAnUserWithinDate(@RequestBody MyPostSearch postSearch) {
         postSearch.setUserID(Utils.getLoggedUserID());
         return service_post_i.getAllPostsByAnUserWithinDate(postSearch);
     }
 
     @PostMapping("countAllPostsByAnUserWithinDate")
-    public String countAllPostsByAnUserWithinDate(@RequestBody PostSearch postSearch) {
+    public String countAllPostsByAnUserWithinDate(@RequestBody MyPostSearch postSearch) {
         postSearch.setUserID(Utils.getLoggedUserID());
         return service_post_i.countAllPostsByAnUserWithinDate(postSearch);
     }

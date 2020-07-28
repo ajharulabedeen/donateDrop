@@ -177,7 +177,7 @@ public class Test_Controller_Post extends AbstractTest {
     public void testGetAllPostsByAnUser() throws Exception {
 //     arrange
         String uri = "/public/user/post/getAllPostsByAnUser";
-        PostSearch postSearch = new PostSearch();
+        MyPostSearch postSearch = new MyPostSearch();
         postSearch.setDateType("demoData");
         postSearch.setStartDate("demoData");
         postSearch.setEndDate("demoData");
@@ -208,7 +208,7 @@ public class Test_Controller_Post extends AbstractTest {
     public void testCountAllPostsByAnUser() throws Exception {
         //     arrange
         String uri = "/public/user/post/countAllPostsByAnUser";
-        PostSearch postSearch = new PostSearch();
+        MyPostSearch postSearch = new MyPostSearch();
         postSearch.setDateType("demoData");
         postSearch.setStartDate("demoData");
         postSearch.setEndDate("demoData");
@@ -237,7 +237,7 @@ public class Test_Controller_Post extends AbstractTest {
     public void testGetAllPostsByAnUserWithinDate() throws Exception {
 //     arrange
         String uri = "/public/user/post/getAllPostsByAnUserWithinDate";
-        PostSearch postSearch = new PostSearch();
+        MyPostSearch postSearch = new MyPostSearch();
         postSearch.setDateType("need_date");
         postSearch.setStartDate("2020-01-1");
         postSearch.setEndDate("2020-05-18");
@@ -269,7 +269,7 @@ public class Test_Controller_Post extends AbstractTest {
     public void testCountAllPostsByAnUserWithinDate() throws Exception {
 //     arrange
         String uri = "/public/user/post/countAllPostsByAnUserWithinDate";
-        PostSearch postSearch = new PostSearch();
+        MyPostSearch postSearch = new MyPostSearch();
 //        postSearch.setDateType("need_date");
         postSearch.setDateType("post_date");
         postSearch.setStartDate("2020-01-1");

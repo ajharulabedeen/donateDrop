@@ -214,7 +214,6 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
         return result;
     }
 
-
     @Override
     public Map<String, String> updateNoteAgentPersonal(RequestNote requestNote) {
         Map<String, String> result = new HashMap<>();

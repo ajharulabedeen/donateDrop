@@ -1,21 +1,22 @@
 package com.donatedrop.post;
 
-public class PostSearch {
+public class MyPostSearch {
     String dateType;
-    String startDate;
     String endDate;
+    String startDate;
     int start;
     int max;
     String key;
-    String column;
     String userID;
+    String column;
     String orderBy;
     String orderType;
+    String postType;
 
-    public PostSearch() {
+    public MyPostSearch() {
     }
 
-    public PostSearch(String dateType, String startDate, String endDate, int start, int max, String key, String column, String userID, String orderBy, String orderType) {
+    public MyPostSearch(String dateType, String startDate, String endDate, int start, int max, String key, String column, String userID, String orderBy, String orderType) {
         this.dateType = dateType;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -108,19 +109,28 @@ public class PostSearch {
         this.orderType = orderType;
     }
 
+    public String getPostType() {
+        return postType;
+    }
+
+    public void setPostType(String postType) {
+        this.postType = postType;
+    }
+
     @Override
     public String toString() {
-        return "PostSearch{" +
-                "dateType='" + dateType + ", startDate='" +
-                '\'' + startDate + '\'' +
+        return "MyPostSearch{" +
+                "dateType='" + dateType + '\'' +
                 ", endDate='" + endDate + '\'' +
+                ", startDate='" + startDate + '\'' +
                 ", start=" + start +
                 ", max=" + max +
                 ", key='" + key + '\'' +
-                ", column='" + column + '\'' +
                 ", userID='" + userID + '\'' +
+                ", column='" + column + '\'' +
                 ", orderBy='" + orderBy + '\'' +
                 ", orderType='" + orderType + '\'' +
+                ", postType='" + postType + '\'' +
                 '}';
     }
 }
