@@ -11,6 +11,7 @@ export class PostComponent implements OnInit {
   ACTIVE = 'ACTIVE';
   MANAGED = 'MANAGED';
   EXPIRED = 'EXPIRED';
+  REACTIVE = false;
 
   //modal id : note for the donner.
   ACTIVE_NEW_ID = 'ACTIVE_NEW_ID';

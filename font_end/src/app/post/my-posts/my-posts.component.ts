@@ -37,6 +37,9 @@ export class MyPostsComponent implements OnInit {
   @Input()
   postType = '';
 
+  @Input()
+  reactiveButton = false;
+
 
   dateType: string;
   startDate: string;

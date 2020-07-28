@@ -38,6 +38,7 @@
     <div align="center" id="post_expired" class="tabcontent">
       <app-my-posts
         [pageHeader]="headerExpired"
+        [reactiveButton]="true"
         [postType]="EXPIRED"
         [modalNew]="EXPIRED_NEW_ID"
         [modalEdit]="EXPIRED_EDIT_ID"
@@ -56,6 +57,7 @@
     <div align="center" id="post_managed" class="tabcontent">
       <app-my-posts
         [pageHeader]="headerManaged"
+        [reactiveButton]="true"
         [postType]="MANAGED"
         [modalNew]="MANAGE_NEW_ID"
         [modalEdit]="MANAGE_EDIT_ID"

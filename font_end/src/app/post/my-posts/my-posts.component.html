@@ -187,6 +187,11 @@
         <tr *ngFor="let p of bloodPosts; let i=index">
           <!--delete-->
           <td>
+            <button *ngIf="reactiveButton" class="btn btn-xs btn-info" (click)="setPostsForEdit(p)"
+                    data-toggle="modal"
+                    [attr.data-target]="'#'+modalEdit">Reactive
+            </button>
+            <br>
             <button class="btn btn-xs btn-warning" (click)="setPostsForEdit(p)"
                     data-toggle="modal"
                     [attr.data-target]="'#'+modalEdit">Edit
@@ -195,13 +200,13 @@
                     [attr.data-target]="'#'+modalDelete">Delete
             </button>
             <br>
+            <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#new_post"
+                    (click)="requestAccept(ar.requestId)">Details
+            </button>
+            <br>
             <button class="btn btn-xs btn-primary" data-toggle="modal"
                     data-target="#new_post"
                     (click)="requestAccept(ar.requestId)">Managed
-            </button>
-            <br>
-            <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#new_post"
-                    (click)="requestAccept(ar.requestId)">Details
             </button>
           </td>
           <td>{{i+1}}</td>
