@@ -151,7 +151,6 @@ export class MyPostsComponent implements OnInit {
         this.getAllPostsByAnUser();
         // this.bloodPosts.push(this.postTosave);
         // console.log(this.bloodPosts);
-
       }
     });
   }
@@ -301,6 +300,16 @@ export class MyPostsComponent implements OnInit {
 
   public bloodManaged(p: Post): void {
     console.log(p);
+    p.status = 'MANAGED';
+    this.postService.update(p).subscribe((res: Response) => {
+      console.log(res);
+      if (res['STATUS'] === 'OK') {
+        console.log('OK STATUS!');
+        this.getAllPostsByAnUser();
+        // this.bloodPosts.push(this.postTosave);
+        // console.log(this.bloodPosts);
+      }
+    });
   }
 
 }
