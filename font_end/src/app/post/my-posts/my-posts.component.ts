@@ -299,5 +299,8 @@ export class MyPostsComponent implements OnInit {
     }
   }
 
+  public bloodManaged(p: Post): void {
+    console.log(p);
+  }
 
 }
