@@ -42,6 +42,8 @@ export class MyPostsComponent implements OnInit {
   reactiveButton = false;
   @Input()
   managedButton = true;
+  @Input()
+  expiredButton = false;
 
 
   dateType: string;
@@ -319,6 +321,19 @@ export class MyPostsComponent implements OnInit {
   public postReactive(p: Post) {
     console.log(this.postType.ACTIVE);
     p.status = 'ACTIVE';
+    this.postService.update(p).subscribe((res: Response) => {
+      console.log(res);
+      if (res['STATUS'] === 'OK') {
+        console.log('OK STATUS!');
+        this.getAllPostsByAnUser();
+        // this.bloodPosts.push(this.postTosave);
+        // console.log(this.bloodPosts);
+      }
+    });
+  }
+
+  public setPostExpired(p: Post) {
+    p.status = 'EXPIRED';
     this.postService.update(p).subscribe((res: Response) => {
       console.log(res);
       if (res['STATUS'] === 'OK') {

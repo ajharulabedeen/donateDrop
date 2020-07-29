@@ -187,9 +187,8 @@
         <tr *ngFor="let p of bloodPosts; let i=index">
           <!--delete-->
           <td>
-            <button *ngIf="reactiveButton" class="btn btn-xs btn-info" (click)="postReactive(p)"
-
-                    >Reactive
+            <button *ngIf="reactiveButton" class="btn btn-xs btn-info" (click)="postReactive(p)">
+              Reactive
             </button>
             <br *ngIf="reactiveButton">
             <button class="btn btn-xs btn-warning" (click)="setPostsForEdit(p)"
@@ -207,6 +206,10 @@
             <button *ngIf="managedButton" class="btn btn-xs btn-primary" data-toggle="modal"
                     data-target="#new_post"
                     (click)="bloodManaged(p)">Managed
+            </button>
+            <br *ngIf="expiredButton">
+            <button *ngIf="expiredButton" class="btn btn-xs btn-warning" (click)="setPostExpired(p)">
+              Expired
             </button>
           </td>
           <td>{{i+1}}</td>
