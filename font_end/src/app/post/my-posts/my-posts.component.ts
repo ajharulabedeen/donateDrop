@@ -4,6 +4,7 @@ import {PostServiceService} from '../post-service.service';
 import {Post} from '../post.model';
 import {PostSearch} from '../post-search.model';
 import {DonnerToAgentRequestToReview} from '../../agent-dashboard/agent-dashboard/model/donner-to-agent-request-to-review.model';
+import {PostType} from '../post-type.model';
 
 @Component({
   selector: 'app-my-posts',
@@ -92,6 +93,7 @@ export class MyPostsComponent implements OnInit {
   edit_relationWithPatient: string;
 
   postTosave: Post;
+  postType: PostType;
 
   constructor(private basicService: BasicService, private postService: PostServiceService) {
   }
@@ -301,8 +303,8 @@ export class MyPostsComponent implements OnInit {
   }
 
   public bloodManaged(p: Post): void {
-    console.log(p);
-    p.status = 'MANAGED';
+    // console.log(p);
+    p.status = this.postType.MANAGED;
     this.postService.update(p).subscribe((res: Response) => {
       console.log(res);
       if (res['STATUS'] === 'OK') {
