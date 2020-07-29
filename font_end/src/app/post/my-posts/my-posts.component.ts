@@ -135,7 +135,6 @@ export class MyPostsComponent implements OnInit {
 
   // end : for tab in font end.
 
-
   public save(): void {
     this.postService.save(this.getPost()).subscribe((res: Response) => {
       console.log(res);
@@ -235,12 +234,13 @@ export class MyPostsComponent implements OnInit {
 
   public getPost(): Post {
     var p = new Post();
+    p.status = this.postType.ACTIVE;
     p.bloodType = this.blood_Group;
     p.quantity = this.quantity;
     p.needDate = this.bloodNeedDate;
     p.patientGender = this.patientGender;
     p.relation = this.relationWithPatient;
-    p.hospitalName = this.hospitalName;
+    p.hospitalName = this.hosgpitalName;
     p.hospitalAddress = this.hospitalAddress;
     p.location = this.donationLocation;
     p.contactInfo = this.contactInfo;
