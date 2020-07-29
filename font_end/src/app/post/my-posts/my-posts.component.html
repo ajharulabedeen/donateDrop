@@ -187,9 +187,9 @@
         <tr *ngFor="let p of bloodPosts; let i=index">
           <!--delete-->
           <td>
-            <button *ngIf="reactiveButton" class="btn btn-xs btn-info" (click)="setPostsForEdit(p)"
-                    data-toggle="modal"
-                    [attr.data-target]="'#'+modalEdit">Reactive
+            <button *ngIf="reactiveButton" class="btn btn-xs btn-info" (click)="postReactive(p)"
+
+                    >Reactive
             </button>
             <br *ngIf="reactiveButton">
             <button class="btn btn-xs btn-warning" (click)="setPostsForEdit(p)"

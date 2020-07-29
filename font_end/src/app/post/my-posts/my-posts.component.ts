@@ -234,7 +234,7 @@ export class MyPostsComponent implements OnInit {
 
   public getPost(): Post {
     var p = new Post();
-    p.status = this.postType.ACTIVE;
+    p.status = 'ACTIVE';
     p.bloodType = this.blood_Group;
     p.quantity = this.quantity;
     p.needDate = this.bloodNeedDate;
@@ -303,8 +303,8 @@ export class MyPostsComponent implements OnInit {
   }
 
   public bloodManaged(p: Post): void {
-    // console.log(p);
-    p.status = this.postType.MANAGED;
+    p.status = 'MANAGED'
+    console.log(p.status);
     this.postService.update(p).subscribe((res: Response) => {
       console.log(res);
       if (res['STATUS'] === 'OK') {
@@ -316,4 +316,17 @@ export class MyPostsComponent implements OnInit {
     });
   }
 
+  public postReactive(p: Post) {
+    console.log(this.postType.ACTIVE);
+    p.status = 'ACTIVE';
+    this.postService.update(p).subscribe((res: Response) => {
+      console.log(res);
+      if (res['STATUS'] === 'OK') {
+        console.log('OK STATUS!');
+        this.getAllPostsByAnUser();
+        // this.bloodPosts.push(this.postTosave);
+        // console.log(this.bloodPosts);
+      }
+    });
+  }
 }
