@@ -191,7 +191,7 @@
                     data-toggle="modal"
                     [attr.data-target]="'#'+modalEdit">Reactive
             </button>
-            <br>
+            <br *ngIf="reactiveButton">
             <button class="btn btn-xs btn-warning" (click)="setPostsForEdit(p)"
                     data-toggle="modal"
                     [attr.data-target]="'#'+modalEdit">Edit
@@ -203,7 +203,7 @@
             <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#new_post"
                     (click)="requestAccept(ar.requestId)">Details
             </button>
-            <br>
+            <br *ngIf="managedButton">
             <button *ngIf="managedButton" class="btn btn-xs btn-primary" data-toggle="modal"
                     data-target="#new_post"
                     (click)="bloodManaged(p)">Managed
