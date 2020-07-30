@@ -95,7 +95,6 @@ export class MyPostsComponent implements OnInit {
   edit_relationWithPatient: string;
 
   postTosave: Post;
-  postType: PostType;
 
   constructor(private basicService: BasicService, private postService: PostServiceService) {
   }
@@ -242,7 +241,7 @@ export class MyPostsComponent implements OnInit {
     p.needDate = this.bloodNeedDate;
     p.patientGender = this.patientGender;
     p.relation = this.relationWithPatient;
-    p.hospitalName = this.hosgpitalName;
+    p.hospitalName = this.hospitalName;
     p.hospitalAddress = this.hospitalAddress;
     p.location = this.donationLocation;
     p.contactInfo = this.contactInfo;
@@ -319,7 +318,6 @@ export class MyPostsComponent implements OnInit {
   }
 
   public postReactive(p: Post) {
-    console.log(this.postType.ACTIVE);
     p.status = 'ACTIVE';
     this.postService.update(p).subscribe((res: Response) => {
       console.log(res);
