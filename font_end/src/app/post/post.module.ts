@@ -7,11 +7,12 @@ import {FormsModule} from '@angular/forms';
 import {MyPostsComponent} from './my-posts/my-posts.component';
 import {Post} from './post.model';
 import {PostComponent} from './post.component';
+import { PostDetailsComponent } from './post-details/post-details.component';
 
 
 
 @NgModule({
-  declarations: [ MyPostsComponent, PostComponent],
+  declarations: [ MyPostsComponent, PostComponent, PostDetailsComponent],
   imports: [
     CommonModule,
     LayoutModule,
