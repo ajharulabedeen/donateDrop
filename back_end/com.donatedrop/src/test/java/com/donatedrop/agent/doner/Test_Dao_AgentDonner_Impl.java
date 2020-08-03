@@ -23,7 +23,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -194,5 +196,10 @@ public class Test_Dao_AgentDonner_Impl {
             assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
         });
 
+    }
+
+    @Test
+    public void test_SetAcceptedAgentUserIDtoDonnerRequest() {
+        dumpDao.updateDonnerToAgentRequest();
     }
 }// class

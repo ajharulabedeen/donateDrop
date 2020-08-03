@@ -116,6 +116,22 @@ public class DumpDao {
                 .getResultList();
     }
 
+    @Transactional
+    public void updateDonnerToAgentRequest() {
+        Random r = new Random();
+        List<String> userIDList = getAcceptedUserIDAsAgent(0, 30);
+        List<DonnerRequestToAgent> donnerRequestList = getAgentDonnersRequests(0, 200);
+        donnerRequestList.forEach(dr -> {
+            String userID = userIDList.get(r.nextInt(userIDList.size() - 1));
+            DonnerRequestToAgent donnerRequestToAgent = entityManager.find(DonnerRequestToAgent.class,
+                    new Long(dr.getId()));
+            donnerRequestToAgent.setUserIdAgent(userID);
+            entityManager.merge(dr);
+        });
+
+
+    }
+
     public List<User> getUsers(int start, int max) {
         String q = "SELECT * FROM `user`";
         List<User> userList
