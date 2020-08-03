@@ -14,6 +14,7 @@ import com.donatedrop.agent.models.RequestReviewRequest;
 import java.util.List;
 import java.util.Map;
 
+import com.donatedrop.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,11 +55,13 @@ public class Controller_AgentDonner {
 
     @PostMapping("getDonnerToAgentRequestToReview")
     public List<DonnerToAgentRequestToReview> getDonnerToAgentRequestToReview(@RequestBody RequestSearchReview requestSearchReview) {
+        requestSearchReview.setUserIdAgent(Utils.getLoggedUserID());
         return service_AgentDonner_I.getDonnerToAgentRequestToReview(requestSearchReview);
     }
 
     @PostMapping("getDonnerToAgentRequestReviewCount")
     public Map<String, String> getDonnerToAgentRequestReviewCount(@RequestBody RequestSearchReview requestSearchReview) {
+        requestSearchReview.setUserIdAgent(Utils.getLoggedUserID());
         return service_AgentDonner_I.getDonnerToAgentRequestToReviewCount(requestSearchReview);
     }
 
