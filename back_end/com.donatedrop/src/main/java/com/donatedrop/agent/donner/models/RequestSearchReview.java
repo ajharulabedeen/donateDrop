@@ -1,11 +1,12 @@
 package com.donatedrop.agent.donner.models;
 
 public class RequestSearchReview {
-    private int start;
     private int max;
-    private String column;
+    private int start;
     private String key;
+    private String column;
     private String statusType;
+    private String userIdAgent;
 
     public RequestSearchReview() {
     }
@@ -58,14 +59,23 @@ public class RequestSearchReview {
         this.statusType = statusType;
     }
 
+    public String getUserIdAgent() {
+        return userIdAgent;
+    }
+
+    public void setUserIdAgent(String userIdAgent) {
+        this.userIdAgent = userIdAgent;
+    }
+
     @Override
     public String toString() {
-        return "RequestGetAgentRequestsReview{" +
-                "start=" + start +
-                ", max=" + max +
-                ", column='" + column + '\'' +
+        return "RequestSearchReview{" +
+                "max=" + max +
+                ", start=" + start +
                 ", key='" + key + '\'' +
+                ", column='" + column + '\'' +
                 ", statusType='" + statusType + '\'' +
+                ", userIdAgent='" + userIdAgent + '\'' +
                 '}';
     }
 }
