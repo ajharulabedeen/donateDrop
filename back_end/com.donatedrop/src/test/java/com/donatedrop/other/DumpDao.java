@@ -147,7 +147,6 @@ public class DumpDao {
         return entityManager.createNativeQuery(q).getResultList();
     }
 
-
     public Address getAddress(String type) {
         Random r = new Random();
         String divID = "";
@@ -254,6 +253,15 @@ public class DumpDao {
         return address.getStreet_address() + address.getUnion_ward() + ", " + address.getDistrict() + ", " + address.getDivision();
     }
 
+    public List<String> getAcceptedUserIDAsAgent(int start, int max) {
+        String q = "SELECT user_id FROM `agent_request` WHERE status=\"ACCEPT\"\n";
+        List<String> userIDList
+                = entityManager.createNativeQuery(q)
+                .setFirstResult(start)
+                .setMaxResults(max)
+                .getResultList();
+        return userIDList;
+    }
 
     //    start : no need :
     public List<AgentRequestToReview> getAllAgentRequestReviewPhoneNumber(int start, int max, String column, String key) {

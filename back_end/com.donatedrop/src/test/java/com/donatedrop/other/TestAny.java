@@ -120,4 +120,11 @@ public class TestAny {
     }
 
 
+    @Test
+    public void testGetAcceptedUserIDAsAgent(){
+        daoDump.getAcceptedUserIDAsAgent(0, 30).forEach(userID -> {
+            System.out.println(userID);
+        });
+    }
+
 }// class
