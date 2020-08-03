@@ -125,6 +125,7 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
         String column = requestGetAgentRequestsReview.getColumn();
         String key = requestGetAgentRequestsReview.getKey();
         String status = requestGetAgentRequestsReview.getStatusType();
+        String userIDagent = requestGetAgentRequestsReview.getUserIdAgent();
 //        String q = "SELECT * FROM `donner_to_agent_request_review`";
         List<DonnerToAgentRequestToReview> donnerToAgentRequestReviews = new ArrayList<>();
         String q = "";
@@ -133,11 +134,13 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
                 q = "SELECT donner_to_agent_request_review.* FROM donner_to_agent_request_review, phonenumber "
                         + "WHERE donner_to_agent_request_review.profile_id = phonenumber.profile_id "
                         + " AND phonenumber.number LIKE '" + key + "'"
-                        + " AND `donner_to_agent_request_review`.`status`='" + status + "'";
+                        + " AND `donner_to_agent_request_review`.`status`='" + status + "'"
+                        + " AND `donner_to_agent_request_review`.`user_id_agent`='" + userIDagent + "'";
             } else {
                 q = "SELECT * FROM `donner_to_agent_request_review` WHERE `donner_to_agent_request_review`.`"
                         + column + "` LIKE '" + key + "'"
-                        + " AND `donner_to_agent_request_review`.`status`='" + status + "'";
+                        + " AND `donner_to_agent_request_review`.`status`='" + status + "'"
+                        + " AND `donner_to_agent_request_review`.`user_id_agent`='" + userIDagent + "'";
             }
             donnerToAgentRequestReviews
                     = entityManager.createNativeQuery(q, DonnerToAgentRequestToReview.class)

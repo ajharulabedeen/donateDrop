@@ -37,6 +37,8 @@ import static org.junit.Assert.assertNotNull;
 @SpringBootTest
 public class Test_Dao_AgentDonner_Impl {
 
+//    11196
+
     @Autowired
     DumpDao dumpDao;
 
@@ -116,7 +118,9 @@ public class Test_Dao_AgentDonner_Impl {
     @Order(2)
     public void testGetDonnerToAgentRequestToReview() {
         RequestSearchReview requestSearchReview =
-                new RequestSearchReview(0, 5, "phonenumber", "%013%", StatusType.ZERO);
+                new RequestSearchReview(0, 5, "phonenumber", "%%", StatusType.ZERO);
+//                new RequestSearchReview(0, 20, "email", "%%", StatusType.ZERO);
+        requestSearchReview.setUserIdAgent("11196");
         dao_agentDonner_i.getDonnerToAgentRequestToReview(requestSearchReview).forEach(donnerToAgentRequestReview -> {
             System.out.println(donnerToAgentRequestReview.toString());
         });
@@ -182,7 +186,7 @@ public class Test_Dao_AgentDonner_Impl {
         assertEquals(requestNoteFormDB, note);
     }
 
-//    insert
+    //    insert
 //    @Test
     public void testInsertMultipleDonnerToAgentRequest() {
         String userID = dumpDao.getNotRequestedDonnerToAgentUsers(0, 5).get(0).toString();
