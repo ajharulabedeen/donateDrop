@@ -164,11 +164,13 @@ public class Dao_AgentDonner_Impl implements Dao_AgentDonner_I {
                 q = "SELECT COUNT(*) FROM donner_to_agent_request_review, phonenumber "
                         + "WHERE donner_to_agent_request_review.profile_id = phonenumber.profile_id "
                         + " AND phonenumber.number LIKE '" + requestSearchReview.getKey() + "'"
-                        + " AND `donner_to_agent_request_review`.`status`='" + requestSearchReview.getStatusType() + "'";
+                        + " AND `donner_to_agent_request_review`.`status`='" + requestSearchReview.getStatusType() + "'"
+                        + " AND `donner_to_agent_request_review`.`user_id_agent`='" + requestSearchReview.getUserIdAgent() + "'";
             } else {
                 q = "SELECT COUNT(*) FROM `donner_to_agent_request_review` WHERE `donner_to_agent_request_review`.`"
                         + requestSearchReview.getColumn() + "` LIKE '" + requestSearchReview.getKey() + "'"
-                        + " AND `donner_to_agent_request_review`.`status`='" + requestSearchReview.getStatusType() + "'";
+                        + " AND `donner_to_agent_request_review`.`status`='" + requestSearchReview.getStatusType() + "'"
+                        + " AND `donner_to_agent_request_review`.`user_id_agent`='" + requestSearchReview.getUserIdAgent() + "'";
             }
             String count = entityManager.createNativeQuery(q).getResultList().get(0).toString();
             result.put(StringUtil.STATUS, StringUtil.OK);

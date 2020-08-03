@@ -118,7 +118,8 @@ public class Test_Dao_AgentDonner_Impl {
     @Order(2)
     public void testGetDonnerToAgentRequestToReview() {
         RequestSearchReview requestSearchReview =
-                new RequestSearchReview(0, 5, "phonenumber", "%%", StatusType.ZERO);
+//                new RequestSearchReview(0, 5, "phonenumber", "%%", StatusType.ZERO);
+                new RequestSearchReview(0, 5, "phonenumber", "%013%", StatusType.ZERO);//2
 //                new RequestSearchReview(0, 20, "email", "%%", StatusType.ZERO);
         requestSearchReview.setUserIdAgent("11196");
         dao_agentDonner_i.getDonnerToAgentRequestToReview(requestSearchReview).forEach(donnerToAgentRequestReview -> {
@@ -130,7 +131,8 @@ public class Test_Dao_AgentDonner_Impl {
     @Order(3)
     public void testGetDonnerToAgentRequestToReviewCount() {
         RequestSearchReview requestSearchReview =
-                new RequestSearchReview(0, 5, "phonenumber", "%20%", StatusType.ZERO);
+                new RequestSearchReview(0, 5, "phonenumber", "%013%", StatusType.ZERO);
+        requestSearchReview.setUserIdAgent("11196");
         Map<String, String> result = dao_agentDonner_i.getDonnerToAgentRequestReviewCount(requestSearchReview);
         System.out.println(result);
     }
