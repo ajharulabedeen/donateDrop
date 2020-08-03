@@ -109,6 +109,19 @@ public class Dao_Post_Impl implements Dao_Post_I {
     }
 
     @Override
+    public Post findOnePostByIDNoComment(String id) {
+        Post post = null;
+        try {
+            post = entityManager.find(Post.class, Long.parseLong(id));
+            post.getPostComments().clear();
+        } catch (Exception e) {
+            System.out.println("Not Found!");
+            e.printStackTrace();
+        }
+        return post;
+    }
+
+    @Override
     public Map<String, String> deletePost(String id) {
         Map<String, String> result = new HashMap<>();
         try {

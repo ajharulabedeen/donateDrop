@@ -88,6 +88,16 @@ public class Test_Dao_Post_Impl {
     }
 
     @Test
+    public void testFindOnePostByIDNoComment() {
+//        `post_id`=20618;
+        Post p = dao_post_i.findOnePostByIDNoComment(getID());
+        System.out.println(p.getPostID());
+        System.out.println(p.toString());
+        Assert.assertNotNull(
+                p);
+    }
+
+    @Test
     public void testUpdatePost() {
         String userID = getUserID();
         String postID = getID();
