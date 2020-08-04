@@ -1,5 +1,7 @@
 package com.donatedrop.post;
 
+import com.donatedrop.post.model.Post;
+import com.donatedrop.post.model.PostComment;
 import com.donatedrop.other.DumpDao;
 import com.donatedrop.other.DumpData;
 import com.donatedrop.security.models.User;

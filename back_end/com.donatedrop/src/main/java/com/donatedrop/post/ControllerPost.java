@@ -5,6 +5,8 @@
  */
 package com.donatedrop.post;
 
+import com.donatedrop.post.model.MyPostSearch;
+import com.donatedrop.post.model.Post;
 import java.util.List;
 import java.util.Map;
 

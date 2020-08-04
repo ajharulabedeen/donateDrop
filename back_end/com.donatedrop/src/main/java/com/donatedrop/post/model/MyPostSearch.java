@@ -1,17 +1,17 @@
-package com.donatedrop.post;
+package com.donatedrop.post.model;
 
 public class MyPostSearch {
-    String dateType;
-    String endDate;
-    String startDate;
-    int start;
-    int max;
-    String key;
-    String userID;
-    String column;
-    String orderBy;
-    String orderType;
-    String postType;
+    private String dateType;
+    private String endDate;
+    private String startDate;
+    private int start;
+    private int max;
+    private String key;
+    private String userID;
+    private String column;
+    private String orderBy;
+    private String orderType;
+    private String postType;
 
     public MyPostSearch() {
     }

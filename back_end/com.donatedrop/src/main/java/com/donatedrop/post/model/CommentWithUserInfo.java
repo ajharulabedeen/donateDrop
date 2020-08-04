@@ -1,4 +1,4 @@
-package com.donatedrop.post;
+package com.donatedrop.post.model;
 
 import java.io.Serializable;
 import java.math.BigInteger;

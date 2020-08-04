@@ -1,5 +1,9 @@
 package com.donatedrop.post;
 
+import com.donatedrop.post.model.MyPostSearch;
+import com.donatedrop.post.model.PostComment;
+import com.donatedrop.post.model.CommentWithUserInfo;
+import com.donatedrop.post.model.Post;
 import net.bytebuddy.implementation.bytecode.collection.ArrayAccess;
 
 import javax.xml.stream.events.Comment;

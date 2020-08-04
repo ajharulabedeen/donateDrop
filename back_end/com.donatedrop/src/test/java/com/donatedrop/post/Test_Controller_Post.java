@@ -5,6 +5,8 @@
  */
 package com.donatedrop.post;
 
+import com.donatedrop.post.model.Post;
+import com.donatedrop.post.model.MyPostSearch;
 import com.donatedrop.agent.admin.model.AgentRequestToReview;
 import com.donatedrop.agent.donner.models.RequestSearchReview;
 import com.donatedrop.agent.models.StatusType;

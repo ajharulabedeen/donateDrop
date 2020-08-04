@@ -1,5 +1,9 @@
 package com.donatedrop.post;
 
+import com.donatedrop.post.model.MyPostSearch;
+import com.donatedrop.post.model.PostComment;
+import com.donatedrop.post.model.CommentWithUserInfo;
+import com.donatedrop.post.model.Post;
 import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.history.History;
 import com.donatedrop.profile.model.ProfileBasic;
@@ -227,54 +231,54 @@ public class Dao_Post_Impl implements Dao_Post_I {
 
     @Override
     public List<Post> getAllPostsByAnUser(MyPostSearch postSearch) {
-        String sql = "SELECT * FROM `post` WHERE " + postSearch.column + " LIKE " + postSearch.key
-                + " AND post_user_id = " + postSearch.userID
-                + " AND status = " + postSearch.postType
-                + " ORDER BY " + postSearch.orderBy
-                + " " + postSearch.orderType; //ASC-DESC
+        String sql = "SELECT * FROM `post` WHERE " + postSearch.getColumn() + " LIKE " + postSearch.getKey()
+                + " AND post_user_id = " + postSearch.getUserID()
+                + " AND status = " + postSearch.getPostType()
+                + " ORDER BY " + postSearch.getOrderBy()
+                + " " + postSearch.getOrderType(); //ASC-DESC
 
         return entityManager.createNativeQuery(sql, Post.class)
-                .setFirstResult(postSearch.start)
-                .setMaxResults(postSearch.max)
+                .setFirstResult(postSearch.getStart())
+                .setMaxResults(postSearch.getMax())
                 .getResultList();
     }
 
     @Override
     public String countAllPostsByAnUser(MyPostSearch postSearch) {
-        String sql = "SELECT count(*) FROM `post` WHERE " + postSearch.column + " LIKE " + postSearch.key
-                + " AND post_user_id = " + postSearch.userID
-                + " AND status = " + postSearch.postType
-                + " ORDER BY " + postSearch.orderBy
-                + " " + postSearch.orderType; //ASC-DESC
+        String sql = "SELECT count(*) FROM `post` WHERE " + postSearch.getColumn() + " LIKE " + postSearch.getKey()
+                + " AND post_user_id = " + postSearch.getUserID()
+                + " AND status = " + postSearch.getPostType()
+                + " ORDER BY " + postSearch.getOrderBy()
+                + " " + postSearch.getOrderType(); //ASC-DESC
         return entityManager.createNativeQuery(sql).getResultList().get(0).toString();
     }
 
 
     @Override
     public List<Post> getAllPostsByAnUserWithinDate(MyPostSearch postSearch) {
-        String sql = "SELECT * FROM `post` WHERE " + postSearch.column
-                + " LIKE " + postSearch.key
-                + " AND post_user_id = " + postSearch.userID
-                + " AND ( " + postSearch.dateType + " BETWEEN '" + postSearch.startDate + "' AND '" + postSearch.endDate + "' ) "
-                + " AND status = " + postSearch.postType
-                + " ORDER BY " + postSearch.orderBy
-                + "  " + postSearch.orderType;
+        String sql = "SELECT * FROM `post` WHERE " + postSearch.getColumn()
+                + " LIKE " + postSearch.getKey()
+                + " AND post_user_id = " + postSearch.getUserID()
+                + " AND ( " + postSearch.getDateType() + " BETWEEN '" + postSearch.getStartDate() + "' AND '" + postSearch.getEndDate() + "' ) "
+                + " AND status = " + postSearch.getPostType()
+                + " ORDER BY " + postSearch.getOrderBy()
+                + "  " + postSearch.getOrderType();
 
         return entityManager.createNativeQuery(sql, Post.class)
-                .setFirstResult(postSearch.start)
-                .setMaxResults(postSearch.max)
+                .setFirstResult(postSearch.getStart())
+                .setMaxResults(postSearch.getMax())
                 .getResultList();
     }
 
     @Override
     public String countAllPostsByAnUserWithinDate(MyPostSearch postSearch) {
-        String sql = "SELECT count(*) FROM `post` WHERE " + postSearch.column
-                + " LIKE " + postSearch.key
-                + " AND post_user_id = " + postSearch.userID
-                + " AND ( " + postSearch.dateType + " BETWEEN '" + postSearch.startDate + "' AND '" + postSearch.endDate + "' ) "
-                + " AND status = " + postSearch.postType
-                + " ORDER BY " + postSearch.orderBy
-                + "  " + postSearch.orderType;
+        String sql = "SELECT count(*) FROM `post` WHERE " + postSearch.getColumn()
+                + " LIKE " + postSearch.getKey()
+                + " AND post_user_id = " + postSearch.getUserID()
+                + " AND ( " + postSearch.getDateType() + " BETWEEN '" + postSearch.getStartDate() + "' AND '" + postSearch.getEndDate() + "' ) "
+                + " AND status = " + postSearch.getPostType()
+                + " ORDER BY " + postSearch.getOrderBy()
+                + "  " + postSearch.getOrderType();
         return entityManager.createNativeQuery(sql).getResultList().get(0).toString();
     }
 
