@@ -2,8 +2,8 @@ package com.donatedrop.post;
 
 import com.donatedrop.post.model.MyPostSearch;
 import com.donatedrop.post.model.PostComment;
-import com.donatedrop.post.model.CommentWithUserInfo;
 import com.donatedrop.post.model.Post;
+import com.donatedrop.post.model.PostcommentWithUserInfo;
 import com.donatedrop.util.StringUtil;
 import net.bytebuddy.implementation.bytecode.collection.ArrayAccess;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -128,7 +128,7 @@ public class Service_Post_Impl implements Service_Post_I {
     }
 
     @Override
-    public List<CommentWithUserInfo> getCommentWithUserInfo(String postID) {
+    public List<PostcommentWithUserInfo> getCommentWithUserInfo(String postID) {
         return dao_post_i.getCommentWithUserInfo(postID);
     }
 

@@ -2,10 +2,10 @@ package com.donatedrop.post;
 
 import com.donatedrop.post.model.Post;
 import com.donatedrop.post.model.MyPostSearch;
-import com.donatedrop.post.model.CommentWithUserInfo;
 import com.donatedrop.post.model.PostComment;
 import com.donatedrop.other.DumpDao;
 import com.donatedrop.other.DumpData;
+import com.donatedrop.post.model.PostcommentWithUserInfo;
 import com.donatedrop.security.models.User;
 import com.donatedrop.util.PostType;
 import com.donatedrop.util.StringUtil;
@@ -294,8 +294,9 @@ public class Test_Dao_Post_Impl {
 
     @Test
     public void testGetCommentWithUserInfo() {
-        String postID = getID();
-        List<CommentWithUserInfo> commentWithUserInfoList =
+//        String postID = getID();
+        String postID = "19939";
+        List<PostcommentWithUserInfo> commentWithUserInfoList =
                 dao_post_i.getCommentWithUserInfo(postID);
         commentWithUserInfoList.forEach(cui -> {
             System.out.println(cui.toString());

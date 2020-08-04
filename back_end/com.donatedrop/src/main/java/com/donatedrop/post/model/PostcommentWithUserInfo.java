@@ -115,5 +115,18 @@ public class PostcommentWithUserInfo implements Serializable {
     public void setBloodGroup(String bloodGroup) {
         this.bloodGroup = bloodGroup;
     }
-    
+
+    @Override
+    public String toString() {
+        return "PostcommentWithUserInfo{" +
+                "commentId=" + commentId +
+                ", commentDetails='" + commentDetails + '\'' +
+                ", commentDate='" + commentDate + '\'' +
+                ", commentUserId='" + commentUserId + '\'' +
+                ", postId=" + postId +
+                ", name='" + name + '\'' +
+                ", profession='" + profession + '\'' +
+                ", bloodGroup='" + bloodGroup + '\'' +
+                '}';
+    }
 }

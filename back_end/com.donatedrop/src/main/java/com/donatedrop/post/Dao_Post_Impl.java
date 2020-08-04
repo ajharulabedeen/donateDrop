@@ -2,10 +2,10 @@ package com.donatedrop.post;
 
 import com.donatedrop.post.model.MyPostSearch;
 import com.donatedrop.post.model.PostComment;
-import com.donatedrop.post.model.CommentWithUserInfo;
 import com.donatedrop.post.model.Post;
 import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.history.History;
+import com.donatedrop.post.model.PostcommentWithUserInfo;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
@@ -289,9 +289,9 @@ public class Dao_Post_Impl implements Dao_Post_I {
     }
 
     @Override
-    public List<CommentWithUserInfo> getCommentWithUserInfo(String postID) {
-        String sql = "SELECT * FROM `comment_with_user_info` WHERE comment_with_user_info.post_id=" + postID;
-        return entityManager.createNativeQuery(sql, CommentWithUserInfo.class).getResultList();
+    public List<PostcommentWithUserInfo> getCommentWithUserInfo(String postID) {
+        String sql = "SELECT * FROM `postcomment_with_user_info` WHERE postcomment_with_user_info.post_id=" + postID;
+        return entityManager.createNativeQuery(sql, PostcommentWithUserInfo.class).getResultList();
     }
 
 }

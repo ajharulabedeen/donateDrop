@@ -2,8 +2,8 @@ package com.donatedrop.post;
 
 import com.donatedrop.post.model.MyPostSearch;
 import com.donatedrop.post.model.PostComment;
-import com.donatedrop.post.model.CommentWithUserInfo;
 import com.donatedrop.post.model.Post;
+import com.donatedrop.post.model.PostcommentWithUserInfo;
 import net.bytebuddy.implementation.bytecode.collection.ArrayAccess;
 
 import javax.xml.stream.events.Comment;
@@ -42,5 +42,5 @@ public interface Service_Post_I {
 
     public String countCommentsOfAPost(String postID);
 
-    public List<CommentWithUserInfo> getCommentWithUserInfo(String postID);
+    public List<PostcommentWithUserInfo> getCommentWithUserInfo(String postID);
 }
