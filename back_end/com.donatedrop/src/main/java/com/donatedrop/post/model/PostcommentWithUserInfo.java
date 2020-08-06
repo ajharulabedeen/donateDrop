@@ -11,21 +11,20 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
  * @author Dell
  */
 @Entity
 @Table(name = "postcomment_with_user_info")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "PostcommentWithUserInfo.findAll", query = "SELECT p FROM PostcommentWithUserInfo p")
-    , @NamedQuery(name = "PostcommentWithUserInfo.findByCommentId", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.commentId = :commentId")
-    , @NamedQuery(name = "PostcommentWithUserInfo.findByCommentDate", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.commentDate = :commentDate")
-    , @NamedQuery(name = "PostcommentWithUserInfo.findByCommentUserId", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.commentUserId = :commentUserId")
-    , @NamedQuery(name = "PostcommentWithUserInfo.findByPostId", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.postId = :postId")
-    , @NamedQuery(name = "PostcommentWithUserInfo.findByName", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.name = :name")
-    , @NamedQuery(name = "PostcommentWithUserInfo.findByProfession", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.profession = :profession")
-    , @NamedQuery(name = "PostcommentWithUserInfo.findByBloodGroup", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.bloodGroup = :bloodGroup")})
+        @NamedQuery(name = "PostcommentWithUserInfo.findAll", query = "SELECT p FROM PostcommentWithUserInfo p")
+        , @NamedQuery(name = "PostcommentWithUserInfo.findByCommentId", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.commentId = :commentId")
+        , @NamedQuery(name = "PostcommentWithUserInfo.findByCommentDate", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.commentDate = :commentDate")
+        , @NamedQuery(name = "PostcommentWithUserInfo.findByCommentUserId", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.commentUserId = :commentUserId")
+        , @NamedQuery(name = "PostcommentWithUserInfo.findByPostId", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.postId = :postId")
+        , @NamedQuery(name = "PostcommentWithUserInfo.findByName", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.name = :name")
+        , @NamedQuery(name = "PostcommentWithUserInfo.findByProfession", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.profession = :profession")
+        , @NamedQuery(name = "PostcommentWithUserInfo.findByBloodGroup", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.bloodGroup = :bloodGroup")})
 public class PostcommentWithUserInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,6 +47,10 @@ public class PostcommentWithUserInfo implements Serializable {
     private String profession;
     @Column(name = "blood_Group")
     private String bloodGroup;
+
+    //does the current logged user, owner of the comment or not.
+    @Transient
+    public boolean commentOwner;
 
     public PostcommentWithUserInfo() {
     }
@@ -114,6 +117,14 @@ public class PostcommentWithUserInfo implements Serializable {
 
     public void setBloodGroup(String bloodGroup) {
         this.bloodGroup = bloodGroup;
+    }
+
+    public boolean isCommentOwner() {
+        return commentOwner;
+    }
+
+    public void setCommentOwner(boolean commentOwner) {
+        this.commentOwner = commentOwner;
     }
 
     @Override
