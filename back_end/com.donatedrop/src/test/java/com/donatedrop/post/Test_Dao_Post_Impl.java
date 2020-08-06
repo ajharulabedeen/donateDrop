@@ -94,11 +94,11 @@ public class Test_Dao_Post_Impl {
     @Test
     public void testFindOnePostByIDNoComment() {
 //        `post_id`=20618;
-        Post p = dao_post_i.findOnePostByIDNoComment(getID());
+//        Post p = dao_post_i.findOnePostByIDNoComment(getID());
+        Post p = dao_post_i.findOnePostByIDNoComment("19942");
         System.out.println(p.getPostID());
         System.out.println(p.toString());
-        Assert.assertNotNull(
-                p);
+        Assert.assertNotNull(p);
     }
 
     @Test

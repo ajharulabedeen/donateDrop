@@ -114,15 +114,29 @@ public class Dao_Post_Impl implements Dao_Post_I {
 
     @Override
     public Post findOnePostByIDNoComment(String id) {
-        Post post = null;
+        Post postBasic = new Post();
         try {
-            post = entityManager.find(Post.class, Long.parseLong(id));
-//            post.getPostComments().clear();
+            Post post = entityManager.find(Post.class, Long.parseLong(id));
+            postBasic.setPostID(post.getPostID());
+            postBasic.setPostUserID(post.getPostUserID());
+            postBasic.setStatus(post.getStatus());
+            postBasic.setBloodType(post.getBloodType());
+            postBasic.setQuantity(post.getQuantity());
+            postBasic.setNeedDate(post.getNeedDate());
+            postBasic.setPatientGender(post.getPatientGender());
+            postBasic.setRelation(post.getRelation());
+            postBasic.setHospitalName(post.getHospitalName());
+            postBasic.setHospitalAddress(post.getHospitalAddress());
+            postBasic.setLocation(post.getLocation());
+            postBasic.setContactInfo(post.getContactInfo());
+            postBasic.setPatientDescription(post.getPatientDescription());
+            postBasic.setRemarks(post.getRemarks());
+            postBasic.setNotes(post.getNotes());
         } catch (Exception e) {
             System.out.println("Not Found!");
             e.printStackTrace();
         }
-        return post;
+        return postBasic;
     }
 
     @Override

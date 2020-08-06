@@ -20,18 +20,16 @@ remarks
 report
 status
 
-var p = new Post();
-p.bloodType = this.edit_edit_blood_Group;
-p.quantity = this.edit_quantity;
-p.needDate = this.edit_bloodNeedDate;
-p.patientGender = this.edit_patientGender;
-p.relation = this.edit_relationWithPatient;
-p.hospitalName = this.edit_hospitalName;
-p.hospitalAddress = this.edit_hospitalAddress;
-p.location = this.edit_donationLocation;
-p.contactInfo = this.edit_contactInfo;
-p.patientDescription = this.edit_patientDescription;
-p.remarks = this.edit_patientRemarks;
-p.notes = this.edit_anyNotes;
-this.edit_postTosave = p;
-return p;
+    postBasic.setStatus
+    postBasic.setBloodType
+    postBasic.setQuantity
+    postBasic.setNeedDate
+    postBasic.setPatientGender
+    postBasic.setRelation
+    postBasic.setHospitalName
+    postBasic.setHospitalAddress
+    postBasic.setLocation
+    postBasic.setContactInfo
+    postBasic.setPatientDescription
+    postBasic.setEmarks
+    postBasic.setNotes
