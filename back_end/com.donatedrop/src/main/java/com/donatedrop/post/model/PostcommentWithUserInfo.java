@@ -138,6 +138,7 @@ public class PostcommentWithUserInfo implements Serializable {
                 ", name='" + name + '\'' +
                 ", profession='" + profession + '\'' +
                 ", bloodGroup='" + bloodGroup + '\'' +
+                ", commentOwner=" + commentOwner +
                 '}';
     }
 }
