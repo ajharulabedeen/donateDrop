@@ -117,7 +117,7 @@ public class Dao_Post_Impl implements Dao_Post_I {
         Post post = null;
         try {
             post = entityManager.find(Post.class, Long.parseLong(id));
-            post.getPostComments().clear();
+//            post.getPostComments().clear();
         } catch (Exception e) {
             System.out.println("Not Found!");
             e.printStackTrace();

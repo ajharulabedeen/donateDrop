@@ -133,7 +133,7 @@ public class Service_Post_Impl implements Service_Post_I {
     public PostWithComments getPostWithComents(String loggedUserID, String postID) {
         PostWithComments postWithComments = new PostWithComments();
 
-        Post postBasic = findOnePostByIdWithComments(postID);
+        Post postBasic = dao_post_i.findOnePostByIDNoComment(postID);
         postWithComments.setPostBasic(postBasic);
         if (postBasic.getPostUserID().equals(loggedUserID)) {
             postWithComments.setPostOwner(true);

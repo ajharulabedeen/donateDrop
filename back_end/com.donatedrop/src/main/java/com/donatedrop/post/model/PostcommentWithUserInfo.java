@@ -7,7 +7,15 @@ package com.donatedrop.post.model;
 
 import java.io.Serializable;
 import java.math.BigInteger;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -23,8 +31,9 @@ import javax.xml.bind.annotation.XmlRootElement;
         , @NamedQuery(name = "PostcommentWithUserInfo.findByCommentUserId", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.commentUserId = :commentUserId")
         , @NamedQuery(name = "PostcommentWithUserInfo.findByPostId", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.postId = :postId")
         , @NamedQuery(name = "PostcommentWithUserInfo.findByName", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.name = :name")
-        , @NamedQuery(name = "PostcommentWithUserInfo.findByProfession", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.profession = :profession")
-        , @NamedQuery(name = "PostcommentWithUserInfo.findByBloodGroup", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.bloodGroup = :bloodGroup")})
+        , @NamedQuery(name = "PostcommentWithUserInfo.findByEmail", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.email = :email")
+        , @NamedQuery(name = "PostcommentWithUserInfo.findByGender", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.gender = :gender")
+        , @NamedQuery(name = "PostcommentWithUserInfo.findByProfession", query = "SELECT p FROM PostcommentWithUserInfo p WHERE p.profession = :profession")})
 public class PostcommentWithUserInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,17 +52,32 @@ public class PostcommentWithUserInfo implements Serializable {
     private BigInteger postId;
     @Column(name = "name")
     private String name;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "gender")
+    private String gender;
     @Column(name = "profession")
     private String profession;
-    @Column(name = "blood_Group")
-    private String bloodGroup;
 
-    //does the current logged user, owner of the comment or not.
     @Transient
-    public boolean commentOwner;
+    private boolean commentOwner;
 
     public PostcommentWithUserInfo() {
     }
+
+    public PostcommentWithUserInfo(long commentId, String commentDetails, String commentDate, String commentUserId, BigInteger postId, String name, String email, String gender, String profession, boolean commentOwner) {
+        this.commentId = commentId;
+        this.commentDetails = commentDetails;
+        this.commentDate = commentDate;
+        this.commentUserId = commentUserId;
+        this.postId = postId;
+        this.name = name;
+        this.email = email;
+        this.gender = gender;
+        this.profession = profession;
+        this.commentOwner = commentOwner;
+    }
+
 
     public long getCommentId() {
         return commentId;
@@ -103,20 +127,28 @@ public class PostcommentWithUserInfo implements Serializable {
         this.name = name;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public String getProfession() {
         return profession;
     }
 
     public void setProfession(String profession) {
         this.profession = profession;
-    }
-
-    public String getBloodGroup() {
-        return bloodGroup;
-    }
-
-    public void setBloodGroup(String bloodGroup) {
-        this.bloodGroup = bloodGroup;
     }
 
     public boolean isCommentOwner() {
@@ -136,8 +168,9 @@ public class PostcommentWithUserInfo implements Serializable {
                 ", commentUserId='" + commentUserId + '\'' +
                 ", postId=" + postId +
                 ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", gender='" + gender + '\'' +
                 ", profession='" + profession + '\'' +
-                ", bloodGroup='" + bloodGroup + '\'' +
                 ", commentOwner=" + commentOwner +
                 '}';
     }
