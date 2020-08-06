@@ -1,9 +1,6 @@
 package com.donatedrop.post;
 
-import com.donatedrop.post.model.MyPostSearch;
-import com.donatedrop.post.model.PostComment;
-import com.donatedrop.post.model.Post;
-import com.donatedrop.post.model.PostcommentWithUserInfo;
+import com.donatedrop.post.model.*;
 import net.bytebuddy.implementation.bytecode.collection.ArrayAccess;
 
 import javax.xml.stream.events.Comment;
@@ -11,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface Service_Post_I {
+
     public Map<String, String> savePost(Post post);
 
     public Map<String, String> updatePost(Post post);
@@ -19,9 +17,9 @@ public interface Service_Post_I {
 
     public Post findOnePostByID(String id);
 
-    public Map<String, String> deletePost(String userID, String postID);
+    public Post findOnePostByIdWithComments(String postID);
 
-    public Post findPostWithComments(String postID);
+    public Map<String, String> deletePost(String userID, String postID);
 
     public Map<String, String> saveComment(PostComment postComment, String postID);
 
@@ -43,4 +41,13 @@ public interface Service_Post_I {
     public String countCommentsOfAPost(String postID);
 
     public List<PostcommentWithUserInfo> getCommentWithUserInfo(String postID);
+
+    /**
+     *
+     * @param loggedUserID to check, does the current logged userID, is the
+     * owner of a comment or not.
+     * @param postID
+     * @return
+     */
+    public PostWithComments getPostWithComents(String loggedUserID, String postID);
 }

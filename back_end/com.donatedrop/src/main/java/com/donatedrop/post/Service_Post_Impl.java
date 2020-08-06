@@ -1,9 +1,6 @@
 package com.donatedrop.post;
 
-import com.donatedrop.post.model.MyPostSearch;
-import com.donatedrop.post.model.PostComment;
-import com.donatedrop.post.model.Post;
-import com.donatedrop.post.model.PostcommentWithUserInfo;
+import com.donatedrop.post.model.*;
 import com.donatedrop.util.StringUtil;
 import net.bytebuddy.implementation.bytecode.collection.ArrayAccess;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +59,7 @@ public class Service_Post_Impl implements Service_Post_I {
     }
 
     @Override
-    public Post findPostWithComments(String postID) {
+    public Post findOnePostByIdWithComments(String postID) {
         return dao_post_i.findPostWithComments(postID);
     }
 
@@ -130,6 +127,33 @@ public class Service_Post_Impl implements Service_Post_I {
     @Override
     public List<PostcommentWithUserInfo> getCommentWithUserInfo(String postID) {
         return dao_post_i.getCommentWithUserInfo(postID);
+    }
+
+    @Override
+    public PostWithComments getPostWithComents(String loggedUserID, String postID) {
+        PostWithComments postWithComments = new PostWithComments();
+
+        Post postBasic = findOnePostByIdWithComments(postID);
+        postWithComments.setPostBasic(postBasic);
+        if (postBasic.getPostUserID().equals(loggedUserID)) {
+            postWithComments.setPostOwner(true);
+        } else {
+            postWithComments.setPostOwner(false);
+        }
+
+        List<PostcommentWithUserInfo> postcommentWithUserInfoList = getCommentWithUserInfo(postID);
+        postcommentWithUserInfoList.forEach(postComment -> {
+            if (postComment.getCommentUserId().equals(loggedUserID)) {
+                postComment.setCommentOwner(true);
+            } else {
+                postComment.setCommentOwner(false);
+            }
+        });
+        postWithComments.setPostcommentWithUserInfoList(postcommentWithUserInfoList);
+
+        postWithComments.setCommentCount(postcommentWithUserInfoList.size());
+
+        return postWithComments;
     }
 
 }

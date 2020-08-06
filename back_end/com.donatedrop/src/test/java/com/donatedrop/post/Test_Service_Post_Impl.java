@@ -4,6 +4,7 @@ import com.donatedrop.post.model.Post;
 import com.donatedrop.post.model.PostComment;
 import com.donatedrop.other.DumpDao;
 import com.donatedrop.other.DumpData;
+import com.donatedrop.post.model.PostWithComments;
 import com.donatedrop.security.models.User;
 import com.donatedrop.util.StringUtil;
 import javafx.geometry.Pos;
@@ -313,6 +314,14 @@ public class Test_Service_Post_Impl {
 //        delete fail :
         status = service_post_i.deletePost(userID + 1, postID);
         Assert.assertEquals(StringUtil.FAIL, status.get(StringUtil.STATUS));
+    }
+
+    @Test
+    public void test_getPostWithComents() {
+        String postID = "19939";
+        String userID = "11167";//owner one of the commentns.
+        PostWithComments postWithComments = service_post_i.getPostWithComents(userID, postID);
+        System.out.println(postWithComments.toString());
     }
 
     //    Data insertion :
