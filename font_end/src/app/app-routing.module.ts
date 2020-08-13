@@ -20,6 +20,7 @@ import {AgentDashboardComponent} from './agent-dashboard/agent-dashboard/agent-d
 import {ParentComponent} from './test/parent/parent.component';
 import {MyPostsComponent} from './post/my-posts/my-posts.component';
 import {PostComponent} from './post/post.component';
+import {PostDetailsComponent} from './post/post-details/post-details.component';
 
 
 const routes: Routes = [
@@ -46,6 +47,8 @@ const routes: Routes = [
   {path: 'user/agent', component: AgentComponent},
   {path: 'user/agent/dashboard', component: AgentDashboardComponent},
   {path: 'parent', component: ParentComponent},
+  {path: 'post_details', component: PostDetailsComponent},
+
 ];
 
 @NgModule({
