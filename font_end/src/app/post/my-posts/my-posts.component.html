@@ -1,15 +1,26 @@
-<h2>{{pageHeader}}</h2>
+<!--not wokking in intended way : addin header going to new line-->
+<div class="container row">
+  <!--<h2>{{pageHeader}}</h2>-->
+  <button>1</button>
+  <button>1</button>
+  <button>1</button>
+</div>
 
-<button type="button" class="btn btn-md btn-primary" data-toggle="modal" [attr.data-target]="'#' + modalNew">
-  Add New
-</button>
-
-<!--START : Search-->
-<div>
+<div class="container row">
+  <h2>{{pageHeader}}</h2>
+  <!--add new post-->
+  <button type="button" class="btn btn-md btn-primary" data-toggle="modal" [attr.data-target]="'#' + modalNew">
+    Add New
+  </button>
+  <!--search button-->
   <h4>
     <button class="btn btn-info" (click)="getAllPostsByAnUser()">Search</button>
     <!--<button class="btn btn-xs btn-primary" (click)="searchCount()">Refresh</button>-->
   </h4>
+</div>
+
+<!--START : Search-->
+<div>
   <!-- sort by column name -->
   <!--start : search fields and search key or search value -->
   <div class="col-md-12 offset-md-12">
