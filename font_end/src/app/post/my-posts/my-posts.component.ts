@@ -189,7 +189,7 @@ export class MyPostsComponent implements OnInit {
     console.log(postSearch);
 
     if (this.searchWithinDate === true) {
-      this.postService.countAllPostsByAnUserWithinDate(postSearch).subscribe((res: Response) => {
+      this.postService.countAllPostsByAnUserWithinDate(postSearch).subscribe((res: string) => {
         console.log(res);
         this.total = res;
       });
@@ -199,7 +199,7 @@ export class MyPostsComponent implements OnInit {
         this.setMyPostsFromResponse(res);
       });
     } else {
-      this.postService.countAllPostsByAnUser(postSearch).subscribe((res: Response) => {
+      this.postService.countAllPostsByAnUser(postSearch).subscribe((res: string) => {
         console.log(res);
         this.total = res;
       });
