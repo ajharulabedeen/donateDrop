@@ -94,8 +94,8 @@ public class Test_Dao_Post_Impl {
     @Test
     public void testFindOnePostByIDNoComment() {
 //        `post_id`=20618;
-//        Post p = dao_post_i.findOnePostByIDNoComment(getID());
-        Post p = dao_post_i.findOnePostByIDNoComment("19942");
+        Post p = dao_post_i.findOnePostByIDNoComment(getID());
+//        Post p = dao_post_i.findOnePostByIDNoComment("19942");
         System.out.println(p.getPostID());
         System.out.println(p.toString());
         Assert.assertNotNull(p);
@@ -294,8 +294,8 @@ public class Test_Dao_Post_Impl {
 
     @Test
     public void testGetCommentWithUserInfo() {
-//        String postID = getID();
-        String postID = "19939";
+        String postID = getID();
+//        String postID = "19939";
         List<PostcommentWithUserInfo> commentWithUserInfoList =
                 dao_post_i.getCommentWithUserInfo(postID);
         commentWithUserInfoList.forEach(cui -> {

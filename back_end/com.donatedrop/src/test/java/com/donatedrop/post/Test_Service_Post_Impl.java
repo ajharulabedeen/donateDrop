@@ -5,6 +5,7 @@ import com.donatedrop.post.model.PostComment;
 import com.donatedrop.other.DumpDao;
 import com.donatedrop.other.DumpData;
 import com.donatedrop.post.model.PostWithComments;
+import com.donatedrop.post.model.PostcommentWithUserInfo;
 import com.donatedrop.security.models.User;
 import com.donatedrop.util.StringUtil;
 import javafx.geometry.Pos;
@@ -288,15 +289,16 @@ public class Test_Service_Post_Impl {
 
     }
 
-    //    @Test
-//    public void testGetCommentWithUserInfo() {
-//        String postID = getID();
-//        List<CommentWithUserInfo> commentWithUserInfoList =
-//                dao_post_i.getCommentWithUserInfo(postID);
-//        commentWithUserInfoList.forEach(cui -> {
-//            System.out.println(cui.toString());
-//        });
-//    }
+    @Test
+    public void testGetCommentWithUserInfo() {
+        String postID = getID();
+        List<PostcommentWithUserInfo> commentWithUserInfoList =
+                service_post_i.getCommentWithUserInfo(postID);
+        System.out.println("\n\nTest Section--------------\n");
+        commentWithUserInfoList.forEach(cui -> {
+            System.out.println(cui.toString());
+        });
+    }
 //    end : comment
 
     //done.
@@ -318,7 +320,7 @@ public class Test_Service_Post_Impl {
 
     @Test
     public void test_getPostWithComents() {
-        String postID = "19939";
+        String postID = "19942";
         String userID = "11167";//owner one of the commentns.
         PostWithComments postWithComments = service_post_i.getPostWithComents(userID, postID);
         System.out.println(postWithComments.toString());

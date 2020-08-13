@@ -2,6 +2,7 @@ package com.donatedrop.post;
 
 import com.donatedrop.post.model.*;
 import com.donatedrop.util.StringUtil;
+import com.donatedrop.util.Utils;
 import net.bytebuddy.implementation.bytecode.collection.ArrayAccess;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -126,7 +127,15 @@ public class Service_Post_Impl implements Service_Post_I {
 
     @Override
     public List<PostcommentWithUserInfo> getCommentWithUserInfo(String postID) {
-        return dao_post_i.getCommentWithUserInfo(postID);
+        List<PostcommentWithUserInfo> postcommentWithUserInfoList
+                = dao_post_i.getCommentWithUserInfo(postID);
+        String userID = Utils.getLoggedUserID();
+        postcommentWithUserInfoList.forEach(pcWithUserInfo -> {
+            if (pcWithUserInfo.getCommentUserId().equals(userID)) {
+                pcWithUserInfo.setCommentOwner(true);
+            }
+        });
+        return postcommentWithUserInfoList;
     }
 
     @Override
