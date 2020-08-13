@@ -24,7 +24,8 @@ export class AuthService {
 
   signup(email: string, password: string) {
     return this.http
-      .post<AuthResponseData>(
+      // .post<AuthResponseData>(
+      .post<any>(
         'http://127.0.0.1:8080/register',
         {
           userName: email,
@@ -79,10 +80,10 @@ export class AuthService {
       );
   }// sing up.
 
-
   login(email: string, password: string) {
     return this.http
-      .post<AuthResponseData>(
+      // .post<AuthResponseData>(
+      .post<any>(
         'http://127.0.0.1:8080/authenticate',
         {
           // email: email,

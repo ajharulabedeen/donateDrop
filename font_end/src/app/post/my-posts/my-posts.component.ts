@@ -79,8 +79,8 @@ export class MyPostsComponent implements OnInit {
 
   delete_post_id: string;
 
-  edit_post_id: string;
   edit_status: string;
+  edit_post_id: string;
   edit_anyNotes: string;
   edit_quantity: string;
   edit_contactInfo: string;
