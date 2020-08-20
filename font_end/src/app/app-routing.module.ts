@@ -47,8 +47,7 @@ const routes: Routes = [
   {path: 'user/agent', component: AgentComponent},
   {path: 'user/agent/dashboard', component: AgentDashboardComponent},
   {path: 'parent', component: ParentComponent},
-  {path: 'post_details', component: PostDetailsComponent},
-
+  {path: 'post_details/:post_id', component: PostDetailsComponent},
 ];
 
 @NgModule({

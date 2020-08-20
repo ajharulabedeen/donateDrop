@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {AuthService} from '../../auth/auth.service';
 
 @Component({
   selector: 'app-post-details',
@@ -19,10 +22,17 @@ export class PostDetailsComponent implements OnInit {
   public contactInfo: string;
   public patientDescription: string;
 
-  constructor() {
+  public postIdDetails: string;
+
+  constructor(private activeRoute: ActivatedRoute,
+              private http: HttpClient,
+              private authService: AuthService) {
   }
 
   ngOnInit() {
+    this.postIdDetails = this.activeRoute.snapshot.params['post_id'];
+    console.log('postID for Details: ' + this.postIdDetails);
+    // this.getOneNews(this.id);
   }
 
 }
