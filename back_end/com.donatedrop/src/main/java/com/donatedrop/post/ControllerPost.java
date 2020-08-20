@@ -86,7 +86,10 @@ public class ControllerPost {
 
     @PostMapping("deleteComment")
     public Map<String, String> deletePostComment(@RequestBody CommentDelete commentDelete) {
-
-        return service_post_i.deletePostComment();
+        PostComment postComment = new PostComment();
+        postComment.setCommentID(new Long(commentDelete.getCommentID()));
+        postComment.setUserID(commentDelete.getCommentUserID());
+        String postID = commentDelete.getPostID();
+        return service_post_i.deletePostComment(postID, postComment);
     }
 }
