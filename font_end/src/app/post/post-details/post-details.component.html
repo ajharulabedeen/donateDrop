@@ -1,24 +1,27 @@
 <div class="wrapper">
   <div class="box box-info">
     <h1 align="center">Post Details</h1>
-    <button class="btn btn-sm btn-info">Save</button>
   </div>
 
   <!--start : post basic-->
   <div class="box box-danger">
     <div class="box-body table-responsive">
       <table class="table" border="2">
+        <tr>
+          <td style="background-color: deeppink">Status</td>
+          <td>{{postBasic.status}}</td>
+        </tr>
         <!--POST ID-->
-        <tr style="background-color: pink">
+        <trgit>
           <td>
             <button class="btn btn-sm btn-warning">Post ID</button>
           </td>
           <td>
             {{postBasic.postID}}
           </td>
-        </tr>
+        </trgit>
         <!--Need date-->
-        <tr>
+        <tr style="background-color: pink">
           <td>
             <button class="btn btn-sm btn-warning">Need Date</button>
           </td>
@@ -27,7 +30,7 @@
           </td>
         </tr>
         <!--Blood Type-->
-        <tr>
+        <tr style="background-color: cyan">
           <td>
             <button class="btn btn-sm btn-danger">Blood Type</button>
           </td>
@@ -36,7 +39,7 @@
           </td>
         </tr>
         <!--Quantity-->
-        <tr>
+        <tr style="background-color: cyan">
           <td>
             <button class="btn btn-sm btn-warning">Quantity</button>
           </td>

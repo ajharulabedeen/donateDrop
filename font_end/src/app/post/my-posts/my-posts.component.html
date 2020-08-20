@@ -1,10 +1,3 @@
-<!--not wokking in intended way : addin header going to new line-->
-<div class="container row">
-  <!--<h2>{{pageHeader}}</h2>-->
-  <button>1</button>
-  <button>1</button>
-  <button>1</button>
-</div>
 
 <div class="container row">
   <h2>{{pageHeader}}</h2>
@@ -210,11 +203,8 @@
                     [attr.data-target]="'#'+modalDelete">Delete
             </button>
             <br>
-
             <a target="_blank" class="btn btn-primary btn-xs" role="button"
                [routerLink]="['/post_details', p.postID]">Details</a>
-
-
             <br *ngIf="managedButton">
             <button *ngIf="managedButton" class="btn btn-xs btn-primary" data-toggle="modal"
                     data-target="#new_post"
