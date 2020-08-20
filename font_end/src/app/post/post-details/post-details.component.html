@@ -105,7 +105,9 @@
   <div class="box box-info" *ngFor="let c of postCommentWithUserInfo;let i=index">
     <div class="box-header">
       <button *ngIf="c.commentOwner" class="btn btn-xs btn-info">Edit</button>
-      <button *ngIf="c.commentOwner" class="btn btn-xs btn-warning">Delete</button>
+      <button *ngIf="c.commentOwner" class="btn btn-xs btn-warning" type="button"
+              data-toggle="modal" data-target="#comment_delete">Delete
+      </button>
       <span class="label label-primary">Name:</span>{{c.name}}
       <span class="label label-info">Email: </span>{{c.email}}
       <span class="label label-success">Gender: </span>{{c.gender}}
@@ -146,3 +148,31 @@
   </div>
 </div>
 <!-- modal-end : New Comments-->
+
+<!-- start-Modal :  Delete Confirmation -->
+<div class="modal fade" id="comment_delete" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Comment Delete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Are U sure to delete?</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary btn-danger" (click)="deleteDonation()"
+                data-dismiss="modal">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end-Modal :  Delete Confirmation -->
+

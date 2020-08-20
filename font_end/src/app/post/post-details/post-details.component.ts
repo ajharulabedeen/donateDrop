@@ -32,7 +32,7 @@ export class PostDetailsComponent implements OnInit {
   public postIdDetails: string;
 
   public commentContentSave: string;
-  public postIDSave: string;
+  public commentIdDelete: string;
 
   constructor(private activeRoute: ActivatedRoute,
               private http: HttpClient,
