@@ -84,4 +84,9 @@ public class ControllerPost {
         return service_post_i.saveComment(postComment, postID);
     }
 
+    @PostMapping("deleteComment")
+    public Map<String, String> deletePostComment(@RequestBody CommentDelete commentDelete) {
+
+        return service_post_i.deletePostComment();
+    }
 }
