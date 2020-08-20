@@ -5,6 +5,7 @@ import {AuthService} from '../../auth/auth.service';
 import {Post} from '../post.model';
 import {PostDetailsService} from './post-details.service';
 import {PostcommentWithUserInfo} from './postcomment-with-user-info.model';
+import {CommentSave} from './comment-save.model';
 
 @Component({
   selector: 'app-post-details',
@@ -29,6 +30,9 @@ export class PostDetailsComponent implements OnInit {
   postCommentWithUserInfo: Array<PostcommentWithUserInfo>;
 
   public postIdDetails: string;
+
+  public commentContentSave: string;
+  public postIDSave: string;
 
   constructor(private activeRoute: ActivatedRoute,
               private http: HttpClient,
@@ -55,6 +59,17 @@ export class PostDetailsComponent implements OnInit {
     this.postDetailsService.getCommentWithUserInfo(this.postIdDetails).subscribe(postComments => {
       this.postCommentWithUserInfo = postComments;
       console.log(this.postCommentWithUserInfo);
+    });
+  }
+
+  saveComment(): void {
+    const commentSave = new CommentSave();
+    commentSave.commentContent = this.commentContentSave;
+    commentSave.postID = this.postBasic.postID;
+    this.postDetailsService.saveComment(commentSave).subscribe(res => {
+      if (res.STATUS === 'OK') {
+        this.getCommentWithUserInfo();
+      }
     });
   }
 

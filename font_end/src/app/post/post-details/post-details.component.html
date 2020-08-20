@@ -136,12 +136,12 @@
       <div class="modal-body">
         <div class="form-group">
           <label>Comment : </label>
-          <textarea class="col-md-12" rows="10" cols="50" [(ngModel)]="anyNotes"></textarea>
+          <textarea class="col-md-12" rows="10" cols="50" [(ngModel)]="commentContentSave"></textarea>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="save()">Save</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveComment()">Save</button>
       </div>
     </div>
   </div>
