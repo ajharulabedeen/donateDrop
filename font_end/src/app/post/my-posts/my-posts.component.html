@@ -210,15 +210,9 @@
                     [attr.data-target]="'#'+modalDelete">Delete
             </button>
             <br>
-            <!--<button class="btn btn-xs btn-info" data-toggle="modal" data-target="#new_post"-->
-            <!--(click)="requestAccept(ar.requestId)">Details-->
-            <!--</button>-->
 
-            <!--<button [routerLink]="['/post_details', p.postId]">Details-->
-            <!--</button>-->
-
-            <a target="_blank" class="btn btn-primary btn-md" role="button"
-               [routerLink]="['/post_details', p.postId]">Details</a>
+            <a target="_blank" class="btn btn-primary btn-xs" role="button"
+               [routerLink]="['/post_details', p.postID]">Details</a>
 
 
             <br *ngIf="managedButton">
