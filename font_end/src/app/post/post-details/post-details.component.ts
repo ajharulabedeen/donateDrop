@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {AuthService} from '../../auth/auth.service';
 import {Post} from '../post.model';
 import {PostDetailsService} from './post-details.service';
+import {PostcommentWithUserInfo} from './postcomment-with-user-info.model';
 
 @Component({
   selector: 'app-post-details',
@@ -25,6 +26,7 @@ export class PostDetailsComponent implements OnInit {
   public patientDescription: string;
 
   postBasic: Post;
+  postCommentWithUserInfo: Array<PostcommentWithUserInfo>;
 
   public postIdDetails: string;
 
@@ -39,6 +41,7 @@ export class PostDetailsComponent implements OnInit {
     console.log('postID for Details: ' + this.postIdDetails);
     // this.getOneNews(this.id);
     this.findOnePostByIDNoComment();
+    this.getCommentWithUserInfo();
   }
 
   public findOnePostByIDNoComment(): void {
@@ -48,5 +51,11 @@ export class PostDetailsComponent implements OnInit {
     });
   }
 
+  getCommentWithUserInfo(): void {
+    this.postDetailsService.getCommentWithUserInfo(this.postIdDetails).subscribe(postComments => {
+      this.postCommentWithUserInfo = postComments;
+      console.log(this.postCommentWithUserInfo);
+    });
+  }
 
 }
