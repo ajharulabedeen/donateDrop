@@ -34,6 +34,8 @@ export class PostDetailsComponent implements OnInit {
   public commentContentSave: string;
   public commentIdDelete: string;
 
+  public postcommentDelete: PostcommentWithUserInfo;
+
   constructor(private activeRoute: ActivatedRoute,
               private http: HttpClient,
               private authService: AuthService,
@@ -74,6 +76,12 @@ export class PostDetailsComponent implements OnInit {
   }
 
   deleteComment(): void {
-    console.log('commentIdDelete : ' + this.commentIdDelete);
+    console.log('commentIdDelete : ' + this.postcommentDelete);
+    console.log(this.postcommentDelete.commentId);
+    // this.postDetailsService.saveComment(commentSave).subscribe(res => {
+    //   if (res.STATUS === 'OK') {
+    //     this.getCommentWithUserInfo();
+    //   }
+    // });
   }
 }
