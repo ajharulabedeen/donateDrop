@@ -11,6 +11,7 @@ import com.donatedrop.post.model.Post;
 import java.util.List;
 import java.util.Map;
 
+import com.donatedrop.post.model.PostcommentWithUserInfo;
 import com.donatedrop.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -72,4 +73,8 @@ public class ControllerPost {
         return service_post_i.findOnePostByIDNoComment(postID);
     }
 
+    @PostMapping("getCommentWithUserInfo")
+    public List<PostcommentWithUserInfo> getCommentWithUserInfo(@RequestParam String postID) {
+        return service_post_i.getCommentWithUserInfo(postID);
+    }
 }
