@@ -106,7 +106,7 @@
     <div class="box-header">
       <button *ngIf="c.commentOwner" class="btn btn-xs btn-info">Edit</button>
       <button *ngIf="c.commentOwner" class="btn btn-xs btn-warning" type="button"
-              data-toggle="modal" data-target="#comment_delete">Delete
+              data-toggle="modal" data-target="#comment_delete" (click)="commentIdDelete = c.commentId">Delete
       </button>
       <span class="label label-primary">Name:</span>{{c.name}}
       <span class="label label-info">Email: </span>{{c.email}}
@@ -166,7 +166,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-secondary btn-danger" (click)="deleteDonation()"
+        <button type="button" class="btn btn-secondary btn-danger" (click)="deleteComment()"
                 data-dismiss="modal">
           Delete
         </button>

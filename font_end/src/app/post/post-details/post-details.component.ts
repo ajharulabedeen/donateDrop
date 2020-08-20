@@ -73,4 +73,7 @@ export class PostDetailsComponent implements OnInit {
     });
   }
 
+  deleteComment(): void {
+    console.log('commentIdDelete : ' + this.commentIdDelete);
+  }
 }
