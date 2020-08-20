@@ -21,6 +21,4 @@ export class PostDetailsService {
     return this.http.post<PostcommentWithUserInfo[]>('http://localhost:8080/public/user/post/getCommentWithUserInfo?postID=' + postID, this.authService.getHeader());
   }
 
-  g
-
 }
