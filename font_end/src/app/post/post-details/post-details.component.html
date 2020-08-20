@@ -116,7 +116,9 @@
       <span class="label label-success">Gender: </span>{{c.gender}}
       <span class="label label-warning">Profession: </span>{{c.profession}}
       <span class="label label-danger">Comment Date: </span>{{c.commentDate}}
-      <button class="btn btn-xs btn-primary">Contact</button>
+      <button class="btn btn-xs btn-primary" data-toggle="modal"
+              data-target="#contact_commented_user">Contact
+      </button>
     </div>
     <div class="box-comments">
       {{c.commentDetails}}
@@ -178,4 +180,28 @@
   </div>
 </div>
 <!-- end-Modal :  Delete Confirmation -->
+
+<!-- start-Modal :  show commented user contact -->
+<div class="modal fade" id="contact_commented_user" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Contact Information </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Agent Name:</h4>
+        <h4>Phone Number:</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end-Modal :  show commented user contact -->
 
