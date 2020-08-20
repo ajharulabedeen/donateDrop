@@ -14,7 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 
 /**
- *
  * @author Dell
  */
 @Entity
@@ -39,7 +38,13 @@ public class PostComment implements Serializable {
     public PostComment() {
     }
 
-    public PostComment( String date, String commentDetails, String userID) {
+    public PostComment(String commentDetails, String userID) {
+        this.date = date;
+        this.commentDetails = commentDetails;
+        this.userID = userID;
+    }
+
+    public PostComment(String date, String commentDetails, String userID) {
         this.date = date;
         this.commentDetails = commentDetails;
         this.userID = userID;

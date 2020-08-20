@@ -173,6 +173,7 @@ public class Dao_Post_Impl implements Dao_Post_I {
         Post post = findOnePostByID(postID);
         if (post != null) {
             try {
+                postComment.setDate(DateUtil.getDate());
                 entityManager.persist(postComment);
                 post.getPostComments().add(postComment);
                 entityManager.merge(post);

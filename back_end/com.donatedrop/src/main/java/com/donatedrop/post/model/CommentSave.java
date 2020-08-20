@@ -1,20 +1,20 @@
 package com.donatedrop.post.model;
 
 public class CommentSave {
-    private PostComment postComment;
+    private String commentContent;
     private String postID;
 
-    public CommentSave(PostComment postComment, String postID) {
-        this.postComment = postComment;
+    public CommentSave(String commentContent, String postID) {
+        this.commentContent = commentContent;
         this.postID = postID;
     }
 
-    public PostComment getPostComment() {
-        return postComment;
+    public String getCommentContent() {
+        return commentContent;
     }
 
-    public void setPostComment(PostComment postComment) {
-        this.postComment = postComment;
+    public void setCommentContent(String commentContent) {
+        this.commentContent = commentContent;
     }
 
     public String getPostID() {
@@ -28,7 +28,7 @@ public class CommentSave {
     @Override
     public String toString() {
         return "CommentSave{" +
-                "postComment=" + postComment +
+                "commentContent='" + commentContent + '\'' +
                 ", postID='" + postID + '\'' +
                 '}';
     }

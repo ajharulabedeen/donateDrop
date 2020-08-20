@@ -5,14 +5,11 @@
  */
 package com.donatedrop.post;
 
-import com.donatedrop.post.model.MyPostSearch;
-import com.donatedrop.post.model.Post;
+import com.donatedrop.post.model.*;
 
 import java.util.List;
 import java.util.Map;
 
-import com.donatedrop.post.model.PostComment;
-import com.donatedrop.post.model.PostcommentWithUserInfo;
 import com.donatedrop.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -80,9 +77,11 @@ public class ControllerPost {
     }
 
     @PostMapping("saveComment")
-    public Map<String, String> saveComment(@RequestBody PostComment postComment) {
-        String
-        return service_post_i.saveComment();
+    public Map<String, String> saveComment(@RequestBody CommentSave commentSave) {
+        String userID = Utils.getLoggedUserID();
+        PostComment postComment = new PostComment(commentSave.getCommentContent(), userID);
+        String postID = commentSave.getPostID();
+        return service_post_i.saveComment(postComment, postID);
     }
 
 }
