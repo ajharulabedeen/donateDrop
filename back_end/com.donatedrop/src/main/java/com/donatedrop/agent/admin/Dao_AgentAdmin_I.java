@@ -48,5 +48,4 @@ public interface Dao_AgentAdmin_I {
 
     public Map<String, String> updatePersonalNote(RequestPersonalNote requestPersonalNote);
 
-
 }
