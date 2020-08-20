@@ -105,8 +105,8 @@
   <!--start : post comments-->
   <div class="box box-info" *ngFor="let c of postCommentWithUserInfo;let i=index">
     <div class="box-header">
-      <button class="btn btn-xs btn-info">Edit</button>
-      <button class="btn btn-xs btn-warning">Delete</button>
+      <button *ngIf="c.commentOwner" class="btn btn-xs btn-info">Edit</button>
+      <button *ngIf="c.commentOwner" class="btn btn-xs btn-warning">Delete</button>
       <span class="label label-primary">Name:</span>{{c.name}}
       <span class="label label-info">Email: </span>{{c.email}}
       <span class="label label-success">Gender: </span>{{c.gender}}
