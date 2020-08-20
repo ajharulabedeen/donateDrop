@@ -6,6 +6,7 @@ import {Post} from '../post.model';
 import {PostDetailsService} from './post-details.service';
 import {PostcommentWithUserInfo} from './postcomment-with-user-info.model';
 import {CommentSave} from './comment-save.model';
+import {CommentDelete} from './comment-delete.model';
 
 @Component({
   selector: 'app-post-details',
@@ -78,10 +79,14 @@ export class PostDetailsComponent implements OnInit {
   deleteComment(): void {
     console.log('commentIdDelete : ' + this.postcommentDelete);
     console.log(this.postcommentDelete.commentId);
-    // this.postDetailsService.saveComment(commentSave).subscribe(res => {
-    //   if (res.STATUS === 'OK') {
-    //     this.getCommentWithUserInfo();
-    //   }
-    // });
+    const commentDelete = new CommentDelete()
+    commentDelete.commentID = this.postcommentDelete.commentId;
+    commentDelete.commentUserID = this.postcommentDelete.commentUserId;
+    commentDelete.postID = this.postcommentDelete.postId;
+    this.postDetailsService.deleteComment(commentDelete).subscribe(res => {
+      if (res.STATUS === 'OK') {
+        this.getCommentWithUserInfo();
+      }
+    });
   }
 }

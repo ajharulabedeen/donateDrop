@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Post} from '../post.model';
 import {PostcommentWithUserInfo} from './postcomment-with-user-info.model';
 import {CommentSave} from './comment-save.model';
+import {CommentDelete} from './comment-delete.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,9 @@ export class PostDetailsService {
 
   saveComment(commentSave: CommentSave) {
     return this.http.post<any>('http://localhost:8080/public/user/post/saveComment', commentSave, this.authService.getHeader());
+  }
+
+  deleteComment(commentDelete: CommentDelete) {
+    return this.http.post<any>('http://localhost:8080/public/user/post/deleteComment', commentDelete, this.authService.getHeader());
   }
 }
