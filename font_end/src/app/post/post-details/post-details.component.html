@@ -14,7 +14,7 @@
             <button class="btn btn-sm btn-warning">Post ID</button>
           </td>
           <td>
-            253548
+            {{postBasic.postID}}
           </td>
         </tr>
         <!--Need date-->
@@ -23,7 +23,7 @@
             <button class="btn btn-sm btn-warning">Need Date</button>
           </td>
           <td>
-            28-56-2020
+            {{postBasic.needDate}}
           </td>
         </tr>
         <!--Blood Type-->
@@ -32,7 +32,7 @@
             <button class="btn btn-sm btn-danger">Blood Type</button>
           </td>
           <td>
-            A+
+            {{postBasic.bloodType}}
           </td>
         </tr>
         <!--Quantity-->
@@ -40,56 +40,56 @@
           <td>
             <button class="btn btn-sm btn-warning">Quantity</button>
           </td>
-          <td>8</td>
+          <td>{{postBasic.quantity}}</td>
         </tr>
         <!--gender-->
         <tr>
           <td>
             <button class="btn btn-sm btn-info">Patient Gender</button>
           </td>
-          <td>Male</td>
+          <td>{{postBasic.patientGender}}</td>
         </tr>
         <!--relation-->
         <tr>
           <td>
             <button class="btn btn-sm btn-info">Relation</button>
           </td>
-          <td>Friend</td>
+          <td>{{postBasic.relation}}</td>
         </tr>
         <!--hospital name-->
         <tr>
           <td>
             <button class="btn btn-sm btn-info">Hospital Name</button>
           </td>
-          <td>Khulna City Hospital</td>
+          <td>{{postBasic.hospitalName}}</td>
         </tr>
         <!--hospital address-->
         <tr>
           <td>
             <button class="btn btn-sm btn-info">Hospital Address</button>
           </td>
-          <td>Khulna Sadar</td>
+          <td>{{postBasic.hospitalAddress}}</td>
         </tr>
         <!--location-->
         <tr>
           <td>
             <button class="btn btn-sm btn-info">Location</button>
           </td>
-          <td>Near Boyra Bazar</td>
+          <td>{{postBasic.location}}</td>
         </tr>
         <!--contact info-->
         <tr>
           <td>
             <button class="btn btn-sm btn-warning">Contact_info</button>
           </td>
-          <td>01713-815267</td>
+          <td>{{postBasic.contactInfo}}</td>
         </tr>
         <!--patient description-->
         <tr>
           <td>
             <button class="btn btn-sm btn-info">Patient Description</button>
           </td>
-          <td>COVID-19, Heart, Kidney</td>
+          <td>{{postBasic.patientDescription}}</td>
         </tr>
       </table>
     </div>
