@@ -67,9 +67,9 @@ public class ControllerPost {
         return service_post_i.countAllPostsByAnUserWithinDate(postSearch);
     }
 
-    @PostMapping
+    @PostMapping("findOnePostByIDNoComment")
     public Post findOnePostByIDNoComment(@RequestParam String postID) {
-        return null;
+        return service_post_i.findOnePostByIDNoComment(postID);
     }
 
 }
