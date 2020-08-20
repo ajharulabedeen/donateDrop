@@ -7,9 +7,9 @@ public class Utils {
     public static String getLoggedUserID() {
 //        return "15";
 //        return "14294";
-//        return "12417";
-//        return "11196";//getDonnerToAgentRequestToReview and count.
-        return "11186";//commentUserId='11186'
+        return "12417";// to check my_posts
+//        return "11196"; // getDonnerToAgentRequestToReview and count.
+//        return "11186"; // commentUserId='11186' for commentWithUserInfo
     }
 
     public static String getLoggedUserEmailID() {

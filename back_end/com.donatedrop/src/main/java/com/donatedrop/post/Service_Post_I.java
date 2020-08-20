@@ -18,7 +18,8 @@ public interface Service_Post_I {
     public Post findOnePostByID(String id);
 
     public Post findOnePostByIdWithComments(String postID);
-    
+
+    public Post findOnePostByIDNoComment(String postID);
 
     public Map<String, String> deletePost(String userID, String postID);
 
@@ -44,9 +45,8 @@ public interface Service_Post_I {
     public List<PostcommentWithUserInfo> getCommentWithUserInfo(String postID);
 
     /**
-     *
      * @param loggedUserID to check, does the current logged userID, is the
-     * owner of a comment or not.
+     *                     owner of a comment or not.
      * @param postID
      * @return
      */

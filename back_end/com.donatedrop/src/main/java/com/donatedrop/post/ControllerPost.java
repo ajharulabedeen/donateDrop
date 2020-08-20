@@ -7,6 +7,7 @@ package com.donatedrop.post;
 
 import com.donatedrop.post.model.MyPostSearch;
 import com.donatedrop.post.model.Post;
+
 import java.util.List;
 import java.util.Map;
 
@@ -64,6 +65,11 @@ public class ControllerPost {
     public String countAllPostsByAnUserWithinDate(@RequestBody MyPostSearch postSearch) {
         postSearch.setUserID(Utils.getLoggedUserID());
         return service_post_i.countAllPostsByAnUserWithinDate(postSearch);
+    }
+
+    @PostMapping
+    public Post findOnePostByIDNoComment(@RequestParam String postID) {
+        return null;
     }
 
 }

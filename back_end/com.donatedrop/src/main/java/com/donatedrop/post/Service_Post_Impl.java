@@ -165,4 +165,9 @@ public class Service_Post_Impl implements Service_Post_I {
         return postWithComments;
     }
 
+    @Override
+    public Post findOnePostByIDNoComment(String postID) {
+        return dao_post_i.findOnePostByIDNoComment(postID);
+    }
+
 }
