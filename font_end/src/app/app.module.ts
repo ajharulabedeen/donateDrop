@@ -32,6 +32,7 @@ import {AgentDashboardComponent} from './agent-dashboard/agent-dashboard/agent-d
 import {AgentDashboardModule} from './agent-dashboard/agent-dashboard.module';
 import {TestModule} from './test/test.module';
 import {PostModule} from './post/post.module';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import {PostModule} from './post/post.module';
     AgentDashboardModule,
     TestModule,
     PostModule,
+    RouterModule
     // RecordRTC
 
     // NgModel

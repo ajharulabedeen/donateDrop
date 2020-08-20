@@ -8,6 +8,7 @@ import {MyPostsComponent} from './my-posts/my-posts.component';
 import {Post} from './post.model';
 import {PostComponent} from './post.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
+import {RouterModule} from '@angular/router';
 
 
 
@@ -18,7 +19,8 @@ import { PostDetailsComponent } from './post-details/post-details.component';
     LayoutModule,
     FormsModule,
     HttpClientModule,
-    CKEditorModule
+    CKEditorModule,
+    RouterModule
   ]
 })
 export class PostModule { }
