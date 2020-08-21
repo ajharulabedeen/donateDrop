@@ -7,6 +7,7 @@ import {PostDetailsService} from './post-details.service';
 import {PostcommentWithUserInfo} from './postcomment-with-user-info.model';
 import {CommentSave} from './comment-save.model';
 import {CommentDelete} from './comment-delete.model';
+import {UserPublicContact} from '../../model/user-public-contact.model';
 
 @Component({
   selector: 'app-post-details',
@@ -29,6 +30,9 @@ export class PostDetailsComponent implements OnInit {
 
   postBasic: Post;
   postCommentWithUserInfo: Array<PostcommentWithUserInfo>;
+
+  userPublicContact: UserPublicContact;
+  commentUserID: string;
 
   public postIdDetails: string;
 
@@ -89,4 +93,14 @@ export class PostDetailsComponent implements OnInit {
       }
     });
   }
+
+  public getUserPublicContact(userID: string): void {
+    console.log('userID : ' + userID);
+    // this.postDetailsService.getUserPublicContact(commentDelete).subscribe(res => {
+    //   if (res.STATUS === 'OK') {
+    //     this.getCommentWithUserInfo();
+    //   }
+    // });
+  }
+
 }
