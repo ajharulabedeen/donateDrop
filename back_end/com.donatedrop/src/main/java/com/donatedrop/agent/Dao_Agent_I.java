@@ -2,6 +2,6 @@ package com.donatedrop.agent;
 
 import com.donatedrop.agent.models.AgentBasic;
 
-public interface Dao_Agen_I {
+public interface Dao_Agent_I {
     public AgentBasic getAgentBasic(String userID);
 }

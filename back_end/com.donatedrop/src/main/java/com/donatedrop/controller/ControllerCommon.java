@@ -5,10 +5,10 @@
  */
 package com.donatedrop.controller;
 
-import com.donatedrop.agent.Dao_Agen_I;
 import com.donatedrop.agent.models.AgentBasic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import com.donatedrop.agent.Dao_Agent_I;
 
 /**
  * @author Dell
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 public class ControllerCommon {
 
     @Autowired
-    Dao_Agen_I dao_agen_i;
+    Dao_Agent_I dao_agen_i;
 
     @GetMapping("getAgentBasic")
     public AgentBasic agentBasic(@RequestParam String userID) {

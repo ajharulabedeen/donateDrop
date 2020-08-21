@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 
 @Component
-public class Dao_Agen_Impl implements Dao_Agen_I {
+public class Dao_Agent_Impl implements Dao_Agent_I {
     @PersistenceContext
     EntityManager entityManager;
 
