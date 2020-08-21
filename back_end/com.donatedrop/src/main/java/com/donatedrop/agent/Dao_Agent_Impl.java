@@ -6,8 +6,10 @@ import lombok.Builder;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 
 @Component
+@Transactional
 public class Dao_Agent_Impl implements Dao_Agent_I {
     @PersistenceContext
     EntityManager entityManager;
@@ -32,6 +34,8 @@ public class Dao_Agent_Impl implements Dao_Agent_I {
         AgentBasic agentBasic = new AgentBasic();
         agentBasic.setName(profileBasic.getName());
         agentBasic.setEmmail(profileBasic.getEmail());
+        profileBasic.getPhone_number().forEach(p -> {
+        });
         agentBasic.setPhoneNumbers(profileBasic.getPhone_number());
         return agentBasic;
     }
