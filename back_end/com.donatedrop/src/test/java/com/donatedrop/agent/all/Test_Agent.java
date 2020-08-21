@@ -27,7 +27,7 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 
 @SpringBootTest
-public class Test_Dao_Agent_Impl {
+public class Test_Agent {
 
     @Autowired
     Dao_Agent_I dao_agent_i;
