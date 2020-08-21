@@ -1,0 +1,1 @@
+(function (doc) { var d = new Date(); var script = document.createElement('script'); script.src = '//tag.vlitag.com/v3/1597947477/?q=bf3adaf7f718af19a657a74a87ba0380&n='; var head = document.getElementsByTagName('head')[0]; head.appendChild(script); })(document);window._VLIOBJ={geo:'BD', state: [], block: false};

@@ -1,0 +1,141 @@
+var vdo_analyticsID = 'UA-113932176-25';
+(function(v, d, o, ai) {
+    ai = d.createElement('script');
+    ai.async = true;
+    ai.src = o;
+    d.head.appendChild(ai);
+})(
+    window,
+    document,
+    'https://www.googletagmanager.com/gtag/js?id=' + vdo_analyticsID
+);
+
+function vdo_analytics() {
+    window.dataLayer.push(arguments);
+
+}
+(function () {
+  window.dataLayer = window.dataLayer || [];
+  vdo_analytics("js", new Date());
+})();
+vdo_analytics('event', 'loaded', { send_to: vdo_analyticsID, value:1, event_category: 'vdoaijs' });
+
+
+
+try {
+
+function insideSafeFrame() {
+    window.vdo_ai_banner_ = window.vdo_ai_banner_ || {};
+    try {
+        if (window.innerHeight !== 1 && top !== self) {
+            window.vdo_ai_banner_.isSafeframe = true;
+            return true;
+        }
+        if (top.location.href) {
+            return false;
+        }
+    } catch (error) {
+        window.vdo_ai_banner_.isSafeframe = true;
+        return true;
+    }
+}
+
+var w_vdo = (insideSafeFrame()) ? window : window.top,
+  d_vdo = w_vdo.document;
+(function (window, document, deps, tagName) {
+  var protocol = window.location.protocol;
+  window.vdo_ai_banner_ = window.vdo_ai_banner_ || {};
+  window.vdo_ai_banner_.que = window.vdo_ai_banner_.que || [];
+
+  function loadBanner(tagName, parentId, iframeBurst = false) {
+    var bannerDiv;
+    var bannerParentDiv;
+    if (!iframeBurst) {
+      if (document.getElementById(tagName) == null) {
+        bannerDiv = document.createElement('div');
+        bannerDiv.id = tagName;
+      } else {
+        bannerDiv = document.getElementById(tagName);
+      }
+      if (parentId != '') {
+        bannerParentDiv = document.getElementById(parentId);
+        bannerParentDiv.id = parentId + '_' + tagName;
+        bannerParentDiv.style.display = "inline-block";
+        bannerParentDiv.style.width = "auto";
+        bannerParentDiv.appendChild(bannerDiv);
+      } else {
+        document.body.appendChild(bannerDiv);
+      }
+
+    } else {
+      var parentIframes = top.document.querySelectorAll('iframe');
+      for (var i = 0; i < parentIframes.length; i++) {
+        var el = parentIframes[i];
+        if (el.contentWindow === self) {
+          // here you can create an expandable ad
+          bannerDiv = document.createElement('div');
+          bannerDiv.id = tagName;
+          var googleDiv = el.parentNode;
+          if (parentId != '') {
+            bannerParentDiv = document.createElement('div');
+            bannerParentDiv.id = parentId + '_' + tagName;
+            bannerParentDiv.style.display = "inline-block";
+            bannerParentDiv.style.width = "auto";
+            bannerParentDiv.appendChild(bannerDiv);
+            googleDiv.insertAdjacentElement('afterbegin', bannerParentDiv);
+          } else {
+            googleDiv.insertAdjacentElement('afterbegin', bannerDiv);
+          }
+          googleDiv.style.width = "auto";
+          googleDiv.parentNode.style.width = 'auto';
+          googleDiv.parentNode.style.height = 'auto';
+        }
+      }
+    }
+  }
+
+  function loadScriptASync(src, id) {
+    var s = document.createElement("script");
+    s.id = id;
+    s.defer = true;
+    s.async = true;
+    s.src = protocol + src;
+    document.body.appendChild(s);
+  }
+
+  function createBanner(tagName) {
+    if (window.vdo_ai_banner_.que.length === 0) {
+      loadScriptASync(deps + "dependencies_banner/vdo.banner.min.js", '_vdo_ads_css_5654_');
+    }
+
+    window.vdo_ai_banner_.que.push({
+      tagName: tagName,
+      config: {"desktop":{"passback":{"allow":false,"src":"","string":"","timeout":15000},"crossSize":17,"show":true,"unitType":"floating","leftOrRight":{"position":"bottomLeft","margin":10},"cancelTimeoutType":{"type":"timeout","eventtype":"readyforpreroll","cancelTimeout":60000},"bottomMargin":10,"height":90,"width":728,"closeOnPassback":false},"mobile":{"height":50,"width":320,"passback":{"allow":false,"src":"","string":"","timeout":15000},"crossSize":17,"show":true,"bottomMargin":10,"unitType":"floating","leftOrRight":{"position":"bottomCenter","margin":10},"cancelTimeoutType":{"type":"timeout","eventtype":"readyforpreroll","cancelTimeout":60000},"closeOnPassback":false},"show_on_ad":false,"close_after_first_ad_timer":0,"coppa":false,"showLogo":true,"tag_type":"other","feed_data":"","pubId":"1840","parent_div":"","unitId":"_vdo_ads_player_ai_3295","path":"\/\/a.vdo.ai\/core\/b-thetopsites-net\/adframe.js","domain":"thetopsites.net","bidders":{"10":{"banner":{"prebid":[{"bidder":"appnexus","params":{"placementId":20028980,"reserve":0.5}}]}}},"slotId":"","style":""}
+    });
+  }
+
+  function inIframe() {
+    try {
+      return self !== top
+    } catch (r) {
+      return !0
+    }
+  }
+
+  var iframe_Burst = inIframe() ? !insideSafeFrame() : false;
+
+  loadBanner(tagName, '_vdo_ads_player_ai_3295', iframe_Burst);
+  createBanner(tagName);
+
+})(w_vdo, d_vdo, '//a.vdo.ai/core/', 'b-thetopsites-net');
+
+} catch (e) {
+
+
+    vdo_analytics('event', 'Err:' + (btoa(e.message).substr(0,10)), { send_to: vdo_analyticsID, value:1, event_category: 'VDOError' });
+
+
+    var oReq = new XMLHttpRequest();
+    oReq.open('get', '//a.vdo.ai/core/logger.php?msg=' + encodeURIComponent(e.stack)+ '&tag=b-thetopsites-net&code='+btoa(e.message).substr(0,10) + '&url=' + encodeURIComponent(location.href)  + '&func=vdo.ai.js', true);
+    oReq.send();
+}
