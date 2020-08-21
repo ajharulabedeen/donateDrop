@@ -5,6 +5,7 @@ import {Post} from '../post.model';
 import {PostcommentWithUserInfo} from './postcomment-with-user-info.model';
 import {CommentSave} from './comment-save.model';
 import {CommentDelete} from './comment-delete.model';
+import {UserPublicContact} from '../../model/user-public-contact.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,13 @@ export class PostDetailsService {
 
   deleteComment(commentDelete: CommentDelete) {
     return this.http.post<any>('http://localhost:8080/public/user/post/deleteComment', commentDelete, this.authService.getHeader());
+  }
+
+  getUserPublicContact(userID: string) {
+    return this.http.post<UserPublicContact>('http://localhost:8080/public/getUserPublicContact?userID=' + userID, this.authService.getHeader());
+  }
+
+  getUserPublicContactService(userID: string) {
+    return this.http.get<UserPublicContact>('http://localhost:8080/public/getUserPublicContact?userID=' + userID, this.authService.getHeader());
   }
 }

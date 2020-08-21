@@ -96,11 +96,13 @@ export class PostDetailsComponent implements OnInit {
 
   public getUserPublicContact(userID: string): void {
     console.log('userID : ' + userID);
-    // this.postDetailsService.getUserPublicContact(commentDelete).subscribe(res => {
-    //   if (res.STATUS === 'OK') {
-    //     this.getCommentWithUserInfo();
-    //   }
-    // });
+    this.postDetailsService.getUserPublicContactService(userID).subscribe(userPublicContact => {
+      if (userPublicContact.contactType !== 'ERROR') {
+        this.userPublicContact = userPublicContact;
+      }
+      this.userPublicContact = userPublicContact;
+      console.log(this.userPublicContact);
+    });
   }
 
 }
