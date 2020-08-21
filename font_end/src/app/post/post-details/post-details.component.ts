@@ -53,6 +53,7 @@ export class PostDetailsComponent implements OnInit {
     // this.getOneNews(this.id);
     this.findOnePostByIDNoComment();
     this.getCommentWithUserInfo();
+    this.userPublicContact = new UserPublicContact();
   }
 
   public findOnePostByIDNoComment(): void {
