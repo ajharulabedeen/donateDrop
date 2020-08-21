@@ -5,15 +5,24 @@
  */
 package com.donatedrop.controller;
 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.donatedrop.agent.Dao_Agen_I;
+import com.donatedrop.agent.models.AgentBasic;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
- *
  * @author Dell
  */
 @RestController
 @RequestMapping("/public/")
 public class ControllerCommon {
-    
+
+    @Autowired
+    Dao_Agen_I dao_agen_i;
+
+    @GetMapping("getAgentBasic")
+    public AgentBasic agentBasic(@RequestParam String userID) {
+        return dao_agen_i.getAgentBasic(userID);
+    }
+
 }

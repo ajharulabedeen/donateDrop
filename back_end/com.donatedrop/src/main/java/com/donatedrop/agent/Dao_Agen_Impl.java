@@ -3,9 +3,11 @@ package com.donatedrop.agent;
 import com.donatedrop.agent.models.AgentBasic;
 import com.donatedrop.profile.model.ProfileBasic;
 import lombok.Builder;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
+@Component
 public class Dao_Agen_Impl implements Dao_Agen_I {
     @PersistenceContext
     EntityManager entityManager;
