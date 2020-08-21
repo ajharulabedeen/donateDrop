@@ -21,8 +21,12 @@ public class TestAny {
     DumpDao daoDump;
 
     @Test
-    public void getDumpDate(){
-        System.out.println(DumpData.getDate());
+    public void getDumpDate() {
+        System.out.println("\n");
+        for (int x = 0; x < 100; x++) {
+            System.out.println(DumpData.getDate());
+        }
+        System.out.println("\n");
     }
 
     @Test
@@ -121,7 +125,7 @@ public class TestAny {
 
 
     @Test
-    public void testGetAcceptedUserIDAsAgent(){
+    public void testGetAcceptedUserIDAsAgent() {
         daoDump.getAcceptedUserIDAsAgent(0, 30).forEach(userID -> {
             System.out.println(userID);
         });

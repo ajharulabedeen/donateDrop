@@ -8,6 +8,7 @@ import com.donatedrop.geocode.models.DistrictsEngName;
 import com.donatedrop.geocode.models.DivisionsEngName;
 import com.donatedrop.geocode.models.UnionsEngName;
 import com.donatedrop.geocode.models.UpzillaEngName;
+import com.donatedrop.history.History;
 import com.donatedrop.models.Address;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.security.models.User;
@@ -277,6 +278,10 @@ public class DumpDao {
                 .setMaxResults(max)
                 .getResultList();
         return userIDList;
+    }
+
+    public List<History> getAllHistory() {
+        return null;
     }
 
     //    start : no need :

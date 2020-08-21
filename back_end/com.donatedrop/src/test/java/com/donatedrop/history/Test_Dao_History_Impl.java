@@ -190,6 +190,13 @@ public class Test_Dao_History_Impl {
         assert (dao_history_i.findOne(historyID) == null);
     }
 
+    //    start : other
+    @Test
+    public void getAllHistory() {
+
+    }
+//    end : other
+
 
     //    Helpers :
     @Test
