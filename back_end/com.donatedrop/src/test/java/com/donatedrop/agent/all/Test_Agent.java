@@ -61,9 +61,10 @@ public class Test_Agent {
 
     @Test
     public void testGetUserPublicContact() {
-//        UserPublicContact userPublicContact = service_agent_i.getAgentBasic("11214");//agent
-        UserPublicContact userPublicContact = service_agent_i.getAgentBasic("11236");//agent
-//        UserPublicContact userPublicContact = service_agent_i.getAgentBasic("11148");//no agent
+//        UserPublicContact userPublicContact = service_agent_i.getUserPublicContact("11214");//agent
+//        UserPublicContact userPublicContact = service_agent_i.getUserPublicContact("11236");//agent
+        UserPublicContact userPublicContact = service_agent_i.getUserPublicContact("11148");//no agent -> personal
+//        UserPublicContact userPublicContact = service_agent_i.getUserPublicContact("1123");//agent
         System.out.println(userPublicContact.toString());
     }
 

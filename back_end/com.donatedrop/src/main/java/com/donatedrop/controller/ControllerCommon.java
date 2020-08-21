@@ -5,7 +5,9 @@
  */
 package com.donatedrop.controller;
 
+import com.donatedrop.agent.Service_Agent_I;
 import com.donatedrop.agent.models.AgentBasic;
+import com.donatedrop.agent.models.UserPublicContact;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.donatedrop.agent.Dao_Agent_I;
@@ -18,11 +20,11 @@ import com.donatedrop.agent.Dao_Agent_I;
 public class ControllerCommon {
 
     @Autowired
-    Dao_Agent_I dao_agen_i;
+    Service_Agent_I service_agent_i;
 
-    @GetMapping("getAgentBasic")
-    public AgentBasic agentBasic(@RequestParam String userID) {
-        return dao_agen_i.getAgentBasic(userID);
+    @GetMapping("getUserPublicContact")
+    public UserPublicContact agentBasic(@RequestParam String userID) {
+        return service_agent_i.getUserPublicContact(userID);
     }
 
 }

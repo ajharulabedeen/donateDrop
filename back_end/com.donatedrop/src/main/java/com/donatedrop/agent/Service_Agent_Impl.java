@@ -19,7 +19,7 @@ public class Service_Agent_Impl implements Service_Agent_I {
     @Autowired
     Dao_Profile_Basic_I dao_profile_basic_i;
 
-    public UserPublicContact getAgentBasic(String userID) {
+    public UserPublicContact getUserPublicContact(String userID) {
         AgentBasic agentBasic = null;
         UserPublicContact userPublicContact = new UserPublicContact();
         try {
@@ -36,13 +36,15 @@ public class Service_Agent_Impl implements Service_Agent_I {
         }
         if (agentBasic == null) {
             ProfileBasic profileBasic = dao_profile_basic_i.findOneByUserIDWithChild(userID);
-            userPublicContact.setContactType(UserPublicContactType.PERSONAL.toString());
-            userPublicContact.setName(profileBasic.getName());
-            userPublicContact.setEmail(profileBasic.getEmail());
-            userPublicContact.setPhoneNumbers(profileBasic.getPhone_number());
-            return userPublicContact;
-        }else{
-            userPublicContact.setContactType(UserPublicContactType.EORROR.toString());
+            if (profileBasic != null) {
+                userPublicContact.setContactType(UserPublicContactType.PERSONAL.toString());
+                userPublicContact.setName(profileBasic.getName());
+                userPublicContact.setEmail(profileBasic.getEmail());
+                userPublicContact.setPhoneNumbers(profileBasic.getPhone_number());
+                return userPublicContact;
+            } else {
+                userPublicContact.setContactType(UserPublicContactType.ERROR.toString());
+            }
         }
         return userPublicContact;
     }
