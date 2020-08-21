@@ -61,7 +61,9 @@ public class Test_Dao_Agent_Impl {
 
     @Test
     public void testGetUserPublicContact() {
-        UserPublicContact userPublicContact = service_agent_i.getAgentBasic("11214");
+//        UserPublicContact userPublicContact = service_agent_i.getAgentBasic("11214");//agent
+        UserPublicContact userPublicContact = service_agent_i.getAgentBasic("11236");//agent
+//        UserPublicContact userPublicContact = service_agent_i.getAgentBasic("11148");//no agent
         System.out.println(userPublicContact.toString());
     }
 
