@@ -193,7 +193,12 @@ public class Test_Dao_History_Impl {
     //    start : other
     @Test
     public void getAllHistory() {
+        dumpDao.getAllHistory(0, 100).forEach(h -> System.out.println(h.toString()));
+    }
 
+    @Test
+    public void updateAllHistory() {
+        dumpDao.updateAllHistory();
     }
 //    end : other
 

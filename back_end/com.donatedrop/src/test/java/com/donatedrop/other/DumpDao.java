@@ -280,8 +280,25 @@ public class DumpDao {
         return userIDList;
     }
 
-    public List<History> getAllHistory() {
-        return null;
+    public List<History> getAllHistory(int start, int max) {
+        String sql = "SELECT * FROM `history`";
+        return entityManager.createNativeQuery(sql, History.class)
+                .setFirstResult(start)
+                .setMaxResults(max)
+                .getResultList();
+    }
+
+    @Transactional
+    public void updateAllHistory() {
+        String sql = "SELECT * FROM `history`";
+        List<History> historyList = entityManager.createNativeQuery(sql, History.class).getResultList();
+        historyList.forEach(history -> {
+            System.out.println(history.getId());
+            history.setDate(DumpData.getDate());
+            entityManager.merge(history);
+        });
+
+
     }
 
     //    start : no need :
