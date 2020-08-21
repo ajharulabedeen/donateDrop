@@ -138,7 +138,7 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
     }
 
     @Override
-    public ProfileBasic findOneByUser(String userId) {
+    public ProfileBasic findOneByUserIDWithChild(String userId) {
         String sql = "SELECT *FROM profilebasic WHERE user_id =" + userId;
         ProfileBasic profileBasic = null;
         List<ProfileBasic> list = entityManager

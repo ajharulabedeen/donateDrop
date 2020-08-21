@@ -1,8 +1,8 @@
 package com.donatedrop.agent;
 
 import com.donatedrop.agent.models.AgentBasic;
-import com.donatedrop.agent.models.UserContact;
+import com.donatedrop.agent.models.UserPublicContact;
 
 public interface Service_Agent_I {
-    public UserContact getAgentBasic(String userID);
+    public UserPublicContact getAgentBasic(String userID);
 }

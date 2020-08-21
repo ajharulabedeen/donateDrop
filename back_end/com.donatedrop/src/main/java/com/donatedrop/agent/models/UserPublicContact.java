@@ -4,17 +4,17 @@ import com.donatedrop.profile.model.PhoneNumber;
 
 import java.util.List;
 
-public class UserContact {
+public class UserPublicContact {
     private String contactType;
     private String name;
     private String email;
     private List<PhoneNumber> phoneNumbers;
 
-    public UserContact() {
+    public UserPublicContact() {
 
     }
 
-    public UserContact(String contactType, String name, String email, List<PhoneNumber> phoneNumbers) {
+    public UserPublicContact(String contactType, String name, String email, List<PhoneNumber> phoneNumbers) {
         this.contactType = contactType;
         this.name = name;
         this.email = email;

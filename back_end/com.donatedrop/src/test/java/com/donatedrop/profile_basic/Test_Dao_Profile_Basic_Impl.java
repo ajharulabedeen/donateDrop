@@ -159,7 +159,7 @@ public class Test_Dao_Profile_Basic_Impl {
     public void test4_findOneByUser() {
 //        String userID = "16";
         String userID = getUserID();
-        ProfileBasic profileBasic = dao_Profile_Basic_I.findOneByUser(userID);
+        ProfileBasic profileBasic = dao_Profile_Basic_I.findOneByUserIDWithChild(userID);
         System.out.println("\nTest : \n" + profileBasic + "\n\n");
         System.out.println("\nTest : \n" + profileBasic.getPhone_number().toString() + "\n\n");
         if (profileBasic != null) {
@@ -210,7 +210,7 @@ public class Test_Dao_Profile_Basic_Impl {
         Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
         //have to do more verification. by calling the full app.
         //refactor : stop child loading, need to create new method to get only basics.
-        ProfileBasic profileBasicSaved = dao_Profile_Basic_I.findOneByUser(userID);
+        ProfileBasic profileBasicSaved = dao_Profile_Basic_I.findOneByUserIDWithChild(userID);
         Assert.assertEquals(profileBasicNew.getName(), profileBasicSaved.getName());
         Assert.assertEquals(profileBasicNew.getBirthDate(), profileBasicSaved.getBirthDate());
         Assert.assertEquals(profileBasicNew.getCare_of(), profileBasicSaved.getCare_of());
@@ -243,7 +243,7 @@ public class Test_Dao_Profile_Basic_Impl {
         System.out.println("\n\n" + result + "\n\n");
         Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
 
-        Address addressPresentSaved = dao_Profile_Basic_I.findOneByUser(userID).getAddress().stream()
+        Address addressPresentSaved = dao_Profile_Basic_I.findOneByUserIDWithChild(userID).getAddress().stream()
                 .filter(address -> AddressType.PRESENT.toString().equals(address.getType()))
                 .findAny()
                 .orElse(null);
@@ -271,7 +271,7 @@ public class Test_Dao_Profile_Basic_Impl {
         System.out.println("\n\n" + result + "\n\n");
         Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
 
-        Address addressPermanentSaved = dao_Profile_Basic_I.findOneByUser(userID).getAddress().stream()
+        Address addressPermanentSaved = dao_Profile_Basic_I.findOneByUserIDWithChild(userID).getAddress().stream()
                 .filter(address -> AddressType.PERMANENT.toString().equals(address.getType()))
                 .findAny()
                 .orElse(null);
@@ -291,7 +291,7 @@ public class Test_Dao_Profile_Basic_Impl {
         System.out.println("\n\n" + result + "\n\n");
         Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
         PhoneNumber phoneNumberSaved
-                = dao_Profile_Basic_I.findOneByUser(userID)
+                = dao_Profile_Basic_I.findOneByUserIDWithChild(userID)
                 .getPhone_number()
                 .stream()
                 .filter(p -> phoneNumberNew.getNumber().equals(p.getNumber()))
@@ -311,7 +311,7 @@ public class Test_Dao_Profile_Basic_Impl {
         String userID = getUserID();
         try {
             String phoneNumberID = dao_Profile_Basic_I
-                    .findOneByUser(userID)
+                    .findOneByUserIDWithChild(userID)
                     .getPhone_number()
                     .get(0)
                     .getId()
@@ -323,7 +323,7 @@ public class Test_Dao_Profile_Basic_Impl {
             System.out.println("\n\n" + result + "\n\n");
             Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
             PhoneNumber phoneNumberSaved
-                    = dao_Profile_Basic_I.findOneByUser(userID)
+                    = dao_Profile_Basic_I.findOneByUserIDWithChild(userID)
                     .getPhone_number()
                     .stream()
                     .filter(p -> phoneNumberID.equals(p.getId().toString()))

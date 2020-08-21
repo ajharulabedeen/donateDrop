@@ -193,7 +193,7 @@ public class Test_Controller_Basic extends AbstractTest {
         Assert.assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
         //have to do more verification. by calling the full app.
         //refactor : stop child loading, need to create new method to get only basics.
-        ProfileBasic profileBasicSaved = dao_Profile_Basic_I.findOneByUser(userID);
+        ProfileBasic profileBasicSaved = dao_Profile_Basic_I.findOneByUserIDWithChild(userID);
         Assert.assertEquals(profileBasicNew.getName(), profileBasicSaved.getName());
         Assert.assertEquals(profileBasicNew.getBirthDate(), profileBasicSaved.getBirthDate());
         Assert.assertEquals(profileBasicNew.getCare_of(), profileBasicSaved.getCare_of());

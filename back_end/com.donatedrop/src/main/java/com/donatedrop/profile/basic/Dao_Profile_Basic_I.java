@@ -53,9 +53,9 @@ public interface Dao_Profile_Basic_I {
     /**
      * @param userId where('user_id', $userId)->first();.
      * @return ProfileBasic here one profile basic will be returned.
-     * @apiNote no child will be returned.
+     * @apiNote with child will be returned. null for if no profile found.
      */
-    public ProfileBasic findOneByUser(String userId);
+    public ProfileBasic findOneByUserIDWithChild(String userId);
 
     /**
      * @param userId
