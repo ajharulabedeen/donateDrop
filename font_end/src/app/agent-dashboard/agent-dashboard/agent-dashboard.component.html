@@ -1,61 +1,67 @@
 <!--<h1 align="center" class="jumbotron">-->
-<h5 align="center" style="font-size: 50px;">
+<h5 align="left" style="font-size: 50px;">
   <span class="text-danger"><b style="color: limegreen">Donate</b>DROP</span>
   <span>|</span>
   <span class="logo text-teal">Agent Dashboard</span>
+  <button class="btn btn-primary">Donner Request Managemrent</button>
+  <button class="btn btn-danger">Blood Request Managemrent</button>
 </h5>
 
-<div align="center" class="tab">
-  <button class="tablinks" (click)="tabChange(event, 'request_review')">Review</button>
-  <button class="tablinks" (click)="tabChange(event, 'accepted')">Accepted</button>
-  <button class="tablinks" (click)="tabChange(event, 'rejected')">Rejected</button>
-  <button class="tablinks" (click)="tabChange(event, 'removed')">Removed</button>
+<!--start : blood request manage-->
+<div>
+  <div align="center" class="tab">
+    <button class="tablinks" (click)="tabChange(event, 'request_review')">Review</button>
+    <button class="tablinks" (click)="tabChange(event, 'accepted')">Accepted</button>
+    <button class="tablinks" (click)="tabChange(event, 'rejected')">Rejected</button>
+    <button class="tablinks" (click)="tabChange(event, 'removed')">Removed</button>
+  </div>
+  <div align="center" id="request_review" class="tabcontent">
+    <app-agent-dashboard-review
+      [pageHeader]="headerReview"
+      [statusType]="0"
+      [buttonReject]="true"
+      [buttonApprove]="true"
+      [modalIDAgent]="0"
+      [modalIDDonner]="01"
+    >
+    </app-agent-dashboard-review>
+  </div>
+  <div align="center" id="accepted" class="tabcontent">
+    <!--<app-agent-dashboard-accepted></app-agent-dashboard-accepted>-->
+    <app-agent-dashboard-review
+      [pageHeader]="headerAccepted"
+      [statusType]="ACCEPTED"
+      [buttonRemove]="true"
+      [modalIDAgent]="ACCEPTED"
+      [modalIDDonner]="ACCEPTED_ID"
+    >
+    </app-agent-dashboard-review>
+  </div>
+  <div align="center" id="rejected" class="tabcontent">
+    <!--<app-agent-dashboard-rejected></app-agent-dashboard-rejected>-->
+    <app-agent-dashboard-review
+      [pageHeader]="headerRejected"
+      [statusType]="REJECTED"
+      [buttonApprove]="true"
+      [modalIDAgent]="REJECTED"
+      [modalIDDonner]="REJECTED_ID"
+    >
+    </app-agent-dashboard-review>
+  </div>
+  <div align="center" id="removed" class="tabcontent">
+    <!--<app-agent-dashboard-removed></app-agent-dashboard-removed>-->
+    <app-agent-dashboard-review
+      [pageHeader]="headerRemove"
+      [statusType]="REMOVE"
+      [buttonApprove]="true"
+      [modalIDAgent]="REMOVE"
+      [modalIDDonner]="REMOVE_ID"
+    >
+    </app-agent-dashboard-review>
+  </div>
 </div>
+<!--end : blood request manage-->
 
-<div align="center" id="request_review" class="tabcontent">
-  <app-agent-dashboard-review
-    [pageHeader]="headerReview"
-    [statusType]="0"
-    [buttonReject]="true"
-    [buttonApprove]="true"
-    [modalIDAgent]="0"
-    [modalIDDonner]="01"
-  >
-  </app-agent-dashboard-review>
-</div>
-<div align="center" id="accepted" class="tabcontent">
-  <!--<app-agent-dashboard-accepted></app-agent-dashboard-accepted>-->
-  <app-agent-dashboard-review
-    [pageHeader]="headerAccepted"
-    [statusType]="ACCEPTED"
-    [buttonRemove]="true"
-    [modalIDAgent]="ACCEPTED"
-    [modalIDDonner]="ACCEPTED_ID"
-  >
-  </app-agent-dashboard-review>
-</div>
-<div align="center" id="rejected" class="tabcontent">
-  <!--<app-agent-dashboard-rejected></app-agent-dashboard-rejected>-->
-  <app-agent-dashboard-review
-    [pageHeader]="headerRejected"
-    [statusType]="REJECTED"
-    [buttonApprove]="true"
-    [modalIDAgent]="REJECTED"
-    [modalIDDonner]="REJECTED_ID"
-  >
-  </app-agent-dashboard-review>
-</div>
-<div align="center" id="removed" class="tabcontent">
-  <!--<app-agent-dashboard-removed></app-agent-dashboard-removed>-->
-  <app-agent-dashboard-review
-    [pageHeader]="headerRemove"
-    [statusType]="REMOVE"
-    [buttonApprove]="true"
-    [modalIDAgent]="REMOVE"
-    [modalIDDonner]="REMOVE_ID"
-  >
-  </app-agent-dashboard-review>
-</div>
 
 
 
