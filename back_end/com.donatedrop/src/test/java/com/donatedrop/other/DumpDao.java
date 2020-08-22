@@ -326,6 +326,22 @@ public class DumpDao {
         System.out.println(list.get(0).intValue());
     }
 
+    public List<AgentRequest> getAgentRequest(int strat, int max, String status) {
+        String sql = "SELECT * FROM `agent_request` WHERE status='" + status + "'";
+        return entityManager.createNativeQuery(sql, AgentRequest.class)
+                .setFirstResult(strat)
+                .setMaxResults(max)
+                .getResultList();
+    }
+
+    public List<DonnerRequestToAgent> getDonnerOfAAgent(int start, int max, String agentUserID) {
+        String sql = "SELECT * FROM `request_donner_to_agent` WHERE user_id_agent='" + agentUserID + "'";
+        return entityManager.createNativeQuery(sql, DonnerRequestToAgent.class)
+                .setFirstResult(start)
+                .setMaxResults(max)
+                .getResultList();
+    }
+
     //    start : no need :
     public List<AgentRequestToReview> getAllAgentRequestReviewPhoneNumber(int start, int max, String column, String key) {
 //        String q = "SELECT * FROM `agent_request_review`";

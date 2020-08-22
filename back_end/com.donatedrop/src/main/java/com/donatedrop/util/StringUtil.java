@@ -29,4 +29,5 @@ public class StringUtil {
     public static final String DELETE = "DELETED";
     public static final String PHONENUMBER = "phonenumber";
     public static final String ADRESS = "address";
+    public static final String ACCEPT = "ACCEPT";
 }
