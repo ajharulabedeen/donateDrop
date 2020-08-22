@@ -21,6 +21,7 @@ import static org.junit.Assert.assertNotNull;
 
 
 import java.util.Map;
+import java.util.Random;
 
 @SpringBootTest
 public class Test_Dao_DonnerAssign_Impl {
@@ -33,8 +34,9 @@ public class Test_Dao_DonnerAssign_Impl {
 
     @Test
     public void testSaveDonnerAssingment() {
+        Random random = new Random();
         String agentUserID = dumpDao.getAgentRequest(0, 100, StringUtil.ACCEPT)
-                .get(0).getUserID();
+                .get(random.nextInt(10)).getUserID();
         String donnerUserID = dumpDao.getDonnerOfAAgent(0, 100, agentUserID).get(0).getUserIdDonner();
 
         DonnerAssingment donnerAssingment = new DonnerAssingment();
@@ -45,7 +47,13 @@ public class Test_Dao_DonnerAssign_Impl {
 //        Map<String, String> result = null;
         System.out.println("\n" + result + "\n");
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+    }
 
+    @Test
+    public void testFindOneByID() {
+        DonnerAssingment donnerAssingment = dao_donnerAssign_i.findOne("21440");
+        System.out.println(donnerAssingment.toString());
+        assertNotNull(donnerAssingment);
     }
 
 

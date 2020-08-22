@@ -29,6 +29,7 @@ public class Dao_DonnerAssign_Impl implements Dao_DonnerAssign_I {
             entityManager.persist(donnerAssingment);
             result.put(StringUtil.STATUS, StringUtil.OK);
             result.put(StringUtil.MESSAGE, StringUtil.SAVE);
+            result.put(StringUtil.ID, donnerAssingment.getId().toString());
         } catch (org.springframework.dao.DataIntegrityViolationException e) {
             result.put(StringUtil.STATUS, StringUtil.FAIL);
             result.put(StringUtil.MESSAGE, StringUtil.DUPLICATE);
@@ -40,6 +41,10 @@ public class Dao_DonnerAssign_Impl implements Dao_DonnerAssign_I {
             result.put(StringUtil.MESSAGE, StringUtil.UNKNOWN);
         }
         return result;
+    }
+
+    public DonnerAssingment findOne(String donnerAssingmentID) {
+        return entityManager.find(DonnerAssingment.class, new Long(donnerAssingmentID));
     }
 
 

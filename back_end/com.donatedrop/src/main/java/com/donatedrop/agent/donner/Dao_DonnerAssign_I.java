@@ -8,9 +8,10 @@ import java.util.Map;
 public interface Dao_DonnerAssign_I {
     public Map<String, String> save(DonnerAssingment donnerAssingment);
 
+    public DonnerAssingment findOne(String donnerAssingment);
+
     public Map<String, String> delete(String donnerAssingmentID);
 
     public Map<String, String> update(DonnerAssingment donnerAssingment);
 
-//    public List
 }
