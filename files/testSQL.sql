@@ -1,3 +1,67 @@
+BEGIN
+    DECLARE finished INTEGER DEFAULT 0;
+    DECLARE emailAddress VARCHAR(100) DEFAULT "";
+    -- declare cursor for employee email
+    DECLARE curEmail CURSOR FOR SELECT user_id FROM profilebasic WHERE profilebasic.blood_Group = bG;
+    -- declare NOT FOUND handler
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = 1;
+    OPEN curEmail;
+    	getEmail: LOOP 
+    		FETCH curEmail INTO emailAddress;
+        		IF finished = 1 
+        	THEN LEAVE getEmail;
+		END IF;
+        	-- build email list
+        	SELECT history.*, MAX(DATE), COUNT(*) as countDonation FROM history WHERE history.user_id = emailAddress;
+        	-- SELECT emailAddress;
+		END LOOP getEmail;
+		CLOSE curEmail;
+END
+
+
+
+SELECT profilebasic.name, history.user_id, MAX(date) FROM `history`,profilebasic WHERE history.user_id IN (SELECT user_id from profilebasic WHERE blood_Group='A-') GROUP BY history.user_id
+
+
+SELECT
+	profilebasic.profile_id,
+    profilebasic.name,
+    profilebasic.available,
+    profilebasic.blood_Group,
+    '2020-07-04' as needDate,
+    MAX(history.date),
+    DATEDIFF('2020-10-04',MAX(history.date)) as lastGiven
+FROM
+    profilebasic,
+    history
+WHERE
+    history.user_id = profilebasic.user_id AND profilebasic.blood_Group = 'A-'
+GROUP BY
+    history.user_id
+	
+	
+SELECT
+    profilebasic.profile_id,
+    profilebasic.name,
+    profilebasic.available,
+    profilebasic.blood_Group,
+    '2020-07-04' AS needDate,
+    MAX(history.date),
+    (
+        DATEDIFF('2020-10-04', MAX(history.date))
+    ) AS lastGiven
+FROM
+    profilebasic,
+    history
+WHERE
+    history.user_id = profilebasic.user_id AND profilebasic.blood_Group = 'A-' AND profilebasic.available = '0' AND profilebasic.user_id NOT IN ('4545','55454')
+GROUP BY
+    history.user_id
+HAVING
+    DATEDIFF('2020-10-04', MAX(history.date)) >= 60	
+	
+
+--------------------------------------------------------------------
 127.0.0.1/drop_new/history/		http://localhost/phpmyadmin/tbl_sql.php?db=drop_new&table=history
  Showing rows 0 - 24 (791 total, Query took 0.0568 seconds.)
 

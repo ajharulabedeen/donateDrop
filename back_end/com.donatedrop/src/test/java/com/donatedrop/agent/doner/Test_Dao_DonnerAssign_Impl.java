@@ -4,6 +4,9 @@ import com.donatedrop.agent.donner.Dao_AgentDonner_I;
 import com.donatedrop.agent.donner.Dao_DonnerAssign_I;
 import com.donatedrop.agent.donner.models.DonnerAssingment;
 import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
+import com.donatedrop.agent.donner.models.RequestSearchDonnerAssing;
+import com.donatedrop.agent.donner.models.RequestSearchReview;
+import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.other.DumpDao;
 import com.donatedrop.other.DumpData;
 import com.donatedrop.util.StringUtil;
@@ -77,6 +80,19 @@ public class Test_Dao_DonnerAssign_Impl {
         Map<String, String> result = dao_donnerAssign_i.delete("21438");
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
         System.out.println(result);
+    }
+
+    @Test
+    public void testGetAssingments() {
+        RequestSearchDonnerAssing requestSearchReview =
+                new RequestSearchDonnerAssing(0, 5, "phonenumber", "%%", StatusType.ZERO);
+//                new RequestSearchReview(0, 5, "phonenumber", "%013%", StatusType.ZERO);//2
+        // new RequestSearchReview(0, 20, "email", "%%", StatusType.ZERO);
+        requestSearchReview.setUserIdAgent("11186");
+        System.out.println("\nrequestSearchReview : " + requestSearchReview.toString());
+        dao_donnerAssign_i.getAssingments(requestSearchReview).forEach(donnerToAgentRequestReview -> {
+            System.out.println(donnerToAgentRequestReview.toString());
+        });
     }
 
 }

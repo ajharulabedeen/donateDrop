@@ -7,6 +7,7 @@ package com.donatedrop.agent.donner.models;
 
 import com.donatedrop.models.Address;
 import com.donatedrop.profile.model.PhoneNumber;
+import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -47,10 +48,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class DonnerAssingShow implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "donner_assingment_id")
     private long donnerAssingmentId;
+
+
     @Size(max = 255)
     @Column(name = "agent_id")
     private String agentId;
