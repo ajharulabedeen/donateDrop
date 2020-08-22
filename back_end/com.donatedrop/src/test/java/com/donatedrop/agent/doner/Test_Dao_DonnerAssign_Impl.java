@@ -34,9 +34,10 @@ public class Test_Dao_DonnerAssign_Impl {
 
     @Test
     public void testSaveDonnerAssingment() {
+//        for (int x = 0; x < 10; x++) {
         Random random = new Random();
         String agentUserID = dumpDao.getAgentRequest(0, 100, StringUtil.ACCEPT)
-                .get(random.nextInt(10)).getUserID();
+                .get(random.nextInt(7)).getUserID();
         String donnerUserID = dumpDao.getDonnerOfAAgent(0, 100, agentUserID).get(0).getUserIdDonner();
 
         DonnerAssingment donnerAssingment = new DonnerAssingment();
@@ -47,6 +48,8 @@ public class Test_Dao_DonnerAssign_Impl {
 //        Map<String, String> result = null;
         System.out.println("\n" + result + "\n");
         assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+//        } //for (int x = 0; x < 10; x++) {
+
     }
 
     @Test
