@@ -1,8 +1,10 @@
 package com.donatedrop.agent.donner;
 
+import com.donatedrop.agent.donner.models.DonnerAssingShow;
 import com.donatedrop.agent.donner.models.DonnerAssingment;
 import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
 
+import java.util.List;
 import java.util.Map;
 
 public interface Dao_DonnerAssign_I {
@@ -14,4 +16,5 @@ public interface Dao_DonnerAssign_I {
 
     public Map<String, String> update(DonnerAssingment donnerAssingment);
 
+//    public List<DonnerAssingShow> getAssingments();
 }
