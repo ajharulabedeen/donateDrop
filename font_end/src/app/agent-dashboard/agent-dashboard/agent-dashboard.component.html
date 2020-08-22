@@ -3,12 +3,15 @@
   <span class="text-danger"><b style="color: limegreen">Donate</b>DROP</span>
   <span>|</span>
   <span class="logo text-teal">Agent Dashboard</span>
-  <button class="btn btn-primary">Donner Request Managemrent</button>
-  <button class="btn btn-danger">Blood Request Managemrent</button>
+  <button class="btn btn-primary" (click)="bloodRequest=false">Donner
+    Request
+    Managemrent
+  </button>
+  <button class="btn btn-danger" (click)="bloodRequest=true">Blood Request Managemrent</button>
 </h5>
 
 <!--start : blood request manage-->
-<div>
+<div *ngIf="!bloodRequest">
   <div align="center" class="tab">
     <button class="tablinks" (click)="tabChange(event, 'request_review')">Review</button>
     <button class="tablinks" (click)="tabChange(event, 'accepted')">Accepted</button>
@@ -59,6 +62,10 @@
     >
     </app-agent-dashboard-review>
   </div>
+</div>
+
+<div *ngIf="bloodRequest">
+  <h1>Blood Request!</h1>
 </div>
 <!--end : blood request manage-->
 

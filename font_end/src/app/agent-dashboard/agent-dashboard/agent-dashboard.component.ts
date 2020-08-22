@@ -8,20 +8,22 @@ import {Component, OnInit} from '@angular/core';
 export class AgentDashboardComponent implements OnInit {
 
   // start-new : reusable component
-  REJECTED  = 'REJECT';
-  ACCEPTED  = 'ACCEPT';
-  REMOVE    = 'REMOVE';
+  REJECTED = 'REJECT';
+  ACCEPTED = 'ACCEPT';
+  REMOVE = 'REMOVE';
 
   //modal id : note for the donner.
   REJECTED_ID = 'REJECT_MODAL';
   ACCEPTED_ID = 'ACCEPT_MODAL';
-  REMOVE_ID   = 'REMOVE_MODAL';
+  REMOVE_ID = 'REMOVE_MODAL';
 
 
-  headerAccepted  = 'Request Accepted';
-  headerRejected  = 'Request Rejected';
-  headerRemove    = 'Request Remove';
-  headerReview    = 'Request to Review';
+  headerAccepted = 'Request Accepted';
+  headerRejected = 'Request Rejected';
+  headerRemove = 'Request Remove';
+  headerReview = 'Request to Review';
+
+  bloodRequest = false;
 
 // end-new : reusable component
 
@@ -39,6 +41,7 @@ export class AgentDashboardComponent implements OnInit {
 
   // start : for tab in font end.
   public tabChange(evt, tabName) {
+    console.log('Tab Change!');
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName('tabcontent');
     for (i = 0; i < tabcontent.length; i++) {
@@ -54,7 +57,12 @@ export class AgentDashboardComponent implements OnInit {
     // console.log(evt.currentTarget.className);
     // evt.currentTarget.style.backgroundColor = 'pink';
   }
+
   // end : for tab in font end.
 
 
+    // rquestManagementButton() {
+    //   this.tabChange(event, 'request_review');
+    //   this.bloodRequest = false;
+    // }
 }
