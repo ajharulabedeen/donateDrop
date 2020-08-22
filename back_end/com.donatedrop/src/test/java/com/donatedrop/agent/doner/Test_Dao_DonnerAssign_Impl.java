@@ -56,5 +56,17 @@ public class Test_Dao_DonnerAssign_Impl {
         assertNotNull(donnerAssingment);
     }
 
+    @Test
+    public void testUpdate() {
+        DonnerAssingment donnerAssingmentOld = dao_donnerAssign_i.findOne("21440");
+        String newNote = "By emial confirmation--------------!";
+        donnerAssingmentOld.setAssingNote(newNote);
+        Map<String, String> result = dao_donnerAssign_i.update(donnerAssingmentOld);
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        DonnerAssingment donnerAssingmentNew = dao_donnerAssign_i.findOne("21440");
+        assertEquals(donnerAssingmentNew.getAssingNote(), newNote);
+        System.out.println(donnerAssingmentOld.toString());
+        System.out.println(donnerAssingmentNew.toString());
+    }
 
 }

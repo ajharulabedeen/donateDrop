@@ -1,6 +1,7 @@
 package com.donatedrop.agent.donner;
 
 import com.donatedrop.agent.donner.models.DonnerAssingment;
+import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
 import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.profile.basic.Dao_Profile_Basic_I;
 import com.donatedrop.util.DateUtil;
@@ -53,7 +54,24 @@ public class Dao_DonnerAssign_Impl implements Dao_DonnerAssign_I {
     }
 
     public Map<String, String> update(DonnerAssingment donnerAssingment) {
-        return null;
+        Map<String, String> result = new HashMap<>();
+        try {
+            DonnerAssingment donnerAssingmentOld = entityManager.find(DonnerAssingment.class,
+                    new Long(donnerAssingment.getId()));
+            if (donnerAssingmentOld != null) {
+                donnerAssingmentOld.setDonnerId(donnerAssingment.getDonnerId());
+                donnerAssingmentOld.setPostId(donnerAssingment.getPostId());
+                donnerAssingmentOld.setAssingNote(donnerAssingment.getAssingNote());
+                donnerAssingmentOld.setAssingDate(donnerAssingment.getAssingDate());
+                donnerAssingmentOld.setNeedDate(donnerAssingment.getNeedDate());
+                donnerAssingmentOld.setBloodManageStatus(donnerAssingment.getBloodManageStatus());
+                entityManager.merge(donnerAssingment);
+                result.put(StringUtil.STATUS, StringUtil.OK);
+            }
+        } catch (Exception e) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+        }
+        return result;
     }
 
 //    public List
