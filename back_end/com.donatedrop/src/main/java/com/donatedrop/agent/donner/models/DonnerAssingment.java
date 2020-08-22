@@ -45,6 +45,9 @@ public class DonnerAssingment implements Serializable {
     @Column(name = "need_date")
     private String needDate;
 
+    @Column(name = "blood_manage_status")
+    private String bloodManageStatus;
+
     public DonnerAssingment() {
 
     }
@@ -118,6 +121,14 @@ public class DonnerAssingment implements Serializable {
         this.needDate = needDate;
     }
 
+    public String getBloodManageStatus() {
+        return bloodManageStatus;
+    }
+
+    public void setBloodManageStatus(String bloodManageStatus) {
+        this.bloodManageStatus = bloodManageStatus;
+    }
+
     @Override
     public String toString() {
         return "DonnerAssingment{" +
@@ -128,6 +139,7 @@ public class DonnerAssingment implements Serializable {
                 ", assingNote='" + assingNote + '\'' +
                 ", assingDate='" + assingDate + '\'' +
                 ", needDate='" + needDate + '\'' +
+                ", bloodManageStatus='" + bloodManageStatus + '\'' +
                 '}';
     }
 }

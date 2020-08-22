@@ -1,5 +1,16 @@
 package com.donatedrop.agent.donner;
 
-public class Dao_DonnerAssign_I {
+import com.donatedrop.agent.donner.models.DonnerAssingment;
+import com.donatedrop.agent.donner.models.DonnerRequestToAgent;
 
+import java.util.Map;
+
+public interface Dao_DonnerAssign_I {
+    public Map<String, String> save(DonnerAssingment donnerAssingment);
+
+    public Map<String, String> delete(String donnerAssingmentID);
+
+    public Map<String, String> update(DonnerAssingment donnerAssingment);
+
+//    public List
 }
