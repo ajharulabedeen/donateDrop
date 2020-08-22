@@ -105,6 +105,7 @@ public class Dao_DonnerAssign_Impl implements Dao_DonnerAssign_I {
         List<DonnerAssingShow> donnerAssingmentList = new ArrayList<>();
         String q = "";
         try {
+//            search in one-to-many not working. question posted in stackOverFlow : https://stackoverflow.com/questions/63541626/
             if (column.equals(StringUtil.PHONENUMBER)) {
                 q = "SELECT DISTINCT donner_assing_show.* FROM donner_assing_show, phonenumber "
                         + "WHERE donner_assing_show.profile_id = phonenumber.profile_id "
@@ -130,7 +131,8 @@ public class Dao_DonnerAssign_Impl implements Dao_DonnerAssign_I {
             } else {
                 q = "SELECT * FROM `donner_assing_show` WHERE `donner_assing_show`.`"
                         + column + "` LIKE '" + key + "'"
-                        + " AND `donner_assing_show`.`blood_manage_status`='" + status + "'";
+                        + " AND `donner_assing_show`.`blood_manage_status`='" + status + "'"
+                        + " AND `donner_assing_show`.`agent_id`='" + agentID + "'";
             }
             donnerAssingmentList
                     = entityManager.createNativeQuery(q, DonnerAssingShow.class)

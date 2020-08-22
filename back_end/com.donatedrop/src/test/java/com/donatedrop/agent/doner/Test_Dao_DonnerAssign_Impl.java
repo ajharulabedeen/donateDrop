@@ -41,7 +41,8 @@ public class Test_Dao_DonnerAssign_Impl {
         Random random = new Random();
         String agentUserID = dumpDao.getAgentRequest(0, 100, StringUtil.ACCEPT)
                 .get(random.nextInt(7)).getUserID();
-        String donnerUserID = dumpDao.getDonnerOfAAgent(0, 100, agentUserID).get(0).getUserIdDonner();
+        String donnerUserID
+                = dumpDao.getDonnerOfAAgent(0, 100, agentUserID).get(random.nextInt(15)).getUserIdDonner();
 
         DonnerAssingment donnerAssingment = new DonnerAssingment();
         donnerAssingment.setAgentId(agentUserID);
@@ -85,9 +86,9 @@ public class Test_Dao_DonnerAssign_Impl {
     @Test
     public void testGetAssingments() {
         RequestSearchDonnerAssing requestSearchReview =
-                new RequestSearchDonnerAssing(0, 5, "phonenumber", "%%", StatusType.ZERO);
-//                new RequestSearchReview(0, 5, "phonenumber", "%013%", StatusType.ZERO);//2
-        // new RequestSearchReview(0, 20, "email", "%%", StatusType.ZERO);
+//                new RequestSearchDonnerAssing(0, 5, "phonenumber", "%%", StatusType.ZERO);
+//                new RequestSearchDonnerAssing(0, 5, "phonenumber", "%013%", StatusType.ZERO);//2
+                new RequestSearchDonnerAssing(0, 20, "email", "%103%", StatusType.ZERO);
         requestSearchReview.setUserIdAgent("11186");
         System.out.println("\nrequestSearchReview : " + requestSearchReview.toString());
         dao_donnerAssign_i.getAssingments(requestSearchReview).forEach(donnerToAgentRequestReview -> {

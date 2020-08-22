@@ -115,18 +115,6 @@ public class DonnerAssingShow implements Serializable {
     @Column(name = "user_id")
     private String userId;
 
-    @OneToMany
-    //    @OneToMany(fetch = FetchType.EAGER)
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @JoinColumn(name = "profile_id")
-    private List<PhoneNumber> phone_number;
-
-    //    @OneToMany
-    @OneToMany(fetch = FetchType.EAGER)
-//    @LazyCollection(LazyCollectionOption.FALSE)
-    @JoinColumn(name = "profile_id")
-    private List<Address> addressList;
-
 
     public DonnerAssingShow() {
     }
@@ -291,22 +279,6 @@ public class DonnerAssingShow implements Serializable {
         this.userId = userId;
     }
 
-    public List<PhoneNumber> getPhone_number() {
-        return phone_number;
-    }
-
-    public void setPhone_number(List<PhoneNumber> phone_number) {
-        this.phone_number = phone_number;
-    }
-
-    public List<Address> getAddressList() {
-        return addressList;
-    }
-
-    public void setAddressList(List<Address> addressList) {
-        this.addressList = addressList;
-    }
-
     @Override
     public String toString() {
         return "DonnerAssingShow{" +
@@ -330,8 +302,6 @@ public class DonnerAssingShow implements Serializable {
                 ", profession='" + profession + '\'' +
                 ", religion='" + religion + '\'' +
                 ", userId='" + userId + '\'' +
-                ", phone_number=" + phone_number +
-                ", addressList=" + addressList +
                 '}';
     }
 }
