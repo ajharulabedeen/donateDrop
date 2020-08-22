@@ -69,4 +69,11 @@ public class Test_Dao_DonnerAssign_Impl {
         System.out.println(donnerAssingmentNew.toString());
     }
 
+    @Test
+    public void testDelete() {
+        Map<String, String> result = dao_donnerAssign_i.delete("21438");
+        assertEquals(StringUtil.OK, result.get(StringUtil.STATUS));
+        System.out.println(result);
+    }
+
 }

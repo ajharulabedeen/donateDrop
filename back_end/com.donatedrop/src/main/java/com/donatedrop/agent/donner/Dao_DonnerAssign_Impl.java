@@ -48,9 +48,20 @@ public class Dao_DonnerAssign_Impl implements Dao_DonnerAssign_I {
         return entityManager.find(DonnerAssingment.class, new Long(donnerAssingmentID));
     }
 
-
     public Map<String, String> delete(String donnerAssingmentID) {
-        return null;
+        Map<String, String> result = new HashMap<>();
+        try {
+            DonnerAssingment donnerAssingment
+                    = entityManager.find(DonnerAssingment.class, new Long(donnerAssingmentID));
+            entityManager.remove(donnerAssingment);
+            result.put(StringUtil.STATUS, StringUtil.OK);
+            result.put(StringUtil.MESSAGE, StringUtil.DELETE);
+        } catch (Exception e) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+            result.put(StringUtil.MESSAGE, StringUtil.UNKNOWN);
+            e.printStackTrace();
+        }
+        return result;
     }
 
     public Map<String, String> update(DonnerAssingment donnerAssingment) {
