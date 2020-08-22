@@ -13,11 +13,14 @@ import com.donatedrop.models.Address;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.security.models.User;
 import com.donatedrop.security.repo.UserRepository;
+import org.hibernate.procedure.ProcedureOutputs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
+import javax.persistence.ParameterMode;
 import javax.persistence.PersistenceContext;
+import javax.persistence.StoredProcedureQuery;
 import javax.transaction.Transactional;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -297,8 +300,30 @@ public class DumpDao {
             history.setDate(DumpData.getDate());
             entityManager.merge(history);
         });
+    }
 
+    //    public void lastBloodDonated(String userID, String needDate) {
+    @Transactional
+    public void lastBloodDonated() {
+        StoredProcedureQuery query = entityManager.createStoredProcedureQuery("lastBloodDonated")
+                .registerStoredProcedureParameter("user_id", String.class, ParameterMode.IN)
+                .registerStoredProcedureParameter("needDate", String.class, ParameterMode.IN);
 
+        query.setParameter("user_id", "11161");
+        query.setParameter("needDate", "2019-12-30");
+        List<BigInteger> list = new ArrayList<>();
+        try {
+            // Execute query
+            query.execute();
+            list = query.getResultList();
+        } finally {
+            try {
+                query.unwrap(ProcedureOutputs.class).release();
+            } catch (Exception e) {
+            }
+        }
+        BigInteger bigInteger = (BigInteger) list.get(0);
+        System.out.println(list.get(0).intValue());
     }
 
     //    start : no need :

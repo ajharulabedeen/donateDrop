@@ -68,4 +68,9 @@ public class Test_Agent {
         System.out.println(userPublicContact.toString());
     }
 
+    @Test
+    public  void lastBloodDonated(){
+        dumpDao.lastBloodDonated();
+    }
+
 }
