@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<!-- saved from url=(0075)http://roufid.com/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1/ -->
+<html class="js" lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script async="" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/saved_resource"></script><script async="" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/share"></script><style id="stndz-style"></style>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid</title>
+
+	<link rel="pingback" href="http://roufid.com/xmlrpc.php">
+
+<script async="" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/analytics.js.download"></script><script async="" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/f.txt"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-5842786856906684",
+    enable_page_level_ads: true
+  });
+</script>
+
+	
+	  <script>document.documentElement.className = document.documentElement.className.replace("no-js","js");</script>
+
+<!-- This site is optimized with the Yoast SEO plugin v5.5.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="Step by step tutorial to learn 3 ways to call a database stored procedure with Hibernate according the JPA 2.1 specifications. With example and source code">
+<link rel="canonical" href="http://roufid.com/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid">
+<meta property="og:description" content="Step by step tutorial to learn 3 ways to call a database stored procedure with Hibernate according the JPA 2.1 specifications. With example and source code">
+<meta property="og:url" content="http://roufid.com/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1/">
+<meta property="og:site_name" content="Roufid">
+<meta property="article:author" content="https://fr-fr.facebook.com/people/Radouane-Rfd/100006635326382">
+<meta property="article:tag" content="hibernate">
+<meta property="article:tag" content="JPA">
+<meta property="article:tag" content="PostgreSQL">
+<meta property="article:tag" content="spring-data-jpa">
+<meta property="article:section" content="Hibernate">
+<meta property="article:published_time" content="2016-12-06T09:00:56+01:00">
+<meta property="article:modified_time" content="2017-10-05T14:09:01+01:00">
+<meta property="og:updated_time" content="2017-10-05T14:09:01+01:00">
+<meta property="og:image" content="http://roufid.com/wp-content/uploads/2016/12/1uNl_IZX_400x400.png">
+<meta property="og:image:width" content="400">
+<meta property="og:image:height" content="400">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="Step by step tutorial to learn 3 ways to call a database stored procedure with Hibernate according the JPA 2.1 specifications. With example and source code">
+<meta name="twitter:title" content="3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid">
+<meta name="twitter:image" content="http://roufid.com/wp-content/uploads/2016/12/1uNl_IZX_400x400.png">
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"WebSite","@id":"#website","url":"http:\/\/roufid.com\/","name":"Roufid","potentialAction":{"@type":"SearchAction","target":"http:\/\/roufid.com\/?s={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"Person","url":"http:\/\/roufid.com\/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1\/","sameAs":[],"@id":"#person","name":"Radouane ROUFID"}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel="dns-prefetch" href="http://s0.wp.com/">
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Roufid » Feed" href="http://roufid.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Roufid » Comments Feed" href="http://roufid.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Roufid » 3 ways to call a stored procedure with Hibernate (JPA 2.1) Comments Feed" href="http://roufid.com/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1/feed/">
+<!-- This site uses the Google Analytics by MonsterInsights plugin v7.0.6 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+<script type="text/javascript" data-cfasync="false">
+	var mi_track_user      = true;
+	var mi_no_track_reason = '';
+	
+	var disableStr = 'ga-disable-UA-74319066-1';
+
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+	
+	if ( mi_track_user ) {
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+		__gaTracker('create', 'UA-74319066-1', 'auto');
+		__gaTracker('set', 'forceSSL', true);
+		__gaTracker('send','pageview');
+	} else {
+		console.log( "" );
+		(function() {
+			/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+			var noopfn = function() {
+				return null;
+			};
+			var noopnullfn = function() {
+				return null;
+			};
+			var Tracker = function() {
+				return null;
+			};
+			var p = Tracker.prototype;
+			p.get = noopfn;
+			p.set = noopfn;
+			p.send = noopfn;
+			var __gaTracker = function() {
+				var len = arguments.length;
+				if ( len === 0 ) {
+					return;
+				}
+				var f = arguments[len-1];
+				if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+					console.log( 'Not running function __gaTracker(' + arguments[0] + " ....) because you are not being tracked. " + mi_no_track_reason );
+					return;
+				}
+				try {
+					f.hitCallback();
+				} catch (ex) {
+
+				}
+			};
+			__gaTracker.create = function() {
+				return new Tracker();
+			};
+			__gaTracker.getByName = noopnullfn;
+			__gaTracker.getAll = function() {
+				return [];
+			};
+			__gaTracker.remove = noopfn;
+			window['__gaTracker'] = __gaTracker;
+					})();
+		}
+</script>
+<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/roufid.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.2.7"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="crayon-css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/crayon.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-theme-familiar-css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/familiar.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-block-library-css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="toc-screen-css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/screen.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="wpfront-scroll-top-css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/wpfront-scroll-top.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-lightbox-2.min.css-css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/lightbox.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="style-css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="responsive-css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/responsive.css" type="text/css" media="all">
+<link rel="stylesheet" id="font-awesome-css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/font-awesome.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="ot-dynamic-dynamic-output-css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/dynamic.css" type="text/css" media="all">
+<link rel="stylesheet" id="social-logos-css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/social-logos.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/jetpack.css" type="text/css" media="all">
+<script type="text/javascript" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/jquery.js.download"></script>
+<script type="text/javascript" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/jquery-migrate.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/related-posts.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/roufid.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/crayon.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","is_debug_mode":"false","download_extensions":"doc,exe,js,pdf,ppt,tgz,zip,xls","inbound_paths":"","home_url":"http:\/\/roufid.com","track_download_as":"event","internal_label":"int","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/frontend.min.js.download"></script>
+<script type="text/javascript" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/wpfront-scroll-top.min.js.download"></script>
+<script type="text/javascript" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/jquery.flexslider.min.js.download"></script>
+<link rel="https://api.w.org/" href="http://roufid.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://roufid.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://roufid.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 5.2.7">
+<link rel="shortlink" href="http://wp.me/p7e93q-iX">
+<link rel="alternate" type="application/json+oembed" href="http://roufid.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Froufid.com%2F3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1%2F">
+<script async="" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/f.txt"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-5842786856906684",
+          enable_page_level_ads: true
+     });
+</script><style type="text/css">div#toc_container {background: #f9f9f9;border: 1px solid #aaaaaa;}</style><!--[if lt IE 9]>
+<script src="http://roufid.com/wp-content/themes/anew/js/ie/html5.js"></script>
+<script src="http://roufid.com/wp-content/themes/anew/js/ie/selectivizr.js"></script>
+<![endif]-->
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		<style id="tt-easy-google-font-styles" type="text/css">p { }
+h1 { }
+h2 { }
+h3 { }
+h4 { }
+h5 { }
+h6 { }
+</style><script async="" type="text/javascript" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/count.js.download"></script><script type="text/javascript" async="" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/embed.js.download"></script><script src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/count-data.js.download"></script><link rel="prefetch" as="style" href="https://c.disquscdn.com/next/embed/styles/lounge.6525595c7a9874fa10bd041275e40f17.css"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/common.bundle.9061cdaed1273d430eb02357766a8560.js"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/lounge.bundle.2a358476e087c9a66e3dd94c39d3455a.js"><link rel="prefetch" as="script" href="https://disqus.com/next/config.js"><style>._3emE9--dark-theme .-S-tR--ff-downloader{background:rgba(30,30,30,.93);border:1px solid rgba(82,82,82,.54);box-shadow:0 4px 7px rgba(30,30,30,.55);color:#fff}._3emE9--dark-theme .-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn{background:#3d4b52}._3emE9--dark-theme .-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn:hover{background:#131415}._3emE9--dark-theme .-S-tR--ff-downloader ._10vpG--footer{background:rgba(30,30,30,.93)}._2mDEx--white-theme .-S-tR--ff-downloader{background:#fff;border:1px solid rgba(82,82,82,.54);box-shadow:0 4px 7px rgba(30,30,30,.55);color:#314c75}._2mDEx--white-theme .-S-tR--ff-downloader ._6_Mtt--header{font-weight:700}._2mDEx--white-theme .-S-tR--ff-downloader ._2dFLA--container ._2bWNS--notice{border:0;color:rgba(0,0,0,.88)}._2mDEx--white-theme .-S-tR--ff-downloader ._10vpG--footer{background:#fff}.-S-tR--ff-downloader{display:block;overflow:hidden;position:fixed;bottom:20px;right:7.1%;width:330px;height:180px;background:rgba(30,30,30,.93);border-radius:2px;color:#fff;z-index:99999999;border:1px solid rgba(82,82,82,.54);box-shadow:0 4px 7px rgba(30,30,30,.55);transition:.5s}.-S-tR--ff-downloader._3M7UQ--minimize{height:62px}.-S-tR--ff-downloader._3M7UQ--minimize .nxuu4--file-info,.-S-tR--ff-downloader._3M7UQ--minimize ._6_Mtt--header{display:none}.-S-tR--ff-downloader ._6_Mtt--header{padding:10px;font-size:17px;font-family:sans-serif}.-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn{float:right;background:#f1ecec;height:20px;width:20px;text-align:center;padding:2px;margin-top:-10px;cursor:pointer}.-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn:hover{background:#e2dede}.-S-tR--ff-downloader ._13XQ2--error{color:red;padding:10px;font-size:12px;line-height:19px}.-S-tR--ff-downloader ._2dFLA--container{position:relative;height:100%}.-S-tR--ff-downloader ._2dFLA--container .nxuu4--file-info{padding:6px 15px 0;font-family:sans-serif}.-S-tR--ff-downloader ._2dFLA--container .nxuu4--file-info div{margin-bottom:5px;width:100%;overflow:hidden}.-S-tR--ff-downloader ._2dFLA--container ._2bWNS--notice{margin-top:21px;font-size:11px}.-S-tR--ff-downloader ._10vpG--footer{width:100%;bottom:0;position:absolute;font-weight:700}.-S-tR--ff-downloader ._10vpG--footer ._2V73d--loader{-webkit-animation:n0BD1--rotation 3.5s linear forwards;animation:n0BD1--rotation 3.5s linear forwards;position:absolute;top:-120px;left:calc(50% - 35px);border-radius:50%;border:5px solid #fff;border-top-color:#a29bfe;height:70px;width:70px;display:flex;justify-content:center;align-items:center}.-S-tR--ff-downloader ._10vpG--footer ._24wjw--loading-bar{width:100%;height:18px;background:#dfe6e9;border-radius:5px}.-S-tR--ff-downloader ._10vpG--footer ._24wjw--loading-bar ._1FVu9--progress-bar{height:100%;background:#8bc34a;border-radius:5px}.-S-tR--ff-downloader ._10vpG--footer ._2KztS--status{margin-top:10px}.-S-tR--ff-downloader ._10vpG--footer ._2KztS--status ._1XilH--state{float:left;font-size:.9em;letter-spacing:1pt;text-transform:uppercase;width:100px;height:20px;position:relative}.-S-tR--ff-downloader ._10vpG--footer ._2KztS--status ._1jiaj--percentage{float:right}</style></head>
+
+<body class="post-template-default single single-post postid-1175 single-format-standard topbar-enabled chrome s1-collapse s2-collapse">
+
+<div id="wrapper">
+
+	<header id="header">
+	
+					<nav class="nav-container group" id="nav-topbar">
+				<div class="nav-toggle"><i class="fa fa-bars"></i></div>
+				<div class="nav-text"><!-- put your mobile menu text here --></div>
+				<div class="nav-wrap container"><ul id="menu-top-menu" class="nav container-inner group"><li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-169"><a href="http://roufid.com/">Home</a></li>
+<li id="menu-item-1634" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1634"><a href="http://roufid.com/category/angular/">Angular</a></li>
+<li id="menu-item-322" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-322"><a href="http://roufid.com/liferay/">Liferay</a></li>
+<li id="menu-item-321" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-321"><a href="http://roufid.com/java/">Java</a></li>
+<li id="menu-item-1282" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1282"><a href="http://roufid.com/spring/">Spring</a>
+<ul class="sub-menu" style="display: none;">
+	<li id="menu-item-1283" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1283"><a href="http://roufid.com/category/spring/spring-boot/">Spring Boot</a></li>
+</ul>
+</li>
+<li id="menu-item-1281" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1281"><a href="http://roufid.com/hibernate/">Hibernate</a></li>
+<li id="menu-item-1076" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1076"><a href="http://roufid.com/maven/">Maven</a></li>
+<li id="menu-item-328" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-328"><a href="http://roufid.com/contact/">Contact</a></li>
+</ul></div>
+				
+				<div class="container">	
+					<div class="toggle-search"><i class="fa fa-search"></i></div>
+					<div class="search-expand">
+						<div class="search-expand-inner">
+							<form method="get" class="searchform themeform" action="http://roufid.com/">
+	<div>
+		<input type="text" class="search" name="s" onblur="if(this.value==&#39;&#39;)this.value=&#39;To search type and hit enter&#39;;" onfocus="if(this.value==&#39;To search type and hit enter&#39;)this.value=&#39;&#39;;" value="To search type and hit enter">
+	</div>
+</form>						</div>
+					</div>
+				</div><!--/.container-->
+				
+			</nav><!--/#nav-topbar-->
+				
+		<div class="container">
+			<div class="pad group">
+				<p class="site-title"><a href="http://roufid.com/" rel="home"><img src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/roufid.png" alt="Roufid" scale="0"></a></p>
+				<p class="site-description">Java EE tutorials by Radouane Roufid</p>				<ul class="social-links"><li><a class="social-tooltip Facebook" title="Facebook" href="https://fr-fr.facebook.com/people/Radouane-Rfd/100006635326382" target="Array"><i class="fa fa-facebook"></i></a></li><li><a class="social-tooltip Google Plus" title="Google Plus" href="https://plus.google.com/111227047082684549283" target="Array"><i class="fa fa-google-plus"></i></a></li><li><a class="social-tooltip Linkedin" title="Linkedin" href="https://fr.linkedin.com/in/radouane-roufid-b7343499/fr" target="Array"><i class="fa fa-linkedin"></i></a></li><li><a class="social-tooltip Stackoverflow" title="Stackoverflow" href="http://stackoverflow.com/users/5131937/radouane-roufid" target="Array"><i class="fa fa-stack-overflow"></i></a></li><li><a class="social-tooltip Github" title="Github" href="https://github.com/RadouaneRoufid/" target="Array"><i class="fa fa-github"></i></a></li><li><a class="social-tooltip RSS" title="RSS" href="http://roufid.com/feed/" target="Array"><i class="fa fa-rss"></i></a></li></ul>			</div>
+		</div><!--/.container-->
+		
+	</header><!--/#header-->
+	
+	<div id="page" class="container">
+
+<div class="main group col-2cl">
+	
+	<section class="content">
+		
+		<div class="pad group">			
+		
+				
+			<article class="post-1175 post type-post status-publish format-standard has-post-thumbnail hentry category-hibernate tag-hibernate tag-jpa tag-postgresql tag-spring-data-jpa">
+			
+				<h1 class="post-title pad">3 ways to call a stored procedure with Hibernate (JPA 2.1)</h1>
+				
+				<ul class="post-meta pad group">
+					<li><a href="http://roufid.com/category/hibernate/" rel="category tag">Hibernate</a></li>
+					<li><i class="fa fa-clock-o"></i>6 Dec, 2016</li>
+					<li><a href="http://roufid.com/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1/#disqus_thread" data-disqus-identifier="1175 http://roufid.com/?p=1175"><i class="fa fa-comment"></i><span class="dsq-postid" data-dsqidentifier="1175 http://roufid.com/?p=1175">4</span></a></li>
+				</ul>
+				
+				<div class="post-inner">
+					
+					
+
+
+
+
+
+
+					
+					<div class="post-deco">
+						<div class="hex hex-small">
+							<div class="hex-inner"><i class="fa"></i></div>
+														<div class="corner-1"></div>
+							<div class="corner-2"></div>
+						</div>
+					</div>
+					
+					<div class="post-content pad">
+					
+						<div class="entry">
+							
+<!-- Quick Adsense WordPress Plugin: http://quickadsense.com/ -->
+<div style="float: left; margin: 10px 10px 10px 0;">
+<script async="" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/f.txt"></script>
+<!-- automatique responsive -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5842786856906684" data-ad-slot="2304430764" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<p style="text-align: justify;">A new feature is provided in&nbsp;<link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff5465418c878159998" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-i">JPA</span><span class="crayon-h"> </span><span class="crayon-cn">2.1</span></span></span> allowing a direct usage of stored procedures without using native query. This tutorial will show 3 different ways to call a database stored procedure with Hibernate.</p>
+<h5 style="text-align: justify;"><strong>Used in this tutorial :</strong></h5>
+<ul style="text-align: justify;">
+<li>Spring Boot <em>(1.4.2.RELEASE)</em>
+<ul>
+<li>spring-boot-starter-data-jpa</li>
+<li>spring-boot-starter-test</li>
+</ul>
+</li>
+<li>Hibernate <em>(5.0.11.Final)</em></li>
+<li>Postgresql <em>(9.4.1212.jre7)</em></li>
+<li>Maven <em>(3.3.9)</em></li>
+</ul>
+<span class="" style="display:block;clear:both;height: 0px;padding-top: 20px;border-top-width:0px;border-bottom-width:0px;"></span>
+
+<!-- WP QUADS v. 1.8.2  Shortcode Ad -->
+<div class="quads-location quads-ad1" id="quads-ad1" style="float:none;margin:20px;">
+<script async="" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/f.txt"></script>
+<!-- automatique responsive -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5842786856906684" data-ad-slot="2304430764" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<span class="" style="display:block;clear:both;height: 0px;padding-top: 20px;border-top-width:0px;border-bottom-width:0px;"></span>
+<div id="toc_container" class="no_bullets"><p class="toc_title">Table of contents <span class="toc_toggle">[<a href="http://roufid.com/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1/#">hide</a>]</span></p><ul class="toc_list"><li><a href="http://roufid.com/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1/#context"><span class="toc_number toc_depth_1">1</span> Context</a></li><li><a href="http://roufid.com/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1/#callingdatabase_stored_procedure"><span class="toc_number toc_depth_1">2</span> Calling&nbsp;database stored procedure</a><ul><li><a href="http://roufid.com/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1/#using_namedstoredprocedurequery"><span class="toc_number toc_depth_2">2.1</span> Using @NamedStoredProcedureQuery</a></li><li><a href="http://roufid.com/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1/#creating_dynamic_stored_procedure"><span class="toc_number toc_depth_2">2.2</span> Creating dynamic stored procedure</a></li><li><a href="http://roufid.com/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1/#using_procedure_of_spring_data_jpa"><span class="toc_number toc_depth_2">2.3</span> Using @Procedure of Spring data jpa</a></li></ul></li></ul></div>
+<h1 style="text-align: justify;"><span id="context">Context</span></h1>
+<p style="text-align: justify;">Let’s consider a database that stores authors and their books. Below the entities model :</p>
+<div id="attachment_1176" style="width: 603px" class="wp-caption aligncenter"><a href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/1_model.png" rel="lightbox[1175]"><img aria-describedby="caption-attachment-1176" class="size-full wp-image-1176" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/1_model.png" alt="Author books database model" width="593" height="210" srcset="http://roufid.com/wp-content/uploads/2016/12/1_model.png 593w, http://roufid.com/wp-content/uploads/2016/12/1_model-300x106.png 300w" sizes="(max-width: 593px) 100vw, 593px"></a><p id="caption-attachment-1176" class="wp-caption-text">Author books database model</p></div>
+<p style="text-align: justify;">Consider the following stored procedure that adds a new book to an author and returns the identifier of the created&nbsp;book.</p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+<link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+		<div id="crayon-5f3ff54654196733238294" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; height: auto;">
+		
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style=""><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-1">1</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-2">2</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-3">3</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-4">4</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-5">5</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-6">6</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-7">7</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-8">8</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-9">9</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-10">10</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-11">11</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-12">12</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-13">13</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-14">14</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-15">15</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-16">16</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-17">17</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-18">18</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-19">19</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-20">20</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-21">21</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-22">22</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-23">23</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-24">24</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-25">25</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-26">26</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-27">27</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-28">28</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-29">29</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-30">30</div><div class="crayon-num" data-line="crayon-5f3ff54654196733238294-31">31</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5f3ff54654196733238294-1"><span class="crayon-k">CREATE</span><span class="crayon-h"> </span><span class="crayon-k ">OR</span><span class="crayon-h"> </span><span class="crayon-i">REPLACE</span><span class="crayon-h"> </span><span class="crayon-k">FUNCTION</span><span class="crayon-h"> </span><span class="crayon-e">addbook</span><span class="crayon-sy">(</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-2"><span class="crayon-h">	</span><span class="crayon-i">bookname</span><span class="crayon-h"> </span><span class="crayon-k">character</span><span class="crayon-h"> </span><span class="crayon-k">varying</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-3"><span class="crayon-h">	</span><span class="crayon-i">bookreleasedate</span><span class="crayon-h"> </span><span class="crayon-k">timestamp</span><span class="crayon-h"> </span><span class="crayon-k">without</span><span class="crayon-h"> </span><span class="crayon-k">time</span><span class="crayon-h"> </span><span class="crayon-k">zone</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-4"><span class="crayon-h">	</span><span class="crayon-i">authorfirstname</span><span class="crayon-h"> </span><span class="crayon-k">character</span><span class="crayon-h"> </span><span class="crayon-k">varying</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-5"><span class="crayon-h">	</span><span class="crayon-i">authorlastname</span><span class="crayon-h"> </span><span class="crayon-k">character</span><span class="crayon-h"> </span><span class="crayon-k">varying</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-6">&nbsp;</div><div class="crayon-line" id="crayon-5f3ff54654196733238294-7"><span class="crayon-k">RETURNS</span><span class="crayon-h"> </span><span class="crayon-k">integer</span><span class="crayon-h"> </span><span class="crayon-k">AS</span><span class="crayon-h"> </span><span class="crayon-sy">$</span><span class="crayon-i">BODY</span><span class="crayon-sy">$</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-8"><span class="crayon-h">	</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-9"><span class="crayon-h">	</span><span class="crayon-k">DECLARE</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-10"><span class="crayon-h">		</span><span class="crayon-i">authorId</span><span class="crayon-h"> </span><span class="crayon-k">int</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-11"><span class="crayon-h">		</span><span class="crayon-i">bookId</span><span class="crayon-h"> </span><span class="crayon-k">int</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-12">&nbsp;</div><div class="crayon-line" id="crayon-5f3ff54654196733238294-13"><span class="crayon-h">	</span><span class="crayon-k">BEGIN</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-14"><span class="crayon-h">		</span><span class="crayon-c">-- select if exist</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-15"><span class="crayon-h">		</span><span class="crayon-k">SELECT</span><span class="crayon-h"> </span><span class="crayon-i">AUTHOR_ID</span><span class="crayon-h"> </span><span class="crayon-k">INTO</span><span class="crayon-h"> </span><span class="crayon-i">authorId</span><span class="crayon-h"> </span><span class="crayon-k">FROM</span><span class="crayon-h"> </span><span class="crayon-i">author</span><span class="crayon-h"> </span><span class="crayon-i">a</span><span class="crayon-h"> </span><span class="crayon-k">WHERE</span><span class="crayon-h"> </span><span class="crayon-i">a</span><span class="crayon-sy">.</span><span class="crayon-i">FIRSTNAME</span><span class="crayon-o">=</span><span class="crayon-i">authorFirstname</span><span class="crayon-h"> </span><span class="crayon-k ">AND</span><span class="crayon-h"> </span><span class="crayon-i">a</span><span class="crayon-sy">.</span><span class="crayon-i">LASTNAME</span><span class="crayon-o">=</span><span class="crayon-i">authorLastname</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-16"><span class="crayon-h">		&nbsp;&nbsp;&nbsp;&nbsp;</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-17"><span class="crayon-h">		</span><span class="crayon-k">IF</span><span class="crayon-h"> </span><span class="crayon-k ">NOT</span><span class="crayon-h"> </span><span class="crayon-k">FOUND</span><span class="crayon-h"> </span><span class="crayon-k">THEN</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-18"><span class="crayon-h">			</span><span class="crayon-c">-- insert AUTHOR</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-19"><span class="crayon-h">			</span><span class="crayon-k">SELECT</span><span class="crayon-h"> </span><span class="crayon-e">nextval</span><span class="crayon-sy">(</span><span class="crayon-s">'idauhtor_seq'</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-k">INTO</span><span class="crayon-h"> </span><span class="crayon-i">authorId</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-20"><span class="crayon-h">			</span><span class="crayon-k">INSERT</span><span class="crayon-h"> </span><span class="crayon-k">INTO</span><span class="crayon-h"> </span><span class="crayon-e">author </span><span class="crayon-sy">(</span><span class="crayon-i">AUTHOR_ID</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">FIRSTNAME</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">LASTNAME</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-k">values</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-i">authorId</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">authorFirstname</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">authorLastname</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h">	</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-21"><span class="crayon-h">		</span><span class="crayon-k">END</span><span class="crayon-h"> </span><span class="crayon-k">IF</span><span class="crayon-sy">;</span><span class="crayon-h">	</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-22">&nbsp;</div><div class="crayon-line" id="crayon-5f3ff54654196733238294-23"><span class="crayon-h">		</span><span class="crayon-c">-- insert BOOK</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-24"><span class="crayon-h">		</span><span class="crayon-k">SELECT</span><span class="crayon-h"> </span><span class="crayon-e">nextval</span><span class="crayon-sy">(</span><span class="crayon-s">'idbook_seq'</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-k">INTO</span><span class="crayon-h"> </span><span class="crayon-i">bookId</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-25"><span class="crayon-h">		</span><span class="crayon-k">INSERT</span><span class="crayon-h"> </span><span class="crayon-k">INTO</span><span class="crayon-h"> </span><span class="crayon-e">book </span><span class="crayon-sy">(</span><span class="crayon-i">BOOK_ID</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">NAME</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">RELEASE_DATE</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">AUTHOR_ID</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-k">VALUES</span><span class="crayon-sy">(</span><span class="crayon-i">bookId</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">bookName</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">bookReleaseDate</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">authorId</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-26">&nbsp;</div><div class="crayon-line" id="crayon-5f3ff54654196733238294-27"><span class="crayon-h">		</span><span class="crayon-k">return</span><span class="crayon-h"> </span><span class="crayon-i">bookId</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-28">&nbsp;</div><div class="crayon-line" id="crayon-5f3ff54654196733238294-29"><span class="crayon-h">	</span><span class="crayon-k">END</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-30"><span class="crayon-sy">$</span><span class="crayon-i">BODY</span><span class="crayon-sy">$</span></div><div class="crayon-line" id="crayon-5f3ff54654196733238294-31"><span class="crayon-k">LANGUAGE</span><span class="crayon-h"> </span><span class="crayon-i">plpgsql</span><span class="crayon-h"> </span><span class="crayon-i">VOLATILE</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0054 seconds] -->
+
+<blockquote>
+<p style="text-align: justify;">I’m using a <strong>PostgreSQL</strong> database in this tutorial.</p>
+</blockquote>
+<p style="text-align: justify;">In the next sections, we will use the new JPA stored procedure features to call the stored procedure using <link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff54654199666018321" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">Hibernate</span></span></span>&nbsp;as implementation.</p>
+<p style="text-align: justify;"><span class="" style="display:block;clear:both;height: 0px;padding-top: 20px;border-top-width:0px;border-bottom-width:0px;"></span>
+</p><h1 style="text-align: justify;"><span id="callingdatabase_stored_procedure"><strong>Calling&nbsp;database stored procedure</strong></span></h1>
+<blockquote><p><img class="alignleft wp-image-592" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/github-mark-300x158.png" alt="github-mark" width="86" height="45" srcset="http://roufid.com/wp-content/uploads/2016/03/github-mark-300x158.png 300w, http://roufid.com/wp-content/uploads/2016/03/github-mark-768x403.png 768w, http://roufid.com/wp-content/uploads/2016/03/github-mark-1024x538.png 1024w, http://roufid.com/wp-content/uploads/2016/03/github-mark.png 1200w" sizes="(max-width: 86px) 100vw, 86px"><br>
+The tutorial source code is available on Github. <strong><a href="https://github.com/RadouaneRoufid/hibernate-tutorials/tree/master/jpa-stored-procedure-tutorial" target="_blank" rel="noopener">Download the source</a></strong></p></blockquote>
+<p style="text-align: justify;"><span class="" style="display:block;clear:both;height: 0px;padding-top: 10px;border-top-width:0px;border-bottom-width:0px;"></span>
+</p><h2 style="padding-left: 30px; text-align: justify;"><span id="using_namedstoredprocedurequery">Using @NamedStoredProcedureQuery</span></h2>
+<p style="text-align: justify;"><link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff5465419b127882712" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-i">JPA</span><span class="crayon-h"> </span><span class="crayon-cn">2.1</span></span></span> provides the <link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff5465419d577909046" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-sy">@</span><span class="crayon-v">NamedStoredProcedureQuery</span></span></span> annotation to define your stored procedure. The basic usage is as follow :</p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+<link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+		<div id="crayon-5f3ff5465419e105992536" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; height: auto;">
+		
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row alt">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style=""><div class="crayon-num" data-line="crayon-5f3ff5465419e105992536-1">1</div><div class="crayon-num" data-line="crayon-5f3ff5465419e105992536-2">2</div><div class="crayon-num" data-line="crayon-5f3ff5465419e105992536-3">3</div><div class="crayon-num" data-line="crayon-5f3ff5465419e105992536-4">4</div><div class="crayon-num" data-line="crayon-5f3ff5465419e105992536-5">5</div><div class="crayon-num" data-line="crayon-5f3ff5465419e105992536-6">6</div><div class="crayon-num" data-line="crayon-5f3ff5465419e105992536-7">7</div><div class="crayon-num" data-line="crayon-5f3ff5465419e105992536-8">8</div><div class="crayon-num" data-line="crayon-5f3ff5465419e105992536-9">9</div><div class="crayon-num" data-line="crayon-5f3ff5465419e105992536-10">10</div><div class="crayon-num" data-line="crayon-5f3ff5465419e105992536-11">11</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5f3ff5465419e105992536-1"><span class="crayon-n">@NamedStoredProcedureQuery</span><span class="crayon-sy">(</span></div><div class="crayon-line" id="crayon-5f3ff5465419e105992536-2"><span class="crayon-h">		</span><span class="crayon-v">name</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">""</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-c">// name of stored procedure in the persistence unit</span></div><div class="crayon-line" id="crayon-5f3ff5465419e105992536-3"><span class="crayon-h">		</span><span class="crayon-v">procedureName</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">""</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-c">//name of&nbsp;&nbsp;stored procedure in the database</span></div><div class="crayon-line" id="crayon-5f3ff5465419e105992536-4"><span class="crayon-h">		</span><span class="crayon-v">parameters</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-c">//Parameters of the stored procedure</span></div><div class="crayon-line" id="crayon-5f3ff5465419e105992536-5"><span class="crayon-h">		</span><span class="crayon-sy">{</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-5f3ff5465419e105992536-6"><span class="crayon-h">			</span><span class="crayon-n">@StoredProcedureParameter</span><span class="crayon-sy">(</span><span class="crayon-c">// A parameter,</span></div><div class="crayon-line" id="crayon-5f3ff5465419e105992536-7"><span class="crayon-h">					</span><span class="crayon-v">name</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">""</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-c">//Name of the parameter</span></div><div class="crayon-line" id="crayon-5f3ff5465419e105992536-8"><span class="crayon-h">					</span><span class="crayon-v">mode</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">ParameterMode</span><span class="crayon-sy">.</span><span class="crayon-st">IN</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-c">// Mode of the parameter</span></div><div class="crayon-line" id="crayon-5f3ff5465419e105992536-9"><span class="crayon-h">					</span><span class="crayon-v">type</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-t">String</span><span class="crayon-sy">.</span><span class="crayon-t">class</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-c">// JDBC Type.		</span></div><div class="crayon-line" id="crayon-5f3ff5465419e105992536-10"><span class="crayon-h">		</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5f3ff5465419e105992536-11"><span class="crayon-sy">)</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0086 seconds] -->
+
+<p style="text-align: justify;">Let’s take a moment to understand each attribute</p>
+<ul style="text-align: justify;">
+<li><link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541a0243456228" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-sy">@</span><span class="crayon-v">NamedStoredProcedureQuery</span></span></span>: Used to specifiy and name a stored procedure and its parameters.
+<ul>
+<li><link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541a2342741479" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">name</span></span></span>: &nbsp;The name to identify the stored procedure in the <span style="text-decoration: underline;">persistence unit</span>.</li>
+<li><link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541a3205197605" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">procedureName</span></span></span>: The name of&nbsp; stored procedure in the <span style="text-decoration: underline;">database</span>.</li>
+<li><link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541a5059368571" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">parameters</span></span></span>: List of parameters (<link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541a7202764277" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-sy">@</span><span class="crayon-v">StoredProcedureParameter</span></span></span>) of the database stored procedure. They must be specified in the <span style="text-decoration: underline;">order</span> in which they occur in the stored procedure definition in the database.</li>
+</ul>
+</li>
+</ul>
+<ul style="text-align: justify;">
+<li>@<link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541a8105419678" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">StoredProcedureParameter</span></span></span>: Specifies a parameter of a named stored procedure query.
+<ul>
+<li><link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541aa559876246" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">name</span></span></span>: The name of the parameter as defined by the stored procedure in the database. If the name is not specified, positional parameters will be used.</li>
+<li><link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541ab345417972" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">type</span></span></span> : JDBC type of the parameter.</li>
+<li><link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541ad764468189" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">mode</span></span></span> :&nbsp;Enumeration of type&nbsp;<span style="color: #e8554e;"><a style="color: #e8554e;" href="http://docs.oracle.com/javaee/7/api/javax/persistence/ParameterMode.html" target="_blank" rel="noopener"><link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541ae812054166" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">ParameterMode</span></span></span></a></span>. Values possible are :
+<ul>
+<li><link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541b0282060008" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-st">IN</span></span></span>: Stored procedure input parameter,</li>
+<li><link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541b1652251847" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">OUT</span></span></span>: Stored procedure output parameter,</li>
+<li><em><link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541b3844936700" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">INOUT</span></span></span>:</em>&nbsp;Stored procedure input/output parameter</li>
+<li><em><link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541b4442376150" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">REF_CURSOR</span></span></span>:</em>&nbsp;Stored procedure reference cursor parameter..</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p style="text-align: justify;">In order to call the stored procedure <link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541b6860935837" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">addbook</span></span></span> of our example, the <link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541b7623831215" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">NamedStoredProcedureQuery</span></span></span> should be as follows :</p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+<link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+		<div id="crayon-5f3ff546541b9558441006" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; height: auto;">
+		
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style=""><div class="crayon-num" data-line="crayon-5f3ff546541b9558441006-1">1</div><div class="crayon-num" data-line="crayon-5f3ff546541b9558441006-2">2</div><div class="crayon-num" data-line="crayon-5f3ff546541b9558441006-3">3</div><div class="crayon-num" data-line="crayon-5f3ff546541b9558441006-4">4</div><div class="crayon-num" data-line="crayon-5f3ff546541b9558441006-5">5</div><div class="crayon-num" data-line="crayon-5f3ff546541b9558441006-6">6</div><div class="crayon-num" data-line="crayon-5f3ff546541b9558441006-7">7</div><div class="crayon-num" data-line="crayon-5f3ff546541b9558441006-8">8</div><div class="crayon-num" data-line="crayon-5f3ff546541b9558441006-9">9</div><div class="crayon-num" data-line="crayon-5f3ff546541b9558441006-10">10</div><div class="crayon-num" data-line="crayon-5f3ff546541b9558441006-11">11</div><div class="crayon-num" data-line="crayon-5f3ff546541b9558441006-12">12</div><div class="crayon-num" data-line="crayon-5f3ff546541b9558441006-13">13</div><div class="crayon-num" data-line="crayon-5f3ff546541b9558441006-14">14</div><div class="crayon-num" data-line="crayon-5f3ff546541b9558441006-15">15</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5f3ff546541b9558441006-1"><span class="crayon-n">@Entity</span></div><div class="crayon-line" id="crayon-5f3ff546541b9558441006-2"><span class="crayon-n">@Table</span><span class="crayon-sy">(</span><span class="crayon-v">name</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">"BOOK"</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5f3ff546541b9558441006-3"><span class="crayon-n">@NamedStoredProcedureQuery</span><span class="crayon-sy">(</span></div><div class="crayon-line" id="crayon-5f3ff546541b9558441006-4"><span class="crayon-h">		</span><span class="crayon-v">name</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">"addBook_sp"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-5f3ff546541b9558441006-5"><span class="crayon-h">		</span><span class="crayon-v">procedureName</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">"addBook"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-5f3ff546541b9558441006-6"><span class="crayon-h">		</span><span class="crayon-v">parameters</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5f3ff546541b9558441006-7"><span class="crayon-h">			</span><span class="crayon-n">@StoredProcedureParameter</span><span class="crayon-sy">(</span><span class="crayon-v">name</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">"bookName"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">mode</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">ParameterMode</span><span class="crayon-sy">.</span><span class="crayon-st">IN</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">type</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-t">String</span><span class="crayon-sy">.</span><span class="crayon-t">class</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5f3ff546541b9558441006-8"><span class="crayon-h">			</span><span class="crayon-n">@StoredProcedureParameter</span><span class="crayon-sy">(</span><span class="crayon-v">name</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">"bookReleaseDate"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">mode</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">ParameterMode</span><span class="crayon-sy">.</span><span class="crayon-st">IN</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">type</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">Date</span><span class="crayon-sy">.</span><span class="crayon-t">class</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5f3ff546541b9558441006-9"><span class="crayon-h">			</span><span class="crayon-n">@StoredProcedureParameter</span><span class="crayon-sy">(</span><span class="crayon-v">name</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">"authorFirstname"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">mode</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">ParameterMode</span><span class="crayon-sy">.</span><span class="crayon-st">IN</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">type</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-t">String</span><span class="crayon-sy">.</span><span class="crayon-t">class</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5f3ff546541b9558441006-10"><span class="crayon-h">			</span><span class="crayon-n">@StoredProcedureParameter</span><span class="crayon-sy">(</span><span class="crayon-v">name</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">"authorLastname"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">mode</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">ParameterMode</span><span class="crayon-sy">.</span><span class="crayon-st">IN</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">type</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-t">String</span><span class="crayon-sy">.</span><span class="crayon-t">class</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-5f3ff546541b9558441006-11"><span class="crayon-h">		</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5f3ff546541b9558441006-12"><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5f3ff546541b9558441006-13"><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">class</span><span class="crayon-h"> </span><span class="crayon-e">Book</span><span class="crayon-h"> </span><span class="crayon-r">implements</span><span class="crayon-h"> </span><span class="crayon-e">Serializable</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5f3ff546541b9558441006-14">…<span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-5f3ff546541b9558441006-15"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0008 seconds] -->
+
+<p style="text-align: justify;"><span class="" style="display:block;clear:both;height: 0px;padding-top: 10px;border-top-width:0px;border-bottom-width:0px;"></span>
+</p><p style="text-align: justify;"><strong>How to call it ?</strong></p>
+<p style="text-align: justify;">The <link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541bb589954071" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">javax</span><span class="crayon-sy">.</span><span class="crayon-v">persistence</span><span class="crayon-sy">.</span><span class="crayon-v">EntityManager</span></span></span> interface exposes the &nbsp;<link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541bc123907414" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-e">createNamedStoredProcedureQuery</span><span class="crayon-sy">(</span><span class="crayon-t">String</span><span class="crayon-h"> </span><span class="crayon-v">name</span><span class="crayon-sy">)</span></span></span> method to call the named stored procedure. This method returns a <link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541be032176679" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">StoredProcedureQuery</span></span></span> in which you must set all the parameters definied in the <link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541bf564619258" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">NamedStoredProcedureQuery</span></span></span>.</p>
+<p style="text-align: justify;">Below the usage in our example :</p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+<link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+		<div id="crayon-5f3ff546541c1787410968" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; height: auto;">
+		
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row alt">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style=""><div class="crayon-num" data-line="crayon-5f3ff546541c1787410968-1">1</div><div class="crayon-num" data-line="crayon-5f3ff546541c1787410968-2">2</div><div class="crayon-num" data-line="crayon-5f3ff546541c1787410968-3">3</div><div class="crayon-num" data-line="crayon-5f3ff546541c1787410968-4">4</div><div class="crayon-num" data-line="crayon-5f3ff546541c1787410968-5">5</div><div class="crayon-num" data-line="crayon-5f3ff546541c1787410968-6">6</div><div class="crayon-num" data-line="crayon-5f3ff546541c1787410968-7">7</div><div class="crayon-num" data-line="crayon-5f3ff546541c1787410968-8">8</div><div class="crayon-num" data-line="crayon-5f3ff546541c1787410968-9">9</div><div class="crayon-num" data-line="crayon-5f3ff546541c1787410968-10">10</div><div class="crayon-num" data-line="crayon-5f3ff546541c1787410968-11">11</div><div class="crayon-num" data-line="crayon-5f3ff546541c1787410968-12">12</div><div class="crayon-num" data-line="crayon-5f3ff546541c1787410968-13">13</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5f3ff546541c1787410968-1"><span class="crayon-t">String</span><span class="crayon-h"> </span><span class="crayon-v">bookName</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">"Design Patterns: Elements of Reusable Object-Oriented Software"</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541c1787410968-2"><span class="crayon-t">String</span><span class="crayon-h"> </span><span class="crayon-v">authorFirstname</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">"Gang"</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541c1787410968-3"><span class="crayon-t">String</span><span class="crayon-h"> </span><span class="crayon-v">authorLastname</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">"of four"</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541c1787410968-4">&nbsp;</div><div class="crayon-line" id="crayon-5f3ff546541c1787410968-5"><span class="crayon-c">// Getting the named stored procedure from the persistence unit and settting the parameters values.</span></div><div class="crayon-line" id="crayon-5f3ff546541c1787410968-6"><span class="crayon-e">StoredProcedureQuery </span><span class="crayon-v">addBookNamedStoredProcedure</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">entityManager</span><span class="crayon-sy">.</span><span class="crayon-e">createNamedStoredProcedureQuery</span><span class="crayon-sy">(</span><span class="crayon-s">"addBook_sp"</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541c1787410968-7"><span class="crayon-v">addBookNamedStoredProcedure</span><span class="crayon-sy">.</span><span class="crayon-e">setParameter</span><span class="crayon-sy">(</span><span class="crayon-s">"bookName"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">bookName</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541c1787410968-8"><span class="crayon-v">addBookNamedStoredProcedure</span><span class="crayon-sy">.</span><span class="crayon-e">setParameter</span><span class="crayon-sy">(</span><span class="crayon-s">"bookReleaseDate"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-r">new</span><span class="crayon-h"> </span><span class="crayon-e">Date</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">TemporalType</span><span class="crayon-sy">.</span><span class="crayon-v">DATE</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541c1787410968-9"><span class="crayon-v">addBookNamedStoredProcedure</span><span class="crayon-sy">.</span><span class="crayon-e">setParameter</span><span class="crayon-sy">(</span><span class="crayon-s">"authorFirstname"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">authorFirstname</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541c1787410968-10"><span class="crayon-v">addBookNamedStoredProcedure</span><span class="crayon-sy">.</span><span class="crayon-e">setParameter</span><span class="crayon-sy">(</span><span class="crayon-s">"authorLastname"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">authorLastname</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541c1787410968-11">&nbsp;</div><div class="crayon-line" id="crayon-5f3ff546541c1787410968-12"><span class="crayon-c">// Stored procedure call</span></div><div class="crayon-line" id="crayon-5f3ff546541c1787410968-13"><span class="crayon-t">Integer</span><span class="crayon-h"> </span><span class="crayon-v">createdBookId</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-t">Integer</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-v">addBookNamedStoredProcedure</span><span class="crayon-sy">.</span><span class="crayon-e">getSingleResult</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0006 seconds] -->
+
+<p style="text-align: justify;">Note that in this example, I used named parameters. Parameters can also be setted by positions as shown in the next section.</p>
+<span class="" style="display:block;clear:both;height: 0px;padding-top: 20px;border-top-width:0px;border-bottom-width:0px;"></span>
+
+<!-- WP QUADS v. 1.8.2  Shortcode Ad -->
+<div class="quads-location quads-ad1" id="quads-ad1" style="float:none;margin:20px;">
+<script async="" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/f.txt"></script>
+<!-- automatique responsive -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5842786856906684" data-ad-slot="2304430764" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<span class="" style="display:block;clear:both;height: 0px;padding-top: 20px;border-top-width:0px;border-bottom-width:0px;"></span>
+<h2 style="padding-left: 30px; text-align: justify;"><span id="creating_dynamic_stored_procedure">Creating dynamic stored procedure</span></h2>
+<p style="text-align: justify;">The second way to call a database stored procedure is by creating <em>dynamically</em> a <link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541c3309240604" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">StoredProcedureQuery</span></span></span>. The <link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541c5080578591" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">javax</span><span class="crayon-sy">.</span><span class="crayon-v">persistence</span><span class="crayon-sy">.</span><span class="crayon-v">EntityManager</span></span></span> interface exposes the &nbsp;<link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541c6728869435" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-e">createStoredProcedureQuery</span><span class="crayon-sy">(</span><span class="crayon-t">String</span><span class="crayon-h"> </span><span class="crayon-v">procedureName</span><span class="crayon-sy">)</span></span></span> method to create an instance of <link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541c8754298510" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">StoredProcedureQuery</span></span></span>.</p>
+<p style="text-align: justify;">Similarly to the <link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541c9509440876" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">NamedStoredProcedureQuery</span></span></span>, the parameters must be <strong>registered</strong> before performing the call. The parameters registration can be done by using one of the following method :</p>
+<ul style="text-align: justify;">
+<li style="text-align: justify;"><link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541cb057769791" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">StoredProcedureQuery</span><span class="crayon-p">#registerStoredProcedureParameter(String parameterName, Class type,&nbsp; ParameterMode mode)</span></span></span> to register a named parameter</li>
+<li style="text-align: justify;">using <link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541d4784107519" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">StoredProcedureQuery</span><span class="crayon-p">#registerStoredProcedureParameter(int position, Class type, ParameterMode mode)</span></span></span> to register a parameter by its position.</li>
+</ul>
+<p style="text-align: justify;"><strong>Example of use :</strong></p>
+<p style="text-align: justify;">Contrary to the previous section, we will use positional parameters in the following example :</p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+<link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+		<div id="crayon-5f3ff546541d5638355632" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; height: auto;">
+		
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style=""><div class="crayon-num" data-line="crayon-5f3ff546541d5638355632-1">1</div><div class="crayon-num" data-line="crayon-5f3ff546541d5638355632-2">2</div><div class="crayon-num" data-line="crayon-5f3ff546541d5638355632-3">3</div><div class="crayon-num" data-line="crayon-5f3ff546541d5638355632-4">4</div><div class="crayon-num" data-line="crayon-5f3ff546541d5638355632-5">5</div><div class="crayon-num" data-line="crayon-5f3ff546541d5638355632-6">6</div><div class="crayon-num" data-line="crayon-5f3ff546541d5638355632-7">7</div><div class="crayon-num" data-line="crayon-5f3ff546541d5638355632-8">8</div><div class="crayon-num" data-line="crayon-5f3ff546541d5638355632-9">9</div><div class="crayon-num" data-line="crayon-5f3ff546541d5638355632-10">10</div><div class="crayon-num" data-line="crayon-5f3ff546541d5638355632-11">11</div><div class="crayon-num" data-line="crayon-5f3ff546541d5638355632-12">12</div><div class="crayon-num" data-line="crayon-5f3ff546541d5638355632-13">13</div><div class="crayon-num" data-line="crayon-5f3ff546541d5638355632-14">14</div><div class="crayon-num" data-line="crayon-5f3ff546541d5638355632-15">15</div><div class="crayon-num" data-line="crayon-5f3ff546541d5638355632-16">16</div><div class="crayon-num" data-line="crayon-5f3ff546541d5638355632-17">17</div><div class="crayon-num" data-line="crayon-5f3ff546541d5638355632-18">18</div><div class="crayon-num" data-line="crayon-5f3ff546541d5638355632-19">19</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5f3ff546541d5638355632-1"><span class="crayon-t">String</span><span class="crayon-h"> </span><span class="crayon-v">bookName</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">"Java Persistence with Hibernate"</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541d5638355632-2"><span class="crayon-t">String</span><span class="crayon-h"> </span><span class="crayon-v">authorFirstname</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">"Christian"</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541d5638355632-3"><span class="crayon-t">String</span><span class="crayon-h"> </span><span class="crayon-v">authorLastname</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">"Bauer"</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541d5638355632-4">&nbsp;</div><div class="crayon-line" id="crayon-5f3ff546541d5638355632-5"><span class="crayon-c">// Dynamic stored procedure definition.</span></div><div class="crayon-line" id="crayon-5f3ff546541d5638355632-6"><span class="crayon-e">StoredProcedureQuery </span><span class="crayon-v">addBookStoredProcedure</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">entityManager</span><span class="crayon-sy">.</span><span class="crayon-e">createStoredProcedureQuery</span><span class="crayon-sy">(</span><span class="crayon-s">"addBook_sp"</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541d5638355632-7"><span class="crayon-v">addBookStoredProcedure</span><span class="crayon-sy">.</span><span class="crayon-e">registerStoredProcedureParameter</span><span class="crayon-sy">(</span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-t">String</span><span class="crayon-sy">.</span><span class="crayon-t">class</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">ParameterMode</span><span class="crayon-sy">.</span><span class="crayon-st">IN</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-5f3ff546541d5638355632-8"><span class="crayon-v">addBookStoredProcedure</span><span class="crayon-sy">.</span><span class="crayon-e">registerStoredProcedureParameter</span><span class="crayon-sy">(</span><span class="crayon-cn">2</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">Date</span><span class="crayon-sy">.</span><span class="crayon-t">class</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">ParameterMode</span><span class="crayon-sy">.</span><span class="crayon-st">IN</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-5f3ff546541d5638355632-9"><span class="crayon-v">addBookStoredProcedure</span><span class="crayon-sy">.</span><span class="crayon-e">registerStoredProcedureParameter</span><span class="crayon-sy">(</span><span class="crayon-cn">3</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-t">String</span><span class="crayon-sy">.</span><span class="crayon-t">class</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">ParameterMode</span><span class="crayon-sy">.</span><span class="crayon-st">IN</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-5f3ff546541d5638355632-10"><span class="crayon-v">addBookStoredProcedure</span><span class="crayon-sy">.</span><span class="crayon-e">registerStoredProcedureParameter</span><span class="crayon-sy">(</span><span class="crayon-cn">4</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-t">String</span><span class="crayon-sy">.</span><span class="crayon-t">class</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">ParameterMode</span><span class="crayon-sy">.</span><span class="crayon-st">IN</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-5f3ff546541d5638355632-11">&nbsp;</div><div class="crayon-line" id="crayon-5f3ff546541d5638355632-12"><span class="crayon-c">// Setting stored procedure parameters.</span></div><div class="crayon-line" id="crayon-5f3ff546541d5638355632-13"><span class="crayon-v">addBookStoredProcedure</span><span class="crayon-sy">.</span><span class="crayon-e">setParameter</span><span class="crayon-sy">(</span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">bookName</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541d5638355632-14"><span class="crayon-v">addBookStoredProcedure</span><span class="crayon-sy">.</span><span class="crayon-e">setParameter</span><span class="crayon-sy">(</span><span class="crayon-cn">2</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-r">new</span><span class="crayon-h"> </span><span class="crayon-e">Date</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">TemporalType</span><span class="crayon-sy">.</span><span class="crayon-v">DATE</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541d5638355632-15"><span class="crayon-v">addBookStoredProcedure</span><span class="crayon-sy">.</span><span class="crayon-e">setParameter</span><span class="crayon-sy">(</span><span class="crayon-cn">3</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">authorFirstname</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541d5638355632-16"><span class="crayon-v">addBookStoredProcedure</span><span class="crayon-sy">.</span><span class="crayon-e">setParameter</span><span class="crayon-sy">(</span><span class="crayon-cn">4</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">authorLastname</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541d5638355632-17">&nbsp;</div><div class="crayon-line" id="crayon-5f3ff546541d5638355632-18"><span class="crayon-c">// Stored procedure call</span></div><div class="crayon-line" id="crayon-5f3ff546541d5638355632-19"><span class="crayon-t">Integer</span><span class="crayon-h"> </span><span class="crayon-v">createdBookId</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-t">Integer</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-v">addBookStoredProcedure</span><span class="crayon-sy">.</span><span class="crayon-e">getSingleResult</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0009 seconds] -->
+
+<p style="text-align: justify;"><span class="" style="display:block;clear:both;height: 0px;padding-top: 20px;border-top-width:0px;border-bottom-width:0px;"></span>
+</p><h2 style="padding-left: 30px; text-align: justify;"><span id="using_procedure_of_spring_data_jpa">Using @Procedure of Spring data jpa</span></h2>
+<p style="text-align: justify;"><a href="http://projects.spring.io/spring-data-jpa/" target="_blank" rel="noopener">Spring data jpa</a>, as usual, provides an easy way to call stored procedures by using the annotation <link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541d8664732354" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-sy">@</span><span class="crayon-v">Procedure</span></span></span>. It maps directly the repository method with the declared <link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+			<span id="crayon-5f3ff546541db950567804" class="crayon-syntax crayon-syntax-inline  crayon-theme-familiar crayon-theme-familiar-inline crayon-font-consolas" style=""><span class="crayon-pre crayon-code" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-i">JPA</span><span class="crayon-h"> </span><span class="crayon-cn">2.1</span></span></span>&nbsp;named stored procedure.</p>
+<p style="text-align: justify;"><strong>Example of use :</strong></p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+<link rel="stylesheet" type="text/css" href="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/consolas.css">
+
+		<div id="crayon-5f3ff546541dd486875037" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; height: auto;">
+		
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row alt">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style=""><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-1">1</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-2">2</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-3">3</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-4">4</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-5">5</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-6">6</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-7">7</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-8">8</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-9">9</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-10">10</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-11">11</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-12">12</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-13">13</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-14">14</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-15">15</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-16">16</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-17">17</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-18">18</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-19">19</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-20">20</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-21">21</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-22">22</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-23">23</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-24">24</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-25">25</div><div class="crayon-num" data-line="crayon-5f3ff546541dd486875037-26">26</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style=" -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5f3ff546541dd486875037-1"><span class="crayon-t">package</span><span class="crayon-h"> </span><span class="crayon-v">com</span><span class="crayon-sy">.</span><span class="crayon-v">roufid</span><span class="crayon-sy">.</span><span class="crayon-v">tutoriel</span><span class="crayon-sy">.</span><span class="crayon-v">dao</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-2">&nbsp;</div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-3"><span class="crayon-r">import</span><span class="crayon-h"> </span><span class="crayon-v">java</span><span class="crayon-sy">.</span><span class="crayon-v">util</span><span class="crayon-sy">.</span><span class="crayon-v">Date</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-4">&nbsp;</div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-5"><span class="crayon-r">import</span><span class="crayon-h"> </span><span class="crayon-v">org</span><span class="crayon-sy">.</span><span class="crayon-v">springframework</span><span class="crayon-sy">.</span><span class="crayon-v">data</span><span class="crayon-sy">.</span><span class="crayon-v">jpa</span><span class="crayon-sy">.</span><span class="crayon-v">repository</span><span class="crayon-sy">.</span><span class="crayon-v">query</span><span class="crayon-sy">.</span><span class="crayon-v">Procedure</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-6"><span class="crayon-r">import</span><span class="crayon-h"> </span><span class="crayon-v">org</span><span class="crayon-sy">.</span><span class="crayon-v">springframework</span><span class="crayon-sy">.</span><span class="crayon-v">data</span><span class="crayon-sy">.</span><span class="crayon-v">repository</span><span class="crayon-sy">.</span><span class="crayon-v">CrudRepository</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-7">&nbsp;</div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-8"><span class="crayon-r">import</span><span class="crayon-h"> </span><span class="crayon-v">com</span><span class="crayon-sy">.</span><span class="crayon-v">roufid</span><span class="crayon-sy">.</span><span class="crayon-v">tutoriel</span><span class="crayon-sy">.</span><span class="crayon-v">entity</span><span class="crayon-sy">.</span><span class="crayon-v">Book</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-9">&nbsp;</div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-10"><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">interface</span><span class="crayon-h"> </span><span class="crayon-e">BookDao </span><span class="crayon-r">extends</span><span class="crayon-h"> </span><span class="crayon-v">CrudRepository</span><span class="crayon-o">&lt;</span><span class="crayon-v">Book</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-t">Integer</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-11">&nbsp;</div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-12"><span class="crayon-h">	</span><span class="crayon-c">/**</span></div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-13"><span class="crayon-c">	 * Will call the named stored procedure corresponding to :</span></div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-14"><span class="crayon-c">	 * </span></div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-15"><span class="crayon-c">	 * CREATE OR REPLACE FUNCTION addbook(</span></div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-16"><span class="crayon-c">	 * 		bookname character varying,</span></div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-17"><span class="crayon-c">	 * 		bookreleasedate timestamp without time zone, </span></div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-18"><span class="crayon-c">	 * 		authorfirstname character varying, </span></div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-19"><span class="crayon-c">	 * 		authorlastname character varying) </span></div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-20"><span class="crayon-c">	 * RETURNS integer</span></div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-21"><span class="crayon-c">	 * </span></div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-22"><span class="crayon-c">	 */</span></div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-23"><span class="crayon-h">	</span><span class="crayon-n">@Procedure</span></div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-24"><span class="crayon-h">	</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">Integer</span><span class="crayon-h"> </span><span class="crayon-e">addBook</span><span class="crayon-sy">(</span><span class="crayon-t">String</span><span class="crayon-h"> </span><span class="crayon-v">bookName</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-e">Date </span><span class="crayon-v">bookReleaseDate</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-t">String</span><span class="crayon-h"> </span><span class="crayon-v">authorFirstname</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-t">String</span><span class="crayon-h"> </span><span class="crayon-v">authorLastname</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-25">&nbsp;</div><div class="crayon-line" id="crayon-5f3ff546541dd486875037-26"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+
+<p style="text-align: justify;"><span class="" style="display:block;clear:both;height: 0px;padding-top: 20px;border-top-width:0px;border-bottom-width:0px;"></span>
+</p><p style="text-align: justify;"><img class="alignleft wp-image-592" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/github-mark-300x158.png" alt="github-mark" width="86" height="45" srcset="http://roufid.com/wp-content/uploads/2016/03/github-mark-300x158.png 300w, http://roufid.com/wp-content/uploads/2016/03/github-mark-768x403.png 768w, http://roufid.com/wp-content/uploads/2016/03/github-mark-1024x538.png 1024w, http://roufid.com/wp-content/uploads/2016/03/github-mark.png 1200w" sizes="(max-width: 86px) 100vw, 86px"><br>
+The tutorial source code is available on Github. <strong><a href="https://github.com/RadouaneRoufid/hibernate-tutorials/tree/master/jpa-stored-procedure-tutorial" target="_blank" rel="noopener">Download the source</a></strong></p>
+<span class="" style="display:block;clear:both;height: 0px;padding-top: 20px;border-top-width:0px;border-bottom-width:0px;"></span>
+
+<!-- WP QUADS v. 1.8.2  Shortcode Ad -->
+<div class="quads-location quads-ad1" id="quads-ad1" style="float:none;margin:20px;">
+<script async="" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/f.txt"></script>
+<!-- automatique responsive -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5842786856906684" data-ad-slot="2304430764" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<span class="" style="display:block;clear:both;height: 0px;padding-top: 20px;border-top-width:0px;border-bottom-width:0px;"></span>
+<h1 style="text-align: justify;">References</h1>
+<ul>
+<li style="text-align: justify;"><strong><a href="https://docs.oracle.com/javaee/7/api/javax/persistence/NamedStoredProcedureQuery.html" target="_blank" rel="noopener">NamedStoredProcedureQuery</a>&nbsp;</strong></li>
+<li style="text-align: justify;"><strong><a href="http://docs.oracle.com/javaee/7/api/javax/persistence/StoredProcedureParameter.html" target="_blank" rel="noopener">StoredProcedureParameter&nbsp;</a></strong></li>
+<li style="text-align: justify;"><strong><a href="http://docs.oracle.com/javaee/7/api/javax/persistence/ParameterMode.html" target="_blank" rel="noopener">ParameterMode</a>&nbsp;</strong></li>
+<li style="text-align: justify;"><strong><a href="http://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/query/Procedure.html" target="_blank" rel="noopener">Spring Data JPA @Procedure</a></strong></li>
+</ul>
+
+<!-- Quick Adsense WordPress Plugin: http://quickadsense.com/ -->
+<div style="float: left; margin: 10px 10px 10px 0;">
+<script async="" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/f.txt"></script>
+<!-- 728x90 inside-post-leaderboard -->
+<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-5842786856906684" data-ad-slot="8308486359"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<div style="font-size: 0px; height: 0px; line-height: 0px; margin: 0; padding: 0; clear: both;"></div><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><h3 class="sd-title">Spread the word :</h3><div class="sd-content"><ul><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-1175" class="share-facebook sd-button share-icon no-text" href="http://roufid.com/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1/?share=facebook&amp;nb=1" target="_blank" title="Click to share on Facebook"><span></span><span class="sharing-screen-reader-text">Click to share on Facebook (Opens in new window)</span></a></li><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-1175" class="share-twitter sd-button share-icon no-text" href="http://roufid.com/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1/?share=twitter&amp;nb=1" target="_blank" title="Click to share on Twitter"><span></span><span class="sharing-screen-reader-text">Click to share on Twitter (Opens in new window)</span></a></li><li class="share-google-plus-1"><a rel="nofollow" data-shared="sharing-google-1175" class="share-google-plus-1 sd-button share-icon no-text" href="http://roufid.com/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1/?share=google-plus-1&amp;nb=1" target="_blank" title="Click to share on Google+"><span></span><span class="sharing-screen-reader-text">Click to share on Google+ (Opens in new window)</span></a></li><li class="share-linkedin"><a rel="nofollow" data-shared="sharing-linkedin-1175" class="share-linkedin sd-button share-icon no-text" href="http://roufid.com/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1/?share=linkedin&amp;nb=1" target="_blank" title="Click to share on LinkedIn"><span></span><span class="sharing-screen-reader-text">Click to share on LinkedIn (Opens in new window)</span></a></li><li class="share-end"></li></ul></div></div></div>
+
+<div id="jp-relatedposts" class="jp-relatedposts" style="display: block;">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-visual jp-relatedposts-grid "><div class="jp-relatedposts-post jp-relatedposts-post0 jp-relatedposts-post-thumbs" data-post-id="1091" data-post-format="false"><a class="jp-relatedposts-post-a" href="http://roufid.com/spring-boot-multiple-databases-configuration/" title="Spring Boot multiple databases configuration
+
+By simple configuration, Spring boot provides a powerful way to work with a single database.  Sometimes you need to work with multiple databases (for example, one for basic usage and another for archiving). In this tutorial, we will see how to make Spring Boot multiple databases configuration. Used in this…" rel="nofollow" data-origin="1175" data-position="0"><img class="jp-relatedposts-post-img" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/4_sb_multi_db_databases_pg_book.png" width="178" alt="Spring Boot multiple databases configuration" height="102" srcset="https://i2.wp.com/roufid.com/wp-content/uploads/2016/12/4_sb_multi_db_databases_pg_book.png?zoom=1.25&amp;resize=178%2C102" src-orig="https://i2.wp.com/roufid.com/wp-content/uploads/2016/12/4_sb_multi_db_databases_pg_book.png?resize=350%2C200" scale="1.25" scale-fail="1.25"></a><h4 class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="http://roufid.com/spring-boot-multiple-databases-configuration/" title="Spring Boot multiple databases configuration
+
+By simple configuration, Spring boot provides a powerful way to work with a single database.  Sometimes you need to work with multiple databases (for example, one for basic usage and another for archiving). In this tutorial, we will see how to make Spring Boot multiple databases configuration. Used in this…" rel="nofollow" data-origin="1175" data-position="0">Spring Boot multiple databases configuration</a></h4><p class="jp-relatedposts-post-excerpt">By simple configuration, Spring boot provides a powerful way to work with a single database.&nbsp; Sometimes you need to work with multiple databases (for example, one for basic usage and another for archiving). In this tutorial, we will see how to make Spring Boot multiple databases configuration. Used in this…</p><p class="jp-relatedposts-post-date" style="display: block;">December 3, 2016</p><p class="jp-relatedposts-post-context">In "Spring"</p></div><div class="jp-relatedposts-post jp-relatedposts-post1 jp-relatedposts-post-thumbs" data-post-id="1340" data-post-format="false"><a class="jp-relatedposts-post-a" href="http://roufid.com/spring-boot-hello-world-tutorial/" title="Spring Boot hello world tutorial
+
+Spring Boot is one of the most powerful Java EE frameworks that aims to facilitate the development of new application. It brings all the power of the Spring stack (Spring dependency injection, Spring data JPA, Spring ORM, Spring MVC...) combined with an embedded Tomcat/Jetty server avoiding you heavy deployment. One …" rel="nofollow" data-origin="1175" data-position="1"><img class="jp-relatedposts-post-img" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/2016-12-23-21_45_10-localhost_8080.png" width="178" alt="Spring Boot hello world tutorial" height="102" srcset="https://i1.wp.com/roufid.com/wp-content/uploads/2016/12/2016-12-23-21_45_10-localhost_8080.png?zoom=1.25&amp;resize=178%2C102" src-orig="https://i1.wp.com/roufid.com/wp-content/uploads/2016/12/2016-12-23-21_45_10-localhost_8080.png?resize=350%2C200" scale="1.25" scale-fail="1.25"></a><h4 class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="http://roufid.com/spring-boot-hello-world-tutorial/" title="Spring Boot hello world tutorial
+
+Spring Boot is one of the most powerful Java EE frameworks that aims to facilitate the development of new application. It brings all the power of the Spring stack (Spring dependency injection, Spring data JPA, Spring ORM, Spring MVC...) combined with an embedded Tomcat/Jetty server avoiding you heavy deployment. One …" rel="nofollow" data-origin="1175" data-position="1">Spring Boot hello world tutorial</a></h4><p class="jp-relatedposts-post-excerpt">Spring Boot is one of the most powerful Java EE frameworks that aims to facilitate the development of new application. It brings all the power of the Spring stack (Spring dependency injection, Spring data JPA, Spring ORM, Spring MVC...) combined with an embedded Tomcat/Jetty server avoiding you heavy deployment. One&nbsp;…</p><p class="jp-relatedposts-post-date" style="display: block;">December 23, 2016</p><p class="jp-relatedposts-post-context">In "Spring"</p></div><div class="jp-relatedposts-post jp-relatedposts-post2 jp-relatedposts-post-thumbs" data-post-id="1414" data-post-format="false"><a class="jp-relatedposts-post-a" href="http://roufid.com/retreive-spring-jpa-repository-domain-type/" title="Find Spring JPA repository domain type
+
+In a Spring Data JPA environment, you may want to retrieve the domain type of the repositories defined in your application. This tutorial will show two ways to retrieve Spring JPA repository domain type. Using Repositories Spring data commons provides the class Repositories to handle JPA repositories. You can use it…" rel="nofollow" data-origin="1175" data-position="2"><img class="jp-relatedposts-post-img" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/github-512-150x150.png" width="178" alt="Find Spring JPA repository domain type" height="102" srcset="https://i2.wp.com/roufid.com/wp-content/uploads/2016/12/github-512-150x150.png?zoom=1.25&amp;resize=178%2C102" src-orig="https://i2.wp.com/roufid.com/wp-content/uploads/2016/12/github-512-150x150.png?resize=350%2C200" scale="1.25" scale-fail="1.25"></a><h4 class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="http://roufid.com/retreive-spring-jpa-repository-domain-type/" title="Find Spring JPA repository domain type
+
+In a Spring Data JPA environment, you may want to retrieve the domain type of the repositories defined in your application. This tutorial will show two ways to retrieve Spring JPA repository domain type. Using Repositories Spring data commons provides the class Repositories to handle JPA repositories. You can use it…" rel="nofollow" data-origin="1175" data-position="2">Find Spring JPA repository domain type</a></h4><p class="jp-relatedposts-post-excerpt">In a Spring Data JPA environment, you may want to retrieve the domain type of the repositories defined in your application. This tutorial will show two ways to retrieve Spring JPA repository domain type. Using Repositories Spring data commons provides the class Repositories to handle JPA&nbsp;repositories. You can use it…</p><p class="jp-relatedposts-post-date" style="display: block;">December 26, 2016</p><p class="jp-relatedposts-post-context">In "Spring"</p></div></div></div>													</div><!--/.entry-->
+						
+						<p class="post-tags"><span>Tags:</span> <a href="http://roufid.com/tag/hibernate/" rel="tag">hibernate</a><a href="http://roufid.com/tag/jpa/" rel="tag">JPA</a><a href="http://roufid.com/tag/postgresql/" rel="tag">PostgreSQL</a><a href="http://roufid.com/tag/spring-data-jpa/" rel="tag">spring-data-jpa</a></p>						
+					</div><!--/.post-content-->
+					
+				</div><!--/.post-inner-->
+				
+			</article><!--/.post-->			
+					
+					<div class="author-bio">
+				<div class="bio-avatar"><img alt="" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/41daa6c9110087141d2ac4f0894c321d.jpeg" srcset="http://1.gravatar.com/avatar/41daa6c9110087141d2ac4f0894c321d?s=256&amp;d=mm&amp;r=g 2x" class="avatar avatar-128 photo" height="128" width="128" originals="128" scale="1.25"></div>
+				<p class="bio-name"><a href="http://roufid.com/author/radouane-roufidgmail-com/" title="Posts by Radouane ROUFID" rel="author">Radouane ROUFID</a></p>
+				<p class="bio-desc">Computer science engineer</p>
+				<div class="clear"></div>
+			</div>
+				
+				
+				
+		
+<div id="disqus_thread"><iframe id="dsq-app1054" name="dsq-app1054" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" sandbox="allow-forms allow-popups allow-same-origin allow-scripts" width="100%" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/saved_resource.html"></iframe><iframe id="dsq-app1051" name="dsq-app1051" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/saved_resource(1).html"></iframe></div>
+		
+		</div><!--/.pad-->
+	</section><!--/.content-->
+	
+	
+<div class="sidebar s1">
+	
+	<a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+	
+	<div class="sidebar-content">
+			
+				
+		<div id="alxtabs-2" class="widget widget_alx_tabs">
+<h3>Recent posts </h3><ul class="alx-tabs-nav group tab-count-2"><li class="alx-tab tab-recent active"><a href="http://roufid.com/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1/#tab-recent" title="Recent Posts"><i class="fa fa-clock-o"></i><span>Recent Posts</span></a></li><li class="alx-tab tab-popular"><a href="http://roufid.com/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1/#tab-popular" title="Popular Posts"><i class="fa fa-star"></i><span>Popular Posts</span></a></li></ul>
+	<div class="alx-tabs-container">
+
+	
+					
+									
+			<ul id="tab-recent" class="alx-tab group thumbs-enabled" style="display: block;">
+								<li>
+					
+										<div class="tab-item-thumbnail">
+						<a href="http://roufid.com/java-stream-distinct-remove-duplicates/" title="Java Stream Distinct to remove duplicates examples">
+															<img width="160" height="160" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/Java-1-160x160.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="Java" srcset="http://roufid.com/wp-content/uploads/2016/03/Java-1-160x160.png 160w, http://roufid.com/wp-content/uploads/2016/03/Java-1-150x150.png 150w, http://roufid.com/wp-content/uploads/2016/03/Java-1.png 200w" sizes="(max-width: 160px) 100vw, 160px">																																		</a>
+					</div>
+										
+					<div class="tab-item-inner group">
+						<p class="tab-item-category"><a href="http://roufid.com/category/java/" rel="category tag">Java</a> / <a href="http://roufid.com/category/java/stream-java/" rel="category tag">Stream</a></p>
+						<p class="tab-item-title"><a href="http://roufid.com/java-stream-distinct-remove-duplicates/" rel="bookmark" title="Java Stream Distinct to remove duplicates examples">Java Stream Distinct to remove duplicates examples</a></p>
+						<p class="tab-item-date">20 Dec, 2019</p>
+					</div>
+					
+				</li>
+								<li>
+					
+										<div class="tab-item-thumbnail">
+						<a href="http://roufid.com/how-to-solve-ora-02429-cannot-drop-index-used-for-enforcement-of-unique-primary-key/" title="How to solve ORA-02429: cannot drop index used for  enforcement of unique/primary key">
+															<img width="160" height="160" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/oracle-logo.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="oracle-logo" scale="0">																																		</a>
+					</div>
+										
+					<div class="tab-item-inner group">
+						<p class="tab-item-category"><a href="http://roufid.com/category/database/" rel="category tag">Database</a> / <a href="http://roufid.com/category/database/oracle/" rel="category tag">Oracle</a></p>
+						<p class="tab-item-title"><a href="http://roufid.com/how-to-solve-ora-02429-cannot-drop-index-used-for-enforcement-of-unique-primary-key/" rel="bookmark" title="How to solve ORA-02429: cannot drop index used for  enforcement of unique/primary key">How to solve ORA-02429: cannot drop index used for  enforcement of unique/primary key</a></p>
+						<p class="tab-item-date">20 Dec, 2019</p>
+					</div>
+					
+				</li>
+								<li>
+					
+										<div class="tab-item-thumbnail">
+						<a href="http://roufid.com/spring-mvc-path-variable-slash/" title="How to resolve Spring MVC path variable with slash">
+															<img width="160" height="160" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/Spring-160x160.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="Spring" srcset="http://roufid.com/wp-content/uploads/2016/02/Spring-160x160.png 160w, http://roufid.com/wp-content/uploads/2016/02/Spring-150x150.png 150w, http://roufid.com/wp-content/uploads/2016/02/Spring.png 200w" sizes="(max-width: 160px) 100vw, 160px">																																		</a>
+					</div>
+										
+					<div class="tab-item-inner group">
+						<p class="tab-item-category"><a href="http://roufid.com/category/spring/spring-mvc/" rel="category tag">Spring MVC</a></p>
+						<p class="tab-item-title"><a href="http://roufid.com/spring-mvc-path-variable-slash/" rel="bookmark" title="How to resolve Spring MVC path variable with slash">How to resolve Spring MVC path variable with slash</a></p>
+						<p class="tab-item-date">3 Mar, 2019</p>
+					</div>
+					
+				</li>
+								<li>
+					
+										<div class="tab-item-thumbnail">
+						<a href="http://roufid.com/angular-use-pipe-services-components/" title="Use pipe in services and components in Angular">
+															<img width="160" height="160" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/Angular_full_color_logo.svg_.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="" scale="0">																																		</a>
+					</div>
+										
+					<div class="tab-item-inner group">
+						<p class="tab-item-category"><a href="http://roufid.com/category/angular/" rel="category tag">Angular</a></p>
+						<p class="tab-item-title"><a href="http://roufid.com/angular-use-pipe-services-components/" rel="bookmark" title="Use pipe in services and components in Angular">Use pipe in services and components in Angular</a></p>
+						<p class="tab-item-date">2 Mar, 2019</p>
+					</div>
+					
+				</li>
+								<li>
+					
+										<div class="tab-item-thumbnail">
+						<a href="http://roufid.com/angular-set-headers-every-request/" title="How to set headers for every request in Angular">
+															<img width="160" height="160" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/Angular_full_color_logo.svg_.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="" scale="0">																																		</a>
+					</div>
+										
+					<div class="tab-item-inner group">
+						<p class="tab-item-category"><a href="http://roufid.com/category/angular/" rel="category tag">Angular</a></p>
+						<p class="tab-item-title"><a href="http://roufid.com/angular-set-headers-every-request/" rel="bookmark" title="How to set headers for every request in Angular">How to set headers for every request in Angular</a></p>
+						<p class="tab-item-date">1 Mar, 2019</p>
+					</div>
+					
+				</li>
+							</ul><!--/.alx-tab-->
+
+		
+
+						
+						<ul id="tab-popular" class="alx-tab group thumbs-enabled" style="display: none;">
+				
+								<li>
+				
+										<div class="tab-item-thumbnail">
+						<a href="http://roufid.com/easy-tutorial-to-install-liferay-on-tomcat-7/" title="Easy tutorial to install Liferay on Tomcat">
+															<img width="160" height="160" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/course-logo-15-160x160.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="Install Liferay plugin on Eclipse" srcset="http://roufid.com/wp-content/uploads/2016/02/course-logo-15-160x160.jpg 160w, http://roufid.com/wp-content/uploads/2016/02/course-logo-15-150x150.jpg 150w, http://roufid.com/wp-content/uploads/2016/02/course-logo-15.jpg 262w" sizes="(max-width: 160px) 100vw, 160px">																																		</a>
+					</div>
+										
+					<div class="tab-item-inner group">
+						<p class="tab-item-category"><a href="http://roufid.com/category/liferay/" rel="category tag">Liferay</a></p>
+						<p class="tab-item-title"><a href="http://roufid.com/easy-tutorial-to-install-liferay-on-tomcat-7/" rel="bookmark" title="Easy tutorial to install Liferay on Tomcat">Easy tutorial to install Liferay on Tomcat</a></p>
+						<p class="tab-item-date">10 Feb, 2016</p>
+					</div>
+					
+				</li>
+								<li>
+				
+										<div class="tab-item-thumbnail">
+						<a href="http://roufid.com/liferay-ipc-using-portlet-session/" title="Liferay IPC using Portlet session (Inter Portlet Communication)">
+															<img width="160" height="160" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/course-logo-15-160x160.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="Install Liferay plugin on Eclipse" srcset="http://roufid.com/wp-content/uploads/2016/02/course-logo-15-160x160.jpg 160w, http://roufid.com/wp-content/uploads/2016/02/course-logo-15-150x150.jpg 150w, http://roufid.com/wp-content/uploads/2016/02/course-logo-15.jpg 262w" sizes="(max-width: 160px) 100vw, 160px">																																		</a>
+					</div>
+										
+					<div class="tab-item-inner group">
+						<p class="tab-item-category"><a href="http://roufid.com/category/liferay/ipc/" rel="category tag">IPC</a> / <a href="http://roufid.com/category/liferay/" rel="category tag">Liferay</a></p>
+						<p class="tab-item-title"><a href="http://roufid.com/liferay-ipc-using-portlet-session/" rel="bookmark" title="Liferay IPC using Portlet session (Inter Portlet Communication)">Liferay IPC using Portlet session (Inter Portlet Communication)</a></p>
+						<p class="tab-item-date">23 Mar, 2016</p>
+					</div>
+					
+				</li>
+								<li>
+				
+										<div class="tab-item-thumbnail">
+						<a href="http://roufid.com/setup-liferay-postgresql-database/" title="Setup Liferay PostgreSQL Database">
+															<img width="160" height="160" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/course-logo-15-160x160.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="Install Liferay plugin on Eclipse" srcset="http://roufid.com/wp-content/uploads/2016/02/course-logo-15-160x160.jpg 160w, http://roufid.com/wp-content/uploads/2016/02/course-logo-15-150x150.jpg 150w, http://roufid.com/wp-content/uploads/2016/02/course-logo-15.jpg 262w" sizes="(max-width: 160px) 100vw, 160px">																																		</a>
+					</div>
+										
+					<div class="tab-item-inner group">
+						<p class="tab-item-category"><a href="http://roufid.com/category/liferay/" rel="category tag">Liferay</a></p>
+						<p class="tab-item-title"><a href="http://roufid.com/setup-liferay-postgresql-database/" rel="bookmark" title="Setup Liferay PostgreSQL Database">Setup Liferay PostgreSQL Database</a></p>
+						<p class="tab-item-date">9 Apr, 2016</p>
+					</div>
+					
+				</li>
+								<li>
+				
+										<div class="tab-item-thumbnail">
+						<a href="http://roufid.com/jsf-with-liferay-on-tomcat/" title="Easy tutorial to work with JSF in Liferay portal on Tomcat">
+															<img width="160" height="160" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/course-logo-15-160x160.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="Install Liferay plugin on Eclipse" srcset="http://roufid.com/wp-content/uploads/2016/02/course-logo-15-160x160.jpg 160w, http://roufid.com/wp-content/uploads/2016/02/course-logo-15-150x150.jpg 150w, http://roufid.com/wp-content/uploads/2016/02/course-logo-15.jpg 262w" sizes="(max-width: 160px) 100vw, 160px">																																		</a>
+					</div>
+										
+					<div class="tab-item-inner group">
+						<p class="tab-item-category"><a href="http://roufid.com/category/liferay/" rel="category tag">Liferay</a></p>
+						<p class="tab-item-title"><a href="http://roufid.com/jsf-with-liferay-on-tomcat/" rel="bookmark" title="Easy tutorial to work with JSF in Liferay portal on Tomcat">Easy tutorial to work with JSF in Liferay portal on Tomcat</a></p>
+						<p class="tab-item-date">16 Feb, 2016</p>
+					</div>
+					
+				</li>
+								<li>
+				
+										<div class="tab-item-thumbnail">
+						<a href="http://roufid.com/liferay-jsf-portlet-communication-using-public-render-parameters/" title="Liferay JSF IPC using public render parameters (Inter Portlet Communication)">
+															<img width="160" height="160" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/course-logo-15-160x160.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="Install Liferay plugin on Eclipse" srcset="http://roufid.com/wp-content/uploads/2016/02/course-logo-15-160x160.jpg 160w, http://roufid.com/wp-content/uploads/2016/02/course-logo-15-150x150.jpg 150w, http://roufid.com/wp-content/uploads/2016/02/course-logo-15.jpg 262w" sizes="(max-width: 160px) 100vw, 160px">																																		</a>
+					</div>
+										
+					<div class="tab-item-inner group">
+						<p class="tab-item-category"><a href="http://roufid.com/category/liferay/ipc/" rel="category tag">IPC</a> / <a href="http://roufid.com/category/liferay/" rel="category tag">Liferay</a></p>
+						<p class="tab-item-title"><a href="http://roufid.com/liferay-jsf-portlet-communication-using-public-render-parameters/" rel="bookmark" title="Liferay JSF IPC using public render parameters (Inter Portlet Communication)">Liferay JSF IPC using public render parameters (Inter Portlet Communication)</a></p>
+						<p class="tab-item-date">24 Apr, 2016</p>
+					</div>
+					
+				</li>
+							</ul><!--/.alx-tab-->
+			
+			
+
+		
+			</div>
+
+</div>
+<div id="archives-2" class="widget widget_archive"><h3>Archives</h3>		<ul>
+				<li><a href="http://roufid.com/2019/12/">December 2019</a>&nbsp;(2)</li>
+	<li><a href="http://roufid.com/2019/03/">March 2019</a>&nbsp;(3)</li>
+	<li><a href="http://roufid.com/2019/02/">February 2019</a>&nbsp;(18)</li>
+	<li><a href="http://roufid.com/2017/05/">May 2017</a>&nbsp;(1)</li>
+	<li><a href="http://roufid.com/2017/01/">January 2017</a>&nbsp;(1)</li>
+	<li><a href="http://roufid.com/2016/12/">December 2016</a>&nbsp;(9)</li>
+	<li><a href="http://roufid.com/2016/06/">June 2016</a>&nbsp;(4)</li>
+	<li><a href="http://roufid.com/2016/05/">May 2016</a>&nbsp;(6)</li>
+	<li><a href="http://roufid.com/2016/04/">April 2016</a>&nbsp;(11)</li>
+	<li><a href="http://roufid.com/2016/03/">March 2016</a>&nbsp;(9)</li>
+	<li><a href="http://roufid.com/2016/02/">February 2016</a>&nbsp;(4)</li>
+		</ul>
+			</div>		
+	</div><!--/.sidebar-content-->
+	
+</div><!--/.sidebar-->
+	
+	
+</div><!--/.main-->
+
+	</div><!--/.container-inner-->
+	
+	<footer id="footer">	
+				
+		<section id="footer-widgets" class="container">
+			<div class="pad group">
+											
+				<div class="footer-widget-1 grid one-third ">
+					<div id="alxtabs-3" class="widget widget_alx_tabs">
+<h3>WHAT’S HOT ?</h3><ul class="alx-tabs-nav group tab-count-2"><li class="alx-tab tab-recent active"><a href="http://roufid.com/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1/#tab-recent" title="Recent Posts"><i class="fa fa-clock-o"></i><span>Recent Posts</span></a></li><li class="alx-tab tab-popular"><a href="http://roufid.com/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1/#tab-popular" title="Popular Posts"><i class="fa fa-star"></i><span>Popular Posts</span></a></li></ul>
+	<div class="alx-tabs-container">
+
+	
+					
+									
+			<ul id="tab-recent" class="alx-tab group " style="display: block;">
+								<li>
+					
+										
+					<div class="tab-item-inner group">
+						<p class="tab-item-category"><a href="http://roufid.com/category/java/" rel="category tag">Java</a> / <a href="http://roufid.com/category/java/stream-java/" rel="category tag">Stream</a></p>
+						<p class="tab-item-title"><a href="http://roufid.com/java-stream-distinct-remove-duplicates/" rel="bookmark" title="Java Stream Distinct to remove duplicates examples">Java Stream Distinct to remove duplicates examples</a></p>
+						<p class="tab-item-date">20 Dec, 2019</p>
+					</div>
+					
+				</li>
+								<li>
+					
+										
+					<div class="tab-item-inner group">
+						<p class="tab-item-category"><a href="http://roufid.com/category/database/" rel="category tag">Database</a> / <a href="http://roufid.com/category/database/oracle/" rel="category tag">Oracle</a></p>
+						<p class="tab-item-title"><a href="http://roufid.com/how-to-solve-ora-02429-cannot-drop-index-used-for-enforcement-of-unique-primary-key/" rel="bookmark" title="How to solve ORA-02429: cannot drop index used for  enforcement of unique/primary key">How to solve ORA-02429: cannot drop index used for  enforcement of unique/primary key</a></p>
+						<p class="tab-item-date">20 Dec, 2019</p>
+					</div>
+					
+				</li>
+								<li>
+					
+										
+					<div class="tab-item-inner group">
+						<p class="tab-item-category"><a href="http://roufid.com/category/spring/spring-mvc/" rel="category tag">Spring MVC</a></p>
+						<p class="tab-item-title"><a href="http://roufid.com/spring-mvc-path-variable-slash/" rel="bookmark" title="How to resolve Spring MVC path variable with slash">How to resolve Spring MVC path variable with slash</a></p>
+						<p class="tab-item-date">3 Mar, 2019</p>
+					</div>
+					
+				</li>
+							</ul><!--/.alx-tab-->
+
+		
+
+						
+						<ul id="tab-popular" class="alx-tab group " style="display: none;">
+				
+								<li>
+				
+										
+					<div class="tab-item-inner group">
+						<p class="tab-item-category"><a href="http://roufid.com/category/spring/" rel="category tag">Spring</a> / <a href="http://roufid.com/category/spring/spring-boot/" rel="category tag">Spring Boot</a></p>
+						<p class="tab-item-title"><a href="http://roufid.com/spring-boot-multiple-databases-configuration/" rel="bookmark" title="Spring Boot multiple databases configuration">Spring Boot multiple databases configuration</a></p>
+						<p class="tab-item-date">3 Dec, 2016</p>
+					</div>
+					
+				</li>
+								<li>
+				
+										
+					<div class="tab-item-inner group">
+						<p class="tab-item-category"><a href="http://roufid.com/category/maven/" rel="category tag">Maven</a></p>
+						<p class="tab-item-title"><a href="http://roufid.com/no-compiler-is-provided-in-this-environment/" rel="bookmark" title="3 ways to solve the Maven error : No compiler is provided in this environment.">3 ways to solve the Maven error : No compiler is provided in this environment.</a></p>
+						<p class="tab-item-date">7 Jun, 2016</p>
+					</div>
+					
+				</li>
+								<li>
+				
+										
+					<div class="tab-item-inner group">
+						<p class="tab-item-category"><a href="http://roufid.com/category/spring/" rel="category tag">Spring</a> / <a href="http://roufid.com/category/spring/spring-boot/" rel="category tag">Spring Boot</a></p>
+						<p class="tab-item-title"><a href="http://roufid.com/load-multiple-configuration-files-different-directories-spring-boot/" rel="bookmark" title="Load multiple configuration files from different directories with Spring Boot">Load multiple configuration files from different directories with Spring Boot</a></p>
+						<p class="tab-item-date">20 Dec, 2016</p>
+					</div>
+					
+				</li>
+							</ul><!--/.alx-tab-->
+			
+			
+
+		
+			</div>
+
+</div>
+				</div>
+		
+																
+				<div class="footer-widget-2 grid one-third ">
+					
+<!-- Quick Adsense Reloaded -->
+<div id="adswidget1-quick-adsense-reloaded-4" class="widget quads-ad1_widget"><div id="quads-ad1_widget" style="float:none;margin:0px;"><script async="" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/f.txt"></script>
+<!-- Sidebar responsive -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5842786856906684" data-ad-slot="1221167974" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></div><div id="recent-comments-2" class="widget widget_recent_comments"><h3>Recent comments</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="http://roufid.com/" rel="external nofollow" class="url">Radouane Roufid</a></span> on <a href="http://roufid.com/java-ldap-ssl-authentication/#comment-106">Java LDAP SSL authentication</a></li><li class="recentcomments"><span class="comment-author-link">KarthiK E</span> on <a href="http://roufid.com/java-ldap-ssl-authentication/#comment-105">Java LDAP SSL authentication</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://roufid.com/" rel="external nofollow" class="url">Radouane Roufid</a></span> on <a href="http://roufid.com/no-compiler-is-provided-in-this-environment/#comment-104">3 ways to solve the Maven error : No compiler is provided in this environment.</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://roufid.com/" rel="external nofollow" class="url">Radouane Roufid</a></span> on <a href="http://roufid.com/no-compiler-is-provided-in-this-environment/#comment-103">3 ways to solve the Maven error : No compiler is provided in this environment.</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.pixelstomp.com/" rel="external nofollow" class="url">Misha</a></span> on <a href="http://roufid.com/no-compiler-is-provided-in-this-environment/#comment-102">3 ways to solve the Maven error : No compiler is provided in this environment.</a></li></ul></div>				</div>
+		
+																
+				<div class="footer-widget-3 grid one-third last">
+					<div id="tag_cloud-2" class="widget widget_tag_cloud"><h3>TAGS</h3><div class="tagcloud"><a href="http://roufid.com/tag/ajax/" class="tag-cloud-link tag-link-53 tag-link-position-1" style="font-size: 10.625pt;" aria-label="Ajax (2 items)">Ajax</a>
+<a href="http://roufid.com/tag/angular/" class="tag-cloud-link tag-link-76 tag-link-position-2" style="font-size: 20.395833333333pt;" aria-label="Angular (13 items)">Angular</a>
+<a href="http://roufid.com/tag/apache-commons-io/" class="tag-cloud-link tag-link-29 tag-link-position-3" style="font-size: 15pt;" aria-label="Apache-Commons-IO (5 items)">Apache-Commons-IO</a>
+<a href="http://roufid.com/tag/bufferedreader/" class="tag-cloud-link tag-link-27 tag-link-position-4" style="font-size: 8pt;" aria-label="BufferedReader (1 item)">BufferedReader</a>
+<a href="http://roufid.com/tag/database/" class="tag-cloud-link tag-link-34 tag-link-position-5" style="font-size: 16.020833333333pt;" aria-label="Database (6 items)">Database</a>
+<a href="http://roufid.com/tag/db2/" class="tag-cloud-link tag-link-37 tag-link-position-6" style="font-size: 10.625pt;" aria-label="DB2 (2 items)">DB2</a>
+<a href="http://roufid.com/tag/derbydb/" class="tag-cloud-link tag-link-38 tag-link-position-7" style="font-size: 10.625pt;" aria-label="DerbyDB (2 items)">DerbyDB</a>
+<a href="http://roufid.com/tag/eclipse/" class="tag-cloud-link tag-link-8 tag-link-position-8" style="font-size: 18.208333333333pt;" aria-label="Eclipse (9 items)">Eclipse</a>
+<a href="http://roufid.com/tag/faces-config-xml/" class="tag-cloud-link tag-link-21 tag-link-position-9" style="font-size: 10.625pt;" aria-label="faces-config.xml (2 items)">faces-config.xml</a>
+<a href="http://roufid.com/tag/file/" class="tag-cloud-link tag-link-26 tag-link-position-10" style="font-size: 12.375pt;" aria-label="file (3 items)">file</a>
+<a href="http://roufid.com/tag/files/" class="tag-cloud-link tag-link-50 tag-link-position-11" style="font-size: 15pt;" aria-label="Files (5 items)">Files</a>
+<a href="http://roufid.com/tag/hibernate/" class="tag-cloud-link tag-link-62 tag-link-position-12" style="font-size: 10.625pt;" aria-label="hibernate (2 items)">hibernate</a>
+<a href="http://roufid.com/tag/ipc/" class="tag-cloud-link tag-link-43 tag-link-position-13" style="font-size: 16.020833333333pt;" aria-label="IPC (6 items)">IPC</a>
+<a href="http://roufid.com/tag/java/" class="tag-cloud-link tag-link-25 tag-link-position-14" style="font-size: 22pt;" aria-label="Java (17 items)">Java</a>
+<a href="http://roufid.com/tag/javascript/" class="tag-cloud-link tag-link-51 tag-link-position-15" style="font-size: 12.375pt;" aria-label="JavaScript (3 items)">JavaScript</a>
+<a href="http://roufid.com/tag/jpa/" class="tag-cloud-link tag-link-65 tag-link-position-16" style="font-size: 10.625pt;" aria-label="JPA (2 items)">JPA</a>
+<a href="http://roufid.com/tag/jquery/" class="tag-cloud-link tag-link-52 tag-link-position-17" style="font-size: 13.833333333333pt;" aria-label="JQuery (4 items)">JQuery</a>
+<a href="http://roufid.com/tag/jsf/" class="tag-cloud-link tag-link-9 tag-link-position-18" style="font-size: 15pt;" aria-label="JSF (5 items)">JSF</a>
+<a href="http://roufid.com/tag/jvm/" class="tag-cloud-link tag-link-42 tag-link-position-19" style="font-size: 10.625pt;" aria-label="JVM (2 items)">JVM</a>
+<a href="http://roufid.com/tag/liferay/" class="tag-cloud-link tag-link-6 tag-link-position-20" style="font-size: 21.5625pt;" aria-label="Liferay (16 items)">Liferay</a>
+<a href="http://roufid.com/tag/liferay-display-xml/" class="tag-cloud-link tag-link-18 tag-link-position-21" style="font-size: 8pt;" aria-label="liferay-display.xml (1 item)">liferay-display.xml</a>
+<a href="http://roufid.com/tag/liferay-hook-xml/" class="tag-cloud-link tag-link-19 tag-link-position-22" style="font-size: 8pt;" aria-label="liferay-hook.xml (1 item)">liferay-hook.xml</a>
+<a href="http://roufid.com/tag/liferay-plugin-package-properties/" class="tag-cloud-link tag-link-20 tag-link-position-23" style="font-size: 8pt;" aria-label="liferay-plugin-package.properties (1 item)">liferay-plugin-package.properties</a>
+<a href="http://roufid.com/tag/liferay-portlet-xml/" class="tag-cloud-link tag-link-17 tag-link-position-24" style="font-size: 13.833333333333pt;" aria-label="liferay-portlet.xml (4 items)">liferay-portlet.xml</a>
+<a href="http://roufid.com/tag/liferay-ide/" class="tag-cloud-link tag-link-11 tag-link-position-25" style="font-size: 10.625pt;" aria-label="Liferay IDE (2 items)">Liferay IDE</a>
+<a href="http://roufid.com/tag/liferay-m2e/" class="tag-cloud-link tag-link-13 tag-link-position-26" style="font-size: 8pt;" aria-label="Liferay m2e (1 item)">Liferay m2e</a>
+<a href="http://roufid.com/tag/liferay-plugin/" class="tag-cloud-link tag-link-12 tag-link-position-27" style="font-size: 8pt;" aria-label="Liferay plugin (1 item)">Liferay plugin</a>
+<a href="http://roufid.com/tag/m2eclipse/" class="tag-cloud-link tag-link-55 tag-link-position-28" style="font-size: 10.625pt;" aria-label="M2Eclipse (2 items)">M2Eclipse</a>
+<a href="http://roufid.com/tag/maven/" class="tag-cloud-link tag-link-10 tag-link-position-29" style="font-size: 19.8125pt;" aria-label="Maven (12 items)">Maven</a>
+<a href="http://roufid.com/tag/mysql/" class="tag-cloud-link tag-link-35 tag-link-position-30" style="font-size: 12.375pt;" aria-label="MySQL (3 items)">MySQL</a>
+<a href="http://roufid.com/tag/oracle/" class="tag-cloud-link tag-link-39 tag-link-position-31" style="font-size: 10.625pt;" aria-label="Oracle (2 items)">Oracle</a>
+<a href="http://roufid.com/tag/portal-ext-properties/" class="tag-cloud-link tag-link-40 tag-link-position-32" style="font-size: 15pt;" aria-label="portal-ext.properties (5 items)">portal-ext.properties</a>
+<a href="http://roufid.com/tag/portlet/" class="tag-cloud-link tag-link-14 tag-link-position-33" style="font-size: 18.208333333333pt;" aria-label="Portlet (9 items)">Portlet</a>
+<a href="http://roufid.com/tag/portlet-xml/" class="tag-cloud-link tag-link-16 tag-link-position-34" style="font-size: 16.75pt;" aria-label="portlet.xml (7 items)">portlet.xml</a>
+<a href="http://roufid.com/tag/postgresql/" class="tag-cloud-link tag-link-36 tag-link-position-35" style="font-size: 13.833333333333pt;" aria-label="PostgreSQL (4 items)">PostgreSQL</a>
+<a href="http://roufid.com/tag/properties/" class="tag-cloud-link tag-link-33 tag-link-position-36" style="font-size: 15pt;" aria-label="Properties (5 items)">Properties</a>
+<a href="http://roufid.com/tag/public-render-parameter/" class="tag-cloud-link tag-link-45 tag-link-position-37" style="font-size: 10.625pt;" aria-label="Public Render Parameter (2 items)">Public Render Parameter</a>
+<a href="http://roufid.com/tag/scanner/" class="tag-cloud-link tag-link-28 tag-link-position-38" style="font-size: 10.625pt;" aria-label="Scanner (2 items)">Scanner</a>
+<a href="http://roufid.com/tag/spring/" class="tag-cloud-link tag-link-59 tag-link-position-39" style="font-size: 18.208333333333pt;" aria-label="spring (9 items)">spring</a>
+<a href="http://roufid.com/tag/spring-boot/" class="tag-cloud-link tag-link-60 tag-link-position-40" style="font-size: 18.208333333333pt;" aria-label="spring-boot (9 items)">spring-boot</a>
+<a href="http://roufid.com/tag/spring-data-jpa/" class="tag-cloud-link tag-link-61 tag-link-position-41" style="font-size: 12.375pt;" aria-label="spring-data-jpa (3 items)">spring-data-jpa</a>
+<a href="http://roufid.com/tag/spring-mvc/" class="tag-cloud-link tag-link-70 tag-link-position-42" style="font-size: 16.75pt;" aria-label="Spring-MVC (7 items)">Spring-MVC</a>
+<a href="http://roufid.com/tag/stream/" class="tag-cloud-link tag-link-67 tag-link-position-43" style="font-size: 10.625pt;" aria-label="Stream (2 items)">Stream</a>
+<a href="http://roufid.com/tag/tomcat/" class="tag-cloud-link tag-link-7 tag-link-position-44" style="font-size: 12.375pt;" aria-label="Tomcat (3 items)">Tomcat</a>
+<a href="http://roufid.com/tag/web-xml/" class="tag-cloud-link tag-link-22 tag-link-position-45" style="font-size: 8pt;" aria-label="web.xml (1 item)">web.xml</a></div>
+</div>				</div>
+		
+												</div>
+		</section><!--/#footer-widgets-->	
+				
+					<nav class="nav-container group" id="nav-footer">
+				<div class="nav-toggle"><i class="fa fa-bars"></i></div>
+				<div class="nav-text"><!-- put your mobile menu text here --></div>
+				<div class="nav-wrap"><ul id="menu-top-menu-1" class="nav container group"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-169"><a href="http://roufid.com/">Home</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1634"><a href="http://roufid.com/category/angular/">Angular</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-322"><a href="http://roufid.com/liferay/">Liferay</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-321"><a href="http://roufid.com/java/">Java</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1282"><a href="http://roufid.com/spring/">Spring</a>
+<ul class="sub-menu" style="display: none;">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1283"><a href="http://roufid.com/category/spring/spring-boot/">Spring Boot</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1281"><a href="http://roufid.com/hibernate/">Hibernate</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1076"><a href="http://roufid.com/maven/">Maven</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-328"><a href="http://roufid.com/contact/">Contact</a></li>
+</ul></div>
+			</nav><!--/#nav-footer-->
+				
+		<section id="footer-bottom">
+			<div class="container">
+			
+				<a id="back-to-top" href="http://roufid.com/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1/#"><i class="fa fa-angle-up"></i></a>
+				
+				<div class="pad group">				
+					<div class="grid one-half">
+					
+													<img id="footer-logo" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/Roufid_white.png" alt="" scale="0">
+												
+						<div id="copyright">
+															<p>Roufid © 2020. All Rights Reserved.</p>
+													</div><!--/#copyright-->
+						
+												
+					</div>		
+					<div class="grid one-half last">	
+						<ul class="social-links"><li><a class="social-tooltip Facebook" title="Facebook" href="https://fr-fr.facebook.com/people/Radouane-Rfd/100006635326382" target="Array"><i class="fa fa-facebook"></i></a></li><li><a class="social-tooltip Google Plus" title="Google Plus" href="https://plus.google.com/111227047082684549283" target="Array"><i class="fa fa-google-plus"></i></a></li><li><a class="social-tooltip Linkedin" title="Linkedin" href="https://fr.linkedin.com/in/radouane-roufid-b7343499/fr" target="Array"><i class="fa fa-linkedin"></i></a></li><li><a class="social-tooltip Stackoverflow" title="Stackoverflow" href="http://stackoverflow.com/users/5131937/radouane-roufid" target="Array"><i class="fa fa-stack-overflow"></i></a></li><li><a class="social-tooltip Github" title="Github" href="https://github.com/RadouaneRoufid/" target="Array"><i class="fa fa-github"></i></a></li><li><a class="social-tooltip RSS" title="RSS" href="http://roufid.com/feed/" target="Array"><i class="fa fa-rss"></i></a></li></ul>					</div>		
+				</div>
+				
+			</div><!--/.container-->
+		</section><!--/#footer-bottom-->
+		
+	</footer><!--/#footer-->
+
+</div><!--/#wrapper-->
+
+
+    <style type="text/css">
+
+        @media screen and (max-width: 640px) {
+
+            #wpfront-scroll-top-container {
+                visibility: hidden;
+            }
+
+        }
+
+    </style>
+
+
+    <div id="wpfront-scroll-top-container" style="opacity: 0; right: 20px; bottom: 20px;"><img src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/1.png" alt="" scale="0" style="width: auto; height: auto;"></div>
+    <script type="text/javascript">function wpfront_scroll_top_init() {if(typeof wpfront_scroll_top == "function" && typeof jQuery !== "undefined") {wpfront_scroll_top({"scroll_offset":500,"button_width":0,"button_height":0,"button_opacity":0.8,"button_fade_duration":200,"scroll_duration":400,"location":1,"marginX":20,"marginY":20,"hide_iframe":false,"auto_hide":false,"auto_hide_after":2});} else {setTimeout(wpfront_scroll_top_init, 100);}}wpfront_scroll_top_init();</script>
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"http:\/\/roufid.com\/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1\/":1175};
+	</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"roufid"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/comment_count.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"integration":"wordpress 3.0.16"},"disqusIdentifier":"1175 http:\/\/roufid.com\/?p=1175","disqusShortname":"roufid","disqusTitle":"3 ways to call a stored procedure with Hibernate (JPA 2.1)","disqusUrl":"http:\/\/roufid.com\/3-ways-to-call-a-stored-procedure-with-hibernate-jpa-2-1\/","postId":"1175"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/comment_embed.js.download"></script>
+<script type="text/javascript" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/devicepx-jetpack.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var tocplus = {"visibility_show":"show","visibility_hide":"hide","width":"Auto","smooth_scroll_offset":"0"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/front.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var JQLBSettings = {"fitToScreen":"1","resizeSpeed":"0","displayDownloadLink":"0","navbarOnTop":"0","loopImages":"","resizeCenter":"","marginSize":"0","linkTarget":"","help":"","prevLinkTitle":"previous image","nextLinkTitle":"next image","prevLinkText":"\u00ab Previous","nextLinkText":"Next \u00bb","closeTitle":"close image gallery","image":"Image ","of":" of ","download":"Download","jqlb_overlay_opacity":"80","jqlb_overlay_color":"#000000","jqlb_overlay_close":"1","jqlb_border_width":"10","jqlb_border_color":"#ffffff","jqlb_border_radius":"0","jqlb_image_info_background_transparency":"100","jqlb_image_info_bg_color":"#ffffff","jqlb_image_info_text_color":"#000000","jqlb_image_info_text_fontsize":"10","jqlb_show_text_for_image":"1","jqlb_next_image_title":"next image","jqlb_previous_image_title":"previous image","jqlb_next_button_image":"http:\/\/roufid.com\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/next.gif","jqlb_previous_button_image":"http:\/\/roufid.com\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/prev.gif","jqlb_maximum_width":"","jqlb_maximum_height":"","jqlb_show_close_button":"1","jqlb_close_image_title":"close image gallery","jqlb_close_image_max_heght":"22","jqlb_image_for_close_lightbox":"http:\/\/roufid.com\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/closelabel.gif","jqlb_keyboard_navigation":"1","jqlb_popup_size_fix":"0"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/wp-lightbox-2.min.js.download"></script>
+<script type="text/javascript" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/jquery.jplayer.min.js.download"></script>
+<script type="text/javascript" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/scripts.js.download"></script>
+<script type="text/javascript" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/jquery.sharrre.min.js.download"></script>
+<script type="text/javascript" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/comment-reply.min.js.download"></script>
+<script type="text/javascript" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/eu-cookie-law.js.download"></script><div id="eu_cookie_law_widget-2" class="widget widget_eu_cookie_law_widget" style="display: block;"><div class="negative hide-on-button" data-hide-timeout="30" id="eu-cookie-law">
+	<form method="post">
+		<input type="submit" value="Close and accept" class="accept">
+	</form>
+
+	Privacy &amp; Cookies: This site uses cookies.		<br>
+		To find out more, as well as how to remove or block these, see here:
+	<a href="https://jetpack.com/support/cookies/">
+		Our Cookie Policy	</a>
+</div>
+</div>
+<script type="text/javascript" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/wp-embed.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/sharing.js.download"></script>
+<script type="text/javascript">
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-google-plus-1', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomgoogle-plus-1', 'menubar=1,resizable=1,width=480,height=550' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-linkedin', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+				return false;
+			});
+</script>
+<!--[if lt IE 9]>
+<script src="http://roufid.com/wp-content/themes/anew/js/ie/respond.js"></script>
+<![endif]-->
+
+
+<!--
+Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/products/
+
+
+Served from: roufid.com @ 2020-08-21 17:24:38 by W3 Total Cache
+--><iframe style="display: none;" src="./3 ways to call a stored procedure with Hibernate (JPA 2.1) - Roufid_files/saved_resource(2).html"></iframe></body></html>

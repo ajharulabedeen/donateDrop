@@ -1,0 +1,102 @@
+/* BEGIN dynamic-output */
+.container { max-width: 1080px; }
+
+.site-title a img { max-height: 120px; }
+.site-description { line-height: 120px; }
+
+::selection { background-color: #e8554e; }
+::-moz-selection { background-color: #e8554e; }
+
+.search-expand,
+#nav-topbar.nav-container { background-color: #222222; }
+@media only screen and (min-width: 720px) {
+	#nav-topbar .nav ul { background-color: #222222; }
+}
+
+#header { background-color: #f2f2f2; }
+
+#footer-bottom { background-color: #222222; }
+
+#footer-bottom #back-to-top { background: #333333; }
+#footer-bottom #back-to-top:before,
+#footer-bottom #back-to-top:after { border-color: #333333 transparent; }
+#footer-bottom { border-color: #333333; }
+
+.format-audio .hex,
+.format-audio .post-deco,
+.jp-play-bar,
+.jp-volume-bar-value { background-color: #69bac8; }
+
+.format-chat .hex,
+.format-chat .post-deco { background-color: #69bac8; }
+.format-chat .format-container { background: #69bac8 url(img/styling/opacity-75-light.png) repeat; }
+
+.format-gallery .hex,
+.format-gallery .post-deco { background-color: #7eb66f; }
+
+.format-image .hex,
+.format-image .post-deco { background-color: #7eb66f; }
+
+.format-link .hex,
+.format-link .post-deco { background-color: #e8554e; }
+.format-link .post-format a { color: #e8554e; }
+.format-link .format-container { background: #e8554e url(img/styling/opacity-75-light.png) repeat; }
+
+.format-quote .hex,
+.format-quote .post-deco { background-color: #e7ba3a; }
+.format-quote .format-container { background: #e7ba3a url(img/styling/opacity-75-light.png) repeat; }
+
+.format-status .hex,
+.format-status .post-deco { background-color: #ffa500; }
+
+.format-video .hex,
+.format-video .post-deco { background-color: #e8554e; }
+
+a,
+.themeform label .required,
+.post-title a:hover,
+.post-meta a:hover,
+.author-bio .bio-name a:hover,
+.post-nav li a:hover span,
+.widget_rss ul li a,
+.widget_calendar a,
+.alx-tab .tab-item-category a,
+.alx-posts .post-item-category a,
+.alx-tab li:hover .tab-item-title a,
+.alx-tab li:hover .tab-item-comment a,
+.alx-posts li:hover .post-item-title a,
+#footer .widget_rss ul li a,
+#footer .widget_calendar a,
+#footer .alx-tab .tab-item-category a,
+#footer .alx-posts .post-item-category a,
+.comment-tabs li.active a,
+.comment-awaiting-moderation,
+.child-menu a:hover,
+.child-menu .current_page_item > a,
+.wp-pagenavi a { color: #e8554e; }
+
+.themeform input[type="submit"],
+.themeform button[type="submit"],
+.s1 .sidebar-toggle,
+.more-link,
+.post-tags a:hover,
+.author-bio .bio-avatar:after,
+.widget_calendar caption,
+.commentlist li.bypostauthor > .comment-body:after { background-color: #e8554e; }
+
+.alx-tabs-nav li.active a,
+.wp-pagenavi a:hover,
+.wp-pagenavi a:active,
+.wp-pagenavi span.current { border-bottom-color: #e8554e!important; }
+
+.themeform input[type="text"]:focus, 
+.themeform input[type="password"]:focus, 
+.themeform input[type="email"]:focus, 
+.themeform textarea:focus,
+.comment-tabs li.active a { border-color: #e8554e; }
+
+/* END dynamic-output */
+/* BEGIN custom-output */
+/* Add your custom CSS below */
+
+/* END custom-output */

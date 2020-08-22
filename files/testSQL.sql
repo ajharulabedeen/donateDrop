@@ -1,3 +1,46 @@
+127.0.0.1/drop_new/history/		http://localhost/phpmyadmin/tbl_sql.php?db=drop_new&table=history
+ Showing rows 0 - 24 (791 total, Query took 0.0568 seconds.)
+
+SELECT
+    user_id,
+    COUNT(user_id)
+FROM
+    `history`
+GROUP BY
+    user_id
+ORDER BY
+    COUNT(user_id)
+DESC
+
+
+user_id	COUNT(user_id)   	
+14294	75	
+15506	74	
+16380	69	
+13041	68	
+17315	65	
+15017	65	
+12569	65	
+12326	64	
+14845	63	
+12307	61	
+14386	60	
+14191	59	
+11529	59	
+11542	58	
+14270	56	
+16133	55	
+17032	55	
+15877	55	
+11436	55	
+13342	54	
+14172	54	
+14041	53	
+11429	53	
+16361	52	
+15730	52	
+
+--------------------------------------
 127.0.0.1/drop_new/postcomment/		http://localhost/phpmyadmin/db_sql.php?db=drop_new
  Showing rows 0 -  8 (9 total, Query took 0.0107 seconds.)
 

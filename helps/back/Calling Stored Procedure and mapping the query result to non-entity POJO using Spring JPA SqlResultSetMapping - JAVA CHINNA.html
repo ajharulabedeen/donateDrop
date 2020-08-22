@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<!-- saved from url=(0148)https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/ -->
+<html class="html" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style id="stndz-style"></style>
+	
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	
+<!-- Social Warfare v4.0.2 https://warfareplugins.com - BEGINNING OF OUTPUT -->
+<style>
+	@font-face {
+		font-family: "sw-icon-font";
+		src:url("https://www.javachinna.com/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.eot?ver=4.0.2");
+		src:url("https://www.javachinna.com/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.eot?ver=4.0.2#iefix") format("embedded-opentype"),
+		url("https://www.javachinna.com/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.woff?ver=4.0.2") format("woff"),
+		url("https://www.javachinna.com/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.ttf?ver=4.0.2") format("truetype"),
+		url("https://www.javachinna.com/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.svg?ver=4.0.2#1445203416") format("svg");
+		font-weight: normal;
+		font-style: normal;
+		font-display:block;
+	}
+</style>
+<!-- Social Warfare v4.0.2 https://warfareplugins.com - END OF OUTPUT -->
+
+<link rel="pingback" href="https://www.javachinna.com/xmlrpc.php">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- This site is optimized with the Yoast SEO plugin v14.7 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA</title>
+	<meta name="robots" content="index, follow">
+	<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+	<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+	<link rel="canonical" href="https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA">
+	<meta property="og:description" content="Recently, I gotta chance to work with a microservice in which I had to call a Stored Procedure and map the results to a POJO. By default the StoredProcedureQuery returns result as List&lt;Object[]&gt; and this has to be mapped to the POJO based on the index manually as shown below in the code snippet This […]">
+	<meta property="og:url" content="https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/">
+	<meta property="og:site_name" content="JAVA CHINNA">
+	<meta property="article:published_time" content="2019-10-26T11:09:50+00:00">
+	<meta property="article:modified_time" content="2020-04-24T15:02:47+00:00">
+	<meta property="og:image" content="https://www.javachinna.com/wp-content/uploads/2019/10/test_result.jpg">
+	<meta name="twitter:card" content="summary_large_image">
+	<script type="text/javascript" async="" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/linkid.js.download"></script><script async="" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/7d17e6339e3970c3003c89115.js.download"></script><script type="text/javascript" async="" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/analytics.js.download"></script><script async="" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/analytics.js.download"></script><script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.javachinna.com/#website","url":"https://www.javachinna.com/","name":"JAVA CHINNA","description":"It&#039;s all about Java development","publisher":{"@id":"https://www.javachinna.com/#/schema/person/2c0161371ecdde49a18aff9c33c852fb"},"potentialAction":[{"@type":"SearchAction","target":"https://www.javachinna.com/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#primaryimage","inLanguage":"en-US","url":"https://www.javachinna.com/wp-content/uploads/2019/10/test_result.jpg","width":654,"height":137},{"@type":"WebPage","@id":"https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#webpage","url":"https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/","name":"Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA","isPartOf":{"@id":"https://www.javachinna.com/#website"},"primaryImageOfPage":{"@id":"https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#primaryimage"},"datePublished":"2019-10-26T11:09:50+00:00","dateModified":"2020-04-24T15:02:47+00:00","inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/"]}]},{"@type":"Article","@id":"https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#article","isPartOf":{"@id":"https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#webpage"},"author":{"@id":"https://www.javachinna.com/#/schema/person/2c0161371ecdde49a18aff9c33c852fb"},"headline":"Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping","datePublished":"2019-10-26T11:09:50+00:00","dateModified":"2020-04-24T15:02:47+00:00","mainEntityOfPage":{"@id":"https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#webpage"},"commentCount":"6","publisher":{"@id":"https://www.javachinna.com/#/schema/person/2c0161371ecdde49a18aff9c33c852fb"},"image":{"@id":"https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#primaryimage"},"keywords":"MySQL,Native SQL Query Result Mapping,Spring JPA,SqlResultSetMapping,StoredProcedureQuery","articleSection":"Spring Boot","inLanguage":"en-US","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#respond"]}]},{"@type":["Person","Organization"],"@id":"https://www.javachinna.com/#/schema/person/2c0161371ecdde49a18aff9c33c852fb","name":"Chinna","image":{"@type":"ImageObject","@id":"https://www.javachinna.com/#personlogo","inLanguage":"en-US","url":"https://www.javachinna.com/wp-content/uploads/2020/07/Chinna.jpg","width":640,"height":640,"caption":"Chinna"},"logo":{"@id":"https://www.javachinna.com/#personlogo"}}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel="dns-prefetch" href="https://www.javachinna.com/">
+<link rel="dns-prefetch" href="https://l.getsitecontrol.com/">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="JAVA CHINNA » Feed" href="https://www.javachinna.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="JAVA CHINNA » Comments Feed" href="https://www.javachinna.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="JAVA CHINNA » Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping Comments Feed" href="https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/feed/">
+<!-- This site uses the Google Analytics by MonsterInsights plugin v7.11.0 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+<script type="text/javascript" data-cfasync="false">
+	var mi_version         = '7.11.0';
+	var mi_track_user      = true;
+	var mi_no_track_reason = '';
+	
+	var disableStr = 'ga-disable-UA-144853299-3';
+
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+
+	if ( 'undefined' === typeof gaOptout ) {
+		function gaOptout() {
+			__gaTrackerOptout();
+		}
+	}
+	
+	if ( mi_track_user ) {
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+		__gaTracker('create', 'UA-144853299-3', 'auto');
+		__gaTracker('set', 'forceSSL', true);
+		__gaTracker('require', 'displayfeatures');
+		__gaTracker('require', 'linkid', 'linkid.js');
+		__gaTracker('send','pageview');
+	} else {
+		console.log( "" );
+		(function() {
+			/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+			var noopfn = function() {
+				return null;
+			};
+			var noopnullfn = function() {
+				return null;
+			};
+			var Tracker = function() {
+				return null;
+			};
+			var p = Tracker.prototype;
+			p.get = noopfn;
+			p.set = noopfn;
+			p.send = noopfn;
+			var __gaTracker = function() {
+				var len = arguments.length;
+				if ( len === 0 ) {
+					return;
+				}
+				var f = arguments[len-1];
+				if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+					console.log( 'Not running function __gaTracker(' + arguments[0] + " ....) because you are not being tracked. " + mi_no_track_reason );
+					return;
+				}
+				try {
+					f.hitCallback();
+				} catch (ex) {
+
+				}
+			};
+			__gaTracker.create = function() {
+				return new Tracker();
+			};
+			__gaTracker.getByName = noopnullfn;
+			__gaTracker.getAll = function() {
+				return [];
+			};
+			__gaTracker.remove = noopfn;
+			window['__gaTracker'] = __gaTracker;
+					})();
+		}
+</script>
+<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.javachinna.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.4.2"}};
+			/*! This file is auto-generated */
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="social-warfare-block-css-css" href="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/blocks.style.build.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-block-library-css" href="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-block-library-theme-css" href="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/theme.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="ez-icomoon-css" href="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/style.min(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="ez-toc-css" href="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/screen.min.css" type="text/css" media="all">
+<style id="ez-toc-inline-css" type="text/css">
+div#ez-toc-container p.ez-toc-title {font-size: 120%;}div#ez-toc-container p.ez-toc-title {font-weight: 500;}div#ez-toc-container ul li {font-size: 95%;}
+</style>
+<link rel="stylesheet" id="social_warfare-css" href="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/style.min(2).css" type="text/css" media="all">
+<link rel="stylesheet" id="font-awesome-css" href="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/all.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="simple-line-icons-css" href="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/simple-line-icons.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="magnific-popup-css" href="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/magnific-popup.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="slick-css" href="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/slick.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="oceanwp-style-css" href="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/style.min(3).css" type="text/css" media="all">
+<link rel="stylesheet" id="oe-widgets-style-css" href="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/widgets.css" type="text/css" media="all">
+<script type="text/javascript">
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,pdf,ppt,zip,xls,docx,pptx,xlsx","inbound_paths":"[{\"path\":\"\\\/go\\\/\",\"label\":\"affiliate\"},{\"path\":\"\\\/recommend\\\/\",\"label\":\"affiliate\"}]","home_url":"https:\/\/www.javachinna.com","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/frontend.min.js.download"></script>
+<script type="text/javascript" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/jquery.js.download"></script>
+<script type="text/javascript" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/jquery-migrate.min.js.download"></script>
+<script type="text/javascript" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/jquery.cookie.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var ck_data = {"ajaxurl":"https:\/\/www.javachinna.com\/wp-admin\/admin-ajax.php","post_has_tag":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/wp-convertkit.js.download"></script>
+<script type="text/javascript" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/js"></script>
+<script type="text/javascript">
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-144853299-3', {"anonymize_ip":true} );
+</script>
+<link rel="https://api.w.org/" href="https://www.javachinna.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.javachinna.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.javachinna.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 5.4.2">
+<link rel="shortlink" href="https://www.javachinna.com/?p=114">
+<link rel="alternate" type="application/json+oembed" href="https://www.javachinna.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.javachinna.com%2F2019%2F10%2F26%2Fcalling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://www.javachinna.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.javachinna.com%2F2019%2F10%2F26%2Fcalling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping%2F&amp;format=xml">
+<meta name="generator" content="Site Kit by Google 1.13.1"><script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/0adc79a1669b9a1d65fa50126/7d17e6339e3970c3003c89115.js");</script><style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><link rel="icon" href="https://www.javachinna.com/wp-content/uploads/2020/02/cropped-android-chrome-512x512-1-2-32x32.png" sizes="32x32">
+<link rel="icon" href="https://www.javachinna.com/wp-content/uploads/2020/02/cropped-android-chrome-512x512-1-2-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://www.javachinna.com/wp-content/uploads/2020/02/cropped-android-chrome-512x512-1-2-180x180.png">
+<meta name="msapplication-TileImage" content="https://www.javachinna.com/wp-content/uploads/2020/02/cropped-android-chrome-512x512-1-2-270x270.png">
+		<style type="text/css" id="wp-custom-css">
+			.entry-content a{color:blue}.entry-content a:hover{text-decoration:underline}		</style>
+		<!-- OceanWP CSS -->
+<style type="text/css">
+/* Header CSS */#site-header.has-header-media .overlay-header-media{background-color:rgba(0,0,0,0.5)}#site-logo #site-logo-inner a img,#site-header.center-header #site-navigation-wrap .middle-site-logo a img{max-width:200px}#site-header #site-logo #site-logo-inner a img,#site-header.center-header #site-navigation-wrap .middle-site-logo a img{max-height:100px}/* Footer Bottom CSS */#footer-bottom{background-color:#f5f5f5}#footer-bottom,#footer-bottom p{color:#0f0f0f}/* Typography CSS */body{color:#0a0a0a}
+</style><link rel="stylesheet" type="text/css" href="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/shCore.css"><link rel="stylesheet" type="text/css" href="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/shThemeDefault.css"><style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style><style>._3emE9--dark-theme .-S-tR--ff-downloader{background:rgba(30,30,30,.93);border:1px solid rgba(82,82,82,.54);box-shadow:0 4px 7px rgba(30,30,30,.55);color:#fff}._3emE9--dark-theme .-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn{background:#3d4b52}._3emE9--dark-theme .-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn:hover{background:#131415}._3emE9--dark-theme .-S-tR--ff-downloader ._10vpG--footer{background:rgba(30,30,30,.93)}._2mDEx--white-theme .-S-tR--ff-downloader{background:#fff;border:1px solid rgba(82,82,82,.54);box-shadow:0 4px 7px rgba(30,30,30,.55);color:#314c75}._2mDEx--white-theme .-S-tR--ff-downloader ._6_Mtt--header{font-weight:700}._2mDEx--white-theme .-S-tR--ff-downloader ._2dFLA--container ._2bWNS--notice{border:0;color:rgba(0,0,0,.88)}._2mDEx--white-theme .-S-tR--ff-downloader ._10vpG--footer{background:#fff}.-S-tR--ff-downloader{display:block;overflow:hidden;position:fixed;bottom:20px;right:7.1%;width:330px;height:180px;background:rgba(30,30,30,.93);border-radius:2px;color:#fff;z-index:99999999;border:1px solid rgba(82,82,82,.54);box-shadow:0 4px 7px rgba(30,30,30,.55);transition:.5s}.-S-tR--ff-downloader._3M7UQ--minimize{height:62px}.-S-tR--ff-downloader._3M7UQ--minimize .nxuu4--file-info,.-S-tR--ff-downloader._3M7UQ--minimize ._6_Mtt--header{display:none}.-S-tR--ff-downloader ._6_Mtt--header{padding:10px;font-size:17px;font-family:sans-serif}.-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn{float:right;background:#f1ecec;height:20px;width:20px;text-align:center;padding:2px;margin-top:-10px;cursor:pointer}.-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn:hover{background:#e2dede}.-S-tR--ff-downloader ._13XQ2--error{color:red;padding:10px;font-size:12px;line-height:19px}.-S-tR--ff-downloader ._2dFLA--container{position:relative;height:100%}.-S-tR--ff-downloader ._2dFLA--container .nxuu4--file-info{padding:6px 15px 0;font-family:sans-serif}.-S-tR--ff-downloader ._2dFLA--container .nxuu4--file-info div{margin-bottom:5px;width:100%;overflow:hidden}.-S-tR--ff-downloader ._2dFLA--container ._2bWNS--notice{margin-top:21px;font-size:11px}.-S-tR--ff-downloader ._10vpG--footer{width:100%;bottom:0;position:absolute;font-weight:700}.-S-tR--ff-downloader ._10vpG--footer ._2V73d--loader{-webkit-animation:n0BD1--rotation 3.5s linear forwards;animation:n0BD1--rotation 3.5s linear forwards;position:absolute;top:-120px;left:calc(50% - 35px);border-radius:50%;border:5px solid #fff;border-top-color:#a29bfe;height:70px;width:70px;display:flex;justify-content:center;align-items:center}.-S-tR--ff-downloader ._10vpG--footer ._24wjw--loading-bar{width:100%;height:18px;background:#dfe6e9;border-radius:5px}.-S-tR--ff-downloader ._10vpG--footer ._24wjw--loading-bar ._1FVu9--progress-bar{height:100%;background:#8bc34a;border-radius:5px}.-S-tR--ff-downloader ._10vpG--footer ._2KztS--status{margin-top:10px}.-S-tR--ff-downloader ._10vpG--footer ._2KztS--status ._1XilH--state{float:left;font-size:.9em;letter-spacing:1pt;text-transform:uppercase;width:100px;height:20px;position:relative}.-S-tR--ff-downloader ._10vpG--footer ._2KztS--status ._1jiaj--percentage{float:right}</style><script type="text/javascript" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/form-settings" id="dojo_request_script0" async="" charset="utf-8"></script></head>
+
+<body class="post-template-default single single-post postid-114 single-format-standard wp-custom-logo wp-embed-responsive oceanwp-theme sidebar-mobile default-breakpoint has-sidebar content-right-sidebar post-in-category-spring-boot has-breadcrumbs has-fixed-footer has-parallax-footer" itemscope="itemscope" itemtype="https://schema.org/Article" style="padding-top: 0px; padding-bottom: 0px;">
+
+	
+	
+	<div id="outer-wrap" class="site clr">
+
+		<a class="skip-link screen-reader-text" href="https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#main">Skip to content</a>
+
+		
+		<div id="wrap" class="clr">
+
+			
+			
+<header id="site-header" class="minimal-header clr" data-height="74" itemscope="itemscope" itemtype="https://schema.org/WPHeader" role="banner">
+
+	
+					
+			<div id="site-header-inner" class="clr container">
+
+				
+				
+
+<div id="site-logo" class="clr" itemscope="" itemtype="https://schema.org/Brand">
+
+	
+	<div id="site-logo-inner" class="clr">
+
+		<a href="https://www.javachinna.com/" class="custom-logo-link" rel="home"><img width="1161" height="265" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/cropped-JavaChinna_logo.jpg" class="custom-logo" alt="JAVA CHINNA" srcset="https://www.javachinna.com/wp-content/uploads/2020/02/cropped-JavaChinna_logo.jpg 1161w, https://www.javachinna.com/wp-content/uploads/2020/02/cropped-JavaChinna_logo-300x68.jpg 300w, https://www.javachinna.com/wp-content/uploads/2020/02/cropped-JavaChinna_logo-1024x234.jpg 1024w, https://www.javachinna.com/wp-content/uploads/2020/02/cropped-JavaChinna_logo-768x175.jpg 768w" sizes="(max-width: 1161px) 100vw, 1161px"></a>
+	</div><!-- #site-logo-inner -->
+
+	
+	
+</div><!-- #site-logo -->
+
+			<div id="site-navigation-wrap" class="clr">
+			
+			
+			
+			<nav id="site-navigation" class="navigation main-navigation clr" itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement" role="navigation">
+
+				<ul id="menu-navbar" class="main-menu dropdown-menu sf-menu sf-js-enabled" style="touch-action: pan-y;"><li id="menu-item-261" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-261"><a href="https://www.javachinna.com/" class="menu-link"><span class="text-wrap">Home</span></a></li><li id="menu-item-1043" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1043"><a href="https://www.javachinna.com/category/java/" class="menu-link"><span class="text-wrap">Java</span></a></li><li id="menu-item-573" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-573"><a href="https://www.javachinna.com/category/spring/" class="menu-link"><span class="text-wrap">Spring</span></a></li><li id="menu-item-572" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-572"><a href="https://www.javachinna.com/category/spring-boot/" class="menu-link"><span class="text-wrap">Spring Boot</span></a></li><li id="menu-item-494" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-494"><a href="https://www.javachinna.com/about/" class="menu-link"><span class="text-wrap">About</span></a></li><li class="search-toggle-li"><a href="https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#" class="site-search-toggle search-dropdown-toggle" aria-label="Search website"><span class="icon-magnifier" aria-hidden="true"></span></a></li></ul>
+<div id="searchform-dropdown" class="header-searchform-wrap clr">
+	
+<form role="search" method="get" class="searchform" action="https://www.javachinna.com/">
+	<label for="ocean-search-form-1">
+		<span class="screen-reader-text">Search for:</span>
+		<input type="search" id="ocean-search-form-1" class="field" autocomplete="off" placeholder="Search" name="s">
+			</label>
+	</form>
+</div><!-- #searchform-dropdown -->
+
+			</nav><!-- #site-navigation -->
+
+			
+			
+					</div><!-- #site-navigation-wrap -->
+			
+		
+	
+				
+	<div class="oceanwp-mobile-menu-icon clr mobile-right">
+
+		
+		
+		
+		<a href="https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#" class="mobile-menu" aria-label="Mobile Menu">
+							<i class="fa fa-bars" aria-hidden="true"></i>
+								<span class="oceanwp-text">Menu</span>
+
+						</a>
+
+		
+		
+		
+	</div><!-- #oceanwp-mobile-menu-navbar -->
+
+
+			</div><!-- #site-header-inner -->
+
+			
+			
+			
+		
+		
+</header><div id="sidr" class="sidr left" style="transition: left 0.3s ease 0s;"><div class="sidr-inner">
+	<a href="https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#" class="sidr-class-toggle-sidr-close" aria-label="Close mobile Menu">
+		<i class="sidr-class-icon icon-close" aria-hidden="true"></i><span class="sidr-class-close-text">Close Menu</span>
+	</a>
+</div><div class="sidr-inner">
+
+		<ul id="sidr-id-menu-navbar-1" class="sidr-class-mobile-menu sidr-class-dropdown-menu"><li class="sidr-class-menu-item sidr-class-menu-item-type-custom sidr-class-menu-item-object-custom sidr-class-menu-item-home sidr-class-menu-item-261"><a href="https://www.javachinna.com/">Home</a></li>
+<li class="sidr-class-menu-item sidr-class-menu-item-type-custom sidr-class-menu-item-object-custom sidr-class-menu-item-1043"><a href="https://www.javachinna.com/category/java/">Java</a></li>
+<li class="sidr-class-menu-item sidr-class-menu-item-type-custom sidr-class-menu-item-object-custom sidr-class-menu-item-573"><a href="https://www.javachinna.com/category/spring/">Spring</a></li>
+<li class="sidr-class-menu-item sidr-class-menu-item-type-custom sidr-class-menu-item-object-custom sidr-class-menu-item-572"><a href="https://www.javachinna.com/category/spring-boot/">Spring Boot</a></li>
+<li class="sidr-class-menu-item sidr-class-menu-item-type-post_type sidr-class-menu-item-object-page sidr-class-menu-item-494"><a href="https://www.javachinna.com/about/">About</a></li>
+</ul>
+	</div><div class="sidr-inner">
+	<form method="get" action="https://www.javachinna.com/" class="sidr-class-mobile-searchform" role="search" aria-label="Search for:">
+		<label for="ocean-mobile-search3">
+			<input type="search" name="s" autocomplete="off" placeholder="Search">
+			<button type="submit" class="sidr-class-searchform-submit" aria-label="Submit Search">
+				<i class="sidr-class-icon icon-magnifier" aria-hidden="true"></i>
+			</button>
+					</label>
+			</form>
+</div></div><!-- #site-header -->
+
+
+			
+			<main id="main" class="site-main clr" role="main" style="margin-bottom: 196px; min-height: 435px;">
+
+				
+
+<header class="page-header">
+
+	
+	<div class="container clr page-header-inner">
+
+		
+			<h1 class="page-header-title clr" itemprop="headline">Blog</h1>
+
+			
+		
+		<nav aria-label="Breadcrumbs" class="site-breadcrumbs clr position-" itemprop="breadcrumb"><ol class="trail-items" itemscope="" itemtype="http://schema.org/BreadcrumbList"><meta name="numberOfItems" content="6"><meta name="itemListOrder" content="Ascending"><li class="trail-item trail-begin" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="https://www.javachinna.com/" rel="home" aria-label="Home" itemtype="https://schema.org/Thing" itemprop="item"><span itemprop="name"><span class="icon-home"></span><span class="breadcrumb-home has-icon">Home</span></span></a><span class="breadcrumb-sep">&gt;</span><meta content="1" itemprop="position"></li><li class="trail-item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="https://www.javachinna.com/2019/" itemtype="https://schema.org/Thing" itemprop="item"><span itemprop="name">2019</span></a><span class="breadcrumb-sep">&gt;</span><meta content="2" itemprop="position"></li><li class="trail-item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="https://www.javachinna.com/2019/10/" itemtype="https://schema.org/Thing" itemprop="item"><span itemprop="name">October</span></a><span class="breadcrumb-sep">&gt;</span><meta content="3" itemprop="position"></li><li class="trail-item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="https://www.javachinna.com/2019/10/26/" itemtype="https://schema.org/Thing" itemprop="item"><span itemprop="name">26</span></a><span class="breadcrumb-sep">&gt;</span><meta content="4" itemprop="position"></li><li class="trail-item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="https://www.javachinna.com/category/spring-boot/" itemtype="https://schema.org/Thing" itemprop="item"><span itemprop="name">Spring Boot</span></a><span class="breadcrumb-sep">&gt;</span><meta content="5" itemprop="position"></li><li class="trail-item trail-end" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/" itemtype="https://schema.org/Thing" itemprop="item"><span itemprop="name">Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping</span></a><meta content="6" itemprop="position"></li></ol></nav>
+	</div><!-- .page-header-inner -->
+
+	
+	
+</header><!-- .page-header -->
+
+
+	
+	<div id="content-wrap" class="container clr">
+
+		
+		<div id="primary" class="content-area clr">
+
+			
+			<div id="content" class="site-content clr">
+
+				
+				
+<article id="post-114">
+
+	
+
+<header class="entry-header clr">
+	<h2 class="single-post-title entry-title" itemprop="headline">Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping</h2><!-- .single-post-title -->
+</header><!-- .entry-header -->
+
+
+
+<ul class="meta clr">
+
+	
+					<li class="meta-author" itemprop="name"><span class="screen-reader-text">Post author:</span><i class="icon-user" aria-hidden="true"></i><a href="https://www.javachinna.com/author/chinna/" title="Posts by Chinna" rel="author" itemprop="author" itemscope="itemscope" itemtype="https://schema.org/Person">Chinna</a></li>
+		
+		
+		
+		
+		
+		
+	
+		
+					<li class="meta-date" itemprop="datePublished"><span class="screen-reader-text">Post published:</span><i class="icon-clock" aria-hidden="true"></i>October 26, 2019</li>
+		
+		
+		
+		
+		
+	
+		
+		
+		
+					<li class="meta-cat"><span class="screen-reader-text">Post category:</span><i class="icon-folder" aria-hidden="true"></i><a href="https://www.javachinna.com/category/spring-boot/" rel="category tag">Spring Boot</a></li>
+		
+		
+		
+	
+		
+		
+		
+		
+		
+					<li class="meta-comments"><span class="screen-reader-text">Post comments:</span><i class="icon-bubble" aria-hidden="true"></i><a href="https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#comments" class="comments-link">6 Comments</a></li>
+		
+	
+</ul>
+
+
+
+<div class="entry-content clr" itemprop="text">
+	<div class="swp_social_panel swp_horizontal_panel swp_flat_fresh  swp_default_full_color swp_individual_full_color swp_other_full_color scale-100  scale-" data-min-width="1100" data-float-color="#ffffff" data-float="none" data-float-mobile="none" data-transition="slide" data-post-id="114"><div class="nc_tweetContainer swp_share_button swp_twitter" data-network="twitter"><a class="nc_tweet swp_share_link" rel="nofollow noreferrer noopener" target="_blank" href="https://twitter.com/intent/tweet?text=Calling+Stored+Procedure+and+mapping+the+query+result+to+non-entity+POJO+using+Spring+JPA+SqlResultSetMapping&amp;url=https%3A%2F%2Fwww.javachinna.com%2F2019%2F10%2F26%2Fcalling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping%2F" data-link="https://twitter.com/intent/tweet?text=Calling+Stored+Procedure+and+mapping+the+query+result+to+non-entity+POJO+using+Spring+JPA+SqlResultSetMapping&amp;url=https%3A%2F%2Fwww.javachinna.com%2F2019%2F10%2F26%2Fcalling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping%2F"><span class="swp_count swp_hide"><span class="iconFiller"><span class="spaceManWilly"><i class="sw swp_twitter_icon"></i><span class="swp_share">Tweet</span></span></span></span></a></div><div class="nc_tweetContainer swp_share_button swp_facebook" data-network="facebook"><a class="nc_tweet swp_share_link" rel="nofollow noreferrer noopener" target="_blank" href="https://www.facebook.com/share.php?u=https%3A%2F%2Fwww.javachinna.com%2F2019%2F10%2F26%2Fcalling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping%2F" data-link="https://www.facebook.com/share.php?u=https%3A%2F%2Fwww.javachinna.com%2F2019%2F10%2F26%2Fcalling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping%2F"><span class="swp_count swp_hide"><span class="iconFiller"><span class="spaceManWilly"><i class="sw swp_facebook_icon"></i><span class="swp_share">Share</span></span></span></span></a></div><div class="nc_tweetContainer swp_share_button swp_linkedin" data-network="linkedin"><a class="nc_tweet swp_share_link" rel="nofollow noreferrer noopener" target="_blank" href="https://www.linkedin.com/cws/share?url=https%3A%2F%2Fwww.javachinna.com%2F2019%2F10%2F26%2Fcalling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping%2F" data-link="https://www.linkedin.com/cws/share?url=https%3A%2F%2Fwww.javachinna.com%2F2019%2F10%2F26%2Fcalling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping%2F"><span class="swp_count swp_hide"><span class="iconFiller"><span class="spaceManWilly"><i class="sw swp_linkedin_icon"></i><span class="swp_share">Share</span></span></span></span></a></div><div class="nc_tweetContainer swp_share_button swp_pinterest" data-network="pinterest"><a rel="nofollow noreferrer noopener" class="nc_tweet swp_share_link noPop" onclick="var e=document.createElement(&#39;script&#39;);
+							e.setAttribute(&#39;type&#39;,&#39;text/javascript&#39;);
+							e.setAttribute(&#39;charset&#39;,&#39;UTF-8&#39;);
+							e.setAttribute(&#39;src&#39;,&#39;//assets.pinterest.com/js/pinmarklet.js?r=&#39;+Math.random()*99999999);
+							document.body.appendChild(e);
+						"><span class="swp_count swp_hide"><span class="iconFiller"><span class="spaceManWilly"><i class="sw swp_pinterest_icon"></i><span class="swp_share">Pin</span></span></span></span></a></div><div class="nc_tweetContainer swp_share_button total_shares total_sharesalt"><span class="swp_count ">0 <span class="swp_label">Shares</span></span></div></div>
+<p>Recently, I gotta chance to work with a microservice in which I had to call a Stored Procedure and map the results to a POJO. By default the <code>StoredProcedureQuery</code> returns result as <code>List&lt;Object[]&gt;</code> and this has to be mapped to the POJO based on the index manually as shown below in the code snippet</p>
+
+
+<pre class="brush: java; highlight: [4]; title: ; notranslate" title="">			query.execute();
+			List&lt;Object[]&gt; objectList = query.getResultList();
+			for (Object[] object : objectList) {
+				list.add(new UserInfo(String.valueOf(object[0]), String.valueOf(object[1])));
+			}
+</pre>
+
+
+<p>This looks good when the procedure returns just few columns. But the SP that I was calling queries mulitple tables and returns 40+ columns in the result. In that case, If I do the index based mapping, then I need to do the code changes whenever the SP is changed. i.e., when columns are added/removed in the select query of SP. </p>
+
+
+
+<p>To overcome this issue, I thought of using <code>SqlResultSetMapping</code> which specifies the mapping of the result of a native SQL query or stored procedure.  However, this&nbsp;annotation will work only on managed Entity / Repository classes which I don’t have. </p>
+
+
+
+<p>Hence, after some googling, I’ve created a POJO and annotated it with <code>@MappedSuperclass</code> since a mapped superclass has no separate table defined for it. At the same time we can use the  <code>SqlResultSetMapping</code> on this POJO to define our mapping.</p>
+
+
+
+<h2> Technologies used</h2>
+
+
+
+<ul><li>Spring Tool Suite 4</li><li>JDK 11</li><li>MySQL Server 8</li><li>Spring boot v2.1.8.RELEASE</li></ul>
+
+
+
+<h2>Let’s start creating table, stored procedure and classes</h2>
+
+
+
+<h3>Creating user table in MySQL Workbench</h3>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">CREATE TABLE `user` (
+  `user_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_date` datetime NOT NULL,
+  `display_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `enabled` bit(1) DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `provider` varchar(255) DEFAULT NULL,
+  `provider_user_id` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+</pre>
+
+
+<h3>Inerting into user table for testing</h3>
+
+
+<pre class="brush: sql; title: ; notranslate" title="">INSERT INTO `demo`.`user`
+(`user_id`,
+`created_date`,
+`display_name`,
+`email`,
+`enabled`,
+`modified_date`,
+`password`,
+`provider`,
+`provider_user_id`)
+VALUES
+(&lt;{user_id: }&gt;,
+&lt;{created_date: }&gt;,
+&lt;{display_name: }&gt;,
+&lt;{email: }&gt;,
+&lt;{enabled: }&gt;,
+&lt;{modified_date: }&gt;,
+&lt;{password: }&gt;,
+&lt;{provider: }&gt;,
+&lt;{provider_user_id: }&gt;);
+</pre>
+
+
+<h3>Creating stored procedure</h3>
+
+
+<pre class="brush: sql; title: ; notranslate" title="">DELIMITER //
+Create procedure USER_INFO()
+BEGIN
+    SELECT USER_ID AS ID, DISPLAY_NAME AS NAME FROM USER;
+END //
+DELIMITER ;
+</pre>
+
+
+<h4>UserInfo.java – The POJO to map the SP result</h4>
+
+
+<pre class="brush: java; title: ; notranslate" title="">@MappedSuperclass
+@SqlResultSetMapping(name = "UserInfo", classes = @ConstructorResult(targetClass = UserInfo.class, columns = { @ColumnResult(name = "id", type = String.class),
+		@ColumnResult(name = "name", type = String.class) }))
+public class UserInfo {
+
+	private String id;
+	private String name;
+
+	public UserInfo(String id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+}
+</pre>
+
+
+<p>In this class, I’ve created a mapping with the name “<strong>UserInfo</strong>” and specified the <code>UserInfo.class</code> class as the <code>targetClass</code> in the  <code>ConstructorResult</code> annotation.</p>
+
+
+
+<blockquote class="wp-block-quote"><p><strong>Note: </strong>The constructor in this class should match exactly with the order and datatype of the columns defined in the  <code>@SqlResultSetMapping</code></p></blockquote>
+
+
+
+<p>The&nbsp;<code>@ConstructorResult</code>&nbsp;annotation is used in conjunction with the&nbsp;<code>@SqlResultSetMapping</code>&nbsp;annotations to map columns of a given SELECT query to a certain object constructor. </p>
+
+
+
+<p>The&nbsp;<code>@ColumnResult</code>&nbsp;annotation is used in conjunction with the&nbsp;<code>@SqlResultSetMapping</code>&nbsp;or&nbsp;<code>@ConstructorResult</code>&nbsp;annotations to map a SQL column for a given SELECT query. </p>
+
+
+
+<h3>Creating the repository</h3>
+
+
+
+<h4>UserInfoRepository.java</h4>
+
+
+<pre class="brush: java; highlight: [10]; title: ; notranslate" title="">@Repository
+@Transactional
+public class UserInfoRepository {
+	@PersistenceContext
+	private EntityManager entityManager;
+
+	@SuppressWarnings("unchecked")
+	public List&lt;UserInfo&gt; getUerInfo() {
+		List&lt;UserInfo&gt; list = new ArrayList&lt;&gt;();
+		StoredProcedureQuery query = entityManager.createStoredProcedureQuery("USER_INFO", "UserInfo");
+		try {
+			// Execute query
+			query.execute();
+			list = query.getResultList();
+		} finally {
+			try {
+				query.unwrap(ProcedureOutputs.class).release();
+			} catch (Exception e) {
+			}
+		}
+		return list;
+	}
+}
+</pre>
+
+
+<p>Here, I’ve passed the  <code>SqlResultSetMapping</code> “<strong>UserInfo</strong>” as a parameter to the method <code>entityManager.createStoredProcedureQuery(String procedureName, String… resultSetMappings)</code> along with the stored procedure name.</p>
+
+
+
+<h3>Creating the test class</h3>
+
+
+
+<h4>DemoApplicationTests.java</h4>
+
+
+<pre class="brush: java; title: ; notranslate" title="">@RunWith(SpringRunner.class)
+@SpringBootTest
+public class DemoApplicationTests {
+
+	@Autowired
+	private UserInfoRepository userInfoRepository;
+
+	@Test
+	public void getUserInfoTest() {
+		List&lt;UserInfo&gt; list = userInfoRepository.getUerInfo();
+		assertThat(list).isNotEmpty();
+	}
+}
+</pre>
+
+
+<p><code>@SpringBootTest</code>&nbsp;annotation can be used when we need to bootstrap the entire container. The annotation works by creating the&nbsp;ApplicationContext&nbsp;that will be utilized in our tests. </p>
+
+
+
+<p><code>@RunWith(SpringRunner.class)</code> is used to provide a bridge between&nbsp;<strong>Spring Boot</strong>&nbsp;test features and JUnit. Whenever we are using any&nbsp;<strong>Spring Boot</strong>&nbsp;testing features in our JUnit tests, this&nbsp;<strong>annotation</strong>&nbsp;will be required. </p>
+
+
+
+<h2>Run the test</h2>
+
+
+
+<figure class="wp-block-image"><img src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/test_result.jpg" alt="" class="wp-image-133" srcset="https://www.javachinna.com/wp-content/uploads/2019/10/test_result.jpg 654w, https://www.javachinna.com/wp-content/uploads/2019/10/test_result-300x63.jpg 300w" sizes="(max-width: 654px) 100vw, 654px"></figure>
+
+
+
+<h2>Conclusion</h2>
+
+
+
+<p>In this article, we have looked on how to map the SP resultset to POJO without an entity class. I hope that it will help someone with a similar use case.  Thanks for reading 🙂</p>
+<script async="" data-uid="0e4d5c50e0" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/index.js.download"></script><div class="swp_social_panel swp_horizontal_panel swp_flat_fresh  swp_default_full_color swp_individual_full_color swp_other_full_color scale-100  scale-" data-min-width="1100" data-float-color="#ffffff" data-float="none" data-float-mobile="none" data-transition="slide" data-post-id="114"><div class="nc_tweetContainer swp_share_button swp_twitter" data-network="twitter"><a class="nc_tweet swp_share_link" rel="nofollow noreferrer noopener" target="_blank" href="https://twitter.com/intent/tweet?text=Calling+Stored+Procedure+and+mapping+the+query+result+to+non-entity+POJO+using+Spring+JPA+SqlResultSetMapping&amp;url=https%3A%2F%2Fwww.javachinna.com%2F2019%2F10%2F26%2Fcalling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping%2F" data-link="https://twitter.com/intent/tweet?text=Calling+Stored+Procedure+and+mapping+the+query+result+to+non-entity+POJO+using+Spring+JPA+SqlResultSetMapping&amp;url=https%3A%2F%2Fwww.javachinna.com%2F2019%2F10%2F26%2Fcalling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping%2F"><span class="swp_count swp_hide"><span class="iconFiller"><span class="spaceManWilly"><i class="sw swp_twitter_icon"></i><span class="swp_share">Tweet</span></span></span></span></a></div><div class="nc_tweetContainer swp_share_button swp_facebook" data-network="facebook"><a class="nc_tweet swp_share_link" rel="nofollow noreferrer noopener" target="_blank" href="https://www.facebook.com/share.php?u=https%3A%2F%2Fwww.javachinna.com%2F2019%2F10%2F26%2Fcalling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping%2F" data-link="https://www.facebook.com/share.php?u=https%3A%2F%2Fwww.javachinna.com%2F2019%2F10%2F26%2Fcalling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping%2F"><span class="swp_count swp_hide"><span class="iconFiller"><span class="spaceManWilly"><i class="sw swp_facebook_icon"></i><span class="swp_share">Share</span></span></span></span></a></div><div class="nc_tweetContainer swp_share_button swp_linkedin" data-network="linkedin"><a class="nc_tweet swp_share_link" rel="nofollow noreferrer noopener" target="_blank" href="https://www.linkedin.com/cws/share?url=https%3A%2F%2Fwww.javachinna.com%2F2019%2F10%2F26%2Fcalling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping%2F" data-link="https://www.linkedin.com/cws/share?url=https%3A%2F%2Fwww.javachinna.com%2F2019%2F10%2F26%2Fcalling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping%2F"><span class="swp_count swp_hide"><span class="iconFiller"><span class="spaceManWilly"><i class="sw swp_linkedin_icon"></i><span class="swp_share">Share</span></span></span></span></a></div><div class="nc_tweetContainer swp_share_button swp_pinterest" data-network="pinterest"><a rel="nofollow noreferrer noopener" class="nc_tweet swp_share_link noPop" onclick="var e=document.createElement(&#39;script&#39;);
+							e.setAttribute(&#39;type&#39;,&#39;text/javascript&#39;);
+							e.setAttribute(&#39;charset&#39;,&#39;UTF-8&#39;);
+							e.setAttribute(&#39;src&#39;,&#39;//assets.pinterest.com/js/pinmarklet.js?r=&#39;+Math.random()*99999999);
+							document.body.appendChild(e);
+						"><span class="swp_count swp_hide"><span class="iconFiller"><span class="spaceManWilly"><i class="sw swp_pinterest_icon"></i><span class="swp_share">Pin</span></span></span></span></a></div><div class="nc_tweetContainer swp_share_button total_shares total_sharesalt"><span class="swp_count ">0 <span class="swp_label">Shares</span></span></div></div><div class="swp-content-locator"></div>
+</div><!-- .entry -->
+
+<div class="post-tags clr">
+	<span class="owp-tag-text">Tags: </span><a href="https://www.javachinna.com/tag/mysql/" rel="tag">MySQL</a><span class="owp-sep">,</span> <a href="https://www.javachinna.com/tag/native-sql-query-result-mapping/" rel="tag">Native SQL Query Result Mapping</a><span class="owp-sep">,</span> <a href="https://www.javachinna.com/tag/spring-jpa/" rel="tag">Spring JPA</a><span class="owp-sep">,</span> <a href="https://www.javachinna.com/tag/sqlresultsetmapping/" rel="tag">SqlResultSetMapping</a><span class="owp-sep">,</span> <a href="https://www.javachinna.com/tag/storedprocedurequery/" rel="tag">StoredProcedureQuery</a></div>
+
+
+
+	<nav class="navigation post-navigation" role="navigation" aria-label="Read more articles">
+		<h2 class="screen-reader-text">Read more articles</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://www.javachinna.com/2019/10/23/spring-boot-user-registration-and-oauth2-social-login-with-facebook-google-linkedin-and-github-part-1/" rel="prev"><span class="title"><i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i>Previous Post</span><span class="post-title">Spring boot User Registration and OAuth2 Social login with Facebook, Google, LinkedIn and Github – Part 1</span></a></div><div class="nav-next"><a href="https://www.javachinna.com/2020/02/01/creating-spring-rest-api-without-using-spring-boot/" rel="next"><span class="title"><i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i>Next Post</span><span class="post-title">Creating Spring REST API without using spring boot</span></a></div></div>
+	</nav>
+
+	<section id="related-posts" class="clr">
+
+		<h3 class="theme-heading related-posts-title">
+			<span class="text">You Might Also Like</span>
+		</h3>
+
+		<div class="oceanwp-row clr">
+
+			
+			
+				
+				<article class="related-post clr col span_1_of_3 col-1 post-667 post type-post status-publish format-standard has-post-thumbnail hentry category-spring-boot tag-authorization tag-basic-authentication tag-lombok tag-security tag-spring-rest tag-spring-security tag-swagger2 entry has-media">
+
+					
+						<figure class="related-post-media clr">
+
+							<a href="https://www.javachinna.com/2020/05/11/secure-spring-boot-rest-api-with-basic-authentication-role-based-authorization-database/" class="related-thumb no-lightbox">
+
+								<img width="300" height="300" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/basic-auth-feature-300x300.jpg" class="attachment-medium size-medium wp-post-image" alt="7 Steps to Secure Spring Boot 2 REST API with Spring Security Basic Authentication, Role based Authorization and MySQL Database" itemprop="image" srcset="https://www.javachinna.com/wp-content/uploads/2020/05/basic-auth-feature-300x300.jpg 300w, https://www.javachinna.com/wp-content/uploads/2020/05/basic-auth-feature-1024x1024.jpg 1024w, https://www.javachinna.com/wp-content/uploads/2020/05/basic-auth-feature-150x150.jpg 150w, https://www.javachinna.com/wp-content/uploads/2020/05/basic-auth-feature-768x768.jpg 768w, https://www.javachinna.com/wp-content/uploads/2020/05/basic-auth-feature.jpg 1200w" sizes="(max-width: 300px) 100vw, 300px">							</a>
+
+						</figure>
+
+					
+					<h3 class="related-post-title">
+						<a href="https://www.javachinna.com/2020/05/11/secure-spring-boot-rest-api-with-basic-authentication-role-based-authorization-database/" title="7 Steps to Secure Spring Boot 2 REST API with Spring Security Basic Authentication, Role based Authorization and MySQL Database" rel="bookmark">7 Steps to Secure Spring Boot 2 REST API with Spring Security Basic Authentication, Role based Authorization and MySQL Database</a>
+					</h3><!-- .related-post-title -->
+
+					<time class="published" datetime="2020-05-11T19:38:30+05:30"><i class="icon-clock" aria-hidden="true"></i>May 11, 2020</time>
+
+				</article><!-- .related-post -->
+
+				
+			
+				
+				<article class="related-post clr col span_1_of_3 col-2 post-734 post type-post status-publish format-standard has-post-thumbnail hentry category-spring-boot tag-jwt tag-lombok tag-spring-jpa tag-spring-rest tag-spring-security tag-swagger2 entry has-media">
+
+					
+						<figure class="related-post-media clr">
+
+							<a href="https://www.javachinna.com/2020/05/15/secure-spring-boot-rest-api-with-jwt-authentication-role-based-authorization-database/" class="related-thumb no-lightbox">
+
+								<img width="300" height="300" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/spring-boot-jwt-1-300x300.jpg" class="attachment-medium size-medium wp-post-image" alt="9 Steps to Secure Spring Boot 2 REST API with Spring Security 5 JWT Authentication, Role based Authorization and MySQL Database" itemprop="image" srcset="https://www.javachinna.com/wp-content/uploads/2020/05/spring-boot-jwt-1-300x300.jpg 300w, https://www.javachinna.com/wp-content/uploads/2020/05/spring-boot-jwt-1-1024x1024.jpg 1024w, https://www.javachinna.com/wp-content/uploads/2020/05/spring-boot-jwt-1-150x150.jpg 150w, https://www.javachinna.com/wp-content/uploads/2020/05/spring-boot-jwt-1-768x768.jpg 768w, https://www.javachinna.com/wp-content/uploads/2020/05/spring-boot-jwt-1.jpg 1200w" sizes="(max-width: 300px) 100vw, 300px">							</a>
+
+						</figure>
+
+					
+					<h3 class="related-post-title">
+						<a href="https://www.javachinna.com/2020/05/15/secure-spring-boot-rest-api-with-jwt-authentication-role-based-authorization-database/" title="9 Steps to Secure Spring Boot 2 REST API with Spring Security 5 JWT Authentication, Role based Authorization and MySQL Database" rel="bookmark">9 Steps to Secure Spring Boot 2 REST API with Spring Security 5 JWT Authentication, Role based Authorization and MySQL Database</a>
+					</h3><!-- .related-post-title -->
+
+					<time class="published" datetime="2020-05-15T23:55:53+05:30"><i class="icon-clock" aria-hidden="true"></i>May 15, 2020</time>
+
+				</article><!-- .related-post -->
+
+				
+			
+				
+				<article class="related-post clr col span_1_of_3 col-3 post-812 post type-post status-publish format-standard has-post-thumbnail hentry category-spring-boot tag-spring-rest tag-spring-security entry has-media">
+
+					
+						<figure class="related-post-media clr">
+
+							<a href="https://www.javachinna.com/2020/06/03/spring-boot-disable-spring-security/" class="related-thumb no-lightbox">
+
+								<img width="300" height="300" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/spring-rest-no-auth-300x300.jpg" class="attachment-medium size-medium wp-post-image" alt="Disable Spring Security for a Profile in Spring Boot" itemprop="image" srcset="https://www.javachinna.com/wp-content/uploads/2020/06/spring-rest-no-auth-300x300.jpg 300w, https://www.javachinna.com/wp-content/uploads/2020/06/spring-rest-no-auth-1024x1024.jpg 1024w, https://www.javachinna.com/wp-content/uploads/2020/06/spring-rest-no-auth-150x150.jpg 150w, https://www.javachinna.com/wp-content/uploads/2020/06/spring-rest-no-auth-768x768.jpg 768w, https://www.javachinna.com/wp-content/uploads/2020/06/spring-rest-no-auth.jpg 1200w" sizes="(max-width: 300px) 100vw, 300px">							</a>
+
+						</figure>
+
+					
+					<h3 class="related-post-title">
+						<a href="https://www.javachinna.com/2020/06/03/spring-boot-disable-spring-security/" title="Disable Spring Security for a Profile in Spring Boot" rel="bookmark">Disable Spring Security for a Profile in Spring Boot</a>
+					</h3><!-- .related-post-title -->
+
+					<time class="published" datetime="2020-06-03T17:17:54+05:30"><i class="icon-clock" aria-hidden="true"></i>June 3, 2020</time>
+
+				</article><!-- .related-post -->
+
+				
+			
+		</div><!-- .oceanwp-row -->
+
+	</section><!-- .related-posts -->
+
+
+
+
+<section id="comments" class="comments-area clr has-comments">
+
+	
+	
+		<h3 class="theme-heading comments-title">
+			<span class="text">This Post Has 6 Comments</span>
+		</h3>
+
+		<ol class="comment-list">
+			
+			<li id="comment-34" class="comment-container">
+
+				<article class="comment even thread-even depth-1 comment-body">
+
+					<img alt="" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/775bade96f52d12bedbc23cd2507008e.jpeg" srcset="https://secure.gravatar.com/avatar/775bade96f52d12bedbc23cd2507008e?s=300&amp;d=mm&amp;r=g 2x" class="avatar avatar-150 photo" height="150" width="150">
+		            <div class="comment-content">
+		                <div class="comment-author">
+		                    <span class="comment-link">Ahsan </span>
+
+		                    <span class="comment-meta commentmetadata">
+		                    			                        	<span class="comment-date">23 Apr 2020</span>
+		                        
+		                        <a rel="nofollow" class="comment-reply-link" href="https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#comment-34" data-commentid="34" data-postid="114" data-belowelement="comment-34" data-respondelement="respond" aria-label="Reply to Ahsan">Reply</a>
+		                        
+		                    			                    </span>
+		                </div>
+
+		                <div class="clr"></div>
+
+		                <div class="comment-entry">
+		                    
+		                    <div class="comment-content">
+		                        <p>Thanks a lot for the tutorial. I am exactly looking for this solution. Able to implement this one without any error. Very clear and well described article.</p>
+		                    </div>
+		                </div>
+		            </div>
+
+				</article><!-- #comment-## -->
+
+			<ol class="children">
+
+			<li id="comment-35" class="comment-container">
+
+				<article class="comment byuser comment-author-chinna bypostauthor odd alt depth-2 comment-body">
+
+					<img alt="" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/81771f2d8c066a42b700a6ef272ee7c9.jpeg" srcset="https://secure.gravatar.com/avatar/81771f2d8c066a42b700a6ef272ee7c9?s=300&amp;d=mm&amp;r=g 2x" class="avatar avatar-150 photo" height="150" width="150">
+		            <div class="comment-content">
+		                <div class="comment-author">
+		                    <span class="comment-link">Chinna </span>
+
+		                    <span class="comment-meta commentmetadata">
+		                    			                        	<span class="comment-date">23 Apr 2020</span>
+		                        
+		                        <a rel="nofollow" class="comment-reply-link" href="https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#comment-35" data-commentid="35" data-postid="114" data-belowelement="comment-35" data-respondelement="respond" aria-label="Reply to Chinna">Reply</a>
+		                        
+		                    			                    </span>
+		                </div>
+
+		                <div class="clr"></div>
+
+		                <div class="comment-entry">
+		                    
+		                    <div class="comment-content">
+		                        <p>I’m glad that this tutorial helped you. This is what fuels me to write more. Thanks 🙂</p>
+		                    </div>
+		                </div>
+		            </div>
+
+				</article><!-- #comment-## -->
+
+			</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+
+			<li id="comment-38" class="comment-container">
+
+				<article class="comment even thread-odd thread-alt depth-1 comment-body">
+
+					<img alt="" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/775bade96f52d12bedbc23cd2507008e.jpeg" srcset="https://secure.gravatar.com/avatar/775bade96f52d12bedbc23cd2507008e?s=300&amp;d=mm&amp;r=g 2x" class="avatar avatar-150 photo" height="150" width="150">
+		            <div class="comment-content">
+		                <div class="comment-author">
+		                    <span class="comment-link">Ahsan </span>
+
+		                    <span class="comment-meta commentmetadata">
+		                    			                        	<span class="comment-date">29 Apr 2020</span>
+		                        
+		                        <a rel="nofollow" class="comment-reply-link" href="https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#comment-38" data-commentid="38" data-postid="114" data-belowelement="comment-38" data-respondelement="respond" aria-label="Reply to Ahsan">Reply</a>
+		                        
+		                    			                    </span>
+		                </div>
+
+		                <div class="clr"></div>
+
+		                <div class="comment-entry">
+		                    
+		                    <div class="comment-content">
+		                        <p>Hello. Is it possible to make any field optional? like in UserInfo, some procedure return id,name and some return id,name,designation.</p>
+		                    </div>
+		                </div>
+		            </div>
+
+				</article><!-- #comment-## -->
+
+			<ol class="children">
+
+			<li id="comment-40" class="comment-container">
+
+				<article class="comment byuser comment-author-chinna bypostauthor odd alt depth-2 comment-body">
+
+					<img alt="" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/81771f2d8c066a42b700a6ef272ee7c9.jpeg" srcset="https://secure.gravatar.com/avatar/81771f2d8c066a42b700a6ef272ee7c9?s=300&amp;d=mm&amp;r=g 2x" class="avatar avatar-150 photo" height="150" width="150">
+		            <div class="comment-content">
+		                <div class="comment-author">
+		                    <span class="comment-link">Chinna </span>
+
+		                    <span class="comment-meta commentmetadata">
+		                    			                        	<span class="comment-date">3 May 2020</span>
+		                        
+		                        <a rel="nofollow" class="comment-reply-link" href="https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#comment-40" data-commentid="40" data-postid="114" data-belowelement="comment-40" data-respondelement="respond" aria-label="Reply to Chinna">Reply</a>
+		                        
+		                    			                    </span>
+		                </div>
+
+		                <div class="clr"></div>
+
+		                <div class="comment-entry">
+		                    
+		                    <div class="comment-content">
+		                        <p>No. It’s not possible. The procedure should return all the columns defined in the SqlResultSetMapping. Also, it can return additional fields that are not defined in the mapping. but not vice versa.  You can define separate SqlResultSetMapping for procedures with different columns.</p>
+		                    </div>
+		                </div>
+		            </div>
+
+				</article><!-- #comment-## -->
+
+			</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+
+			<li id="comment-44" class="comment-container">
+
+				<article class="comment even thread-even depth-1 comment-body">
+
+					<img alt="" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/2c831365e6f28e9984bfe545802f8149.png" srcset="https://secure.gravatar.com/avatar/2c831365e6f28e9984bfe545802f8149?s=300&amp;d=mm&amp;r=g 2x" class="avatar avatar-150 photo" height="150" width="150">
+		            <div class="comment-content">
+		                <div class="comment-author">
+		                    <span class="comment-link">Leonardo </span>
+
+		                    <span class="comment-meta commentmetadata">
+		                    			                        	<span class="comment-date">8 May 2020</span>
+		                        
+		                        <a rel="nofollow" class="comment-reply-link" href="https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#comment-44" data-commentid="44" data-postid="114" data-belowelement="comment-44" data-respondelement="respond" aria-label="Reply to Leonardo">Reply</a>
+		                        
+		                    			                    </span>
+		                </div>
+
+		                <div class="clr"></div>
+
+		                <div class="comment-entry">
+		                    
+		                    <div class="comment-content">
+		                        <p>Can I use this annotation on a non entity class?</p>
+		                    </div>
+		                </div>
+		            </div>
+
+				</article><!-- #comment-## -->
+
+			<ol class="children">
+
+			<li id="comment-46" class="comment-container">
+
+				<article class="comment byuser comment-author-chinna bypostauthor odd alt depth-2 comment-body">
+
+					<img alt="" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/81771f2d8c066a42b700a6ef272ee7c9.jpeg" srcset="https://secure.gravatar.com/avatar/81771f2d8c066a42b700a6ef272ee7c9?s=300&amp;d=mm&amp;r=g 2x" class="avatar avatar-150 photo" height="150" width="150">
+		            <div class="comment-content">
+		                <div class="comment-author">
+		                    <span class="comment-link">Chinna </span>
+
+		                    <span class="comment-meta commentmetadata">
+		                    			                        	<span class="comment-date">8 May 2020</span>
+		                        
+		                        <a rel="nofollow" class="comment-reply-link" href="https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#comment-46" data-commentid="46" data-postid="114" data-belowelement="comment-46" data-respondelement="respond" aria-label="Reply to Chinna">Reply</a>
+		                        
+		                    			                    </span>
+		                </div>
+
+		                <div class="clr"></div>
+
+		                <div class="comment-entry">
+		                    
+		                    <div class="comment-content">
+		                        <p>Yes. You can use @SqlResultSetMapping with @MappedSuperclass annotation on a non entity class. If you don’t use @MappedSuperclass annotation then your @SqlResultSetMapping on a POJO will not be scanned by JPA</p>
+		                    </div>
+		                </div>
+		            </div>
+
+				</article><!-- #comment-## -->
+
+			</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+		
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://www.javachinna.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate=""><div class="comment-textarea"><label for="comment" class="screen-reader-text">Comment</label><textarea name="comment" id="comment" cols="39" rows="4" tabindex="0" class="textarea-comment" placeholder="Your comment here..."></textarea></div><div class="comment-form-author"><label for="author" class="screen-reader-text">Enter your name or username to comment</label><input type="text" name="author" id="author" value="" placeholder="Name (required)" size="22" tabindex="0" aria-required="true" class="input-name"></div>
+<div class="comment-form-email"><label for="email" class="screen-reader-text">Enter your email address to comment</label><input type="text" name="email" id="email" value="" placeholder="Email (required)" size="22" tabindex="0" aria-required="true" class="input-email"></div>
+<div class="comment-form-url"><label for="url" class="screen-reader-text">Enter your website URL (optional)</label><input type="text" name="url" id="url" value="" placeholder="Website" size="22" tabindex="0" class="input-website"></div>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<!-- Mailchimp for WordPress v4.8 - https://www.mc4wp.com/ --><input type="hidden" name="_mc4wp_subscribe_wp-comment-form" value="0"><p class=" mc4wp-checkbox mc4wp-checkbox-wp-comment-form"><label><input type="checkbox" name="_mc4wp_subscribe_wp-comment-form" value="1"><span>Sign me up for the newsletter!</span></label></p><!-- / Mailchimp for WordPress --><p class="form-submit"><input name="submit" type="submit" id="comment-submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="114" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="77bfcf3cf3"></p><p style="display: none;"></p><input type="hidden" id="ak_js" name="ak_js" value="1598036416929"></form>	</div><!-- #respond -->
+	
+</section><!-- #comments -->
+
+</article>
+
+				
+			</div><!-- #content -->
+
+			
+		</div><!-- #primary -->
+
+		
+
+<aside id="right-sidebar" class="sidebar-container widget-area sidebar-primary" itemscope="itemscope" itemtype="https://schema.org/WPSideBar" role="complementary" aria-label="Primary Sidebar">
+
+	
+	<div id="right-sidebar-inner" class="clr">
+
+		<div id="ocean_facebook-3" class="sidebar-box widget_facebook_likebox clr"><h4 class="widget-title"><a href="https://www.facebook.com/javachinna">Like Facebook Page to get updates in News Feed</a></h4>
+			<iframe src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/likebox.html" scrolling="no" frameborder="0" style="border: none; overflow: hidden; width: 300px;  height: 300px; background: #fff"></iframe></div><div id="search-4" class="sidebar-box widget_search clr">
+<form role="search" method="get" class="searchform" action="https://www.javachinna.com/">
+	<label for="ocean-search-form-2">
+		<span class="screen-reader-text">Search for:</span>
+		<input type="search" id="ocean-search-form-2" class="field" autocomplete="off" placeholder="Search" name="s">
+			</label>
+	</form>
+</div><div id="mc4wp_form_widget-3" class="sidebar-box widget_mc4wp_form_widget clr"><h4 class="widget-title">Newsletter</h4><script>(function() {
+	window.mc4wp = window.mc4wp || {
+		listeners: [],
+		forms: {
+			on: function(evt, cb) {
+				window.mc4wp.listeners.push(
+					{
+						event   : evt,
+						callback: cb
+					}
+				);
+			}
+		}
+	}
+})();
+</script><!-- Mailchimp for WordPress v4.8 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-568" method="post" data-id="568" data-name="Subscribe"><div class="mc4wp-form-fields"><p>
+	<label>Email address: 
+		<input type="email" name="EMAIL" placeholder="Your email address" required="">
+</label>
+</p>
+<p>
+    <label>First Name</label>
+    <input type="text" name="FNAME">
+</p>
+
+<p>
+	<input type="submit" value="Subscribe">
+</p></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off"></label><input type="hidden" name="_mc4wp_timestamp" value="1598036417"><input type="hidden" name="_mc4wp_form_id" value="568"><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1"><div class="mc4wp-response"></div></form><!-- / Mailchimp for WordPress Plugin --></div><div id="custom_html-2" class="widget_text sidebar-box widget_custom_html clr"><div class="textwidget custom-html-widget"><a href="https://grammarly.go2cloud.org/SH2ON?file_id=1505" target="_blank" rel="noopener noreferrer"><img src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/grammerly-large.png" width="300" height="600" border="0"></a><img src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/aff_i" width="0" height="0" style="position:absolute;visibility:hidden;" border="0"></div></div><div id="categories-4" class="sidebar-box widget_categories clr"><h4 class="widget-title">Categories</h4>		<ul>
+				<li class="cat-item cat-item-59"><a href="https://www.javachinna.com/category/ide/" title="Integrated development environment">IDE</a> <span class="cat-count-span">(1)
+</span></li>
+	<li class="cat-item cat-item-65"><a href="https://www.javachinna.com/category/java/">Java</a> <span class="cat-count-span">(1)
+</span></li>
+	<li class="cat-item cat-item-18"><a href="https://www.javachinna.com/category/spring/">Spring</a> <span class="cat-count-span">(4)
+</span></li>
+	<li class="cat-item cat-item-2"><a href="https://www.javachinna.com/category/spring-boot/">Spring Boot</a> <span class="cat-count-span">(16)
+</span></li>
+		</ul>
+			</div><div id="archives-4" class="sidebar-box widget_archive clr"><h4 class="widget-title">Archives</h4>		<ul>
+				<li><a href="https://www.javachinna.com/2020/08/">August 2020</a>&nbsp;(1)</li>
+	<li><a href="https://www.javachinna.com/2020/07/">July 2020</a>&nbsp;(4)</li>
+	<li><a href="https://www.javachinna.com/2020/06/">June 2020</a>&nbsp;(2)</li>
+	<li><a href="https://www.javachinna.com/2020/05/">May 2020</a>&nbsp;(3)</li>
+	<li><a href="https://www.javachinna.com/2020/04/">April 2020</a>&nbsp;(3)</li>
+	<li><a href="https://www.javachinna.com/2020/03/">March 2020</a>&nbsp;(1)</li>
+	<li><a href="https://www.javachinna.com/2020/02/">February 2020</a>&nbsp;(3)</li>
+	<li><a href="https://www.javachinna.com/2019/12/">December 2019</a>&nbsp;(1)</li>
+	<li><a href="https://www.javachinna.com/2019/10/">October 2019</a>&nbsp;(4)</li>
+		</ul>
+			</div><div id="swp_popular_posts_widget-5" class="sidebar-box widget_swp_popular_posts_widget clr"><div class="widget-text swp_widget_box" style="background:transparent;"><h4 class="widget-title"><span class="widgettitle widget-title swp_popular_posts_title" style="">Popular Posts</span></h4><div class="swp_popular_post"><a href="https://www.javachinna.com/2020/05/05/integrating-swagger-2-with-spring-boot-2-restful-api-in-2-simple-steps/"><img style="width:100px;height:100px;" class="swp_pop_thumb" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/swagger-api-info-150x150.jpg" title="Integrating Swagger 2 with Spring Boot 2 RESTful API in 2 Simple Steps" alt="Integrating Swagger 2 with Spring Boot 2 RESTful API in 2 Simple Steps" nopin="nopin"></a><a style="font-size:100%;" class="swp_popularity" href="https://www.javachinna.com/2020/05/05/integrating-swagger-2-with-spring-boot-2-restful-api-in-2-simple-steps/"><b>Integrating Swagger 2 with Spring Boot 2 RESTful API in 2 Simple Steps</b><span class="swp_pop_count">104 Total Shares</span></a></div><div class="swp_clearfix"></div><div class="swp_popular_post"><a href="https://www.javachinna.com/2020/07/10/tips-for-switching-from-eclipse-to-intellij-idea/"><img style="width:100px;height:100px;" class="swp_pop_thumb" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/Eclipse-to-IntelliJ-150x150.png" title="Tips for Switching from Eclipse to IntelliJ IDEA" alt="Tips for Switching from Eclipse to IntelliJ IDEA" nopin="nopin"></a><a style="font-size:100%;" class="swp_popularity" href="https://www.javachinna.com/2020/07/10/tips-for-switching-from-eclipse-to-intellij-idea/"><b>Tips for Switching from Eclipse to IntelliJ IDEA</b><span class="swp_pop_count">100 Total Shares</span></a></div><div class="swp_clearfix"></div><div class="swp_popular_post"><a href="https://www.javachinna.com/2020/04/06/logging-performance-monitoring-security-and-transaction-management-with-spring-aop/"><img style="width:100px;height:100px;" class="swp_pop_thumb" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/Spring-aop-aspects-150x150.jpeg" title="Logging, Performance Monitoring, Security and Transaction Management with Spring AOP" alt="Logging, Performance Monitoring, Security and Transaction Management with Spring AOP" nopin="nopin"></a><a style="font-size:100%;" class="swp_popularity" href="https://www.javachinna.com/2020/04/06/logging-performance-monitoring-security-and-transaction-management-with-spring-aop/"><b>Logging, Performance Monitoring, Security and Transaction Management with Spring AOP</b><span class="swp_pop_count">81 Total Shares</span></a></div><div class="swp_clearfix"></div><div class="swp_popular_post"><a href="https://www.javachinna.com/2020/04/24/building-spring-boot-2-x-restful-crud-api-with-spring-data-jpa-hibernate-lombok-and-mysql-in-7-simple-steps/"><img style="width:100px;height:100px;" class="swp_pop_thumb" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/spring-boot-2-rest-crud-api-150x150.jpg" title="Building Spring Boot 2.X RESTful CRUD API with Spring Data JPA, Hibernate, Lombok and MySQL in 7 simple steps" alt="Building Spring Boot 2.X RESTful CRUD API with Spring Data JPA, Hibernate, Lombok and MySQL in 7 simple steps" nopin="nopin"></a><a style="font-size:100%;" class="swp_popularity" href="https://www.javachinna.com/2020/04/24/building-spring-boot-2-x-restful-crud-api-with-spring-data-jpa-hibernate-lombok-and-mysql-in-7-simple-steps/"><b>Building Spring Boot 2.X RESTful CRUD API with Spring Data JPA, Hibernate, Lombok and MySQL in 7 simple steps</b><span class="swp_pop_count">70 Total Shares</span></a></div><div class="swp_clearfix"></div><div class="swp_popular_post"><a href="https://www.javachinna.com/2020/05/11/secure-spring-boot-rest-api-with-basic-authentication-role-based-authorization-database/"><img style="width:100px;height:100px;" class="swp_pop_thumb" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/basic-auth-feature-150x150.jpg" title="7 Steps to Secure Spring Boot 2 REST API with Spring Security Basic Authentication, Role based Authorization and MySQL Database" alt="7 Steps to Secure Spring Boot 2 REST API with Spring Security Basic Authentication, Role based Authorization and MySQL Database" nopin="nopin"></a><a style="font-size:100%;" class="swp_popularity" href="https://www.javachinna.com/2020/05/11/secure-spring-boot-rest-api-with-basic-authentication-role-based-authorization-database/"><b>7 Steps to Secure Spring Boot 2 REST API with Spring Security Basic Authentication, Role based Authorization and MySQL Database</b><span class="swp_pop_count">45 Total Shares</span></a></div><div class="swp_clearfix"></div></div></div><div id="recent-comments-4" class="sidebar-box widget_recent_comments clr"><h4 class="widget-title">Recent Comments</h4><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">Chinna</span> on <a href="https://www.javachinna.com/2020/02/01/creating-spring-rest-api-without-using-spring-boot/#comment-132">Creating Spring REST API without using spring boot</a></li><li class="recentcomments"><span class="comment-author-link">Chinna</span> on <a href="https://www.javachinna.com/2020/02/01/creating-spring-rest-api-without-using-spring-boot/#comment-125">Creating Spring REST API without using spring boot</a></li><li class="recentcomments"><span class="comment-author-link">Anders</span> on <a href="https://www.javachinna.com/2020/02/01/creating-spring-rest-api-without-using-spring-boot/#comment-123">Creating Spring REST API without using spring boot</a></li><li class="recentcomments"><span class="comment-author-link">Chinna</span> on <a href="https://www.javachinna.com/2019/10/23/spring-boot-user-registration-and-oauth2-social-login-with-facebook-google-linkedin-and-github-part-1/#comment-84">Spring boot User Registration and OAuth2 Social login with Facebook, Google, LinkedIn and Github – Part 1</a></li><li class="recentcomments"><span class="comment-author-link">Chinna</span> on <a href="https://www.javachinna.com/2019/10/23/spring-boot-user-registration-and-oauth2-social-login-with-facebook-google-linkedin-and-github-part-3/#comment-83">Spring boot User Registration and OAuth2 Social login with Facebook, Google, LinkedIn and Github – Part 3</a></li></ul></div><div id="tag_cloud-3" class="sidebar-box widget_tag_cloud clr"><h4 class="widget-title">Tags</h4><div class="tagcloud"><a href="https://www.javachinna.com/tag/aspect-oriented-programming/" class="tag-cloud-link tag-link-30 tag-link-position-1" style="font-size: 11.405405405405pt;" aria-label="Aspect Oriented Programming (2 items)">Aspect Oriented Programming</a>
+<a href="https://www.javachinna.com/tag/authorization/" class="tag-cloud-link tag-link-46 tag-link-position-2" style="font-size: 8pt;" aria-label="Authorization (1 item)">Authorization</a>
+<a href="https://www.javachinna.com/tag/basic-authentication/" class="tag-cloud-link tag-link-45 tag-link-position-3" style="font-size: 8pt;" aria-label="Basic Authentication (1 item)">Basic Authentication</a>
+<a href="https://www.javachinna.com/tag/custom-spring-boot-starter/" class="tag-cloud-link tag-link-50 tag-link-position-4" style="font-size: 8pt;" aria-label="Custom Spring Boot Starter (1 item)">Custom Spring Boot Starter</a>
+<a href="https://www.javachinna.com/tag/email/" class="tag-cloud-link tag-link-27 tag-link-position-5" style="font-size: 8pt;" aria-label="Email (1 item)">Email</a>
+<a href="https://www.javachinna.com/tag/events-publising/" class="tag-cloud-link tag-link-33 tag-link-position-6" style="font-size: 11.405405405405pt;" aria-label="Events Publising (2 items)">Events Publising</a>
+<a href="https://www.javachinna.com/tag/freemarker/" class="tag-cloud-link tag-link-25 tag-link-position-7" style="font-size: 8pt;" aria-label="FreeMarker (1 item)">FreeMarker</a>
+<a href="https://www.javachinna.com/tag/hibernate/" class="tag-cloud-link tag-link-37 tag-link-position-8" style="font-size: 8pt;" aria-label="Hibernate (1 item)">Hibernate</a>
+<a href="https://www.javachinna.com/tag/ide/" class="tag-cloud-link tag-link-53 tag-link-position-9" style="font-size: 8pt;" aria-label="IDE (1 item)">IDE</a>
+<a href="https://www.javachinna.com/tag/internationalization/" class="tag-cloud-link tag-link-28 tag-link-position-10" style="font-size: 8pt;" aria-label="Internationalization (1 item)">Internationalization</a>
+<a href="https://www.javachinna.com/tag/java/" class="tag-cloud-link tag-link-26 tag-link-position-11" style="font-size: 8pt;" aria-label="Java (1 item)">Java</a>
+<a href="https://www.javachinna.com/tag/jsoup/" class="tag-cloud-link tag-link-20 tag-link-position-12" style="font-size: 8pt;" aria-label="jsoup (1 item)">jsoup</a>
+<a href="https://www.javachinna.com/tag/jwt/" class="tag-cloud-link tag-link-15 tag-link-position-13" style="font-size: 13.675675675676pt;" aria-label="JWT (3 items)">JWT</a>
+<a href="https://www.javachinna.com/tag/ldap/" class="tag-cloud-link tag-link-47 tag-link-position-14" style="font-size: 8pt;" aria-label="LDAP (1 item)">LDAP</a>
+<a href="https://www.javachinna.com/tag/link-preview/" class="tag-cloud-link tag-link-11 tag-link-position-15" style="font-size: 8pt;" aria-label="Link Preview (1 item)">Link Preview</a>
+<a href="https://www.javachinna.com/tag/logging/" class="tag-cloud-link tag-link-31 tag-link-position-16" style="font-size: 13.675675675676pt;" aria-label="Logging (3 items)">Logging</a>
+<a href="https://www.javachinna.com/tag/lombok/" class="tag-cloud-link tag-link-38 tag-link-position-17" style="font-size: 15.567567567568pt;" aria-label="Lombok (4 items)">Lombok</a>
+<a href="https://www.javachinna.com/tag/microservices/" class="tag-cloud-link tag-link-51 tag-link-position-18" style="font-size: 8pt;" aria-label="Microservices (1 item)">Microservices</a>
+<a href="https://www.javachinna.com/tag/multiple-auth-profiles/" class="tag-cloud-link tag-link-52 tag-link-position-19" style="font-size: 8pt;" aria-label="Multiple Auth Profiles (1 item)">Multiple Auth Profiles</a>
+<a href="https://www.javachinna.com/tag/mysql/" class="tag-cloud-link tag-link-36 tag-link-position-20" style="font-size: 20.297297297297pt;" aria-label="MySQL (8 items)">MySQL</a>
+<a href="https://www.javachinna.com/tag/native-sql-query-result-mapping/" class="tag-cloud-link tag-link-6 tag-link-position-21" style="font-size: 8pt;" aria-label="Native SQL Query Result Mapping (1 item)">Native SQL Query Result Mapping</a>
+<a href="https://www.javachinna.com/tag/oauth2/" class="tag-cloud-link tag-link-8 tag-link-position-22" style="font-size: 13.675675675676pt;" aria-label="OAuth2 (3 items)">OAuth2</a>
+<a href="https://www.javachinna.com/tag/openapi/" class="tag-cloud-link tag-link-44 tag-link-position-23" style="font-size: 8pt;" aria-label="OpenAPI (1 item)">OpenAPI</a>
+<a href="https://www.javachinna.com/tag/performance-monitoring/" class="tag-cloud-link tag-link-32 tag-link-position-24" style="font-size: 11.405405405405pt;" aria-label="Performance Monitoring (2 items)">Performance Monitoring</a>
+<a href="https://www.javachinna.com/tag/rest-api-documentation/" class="tag-cloud-link tag-link-43 tag-link-position-25" style="font-size: 8pt;" aria-label="REST API Documentation (1 item)">REST API Documentation</a>
+<a href="https://www.javachinna.com/tag/restful-crud-api/" class="tag-cloud-link tag-link-39 tag-link-position-26" style="font-size: 8pt;" aria-label="RESTful CRUD API (1 item)">RESTful CRUD API</a>
+<a href="https://www.javachinna.com/tag/rich-link-preview/" class="tag-cloud-link tag-link-12 tag-link-position-27" style="font-size: 8pt;" aria-label="Rich Link Preview (1 item)">Rich Link Preview</a>
+<a href="https://www.javachinna.com/tag/security/" class="tag-cloud-link tag-link-34 tag-link-position-28" style="font-size: 13.675675675676pt;" aria-label="Security (3 items)">Security</a>
+<a href="https://www.javachinna.com/tag/social-login/" class="tag-cloud-link tag-link-9 tag-link-position-29" style="font-size: 13.675675675676pt;" aria-label="Social Login (3 items)">Social Login</a>
+<a href="https://www.javachinna.com/tag/spring-boot-starter-parent/" class="tag-cloud-link tag-link-49 tag-link-position-30" style="font-size: 8pt;" aria-label="spring-boot-starter-parent (1 item)">spring-boot-starter-parent</a>
+<a href="https://www.javachinna.com/tag/spring-5/" class="tag-cloud-link tag-link-60 tag-link-position-31" style="font-size: 11.405405405405pt;" aria-label="Spring 5 (2 items)">Spring 5</a>
+<a href="https://www.javachinna.com/tag/spring-aop/" class="tag-cloud-link tag-link-29 tag-link-position-32" style="font-size: 11.405405405405pt;" aria-label="Spring AOP (2 items)">Spring AOP</a>
+<a href="https://www.javachinna.com/tag/spring-boot/" class="tag-cloud-link tag-link-7 tag-link-position-33" style="font-size: 19.351351351351pt;" aria-label="Spring boot (7 items)">Spring boot</a>
+<a href="https://www.javachinna.com/tag/springboot/" class="tag-cloud-link tag-link-24 tag-link-position-34" style="font-size: 8pt;" aria-label="SpringBoot (1 item)">SpringBoot</a>
+<a href="https://www.javachinna.com/tag/springfox/" class="tag-cloud-link tag-link-42 tag-link-position-35" style="font-size: 8pt;" aria-label="SpringFox (1 item)">SpringFox</a>
+<a href="https://www.javachinna.com/tag/spring-jpa/" class="tag-cloud-link tag-link-3 tag-link-position-36" style="font-size: 18.405405405405pt;" aria-label="Spring JPA (6 items)">Spring JPA</a>
+<a href="https://www.javachinna.com/tag/spring-mvc/" class="tag-cloud-link tag-link-19 tag-link-position-37" style="font-size: 15.567567567568pt;" aria-label="Spring MVC (4 items)">Spring MVC</a>
+<a href="https://www.javachinna.com/tag/spring-rest/" class="tag-cloud-link tag-link-16 tag-link-position-38" style="font-size: 22pt;" aria-label="Spring REST (10 items)">Spring REST</a>
+<a href="https://www.javachinna.com/tag/spring-security/" class="tag-cloud-link tag-link-14 tag-link-position-39" style="font-size: 19.351351351351pt;" aria-label="Spring Security (7 items)">Spring Security</a>
+<a href="https://www.javachinna.com/tag/sqlresultsetmapping/" class="tag-cloud-link tag-link-5 tag-link-position-40" style="font-size: 8pt;" aria-label="SqlResultSetMapping (1 item)">SqlResultSetMapping</a>
+<a href="https://www.javachinna.com/tag/storedprocedurequery/" class="tag-cloud-link tag-link-4 tag-link-position-41" style="font-size: 8pt;" aria-label="StoredProcedureQuery (1 item)">StoredProcedureQuery</a>
+<a href="https://www.javachinna.com/tag/swagger/" class="tag-cloud-link tag-link-40 tag-link-position-42" style="font-size: 8pt;" aria-label="Swagger (1 item)">Swagger</a>
+<a href="https://www.javachinna.com/tag/swagger2/" class="tag-cloud-link tag-link-41 tag-link-position-43" style="font-size: 15.567567567568pt;" aria-label="Swagger2 (4 items)">Swagger2</a>
+<a href="https://www.javachinna.com/tag/transaction-management/" class="tag-cloud-link tag-link-35 tag-link-position-44" style="font-size: 11.405405405405pt;" aria-label="Transaction Management (2 items)">Transaction Management</a>
+<a href="https://www.javachinna.com/tag/user-resgistration/" class="tag-cloud-link tag-link-10 tag-link-position-45" style="font-size: 13.675675675676pt;" aria-label="User Resgistration (3 items)">User Resgistration</a></div>
+</div><div id="meta-4" class="sidebar-box widget_meta clr"><h4 class="widget-title">Meta</h4>			<ul>
+			<li><a rel="nofollow" href="https://www.javachinna.com/wp-login.php?action=register">Register</a></li>			<li><a rel="nofollow" href="https://www.javachinna.com/wp-login.php">Log in</a></li>
+			<li><a href="https://www.javachinna.com/feed/">Entries feed</a></li>
+			<li><a href="https://www.javachinna.com/comments/feed/">Comments feed</a></li>
+			<li><a href="https://wordpress.org/">WordPress.org</a></li>			</ul>
+			</div>
+	</div><!-- #sidebar-inner -->
+
+	
+</aside><!-- #right-sidebar -->
+
+
+	</div><!-- #content-wrap -->
+
+	
+
+	</main><!-- #main -->
+
+	
+	
+	
+		
+<footer id="footer" class="site-footer parallax-footer" itemscope="itemscope" itemtype="https://schema.org/WPFooter" role="contentinfo">
+
+	
+	<div id="footer-inner" class="clr">
+
+		
+
+<div id="footer-widgets" class="oceanwp-row clr">
+
+	
+	<div class="footer-widgets-inner container">
+
+					<div class="footer-box span_1_of_4 col col-1">
+				<div id="ocean_social-3" class="footer-widget widget-oceanwp-social social-widget clr"><h4 class="widget-title">Follow Us</h4>
+				<ul class="oceanwp-social-icons zoomout style-light">
+					<li class="oceanwp-twitter"><a href="https://twitter.com/javachinna" aria-label="Twitter" style="font-size:25px;border-radius:30px;" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter" aria-hidden="true"></i></a><span class="screen-reader-text">Opens in a new tab</span></li><li class="oceanwp-facebook"><a href="https://www.facebook.com/javachinna" aria-label="Facebook" style="font-size:25px;border-radius:30px;" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook" aria-hidden="true"></i></a><span class="screen-reader-text">Opens in a new tab</span></li><li class="oceanwp-linkedin"><a href="http://www.linkedin.com/in/javachinna" aria-label="LinkedIn" style="font-size:25px;border-radius:30px;" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i></a><span class="screen-reader-text">Opens in a new tab</span></li><li class="oceanwp-github"><a href="https://github.com/JavaChinna" aria-label="GitHub" style="font-size:25px;border-radius:30px;" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i></a><span class="screen-reader-text">Opens in a new tab</span></li>				</ul>
+
+				
+			
+		
+			</div>			</div><!-- .footer-one-box -->
+
+							<div class="footer-box span_1_of_4 col col-2">
+									</div><!-- .footer-one-box -->
+				
+							<div class="footer-box span_1_of_4 col col-3 ">
+									</div><!-- .footer-one-box -->
+				
+							<div class="footer-box span_1_of_4 col col-4">
+									</div><!-- .footer-box -->
+				
+			
+	</div><!-- .container -->
+
+	
+</div><!-- #footer-widgets -->
+
+
+
+<div id="footer-bottom" class="clr no-footer-nav">
+
+	
+	<div id="footer-bottom-inner" class="container clr">
+
+		
+		
+			<div id="copyright" class="clr" role="contentinfo">
+				© Copyright 2020 JavaChinna.com. All Rights Reserved			</div><!-- #copyright -->
+
+			
+	</div><!-- #footer-bottom-inner -->
+
+	
+</div><!-- #footer-bottom -->
+
+
+	</div><!-- #footer-inner -->
+
+	
+</footer><!-- #footer -->
+
+	
+	
+</div><!-- #wrap -->
+
+
+</div><!-- #outer-wrap -->
+
+
+
+<a id="scroll-top" class="scroll-top-right" href="https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#" style="display: inline;"><span class="fa fa-angle-up" aria-label="Scroll to the top of the page"></span></a>
+
+
+
+<div id="sidr-close">
+	<a href="https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/#" class="toggle-sidr-close" aria-label="Close mobile Menu">
+		<i class="icon icon-close" aria-hidden="true"></i><span class="close-text">Close Menu</span>
+	</a>
+</div>
+
+	
+	<div id="mobile-nav" class="navigation clr">
+
+		<ul id="menu-navbar-1" class="mobile-menu dropdown-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-261"><a href="https://www.javachinna.com/">Home</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1043"><a href="https://www.javachinna.com/category/java/">Java</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-573"><a href="https://www.javachinna.com/category/spring/">Spring</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-572"><a href="https://www.javachinna.com/category/spring-boot/">Spring Boot</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-494"><a href="https://www.javachinna.com/about/">About</a></li>
+</ul>
+	</div>
+
+
+	
+<div id="mobile-menu-search" class="clr">
+	<form method="get" action="https://www.javachinna.com/" class="mobile-searchform" role="search" aria-label="Search for:">
+		<label for="ocean-mobile-search3">
+			<input type="search" name="s" autocomplete="off" placeholder="Search">
+			<button type="submit" class="searchform-submit" aria-label="Submit Search">
+				<i class="icon icon-magnifier" aria-hidden="true"></i>
+			</button>
+					</label>
+			</form>
+</div><!-- .mobile-menu-search -->
+
+
+<script>(function() {function maybePrefixUrlField() {
+	if (this.value.trim() !== '' && this.value.indexOf('http') !== 0) {
+		this.value = "http://" + this.value;
+	}
+}
+
+var urlFields = document.querySelectorAll('.mc4wp-form input[type="url"]');
+if (urlFields) {
+	for (var j=0; j < urlFields.length; j++) {
+		urlFields[j].addEventListener('blur', maybePrefixUrlField);
+	}
+}
+})();</script><script type="text/javascript" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/shCore.js.download"></script>
+<script type="text/javascript" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/shBrushJava.js.download"></script>
+<script type="text/javascript" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/shBrushPlain.js.download"></script>
+<script type="text/javascript" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/shBrushSql.js.download"></script>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "https://www.javachinna.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "https://www.javachinna.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type="text/javascript" data-cfasync="false" async="" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/l4686697.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var socialWarfare = {"addons":[],"post_id":"114","variables":{"emphasizeIcons":false,"powered_by_toggle":false,"affiliate_link":"https:\/\/warfareplugins.com"},"floatBeforeContent":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/script.min.js.download"></script>
+<script type="text/javascript" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/comment-reply.min.js.download"></script>
+<script type="text/javascript" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/imagesloaded.min.js.download"></script>
+<script type="text/javascript" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/magnific-popup.min.js.download"></script>
+<script type="text/javascript" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/lightbox.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var oceanwpLocalize = {"isRTL":"","menuSearchStyle":"drop_down","sidrSource":"#sidr-close, #mobile-nav, #mobile-menu-search","sidrDisplace":"1","sidrSide":"left","sidrDropdownTarget":"link","verticalHeaderTarget":"link","customSelects":".woocommerce-ordering .orderby, #dropdown_product_cat, .widget_categories select, .widget_archive select, .single-product .variations_form .variations select","ajax_url":"https:\/\/www.javachinna.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/main.min.js.download"></script>
+<script type="text/javascript" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/wp-embed.min.js.download"></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://www.javachinna.com/wp-content/themes/oceanwp/assets/js/third/html5.min.js?ver=1.8.6'></script>
+<![endif]-->
+<script async="async" type="text/javascript" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/form.js.download"></script>
+<script type="text/javascript" src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/forms.min.js.download"></script>
+<script type="text/javascript"> var swp_nonce = "d4c4cfd0bb";function parentIsEvil() { var html = null; try { var doc = top.location.pathname; } catch(err){ }; if(typeof doc === "undefined") { return true } else { return false }; }; if (parentIsEvil()) { top.location = self.location.href; };var url = "https://www.javachinna.com/2019/10/26/calling-stored-procedure-and-mapping-the-query-result-to-non-entity-pojo-using-spring-jpa-sqlresultsetmapping/";if(url.indexOf("stfi.re") != -1) { var canonical = ""; var links = document.getElementsByTagName("link"); for (var i = 0; i < links.length; i ++) { if (links[i].getAttribute("rel") === "canonical") { canonical = links[i].getAttribute("href")}}; canonical = canonical.replace("?sfr=1", "");top.location = canonical; console.log(canonical);};var swpFloatBeforeContent = false; var swp_ajax_url = "https://www.javachinna.com/wp-admin/admin-ajax.php"; var swp_post_id = "114";var swpClickTracking = false;</script>
+
+
+<!--
+Performance optimized by W3 Total Cache. Learn more: https://www.boldgrid.com/w3-total-cache/
+
+
+Served from: javachinna.com @ 2020-08-22 00:30:17 by W3 Total Cache
+--><script src="./Calling Stored Procedure and mapping the query result to non-entity POJO using Spring JPA SqlResultSetMapping - JAVA CHINNA_files/embed.js.download" type="text/javascript"></script></body></html>
