@@ -70,11 +70,12 @@
 <!--start : blood request manage-->
 <div *ngIf="bloodRequest">
   <div style="background-color: deeppink" align="center" class="tab">
-    <button class="tablinks" (click)="tabChange(event, 'request_review')">Active</button>
-    <button class="tablinks" (click)="tabChange(event, 'accepted')">Managed</button>
-    <button class="tablinks" (click)="tabChange(event, 'rejected')">Expired</button>
+    <button class="tablinks" (click)="tabChange(event, 'blood_request_active')">Active</button>
+    <button class="tablinks" (click)="tabChange(event, 'blood_request_expired')">Managed</button>
+    <button class="tablinks" (click)="tabChange(event, 'blood_request_managed')">Expired</button>
   </div>
   <div align="center" id="blood_request_active" class="tabcontent">
+    <h1>Active</h1>
     <!--<app-agent-dashboard-accepted></app-agent-dashboard-accepted>-->
     <!--<app-agent-dashboard-review-->
     <!--[pageHeader]="headerAccepted"-->
@@ -86,6 +87,7 @@
     <!--</app-agent-dashboard-review>-->
   </div>
   <div align="center" id="blood_request_expired" class="tabcontent">
+    <h1>Expired</h1>
     <!--<app-agent-dashboard-rejected></app-agent-dashboard-rejected>-->
     <!--<app-agent-dashboard-review-->
     <!--[pageHeader]="headerRejected"-->
@@ -97,6 +99,7 @@
     <!--</app-agent-dashboard-review>-->
   </div>
   <div align="center" id="blood_request_managed" class="tabcontent">
+    <h1>Managed</h1>
     <!--<app-agent-dashboard-removed></app-agent-dashboard-removed>-->
     <!--<app-agent-dashboard-review-->
     <!--[pageHeader]="headerRemove"-->
