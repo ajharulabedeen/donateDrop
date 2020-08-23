@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RequestSearchDonnerAssing} from '../model/request-search-donner-assign.model';
 import {DonnerAssingShow} from '../model/donner-assing-show.model';
 import {DonnerAssignService} from './donner-assign.service';
+import {throttleTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-donner-assigning',
@@ -53,6 +54,12 @@ export class DonnerAssigningComponent implements OnInit {
   }
 
 
-
+  deleteAssignment(): void {
+    this.donnerAssignService.delete(this.deleteId).subscribe(res => {
+      if (res.STATUS === 'OK') {
+        this.getAssingments();
+      }
+    });
+  }
 }
 
