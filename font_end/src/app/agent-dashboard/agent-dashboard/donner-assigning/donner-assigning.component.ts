@@ -5,6 +5,7 @@ import {DonnerAssignService} from './donner-assign.service';
 import {throttleTime} from 'rxjs/operators';
 import {Post} from '../../../post/post.model';
 import {PostServiceService} from '../../../post/post-service.service';
+import {BasicService} from '../../../profile/basic/basic.service';
 
 @Component({
   selector: 'app-donner-assigning',
@@ -24,6 +25,7 @@ export class DonnerAssigningComponent implements OnInit {
 
   deleteId: string;
 
+  bloods = new Array();
   donnerAssingmentAll: Array<DonnerAssingShow>;
   startAssingments: number;
 
@@ -45,7 +47,8 @@ export class DonnerAssigningComponent implements OnInit {
   postIDSave: string;
 
   constructor(private donnerAssignService: DonnerAssignService,
-              private  postService: PostServiceService) {
+              private  postService: PostServiceService,
+              private basicService: BasicService) {
   }
 
   ngOnInit() {
@@ -54,6 +57,7 @@ export class DonnerAssigningComponent implements OnInit {
     this.assignmentStatus = '0';
     this.startAssingments = 0;
     this.getAssingments();
+    this.bloods = this.basicService.getBloodGroup();
   }
 
   public getAssingments(): void {
@@ -105,7 +109,8 @@ export class DonnerAssigningComponent implements OnInit {
       if (res['STATUS'] === 'OK') {
         console.log('OK STATUS!');
         this.postIDSave = res.ID;
-        console.log('Post Save DonnerAssign : ' + res);
+        console.log('Post Save DonnerAssign : ' + this.postIDSave );
+        this.pos
       }
     });
   }
