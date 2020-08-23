@@ -31,7 +31,7 @@ import java.util.Scanner;
 import static org.junit.Assert.*;
 
 @SpringBootTest
-public class Test_Controller_AgentAssign extends AbstractTest {
+public class Test_Controller_DonnerAssign extends AbstractTest {
 
     @Override
     @Before
@@ -71,9 +71,34 @@ public class Test_Controller_AgentAssign extends AbstractTest {
 
 
     @Test
+    @Order(1)
+//    http://localhost:8080/public/user/agent/donnerAssign/getAssingmentsCount
+    public void testGetAssingmentswCount() throws Exception {
+        String uri = "/public/user/agent/donnerAssign/getAssingmentsCount";
+        RequestSearchDonnerAssing requestSearchReview =
+//                new RequestSearchDonnerAssing(0, 5, "phonenumber", "%%", StatusType.ZERO);
+//                new RequestSearchDonnerAssing(0, 5, "phonenumber", "%013%", StatusType.ZERO);//2
+                new RequestSearchDonnerAssing(0, 20, "email", "%%", StatusType.ZERO);
+        requestSearchReview.setAgentID("11186");
+        //      act
+        String inputJson = super.mapToJson(requestSearchReview);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+//assert
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+//        System.out.println("\n" + content + "\n");
+        Map<String, String> resultMap = super.mapFromJson(content, Map.class);
+        System.out.println(resultMap);
+    }
+
+
+    @Test
     public void testDeleteAssignment() throws Exception {
 //        INSERT INTO `donnerassingment` (`donner_assingment_id`, `agent_id`, `donner_id`, `assing_date`, `assing_note`, `need_date`, `post_id`, `blood_manage_status`)
 //        VALUES ('21463', '11186', '12044', '2020-08-23 05:23:13', 'Note Assign', '2017-07-10', NULL, '0')
+
 
         String donnerAssingmentID = "21463";
         String uri = "/public/user/agent/donnerAssign/delete?donnerAssingmentID=" + donnerAssingmentID;

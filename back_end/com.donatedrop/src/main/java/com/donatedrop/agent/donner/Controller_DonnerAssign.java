@@ -32,6 +32,13 @@ public class Controller_DonnerAssign {
         return service_donnerAssign_i.getAssingments(requestSearchDonnerAssing);
     }
 
+    @PostMapping("getAssingmentsCount")
+    public Map<String, String>
+    getAssingmentsCount(@RequestBody RequestSearchDonnerAssing requestSearchDonnerAssing) {
+        requestSearchDonnerAssing.setAgentID(Utils.getLoggedUserID());
+        return service_donnerAssign_i.getAssingmentsCount(requestSearchDonnerAssing);
+    }
+
     @DeleteMapping("delete")
     public Map<String, String> delete(@RequestParam String donnerAssingmentID) {
         return service_donnerAssign_i.delete(donnerAssingmentID);
