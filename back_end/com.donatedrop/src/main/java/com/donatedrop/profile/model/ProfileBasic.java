@@ -80,6 +80,13 @@ public class ProfileBasic implements Serializable {
     @JsonManagedReference
     private List<EmergencyContact> emergency_contact;
 
+
+    @Transient
+    private boolean profileFound;
+
+    @Transient
+    private String lastBloodGiven;
+
     public Long getId() {
         return id;
     }
@@ -218,6 +225,22 @@ public class ProfileBasic implements Serializable {
 
     public void setAddress(List<Address> address) {
         this.address = address;
+    }
+
+    public boolean isProfileFound() {
+        return profileFound;
+    }
+
+    public void setProfileFound(boolean profileFound) {
+        this.profileFound = profileFound;
+    }
+
+    public String getLastBloodGiven() {
+        return lastBloodGiven;
+    }
+
+    public void setLastBloodGiven(String lastBloodGiven) {
+        this.lastBloodGiven = lastBloodGiven;
     }
 
     @Override

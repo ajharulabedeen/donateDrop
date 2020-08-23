@@ -4,6 +4,7 @@ import com.donatedrop.models.Address;
 import com.donatedrop.profile.model.EmergencyContact;
 import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.profile.model.ProfileBasic;
+import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -76,5 +77,14 @@ public class Service_Profile_Basic_Impl implements Service_Profile_Basic_I {
         return dao_profile_basic_i.updateEmergencyContact(emergencyContactUpdate, userID);
     }
 
+    @Override
+    public ProfileBasic getProfileBasicByUserID(String userID) {
+        return dao_profile_basic_i.getProfileBasicByUserID(userID);
+    }
+
+    @Override
+    public ProfileBasic profileCheckingByUserID(String userID) {
+        return dao_profile_basic_i.profileCheckingByUserID(userID);
+    }
 
 }

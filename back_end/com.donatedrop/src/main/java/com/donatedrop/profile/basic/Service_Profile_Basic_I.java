@@ -45,13 +45,13 @@ public interface Service_Profile_Basic_I {
 
     /**
      * @param address PK of the Address.
-     * @return Map<String   ,   String> = {"status","OK"} -/- {"status","FAIL"}
+     * @return Map<String       ,       String> = {"status","OK"} -/- {"status","FAIL"}
      */
     public Map<String, String> updatePresentAddress(Address address, String userID);
 
     /**
      * @param address PK of the Address.
-     * @return Map<String , String> = {"status","OK"} -/- {"status","FAIL"}
+     * @return Map<String   ,   String> = {"status","OK"} -/- {"status","FAIL"}
      */
     public Map<String, String> updatePermanentAddress(Address address, String userID);
 
@@ -61,4 +61,7 @@ public interface Service_Profile_Basic_I {
 
     public Map<String, String> updateEmergencyContact(EmergencyContact emergencyContactUpdate, String userID);
 
+    public ProfileBasic getProfileBasicByUserID(String userID);
+
+    public ProfileBasic profileCheckingByUserID(String userID);
 }

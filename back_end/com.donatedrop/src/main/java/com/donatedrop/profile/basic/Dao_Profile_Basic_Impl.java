@@ -352,6 +352,23 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         }
         return profileBasic;
     }
+
+    @Override
+    public ProfileBasic profileCheckingByUserID(String userID) {
+        ProfileBasic profileBasic = new ProfileBasic();
+        ProfileBasic basic = getProfileBasicByUserID(userID);
+        if (basic != null) {
+            profileBasic.setProfileFound(true);
+            profileBasic.setName(basic.getName());
+            profileBasic.setProfession(basic.getProfession());
+            profileBasic.setBlood_Group(basic.getBlood_Group());
+        } else {
+            profileBasic.setProfileFound(false);
+        }
+        return profileBasic;
+    }
+
+
 }// class 
 
 //public Map<String, String> deleteEmergencyContact(String emergencyContactID, String userID) {

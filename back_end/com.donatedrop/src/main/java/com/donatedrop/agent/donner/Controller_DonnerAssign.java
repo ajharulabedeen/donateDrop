@@ -8,7 +8,10 @@ package com.donatedrop.agent.donner;
 import com.donatedrop.agent.donner.models.*;
 import com.donatedrop.agent.models.RequestNote;
 import com.donatedrop.agent.models.RequestReviewRequest;
+import com.donatedrop.profile.basic.Service_Profile_Basic_I;
+import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.util.Utils;
+import org.hibernate.procedure.ProcedureOutputs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +27,9 @@ public class Controller_DonnerAssign {
 
     @Autowired
     Service_DonnerAssign_I service_donnerAssign_i;
+
+    @Autowired
+    Service_Profile_Basic_I service_profile_basic_i;
 
     @PostMapping("getAssingments")
     public List<DonnerAssingShow>
@@ -43,4 +49,10 @@ public class Controller_DonnerAssign {
     public Map<String, String> delete(@RequestParam String donnerAssingmentID) {
         return service_donnerAssign_i.delete(donnerAssingmentID);
     }
+
+    @GetMapping("getProfileBasicByUserID")
+    public ProfileBasic getProfileBasicByUserID(@RequestParam String userID) {
+        return service_profile_basic_i.getProfileBasicByUserID(userID);
+    }
+
 }
