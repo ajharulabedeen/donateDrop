@@ -121,9 +121,14 @@
           <!--remove-->
           <!--<td *ngIf="buttonRemove">-->
           <td>
+            <button class="btn btn-xs btn-primary" (click)="requestRemove(da.requestId)" data-toggle="modal"
+                    data-target="#donation_delete">Edit
+            </button>
+            <br>
             <button class="btn btn-xs btn-danger" (click)="requestRemove(da.requestId)" data-toggle="modal"
                     data-target="#donation_delete">Remove
             </button>
+
           </td>
           <!--Reject-->
           <!--<td *ngIf="buttonReject">-->
