@@ -17,7 +17,7 @@ export class PostServiceService {
   }
 
   public save(post: Post) {
-    return this.http.post(
+    return this.http.post<any>(
       'http://127.0.0.1:8080/public/user/post/save', post, this.authService.getHeader()
     );
     //   .subscribe((res: Response) => {
