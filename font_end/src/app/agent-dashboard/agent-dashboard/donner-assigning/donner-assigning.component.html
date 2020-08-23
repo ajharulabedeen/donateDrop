@@ -166,7 +166,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div align="center" class="modal-header">
-        <h3 class="modal-title" id="new_postLabel">New Blood Request Assignment</h3>
+        <h3 class="modal-title" id="new_postLabel1">New Blood Request Assignment</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -193,13 +193,20 @@
         <!--donner ID-->
         <div class="form-group">
           <label>Donner ID</label>
-          <button class="btn btn-xs btn-primary" (click)="showDonnerDetails=true">Check</button>
+          <button class="btn btn-xs btn-primary" (click)="showDonnerDetails=true; donnerFoundCheck=false;">Check</button>
           <input [(ngModel)]="hospitalName" type="text" class="form-control"
                  placeholder="Enter Hospital Name...">
         </div>
+        <!--donner details-->
         <div *ngIf="showDonnerDetails">
-          <button class="btn btn-xs btn-warning" (click)="showDonnerDetails=false">close</button>
-          <h1>This Donner Details</h1>
+          <div *ngIf="donnerFoundCheck==true">
+            <button class="btn btn-xs btn-warning" (click)="showDonnerDetails=false">close</button>
+            <h1>This Donner Details</h1>
+          </div>
+          <div *ngIf="donnerFoundCheck==false">
+            <button class="btn btn-xs btn-warning" (click)="showDonnerDetails=false">close</button>
+            <h4 style="color: red">Sorry no donner found. Please check the userID again</h4>
+          </div>
         </div>
 
 
