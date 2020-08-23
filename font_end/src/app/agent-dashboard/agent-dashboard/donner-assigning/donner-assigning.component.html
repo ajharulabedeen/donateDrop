@@ -59,7 +59,7 @@
     </div>
   </div>
   <!--      prePage/nextPage-->
-  <div class="col-md-3 offset-md-3">
+  <div class="col-md-2 offset-md-2">
     <div class="form-group" style="text-align: center">
       <button class="btn btn-primary btn-xs" (click)="previousPage()">Previous</button>
       <label class="btn btn-danger btn-xs ">Page Number</label>
@@ -69,13 +69,24 @@
     </div>
   </div>
   <!--       sort by ASC or DESC -->
-  <div class="col-md-3 offset-md-3">
+  <div class="col-md-2 offset-md-2">
     <div class="form-group" style="text-align: center">
       <h4>Sort Order</h4>
       <input type="radio" name="m_pay" [(ngModel)]="sortBy" value="ASC" checked="checked">Ascending<br>
       <input type="radio" name="m_pay" [(ngModel)]="sortBy" value="DESC">Descending<br>
     </div>
   </div>
+
+  <!--       Assingment Type-->
+  <div class="col-md-2 offset-md-2">
+    <div class="form-group" style="text-align: center">
+      <h4>Assingment Type</h4>
+      <input type="radio" name="n_pay" [(ngModel)]="assignmentStatus" value="0" checked="checked">Active<br>
+      <input type="radio" name="n_pay" [(ngModel)]="assignmentStatus" value="1">Other<br>
+    </div>
+  </div>
+
+
 </div>
 <!--END : Search-->
 

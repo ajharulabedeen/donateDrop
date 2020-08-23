@@ -1,6 +1,6 @@
 export class RequestSearchDonnerAssing {
-  public start: string;
-  public max: string;
+  public start: number;
+  public max: number;
   public column: string;
   public key: string;
   public statusType: string;
