@@ -24,7 +24,7 @@ export class DonnerAssignService {
   }
 
   delete(deleteId: string) {
-    return this.http.delete('http://localhost:8080/public/user/agent/donnerAssign/delete?donnerAssingmentID=' + deleteId, this.authService.getHeader());
+    return this.http.delete<any>('http://localhost:8080/public/user/agent/donnerAssign/delete?donnerAssingmentID=' + deleteId, this.authService.getHeader());
   }
 
 
