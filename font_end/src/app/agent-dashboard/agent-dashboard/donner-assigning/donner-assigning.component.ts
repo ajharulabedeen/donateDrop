@@ -3,6 +3,7 @@ import {RequestSearchDonnerAssing} from '../model/request-search-donner-assign.m
 import {DonnerAssingShow} from '../model/donner-assing-show.model';
 import {DonnerAssignService} from './donner-assign.service';
 import {throttleTime} from 'rxjs/operators';
+import {Post} from '../../../post/post.model';
 
 @Component({
   selector: 'app-donner-assigning',
@@ -24,6 +25,22 @@ export class DonnerAssigningComponent implements OnInit {
 
   donnerAssingmentAll: Array<DonnerAssingShow>;
   startAssingments: number;
+
+
+  quantity: string;
+  anyNotes: string;
+  contactInfo: string;
+  blood_Group: string;
+  hospitalName: string;
+  bloodNeedDate: string;
+  patientGender: string;
+  patientRemarks: string;
+  hospitalAddress: string;
+  searchWithinDate: boolean;
+  donationLocation: string;
+  patientDescription: string;
+  relationWithPatient: string;
+
 
   constructor(private donnerAssignService: DonnerAssignService) {
   }
@@ -61,5 +78,27 @@ export class DonnerAssigningComponent implements OnInit {
       }
     });
   }
+
+  public getPost(): Post {
+    var p = new Post();
+    p.status = 'ACTIVE';
+    p.bloodType = this.blood_Group;
+    p.quantity = this.quantity;
+    p.needDate = this.bloodNeedDate;
+    p.patientGender = this.patientGender;
+    p.relation = this.relationWithPatient;
+    p.hospitalName = this.hospitalName;
+    p.hospitalAddress = this.hospitalAddress;
+    p.location = this.donationLocation;
+    p.contactInfo = this.contactInfo;
+    p.patientDescription = this.patientDescription;
+    p.remarks = this.patientRemarks;
+    p.notes = this.anyNotes;
+    return p;
+  }
+
+
 }
+
+
 
