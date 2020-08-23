@@ -120,6 +120,21 @@ export class DonnerAssigningComponent implements OnInit {
     });
   }
 
+  public nextPage(): void {
+    if (this.startAssingments.toString() <= this.total) {
+      this.startAssingments += this.perPage;
+      this.getAssingments();
+    }
+  }
+
+  public previousPage(): void {
+    if (this.startAssingments > 0) {
+      this.startAssingments -= this.perPage;
+      this.getAssingments();
+    }
+  }
+
+
 }
 
 
