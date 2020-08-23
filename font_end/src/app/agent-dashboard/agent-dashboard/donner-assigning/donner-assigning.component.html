@@ -199,10 +199,16 @@
         <!--donner details-->
         <div *ngIf="showDonnerDetails">
           <button class="btn btn-xs btn-warning" (click)="showDonnerDetails=false">close</button>
-          <div *ngIf="donnerFoundCheck==true">
-            <h1>This Donner Details</h1>
+          <div *ngIf="profileBasic.profileFound==true">
+            Name : {{profileBasic['name']}}
+            <br>
+            Profession : {{profileBasic['profession']}}
+            <br>
+            <b>Blood Group :</b> {{profileBasic['blood_Group']}}
+            <br>
+            <b>Last Blood Given Since : </b>{{profileBasic.lastBloodGiven}}
           </div>
-          <div *ngIf="donnerFoundCheck==false">
+          <div *ngIf="profileBasic.profileFound==false">
             <h4 style="color: red">Sorry no donner found. Please check the userID again</h4>
           </div>
           <hr>

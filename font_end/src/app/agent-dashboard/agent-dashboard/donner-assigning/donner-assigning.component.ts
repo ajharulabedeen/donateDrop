@@ -148,7 +148,7 @@ export class DonnerAssigningComponent implements OnInit {
 
   profileCheckingByUserID(): void {
     this.donnerAssignService.profileCheckingByUserID(this.donnerUserID).subscribe(basic => {
-          console.log(basic);
+      this.profileBasic = basic;
     });
   }
 }
