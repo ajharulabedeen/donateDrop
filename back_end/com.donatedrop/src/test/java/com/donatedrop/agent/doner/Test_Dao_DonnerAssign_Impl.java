@@ -96,4 +96,15 @@ public class Test_Dao_DonnerAssign_Impl {
         });
     }
 
+    @Test
+    public void testGetAssingmentsCount() {
+        RequestSearchDonnerAssing requestSearchReview =
+//                new RequestSearchDonnerAssing(0, 5, "phonenumber", "%%", StatusType.ZERO);
+//                new RequestSearchDonnerAssing(0, 5, "phonenumber", "%013%", StatusType.ZERO);//2
+                new RequestSearchDonnerAssing(0, 20, "email", "%%", StatusType.ZERO);
+        requestSearchReview.setUserIdAgent("11186");
+        System.out.println("\nrequestSearchReview : " + requestSearchReview.toString());
+        Map<String, String> countMap = dao_donnerAssign_i.getAssingmentsCount(requestSearchReview);
+        System.out.println(countMap);
+    }
 }

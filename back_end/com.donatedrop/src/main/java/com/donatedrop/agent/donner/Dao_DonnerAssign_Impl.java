@@ -90,8 +90,7 @@ public class Dao_DonnerAssign_Impl implements Dao_DonnerAssign_I {
         return result;
     }
 
-//    public List
-
+    //    public List
     @Override
     public List<DonnerAssingShow> getAssingments(RequestSearchDonnerAssing requestSearchDonnerAssing) {
         String sql = "";
@@ -113,20 +112,20 @@ public class Dao_DonnerAssign_Impl implements Dao_DonnerAssign_I {
                         + " AND `donner_assing_show`.`blood_manage_status`='" + status + "'"
                         + " AND `donner_assing_show`.`agent_id`='" + agentID + "'";
             } else if (column.equals(StringUtil.ADRESS)) {
-                q = "SELECT\n" +
-                        "    *\n" +
-                        "FROM\n" +
-                        "    `address`,\n" +
-                        "    `donner_assing_show`\n" +
-                        "WHERE\n" +
-                        "    donner_assing_show.profile_id = `address`.`profile_id` \n" +
-                        "    AND\n" +
-                        "    (`address`.`division` LIKE '" + key + "' \n" +
-                        "     OR `address`.`district` LIKE '" + key + "' \n" +
-                        "     OR `address`.`upzilla` LIKE '" + key + "'\n" +
-                        "     OR `address`.`union_ward` LIKE '" + key + "')" +
-                        " AND `donner_assing_show`.`blood_manage_status`='" + status + "'" +
-                        " AND `donner_assing_show`.`agent_id`='" + agentID + "'";
+                q = "SELECT\n"
+                        + "    *\n"
+                        + "FROM\n"
+                        + "    `address`,\n"
+                        + "    `donner_assing_show`\n"
+                        + "WHERE\n"
+                        + "    donner_assing_show.profile_id = `address`.`profile_id` \n"
+                        + "    AND\n"
+                        + "    (`address`.`division` LIKE '" + key + "' \n"
+                        + "     OR `address`.`district` LIKE '" + key + "' \n"
+                        + "     OR `address`.`upzilla` LIKE '" + key + "'\n"
+                        + "     OR `address`.`union_ward` LIKE '" + key + "')"
+                        + " AND `donner_assing_show`.`blood_manage_status`='" + status + "'"
+                        + " AND `donner_assing_show`.`agent_id`='" + agentID + "'";
                 ;
             } else {
                 q = "SELECT * FROM `donner_assing_show` WHERE `donner_assing_show`.`"
@@ -145,5 +144,32 @@ public class Dao_DonnerAssign_Impl implements Dao_DonnerAssign_I {
             System.out.println("org.hibernate.exception.SQLGrammarException");
         }
         return donnerAssingmentList;
+    }
+
+    @Override
+    public Map<String, String> getAssingmentsCount(RequestSearchDonnerAssing requestSearchDonnerAssing) {
+        Map<String, String> result = new HashMap<>();
+        String sql = "";
+        int start = requestSearchDonnerAssing.getStart();
+        int max = requestSearchDonnerAssing.getMax();
+        String column = requestSearchDonnerAssing.getColumn();
+        String key = requestSearchDonnerAssing.getKey();
+        String status = requestSearchDonnerAssing.getStatusType();
+        String agentID = requestSearchDonnerAssing.getUserIdAgent();
+        String q = "";
+        try {
+            q = "SELECT count(* ) FROM `donner_assing_show` WHERE `donner_assing_show`.`"
+                    + column + "` LIKE '" + key + "'"
+                    + " AND `donner_assing_show`.`blood_manage_status`='" + status + "'"
+                    + " AND `donner_assing_show`.`agent_id`='" + agentID + "'";
+            String count = entityManager.createNativeQuery(q).getResultList().get(0).toString();
+            result.put(StringUtil.STATUS, StringUtil.OK);
+            result.put(StringUtil.COUNT, count);
+            return result;
+        } catch (Exception e) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+            System.out.println("Error in Donner Assingment Counting!");
+        }
+        return result;
     }
 }

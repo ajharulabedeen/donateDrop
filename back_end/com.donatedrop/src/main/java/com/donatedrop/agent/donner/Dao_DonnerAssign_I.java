@@ -19,4 +19,6 @@ public interface Dao_DonnerAssign_I {
     public Map<String, String> update(DonnerAssingment donnerAssingment);
 
     public List<DonnerAssingShow> getAssingments(RequestSearchDonnerAssing requestSearchDonnerAssing);
+
+    public Map<String, String> getAssingmentsCount(RequestSearchDonnerAssing requestSearchDonnerAssing);
 }
