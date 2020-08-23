@@ -46,6 +46,7 @@ export class DonnerAssigningComponent implements OnInit {
 
   postIDSave: string;
   showPostCheck = false;
+  showPostDetails: boolean;
 
   constructor(private donnerAssignService: DonnerAssignService,
               private  postService: PostServiceService,
