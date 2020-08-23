@@ -138,6 +138,7 @@
           <td>{{da.gender}}</td>
           <td>{{da.profession}}</td>
           <td>{{da.profileId}}</td>
+          <!--<td>{{da.userId}}</td>-->
           <td>{{da.email}}</td>
           <td>{{da.userId}}</td>
           <td>{{da.assingDate}}</td>
@@ -193,18 +194,18 @@
         <!--donner ID-->
         <div class="form-group">
           <label>Donner ID</label>
-          <button class="btn btn-xs btn-primary" (click)="showDonnerDetails=true; donnerFoundCheck=false;">Check</button>
+          <button class="btn btn-xs btn-primary" (click)="showDonnerDetails=true; donnerFoundCheck=true;">Check
+          </button>
           <input [(ngModel)]="hospitalName" type="text" class="form-control"
                  placeholder="Enter Hospital Name...">
         </div>
         <!--donner details-->
         <div *ngIf="showDonnerDetails">
+          <button class="btn btn-xs btn-warning" (click)="showDonnerDetails=false">close</button>
           <div *ngIf="donnerFoundCheck==true">
-            <button class="btn btn-xs btn-warning" (click)="showDonnerDetails=false">close</button>
             <h1>This Donner Details</h1>
           </div>
           <div *ngIf="donnerFoundCheck==false">
-            <button class="btn btn-xs btn-warning" (click)="showDonnerDetails=false">close</button>
             <h4 style="color: red">Sorry no donner found. Please check the userID again</h4>
           </div>
         </div>
@@ -220,6 +221,7 @@
           <input [(ngModel)]="hospitalName" type="text" class="form-control"
                  placeholder="Post ID!">
         </div>
+        <!--post details-->
         <div *ngIf="showPostDetails">
           <button class="btn btn-xs btn-warning" (click)="showPostDetails=false">close</button>
           <h1>This Post Details</h1>
