@@ -6,6 +6,7 @@ import {throttleTime} from 'rxjs/operators';
 import {Post} from '../../../post/post.model';
 import {PostServiceService} from '../../../post/post-service.service';
 import {BasicService} from '../../../profile/basic/basic.service';
+import {Basic} from '../../../profile/basic/basic.model';
 
 @Component({
   selector: 'app-donner-assigning',
@@ -50,6 +51,10 @@ export class DonnerAssigningComponent implements OnInit {
   showDonnerDetails: boolean;
   donnerFoundCheck: boolean;
   postFound: boolean;
+
+  donnerUserID: string;
+
+  profileBasic: Basic;
 
   constructor(private donnerAssignService: DonnerAssignService,
               private  postService: PostServiceService,
@@ -115,7 +120,7 @@ export class DonnerAssigningComponent implements OnInit {
     return p;
   }
 
-  public save(): void {
+  public saveBloodPost(): void {
     this.postService.save(this.getPost()).subscribe(res => {
       console.log(res);
       if (res['STATUS'] === 'OK') {
@@ -141,7 +146,11 @@ export class DonnerAssigningComponent implements OnInit {
     }
   }
 
-
+  profileCheckingByUserID(): void {
+    this.donnerAssignService.profileCheckingByUserID(this.donnerUserID).subscribe(basic => {
+          console.log(basic);
+    });
+  }
 }
 
 

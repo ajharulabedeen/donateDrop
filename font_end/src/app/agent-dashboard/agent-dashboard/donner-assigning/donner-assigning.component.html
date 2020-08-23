@@ -191,10 +191,10 @@
         <!--donner ID-->
         <div class="form-group">
           <label>Donner ID</label>
-          <button class="btn btn-xs btn-primary" (click)="showDonnerDetails=true; donnerFoundCheck=true;">Check
+          <button class="btn btn-xs btn-primary" (click)="showDonnerDetails=true; profileCheckingByUserID();">Check
           </button>
-          <input [(ngModel)]="hospitalName" type="text" class="form-control"
-                 placeholder="Enter Hospital Name...">
+          <input [(ngModel)]="donnerUserID" type="text" class="form-control"
+                 placeholder="Enter donner id...">
         </div>
         <!--donner details-->
         <div *ngIf="showDonnerDetails">
@@ -230,8 +230,6 @@
           </div>
           <hr>
         </div>
-
-
         <!--notes : thought no need, will be used as note personal-->
         <div class="form-group">
           <label>Assign Note</label>
@@ -305,7 +303,7 @@
 <!-- end-Modal :  Delete Confirmation -->
 
 
-<!-- Modal-start  : New Posts-->
+<!-- Modal-start  : New Posts Blood-->
 <div class="modal fade" id="new_blood_posts" tabindex="-1" role="dialog" aria-labelledby="new_postLabel"
      aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -415,11 +413,11 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="save()">Save</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveBloodPost()">Save</button>
       </div>
     </div>
   </div>
 </div>
-<!-- Modal-end : New Posts-->
+<!-- Modal-end : New Posts Blood-->
 
 

@@ -11,6 +11,9 @@ export class Basic {
   private available: string;
   private religion: string;
   private email: string;
+  profileFound: boolean;
+  lastBloodGiven: string;
+
 
   /**
    * Getter $id

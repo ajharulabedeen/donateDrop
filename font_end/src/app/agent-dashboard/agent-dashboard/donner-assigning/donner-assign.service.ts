@@ -4,6 +4,7 @@ import {AuthService} from '../../../auth/auth.service';
 import {RequestSearchReview} from '../model/request-search-review.model';
 import {RequestSearchDonnerAssing} from '../model/request-search-donner-assign.model';
 import {DonnerAssingShow} from '../model/donner-assing-show.model';
+import {Basic} from '../../../profile/basic/basic.model';
 
 @Injectable({
   providedIn: 'root'
@@ -32,4 +33,7 @@ export class DonnerAssignService {
   }
 
 
+  profileCheckingByUserID(donnerUserID: string) {
+    return this.http.get<Basic>('http://localhost:8080/public/user/agent/donnerAssign/profileCheckingByUserID?userID=' + donnerUserID, this.authService.getHeader());
+  }
 }
