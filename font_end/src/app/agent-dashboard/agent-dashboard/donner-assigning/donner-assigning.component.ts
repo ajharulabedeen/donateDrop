@@ -17,7 +17,7 @@ export class DonnerAssigningComponent implements OnInit {
   searchKey: string;
   searchByColumn = 'name';
   total = 0;
-  startAssigments = 0;
+  startAssigments = 5;
   perPage = 10;
   pageNumber = 0;
   statusType: string;
@@ -60,13 +60,14 @@ export class DonnerAssigningComponent implements OnInit {
     this.searchKey = '';
     this.statusType = '0';
     this.assignmentStatus = '0';
-    this.startAssingments = 0;
+    // this.startAssingments = 0;
     this.getAssingments();
     this.bloods = this.basicService.getBloodGroup();
   }
 
   public getAssingments(): void {
     const donnerAssingSearch = new RequestSearchDonnerAssing();
+    console.log(this.startAssigments);
     donnerAssingSearch.start = this.startAssigments;
     donnerAssingSearch.max = this.perPage;
     donnerAssingSearch.column = this.searchByColumn;
@@ -121,21 +122,29 @@ export class DonnerAssigningComponent implements OnInit {
         console.log('OK STATUS!');
         this.postIDSave = res.ID;
         console.log('Post Save DonnerAssign : ' + this.postIDSave);
-        this.pos
+        // this.pos
       }
     });
   }
 
   public nextPage(): void {
-    if (this.startAssingments.toString() <= this.total) {
+    console.log('\n\n\n----------------Next');
+    // this.perPage +=1;
+    if (this.startAssingments <= this.total) {
+      console.log(this.startAssingments);
       this.startAssingments += this.perPage;
+      console.log(this.startAssingments);
       this.getAssingments();
     }
   }
 
   public previousPage(): void {
+    console.log('\n\n\n----------------Pre');
+    // this.perPage -=1;
     if (this.startAssingments > 0) {
+      console.log(this.startAssingments);
       this.startAssingments -= this.perPage;
+      console.log(this.startAssingments);
       this.getAssingments();
     }
   }

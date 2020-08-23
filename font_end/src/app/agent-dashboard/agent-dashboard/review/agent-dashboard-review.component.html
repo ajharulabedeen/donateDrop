@@ -48,7 +48,7 @@
     <div style="text-align: center" class="form-group">
       <label>Start</label>
       <input style="text-align: center" [(ngModel)]="startRequests" type="number" class="form-control"
-             value="{{startHistory}}" (ngModelChange)="getAll()">
+             value="{{startHistory}}" (ngModelChange)="getDonnerRequestsToReview()">
     </div>
   </div>
   <!--      perPage-->
@@ -56,7 +56,7 @@
     <div style="text-align: center" class="form-group">
       <label>Per Page</label>
       <input style="text-align: center" [(ngModel)]="perPage" type="number" class="form-control"
-             value="{{perPage}}" (ngModelChange)="getAll()">
+             value="{{perPage}}" (ngModelChange)="getDonnerRequestsToReview()">
     </div>
   </div>
   <!--      prePage/nextPage-->
