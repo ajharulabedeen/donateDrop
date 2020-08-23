@@ -193,10 +193,15 @@
         <!--donner ID-->
         <div class="form-group">
           <label>Donner ID</label>
-          <button class="btn btn-xs btn-primary">Check</button>
+          <button class="btn btn-xs btn-primary" (click)="showDonnerDetails=true">Check</button>
           <input [(ngModel)]="hospitalName" type="text" class="form-control"
                  placeholder="Enter Hospital Name...">
         </div>
+        <div *ngIf="showDonnerDetails">
+          <button class="btn btn-xs btn-warning" (click)="showDonnerDetails=false">close</button>
+          <h1>This Donner Details</h1>
+        </div>
+
 
         <div class="form-group">
           <label>Post ID</label>
@@ -212,6 +217,8 @@
           <button class="btn btn-xs btn-warning" (click)="showPostDetails=false">close</button>
           <h1>This Post Details</h1>
         </div>
+
+
         <!--notes : thought no need, will be used as note personal-->
         <div class="form-group">
           <label>Assign Note</label>
