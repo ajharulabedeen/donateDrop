@@ -7,7 +7,7 @@ export class DonnerAssingShow {
   needDate: string;
   postId: string;
   bloodManageStatus: string;
-  privatelongprofileId: string;
+  profileId: string;
   available: string;
   birthDate: string;
   bloodGroup: string;

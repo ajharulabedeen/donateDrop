@@ -108,64 +108,62 @@
           <th>Gender</th>
           <th>Profession</th>
           <th>Profile ID</th>
-          <th>Note</th>
-          <th>Username</th>
-          <th>Status</th>
+          <th>Mail</th>
           <th>Donner User Id</th>
           <th>Assing Date</th>
-          <th>Assing Note</th>
           <th>Need Date</th>
           <th>Post Id</th>
           <th>Blood Manage Status</th>
+          <th>Assing Note</th>
         </tr>
-        <tr *ngFor="let ar of donnerRequestsToReview; let i=index">
+        <tr *ngFor="let da of donnerAssingmentAll; let i=index">
           <!--remove-->
-          <td *ngIf="buttonRemove">
-            <button class="btn btn-xs btn-danger" (click)="requestRemove(ar.requestId)" data-toggle="modal"
-                    data-target="#donation_delete">Remove
-            </button>
-          </td>
+          <!--<td *ngIf="buttonRemove">-->
+          <!--<button class="btn btn-xs btn-danger" (click)="requestRemove(da.requestId)" data-toggle="modal"-->
+          <!--data-target="#donation_delete">Remove-->
+          <!--</button>-->
+          <!--</td>-->
           <!--Reject-->
-          <td *ngIf="buttonReject">
-            <button class="btn btn-xs btn-warning" (click)="requestReject(ar.requestId)" data-toggle="modal"
-                    data-target="#donation_delete">Reject
-            </button>
-          </td>
+          <!--<td *ngIf="buttonReject">-->
+          <!--<button class="btn btn-xs btn-warning" (click)="requestReject(da.requestId)" data-toggle="modal"-->
+          <!--data-target="#donation_delete">Reject-->
+          <!--</button>-->
+          <!--</td>-->
           <!--approve-->
-          <td *ngIf="buttonApprove">
-            <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modal_work"
-                    (click)="requestAccept(ar.requestId, 'ACCEPT')">Approve
-            </button>
-          </td>
+          <!--<td *ngIf="buttonApprove">-->
+          <!--<button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modal_work"-->
+          <!--(click)="requestAccept(da.requestId, 'ACCEPT')">Approve-->
+          <!--</button>-->
+          <!--</td>-->
           <td>{{i+1}}</td>
-          <td>{{ar.requestDate}}</td>
-          <td>{{ar.name}}</td>
-          <td>{{ar.username}}</td>
-          <td>{{ar.gender}}</td>
-          <td>{{ar.phone_number}}</td>
-          <td>{{ar.noteDonner}}</td>
-          <td>
-            <button class="btn btn-xs btn-info" (click)="agentNote=ar.noteAgent; requestID=ar.requestId"
-                    [attr.data-target]="'#' + modalIDAgent" data-toggle="modal">Edit
-              <!--data-target="'#'{{pageHeader}}">Edit-->
-              <!--data-target="'#'{{pageHeader}}">Edit-->
-            </button>
-            <br>
-            {{ar.noteAgent}}
-          </td>
-          <td>
-            <button class="btn btn-xs btn-danger" (click)="personalNote=ar.noteAgentPersonal; requestID=ar.requestId"
-                    data-toggle="modal"
-                    [attr.data-target]="'#' + modalIDDonner">Edit
-            </button>
-            <br>
-            {{ar.noteAgentPersonal}}
-          </td>
-          <td>{{ar.profession}}</td>
-          <td>{{ar.presentStreet}},{{ar.presentUnion}},{{ar.presentUpz}},{{ar.presentDist}},{{ar.presentDiv}}</td>
-          <td>
-            {{ar.permanentStreet}},{{ar.permanentUnion}},{{ar.permanentUpz}},{{ar.permanentDist}},{{ar.permanentDiv}}
-          </td>
+          <td>{{da.name}}</td>
+          <td>{{da.gender}}</td>
+          <td>{{da.profession}}</td>
+          <td>{{da.profileId}}</td>
+          <td>{{da.email}}</td>
+          <td>{{da.userId}}</td>
+          <!--<td>-->
+          <!--<button class="btn btn-xs btn-info" (click)="agentNote=da.noteAgent; requestID=da.requestId"-->
+          <!--[attr.data-target]="'#' + modalIDAgent" data-toggle="modal">Edit-->
+          <!--&lt;!&ndash;data-target="'#'{{pageHeader}}">Edit&ndash;&gt;-->
+          <!--&lt;!&ndash;data-target="'#'{{pageHeader}}">Edit&ndash;&gt;-->
+          <!--</button>-->
+          <!--<br>-->
+          <!--{{da.noteAgent}}-->
+          <!--</td>-->
+          <!--<td>-->
+          <!--<button class="btn btn-xs btn-danger" (click)="personalNote=da.noteAgentPersonal; requestID=da.requestId"-->
+          <!--data-toggle="modal"-->
+          <!--[attr.data-target]="'#' + modalIDDonner">Edit-->
+          <!--</button>-->
+          <!--<br>-->
+          <!--{{da.noteAgentPersonal}}-->
+          <!--</td>-->
+          <td>{{da.assingDate}}</td>
+          <td>{{da.needDate}}</td>
+          <td>{{da.postId}}</td>
+          <td>{{da.bloodManageStatus}}</td>
+          <td>{{da.assingNote}}</td>
         </tr>
         </tbody>
       </table>
