@@ -20,6 +20,7 @@ export class DonnerAssigningComponent implements OnInit {
   assignmentStatus: string;
 
   donnerAssingmentAll: Array<DonnerAssingShow>;
+  startAssingments: number;
 
   constructor(private donnerAssignService: DonnerAssignService) {
   }
@@ -28,6 +29,7 @@ export class DonnerAssigningComponent implements OnInit {
     this.searchKey = '';
     this.statusType = '0';
     this.assignmentStatus = '0';
+    this.startAssingments = 0;
     this.getAssingments();
   }
 
