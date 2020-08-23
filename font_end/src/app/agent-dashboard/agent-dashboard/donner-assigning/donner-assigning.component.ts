@@ -49,6 +49,7 @@ export class DonnerAssigningComponent implements OnInit {
   showPostDetails: boolean;
   showDonnerDetails: boolean;
   donnerFoundCheck: boolean;
+  postFound: boolean;
 
   constructor(private donnerAssignService: DonnerAssignService,
               private  postService: PostServiceService,
