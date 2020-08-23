@@ -55,4 +55,10 @@ public class Controller_DonnerAssign {
         return service_profile_basic_i.getProfileBasicByUserID(userID);
     }
 
+    @GetMapping("profileCheckingByUserID")
+    ProfileBasic profileCheckingByUserID(@RequestParam String userID) {
+        return service_profile_basic_i.profileCheckingByUserID(userID);
+    }
+
+
 }
