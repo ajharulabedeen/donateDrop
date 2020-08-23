@@ -364,6 +364,9 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
             profileBasic.setName(basic.getName());
             profileBasic.setProfession(basic.getProfession());
             profileBasic.setBlood_Group(basic.getBlood_Group());
+//            last days since blood given
+            String lastBloodDonated = lastBloodDonated(DateUtil.getDate(), userID);
+            profileBasic.setLastBloodGiven(lastBloodDonated);
         } else {
             profileBasic.setProfileFound(false);
         }

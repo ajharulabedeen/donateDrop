@@ -49,6 +49,7 @@ public class Test_Dao_Profile_Basic_Impl_Other {
         //tested by : 11148
         ProfileBasic profileBasic = dao_Profile_Basic_I.profileCheckingByUserID("11148");
         System.out.println(profileBasic.isProfileFound());
+        System.out.println(profileBasic.getLastBloodGiven());
     }
 
 
