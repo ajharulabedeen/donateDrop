@@ -76,6 +76,12 @@ export class DonnerAssigningComponent implements OnInit {
 
     console.log(donnerAssingSearch);
 
+    //refactor : have to smart system such no need to total every time.
+    this.donnerAssignService.getAssingmentsCount(donnerAssingSearch).subscribe(res => {
+      console.log(res);
+      this.total = res.COUNT;
+    });
+
     this.donnerAssignService.getAssingments(donnerAssingSearch).subscribe(donnerAssignment => {
       this.donnerAssingmentAll = donnerAssignment;
       console.log(this.donnerAssingmentAll);

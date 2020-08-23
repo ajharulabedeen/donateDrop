@@ -23,6 +23,10 @@ export class DonnerAssignService {
     return this.http.post<DonnerAssingShow[]>('http://localhost:8080/public/user/agent/donnerAssign/getAssingments', donnerAssingSearch, this.authService.getHeader());
   }
 
+  getAssingmentsCount(donnerAssingSearch: RequestSearchDonnerAssing) {
+    return this.http.post<any>('http://localhost:8080/public/user/agent/donnerAssign/getAssingmentsCount', donnerAssingSearch, this.authService.getHeader());
+  }
+
   delete(deleteId: string) {
     return this.http.delete<any>('http://localhost:8080/public/user/agent/donnerAssign/delete?donnerAssingmentID=' + deleteId, this.authService.getHeader());
   }
