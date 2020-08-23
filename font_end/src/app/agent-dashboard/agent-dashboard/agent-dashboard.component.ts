@@ -23,7 +23,7 @@ export class AgentDashboardComponent implements OnInit {
   headerRemove = 'Request Remove';
   headerReview = 'Request to Review';
 
-  bloodRequest = false;
+  bloodRequest = true;
 
 // end-new : reusable component
 
@@ -36,6 +36,8 @@ export class AgentDashboardComponent implements OnInit {
     // this.tabChange(event, 'accepted');
     // this.tabChange(event, 'rejected');
     this.tabChange(event, 'removed');
+    this.bloodRequest = true
+    console.log('bloodRequest : ' + this.bloodRequest);
   }
 
 
@@ -61,8 +63,8 @@ export class AgentDashboardComponent implements OnInit {
   // end : for tab in font end.
 
 
-    // rquestManagementButton() {
-    //   this.tabChange(event, 'request_review');
-    //   this.bloodRequest = false;
-    // }
+  // rquestManagementButton() {
+  //   this.tabChange(event, 'request_review');
+  //   this.bloodRequest = false;
+  // }
 }
