@@ -26,10 +26,14 @@ public class Controller_DonnerAssign {
     Service_DonnerAssign_I service_donnerAssign_i;
 
     @PostMapping("getAssingments")
-    public List<DonnerAssingShow> getAssingments(@RequestBody RequestSearchDonnerAssing requestSearchDonnerAssing) {
-        System.out.println(requestSearchDonnerAssing.toString());
+    public List<DonnerAssingShow>
+    getAssingments(@RequestBody RequestSearchDonnerAssing requestSearchDonnerAssing) {
         requestSearchDonnerAssing.setAgentID(Utils.getLoggedUserID());
         return service_donnerAssign_i.getAssingments(requestSearchDonnerAssing);
     }
 
+    @DeleteMapping("delete")
+    public Map<String, String> delete(@RequestParam String donnerAssingmentID) {
+        return service_donnerAssign_i.delete(donnerAssingmentID);
+    }
 }
