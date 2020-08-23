@@ -45,6 +45,7 @@ export class DonnerAssigningComponent implements OnInit {
   relationWithPatient: string;
 
   postIDSave: string;
+  showPostCheck = false;
 
   constructor(private donnerAssignService: DonnerAssignService,
               private  postService: PostServiceService,
@@ -109,7 +110,7 @@ export class DonnerAssigningComponent implements OnInit {
       if (res['STATUS'] === 'OK') {
         console.log('OK STATUS!');
         this.postIDSave = res.ID;
-        console.log('Post Save DonnerAssign : ' + this.postIDSave );
+        console.log('Post Save DonnerAssign : ' + this.postIDSave);
         this.pos
       }
     });

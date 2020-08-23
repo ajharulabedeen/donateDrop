@@ -160,7 +160,7 @@
 <!--end : table-->
 
 
-<!-- Modal-start  : New Posts-->
+<!-- Modal-start  : New Blood Request Assignment-->
 <div class="modal fade" id="new_blood_assignment" tabindex="-1" role="dialog" aria-labelledby="new_postLabel"
      aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -173,11 +173,7 @@
       </div>
 
       <div class="modal-body">
-        <!--postId: string;-->
-        <!--donnerId: string;-->
-        <!--needDate: string;-->
-        <!--assingNote: string;-->
-        <!--Need Date-->
+        <!--need date-->
         <div class="col-md-6">
           <div class="form-group">
             <label>Need Date:</label>
@@ -194,7 +190,6 @@
             </div>
           </div>
         </div>
-
         <!--donner ID-->
         <div class="form-group">
           <label>Donner ID</label>
@@ -205,14 +200,18 @@
 
         <div class="form-group">
           <label>Post ID</label>
-          <button class="btn btn-xs btn-primary">Check</button>
-          <button class="btn btn-xs btn-info" (click)="deleteId=da.donnerAssingmentId" data-toggle="modal"
-                  data-target="#new_blood_posts">Details
+          <button class="btn btn-xs btn-primary" (click)="showPostCheck=true">Check</button>
+          <button *ngIf="showPostCheck" class="btn btn-xs btn-info"
+                  data-toggle="modal"
+                  data-target="#new_blood_posts">Add New
           </button>
           <input [(ngModel)]="hospitalName" type="text" class="form-control"
                  placeholder="Enter Hospital Name...">
         </div>
-
+        <div *ngIf="showPostCheck">
+          <h1>This Post Details</h1>
+          <button class="btn btn-xs btn-warning" (click)="showPostCheck=false">close</button>
+        </div>
         <!--notes : thought no need, will be used as note personal-->
         <div class="form-group">
           <label>Assign Note</label>
