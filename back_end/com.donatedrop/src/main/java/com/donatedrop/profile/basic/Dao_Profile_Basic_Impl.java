@@ -5,16 +5,18 @@ import com.donatedrop.profile.model.EmergencyContact;
 import com.donatedrop.profile.model.PhoneNumber;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.util.AddressType;
+import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
+import org.hibernate.procedure.ProcedureOutputs;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
+import javax.persistence.ParameterMode;
 import javax.persistence.PersistenceContext;
+import javax.persistence.StoredProcedureQuery;
 import javax.transaction.Transactional;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.math.BigInteger;
+import java.util.*;
 
 @Component
 @Transactional
@@ -368,8 +370,32 @@ public class Dao_Profile_Basic_Impl implements Dao_Profile_Basic_I {
         return profileBasic;
     }
 
+    @Override
+    public String lastBloodDonated(String date, String userID) {
+        StoredProcedureQuery query = entityManager.createStoredProcedureQuery("lastBloodDonated")
+                .registerStoredProcedureParameter("user_id", String.class, ParameterMode.IN)
+                .registerStoredProcedureParameter("needDate", String.class, ParameterMode.IN);
 
-}// class 
+        query.setParameter("user_id", userID);
+        query.setParameter("needDate", date);
+        List<BigInteger> list = new ArrayList<>();
+        try {
+            // Execute query
+            query.execute();
+            list = query.getResultList();
+        } finally {
+            try {
+                query.unwrap(ProcedureOutputs.class).release();
+            } catch (Exception e) {
+            }
+        }
+        BigInteger bigInteger = (BigInteger) list.get(0);
+        int dateDiff = list.get(0).intValue();
+        return Integer.toString(dateDiff);
+    }
+
+
+}// class
 
 //public Map<String, String> deleteEmergencyContact(String emergencyContactID, String userID) {
 //        Refactor : working Code, have to delete later.

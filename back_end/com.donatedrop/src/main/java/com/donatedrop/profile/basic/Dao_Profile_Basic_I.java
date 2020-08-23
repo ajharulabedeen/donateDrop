@@ -99,4 +99,6 @@ public interface Dao_Profile_Basic_I {
     public ProfileBasic getProfileBasicByUserID(String userID);
 
     ProfileBasic profileCheckingByUserID(String userID);
+
+    String lastBloodDonated(String date, String userID);
 }

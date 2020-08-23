@@ -13,6 +13,7 @@ import com.donatedrop.models.Address;
 import com.donatedrop.profile.model.ProfileBasic;
 import com.donatedrop.security.models.User;
 import com.donatedrop.security.repo.UserRepository;
+import com.donatedrop.util.DateUtil;
 import org.hibernate.procedure.ProcedureOutputs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -310,7 +311,9 @@ public class DumpDao {
                 .registerStoredProcedureParameter("needDate", String.class, ParameterMode.IN);
 
         query.setParameter("user_id", "11161");
-        query.setParameter("needDate", "2019-12-30");
+//        query.setParameter("needDate", "2020-12-30");
+        query.setParameter("needDate", DateUtil.getDate());
+        System.out.println(DateUtil.getDate());
         List<BigInteger> list = new ArrayList<>();
         try {
             // Execute query
