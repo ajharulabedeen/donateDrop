@@ -99,7 +99,7 @@ public class Dao_DonnerAssign_Impl implements Dao_DonnerAssign_I {
         String column = requestSearchDonnerAssing.getColumn();
         String key = requestSearchDonnerAssing.getKey();
         String status = requestSearchDonnerAssing.getStatusType();
-        String agentID = requestSearchDonnerAssing.getUserIdAgent();
+        String agentID = requestSearchDonnerAssing.getAgentID();
 //        String q = "SELECT * FROM `agent_request_review`";
         List<DonnerAssingShow> donnerAssingmentList = new ArrayList<>();
         String q = "";
@@ -155,7 +155,7 @@ public class Dao_DonnerAssign_Impl implements Dao_DonnerAssign_I {
         String column = requestSearchDonnerAssing.getColumn();
         String key = requestSearchDonnerAssing.getKey();
         String status = requestSearchDonnerAssing.getStatusType();
-        String agentID = requestSearchDonnerAssing.getUserIdAgent();
+        String agentID = requestSearchDonnerAssing.getAgentID();
         String q = "";
         try {
             q = "SELECT count(* ) FROM `donner_assing_show` WHERE `donner_assing_show`.`"

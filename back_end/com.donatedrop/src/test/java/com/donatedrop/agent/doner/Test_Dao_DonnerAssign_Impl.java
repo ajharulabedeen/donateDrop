@@ -89,7 +89,7 @@ public class Test_Dao_DonnerAssign_Impl {
 //                new RequestSearchDonnerAssing(0, 5, "phonenumber", "%%", StatusType.ZERO);
 //                new RequestSearchDonnerAssing(0, 5, "phonenumber", "%013%", StatusType.ZERO);//2
                 new RequestSearchDonnerAssing(0, 20, "email", "%103%", StatusType.ZERO);
-        requestSearchReview.setUserIdAgent("11186");
+        requestSearchReview.setAgentID("11186");
         System.out.println("\nrequestSearchReview : " + requestSearchReview.toString());
         dao_donnerAssign_i.getAssingments(requestSearchReview).forEach(donnerToAgentRequestReview -> {
             System.out.println(donnerToAgentRequestReview.toString());
@@ -102,7 +102,7 @@ public class Test_Dao_DonnerAssign_Impl {
 //                new RequestSearchDonnerAssing(0, 5, "phonenumber", "%%", StatusType.ZERO);
 //                new RequestSearchDonnerAssing(0, 5, "phonenumber", "%013%", StatusType.ZERO);//2
                 new RequestSearchDonnerAssing(0, 20, "email", "%%", StatusType.ZERO);
-        requestSearchReview.setUserIdAgent("11186");
+        requestSearchReview.setAgentID("11186");
         System.out.println("\nrequestSearchReview : " + requestSearchReview.toString());
         Map<String, String> countMap = dao_donnerAssign_i.getAssingmentsCount(requestSearchReview);
         System.out.println(countMap);

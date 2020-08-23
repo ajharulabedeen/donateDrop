@@ -59,23 +59,23 @@ public class RequestSearchDonnerAssing {
         this.statusType = statusType;
     }
 
-    public String getUserIdAgent() {
+    public String getAgentID() {
         return agentID;
     }
 
-    public void setUserIdAgent(String userIdAgent) {
-        this.agentID = userIdAgent;
+    public void setAgentID(String agentID) {
+        this.agentID = agentID;
     }
 
     @Override
     public String toString() {
-        return "RequestSearchReview{" +
+        return "RequestSearchDonnerAssing{" +
                 "max=" + max +
                 ", start=" + start +
                 ", key='" + key + '\'' +
                 ", column='" + column + '\'' +
                 ", statusType='" + statusType + '\'' +
-                ", userIdAgent='" + agentID + '\'' +
+                ", agentID='" + agentID + '\'' +
                 '}';
     }
 }
