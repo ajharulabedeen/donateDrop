@@ -19,6 +19,8 @@ export class DonnerAssigningComponent implements OnInit {
   statusType: string;
   assignmentStatus: string;
 
+  deleteId: string;
+
   donnerAssingmentAll: Array<DonnerAssingShow>;
   startAssingments: number;
 
@@ -49,6 +51,8 @@ export class DonnerAssigningComponent implements OnInit {
       console.log(this.donnerAssingmentAll);
     });
   }
+
+
 
 }
 

@@ -86,7 +86,6 @@
     </div>
   </div>
 
-
 </div>
 <!--END : Search-->
 
@@ -105,6 +104,7 @@
           <th *ngIf="buttonApprove">Approve</th>
           <!--<th>Hold</th>-->
           <th>Index</th>
+          <th>AssignmenID</th>
           <th>Name</th>
           <th>Gender</th>
           <th>Profession</th>
@@ -125,8 +125,8 @@
                     data-target="#donation_delete">Edit
             </button>
             <br>
-            <button class="btn btn-xs btn-danger" (click)="requestRemove(da.requestId)" data-toggle="modal"
-                    data-target="#donation_delete">Remove
+            <button class="btn btn-xs btn-danger" (click)="deleteId=da.donnerAssingmentId" data-toggle="modal"
+                    data-target="#deleteDonnerAssignment">Remove
             </button>
 
           </td>
@@ -143,6 +143,7 @@
           <!--</button>-->
           <!--</td>-->
           <td>{{i+1}}</td>
+          <td>{{da.donnerAssingmentId}}</td>
           <td>{{da.name}}</td>
           <td>{{da.gender}}</td>
           <td>{{da.profession}}</td>
@@ -179,4 +180,34 @@
   <div class="panel-footer">Review Request</div>
 </div>
 <!--end : table-->
+
+<!--refacotor : Have to make util component delete, by @input value will send, by @output click value will be got-->
+<!-- start-Modal :  Delete Confirmation -->
+<div class="modal fade" id="deleteDonnerAssignment" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Post({{pageHeader}})</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Are U sure to delete? ID : {{deleteId}}</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary btn-danger" (click)="deletePost()"
+                data-dismiss="modal">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end-Modal :  Delete Confirmation -->
+
+
 
