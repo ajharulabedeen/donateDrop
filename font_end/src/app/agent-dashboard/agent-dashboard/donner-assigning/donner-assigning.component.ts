@@ -9,6 +9,13 @@ export class DonnerAssigningComponent implements OnInit {
 
   constructor() { }
 
+  searchKey: string;
+  searchByColumn = 'name';
+  total = 0;
+  startRequests = 0;
+  perPage = 10;
+  pageNumber = 0;
+
   ngOnInit() {
   }
 
