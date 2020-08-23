@@ -17,7 +17,7 @@ export class DonnerAssigningComponent implements OnInit {
   searchKey: string;
   searchByColumn = 'name';
   total = 0;
-  startAssigments = 5;
+  startAssigments = 0;
   perPage = 10;
   pageNumber = 0;
   statusType: string;
@@ -127,24 +127,16 @@ export class DonnerAssigningComponent implements OnInit {
     });
   }
 
-  public nextPage(): void {
-    console.log('\n\n\n----------------Next');
-    // this.perPage +=1;
+  public nextPage() {
     if (this.startAssingments <= this.total) {
-      console.log(this.startAssingments);
       this.startAssingments += this.perPage;
-      console.log(this.startAssingments);
       this.getAssingments();
     }
   }
 
-  public previousPage(): void {
-    console.log('\n\n\n----------------Pre');
-    // this.perPage -=1;
+  public previousPage() {
     if (this.startAssingments > 0) {
-      console.log(this.startAssingments);
       this.startAssingments -= this.perPage;
-      console.log(this.startAssingments);
       this.getAssingments();
     }
   }
