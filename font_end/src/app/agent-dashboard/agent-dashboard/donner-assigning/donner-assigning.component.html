@@ -128,20 +128,7 @@
             <button class="btn btn-xs btn-danger" (click)="deleteId=da.donnerAssingmentId" data-toggle="modal"
                     data-target="#deleteDonnerAssignment">Remove
             </button>
-
           </td>
-          <!--Reject-->
-          <!--<td *ngIf="buttonReject">-->
-          <!--<button class="btn btn-xs btn-warning" (click)="requestReject(da.requestId)" data-toggle="modal"-->
-          <!--data-target="#donation_delete">Reject-->
-          <!--</button>-->
-          <!--</td>-->
-          <!--approve-->
-          <!--<td *ngIf="buttonApprove">-->
-          <!--<button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modal_work"-->
-          <!--(click)="requestAccept(da.requestId, 'ACCEPT')">Approve-->
-          <!--</button>-->
-          <!--</td>-->
           <td>{{i+1}}</td>
           <td>{{da.donnerAssingmentId}}</td>
           <td>{{da.name}}</td>
@@ -150,23 +137,6 @@
           <td>{{da.profileId}}</td>
           <td>{{da.email}}</td>
           <td>{{da.userId}}</td>
-          <!--<td>-->
-          <!--<button class="btn btn-xs btn-info" (click)="agentNote=da.noteAgent; requestID=da.requestId"-->
-          <!--[attr.data-target]="'#' + modalIDAgent" data-toggle="modal">Edit-->
-          <!--&lt;!&ndash;data-target="'#'{{pageHeader}}">Edit&ndash;&gt;-->
-          <!--&lt;!&ndash;data-target="'#'{{pageHeader}}">Edit&ndash;&gt;-->
-          <!--</button>-->
-          <!--<br>-->
-          <!--{{da.noteAgent}}-->
-          <!--</td>-->
-          <!--<td>-->
-          <!--<button class="btn btn-xs btn-danger" (click)="personalNote=da.noteAgentPersonal; requestID=da.requestId"-->
-          <!--data-toggle="modal"-->
-          <!--[attr.data-target]="'#' + modalIDDonner">Edit-->
-          <!--</button>-->
-          <!--<br>-->
-          <!--{{da.noteAgentPersonal}}-->
-          <!--</td>-->
           <td>{{da.assingDate}}</td>
           <td>{{da.needDate}}</td>
           <td>{{da.postId}}</td>
