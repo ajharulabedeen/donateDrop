@@ -131,6 +131,7 @@ export class DonnerAssigningComponent implements OnInit {
         this.postIDSave = res.ID;
         console.log('Post Save DonnerAssign : ' + this.postIDSave);
         // this.pos
+        this.postChecking();
       }
     });
   }
