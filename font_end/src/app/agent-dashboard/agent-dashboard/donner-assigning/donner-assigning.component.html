@@ -151,9 +151,8 @@
           <td>{{da.needDate}}</td>
           <td>
             {{da.postId}}
-            <button class="btn btn-xs btn-info" (click)="deleteId=da.donnerAssingmentId" data-toggle="modal"
-                    data-target="#blood_post_details">Details
-            </button>
+            <a target="_blank" class="btn btn-primary btn-xs" role="button"
+               [routerLink]="['/post_details', da.postId]">Details</a>
           </td>
           <td>{{da.bloodManageStatus}}</td>
           <td>{{da.assingNote}}</td>
