@@ -57,6 +57,11 @@ public class Controller_DonnerAssign {
         return service_donnerAssign_i.save(donnerAssingment);
     }
 
+    @PostMapping("complete")
+    public Map<String, String> complete(@RequestParam String donnerAssingmentID) {
+        return service_donnerAssign_i.complete(donnerAssingmentID);
+    }
+
     @GetMapping("getProfileBasicByUserID")
     public ProfileBasic getProfileBasicByUserID(@RequestParam String userID) {
         return service_profile_basic_i.getProfileBasicByUserID(userID);

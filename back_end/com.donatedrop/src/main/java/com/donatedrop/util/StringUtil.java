@@ -31,5 +31,6 @@ public class StringUtil {
     public static final String ADRESS = "address";
     public static final String ACCEPT = "ACCEPT";
     public static final String ACTIVE = "ACTIVE";
+    public static final String COMPLETE = "COMPLETE";
 
 }

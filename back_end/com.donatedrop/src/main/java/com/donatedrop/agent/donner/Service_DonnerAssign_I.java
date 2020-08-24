@@ -16,6 +16,8 @@ public interface Service_DonnerAssign_I {
 
     public Map<String, String> update(DonnerAssingment donnerAssingment);
 
+    public Map<String, String> complete(String donnerAssingmentID);
+
     public List<DonnerAssingShow> getAssingments(RequestSearchDonnerAssing requestSearchDonnerAssing);
 
     public Map<String, String> getAssingmentsCount(RequestSearchDonnerAssing requestSearchDonnerAssing);

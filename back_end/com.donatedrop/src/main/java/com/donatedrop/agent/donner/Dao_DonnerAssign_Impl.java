@@ -27,6 +27,7 @@ public class Dao_DonnerAssign_Impl implements Dao_DonnerAssign_I {
     @PersistenceContext
     EntityManager entityManager;
 
+    @Override
     public Map<String, String> save(DonnerAssingment donnerAssingment) {
         Map<String, String> result = new HashMap<>();
         try {
@@ -49,10 +50,12 @@ public class Dao_DonnerAssign_Impl implements Dao_DonnerAssign_I {
         return result;
     }
 
+    @Override
     public DonnerAssingment findOne(String donnerAssingmentID) {
         return entityManager.find(DonnerAssingment.class, new Long(donnerAssingmentID));
     }
 
+    @Override
     public Map<String, String> delete(String donnerAssingmentID) {
         Map<String, String> result = new HashMap<>();
         try {
@@ -69,6 +72,25 @@ public class Dao_DonnerAssign_Impl implements Dao_DonnerAssign_I {
         return result;
     }
 
+    @Override
+    public Map<String, String> complete(String donnerAssingmentID) {
+        Map<String, String> result = new HashMap<>();
+        try {
+            DonnerAssingment donnerAssingment
+                    = entityManager.find(DonnerAssingment.class, new Long(donnerAssingmentID));
+            donnerAssingment.setBloodManageStatus(StringUtil.COMPLETE);
+            entityManager.merge(donnerAssingment);
+            result.put(StringUtil.STATUS, StringUtil.OK);
+            result.put(StringUtil.MESSAGE, StringUtil.COMPLETE);
+        } catch (Exception e) {
+            result.put(StringUtil.STATUS, StringUtil.FAIL);
+            result.put(StringUtil.MESSAGE, StringUtil.UNKNOWN);
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @Override
     public Map<String, String> update(DonnerAssingment donnerAssingment) {
         Map<String, String> result = new HashMap<>();
         try {
