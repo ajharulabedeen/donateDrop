@@ -130,6 +130,10 @@
             <button class="btn btn-xs btn-danger" (click)="deleteId=da.donnerAssingmentId" data-toggle="modal"
                     data-target="#deleteDonnerAssignment">Remove
             </button>
+            <br>
+            <button class="btn btn-xs btn-info" (click)="deleteId=da.donnerAssingmentId" data-toggle="modal"
+                    data-target="#deleteDonnerAssignment">Complete
+            </button>
           </td>
           <td>{{i+1}}</td>
           <td>{{da.donnerAssingmentId}}</td>
@@ -214,7 +218,6 @@
           <hr>
         </div>
 
-
         <div class="form-group">
           <label>Post ID</label>
           <button class="btn btn-xs btn-primary" (click)="showPostDetails=true; postChecking()">Check</button>
@@ -249,12 +252,12 @@
         <!--notes : thought no need, will be used as note personal-->
         <div class="form-group">
           <label>Assign Note</label>
-          <textarea class="col-md-12" [(ngModel)]="anyNotes"></textarea>
+          <textarea class="col-md-12" [(ngModel)]="assignNote"></textarea>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="save()">Save</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveNewAssignment()">Save</button>
       </div>
     </div>
   </div>

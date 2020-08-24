@@ -8,6 +8,7 @@ import {PostServiceService} from '../../../post/post-service.service';
 import {BasicService} from '../../../profile/basic/basic.service';
 import {Basic} from '../../../profile/basic/basic.model';
 import {PostDetailsService} from '../../../post/post-details/post-details.service';
+import {DonnerAssingment} from '../model/donner-assingment.model';
 
 @Component({
   selector: 'app-donner-assigning',
@@ -57,6 +58,7 @@ export class DonnerAssigningComponent implements OnInit {
 
   profileBasic: Basic;
   postBasic: Post;
+  assignNote: string;
 
   constructor(private donnerAssignService: DonnerAssignService,
               private  postService: PostServiceService,
@@ -163,6 +165,19 @@ export class DonnerAssigningComponent implements OnInit {
     });
   }
 
+  public saveNewAssignment(): void {
+    const donnerAssignment = new DonnerAssingment();
+    donnerAssignment.assingDate = this.bloodNeedDate;
+    donnerAssignment.donnerId = this.donnerUserID;
+    donnerAssignment.postId = this.postIDSave;
+    donnerAssignment.assingNote = this.assignNote;
+
+    this.donnerAssignService.save(donnerAssignment).subscribe(res => {
+      if (res.STATUS === 'OK') {
+        this.getAssingments();
+      }
+    });
+  }
 
 }
 
