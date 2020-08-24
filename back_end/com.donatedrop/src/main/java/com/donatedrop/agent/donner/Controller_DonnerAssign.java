@@ -50,6 +50,13 @@ public class Controller_DonnerAssign {
         return service_donnerAssign_i.delete(donnerAssingmentID);
     }
 
+    // refactor : have to add validation of ID's.
+    @PostMapping("save")
+    public Map<String, String> save(@RequestBody DonnerAssingment donnerAssingment) {
+        donnerAssingment.setAgentId(Utils.getLoggedUserID());
+        return service_donnerAssign_i.save(donnerAssingment);
+    }
+
     @GetMapping("getProfileBasicByUserID")
     public ProfileBasic getProfileBasicByUserID(@RequestParam String userID) {
         return service_profile_basic_i.getProfileBasicByUserID(userID);

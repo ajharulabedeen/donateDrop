@@ -7,6 +7,7 @@ import com.donatedrop.agent.models.RequestReviewRequest;
 import com.donatedrop.agent.models.StatusType;
 import com.donatedrop.geocode.AbstractTest;
 import com.donatedrop.other.DumpDao;
+import com.donatedrop.other.DumpData;
 import com.donatedrop.util.DateUtil;
 import com.donatedrop.util.StringUtil;
 import org.junit.Before;
@@ -95,10 +96,31 @@ public class Test_Controller_DonnerAssign extends AbstractTest {
 
 
     @Test
+    public void testSaveAssignment() throws Exception {
+        String uri = "/public/user/agent/donnerAssign/save";
+
+        DonnerAssingment donnerAssingment = new DonnerAssingment();
+        donnerAssingment.setAgentId("");
+        donnerAssingment.setDonnerId("11148");
+        donnerAssingment.setNeedDate(DumpData.getDate());
+
+        String inputJson = super.mapToJson(donnerAssingment);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        Map<String, String> resultMap = super.mapFromJson(content, Map.class);
+        System.out.println("\n" + resultMap + "\n");
+        assertEquals(StringUtil.OK, resultMap.get(StringUtil.STATUS));
+    }
+
+
+    @Test
     public void testDeleteAssignment() throws Exception {
 //        INSERT INTO `donnerassingment` (`donner_assingment_id`, `agent_id`, `donner_id`, `assing_date`, `assing_note`, `need_date`, `post_id`, `blood_manage_status`)
 //        VALUES ('21463', '11186', '12044', '2020-08-23 05:23:13', 'Note Assign', '2017-07-10', NULL, '0')
-
 
         String donnerAssingmentID = "21463";
         String uri = "/public/user/agent/donnerAssign/delete?donnerAssingmentID=" + donnerAssingmentID;
