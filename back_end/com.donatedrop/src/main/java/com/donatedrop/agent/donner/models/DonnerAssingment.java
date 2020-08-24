@@ -5,6 +5,8 @@
  */
 package com.donatedrop.agent.donner.models;
 
+import com.donatedrop.util.StringUtil;
+
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,7 +40,6 @@ public class DonnerAssingment implements Serializable {
     @Column(name = "assing_note")
     private String assingNote;
 
-
     @Column(name = "assing_date")
     private String assingDate;
 
@@ -46,7 +47,7 @@ public class DonnerAssingment implements Serializable {
     private String needDate;
 
     @Column(name = "blood_manage_status")
-    private String bloodManageStatus;
+    private String bloodManageStatus = StringUtil.ACTIVE;
 
     public DonnerAssingment() {
 

@@ -6,6 +6,7 @@
 package com.donatedrop.post.model;
 
 import com.donatedrop.profile.model.PhoneNumber;
+import com.donatedrop.util.StringUtil;
 
 import java.io.Serializable;
 import java.util.List;
@@ -70,7 +71,7 @@ public class Post implements Serializable {
     private String contactInfo;
 
     @Column(name = "status")
-    private String status;
+    private String status = StringUtil.ACTIVE;
 
     @Lob
     @Column(name = "remarks")
