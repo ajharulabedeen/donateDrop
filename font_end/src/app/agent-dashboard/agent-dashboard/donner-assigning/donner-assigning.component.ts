@@ -71,7 +71,7 @@ export class DonnerAssigningComponent implements OnInit {
   ngOnInit() {
     this.searchKey = '';
     this.statusType = '0';
-    this.assignmentStatus = '0';
+    this.assignmentStatus = 'ACTIVE';
     // this.startAssingments = 0;
     this.getAssingments();
     this.bloods = this.basicService.getBloodGroup();

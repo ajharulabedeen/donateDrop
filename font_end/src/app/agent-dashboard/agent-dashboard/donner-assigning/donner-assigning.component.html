@@ -81,9 +81,12 @@
   <div class="col-md-2 offset-md-2">
     <div class="form-group" style="text-align: center">
       <h4>Assingment Type</h4>
-      <input type="radio" name="n_pay" [(ngModel)]="assignmentStatus" value="ACTIVE" checked="checked">Active<br>
-      <input type="radio" name="n_pay" [(ngModel)]="assignmentStatus" value="COMPLETE">Completed<br>
-      <input type="radio" name="n_pay" [(ngModel)]="assignmentStatus" value="1">Other<br>
+      <input type="radio" name="n_pay" (click)="getAssingments()" (change)="getAssingments()"
+             [(ngModel)]="assignmentStatus" value="ACTIVE" checked="checked">Active<br>
+      <input type="radio" name="n_pay" (click)="getAssingments()" (change)="getAssingments()"
+             [(ngModel)]="assignmentStatus" value="COMPLETE">Completed<br>
+      <input type="radio" name="n_pay" (click)="getAssingments()" (change)="getAssingments()"
+             [(ngModel)]="assignmentStatus" value="EXPIRED">Expired<br>
     </div>
   </div>
 
@@ -132,7 +135,8 @@
                     data-target="#deleteDonnerAssignment">Remove
             </button>
             <br>
-            <button class="btn btn-xs btn-info" (click)="assignmentCompletionID=da.donnerAssingmentId" data-toggle="modal"
+            <button class="btn btn-xs btn-info" (click)="assignmentCompletionID=da.donnerAssingmentId"
+                    data-toggle="modal"
                     data-target="#completeDonnerAssignment">Complete
             </button>
           </td>
