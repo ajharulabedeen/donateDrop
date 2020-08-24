@@ -217,8 +217,8 @@
 
         <div class="form-group">
           <label>Post ID</label>
-          <button class="btn btn-xs btn-primary" (click)="showPostDetails=true; postFound=true">Check</button>
-          <input [(ngModel)]="hospitalName" type="text" class="form-control"
+          <button class="btn btn-xs btn-primary" (click)="showPostDetails=true; postChecking()">Check</button>
+          <input [(ngModel)]="postIDSave" type="text" class="form-control"
                  placeholder="Post ID!">
         </div>
         <!--post details-->

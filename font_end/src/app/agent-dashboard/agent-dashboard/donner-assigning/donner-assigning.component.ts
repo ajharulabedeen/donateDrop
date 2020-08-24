@@ -7,6 +7,7 @@ import {Post} from '../../../post/post.model';
 import {PostServiceService} from '../../../post/post-service.service';
 import {BasicService} from '../../../profile/basic/basic.service';
 import {Basic} from '../../../profile/basic/basic.model';
+import {PostDetailsService} from '../../../post/post-details/post-details.service';
 
 @Component({
   selector: 'app-donner-assigning',
@@ -55,10 +56,12 @@ export class DonnerAssigningComponent implements OnInit {
   donnerUserID: string;
 
   profileBasic: Basic;
+  postBasic: Post;
 
   constructor(private donnerAssignService: DonnerAssignService,
               private  postService: PostServiceService,
-              private basicService: BasicService) {
+              private basicService: BasicService,
+              private postDetails: PostDetailsService) {
   }
 
   ngOnInit() {
@@ -146,11 +149,20 @@ export class DonnerAssigningComponent implements OnInit {
     }
   }
 
-  profileCheckingByUserID(): void {
+  public profileCheckingByUserID(): void {
     this.donnerAssignService.profileCheckingByUserID(this.donnerUserID).subscribe(basic => {
       this.profileBasic = basic;
     });
   }
+
+  public postChecking(): void {
+    this.postDetails.findOnePostByIDNoComment(this.postIDSave).subscribe(post => {
+      this.postBasic = post;
+      console.log(post);
+    });
+  }
+
+
 }
 
 
