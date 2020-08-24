@@ -224,10 +224,14 @@
         <!--post details-->
         <div *ngIf="showPostDetails">
           <button class="btn btn-xs btn-warning" (click)="showPostDetails=false;">close</button>
-          <div *ngIf="postFound==true">
-            <h1>This Post Details</h1>
+          <div *ngIf="postBasic.postID!=null">
+            <b>Post ID :</b>{{postBasic.postID}}
+            <b>Blood Group :</b>{{postBasic.bloodType}}
+            <b>Quantity :</b>{{postBasic.quantity}}
+            <b>Hospital Name :</b>{{postBasic.hospitalName}}
+            <b>Hospital Address :</b>{{postBasic.hospitalAddress}}
           </div>
-          <div *ngIf="postFound==false">
+          <div *ngIf="postBasic.postID==null">
             <h5 style="color: red;">Sorry No post found!</h5>
             <button *ngIf="!showPostCheck" class="btn btn-xs btn-info"
                     data-toggle="modal"
