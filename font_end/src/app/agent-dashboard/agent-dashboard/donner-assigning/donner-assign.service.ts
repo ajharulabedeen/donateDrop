@@ -41,4 +41,12 @@ export class DonnerAssignService {
   save(donnerAssignment: DonnerAssingment) {
     return this.http.post<any>('http://localhost:8080/public/user/agent/donnerAssign/save', donnerAssignment, this.authService.getHeader());
   }
+
+  update(da: DonnerAssingShow) {
+    // return this.http.get<Basic>('http://localhost:8080/public/user/agent/donnerAssign/profileCheckingByUserID?userID=' + donnerUserID, this.authService.getHeader());
+  }
+
+  complete(donnerAssingmentId: string) {
+    return this.http.post<any>('http://localhost:8080/public/user/agent/donnerAssign/complete?donnerAssingmentID=' + donnerAssingmentId, this.authService.getHeader());
+  }
 }

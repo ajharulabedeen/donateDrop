@@ -60,6 +60,8 @@ export class DonnerAssigningComponent implements OnInit {
   postBasic: Post;
   assignNote: string;
 
+  assignmentCompletionID: string;
+
   constructor(private donnerAssignService: DonnerAssignService,
               private  postService: PostServiceService,
               private basicService: BasicService,
@@ -178,6 +180,22 @@ export class DonnerAssigningComponent implements OnInit {
       }
     });
   }
+
+  assignmentComleted(): void {
+    // const donnerAssignment = new DonnerAssingment();
+    // donnerAssignment.assingDate = this.bloodNeedDate;
+    // donnerAssignment.donnerId = this.donnerUserID;
+    // donnerAssignment.postId = this.postIDSave;
+    // donnerAssignment.assingNote = this.assignNote;
+    // da.bloodManageStatus = 'COMPLETE';
+    //
+    this.donnerAssignService.complete(this.assignmentCompletionID).subscribe(res => {
+      if (res.STATUS === 'OK') {
+        this.getAssingments();
+      }
+    });
+  }
+
 
 }
 
