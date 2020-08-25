@@ -357,12 +357,14 @@
         <b>Religion : </b>{{profileDetails.religion}}<br>
         <b>Available : </b>{{profileDetails.available}}<br>
         <b>Phone Numbers : </b><br>
-        <!--<div *ngFor="let p of profileDetails.phone_number; let i=index">-->
-          <!--{{p.$number}}-->
-        <!--</div>-->
+        <div *ngFor="let p of profileDetails.phone_number; let i=index">
+          {{p['number']}}
+        </div>
         <h3 align="center">Address</h3>
-        <b>Present : {{profileDetails.address}}</b><br>
-        <b>Permanent : </b><br>
+        <div *ngFor="let a of profileDetails.address; let i=index">
+          Address : {{i}}<br>
+          Type : {{a.$division}}<br>
+        </div>
         <h3 align="center">Emergency Contact</h3>
         <div>
           <h4>Emergengy : {{profileDetails.emergency_contact}}</h4>
