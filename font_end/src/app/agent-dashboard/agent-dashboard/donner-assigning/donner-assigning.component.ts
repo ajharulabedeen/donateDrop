@@ -9,6 +9,7 @@ import {BasicService} from '../../../profile/basic/basic.service';
 import {Basic} from '../../../profile/basic/basic.model';
 import {PostDetailsService} from '../../../post/post-details/post-details.service';
 import {DonnerAssingment} from '../model/donner-assingment.model';
+import {ProfileDetails} from '../../../model/profile-details.model';
 
 @Component({
   selector: 'app-donner-assigning',
@@ -57,6 +58,7 @@ export class DonnerAssigningComponent implements OnInit {
   donnerUserID: string;
 
   profileBasic: Basic;
+  profileDetails: ProfileDetails;
   postBasic: Post;
   assignNote: string;
 
@@ -196,7 +198,13 @@ export class DonnerAssigningComponent implements OnInit {
     });
   }
 
-
+  public getProfileDetails(userId: string): void {
+    this.profileDetails = new ProfileDetails();
+    this.donnerAssignService.getProfileDetails(userId).subscribe(profileDetails => {
+      this.profileDetails = profileDetails;
+      console.log(this.profileDetails);
+    });
+  }
 }
 
 

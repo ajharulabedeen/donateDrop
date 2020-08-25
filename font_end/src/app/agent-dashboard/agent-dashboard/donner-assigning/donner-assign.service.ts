@@ -6,6 +6,7 @@ import {RequestSearchDonnerAssing} from '../model/request-search-donner-assign.m
 import {DonnerAssingShow} from '../model/donner-assing-show.model';
 import {Basic} from '../../../profile/basic/basic.model';
 import {DonnerAssingment} from '../model/donner-assingment.model';
+import {ProfileDetails} from '../../../model/profile-details.model';
 
 @Injectable({
   providedIn: 'root'
@@ -48,5 +49,9 @@ export class DonnerAssignService {
 
   complete(donnerAssingmentId: string) {
     return this.http.post<any>('http://localhost:8080/public/user/agent/donnerAssign/complete?donnerAssingmentID=' + donnerAssingmentId, this.authService.getHeader());
+  }
+
+  getProfileDetails(userId: string) {
+    return this.http.get<ProfileDetails>('http://localhost:8080/public/user/agent/donnerAssign/profileDetails?userID=' + userId, this.authService.getHeader());
   }
 }
