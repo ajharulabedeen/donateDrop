@@ -136,6 +136,20 @@ public class Test_Controller_DonnerAssign extends AbstractTest {
         assertEquals(StringUtil.OK, resultMap.get(StringUtil.STATUS));
     }
 
+    //    String uri = "/public/profile/basic/findOneByUser";
+    @org.junit.Test
+    public void testfindOneByUser() throws Exception {
+        String userID = "11148";
+        String uri = "/public/user/agent/donnerAssign/profileDetails?userID=" + userID;
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
+                .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        System.out.println(content);
+    }
+
+
     //    @Test
 //    @Order(1)
 //    //"/public/user/agent/donner/saveRequest";

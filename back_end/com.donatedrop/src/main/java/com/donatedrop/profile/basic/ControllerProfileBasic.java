@@ -33,6 +33,7 @@ public class ControllerProfileBasic {
         return service_profile_basic_i.save(profileBasic);
     }
 
+    //    with all details
     @GetMapping("findOneByUser")
     public ProfileBasic findOneByUser() {
         return service_profile_basic_i.findOneByUser(Utils.getLoggedUserID());
@@ -84,5 +85,4 @@ public class ControllerProfileBasic {
     public Map<String, String> updateEmergencyContact(@RequestBody EmergencyContact emergencyContactUpdate) {
         return service_profile_basic_i.updateEmergencyContact(emergencyContactUpdate, Utils.getLoggedUserID());
     }
-
 }

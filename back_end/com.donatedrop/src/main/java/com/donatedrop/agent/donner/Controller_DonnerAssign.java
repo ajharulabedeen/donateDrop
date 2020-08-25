@@ -68,9 +68,12 @@ public class Controller_DonnerAssign {
     }
 
     @GetMapping("profileCheckingByUserID")
-    ProfileBasic profileCheckingByUserID(@RequestParam String userID) {
+    public ProfileBasic profileCheckingByUserID(@RequestParam String userID) {
         return service_profile_basic_i.profileCheckingByUserID(userID);
     }
 
-
+    @GetMapping("profileDetails")
+    public ProfileBasic getProfileDetails(@RequestParam String userID) {
+        return service_profile_basic_i.findOneByUser(userID);
+    }
 }
