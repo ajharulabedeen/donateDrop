@@ -142,7 +142,14 @@
           </td>
           <td>{{i+1}}</td>
           <td>{{da.donnerAssingmentId}}</td>
-          <td>{{da.userId}}</td>
+          <td>
+            {{da.userId}}
+            <br>
+            <button class="btn btn-xs btn-info" (click)="assignmentCompletionID=da.donnerAssingmentId"
+                    data-toggle="modal"
+                    data-target="#user_details">Details
+            </button>
+          </td>
           <td>{{da.name}}</td>
           <td>{{da.gender}}</td>
           <td>{{da.profession}}</td>
@@ -325,28 +332,25 @@
 </div>
 <!-- end-Modal :  Delete Confirmation -->
 
-
-<!-- start-Modal :  PostDetails-->
-<div class="modal fade" id="blood_post_details" tabindex="-1" role="dialog"
+<!-- start-Modal :  user Details-->
+<div class="modal fade" id="user_details" tabindex="-1" role="dialog"
      aria-labelledby="exampleModalLabel"
      aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Blood Post Details</h5>
+        <h5 class="modal-title">User Details Details</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <h4>Here is the detials of the post.</h4>
+        <h3 align="center">Basic Info</h3>
+        <h3 align="center">Address</h3>
+        <h3 align="center">Emergency Contact</h3>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-secondary btn-danger" (click)="deleteAssignment_()"
-                data-dismiss="modal">
-          Delete
-        </button>
       </div>
     </div>
   </div>
