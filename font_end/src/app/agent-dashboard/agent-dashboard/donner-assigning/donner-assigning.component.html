@@ -355,19 +355,28 @@
         <b>Marital Status : </b>{{profileDetails.maritalStatus}}<br>
         <b>Profession : </b>{{profileDetails.profession}}<br>
         <b>Religion : </b>{{profileDetails.religion}}<br>
-        <b>Available : </b>{{profileDetails.available}}<br>
+        <b>Available : </b>{{profileDetails['available']}}<br>
         <b>Phone Numbers : </b><br>
         <div *ngFor="let p of profileDetails.phone_number; let i=index">
           {{p['number']}}
         </div>
         <h3 align="center">Address</h3>
         <div *ngFor="let a of profileDetails.address; let i=index">
-          Address : {{i}}<br>
-          Type : {{a.$division}}<br>
+          <b>Type : {{a.type}}</b><br>
+          {{a['street_address']}};{{a['union_ward']}},{{a['upzilla']}},{{a['district']}},{{a['division']}}<br>
+          <br>
         </div>
         <h3 align="center">Emergency Contact</h3>
         <div>
-          <h4>Emergengy : {{profileDetails.emergency_contact}}</h4>
+          <div *ngFor="let e of profileDetails.emergency_contact; let i=index">
+            <b>Emergency Contact : {{i+1}}</b><br>
+            <b>Name :</b>{{e['name']}}<br>
+            <b>Address:</b>{{e['address']}}<br>
+            <b>Phone :</b>{{e['phone']}}<br>
+            <b>Mail :</b>{{e['mail']}}<br>
+            <b>Relation :</b>{{e['relation']}}<br>
+            <br>
+          </div>
         </div>
       </div>
       <div class="modal-footer">
