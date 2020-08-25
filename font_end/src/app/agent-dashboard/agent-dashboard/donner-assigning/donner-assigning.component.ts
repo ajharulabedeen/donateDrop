@@ -71,6 +71,7 @@ export class DonnerAssigningComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.profileDetails = new ProfileDetails();
     this.searchKey = '';
     this.statusType = '0';
     this.assignmentStatus = 'ACTIVE';
@@ -203,6 +204,7 @@ export class DonnerAssigningComponent implements OnInit {
     this.donnerAssignService.getProfileDetails(userId).subscribe(profileDetails => {
       this.profileDetails = profileDetails;
       console.log(this.profileDetails);
+      console.log(this.profileDetails.phone_number);
     });
   }
 }

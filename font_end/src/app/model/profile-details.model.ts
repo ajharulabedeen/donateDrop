@@ -17,7 +17,7 @@ export class ProfileDetails {
   public email: string;
   public profileFound: boolean;
   public lastBloodGiven: string;
-  public phoneNumbers: Array<PhoneNumber>;
   public address: Array<Address>;
-  public emergencyContact: Array<EmergencyContact>
+  public phone_number: Array<PhoneNumber>;
+  public emergency_contact: Array<EmergencyContact>
 }
