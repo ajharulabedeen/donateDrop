@@ -128,7 +128,7 @@
           <!--<td *ngIf="buttonRemove">-->
           <td>
             <button class="btn btn-xs btn-primary" (click)="requestRemove(da.requestId)" data-toggle="modal"
-                    data-target="#donation_delete">Edit
+                    data-target="#edit_blood_assignment">Edit
             </button>
             <br>
             <button class="btn btn-xs btn-danger" (click)="deleteId=da.donnerAssingmentId" data-toggle="modal"
@@ -273,7 +273,109 @@
     </div>
   </div>
 </div>
-<!-- Modal-end : New Posts-->
+<!-- Modal-end : New Blood Request Assignment-->
+
+<!-- Modal-start  : edit Blood Request Assignment-->
+<div class="modal fade" id="edit_blood_assignment" tabindex="-1" role="dialog" aria-labelledby="new_postLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div align="center" class="modal-header">
+        <h3 class="modal-title" id="edit_postLabel1">New Blood Request Assignment</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <!--need date-->
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Need Date:</label>
+            <div class="input-group date">
+              <input [(ngModel)]="bloodNeedDate" type="text" class="form-control pull-right">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Select Date:</label>
+            <div class="input-group date">
+              <input [(ngModel)]="bloodNeedDate" type="date" class="form-control pull-right">
+            </div>
+          </div>
+        </div>
+        <!--donner ID-->
+        <div class="form-group">
+          <label>Donner ID</label>
+          <button class="btn btn-xs btn-primary" (click)="showDonnerDetails=true; profileCheckingByUserID();">Check
+          </button>
+          <input [(ngModel)]="donnerUserID" type="text" class="form-control"
+                 placeholder="Enter donner id...">
+        </div>
+        <!--donner details-->
+        <div *ngIf="showDonnerDetails">
+          <button class="btn btn-xs btn-warning" (click)="showDonnerDetails=false">close</button>
+          <div *ngIf="profileBasic.profileFound==true">
+            Name : {{profileBasic['name']}}
+            <br>
+            Profession : {{profileBasic['profession']}}
+            <br>
+            <b>Blood Group :</b> {{profileBasic['blood_Group']}}
+            <br>
+            <b>Last Blood Given Since : </b>{{profileBasic.lastBloodGiven}}
+          </div>
+          <div *ngIf="profileBasic.profileFound==false">
+            <h4 style="color: red">Sorry no donner found. Please check the userID again</h4>
+          </div>
+          <hr>
+        </div>
+
+        <div class="form-group">
+          <label>Post ID</label>
+          <button class="btn btn-xs btn-primary" (click)="showPostDetails=true; postChecking()">Check</button>
+          <input [(ngModel)]="postIDSave" type="text" class="form-control"
+                 placeholder="Post ID!">
+        </div>
+        <!--post details-->
+        <div *ngIf="showPostDetails">
+          <button class="btn btn-xs btn-warning" (click)="showPostDetails=false;">close</button>
+          <div *ngIf="postBasic.postID!=null">
+            <b>Post ID :</b>{{postBasic.postID}}
+            <br>
+            <b>Blood Group :</b>{{postBasic.bloodType}}
+            <br>
+            <b>Quantity :</b>{{postBasic.quantity}}
+            <br>
+            <b>Hospital Name :</b>{{postBasic.hospitalName}}
+            <br>
+            <b>Hospital Address :</b>{{postBasic.hospitalAddress}}
+            <br>
+            <b>Contact : </b>{{postBasic.contactInfo}}
+          </div>
+          <div *ngIf="postBasic.postID==null">
+            <h5 style="color: red;">Sorry No post found!</h5>
+            <button *ngIf="!showPostCheck" class="btn btn-xs btn-info"
+                    data-toggle="modal"
+                    data-target="#new_blood_posts">Add New
+            </button>
+          </div>
+          <hr>
+        </div>
+        <!--notes : thought no need, will be used as note personal-->
+        <div class="form-group">
+          <label>Assign Note</label>
+          <textarea class="col-md-12" [(ngModel)]="assignNote"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveNewAssignment()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal-end : edit Blood Request Assignment-->
 
 
 <!--refacotor : Have to make util component delete, by @input value will send, by @output click value will be got-->
@@ -504,5 +606,7 @@
   </div>
 </div>
 <!-- Modal-end : New Posts Blood-->
+
+
 
 
