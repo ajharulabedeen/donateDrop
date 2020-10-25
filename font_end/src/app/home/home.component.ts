@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     window.dispatchEvent(new Event('resize'));
     document.body.className = 'hold-transition skin-blue sidebar-mini';
-    console.log('Home onInit()');
     this.userSub = this.authService.user.subscribe(user => {
       console.log('Auth Subscriber home:');
       this.isAuthenticated = !!user;
@@ -31,6 +30,7 @@ export class HomeComponent implements OnInit {
       console.log(!!user);
     });
 
+    this.openCity("", "about");
   }
 
   ngOnDestroy() {
